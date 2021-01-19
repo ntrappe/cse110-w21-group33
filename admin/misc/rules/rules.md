@@ -5,7 +5,7 @@ Creation: 01/19/2021
 ### Part 1: Group Identification
 **Group #**: 33 <br/>
 **Instructor**: Thomas Allen Powell <br/>
-**Team Name**: ***Powell's Owls*** <br/>
+**Team Name**: Powell's Owls <br/>
 
 #### Team Member Info
 | Name              | Preferred First Name | Email             | 
