@@ -1,9 +1,11 @@
 <img src="/admin/images/group33_header.png" alt="owl" width="700"/>
 
 ### Table of Contents
-[Meeting Notes](#meeting-notes) <br/>
-[Group Contract](#group-contract)
-[Team Brand](#team-brand)
+1. [Meeting Notes](#meeting-notes) <br/>
+2. [Group Contract](#group-contract) <br/>
+3. [Team Brand](#team-brand)
+
+---
 
 #### Meeting Notes
 - All meeting notes can be found under [/admin/meetings](https://github.com/ntrappe/cse110-w21-group33/tree/main/admin/meetings)
