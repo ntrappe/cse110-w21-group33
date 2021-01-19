@@ -39,5 +39,20 @@ the work done previously. As of now, team meetings wil occur on `Thursdays, 6-7p
 
 
 ### Part 4: Responsibilities
+- w
+- 
 
-### Part 5: Resolving Conflict
+---
+
+### Part 5: Conflict Resolution
+1. If a team member is not meeting deadlines, the team agrees to do X to address the problem before bringing up the issue to a TA or professor. 
+2. If a team member is being disrespectful towards another, the team agrees to do X to address it. 
+3. If a team member is unresponsive or not keeping in touch, the team agrees to do X.
+4. If a team member is failing to meet code, github, or documentation standards, the team agrees to do X.
+
+---
+
+By signing below, I am indicating that I have read and agreed with the above statements. <br/>
+
+______________________________________________          ____________________ <br/>
+    Individual Team Member Signature                             Date
