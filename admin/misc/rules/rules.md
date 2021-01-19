@@ -3,11 +3,11 @@ Term: Winter 2021
 Creation: 01/19/2021
 
 ### Part 1: Group Identification
-Group #: 33
-Instructor: Thomas Allen Powell
-Team Name: **Powell's Owls**
+**Group #**: 33
+**Instructor**: Thomas Allen Powell
+**Team Name**: ***Powell's Owls***
 
-Team Member Info
+#### Team Member Info
 | Name              | Preferred First Name | Email             | 
 | ----------------- | -------------------- | ----------------- | 
 | Michael Donaldson | Michael              | mdonalds@ucsd.edu |
