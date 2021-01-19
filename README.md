@@ -6,7 +6,7 @@
 </div>
 
 <a href="/" style="display: block; vertical-align: middle;">
-    <img src="/admin/images/group33_logo.png" style="vertical-align: middle;"/>
+    <img src="/admin/images/group33_logo.png" width="100px" style="vertical-align: middle;"/>
     <span style="vertical-align: middle;">Sample text</span>
 </a>
 
