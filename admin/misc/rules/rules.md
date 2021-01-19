@@ -55,4 +55,4 @@ the work done previously. As of now, team meetings wil occur on `Thursdays, 6-7p
 ##### :rotating_light: By signing below, I am indicating that I have read the above statements and agree to be held accountable. <br/> <br/>
 
 ________________________________________________ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ____________________ <br/>
-&nbsp; &nbsp; &nbsp; &nbsp; Individual Team Member Signature &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Date
+&nbsp; &nbsp; &nbsp; &nbsp; *Individual Team Member Signature* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *Date*
