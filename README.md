@@ -1,2 +1,4 @@
-# cse110-w21-group33
-### POWELL'S OWLS ###
+# CSE110-W21-GROUP33
+
+![owl](/admin/images/group33_logo.png)
+
