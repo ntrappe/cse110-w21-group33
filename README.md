@@ -68,7 +68,6 @@ git commit -m "I updated ___"
 // push to your branch
 git push origin my_name_branch
 ```
-- To get started in VSCode:
 - DO NOT work on the main branch
 - Provide good comments whenever you commit, especially if the last version ran
 - Commit often if you can rather than pushing all at once
