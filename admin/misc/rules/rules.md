@@ -54,5 +54,5 @@ the work done previously. As of now, team meetings wil occur on `Thursdays, 6-7p
 
 By signing below, I am indicating that I have read and agreed with the above statements. <br/>
 
-______________________________________________ &nbsp; &nbsp; ____________________ <br/>
-    Individual Team Member Signature &nbsp; &nbsp; &nbsp; &nbsp; Date
+______________________________________________ &nbsp; &nbsp; &nbsp; &nbsp; ____________________ <br/>
+    Individual Team Member Signature &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Date
