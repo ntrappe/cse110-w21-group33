@@ -3,7 +3,7 @@
 #### Overview
 | Date       | Time      | Type of Meeting   | Where   |
 | ---------- | --------- | ----------------- | ------- |
-| 01/19/2021 | 4-5pm PST | Logistics         | Zoom    |
+| 01/19/2021 | TBD | Logistics         | Zoom    |
 
 ---
 
