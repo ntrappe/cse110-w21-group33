@@ -29,7 +29,7 @@ All members will be expected to read and respond to message, polls, and threads 
 The invitation link can be found [here](https://join.slack.com/t/cse110-w21-group33/shared_invite/zt-l1o6cpnk-heUleWLule7i100Vz07QsA).
 
 <p style="background-color: #FFD416"> Initial here if you agree to the aforementioned means of communication: ___ </p>
-
+<span style="color: red;">text</span>
 ---
 
 ### Part 3: Scheduling Meetings
