@@ -56,7 +56,7 @@
 ```vim
 // clone the repo
 git clone https://github.com/ntrappe/cse110-w21-group33.git
-// set up your own branch, DO NOT WORK ON THE MAIN
+// set up your own branch
 git branch my_name_branch
 // then switch to that branch
 git checkoout my_name_branch
@@ -67,11 +67,12 @@ git add .
 git commit -m "I updated ___"
 // push to your branch
 git push origin my_name_branch
-
 ```
-- 
-- ***Never work on the MAIN branch directly***
-- Please make 
+- To get started in VSCode:
+- DO NOT work on the main branch
+- Provide good comments whenever you commit, especially if the last version ran
+- Commit often if you can rather than pushing all at once
+- Pull often if others are working on the same dir
 
 ---
 
