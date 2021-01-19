@@ -26,10 +26,21 @@
 
 ---
 
-### Team Page
+#### Team Page
 - The Team Page can be found under this repo's [Wiki](https://github.com/ntrappe/cse110-w21-group33/wiki/Team-Page).
 - The Page should be done in ***Markdown*** or ***HTML*** format.
 - It includes a roster of all the members with an overview of each and a link to their personal GitHub
 - It will also include a group video (2.5m) introducing the teammates (the video will be stored at [admin/videos](https://github.com/ntrappe/cse110-w21-group33/tree/main/admin/videos).
 
+---
 
+#### Coding Standards
+- All code will live in [/source](https://github.com/ntrappe/cse110-w21-group33/tree/main/source).
+- TBD Coding comments
+- TBD organization 
+
+---
+
+#### Code Documentation
+- TBD where to note bugs
+- TBD where to note changes/edits
