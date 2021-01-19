@@ -70,7 +70,7 @@ git push origin my_name_branch
 // to pull new changes made on the main branch to the branch you're on
 git pull origin main
 ```
-- DO NOT work on the main branch
+- DO NOT work on the main branch when coding
 - Provide good comments whenever you commit, especially if the last version ran
 - Commit often if you can rather than pushing all at once
 - Pull often if others are working on the same dir
