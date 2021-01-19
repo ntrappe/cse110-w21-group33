@@ -67,6 +67,8 @@ git add .
 git commit -m "I updated ___"
 // push to your branch
 git push origin my_name_branch
+// to pull new changes made on the main branch to the branch you're on
+git pull origin main
 ```
 - DO NOT work on the main branch
 - Provide good comments whenever you commit, especially if the last version ran
