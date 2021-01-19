@@ -1,6 +1,6 @@
 # Group Contract
-Term: Winter 2021 <br/>
-Creation: 01/19/2021
+*Term: Winter 2021 <br/>
+Creation: 01/19/2021*
 
 ### Part 1: Group Identification
 **Group #**: 33 <br/>
