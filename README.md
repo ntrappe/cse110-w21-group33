@@ -4,8 +4,9 @@
 1. [Meeting Notes](#meeting-notes) <br/>
 2. [Group Contract](#group-contract) <br/>
 3. [Team Page](#team-page) <br/>
-4. [Coding Standards](#coding-standards)
-5. [Code Documentation](#coding-standards)
+4. [Project Overview](#project-overview) <br/>
+5. [Coding Standards](#coding-standards) <br/>
+6. [Code Documentation](#code-documentation)
 
 ---
 
@@ -32,6 +33,13 @@
 - The Page should be done in ***Markdown*** or ***HTML*** format.
 - It includes a roster of all the members with an overview of each and a link to their personal GitHub
 - It will also include a group video (2.5m) introducing the teammates (the video will be stored at [admin/videos](https://github.com/ntrappe/cse110-w21-group33/tree/main/admin/videos).
+
+---
+
+#### Project Overview
+- TBD overall look at Pomodoro Timer
+- TBD Log of ideas/changes
+- TBD TODO items
 
 ---
 
