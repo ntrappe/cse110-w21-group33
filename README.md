@@ -6,7 +6,8 @@
 3. [Team Page](#team-page) <br/>
 4. [Project Overview](#project-overview) <br/>
 5. [Coding Standards](#coding-standards) <br/>
-6. [Code Documentation](#code-documentation)
+6. [GitHub Standards](#github-standards) <br/>
+7. [Code Documentation](#code-documentation)
 
 ---
 
@@ -47,6 +48,30 @@
 - All code will live in [/source](https://github.com/ntrappe/cse110-w21-group33/tree/main/source).
 - TBD Coding comments
 - TBD organization 
+
+---
+
+#### GitHub Standards
+- To get started on the command line: 
+```c++
+// clone the repo
+git clone https://github.com/ntrappe/cse110-w21-group33.git
+// set up your own branch, DO NOT WORK ON THE MAIN
+git branch my_name_branch
+// then switch to that branch
+git checkoout my_name_branch
+// to confirm that you switched branches
+git branch -v
+// when you've created files or made changes
+git add .
+git commit -m "I updated ___"
+// push to your branch
+git push origin my_name_branch
+
+```
+- 
+- ***Never work on the MAIN branch directly***
+- Please make 
 
 ---
 
