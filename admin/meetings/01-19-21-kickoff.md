@@ -21,13 +21,13 @@
 ---
 
 ### Attendance
-- [] Michael Donaldson
-- [] Richard Duong
-- [] Brandon Liu
-- [] Bryant Shao
-- [] Steven Steiner
+- [ ] Michael Donaldson
+- [ ] Richard Duong
+- [ ] Brandon Liu
+- [ ] Bryant Shao
+- [ ] Steven Steiner
 - [ ] Nicole Trappe
-- [] Vy Truong
-- [] Felix Zhang
-- [] Lulu Zhu
+- [ ] Vy Truong
+- [ ] Felix Zhang
+- [ ] Lulu Zhu
 
