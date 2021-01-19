@@ -18,7 +18,7 @@
 ---
 
 #### Group Contract
-- All meeting notes can be found under [/admin/meetings](https://github.com/ntrappe/cse110-w21-group33/tree/main/admin/meetings)
+- All group contracts can be found under [/admin/misc/rules](https://github.com/ntrappe/cse110-w21-group33/tree/main/admin/misc/rules)
 - *The* contract should be in ***Markdown*** format.
 - It should include: (a) definition of what is expected to be on the team AND (b) definition of how to address situations where group "rules" are not being followed.
 - Each member will sign the contract, reupload it as a ***PDF***, and label it as *rules-firstlast.md* (e.g. rules-thomaspowell.pdf).
