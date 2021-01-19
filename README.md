@@ -2,10 +2,10 @@
 
 ### Table of Contents
 1. [Meeting Notes](#meeting-notes) <br/>
-3. [Group Contract](#group-contract) <br/>
-4. [Team Brand](#team-brand)
-2. [Coding Standards](#coding-standards)
-3. [Code/Testing Documentation](#coding-standards)
+2. [Group Contract](#group-contract) <br/>
+3. [Team Page](#team-page) <br/>
+4. [Coding Standards](#coding-standards)
+5. [Code Documentation](#coding-standards)
 
 ---
 
@@ -24,6 +24,12 @@
 - Each member will sign the contract, reupload it as a ***PDF***, and label it as *rules-firstlast.md* (e.g. rules-thomaspowell.pdf).
 - For a sample group contract, click [here](https://ohiostate.pressbooks.pub/feptechcomm/chapter/7-project-communications/).
 
+---
 
+### Team Page
+- The Team Page can be found under this repo's [Wiki](https://github.com/ntrappe/cse110-w21-group33/wiki/Team-Page).
+- The Page should be done in ***Markdown*** or ***HTML*** format.
+- It includes a roster of all the members with an overview of each and a link to their personal GitHub
+- It will also include a group video (2.5m) introducing the teammates (the video will be stored at [admin/videos](https://github.com/ntrappe/cse110-w21-group33/tree/main/admin/videos).
 
 
