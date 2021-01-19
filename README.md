@@ -53,13 +53,13 @@
 
 #### GitHub Standards
 - To get started on the command line: 
-```vim
+```vi
 // clone the repo
 git clone https://github.com/ntrappe/cse110-w21-group33.git
 // set up your own branch
 git branch my_name_branch
 // then switch to that branch
-git checkoout my_name_branch
+git checkout my_name_branch
 // to confirm that you switched branches
 git branch -v
 // when you've created files or made changes
