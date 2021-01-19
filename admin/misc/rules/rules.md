@@ -28,7 +28,7 @@ Creation: 01/19/2021*
 All members will be expected to read and respond to message, polls, and threads in Slack. Ideally, members should respond to direct  or group-wide (e.g. `@everyone` tag is used) messages within 24 hours.
 The invitation link can be found [here](https://join.slack.com/t/cse110-w21-group33/shared_invite/zt-l1o6cpnk-heUleWLule7i100Vz07QsA).
 
-<mark> Initial here if you agree to the aforementioned means of communication: ___ </mark>
+<p style="background-color: #FFD416"> Initial here if you agree to the aforementioned means of communication: ___ </p>
 
 ---
 
