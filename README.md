@@ -1,1 +1,6 @@
 # <img src="/admin/images/group33_logo.png" alt="owl" width="200"/>  CSE110-W21-GROUP33 
+
+<div>
+    <img src="/admin/images/group33_logo.png" style="vertical-align: middle;" width="100px"/>
+    <span style="vertical-align: middle;">Here is some text.</span>
+</div>
