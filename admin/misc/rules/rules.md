@@ -20,7 +20,7 @@ Creation: 01/19/2021*
 | Futian Zhang      | Felix                | f6zhang@ucsd.edu  |
 | Zilu Zhu          | Lulu                 | zizhu@ucsd.edu    |
 
-##### :rotating_light: Initial here if the team member information about you is correct: ___ 
+##### :rotating_light: Initial here if the team member information about you is correct: _____ 
 
 ---
 
@@ -28,11 +28,14 @@ Creation: 01/19/2021*
 All members will be expected to read and respond to message, polls, and threads in Slack. Ideally, members should respond to direct  or group-wide (e.g. `@everyone` tag is used) messages within 24 hours.
 The invitation link can be found [here](https://join.slack.com/t/cse110-w21-group33/shared_invite/zt-l1o6cpnk-heUleWLule7i100Vz07QsA).
 
-##### :rotating_light: Initial here if you agree to the aforementioned means of communication: ___
+##### :rotating_light: Initial here if you agree to the aforementioned means of communication: _____
 
 ---
 
 ### Part 3: Scheduling Meetings
+The team will have two meetings a week. The first, a general body meeting wherein the team will collaborate, 
+report on progress, discuss aspects of design or bugs, etc. The second will consist of meeting with the TA and reviewing
+the work done previously. As of now, team meetings wil occur on `Thursdays, 6-7pm PST`. This was decided based off of the availabilities given in the [Lettucemeet](https://lettucemeet.com/l/123Jx). Meetings with the TA have been set for `Fridays, 5-6pm` as of our first meeting. Both are subject to change. The team will agree, at the end of the previous meeting, to set the date and time of the following one. 
 
 
 ### Part 4: Responsibilities
