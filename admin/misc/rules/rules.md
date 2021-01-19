@@ -20,11 +20,17 @@ Creation: 01/19/2021*
 | Futian Zhang      | Felix                | f6zhang@ucsd.edu  |
 | Zilu Zhu          | Lulu                 | zizhu@ucsd.edu    |
 
+<mark> Initial here if the team member information about you is correct: ___ </mark>
+
+---
+
 ### Part 2: Primary Means of Communication
 All members will be expected to read and respond to message, polls, and threads in Slack. Ideally, members should respond to direct  or group-wide (e.g. `@everyone` tag is used) messages within 24 hours.
 The invitation link can be found [here](https://join.slack.com/t/cse110-w21-group33/shared_invite/zt-l1o6cpnk-heUleWLule7i100Vz07QsA).
 
+<mark> Initial here if you agree to the aforementioned means of communication: ___ </mark>
 
+---
 
 ### Part 3: Scheduling Meetings
 
