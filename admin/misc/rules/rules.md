@@ -37,10 +37,15 @@ The team will have two meetings a week. The first, a general body meeting wherei
 report on progress, discuss aspects of design or bugs, etc. The second will consist of meeting with the TA and reviewing
 the work done previously. As of now, team meetings wil occur on `Thursdays, 6-7pm PST`. This was decided based off of the availabilities given in the [Lettucemeet](https://lettucemeet.com/l/123Jx). Meetings with the TA have been set for `Fridays, 5-6pm` as of our first meeting. Both are subject to change. The team will agree, at the end of the previous meeting, to set the date and time of the following one. 
 
+##### :rotating_light: Initial here ...
+
+___
 
 ### Part 4: Responsibilities
 - w
 - 
+
+##### :rotating_light: Initial here ...
 
 ---
 
@@ -49,6 +54,8 @@ the work done previously. As of now, team meetings wil occur on `Thursdays, 6-7p
 2. If a team member is being disrespectful towards another, the team agrees to do X to address it. 
 3. If a team member is unresponsive or not keeping in touch, the team agrees to do X.
 4. If a team member is failing to meet code, github, or documentation standards, the team agrees to do X.
+
+##### :rotating_light: Initial here ...
 
 ---
 
