@@ -53,7 +53,7 @@
 
 #### GitHub Standards
 - To get started on the command line: 
-```emacs
+```vim
 // clone the repo
 git clone https://github.com/ntrappe/cse110-w21-group33.git
 // set up your own branch
