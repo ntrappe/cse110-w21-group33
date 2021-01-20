@@ -24,6 +24,15 @@
 
 ---
 
+### Zoom Video
+- 10sec of smiling or staring awkwardly into the camera (intro)
+- "Hi I'm [name]. I'm a [year] [major]. [What you want to do on this team/accomplish]"
+- example: "Hi I'm Richard. I'm a 4th year, Cog Sci major. I want to do ALL back-end."
+- **NOTES:**
+Record your own Zoom meeting with the 10sec awko + intro. Make sure it's set to record TO THE CLOUD. Then log in to your Zoom account, go to Recordings and (1) set to Public, (2) turn off password protection, and (3) paste cloud recording link into Slack.
+
+---
+
 ### Attendance
 - [x] Michael Donaldson
 - [x] Richard Duong
