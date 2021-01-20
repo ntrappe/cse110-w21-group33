@@ -23,7 +23,7 @@
 ### Attendance
 - [x] Michael Donaldson
 - [x] Richard Duong
-- [ ] Brandon Liu
+- [x] Brandon Liu
 - [x] Bryant Shao
 - [x] Steven Steiner
 - [x] Nicole Trappe
