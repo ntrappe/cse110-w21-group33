@@ -7,7 +7,8 @@
 4. [Project Overview](#project-overview) <br/>
 5. [Coding Standards](#coding-standards) <br/>
 6. [GitHub Standards](#github-standards) <br/>
-7. [Code Documentation](#code-documentation)
+7. [Code Documentation](#code-documentation) <br/>
+8. [Resources](#resources)
 
 ---
 
@@ -80,3 +81,8 @@ git pull origin main
 #### Code Documentation
 - TBD where to note bugs
 - TBD where to note changes/edits
+
+---
+
+#### Resources
+1. Prototyping: https://marvelapp.com/pop
