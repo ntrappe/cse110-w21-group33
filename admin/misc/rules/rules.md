@@ -50,10 +50,17 @@ ___
 ---
 
 ### Part 5: Conflict Resolution
-1. If a team member is not meeting deadlines, the team agrees to do X to address the problem before bringing up the issue to a TA or professor. 
-2. If a team member is being disrespectful towards another, the team agrees to do X to address it. 
-3. If a team member is unresponsive or not keeping in touch, the team agrees to do X.
-4. If a team member is failing to meet code, github, or documentation standards, the team agrees to do X.
+1. If a team member is not meeting deadlines: <br/>
+(a) if that individual is a member, then the team agrees that that person's group leader should meet with them 1:1 to discuss the issue and steps to move forward. <br/>
+(b) if that individual is a leader, then the team agrees to replace them. <br/>
+2. If a team member is being disrespectful towards another: <br/>
+(a) if that individual is a member, then the team agrees that that person's group leader should meet with them 1:1 to discuss the issue and steps to move forward. <br/>
+(b) if that individual is a leader, then the team agrees to replace them. <br/>
+3. If a team member is failing to meet code, github, or documentation standards, the team agrees to do X. <br/>
+(a) if that individual is a member, then the team agrees that that person's group leader should meet with them 1:1 to discuss the issue and steps to move forward. <br/>
+(b) if that individual is a leader, then the team agrees to replace them. <br/>
+4. If a team member is unresponsive or not keeping in touch, then the team agrees to meet and discuss whether an alternate form of communication is better. Otherwise, they will be reported to the TA.
+
 
 ##### :rotating_light: Initial here ...
 
