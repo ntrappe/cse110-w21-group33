@@ -16,7 +16,11 @@
 ---
 
 ### Key Points
-- ???
+1. Went over README.md and addressed any concerns.
+2. Everyone filled out the Wiki and confirmed information listed about them (e.g. correct name).
+3. Wrote up group contract with conflict resolutions and responsibilities.
+4. Everyone initialed and signed their individual contracts and uploaded them to /admin/misc/rules.
+5. Started group video.
 
 ---
 
