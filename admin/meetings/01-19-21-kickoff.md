@@ -3,7 +3,7 @@
 #### Overview
 | Date       | Time      | Type of Meeting   | Where   |
 | ---------- | --------- | ----------------- | ------- |
-| 01/19/2021 | TBD | Logistics         | Zoom    |
+| 01/19/2021 | 8-9pm | Logistics         | Zoom    |
 
 ---
 
@@ -21,13 +21,13 @@
 ---
 
 ### Attendance
-- [ ] Michael Donaldson
-- [ ] Richard Duong
+- [x] Michael Donaldson
+- [x] Richard Duong
 - [ ] Brandon Liu
-- [ ] Bryant Shao
-- [ ] Steven Steiner
-- [ ] Nicole Trappe
-- [ ] Vy Truong
-- [ ] Felix Zhang
-- [ ] Lulu Zhu
+- [x] Bryant Shao
+- [x] Steven Steiner
+- [x] Nicole Trappe
+- [x] Vy Truong
+- [x] Felix Zhang
+- [x] Lulu Zhu
 
