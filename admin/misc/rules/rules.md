@@ -37,15 +37,18 @@ The team will have two meetings a week. The first, a general body meeting wherei
 report on progress, discuss aspects of design or bugs, etc. The second will consist of meeting with the TA and reviewing
 the work done previously. As of now, team meetings wil occur on `Thursdays, 6-7pm PST`. This was decided based off of the availabilities given in the [Lettucemeet](https://lettucemeet.com/l/123Jx). Meetings with the TA have been set for `Fridays, 5-6pm` as of our first meeting. Both are subject to change. The team will agree, at the end of the previous meeting, to set the date and time of the following one. 
 
-##### :rotating_light: Initial here ...
+##### :rotating_light: Initial here if you agree to attend meetings: _____
 
 ___
 
 ### Part 4: Responsibilities
-- w
-- 
+1. Attend meetings on a bi-weekly basis. 
+2. Read and respond to Slack communication within 24 hours.
+3. Follow Github, documentation, and coding standards as agreed upon by the team.
+4. Accomplish deliverables in a timely manner.
+5. Report to their group leader if they have conflicts or concerns (e.g. interpersonal, code, etc.).
 
-##### :rotating_light: Initial here ...
+##### :rotating_light: Initial here if you agree to the above responsibilities: _____
 
 ---
 
@@ -62,7 +65,7 @@ ___
 4. If a team member is unresponsive or not keeping in touch, then the team agrees to meet and discuss whether an alternate form of communication is better. Otherwise, they will be reported to the TA.
 
 
-##### :rotating_light: Initial here ...
+##### :rotating_light: Initial here if you agree to the ways in which we will resolve conflicts: _____
 
 ---
 
