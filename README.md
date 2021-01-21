@@ -86,3 +86,4 @@ git pull origin main
 
 #### Resources
 1. Prototyping: https://marvelapp.com/pop
+2. https://basecamp.com/shapeup
