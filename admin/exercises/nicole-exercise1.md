@@ -72,12 +72,18 @@ Once you have completed 4 Pomodoros--a "set"--take a longer break (15-30 minutes
 ```
 
 #### Data
-1. How many Pomodoros did you do?
-2. Did you cancel/forfeit any Pomodoros? Why?
-3. How many short breaks did you take?
-4. How many long breaks did you take?
-5. How did you time yourself? (E.g. phone clock app or specific Pomodoro app)
-6. What device did you use for this timer? (E.g. phone, laptop)
+1. How many Pomodoros did you do? <br/>
+   **7**.
+2. Did you cancel/forfeit any Pomodoros? Why? <br/>
+    **Yes, I got pulled into a phone call. However, the app I was using didn't have a "forfeit"/"stop" button just "pause".**
+3. How many short breaks did you take? <br/>
+    **Just 1.**
+4. How many long breaks did you take? <br/>
+    **Just 1.**
+5. How did you time yourself? (E.g. phone clock app or specific Pomodoro app) <br/>
+   **I used Pomo Focus (Part 2).**
+6. What device did you use for this timer? (E.g. phone, laptop) <br/>
+    **Laptop. But I was curious if apps would let us silence notifications.**
 
 #### Experience
 1. Did you initially plan how many Pomodoros you wanted to spend or did you wing it?
