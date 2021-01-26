@@ -25,7 +25,7 @@
 | 3    | 01/19/2021        | Nicole     | 01/22/2021     | Steven     |                    |             |
 | 4    |       |      |     |      |                    |             |
 
-* = if applicable (sometimes we may have only 1 or 2 group meetings as week)
+`* = if applicable (sometimes we may have only 1 or 2 group meetings as week)`
 
 ---
 
