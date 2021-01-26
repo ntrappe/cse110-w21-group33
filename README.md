@@ -17,6 +17,15 @@
 - They should be in ***Markdown*** format and labeled as *mm-dd-yy-topic*.md (e.g. 01-19-21-kickoff.md).
 - They should include: type of meeting, attendance, time/place, items for future investigation, decision etc.
 - For a sample of the meeting notes, click [here](https://github.com/ntrappe/cse110-w21-group33/tree/main/admin/meetings/01-18-21-sample.md).
+- We will assign a note taker on a rotating basis so that everyone has a chance to enjoy this responsibility.
+
+| Week | Group Meet 1 Date | Note Taker | Chad Meet Date | Note Taker | Group Meet 2* Date | Note Taker* |
+| ---- | ----------------- | ---------- | -------------- | ---------- | ------------------ | ----------- |      
+| 2    | 01/14/2021        | N/A        | 01/15/2021     | N/A        |                    |             |
+| 3    | 01/19/2021        | Nicole     | 01/22/2021     | Steven     |                    |             |
+| 4    |       |      |     |      |                    |             |
+
+`* = if applicable (sometimes we may have only 1 or 2 group meetings / week)`
 
 ---
 
