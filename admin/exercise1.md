@@ -6,9 +6,9 @@
 ### :tomato: &nbsp; INSTRUCTIONS
 To get prepared for the brainstorming event, this exercise might help to organize your thoughts.
 1. **Make a copy** and label it with your name. Example: `nicole-exercise1.md`.
-2. In (Part 1)(#part-1) add all your comments, concerns, and creative ideas on our project!
-3. For (Part 2)(#part-2) and (3)(#part-3) please pick out an online Pomodoro app. It can be helpful to see what we like/don't like in the current market. (Also so we can be BETTER).
-4. For (Part 4)(#part-4), try out the Pomodoro Technique if you haven't already. There are a few questions you can answer if your thoughts aren't in order. 
+2. In [Part 1](#part-1) add all your comments, concerns, and creative ideas on our project!
+3. For [Part 2](#part-2) and [3](#part-3) please pick out an online Pomodoro app. It can be helpful to see what we like/don't like in the current market. (Also so we can be BETTER).
+4. For [Part 4](#part-4), try out the Pomodoro Technique if you haven't already. There are a few questions you can answer if your thoughts aren't in order. 
 5. Please bring these ideas to the group meeting to share aloud. If you aren't comfortable with speaking to the group, please upload your responses to `admin/exercises` (aka this current directory) so we can see!
 
 ---
