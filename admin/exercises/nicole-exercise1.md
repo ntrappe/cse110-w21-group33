@@ -1,16 +1,6 @@
 # Exercise 1
 
 
-### :tomato: &nbsp; INSTRUCTIONS
-To get prepared for the brainstorming event, this exercise might help to organize your thoughts.
-1. **Make a copy** and label it with your name. Example: `nicole-exercise1.md`.
-2. In [Part 1](#part-1) add all your comments, concerns, and creative ideas on our project!
-3. For [Part 2](#part-2) and [3](#part-3) please pick out an online Pomodoro app. It can be helpful to see what we like/don't like in the current market. (Also so we can be BETTER).
-4. For [Part 4](#part-4), try out the Pomodoro Technique if you haven't already. There are a few questions you can answer if your thoughts aren't in order. 
-5. Please bring these ideas to the group meeting to share aloud. If you aren't comfortable with speaking to the group, please upload your responses to `admin/exercises` (aka this current directory) so we can see!
-
----
-
 ### :tomato: &nbsp; PART 1
 Before you forgot them, list all your thoughts and creative ideas on the Pomodoro Timer we will build! Do you want to modify the technique? Do you have specific features in mind? Are there UI components you want to add? If you would prefer to use another tool (e.g. sticky notes, block diagrams), do that!
 
@@ -18,8 +8,7 @@ Before you forgot them, list all your thoughts and creative ideas on the Pomodor
 
 ---
 
-### :tomato: &nbsp; PART 2
-A bunch of random online Pomodoro timers have been listed. Please choose one you would like to study. It would be helpful if no more than 2 people did each timer so please add your name to the table below to indicate you have claimed it. Feel free to add another timer if there's one you'd rather study.
+### :tomato: &nbsp; PART 2 <br/>
 
 Timer: [PomoFocus](https://pomofocus.io/) 
 
@@ -43,7 +32,7 @@ Timer: [PomoFocus](https://pomofocus.io/)
 
 #### Transition
 1. When the app switched from work to break, was there a **color** change? Did you like it? <br/>
-    **Yes, the color changed from red to blue. It was very satisfying. **
+    **Yes, the color changed from red to blue. It was very satisfying.**
 
 2. When the app switched from work to break, was there a **sound** effect? Did you like it? <br/>
     **I found that the icon for 'Start' and 'Stop' when pressed had a very satisying clicking sound.**
