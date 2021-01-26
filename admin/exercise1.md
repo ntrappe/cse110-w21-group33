@@ -1,7 +1,5 @@
 # Exercise 1
 
----
-
 
 ### :tomato: &nbsp; INSTRUCTIONS
 To get prepared for the brainstorming event, this exercise might help to organize your thoughts.
