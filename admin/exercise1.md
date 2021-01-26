@@ -2,7 +2,8 @@
 
 ##### Due: Thursday, 28, 2021
 
-### :tomato: INSTRUCTIONS
+
+### :tomato: &nbsp; INSTRUCTIONS
 To get prepared for the brainstorming event, this exercise might help to organize your thoughts.
 1. **Make a copy** and label it with your name. Example: `nicole-exercise1.md`.
 2. In (Part 1)(#part-1) add all your comments, concerns, and creative ideas on our project!
