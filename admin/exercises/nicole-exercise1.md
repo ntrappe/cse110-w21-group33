@@ -33,7 +33,6 @@ Timer: [PomoFocus](https://pomofocus.io/)
 3. What options (buttons, fields to enter) were given? (E.g. 'pause' button).
 4. Were you asked to log in/create an account?
 5. Was it obvious that it was a *Pomodoro* timer? How did you know?
-6. ...
 
 #### Work Session/Pomodoro
 1. What **cues** indicated it was Pomodoro/work time? For example, *visual cues* can include a change of color or a label of "work time"; *audio cues* could consist of a ticking noise.
@@ -41,19 +40,17 @@ Timer: [PomoFocus](https://pomofocus.io/)
 3. Was a clock the main feature? If so, please describe it (e.g. analog). If not, what was the main featue?
 4. Did the interface distract you? (E.g. flashing, bright colors, etc.).
 5. Did the interface help you focus? (E.g. silence notifications).
-6 ...
 
 #### Transition
 1. When the app switched from work to break, was there a **color** change? Did you like it? <br/>
-    <p style="color:#1F9852"> Yes, the color changed from red to blue. I really liked the change and colors chosen. </p>
+    **Yes, the color changed from red to blue. It was very satisfying. **
 
-2. When the app switched from work to break, was there a **sound** effect? Did you like it?
-    I found that the icon for 'Start' and 'Stop' when pressed had a very satisying clicking sound.
+2. When the app switched from work to break, was there a **sound** effect? Did you like it? <br/>
+    **I found that the icon for 'Start' and 'Stop' when pressed had a very satisying clicking sound.**
 
-3. How did the app notify you to switch? Did you get a notification? A sound? Something in your browser?
-    I got startled the first time I heard it because I wasn't expecting a sound icon especially one that loud and alerting. I felt jerked out of my concentration.
+3. How did the app notify you to switch? Did you get a notification? A sound? Something in your browser? <br/>
+    **I got startled the first time I heard it because I wasn't expecting a sound icon especially one that loud and alerting. I felt jerked out of my concentration.**
 
-4. ...
 
 #### Break Session
 1. How did you know if it was a short or long break?
