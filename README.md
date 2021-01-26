@@ -48,9 +48,9 @@
 ---
 
 #### Project Overview
-- TBD overall look at Pomodoro Timer
-- TBD Log of ideas/changes
-- TBD TODO items
+- [ ] Evaluate the Pomodoro Technqiue (what works/doesn't work)
+- [ ] Analyze current on-the-market Pomodoro apps
+- [ ] Brainstorm our ideas
 
 ---
 
