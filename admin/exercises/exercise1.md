@@ -19,7 +19,7 @@ Before you forgot them, list all your thoughts and creative ideas on the Pomodor
 ---
 
 ### :tomato: &nbsp; PART 2
-A bunch of random online Pomodoro timers have been listed. Please choose one you would like to study. It would be helpful if no more than 2 people did each timer so please add your name to the table below to indicate you have claimed it. Feel free to add another timer if there's one you'd rather study.
+A bunch of random online Pomodoro timers have been listed. Please choose one (or more) that you would like to study. Add your time next to the claimed timer. Feel free to modify this list if there's a timer I'm missing.
 
 | Timer                                             | Person 1     | Person 2     |
 | ------------------------------------------------- | ------------ | ------------ |
