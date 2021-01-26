@@ -22,9 +22,9 @@
 - [x] Michael Donaldson
 - [x] Richard Duong
 - [x] Brandon Liu
-- [] Bryant Shao
+- [ ] Bryant Shao
 - [x] Steven Steiner
 - [x] Nicole Trappe
-- [] Vy Truong
+- [ ] Vy Truong
 - [x] Felix Zhang
 - [x] Lulu Zhu
