@@ -19,16 +19,16 @@ Before you forgot them, list all your thoughts and creative ideas on the Pomodor
 ---
 
 ### :tomato: &nbsp; PART 2
-A bunch of random online Pomodoro timers have been listed. Please choose one you would like to study. It would be helpful if no more than 2 people did each timer so please add your name to the table below to indicate you have claimed it. Feel free to add another timer if there's one you'd rather study.
+A bunch of random online Pomodoro timers have been listed. Please choose one (or more) that you would like to study. **Add your name** next to the timer you're claiming. I've currently limited each timer to 2 people just so we have an even distribution. Feel free to modify this list if there's a timer I'm missing.
 
 | Timer                                             | Person 1     | Person 2     |
 | ------------------------------------------------- | ------------ | ------------ |
-| [TomatoTimer](https://tomato-timer.com/)          |              |              |
-| [PomoFocus](https://pomofocus.io/)                | Nicole       |              |
-| [Tomato Timers](http://www.tomatotimers.com/)     |              |              |
-| [Pomodor](https://pomodor.app/timer?utm_source=zapier.com&utm_medium=referral&utm_campaign=zapier) |             |              |
-| [Marinara Timer](https://www.marinaratimer.com/)  |              |              |
-| [Pomodoro Tracker](https://pomodoro-tracker.com/) |              |              |
+| [TomatoTimer](https://tomato-timer.com/)          | Vy           | Lulu         |
+| [PomoFocus](https://pomofocus.io/)                | Nicole       | Steven       |
+| [Tomato Timers](http://www.tomatotimers.com/)     | Lulu         | Steven       |
+| [Pomodor](https://pomodor.app/timer?utm_source=zapier.com&utm_medium=referral&utm_campaign=zapier) |             | Vy           |
+| [Marinara Timer](https://www.marinaratimer.com/)  | Bryant       |              |
+| [Pomodoro Tracker](https://pomodoro-tracker.com/) | Felix        |              |
 
 ---
 
@@ -62,6 +62,11 @@ A bunch of random online Pomodoro timers have been listed. Please choose one you
 1. How did you end your session?
 2. Did you see how many Pomodoros you accomplished? If so, how was this provided?
 
+#### Final Thoughts
+1. What are 3 pros of this app?
+2. What are 3 cons of this app?
+3. Would you use this app again?
+
 #### Additional Comments
 Add annotations, images, etc.
 
@@ -93,3 +98,5 @@ Once you have completed 4 Pomodoros--a "set"--take a longer break (15-30 minutes
 6. Did you feel like you often skipped a break?
 7. Did you often extend your break into a longer one?
 8. Would you use this technique again?
+9. What are 3 pros?
+10. What are 3 cons?
