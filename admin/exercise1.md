@@ -1,7 +1,5 @@
 # Exercise 1
 
-##### Due: Thursday, 28, 2021 (next meeting)
-
 ---
 
 
