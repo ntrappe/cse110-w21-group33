@@ -3,13 +3,14 @@
 ##### Due: Thursday, 28, 2021
 
 ### Instructions
-1. This is a suggested exercise to get prepared for the brainstorming session. (It's not mandatory but it might organize your thoughts).
-2. Please make a copy of this doc. You can rename it with your name. E.g. `nicole-exercise1.md`. 
-3. Fill out your own version to the best of your abilities.
-4. Have your copy ready during the meeting
+To get prepared for the brainstorming event, this exercise might help to organize your thoughts.
+1. Make a copy and label it with your name. Example: `nicole-exercise1.md`.
+2. Fill it out to the best of your abilities and with any thoughts you have.
+3. Bring it to the next group meeting either to present or have it saved in the GitHub so others can read your ideas.
+4. Many of the following questions are suggestions/potential questions to answer in case you want some structure.
 
 ### Part 1
-What are your initial thoughts on the Pomodoro Timer? Please describe them here. This can include features, design, modifications of the original technique, etc. 
+*What are your initial thoughts on the Pomodoro Timer? Please describe them here. This can include features, design, modifications of the original technique, etc. *
 
 ### Part 2
 A bunch of random online Pomodoro timers have been listed. Please choose one you would like to study. Note which app you choose (paste the link/name). Try out the app and write down your thoughts on the initial setup, work session, transition, and break time.
@@ -55,7 +56,6 @@ A Pomodoro is a work session that lasts for 25 minutes.
 If a work session is interrupted or paused, it is forfeited.
 After a Pomodoro, take a 5 minute break.
 Once you have completed 4 Pomodoros--a "set"--take a longer break (15-30 minutes).
-
 ```
 
 #### Data
