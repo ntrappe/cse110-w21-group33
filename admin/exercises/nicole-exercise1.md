@@ -19,16 +19,9 @@ Before you forgot them, list all your thoughts and creative ideas on the Pomodor
 ---
 
 ### :tomato: &nbsp; PART 2
-A bunch of random online Pomodoro timers have been listed. Please choose one you would like to study. It would be helpful if no more than 2 people did each timer so please add your name to the table below to indicate you have claimed it. Feel free to add another timer if there's one you'd rather study.
+*A bunch of random online Pomodoro timers have been listed. Please choose one you would like to study. It would be helpful if no more than 2 people did each timer so please add your name to the table below to indicate you have claimed it. Feel free to add another timer if there's one you'd rather study.*
 
-| Timer                                             | Person 1     | Person 2     |
-| ------------------------------------------------- | ------------ | ------------ |
-| [TomatoTimer](https://tomato-timer.com/)          |              |              |
-| [PomoFocus](https://pomofocus.io/)                | Nicole       |              |
-| [Tomato Timers](http://www.tomatotimers.com/)     |              |              |
-| [Pomodor](https://pomodor.app/timer?utm_source=zapier.com&utm_medium=referral&utm_campaign=zapier) |             |              |
-| [Marinara Timer](https://www.marinaratimer.com/)  |              |              |
-| [Pomodoro Tracker](https://pomodoro-tracker.com/) |              |              |
+Timer: [PomoFocus](https://pomofocus.io/) 
 
 ---
 
@@ -40,6 +33,7 @@ A bunch of random online Pomodoro timers have been listed. Please choose one you
 3. What options (buttons, fields to enter) were given? (E.g. 'pause' button).
 4. Were you asked to log in/create an account?
 5. Was it obvious that it was a *Pomodoro* timer? How did you know?
+6. ...
 
 #### Work Session/Pomodoro
 1. What **cues** indicated it was Pomodoro/work time? For example, *visual cues* can include a change of color or a label of "work time"; *audio cues* could consist of a ticking noise.
@@ -47,20 +41,35 @@ A bunch of random online Pomodoro timers have been listed. Please choose one you
 3. Was a clock the main feature? If so, please describe it (e.g. analog). If not, what was the main featue?
 4. Did the interface distract you? (E.g. flashing, bright colors, etc.).
 5. Did the interface help you focus? (E.g. silence notifications).
+6 ...
 
 #### Transition
 1. When the app switched from work to break, was there a **color** change? Did you like it?
+    Yes, the color changed from red to blue. I really liked the change and colors chosen.
+
 2. When the app switched from work to break, was there a **sound** effect? Did you like it?
+    I found that the icon for 'Start' and 'Stop' when pressed had a very satisying clicking sound.
+
 3. How did the app notify you to switch? Did you get a notification? A sound? Something in your browser?
+    I got startled the first time I heard it because I wasn't expecting a sound icon especially one that loud and alerting. I felt jerked out of my concentration.
+
+4. ...
 
 #### Break Session
 1. How did you know if it was a short or long break?
 2. Were you given the option of (a) skipping a break, (b) short break, (c) long break? Or did you have no choice?
 3. What **cues** indicated it was break time? For example, *visual cues* can include a change of color or a label of "break time"; *audio cues* could consist of the sound of ocean waves.
+4. ...
 
 #### End
-1. How did you end your session?
+1. How did you end your session? 
+    Just hit 'STOP'.
+
 2. Did you see how many Pomodoros you accomplished? If so, how was this provided?
+    There is a bar at the top of the screen where you can click 'Report'. It will show the # hours focused, # days accessed, and # day streak. It also adds a gamification component of showing your 'ranking'. However, the report can only be accessed with an account.
+
+3. ...
+
 
 #### Additional Comments
 Add annotations, images, etc.
