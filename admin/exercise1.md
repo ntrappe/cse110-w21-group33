@@ -11,7 +11,7 @@ To get prepared for the brainstorming event, this exercise might help to organiz
 
 ---
 
-### Part 1
+### :tomato: Part 1
 Before you forgot them, list all your thoughts and creative ideas on the Pomodoro Timer we will build! Do you want to modify the technique? Do you have specific features in mind? Are there UI components you want to add?
 
 *Think here*.
