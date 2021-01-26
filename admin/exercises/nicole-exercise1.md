@@ -19,7 +19,7 @@ Before you forgot them, list all your thoughts and creative ideas on the Pomodor
 ---
 
 ### :tomato: &nbsp; PART 2
-*A bunch of random online Pomodoro timers have been listed. Please choose one you would like to study. It would be helpful if no more than 2 people did each timer so please add your name to the table below to indicate you have claimed it. Feel free to add another timer if there's one you'd rather study.*
+A bunch of random online Pomodoro timers have been listed. Please choose one you would like to study. It would be helpful if no more than 2 people did each timer so please add your name to the table below to indicate you have claimed it. Feel free to add another timer if there's one you'd rather study.
 
 Timer: [PomoFocus](https://pomofocus.io/) 
 
@@ -44,8 +44,8 @@ Timer: [PomoFocus](https://pomofocus.io/)
 6 ...
 
 #### Transition
-1. When the app switched from work to break, was there a **color** change? Did you like it?
-    Yes, the color changed from red to blue. I really liked the change and colors chosen.
+1. When the app switched from work to break, was there a **color** change? Did you like it? <br/>
+    <p style="color:#1F9852"> Yes, the color changed from red to blue. I really liked the change and colors chosen. </p>
 
 2. When the app switched from work to break, was there a **sound** effect? Did you like it?
     I found that the icon for 'Start' and 'Stop' when pressed had a very satisying clicking sound.
