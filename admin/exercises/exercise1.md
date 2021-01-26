@@ -23,10 +23,10 @@ A bunch of random online Pomodoro timers have been listed. Please choose one you
 
 | Timer                                             | Person 1     | Person 2     |
 | ------------------------------------------------- | ------------ | ------------ |
-| [TomatoTimer](https://tomato-timer.com/)          |              |              |
+| [TomatoTimer](https://tomato-timer.com/)          | Vy           |              |
 | [PomoFocus](https://pomofocus.io/)                | Nicole       |              |
 | [Tomato Timers](http://www.tomatotimers.com/)     |              |              |
-| [Pomodor](https://pomodor.app/timer?utm_source=zapier.com&utm_medium=referral&utm_campaign=zapier) |             |              |
+| [Pomodor](https://pomodor.app/timer?utm_source=zapier.com&utm_medium=referral&utm_campaign=zapier) |             | Vy           |
 | [Marinara Timer](https://www.marinaratimer.com/)  |              |              |
 | [Pomodoro Tracker](https://pomodoro-tracker.com/) |              |              |
 
