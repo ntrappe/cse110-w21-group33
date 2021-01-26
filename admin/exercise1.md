@@ -4,16 +4,33 @@
 
 ### Instructions
 To get prepared for the brainstorming event, this exercise might help to organize your thoughts.
-1. Make a copy and label it with your name. Example: `nicole-exercise1.md`.
+1. **Make a copy** and label it with your name. Example: `nicole-exercise1.md`.
 2. Fill it out to the best of your abilities and with any thoughts you have.
 3. Bring it to the next group meeting either to present or have it saved in the GitHub so others can read your ideas.
 4. Many of the following questions are suggestions/potential questions to answer in case you want some structure.
 
+---
+
 ### Part 1
-*What are your initial thoughts on the Pomodoro Timer? Please describe them here. This can include features, design, modifications of the original technique, etc. *
+What are your initial thoughts on the Pomodoro Timer we will build? Please describe them here. This can include features, design, modifications of the original technique, etc.
+
+---
 
 ### Part 2
-A bunch of random online Pomodoro timers have been listed. Please choose one you would like to study. Note which app you choose (paste the link/name). Try out the app and write down your thoughts on the initial setup, work session, transition, and break time.
+A bunch of random online Pomodoro timers have been listed. Please choose one you would like to study. It would be helpful if no more than 2 people did each timer so please add your name to the table below to indicate you have claimed it. Feel free to add another timer if there's one you'd rather study.
+
+| Timer                                             | Person 1     | Person 2     |
+| ------------------------------------------------- | ------------ | ------------ |
+| [TomatoTimer](https://tomato-timer.com/)          |              |              |
+| [PomoFocus](https://pomofocus.io/)                | Nicole       |              |
+| [Tomato Timers](http://www.tomatotimers.com/)     |              |              |
+| [Pomodor](https://pomodor.app/timer?utm_source=zapier.com&utm_medium=referral&utm_campaign=zapier) |             |              |
+| [Marinara Timer](https://www.marinaratimer.com/)  |              |              |
+| [Pomodoro Tracker](https://pomodoro-tracker.com/) |              |              |
+
+---
+
+### Part 3
 
 #### Setup
 1. Was there a prompt to set the number of Pomodoros? 
@@ -48,8 +65,9 @@ A bunch of random online Pomodoro timers have been listed. Please choose one you
 2. Did you see how many Pomodoros you accomplished? If so, how was this provided?
 3. ...
 
+---
 
-### Part 3 (Bonus)
+### Part 4 (Bonus)
 Try the Pomodoro Technique for a day. The traditional Pomodoro Technique is defined as:
 ```
 A Pomodoro is a work session that lasts for 25 minutes.
