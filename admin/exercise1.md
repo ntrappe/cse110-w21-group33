@@ -11,14 +11,14 @@ To get prepared for the brainstorming event, this exercise might help to organiz
 
 ---
 
-### :tomato:  PART 1
+### :tomato: &nbsp; PART 1
 Before you forgot them, list all your thoughts and creative ideas on the Pomodoro Timer we will build! Do you want to modify the technique? Do you have specific features in mind? Are there UI components you want to add?
 
 *Think here*.
 
 ---
 
-### :tomato:  PART 2
+### :tomato: &nbsp; PART 2
 A bunch of random online Pomodoro timers have been listed. Please choose one you would like to study. It would be helpful if no more than 2 people did each timer so please add your name to the table below to indicate you have claimed it. Feel free to add another timer if there's one you'd rather study.
 
 | Timer                                             | Person 1     | Person 2     |
@@ -32,7 +32,7 @@ A bunch of random online Pomodoro timers have been listed. Please choose one you
 
 ---
 
-### :tomato:  PART 3
+### :tomato: &nbsp; PART 3
 
 #### Setup
 1. Was there a prompt to set the number of Pomodoros? 
@@ -69,7 +69,7 @@ A bunch of random online Pomodoro timers have been listed. Please choose one you
 
 ---
 
-### :tomato:  PART 4 (Bonus)
+### :tomato: &nbsp; PART 4 (Bonus)
 Try the Pomodoro Technique for a day. The traditional Pomodoro Technique is defined as:
 ```
 A Pomodoro is a work session that lasts for 25 minutes.
