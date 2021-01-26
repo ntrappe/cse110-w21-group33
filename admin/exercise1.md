@@ -12,7 +12,9 @@ To get prepared for the brainstorming event, this exercise might help to organiz
 ---
 
 ### Part 1
-What are your initial thoughts on the Pomodoro Timer we will build? Please describe them here. This can include features, design, modifications of the original technique, etc.
+Before you forgot them, list all your thoughts and creative ideas on the Pomodoro Timer we will build! Do you want to modify the technique? Do you have specific features in mind? Are there UI components you want to add?
+
+*Think here*.
 
 ---
 
