@@ -62,6 +62,11 @@ A bunch of random online Pomodoro timers have been listed. Please choose one (or
 1. How did you end your session?
 2. Did you see how many Pomodoros you accomplished? If so, how was this provided?
 
+#### Final Thoughts
+1. What are 3 pros of this app?
+2. What are 3 cons of this app?
+3. Would you use this app again?
+
 #### Additional Comments
 Add annotations, images, etc.
 
@@ -93,3 +98,5 @@ Once you have completed 4 Pomodoros--a "set"--take a longer break (15-30 minutes
 6. Did you feel like you often skipped a break?
 7. Did you often extend your break into a longer one?
 8. Would you use this technique again?
+9. What are 3 pros?
+10. What are 3 cons?
