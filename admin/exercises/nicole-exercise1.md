@@ -9,7 +9,7 @@ Before you forgot them, list all your thoughts and creative ideas on the Pomodor
 ---
 
 ### :tomato: &nbsp; PART 2 <br/>
-Timer: [PomoFocus](https://pomofocus.io/)  <br/> <br/>
+Timer: [PomoFocus](https://pomofocus.io/)  <br/>
 
 ![PomoFocus main](/admin/exercises/nicole_images/work_mode.png) <br/> 
 ---
@@ -24,9 +24,12 @@ Timer: [PomoFocus](https://pomofocus.io/)  <br/> <br/>
    **No.**
 2. Was there a prompt to set the Pomodoro or break time?  <br/>
    **No. You didn't set the time but could switch between long vs short break.**
-3. What options (buttons, fields to enter) were given? (E.g. 'pause' button).
-4. Were you asked to log in/create an account?
-5. Was it obvious that it was a *Pomodoro* timer? How did you know?
+3. What options (buttons, fields to enter) were given? (E.g. 'pause' button). <br/>
+   **Start, stop, add tasks, approx. number of Pomodoros, switch modes.**
+4. Were you asked to log in/create an account? <br/>
+    **Only when I tried to access other features.**
+5. Was it obvious that it was a *Pomodoro* timer? How did you know? <br/>
+   **Yes because the timer was set to 25m and it was called "PomoFocus". If you scrolled to the bottom of the page, there was info on the Pomodoro method which I found helpful.**
 
 #### Work Session/Pomodoro
 1. What **cues** indicated it was Pomodoro/work time? For example, *visual cues* can include a change of color or a label of "work time"; *audio cues* could consist of a ticking noise. <br/>
@@ -85,13 +88,19 @@ Timer: [PomoFocus](https://pomofocus.io/)  <br/> <br/>
     **Laptop. But I was curious if apps would let us silence notifications.**
 
 #### Experience
-1. Did you initially plan how many Pomodoros you wanted to spend or did you wing it?
+1. Did you initially plan how many Pomodoros you wanted to spend or did you wing it? <br/>
     **Didn't plan.**
-2. If you planned the number, was this challenging or easy?
+2. If you planned the number, was this challenging or easy? <br/>
    **I initially tried to think about it but it was very challenging to grasp all the tasks I had to do and assign it. If it was an easy thing like "wash dishes" then approximating wouldn't be tricky. But, for lab/school work, it's a high load task.**
-3. Did you feel your productivity increased?
-4. Did you use traditional 25 minutes or did you modify that (E.g. 35 minutes)?
-5. Would you consider modifying the 25 minutes in the future?
-6. Did you feel like you often skipped a break?
-7. Did you often extend your break into a longer one?
-8. Would you use this technique again?
+3. Did you feel your productivity increased? <br/>
+   **Hard to say with only one session. But not really?**
+4. Did you use traditional 25 minutes or did you modify that (E.g. 35 minutes)? <br/>
+   **I used the traditional.**
+5. Would you consider modifying the 25 minutes in the future? <br/>
+   **Yes! I prefer a longer stretch.**
+6. Did you feel like you often skipped a break? <br/>
+    **Yes. I found the breaks to be annoying the first 3 Pomodoros and wanted to work through them since I was in a flow.**
+7. Did you often extend your break into a longer one? <br/>
+   **No.**
+8. Would you use this technique again? <br/>
+   **Yes. Sometimes.**
