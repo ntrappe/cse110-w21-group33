@@ -23,7 +23,7 @@
 | ---- | ----------------- | ---------- | -------------- | ---------- | ------------------ | ----------- |      
 | 2    | 01/14/2021        | N/A        | 01/15/2021     | N/A        |                    |             |
 | 3    | 01/19/2021        | Nicole     | 01/22/2021     | Steven     |                    |             |
-| 4    |       |      |     |      |                    |             |
+| 4    | 01/26/2021        | Brandon    |     |      |                    |             |
 
 `* = if applicable (sometimes we may have only 1 or 2 group meetings / week)`
 
@@ -48,9 +48,9 @@
 ---
 
 #### Project Overview
-- TBD overall look at Pomodoro Timer
-- TBD Log of ideas/changes
-- TBD TODO items
+- [ ] Evaluate the Pomodoro Technqiue (what works/doesn't work)
+- [ ] Analyze current on-the-market Pomodoro apps
+- [ ] Brainstorm our ideas
 
 ---
 
