@@ -33,6 +33,6 @@
 - [x] Bryant Shao
 - [x] Steven Steiner
 - [x] Nicole Trappe
-- [ ] Vy Truong
+- [x] Vy Truong
 - [x] Felix Zhang
 - [x] Lulu Zhu
