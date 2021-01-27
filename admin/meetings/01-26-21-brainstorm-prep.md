@@ -30,7 +30,7 @@
 - [x] Michael Donaldson
 - [x] Richard Duong
 - [x] Brandon Liu
-- [ ] Bryant Shao
+- [x] Bryant Shao
 - [x] Steven Steiner
 - [x] Nicole Trappe
 - [ ] Vy Truong
