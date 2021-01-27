@@ -30,21 +30,21 @@ Who is our user? What do they want? What does their day look like? What constrai
   - completely hidden from the screen and exists as in a tab
   - either receive a notification or sound goes off to notify a change/prompt
 2. Automation <br/>
-**Version A:** Auto Transitions <br/>
+- **Version A:** Auto Transitions <br/>
   - enforces a strict break-work routine
   - don't have to remember to click "start"
   - however, what is the stopping condition? (e.g. do we prompt after a set to see if still working?)
-**Version B:** Manual Transitions <br/>
+- **Version B:** Manual Transitions <br/>
   - allows people to skip breaks, choose when to start/stop working
   - can be tiresome/annoying to do this 4x/hour
 3. Discoverability <br/>
 4. Transition Feedback <br/>
-**Version A:** Audio <br/>
-**Version B:** Notification <br/>
+- **Version A:** Audio <br/>
+- **Version B:** Notification <br/>
 5. Customization <br/>
-**Version A:** Traditional Pomodoro <br/>
-**Version B:** Partial Customization <br/>
-**Version C:** Full Customization <br/>
+- **Version A:** Traditional Pomodoro <br/>
+- **Version B:** Partial Customization <br/>
+- **Version C:** Full Customization <br/>
 6. Inputs <br/>
 7. Outputs
 
