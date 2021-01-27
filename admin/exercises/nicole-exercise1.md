@@ -28,9 +28,12 @@ Timer: [PomoFocus](https://pomofocus.io/)
    **The screen was red, no audio. To denote work time, there was either text for the "current task" or "Time to work!" on screen.** 
 2. Was there any **feedback** on your progress? (E.g. bar at top of screen, percentage, time left). <br/>
     **Didn't notice it initially but there was a progress bar and the clock went backwards from the initial time so you could see the minutes/seconds remaining.**
-3. Was a clock the main feature? If so, please describe it (e.g. analog). If not, what was the main featue?
-4. Did the interface distract you? (E.g. flashing, bright colors, etc.).
-5. Did the interface help you focus? (E.g. silence notifications).
+3. Was a clock the main feature? If so, please describe it (e.g. analog). If not, what was the main featue? <br/>
+   **Yes, the most prominent (contrast) feature was a digital clock.**
+4. Did the interface distract you? (E.g. flashing, bright colors, etc.). <br/>
+   **It was very clean but I was concerned about red as the prominent work color. Otherwise, nothing leaped out or pulled the focus away.**
+5. Did the interface help you focus? (E.g. silence notifications). <br/>
+   **It was satisying to use and look at. However, it didn't do anyting beyond track time, Pomodoros, and set off a sound for transitions.**
 
 #### Transition
 1. When the app switched from work to break, was there a **color** change? Did you like it? <br/>
@@ -44,10 +47,12 @@ Timer: [PomoFocus](https://pomofocus.io/)
 
 
 #### Break Session
-1. How did you know if it was a short or long break?
-2. Were you given the option of (a) skipping a break, (b) short break, (c) long break? Or did you have no choice?
-3. What **cues** indicated it was break time? For example, *visual cues* can include a change of color or a label of "break time"; *audio cues* could consist of the sound of ocean waves.
-4. ...
+1. How did you know if it was a short or long break? <br/>
+    **At the top of the screen, either the "short" or "long" break option was backlit. Also, the screen changed color from either a more teal-blue to royal blue from short vs long.** 
+2. Were you given the option of (a) skipping a break, (b) short break, (c) long break? Or did you have no choice? <br/>
+   **Yes, I could choose any.**
+3. What **cues** indicated it was break time? For example, *visual cues* can include a change of color or a label of "break time"; *audio cues* could consist of the sound of ocean waves. <br/>
+   **No, but I had a friend tell me their app had ocean waves and they really liked that.**
 
 #### End
 1. How did you end your session?  <br/>
@@ -58,7 +63,8 @@ Timer: [PomoFocus](https://pomofocus.io/)
 
 
 #### Additional Comments
-![PomoFocus main](/admin/exercises/nicole_images/work_mode.png) <br/>
+![PomoFocus main](/admin/exercises/nicole_images/work_mode.png) <br/> 
+---
 ![PomoFocus break](/admin/exercises/nicole_images/break_mode.png) <br/>
 
 ---
@@ -81,7 +87,9 @@ Timer: [PomoFocus](https://pomofocus.io/)
 
 #### Experience
 1. Did you initially plan how many Pomodoros you wanted to spend or did you wing it?
+    **Didn't plan.**
 2. If you planned the number, was this challenging or easy?
+   **I initially tried to think about it but it was very challenging to grasp all the tasks I had to do and assign it. If it was an easy thing like "wash dishes" then approximating wouldn't be tricky. But, for lab/school work, it's a high load task.**
 3. Did you feel your productivity increased?
 4. Did you use traditional 25 minutes or did you modify that (E.g. 35 minutes)?
 5. Would you consider modifying the 25 minutes in the future?
