@@ -23,10 +23,10 @@ Who is our user? What do they want? What does their day look like? What constrai
 
 #### COMPONENTS
 1. Visibility <br/>
-**Version A:** Widget/Window <br/>
+- **Version A:** Widget/Window <br/>
   - takes up a small portion of the screen
   - doesn't put out notifications but you can see your progress/time remaining
-**Version B:** Tab <br/>
+- **Version B:** Tab <br/>
   - completely hidden from the screen and exists as in a tab
   - either receive a notification or sound goes off to notify a change/prompt
 2. Automation <br/>
