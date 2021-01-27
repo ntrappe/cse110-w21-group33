@@ -15,8 +15,16 @@
 
 ### Agenda
 - For those available at **9pm**, bring your Exercise 1 or any thoughts on the Pomodoro App and be prepared to share.
-  Note: these do not need to be your final, perfect ruminations. We just need some initial thoughts to present. We'll go more in depth on **Thursday**.
+  - Note: these do not need to be your final, perfect ruminations. We just need some initial thoughts to present. We'll go more in depth on **Thursday**.
 - We will create a cohesive doc combining our experiences with the Pomodoro technique and apps.
+
+### Potential Disucssion Questions
+1. What are the fundamentals of the Pomodoro technique?
+2. What does a user want? Should it be immediatey available?
+3. What are the pros/cons of the Pomodoro technique?
+4. What are the pros/cons of the Pomodoro apps on the market?
+5. What would *you* want in a Pomodoro app?
+6. Have *you* tried out the technique?
 
 ### Projected Attendance (as of 4pm)
 - [x] Michael Donaldson
