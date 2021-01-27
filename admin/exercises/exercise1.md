@@ -26,7 +26,7 @@ A bunch of random online Pomodoro timers have been listed. Please choose one (or
 | [TomatoTimer](https://tomato-timer.com/)          | Vy           | Lulu         |
 | [PomoFocus](https://pomofocus.io/)                | Nicole       | Steven       |
 | [Tomato Timers](http://www.tomatotimers.com/)     | Lulu         | Steven       |
-| [Pomodor](https://pomodor.app/timer?utm_source=zapier.com&utm_medium=referral&utm_campaign=zapier) |             | Vy           |
+| [Pomodor](https://pomodor.app/timer?utm_source=zapier.com&utm_medium=referral&utm_campaign=zapier) | Michael         | Vy           |
 | [Marinara Timer](https://www.marinaratimer.com/)  | Bryant       |              |
 | [Pomodoro Tracker](https://pomodoro-tracker.com/) | Felix        | Richar       |
 
