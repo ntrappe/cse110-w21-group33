@@ -51,7 +51,7 @@ A bunch of random online Pomodoro timers have been listed. Please choose one (or
 #### Transition
 1. When the app switched from work to break, was there a **color** change? Did you like it? Yes. Red to green.
 2. When the app switched from work to break, was there a **sound** effect? Did you like it? Yes. "Ding"
-3. How did the app notify you to switch? Did you get a notification? A sound? Something in your browser?
+3. How did the app notify you to switch? Did you get a notification? A sound? Something in your browser? Notification in the browers.
 
 #### Break Session
 1. How did you know if it was a short or long break?
