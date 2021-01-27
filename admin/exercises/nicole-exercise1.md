@@ -58,9 +58,7 @@ Timer: [PomoFocus](https://pomofocus.io/)
 
 
 #### Additional Comments
-![PomoFocus main](/admin/exercises/nicole_images/work_mode_main.png)
-![PomoFocus settings](nicole_images/work_mode_settings.png)
-<img src="/admin/exercises/nicole_images/work_mode_main.png.jpg" alt="drawing" width="200"/>
+![PomoFocus main](/admin/exercises/nicole_images/work_mode.png)
 
 ---
 
