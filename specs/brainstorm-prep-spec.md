@@ -11,7 +11,8 @@ Who is our user? What do they want? What does their day look like? What constrai
 
 #### FLOW
 ![Traditional Pomodoro](/specs/Pomo_traditional_flow.png) <br/>
-![Version 1](/specs/flow_v1.png) <br/>
+
+---
 
 #### COMPONENTS
 1. Visibility <br/>
@@ -34,4 +35,9 @@ Who is our user? What do they want? What does their day look like? What constrai
 BONUS:
 8. Dynamic
 9. Content
+
+---
+
+#### YML
+![Version 1](/specs/flow_v1.png)
 
