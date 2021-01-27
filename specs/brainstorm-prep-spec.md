@@ -1,4 +1,4 @@
-# Brainstorm :thundercloud: Prep Spec
+# Brainstorm 🌩 Prep Spec
 
 #### PROBLEM  
 What problem are we trying to solve?
