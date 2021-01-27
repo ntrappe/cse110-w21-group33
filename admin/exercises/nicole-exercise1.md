@@ -10,7 +10,10 @@ Before you forgot them, list all your thoughts and creative ideas on the Pomodor
 
 ### :tomato: &nbsp; PART 2 <br/>
 
-Timer: [PomoFocus](https://pomofocus.io/) 
+Timer: [PomoFocus](https://pomofocus.io/)  <br/> <br/>
+![PomoFocus main](/admin/exercises/nicole_images/work_mode.png) <br/> 
+---
+![PomoFocus break](/admin/exercises/nicole_images/break_mode.png) <br/>
 
 ---
 
@@ -60,12 +63,6 @@ Timer: [PomoFocus](https://pomofocus.io/)
 
 2. Did you see how many Pomodoros you accomplished? If so, how was this provided? <br/>
     **There is a bar at the top of the screen where you can click 'Report'. It will show the # hours focused, # days accessed, and # day streak. It also adds a gamification component of showing your 'ranking'. However, the report can only be accessed with an account.**
-
-
-#### Additional Comments
-![PomoFocus main](/admin/exercises/nicole_images/work_mode.png) <br/> 
----
-![PomoFocus break](/admin/exercises/nicole_images/break_mode.png) <br/>
 
 ---
 
