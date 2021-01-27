@@ -13,8 +13,25 @@ Who is our user? What do they want? What does their day look like? What constrai
 ![Traditional Pomodoro](/specs/Pomo_traditional_flow.png) <br/>
 ![Version 1](/specs/flow_v1.png) <br/>
 
-#### FEATURES
-1. Visibility
+#### COMPONENTS
+1. Visibility <br/>
+**Version A:** Widget/Window <br/>
+**Version B:** Tab <br/>
 2. Automation
-3. 
+**Version A:** Auto Transitions <br/>
+**Version B:** Manual Transitions <br/>
+3. Discoverability
+4. Transition Feedback <br/>
+**Version A:** Audio <br/>
+**Version B:** Notification <br/>
+5. Customization
+**Version A:** Traditional Pomodoro <br/>
+**Version B:** Partial Customization <br/>
+**Version C:** Full Customization <br/>
+6. Inputs
+7. Outputs
+
+BONUS:
+8. Dynamic
+9. Content
 
