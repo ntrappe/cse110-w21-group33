@@ -63,13 +63,6 @@ Add annotations, images, etc.
 ---
 
 ### :tomato: &nbsp; PART 4 (Bonus)
-Try the Pomodoro Technique for a day. The traditional Pomodoro Technique is defined as:
-```
-A Pomodoro is a work session that lasts for 25 minutes.
-If a work session is interrupted or paused, it is forfeited.
-After a Pomodoro, take a 5 minute break.
-Once you have completed 4 Pomodoros--a "set"--take a longer break (15-30 minutes).
-```
 
 #### Data
 1. How many Pomodoros did you do? <br/>
