@@ -18,6 +18,14 @@
   - Note: these do not need to be your final, perfect ruminations. We just need some initial thoughts to present. We'll go more in depth on **Thursday**.
 - We will create a cohesive doc combining our experiences with the Pomodoro technique and apps.
 
+### Key Points
+1. Decided upon a new meeting time 
+2. Reviewed some Pomodoro apps to decide upon features
+    - fixed vs custom cycles/times
+    - task list
+    - notification features/widget
+    - infographic
+
 ### Potential Disucssion Questions
 1. What are the fundamentals of the Pomodoro technique?
 2. What does a user want? Should it be immediatey available?
