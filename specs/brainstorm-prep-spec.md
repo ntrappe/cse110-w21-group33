@@ -22,14 +22,14 @@ Who is our user? What do they want? What does their day look like? What constrai
 ---
 
 #### COMPONENTS
-1. Visibility <br/>
+1. Visibility
 - **Version A:** Widget/Window <br/>
   - takes up a small portion of the screen
   - doesn't put out notifications but you can see your progress/time remaining
 - **Version B:** Tab <br/>
   - completely hidden from the screen and exists as in a tab
   - either receive a notification or sound goes off to notify a change/prompt
-2. Automation <br/>
+2. Automation 
 - **Version A:** Auto Transitions <br/>
   - enforces a strict break-work routine
   - don't have to remember to click "start"
@@ -37,11 +37,11 @@ Who is our user? What do they want? What does their day look like? What constrai
 - **Version B:** Manual Transitions <br/>
   - allows people to skip breaks, choose when to start/stop working
   - can be tiresome/annoying to do this 4x/hour
-3. Discoverability <br/>
-4. Transition Feedback <br/>
+3. Discoverability 
+4. Transition Feedback 
 - **Version A:** Audio <br/>
 - **Version B:** Notification <br/>
-5. Customization <br/>
+5. Customization
 - **Version A:** Traditional Pomodoro <br/>
 - **Version B:** Partial Customization <br/>
 - **Version C:** Full Customization <br/>
