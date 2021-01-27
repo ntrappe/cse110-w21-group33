@@ -9,8 +9,8 @@ Before you forgot them, list all your thoughts and creative ideas on the Pomodor
 ---
 
 ### :tomato: &nbsp; PART 2 <br/>
-
 Timer: [PomoFocus](https://pomofocus.io/)  <br/> <br/>
+
 ![PomoFocus main](/admin/exercises/nicole_images/work_mode.png) <br/> 
 ---
 ![PomoFocus break](/admin/exercises/nicole_images/break_mode.png) <br/>
@@ -20,8 +20,10 @@ Timer: [PomoFocus](https://pomofocus.io/)  <br/> <br/>
 ### :tomato: &nbsp; PART 3
 
 #### Setup
-1. Was there a prompt to set the number of Pomodoros? 
-2. Was there a prompt to set the Pomodoro or break time? 
+1. Was there a prompt to set the number of Pomodoros?  <br/>
+   **No.**
+2. Was there a prompt to set the Pomodoro or break time?  <br/>
+   **No. You didn't set the time but could switch between long vs short break.**
 3. What options (buttons, fields to enter) were given? (E.g. 'pause' button).
 4. Were you asked to log in/create an account?
 5. Was it obvious that it was a *Pomodoro* timer? How did you know?
