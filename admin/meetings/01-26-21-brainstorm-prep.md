@@ -19,7 +19,7 @@
 - We will create a cohesive doc combining our experiences with the Pomodoro technique and apps.
 
 ### Key Points
-1. Decided upon a new meeting time 
+1. Decided upon a new meeting time Monday 11am
 2. Reviewed some Pomodoro apps to decide upon features
     - fixed vs custom cycles/times
     - task list
