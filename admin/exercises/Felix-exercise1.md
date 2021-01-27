@@ -14,7 +14,7 @@ To get prepared for the brainstorming event, this exercise might help to organiz
 ### :tomato: &nbsp; PART 1
 Before you forgot them, list all your thoughts and creative ideas on the Pomodoro Timer we will build! Do you want to modify the technique? Do you have specific features in mind? Are there UI components you want to add? If you would prefer to use another tool (e.g. sticky notes, block diagrams), do that!
 
-*Think here*.
+Global users conditions. Such as how many people are using this, how they behave.
 
 ---
 
@@ -35,22 +35,22 @@ A bunch of random online Pomodoro timers have been listed. Please choose one (or
 ### :tomato: &nbsp; PART 3
 
 #### Setup
-1. Was there a prompt to set the number of Pomodoros? 
-2. Was there a prompt to set the Pomodoro or break time? 
-3. What options (buttons, fields to enter) were given? (E.g. 'pause' button).
-4. Were you asked to log in/create an account?
-5. Was it obvious that it was a *Pomodoro* timer? How did you know?
+1. Was there a prompt to set the number of Pomodoros? Yes
+2. Was there a prompt to set the Pomodoro or break time? Yes
+3. What options (buttons, fields to enter) were given? (E.g. 'pause' button). Play, pause, stop, resume.
+4. Were you asked to log in/create an account? Yes
+5. Was it obvious that it was a *Pomodoro* timer? How did you know? Yes, because it is red
 
 #### Work Session/Pomodoro
-1. What **cues** indicated it was Pomodoro/work time? For example, *visual cues* can include a change of color or a label of "work time"; *audio cues* could consist of a ticking noise.
-2. Was there any **feedback** on your progress? (E.g. bar at top of screen, percentage, time left).
-3. Was a clock the main feature? If so, please describe it (e.g. analog). If not, what was the main featue?
-4. Did the interface distract you? (E.g. flashing, bright colors, etc.).
-5. Did the interface help you focus? (E.g. silence notifications).
+1. What **cues** indicated it was Pomodoro/work time? For example, *visual cues* can include a change of color or a label of "work time"; *audio cues* could consist of a ticking noise. It is red and it introduces the pomodor method on the bottom.
+2. Was there any **feedback** on your progress? (E.g. bar at top of screen, percentage, time left). Time left, to-do list
+3. Was a clock the main feature? If so, please describe it (e.g. analog). If not, what was the main featue? Yes. A big red timer on the top.
+4. Did the interface distract you? (E.g. flashing, bright colors, etc.). It is too red.
+5. Did the interface help you focus? (E.g. silence notifications). No.
 
 #### Transition
-1. When the app switched from work to break, was there a **color** change? Did you like it?
-2. When the app switched from work to break, was there a **sound** effect? Did you like it?
+1. When the app switched from work to break, was there a **color** change? Did you like it? Yes. Red to green.
+2. When the app switched from work to break, was there a **sound** effect? Did you like it? Yes. "Ding"
 3. How did the app notify you to switch? Did you get a notification? A sound? Something in your browser?
 
 #### Break Session
