@@ -24,8 +24,10 @@ Timer: [PomoFocus](https://pomofocus.io/)
 5. Was it obvious that it was a *Pomodoro* timer? How did you know?
 
 #### Work Session/Pomodoro
-1. What **cues** indicated it was Pomodoro/work time? For example, *visual cues* can include a change of color or a label of "work time"; *audio cues* could consist of a ticking noise.
-2. Was there any **feedback** on your progress? (E.g. bar at top of screen, percentage, time left).
+1. What **cues** indicated it was Pomodoro/work time? For example, *visual cues* can include a change of color or a label of "work time"; *audio cues* could consist of a ticking noise. <br/>
+   **The screen was red, no audio. To denote work time, there was either text for the "current task" or "Time to work!" on screen.** 
+2. Was there any **feedback** on your progress? (E.g. bar at top of screen, percentage, time left). <br/>
+    **Didn't notice it initially but there was a progress bar and the clock went backwards from the initial time so you could see the minutes/seconds remaining.**
 3. Was a clock the main feature? If so, please describe it (e.g. analog). If not, what was the main featue?
 4. Did the interface distract you? (E.g. flashing, bright colors, etc.).
 5. Did the interface help you focus? (E.g. silence notifications).
@@ -48,17 +50,16 @@ Timer: [PomoFocus](https://pomofocus.io/)
 4. ...
 
 #### End
-1. How did you end your session? 
-    Just hit 'STOP'.
+1. How did you end your session?  <br/>
+    **Just hit 'STOP'. Otherwise, no report or way of "ending" the day.**
 
-2. Did you see how many Pomodoros you accomplished? If so, how was this provided?
-    There is a bar at the top of the screen where you can click 'Report'. It will show the # hours focused, # days accessed, and # day streak. It also adds a gamification component of showing your 'ranking'. However, the report can only be accessed with an account.
-
-3. ...
+2. Did you see how many Pomodoros you accomplished? If so, how was this provided? <br/>
+    **There is a bar at the top of the screen where you can click 'Report'. It will show the # hours focused, # days accessed, and # day streak. It also adds a gamification component of showing your 'ranking'. However, the report can only be accessed with an account.**
 
 
 #### Additional Comments
-![PomoFocus main](/admin/exercises/nicole_images/work_mode.png)
+![PomoFocus main](/admin/exercises/nicole_images/work_mode.png) <br/>
+![PomoFocus break](/admin/exercises/nicole_images/break_mode.png) <br/>
 
 ---
 
