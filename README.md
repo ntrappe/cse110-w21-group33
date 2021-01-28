@@ -32,7 +32,7 @@
 | Week | Group Meet 1 Date | Note Taker | Group Meet 2 Date* | Note Taker* | Chad Meet Date | Note Taker | 
 | ---- | ----------------- | ---------- | ------------------ | ----------- | -------------- | ---------- |      
 | 2    | 01/14/2021        | N/A        | N/A                | N/A         | 01/15/2021    | N/A        |
-| 3    | 01/19/2021        | Nicole     |                    |             | 01/22/2021    | Steven     |
+| 3    | 01/19/2021        | Nicole     | N/A                | N/A         | 01/22/2021    | Steven     |
 | 4    | 01/26/2021        | Brandon    |     |      |                    |             |
 
 `* = if applicable (sometimes we may have only 1 or 2 group meetings / week)`
