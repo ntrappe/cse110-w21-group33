@@ -12,6 +12,14 @@
 
 ---
 
+#### Meetings
+- Group Meeting #1: `Monday, 11am`
+  - Note: ideal meeting for long sessions like brainstorming, coding because availability is from 11am-2pm.
+- Group Meeting #2: `Thursday, 6pm`
+- Chad Meeting: `Friday, 5pm`
+
+---
+
 #### Meeting Notes
 - All meeting notes can be found under [/admin/meetings](https://github.com/ntrappe/cse110-w21-group33/tree/main/admin/meetings).
 - They should be in ***Markdown*** format and labeled as *mm-dd-yy-topic*.md (e.g. 01-19-21-kickoff.md).
