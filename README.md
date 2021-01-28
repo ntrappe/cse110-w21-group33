@@ -17,8 +17,8 @@
   - Note: ideal meeting for long sessions like brainstorming, coding because availability is from 11am-2pm.
 - Group Meeting #2: `Thursday, 6pm`
 - Chad Meeting: `Friday, 5pm`
-- Default Meeting ID: `411 780 2958`
-- Default Meeting Link: https://ucsd.zoom.us/j/4117802958
+- Default Meeting: `ID: 411 780 2958` or https://ucsd.zoom.us/j/4117802958
+- Otherwise, meeting link will be posted in Slack [Meetings channel](https://app.slack.com/client/T01JS26BQ2D/C01LBTQJMFT/details/)
 
 ---
 
