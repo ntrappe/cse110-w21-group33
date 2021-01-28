@@ -17,6 +17,8 @@
   - Note: ideal meeting for long sessions like brainstorming, coding because availability is from 11am-2pm.
 - Group Meeting #2: `Thursday, 6pm`
 - Chad Meeting: `Friday, 5pm`
+- Default Meeting: `ID: 411 780 2958` or https://ucsd.zoom.us/j/4117802958
+- Otherwise, meeting link will be posted in Slack [Meetings channel](https://app.slack.com/client/T01JS26BQ2D/C01LBTQJMFT/details/)
 
 ---
 
@@ -27,11 +29,12 @@
 - For a sample of the meeting notes, click [here](https://github.com/ntrappe/cse110-w21-group33/tree/main/admin/meetings/01-18-21-sample.md).
 - We will assign a note taker on a rotating basis so that everyone has a chance to enjoy this responsibility.
 
-| Week | Group Meet 1 Date | Note Taker | Chad Meet Date | Note Taker | Group Meet 2* Date | Note Taker* |
-| ---- | ----------------- | ---------- | -------------- | ---------- | ------------------ | ----------- |      
-| 2    | 01/14/2021        | N/A        | 01/15/2021     | N/A        |                    |             |
-| 3    | 01/19/2021        | Nicole     | 01/22/2021     | Steven     |                    |             |
-| 4    | 01/26/2021        | Brandon    |     |      |                    |             |
+| Week | Group Meet 1 Date | Note Taker | Group Meet 2 Date* | Note Taker* | Chad Meet Date | Note Taker | 
+| ---- | ----------------- | ---------- | ------------------ | ----------- | -------------- | ---------- |      
+| 2    | 01/14/2021        | N/A        | N/A                | N/A         | 01/15/2021     | N/A        |
+| 3    | 01/19/2021        | Nicole     | N/A                | N/A         | 01/22/2021     | Steven     |
+| 4    | 01/26/2021        | Brandon    | 01/28/2021         | Michael     |                |            |
+| 5    | 02/01/2021        |            |                    |             |                |            |
 
 `* = if applicable (sometimes we may have only 1 or 2 group meetings / week)`
 
