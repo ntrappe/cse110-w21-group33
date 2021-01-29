@@ -66,7 +66,7 @@
 - record
   - tasks you were able to accomplish (like a did-list)
   - productivity ratings
-  - # pomos completed
+  - #pomos completed
 - notifications
 - todolist
 - gamification
