@@ -53,7 +53,7 @@
   - add small text labelling the mode (e.g. "short break")
 - user input: start, restart
 
-### Second Spring
+### Second Sprint
 - show the simplified time left in tab text (e.g. 24m NOT the seconds)
   - lets user see time remaining without having to switch back to that tab
 - design the UI such that a very condensed, small window just shows off timer nicely
@@ -62,7 +62,7 @@
   - also add settings for other simple UI changes (e.g. color, 24m vs 24m 03s)
 - decide on notifications: audio/push/none?
 
-### Future Spring
+### Future Sprint
 - record
   - tasks you were able to accomplish (like a did-list)
   - productivity ratings
