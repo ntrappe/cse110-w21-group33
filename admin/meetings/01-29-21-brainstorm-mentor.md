@@ -1,23 +1,23 @@
-# Sample Meeting Notes
+# Meeting Notes
 ##### Team: Powell's Owls | Group 33
 
 ### Overview
 | Date       | Time      | Type of Meeting   | Where   |
 | ---------- | --------- | ----------------- | ------- |
-| 01/18/2021 | 4-5pm PST | Logistics         | Zoom    |
+| 01/29/2021 | 5-6pm PST | Mentor            | Zoom    |
 
 
 ### Key Points
-- meeting notes are important
-- we forget everything
+- introduce our brainstorm meetings and ideas to our mentor, Chad
+- take advices on our ideas and on future assignment and developmental process
 
 ### Attendance
-- [x] Michael Donaldson
+- [ ] Michael Donaldson
 - [x] Richard Duong
 - [x] Brandon Liu
-- [x] Bryant Shao
+- [ ] Bryant Shao
 - [x] Steven Steiner
-- [ ] Nicole Trappe
-- [x] Vy Truong
+- [x] Nicole Trappe
+- [ ] Vy Truong
 - [x] Felix Zhang
 - [x] Lulu Zhu
