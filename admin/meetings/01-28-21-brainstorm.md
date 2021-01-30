@@ -78,3 +78,60 @@
 - pause/stop button
 - captcha
 
+---
+
+### Full Notes
+**The Problem:**
+- Using phones
+- Life is full of distractions 
+- App not distracting 
+- Hard to get started (activation energy)
+    - Tries to motivate you
+- Avoid burnout, space breaks
+
+**Our Goals:**
+- improve flow in the future (Track flow)
+    - Future integration 
+- Let manually adjust duration of work + let them keep track of Pomodoros
+- At end of session, get to see Pomodoros for that day/log them 
+
+**How Our App Is Unique:**
+- Automatically go to break 
+    - (A) into short/long
+    - (B) just into a break
+- Automatic cycling for Pomodoro (vs timer on phone)
+    - Feel a sense of urgency to go into the mode (not ignore it?)
+    - If manual, take as long as you want
+    - After break, if manual, don’t wanna go back into working
+- Break issues
+    - First iteration: just Pomodoro 
+    - Give option later to auto cycle (time out function)
+    - Or notification of “you done watching” sort of time out for forever loop
+        - Goes against technique bc just wanna work + don’t want any interruptions
+- todolist
+    - Minimalist says no todolist
+        - Probably not better than other ones out there 
+        - Not helpful, clutters up the space
+    - Write down after the Pomodoro of what you do (achievement)
+        - Record of what you did
+        - Satisfaction of completing info 
+            - Keep engagement in website 
+- Attractive
+    - Want people to use app
+        - Add game (like dinosaur network down)
+        - Therefore diff than a todolist bc makes the break fun and keeps you on the site
+    - Simple 
+- Most Pomodoro apps not successful, want ppl to use app, monetize it/gamify it to keep people on
+- Agile development
+
+**Who Is The User:**
+- Procrastinating college student 
+- constraints: work day/time excluding lecture to usually get one big assignment done
+- Both trying to solve small + large tasks
+- Some people say it’s busy work
+- Other people say high level stuff (chunking the project into sizable pieces)
+    - Small assignments don’t require a break 
+- Ppl use the app when at desk/online 
+- Calendar is a constraint (time slots available for work)
+
+
