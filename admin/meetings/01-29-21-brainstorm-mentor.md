@@ -13,9 +13,10 @@
 
 
 ### Key Points
-- Chad says that we should include more about user-focus things, such as the user story. We should distingish the difference in user stories with different group of users. We should also consider the user's need, then design the application and UI.
-- Make sure that our major decisions are motivated from user's perspective.
+- Chad says that we should include more about user-focus things, such as the user story. We should distingish the difference in user stories with different group of users. We should also consider the user's need, then design the application and UI
+- Make sure that our major decisions are motivated from user's perspective
 - Set up Miro, or similar things, to present our brainstorm ideas
+- Overall, Chad was happy about our progress so far
 
 ### Attendance
 - [ ] Michael Donaldson
