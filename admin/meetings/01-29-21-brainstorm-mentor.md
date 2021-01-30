@@ -11,9 +11,11 @@
 - introduce our brainstorm meetings and ideas to our mentor, Chad
 - take advices on our ideas and on future assignment and developmental process
 
+
 ### Key Points
+- 
 -
--
+
 
 ### Attendance
 - [ ] Michael Donaldson
@@ -26,4 +28,5 @@
 - [x] Felix Zhang
 - [x] Lulu Zhu
 
-###
+
+### 
