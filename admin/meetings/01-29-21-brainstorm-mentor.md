@@ -7,9 +7,16 @@
 | 01/29/2021 | 5-6pm PST | Mentor            | Zoom    |
 
 
-### Key Points
+### Agenda
 - introduce our brainstorm meetings and ideas to our mentor, Chad
-- take advices on our ideas and on future assignment and developmental process
+- receive feedbacks on our ideas and on future assignment and developmental process
+
+
+### Key Points
+- Chad says that we should include more about user-focus things, such as the user story. We should distingish the difference in user stories with different group of users. We should also consider the user's need, then design the application and UI
+- Make sure that our major decisions are motivated from user's perspective
+- Set up Miro, or similar things, to present our brainstorm ideas
+- Overall, Chad was happy about our progress so far
 
 ### Attendance
 - [ ] Michael Donaldson
@@ -21,3 +28,4 @@
 - [ ] Vy Truong
 - [x] Felix Zhang
 - [x] Lulu Zhu
+
