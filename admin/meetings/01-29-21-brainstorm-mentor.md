@@ -7,9 +7,13 @@
 | 01/29/2021 | 5-6pm PST | Mentor            | Zoom    |
 
 
-### Key Points
+### Agenda
 - introduce our brainstorm meetings and ideas to our mentor, Chad
 - take advices on our ideas and on future assignment and developmental process
+
+### Key Points
+-
+-
 
 ### Attendance
 - [ ] Michael Donaldson
@@ -21,3 +25,5 @@
 - [ ] Vy Truong
 - [x] Felix Zhang
 - [x] Lulu Zhu
+
+###
