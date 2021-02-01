@@ -68,6 +68,21 @@
   - this way, all the pairs rotate who reviews and verifies work
     - there will be NO one person as the code reviewer
   - *note: we need to ask @Chad if this is a good system & what to do about merge conflicts + documenting those (add to Issues?)*
+ 
+ #### Accessibility
+ - We discussed today's (Monday) lecture and decided to add some features for the future:
+  - language options
+  - color blind/higher contrast UI (see [resource](https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40))
+  - ensure all interactions can be done with 1 finger (keyboard or mouse)
+  - option for audio feedback (for visually impaired) like notifications, presses, etc.
+  
+ #### User Stories & Design
+ - went over the [Miro board](https://miro.com/welcome/9SYm9WCwM5c5EqQH4nWPRpTtW65tlF0OyguESDYsTZIItx0XNQpbXuPU9RUvbN84)
+ - discussed all the features of each person that attended the meeting
+ - needed to narrow down User persona so @Lulu sent a poll to the group
+ - did the 5 Why's to ensure the main features were user-focused
+  
+ #### Wireframing
 ---
 
 ### Agenda
