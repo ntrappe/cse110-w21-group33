@@ -41,11 +41,12 @@
 #### Pipeline
 - We had a unanimous decision to split the group into pairs to do pair programming
   - we will pair up a more experienced (i.e. has done web dev/has industry knowledge) person with a novice to balance out the team
+    - *note: Vy is assigning pairs using the survey data from Week 1*
   - each pair should schedule meetings to jointly code or discuss their work
   - each pair should log any issues in the [Issues](https://github.com/ntrappe/cse110-w21-group33/issues) tab and assign that issue to themselves
   - each pair will be assigned one feature at a time
   - each pair should rely on their partner to answer questions before reaching out to the group
-  - each pair is responsible for setting their deadline, completing their work, and raising concerns to either Nicole, Chad, or Powell
+  - each pair is responsible for **setting their own deadline**, completing their work, and raising concerns to either Nicole, Chad, or Powell
 - During the `Thursday @6pm` meetings, we will have a **check-in** wherein each pair will report the status of their work
   - if advice/user input/technical help is needed, this is the place to raise those concerns
 - Setting deadlines:
