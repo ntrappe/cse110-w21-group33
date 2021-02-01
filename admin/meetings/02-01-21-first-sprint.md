@@ -58,7 +58,7 @@
   - each pair will keep a doc on the progress of their work
   - this doc should contain links to the current issues, potential fixes, the feature status, and any notes/brainstorming
     - this is a way for the team to keep all their ideas in one central place
-  - *note: @Brandon is finding examples/outlines of this doc*
+  - *note: @Br is finding examples/outlines of this doc*
 - **Code Review/Testing:**
   - pair #1 will write the code for a feature
   - pair #2 (different pair) will review the work of pair #1 via a pull request on their own branch
