@@ -39,7 +39,18 @@
   - **TODO**: determine which browser & node versions we will support
   
 #### Pipeline
-
+- We had a unanimous decision to split the group into pairs to do pair programming
+  - we will pair up a more experienced (i.e. has done web dev/has industry knowledge) person with a novice to balance out the team
+  - each pair should schedule meetings to jointly code or discuss their work
+  - each pair should log any issues in the [Issues](https://github.com/ntrappe/cse110-w21-group33/issues) tab and assign that issue to themselves
+  - each pair will be assigned one feature at a time
+  - each pair is responsible for setting their deadline, completing their work, and raising concerns to either Nicole, Chad, or Powell
+  - we will have 4 pairs with Nicole jumping in to different ones to check progress, enforce cohension across all, and to resolve conflicts
+- During the `Thursday @6pm` meetings, each pair will "check-in" by reporting the status of their work
+- Each pair will set their own deadline
+  - we will be using the Agile point system
+  - each deadline is unique to the feature being built and experience of the pair (*however, we will have rough overall deadlines each sprint*)
+    - example: If a pair has experience building that specific feature, they may evaluate the task as point 2 because it shouldn't take too long
 
 ---
 
