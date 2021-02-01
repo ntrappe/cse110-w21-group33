@@ -83,7 +83,7 @@
  - did the 5 Why's to ensure the main features were user-focused
   
  #### Wireframing
- - Did wireframing (flow) in meeting
+ - Did wireframing (flow diagram-ish) in meeting and stored [here](https://github.com/ntrappe/cse110-w21-group33/tree/main/specs)
  - the options in settings are very temporary and basically placeholders for now
  
  ![wire1](/specs/wireframe_1.png)
