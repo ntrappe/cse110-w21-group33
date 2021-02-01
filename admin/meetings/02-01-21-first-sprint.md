@@ -48,11 +48,11 @@
   - each pair is responsible for setting their deadline, completing their work, and raising concerns to either Nicole, Chad, or Powell
 - During the `Thursday @6pm` meetings, we will have a **check-in** wherein each pair will report the status of their work
   - if advice/user input/technical help is needed, this is the place to raise those concerns
-- Each pair will set their own deadline
-  - we will be using the Agile [story point/t-shirt](https://www.atlassian.com/agile/project-management/estimation) system
-    -  1-XSmall, 2-Small, 4-Medium, 8-Large, 16-XLarge
-  - each deadline is unique to the feature being built and experience of the pair (*however, we will have rough overall deadlines each sprint*)
-    - example: If a pair has experience building that specific feature, they may evaluate the task as a 2 because it shouldn't take too long
+- Setting deadlines:
+  - the pair will use the Agile [story point/t-shirt](https://www.atlassian.com/agile/project-management/estimation) system (`1-XSmall`, `2-Small`, `4-Medium`, `8-Large`, `16-XLarge`)
+  - assigning points is relative to each pair's experience and feature
+    - *note: each sprint will have a general deadline but it is up to each pair to evaluate the amount of work/feature*
+    - example: One pair has been designing buttons for years, so, the task of designing a button might be 'XSmall' or 'Small'
 
 ---
 
