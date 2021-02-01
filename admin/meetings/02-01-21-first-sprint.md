@@ -33,6 +33,9 @@
   - tool version:
     - most common version of node is `14.15.4` 
     - other versions were `12.18.3` and `15.7.0`
+  - operating systems:
+    - Felix & Richard use `Windows`
+    - Brandon, Bryant, Vy, Lulu, Nicole, & Richard use `Mac`
   - **TODO**: determine which browser & node versions we will support
 
 
