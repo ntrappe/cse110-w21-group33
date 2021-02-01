@@ -46,7 +46,6 @@
   - each pair will be assigned one feature at a time
   - each pair should rely on their partner to answer questions before reaching out to the group
   - each pair is responsible for setting their deadline, completing their work, and raising concerns to either Nicole, Chad, or Powell
-  - we will have 4 pairs with Nicole jumping in to different ones to check progress, enforce cohension across all, and to resolve conflicts
 - During the `Thursday @6pm` meetings, we will have a **check-in** wherein each pair will report the status of their work
   - if advice/user input/technical help is needed, this is the place to raise those concerns
 - Each pair will set their own deadline
