@@ -83,6 +83,12 @@
  - did the 5 Why's to ensure the main features were user-focused
   
  #### Wireframing
+ - Did wireframing (flow) in meeting
+ - the options in settings are very temporary and basically placeholders for now
+ 
+ ![wire1](/specs/wireframe_1.png)
+ ![wire2](/specs/wireframe_2.png)
+ 
 ---
 
 ### Agenda
