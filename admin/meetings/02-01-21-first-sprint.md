@@ -41,7 +41,7 @@
 #### Pipeline
 - We had a unanimous decision to split the group into pairs to do pair programming
   - we will pair up a more experienced (i.e. has done web dev/has industry knowledge) person with a novice to balance out the team
-    - *note: Vy is assigning pairs using the survey data from Week 1*
+    - *note: Vy is assigning pairs using the [survey data](https://docs.google.com/spreadsheets/d/1g_giNNFPhfYURECuiL-7z6LZk3ndYcQhSNKUR0K9wno/edit?usp=sharing) from Week 1*
   - each pair should schedule meetings to jointly code or discuss their work
   - each pair should log any issues in the [Issues](https://github.com/ntrappe/cse110-w21-group33/issues) tab and assign that issue to themselves
   - each pair will be assigned one feature at a time
