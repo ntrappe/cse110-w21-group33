@@ -19,10 +19,10 @@
 - **Glossery**  will contain definitions of all the terms we'll be throwing around
   - it will have notes on specific verbage used in CSE 110 (e.g. ADR, server-side, MVP)
   - it should also include naming conventions of different UI elements (e.g. lightbox)
-  - *note: Lulu is setting this up*
+  - *note: @Lulu is setting this up*
 - **Coding Guidelines** will set a standard for how we will write code and make it easier for others to read/collaborate
   - currently, we are considering using [Google's guide](https://google.github.io/styleguide/htmlcssguide.html) on HTML/CSS/Javascript
-  - *note: Richard is deciding whether Google's guide is good enough (or an alt) and will add a small summary of key points*
+  - *note: @Richard is deciding whether Google's guide is good enough (or an alt) and will add a small summary of key points*
 - **Tools/Languages:**
   - we will be using HTML/CSS/Javascript
   - as of right now, we will not be using another other packages/languages
@@ -41,7 +41,7 @@
 #### Pipeline
 - **Pair Programming**:
   - We had a unanimous decision to split the group into pairs with one experienced person and one novice
-    - *note: Vy is assigning pairs using the [survey data](https://docs.google.com/spreadsheets/d/1g_giNNFPhfYURECuiL-7z6LZk3ndYcQhSNKUR0K9wno/edit?usp=sharing) from Week 1*
+    - *note: @Vy is assigning pairs using the [survey data](https://docs.google.com/spreadsheets/d/1g_giNNFPhfYURECuiL-7z6LZk3ndYcQhSNKUR0K9wno/edit?usp=sharing) from Week 1*
     - each pair should schedule meetings to jointly code or discuss their work
     - each pair should log any issues in the [Issues](https://github.com/ntrappe/cse110-w21-group33/issues) tab and assign that issue to themselves
     - each pair will be assigned one feature at a time
@@ -58,7 +58,7 @@
   - each pair will keep a doc on the progress of their work
   - this doc should contain links to the current issues, potential fixes, the feature status, and any notes/brainstorming
     - this is a way for the team to keep all their ideas in one central place
-  - *note: Brandon is finding examples/outlines of this doc*
+  - *note: @Brandon is finding examples/outlines of this doc*
 - **Code Review/Testing:**
   - pair #1 will write the code for a feature
   - pair #2 (different pair) will review the work of pair #1 via a pull request on their own branch
@@ -67,7 +67,7 @@
     - if no bugs, they will push pair #2's changes to the **main** branch
   - this way, all the pairs rotate who reviews and verifies work
     - there will be NO one person as the code reviewer
-  - *note: we need to ask Chad if this is a good system & what to do about merge conflicts + documenting those (add to Issues?)*
+  - *note: we need to ask @Chad if this is a good system & what to do about merge conflicts + documenting those (add to Issues?)*
 ---
 
 ### Agenda
