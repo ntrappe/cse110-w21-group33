@@ -66,6 +66,7 @@
   - pair #3 will check if there are merge conflicts or bugs in pair #2's code
     - if no bugs, they will push pair #2's changes to the **main** branch
   - this way, all the pairs rotate who reviews and verifies work
+    - there will be NO one person as the code reviewer
   - *note: we need to ask Chad if this is a good system*
   - *note:* (as Vy mentioned) we need to determine what to do about merge conflicts + documenting those (add to Issues?)
 ---
