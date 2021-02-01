@@ -71,10 +71,10 @@
  
  #### Accessibility
  - We discussed today's (Monday) lecture and decided to add some features for the future:
-  - language options
-  - color blind/higher contrast UI (see [resource](https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40))
-  - ensure all interactions can be done with 1 finger (keyboard or mouse)
-  - option for audio feedback (for visually impaired) like notifications, presses, etc.
+   - language options
+   - color blind/higher contrast UI (see [resource](https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40))
+   - ensure all interactions can be done with 1 finger (keyboard or mouse)
+   - option for audio feedback (for visually impaired) like notifications, presses, etc.
   
  #### User Stories & Design
  - went over the [Miro board](https://miro.com/welcome/9SYm9WCwM5c5EqQH4nWPRpTtW65tlF0OyguESDYsTZIItx0XNQpbXuPU9RUvbN84)
