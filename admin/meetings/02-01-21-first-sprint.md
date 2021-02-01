@@ -28,7 +28,7 @@
   - as of right now, we will not be using another other packages/languages
   - browser usage: 
     - Felix, Lulu, Bryant, Brandon, Vy, & Richard use `Chrome`
-    - Nicole uses 'Safari' and primarily 'Firefox'
+    - Nicole uses `Safari` and primarily `Firefox`
     - *note: this will be helpful when we test the website on different browsers*
   - tool version:
     - most common version of node is `14.15.4` 
