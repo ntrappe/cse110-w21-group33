@@ -4,7 +4,7 @@
 ### Overview
 | Date       | Time      | Type of Meeting   | Where   |
 | ---------- | --------- | ----------------- | ------- |
-| 02/01/2021 |  |          | Zoom    |
+| 02/01/2021 | 11am-1pm  | Logistic, Planning & Design | Zoom    |
 
 
 ### Agenda
