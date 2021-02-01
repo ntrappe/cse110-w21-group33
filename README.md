@@ -107,3 +107,5 @@ git pull origin main
 #### Resources
 1. Prototyping: https://marvelapp.com/pop
 2. https://basecamp.com/shapeup
+3. [Color blind design](https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40)
+4. [Google HTML/CSS Styling](https://google.github.io/styleguide/htmlcssguide.html)
