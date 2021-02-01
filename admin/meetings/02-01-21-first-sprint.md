@@ -45,11 +45,11 @@
 
 ### Attendance
 - [ ] Michael Donaldson
-- [ ] Richard Duong
+- [x] Richard Duong
 - [ ] Brandon Liu
-- [ ] Bryant Shao
+- [x] Bryant Shao
 - [ ] Steven Steiner
-- [ ] Nicole Trappe
-- [ ] Vy Truong
-- [ ] Felix Zhang
-- [ ] Lulu Zhu
+- [x] Nicole Trappe
+- [x] Vy Truong
+- [x] Felix Zhang
+- [x] Lulu Zhu
