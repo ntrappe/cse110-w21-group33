@@ -4,8 +4,29 @@
 ### Overview
 | Date       | Time      | Type of Meeting   | Where   |
 | ---------- | --------- | ----------------- | ------- |
-| 02/01/2021 | 11am-1pm  | Logistic, Planning & Design | Zoom    |
+| 02/01/2021 | 11am-1pm  | Logistics, Planning & Design | Zoom    |
 
+---
+
+### Meeting
+
+#### Agile
+- **Issues** will be recorded in the [Issues](https://github.com/ntrappe/cse110-w21-group33/issues) tab of this repo.
+  - we will create specific labels to address the topic of the issue
+  - issues will be "assigned" to the pair working on them
+  - the group unanimously voted to use Github's internal Issues vs a 3rd party API
+  - *note: we may want to create a specific template for these initial features*
+- **Glossery**  will contain definitions of all the terms we'll be throwing around
+  - it will have notes on specific verbage used in CSE 110 (e.g. ADR, server-side, MVP)
+  - it should also include naming conventions of different UI elements (e.g. lightbox)
+  - *note: Lulu is setting this up*
+- **Coding Guidelines** will set a standard for how we will write code and make it easier for others to read/collaborate
+  - currently, we are considering using Google's guide on HTML/CSS/Javascript
+  - *note: Richard is deciding whether Google's guide is good enough (or an alt) and will add a small summary of key points*
+-
+ 
+
+---
 
 ### Agenda
 #### Agile
@@ -41,6 +62,8 @@
 - how are we keeping track of the status of work and who is doing what
 - code review
 - advanced testing
+
+---
   
 
 ### Attendance
