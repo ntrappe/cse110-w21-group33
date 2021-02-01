@@ -21,7 +21,7 @@
   - it should also include naming conventions of different UI elements (e.g. lightbox)
   - *note: Lulu is setting this up*
 - **Coding Guidelines** will set a standard for how we will write code and make it easier for others to read/collaborate
-  - currently, we are considering using Google's guide on HTML/CSS/Javascript
+  - currently, we are considering using [Google's guide](https://google.github.io/styleguide/htmlcssguide.html) on HTML/CSS/Javascript
   - *note: Richard is deciding whether Google's guide is good enough (or an alt) and will add a small summary of key points*
 - **Tools/Languages:**
   - we will be using HTML/CSS/Javascript
@@ -37,6 +37,8 @@
     - Felix & Richard use `Windows`
     - Brandon, Bryant, Vy, Lulu, Nicole, & Richard use `Mac`
   - **TODO**: determine which browser & node versions we will support
+  
+#### Pipeline
 
 
 ---
