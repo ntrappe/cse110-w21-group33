@@ -44,9 +44,11 @@
   - each pair should schedule meetings to jointly code or discuss their work
   - each pair should log any issues in the [Issues](https://github.com/ntrappe/cse110-w21-group33/issues) tab and assign that issue to themselves
   - each pair will be assigned one feature at a time
+  - each pair should rely on their partner to answer questions before reaching out to the group
   - each pair is responsible for setting their deadline, completing their work, and raising concerns to either Nicole, Chad, or Powell
   - we will have 4 pairs with Nicole jumping in to different ones to check progress, enforce cohension across all, and to resolve conflicts
-- During the `Thursday @6pm` meetings, each pair will "check-in" by reporting the status of their work
+- During the `Thursday @6pm` meetings, we will have a **check-in** wherein each pair will report the status of their work
+  - if advice/user input/technical help is needed, this is the place to raise those concerns
 - Each pair will set their own deadline
   - we will be using the Agile point system
   - each deadline is unique to the feature being built and experience of the pair (*however, we will have rough overall deadlines each sprint*)
