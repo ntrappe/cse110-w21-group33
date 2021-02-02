@@ -8,7 +8,7 @@
 
 
 ### Prep
-If you're very confused about what's currently happening, review the [meeting notes](https://github.com/ntrappe/cse110-w21-group33/blob/main/admin/meetings/02-01-21-first-sprint.md) from Monday. Otherwise, please **SIGN UP FOR TASKS BELOW**. Most of these tasks require 2 people.
+If you're very confused about what's currently happening, review the [meeting notes](https://github.com/ntrappe/cse110-w21-group33/blob/main/admin/meetings/02-01-21-first-sprint.md) from Monday. Since we'll be pairing up, these initial tasks have been assigned to temporary pairs. After this session, we will evaluate whether these pairs work well.
 
 ---
 
@@ -17,7 +17,7 @@ You need to formally document your project's target audience, including [persona
 [user stories](https://en.wikipedia.org/wiki/User_story), and optionally [use cases](https://en.wikipedia.org/wiki/Use_case)
 (which document a broader set of activities the user has with the system, focused more on the task than the user's needs).
 
-**:pencil: Team Members**:
+**✅ Team Members**: Bryant & Brandon
 
 ---
   
@@ -29,7 +29,7 @@ As your team makes decisions, you should be filling out [ADRs](https://adr.githu
 - It may be good to mention the essential features then ones we want for later sprints (and classify them that way)
 - Explain why we chose what we did and how it meets specific *user needs*
 
-**:pencil: Team Members**: Michael & Steven
+**✅ Team Members**: Vy & Michael
 
 ---
 
@@ -39,7 +39,7 @@ Start sketching out your app's UI! It's good to incrementally design these in in
 #### Notes:
 - Nicole did wireframes during Monday's meeting
 
-**✅ Team Members**: Nicole & Lulu
+**✅ Team Members**: (Nicole) + Richard & Lulu
 
 ---
 
@@ -49,7 +49,7 @@ You need to formally document your application's architecture. These can take mu
 #### Notes:
 - there's an inital version in [/specs](https://github.com/ntrappe/cse110-w21-group33/blob/main/specs/brainstorm-prep-spec.md)
 
-**:pencil: Team Members**: (maybe Nicole) & Steven
+**✅ Team Members**: (maybe Nicole) + Felix & Steven
 
 ---
 
@@ -59,14 +59,14 @@ You need to formally document your application's architecture. These can take mu
 - Be prepared to present to Chad on `Friday, 02/05 @5pm`
 - You should at least have a rough draft of your system's features, UI, and architecture
 
-**:pencil: Team Members**: 
+**✅ Team Members**: Whole Team (will be done in this meeting)
 
 ---
 
 **6. Project Roadmap.** <br/>
 Divide features into sprints. As discussed in class, there are four total sprints. How will you divide work between the sprints? What is your MVP for sprint 2, and what are your stretch goals for sprint 3? Will you leave flex time for cleanup/refactoring/debugging/finishing features?
 
-**:pencil: Team Members**: Whole Team (will be done in this meeting)
+**:pencil: Team Members**: Nicole & whole team will decide on agreement/disagreement
 
 ---
 
