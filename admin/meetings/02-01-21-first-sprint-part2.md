@@ -13,8 +13,9 @@ If you're very confused about what's currently happening, review the [meeting no
 #### Table of Contents
 1. [User Docs](#user-centered-thinking-documents)
 2. [ADRs](#adrs)
-3. ✅ [Interface](#interface-designs)
-4. 
+3. [Interface](#interface-designs)
+4. [System Diagrams](#system-diagrams) 
+5. [Project Pitch](#project-pitch)
 
 ---
 
@@ -70,14 +71,14 @@ Divide features into sprints. As discussed in class, there are four total sprint
 
 **7. Glossery.** <br/>
 
-**:pencil: Assigned To**: Lulu
+**✅ Assigned To**: Lulu
 
 ---
 
 **8. HTML/CSS/JS Guidelines** <br/>
 Acronyms are often useful and efficient, but have an on boarding cost. Try to speak a common dialect other than a project specific one
 
-**:pencil: Assigned To**: Richard
+**✅ Assigned To**: Richard
 
 ---
 
@@ -91,7 +92,7 @@ Def TBD
 **10. Assigning Pairs** <br/>
 Def TBD
 
-**:pencil: Assigned To**: Vy
+**✅ Assigned To**: Vy
 
 ---
 
