@@ -55,6 +55,10 @@ You need to formally document your application's architecture. These can take mu
 
 **5. Project Pitch.** Condense your brainstorming and design documents above into a single project pitch that you'll deliver for me. Treat it like you're pitching your project for upper management/an outside company, meaning you need to describe every aspect of your system like I'm an outsider: the problem, audience, architecture, UI design, features, roadmap, etc. To see how you should structure your pitch, see [chapter 6 from Shape Up](https://basecamp.com/shapeup/1.5-chapter-06). You can reuse your existing diagrams, but the pitch itself should be a separate document with the diagrams copied inside.
 
+#### Notes
+- Be prepared to present to Chad on `Friday, 02/05 @5pm`
+- You should at least have a rough draft of your system's features, UI, and architecture
+
 **:pencil: Team Members**: 
 
 ---
