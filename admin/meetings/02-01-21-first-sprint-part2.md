@@ -8,7 +8,7 @@
 
 
 ### Prep
-If you're very confused about what's currently happening, review the [meeting notes](https://github.com/ntrappe/cse110-w21-group33/blob/main/admin/meetings/02-01-21-first-sprint.md) from Monday. Otherwise, please **SIGN UP FOR TASKS BELOW**.
+If you're very confused about what's currently happening, review the [meeting notes](https://github.com/ntrappe/cse110-w21-group33/blob/main/admin/meetings/02-01-21-first-sprint.md) from Monday. Otherwise, please **SIGN UP FOR TASKS BELOW**. Most of these tasks require 2 people.
 
 ---
 
@@ -17,7 +17,7 @@ You need to formally document your project's target audience, including [persona
 [user stories](https://en.wikipedia.org/wiki/User_story), and optionally [use cases](https://en.wikipedia.org/wiki/Use_case)
 (which document a broader set of activities the user has with the system, focused more on the task than the user's needs).
 
-**:pencil: Team Members**: \[name\] \[name\]
+**:pencil: Team Members**:
 
 ---
   
@@ -28,7 +28,7 @@ You need to formally document your project's target audience, including [persona
 - It may be good to mention the essential features then ones we want for later sprints (and classify them that way)
 - Explain why we chose what we did and how it meets specific *user needs*
 
-**:pencil: Team Members**: \[name\] \[name\]
+**:pencil: Team Members**: 
 
 ---
 
@@ -45,13 +45,13 @@ Start sketching out your app's UI! It's good to incrementally design these in in
 **4. System Diagrams** <br/>
 You need to formally document your application's architecture. These can take multiple forms, including [C4](https://c4model.com/), [event modeling](https://eventmodeling.org/posts/what-is-event-modeling/), and [UML diagrams](https://en.wikipedia.org/wiki/Unified_Modeling_Language#Diagrams). This isn't an either/or choice. Since each of these focus on different (albeit sometimes overlapping) parts of the system, you should have a mixture of these to describe your whole system. I'd recommend starting with C4 and going from there, but the choice is up to you.
 
-**:pencil: Team Members**: \[name\] \[name\] \[name\]
+**:pencil: Team Members**:
 
 ---
 
 **5. Project Pitch.** Condense your brainstorming and design documents above into a single project pitch that you'll deliver for me. Treat it like you're pitching your project for upper management/an outside company, meaning you need to describe every aspect of your system like I'm an outsider: the problem, audience, architecture, UI design, features, roadmap, etc. To see how you should structure your pitch, see [chapter 6 from Shape Up](https://basecamp.com/shapeup/1.5-chapter-06). You can reuse your existing diagrams, but the pitch itself should be a separate document with the diagrams copied inside.
 
-**:pencil: Team Members**: \[name\] \[name\]
+**:pencil: Team Members**: 
 
 ---
 
@@ -78,7 +78,7 @@ Acronyms are often useful and efficient, but have an on boarding cost. Try to sp
 **9. Pair Work Documentation** <br/>
 Def TBD
 
-**:pencil: Assigned To**: 
+**:pencil: Assigned To**: Bryant
 
 ---
 
