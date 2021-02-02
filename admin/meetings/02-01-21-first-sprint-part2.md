@@ -81,7 +81,7 @@ Acronyms are often useful and efficient, but have an on boarding cost. Try to sp
 **9. Pair Work Documentation** <br/>
 Def TBD
 
-**:pencil: Assigned To**: Bryant
+**✅ Assigned To**: Bryant
 
 ---
 
