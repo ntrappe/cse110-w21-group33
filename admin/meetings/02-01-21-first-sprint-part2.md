@@ -10,6 +10,8 @@
 ### Prep
 Sign up for a task below. Also go to **Projects** > **Pomodoro Timer** > **Setup Sprint (To Do)** and add your name to the specific note with the task that matches those below.
 
+![project_todo](project_cards.png)
+
 **1. User-centered Thinking Documents.** <br/>
 You need to formally document your project's target audience, including [personas](http://opendesignkit.org/methods/personas/), 
 [user stories](https://en.wikipedia.org/wiki/User_story), and optionally [use cases](https://en.wikipedia.org/wiki/Use_case)
