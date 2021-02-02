@@ -45,6 +45,9 @@ Start sketching out your app's UI! It's good to incrementally design these in in
 **4. System Diagrams** <br/>
 You need to formally document your application's architecture. These can take multiple forms, including [C4](https://c4model.com/), [event modeling](https://eventmodeling.org/posts/what-is-event-modeling/), and [UML diagrams](https://en.wikipedia.org/wiki/Unified_Modeling_Language#Diagrams). This isn't an either/or choice. Since each of these focus on different (albeit sometimes overlapping) parts of the system, you should have a mixture of these to describe your whole system. I'd recommend starting with C4 and going from there, but the choice is up to you.
 
+#### Notes:
+- there's an inital version in [/specs](https://github.com/ntrappe/cse110-w21-group33/blob/main/specs/brainstorm-prep-spec.md)
+
 **:pencil: Team Members**:
 
 ---
