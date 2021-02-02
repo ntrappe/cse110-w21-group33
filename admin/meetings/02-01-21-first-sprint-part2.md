@@ -21,7 +21,8 @@ You need to formally document your project's target audience, including [persona
 
 ---
   
-**2. ADRs.** As your team makes decisions, you should be filling out [ADRs](https://adr.github.io/madr/) documenting your decisions and reasons. What features are you going to include/exclude? Who is your target audience? What are the major elements of your UI design? How do you break your architecture up into components/pages? All these decisions and more should be documented in ADRs. We'll be asking for retrospectives later in the term, and well-made ADRs make it much easier to reflect on your expectations/reasoning and compare it with the outcome.
+**2. ADRs.**  <br/>
+As your team makes decisions, you should be filling out [ADRs](https://adr.github.io/madr/) documenting your decisions and reasons. What features are you going to include/exclude? Who is your target audience? What are the major elements of your UI design? How do you break your architecture up into components/pages? All these decisions and more should be documented in ADRs. We'll be asking for retrospectives later in the term, and well-made ADRs make it much easier to reflect on your expectations/reasoning and compare it with the outcome.
 
 #### Notes:
 - Many of the features we mentioned adding or not adding are in the Meeting Notes from Week 4
