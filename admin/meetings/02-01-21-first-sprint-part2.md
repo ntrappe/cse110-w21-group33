@@ -8,9 +8,7 @@
 
 
 ### Prep
-Sign up for a task below. Also go to **Projects** > **Pomodoro Timer** > **Setup Sprint (To Do)** and add your name to the specific note with the task that matches those below.
-
-![project_todo](images/project_cards.png)
+Sign up for a task below. 
 
 **1. User-centered Thinking Documents.** <br/>
 You need to formally document your project's target audience, including [personas](http://opendesignkit.org/methods/personas/), 
@@ -26,7 +24,13 @@ ADRs. As your team makes decisions, you should be filling out ADRs documenting y
 Project Roadmap. Divide features into sprints. As discussed in class, there are four total sprints. How will you divide work between the sprints? What is your MVP for sprint 2, and what are your stretch goals for sprint 3? Will you leave flex time for cleanup/refactoring/debugging/finishing features?
 Project Pitch. Condense your brainstorming and design documents above into a single project pitch that you'll deliver for me. Treat it like you're pitching your project for upper management/an outside company, meaning you need to describe every aspect of your system like I'm an outsider: the problem, audience, architecture, UI design, features, roadmap, etc. To see how you should structure your pitch, see chapter 6 from Shape Up. You can reuse your existing diagrams, but the pitch itself should be a separate document with the diagrams copied inside.
 
+---
 
+ALSO go to **Projects** > **Pomodoro Timer** > **Setup Sprint (To Do)** and add your name to the specific note with the task that matches the one you chose above.
+
+![project_todo](images/project_cards.png)
+
+---
 
 ### Attendance
 - [ ] Michael Donaldson
