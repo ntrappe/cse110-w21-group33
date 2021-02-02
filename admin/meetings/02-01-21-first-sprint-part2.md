@@ -80,6 +80,13 @@ Def TBD
 
 ---
 
+**10. Assigning Pairs** <br/>
+Def TBD
+
+**:pencil: Assigned To**: Vy
+
+---
+
 
 ALSO go to **Projects** > **Pomodoro Timer** > **Setup Sprint (To Do)** and add your name to the specific note with the task that matches the one you chose above.
 
