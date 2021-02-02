@@ -15,7 +15,7 @@ You need to formally document your project's target audience, including [persona
 [user stories](https://en.wikipedia.org/wiki/User_story), and optionally [use cases](https://en.wikipedia.org/wiki/Use_case)
 (which document a broader set of activities the user has with the system, focused more on the task than the user's needs).
 
-**:pencil: Team Members**: 
+**:pencil: Team Members**: \[name\] \[name\]
   
 **2. System Diagrams** <br/>
 You need to formally document your application's architecture. These can take multiple forms, including C4, event modeling, and UML diagrams. This isn't an either/or choice. Since each of these focus on different (albeit sometimes overlapping) parts of the system, you should have a mixture of these to describe your whole system. I'd recommend starting with C4 and going from there, but the choice is up to you.
