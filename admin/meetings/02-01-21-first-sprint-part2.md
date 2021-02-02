@@ -29,7 +29,7 @@ As your team makes decisions, you should be filling out [ADRs](https://adr.githu
 - It may be good to mention the essential features then ones we want for later sprints (and classify them that way)
 - Explain why we chose what we did and how it meets specific *user needs*
 
-**:pencil: Team Members**: 
+**:pencil: Team Members**: Michael
 
 ---
 
