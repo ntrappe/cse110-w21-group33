@@ -10,6 +10,12 @@
 ### Prep
 If you're very confused about what's currently happening, review the [meeting notes](https://github.com/ntrappe/cse110-w21-group33/blob/main/admin/meetings/02-01-21-first-sprint.md) from Monday. Otherwise, please **SIGN UP FOR TASKS BELOW**. Most of these tasks require 2 people.
 
+#### Table of Contents
+1. [User Docs](#user-centered-thinking-documents)
+2. [ADRs](#adrs)
+3. ✅ [Interface](#interface-designs)
+4. 
+
 ---
 
 **1. User-centered Thinking Documents.** <br/>
