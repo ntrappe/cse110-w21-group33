@@ -8,7 +8,7 @@
 
 
 ### Prep
-Sign up for a task below. 
+If you're very confused about what's currently happening, review the [meeting notes](https://github.com/ntrappe/cse110-w21-group33/blob/main/admin/meetings/02-01-21-first-sprint.md) from Monday. Otherwise, please **SIGN UP FOR TASKS BELOW**.
 
 **1. User-centered Thinking Documents.** <br/>
 You need to formally document your project's target audience, including [personas](http://opendesignkit.org/methods/personas/), 
