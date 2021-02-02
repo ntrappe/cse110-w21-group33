@@ -38,7 +38,7 @@ Start sketching out your app's UI! It's good to incrementally design these in in
 #### Notes:
 - Nicole did wireframes during Monday's meeting
 
-** ✅ Team Members**: Nicole & Lulu
+**✅ Team Members**: Nicole & Lulu
 
 ---
 
