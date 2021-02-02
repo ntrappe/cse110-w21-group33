@@ -16,7 +16,7 @@ Who is our user? What do they want? What does their day look like? What constrai
 ---
 
 #### FLOW
-![Traditional Pomodoro](/specs/Pomo_traditional_flow.png) <br/>
+![Traditional Pomodoro](/specs/images/Pomo_traditional_flow.png) <br/>
 
 
 ---
@@ -70,6 +70,6 @@ BONUS: <br/>
 
 ---
 
-#### YML
-![Version 1](/specs/flow_v1.png)
+#### Event Modelling
+![Version 1](/specs/images/flow_v1.png)
 
