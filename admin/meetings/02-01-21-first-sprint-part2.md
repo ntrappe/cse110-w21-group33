@@ -16,6 +16,8 @@ You need to formally document your project's target audience, including [persona
 (which document a broader set of activities the user has with the system, focused more on the task than the user's needs).
 
 **:pencil: Team Members**: \[name\] \[name\]
+
+---
   
 **2. ADRs.** As your team makes decisions, you should be filling out [ADRs](https://adr.github.io/madr/) documenting your decisions and reasons. What features are you going to include/exclude? Who is your target audience? What are the major elements of your UI design? How do you break your architecture up into components/pages? All these decisions and more should be documented in ADRs. We'll be asking for retrospectives later in the term, and well-made ADRs make it much easier to reflect on your expectations/reasoning and compare it with the outcome.
 
@@ -26,6 +28,8 @@ You need to formally document your project's target audience, including [persona
 
 **:pencil: Team Members**: \[name\] \[name\]
 
+---
+
 **3. Interface Designs.** <br/>
 Start sketching out your app's UI! It's good to incrementally design these in increasing levels of detail. Start with a [fat marker sketch](https://basecamp.com/shapeup/1.3-chapter-04) to get a general idea. Move on to [wireframes](https://www.experienceux.co.uk/faqs/what-is-wireframing/) once you've begun converging on a design. Finally, once you're confident, move on to a detailed mock-up that lays out exactly how each page should look. Don't just jump to the latter stages--you might spend a lot of time designing something that doesn't work!
 
@@ -34,6 +38,7 @@ Start sketching out your app's UI! It's good to incrementally design these in in
 
 **:pencil: Team Members**: Nicole & Lulu
 
+---
 
 **2. System Diagrams** <br/>
 You need to formally document your application's architecture. These can take multiple forms, including C4, event modeling, and UML diagrams. This isn't an either/or choice. Since each of these focus on different (albeit sometimes overlapping) parts of the system, you should have a mixture of these to describe your whole system. I'd recommend starting with C4 and going from there, but the choice is up to you.
