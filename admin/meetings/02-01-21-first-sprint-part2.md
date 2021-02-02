@@ -16,10 +16,15 @@ If you're very confused about what's currently happening, review the [meeting no
 3. [Interface](#interface-designs)
 4. [System Diagrams](#system-diagrams) 
 5. [Project Pitch](#project-pitch)
+6. [Roadmap](#project-roadmap)
+7. [Glossery](#glossery)
+8. [Style Guidelines](#html/css/js-guidelines)
+9. [Pair Docs](#pair-work-documentation)
+10. [Pair Assignment](#assigning-pairs)
 
 ---
 
-**1. User-centered Thinking Documents.** <br/>
+**1. User Centered Thinking Documents.** <br/>
 You need to formally document your project's target audience, including [personas](http://opendesignkit.org/methods/personas/), 
 [user stories](https://en.wikipedia.org/wiki/User_story), and optionally [use cases](https://en.wikipedia.org/wiki/Use_case)
 (which document a broader set of activities the user has with the system, focused more on the task than the user's needs).
@@ -45,7 +50,7 @@ Start sketching out your app's UI! It's good to incrementally design these in in
 #### Notes:
 - Nicole did wireframes during Monday's meeting
 
-**:pencil: Team Members**: Nicole & Lulu
+** ✅ Team Members**: Nicole & Lulu
 
 ---
 
