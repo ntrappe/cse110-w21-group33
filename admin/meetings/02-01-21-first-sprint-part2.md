@@ -29,7 +29,7 @@ As your team makes decisions, you should be filling out [ADRs](https://adr.githu
 - It may be good to mention the essential features then ones we want for later sprints (and classify them that way)
 - Explain why we chose what we did and how it meets specific *user needs*
 
-**:pencil: Team Members**: Michael
+**:pencil: Team Members**: Michael & Steven
 
 ---
 
@@ -49,7 +49,7 @@ You need to formally document your application's architecture. These can take mu
 #### Notes:
 - there's an inital version in [/specs](https://github.com/ntrappe/cse110-w21-group33/blob/main/specs/brainstorm-prep-spec.md)
 
-**:pencil: Team Members**: (maybe Nicole) & 
+**:pencil: Team Members**: (maybe Nicole) & Steven
 
 ---
 
