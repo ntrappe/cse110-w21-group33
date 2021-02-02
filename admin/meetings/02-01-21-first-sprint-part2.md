@@ -49,7 +49,7 @@ You need to formally document your application's architecture. These can take mu
 #### Notes:
 - there's an inital version in [/specs](https://github.com/ntrappe/cse110-w21-group33/blob/main/specs/brainstorm-prep-spec.md)
 
-**:pencil: Team Members**:
+**:pencil: Team Members**: (maybe Nicole) & 
 
 ---
 
