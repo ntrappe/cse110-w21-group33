@@ -34,22 +34,52 @@ You need to formally document your project's target audience, including [persona
 Start sketching out your app's UI! It's good to incrementally design these in increasing levels of detail. Start with a [fat marker sketch](https://basecamp.com/shapeup/1.3-chapter-04) to get a general idea. Move on to [wireframes](https://www.experienceux.co.uk/faqs/what-is-wireframing/) once you've begun converging on a design. Finally, once you're confident, move on to a detailed mock-up that lays out exactly how each page should look. Don't just jump to the latter stages--you might spend a lot of time designing something that doesn't work!
 
 #### Notes:
-- Already did wireframes during Monday's meeting so all that's left is the mock-ups
+- Nicole did wireframes during Monday's meeting
 
 **:pencil: Team Members**: Nicole & Lulu
 
 ---
 
-**2. System Diagrams** <br/>
-You need to formally document your application's architecture. These can take multiple forms, including C4, event modeling, and UML diagrams. This isn't an either/or choice. Since each of these focus on different (albeit sometimes overlapping) parts of the system, you should have a mixture of these to describe your whole system. I'd recommend starting with C4 and going from there, but the choice is up to you.
+**4. System Diagrams** <br/>
+You need to formally document your application's architecture. These can take multiple forms, including [C4](https://c4model.com/), [event modeling](https://eventmodeling.org/posts/what-is-event-modeling/), and [UML diagrams](https://en.wikipedia.org/wiki/Unified_Modeling_Language#Diagrams). This isn't an either/or choice. Since each of these focus on different (albeit sometimes overlapping) parts of the system, you should have a mixture of these to describe your whole system. I'd recommend starting with C4 and going from there, but the choice is up to you.
 
-
-
-
-Project Roadmap. Divide features into sprints. As discussed in class, there are four total sprints. How will you divide work between the sprints? What is your MVP for sprint 2, and what are your stretch goals for sprint 3? Will you leave flex time for cleanup/refactoring/debugging/finishing features?
-Project Pitch. Condense your brainstorming and design documents above into a single project pitch that you'll deliver for me. Treat it like you're pitching your project for upper management/an outside company, meaning you need to describe every aspect of your system like I'm an outsider: the problem, audience, architecture, UI design, features, roadmap, etc. To see how you should structure your pitch, see chapter 6 from Shape Up. You can reuse your existing diagrams, but the pitch itself should be a separate document with the diagrams copied inside.
+**:pencil: Team Members**: \[name\] \[name\] \[name\]
 
 ---
+
+**5. Project Pitch.** Condense your brainstorming and design documents above into a single project pitch that you'll deliver for me. Treat it like you're pitching your project for upper management/an outside company, meaning you need to describe every aspect of your system like I'm an outsider: the problem, audience, architecture, UI design, features, roadmap, etc. To see how you should structure your pitch, see [chapter 6 from Shape Up](https://basecamp.com/shapeup/1.5-chapter-06). You can reuse your existing diagrams, but the pitch itself should be a separate document with the diagrams copied inside.
+
+**:pencil: Team Members**: \[name\] \[name\]
+
+---
+
+**6. Project Roadmap.** <br/>
+Divide features into sprints. As discussed in class, there are four total sprints. How will you divide work between the sprints? What is your MVP for sprint 2, and what are your stretch goals for sprint 3? Will you leave flex time for cleanup/refactoring/debugging/finishing features?
+
+**:pencil: Team Members**: Whole Team (will be done in this meeting)
+
+---
+
+**7. Glossery.** <br/>
+
+**:pencil: Assigned To**: Lulu
+
+---
+
+**8. HTML/CSS/JS Guidelines** <br/>
+Acronyms are often useful and efficient, but have an on boarding cost. Try to speak a common dialect other than a project specific one
+
+**:pencil: Assigned To**: Richard
+
+---
+
+**9. Pair Work Documentation** <br/>
+Def TBD
+
+**:pencil: Assigned To**: 
+
+---
+
 
 ALSO go to **Projects** > **Pomodoro Timer** > **Setup Sprint (To Do)** and add your name to the specific note with the task that matches the one you chose above.
 
