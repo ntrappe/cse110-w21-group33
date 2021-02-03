@@ -70,6 +70,6 @@ BONUS: <br/>
 
 ---
 
-#### YML
+#### Event Modelling
 ![Version 1](/specs/flow_v1.png)
 
