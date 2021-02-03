@@ -4,6 +4,7 @@
 #### Features
 - **Timer**: displays the minutes and seconds and counts down to 00:00
   - should be front and center and the most prominent element in the screen
+  - once timer hits 00:00, it transitions to the next mode (e.g. Pomo --> short break) and waits for the user to hit 'Start'
 - **Buttons**: user-controlled interactions
   - **Start**: will start the count-down of the timer (the timer must wait for this command)
     - once start is clicked, it will swapped with 'restart'
@@ -21,6 +22,7 @@
 - **Settings**:
 - **Label**: above the timer, we should have a written label for the mode we are in rather than *just* relying on background color
   - e.g. in Pomodoro, the label has "Pomodoro"
+  - when the timer hits 00:00, it will change to the next mode and the label accompanying that will change
 - **Info/About page**: page will hover over the current window with information on the Pomodoro techniue and specific features
   - need to decide on what signifier we will use to allow the user to find this page (e.g. 'About', '?' icon, button, etc.)
   - we can decide if the user can also modify specific features while in this info page
