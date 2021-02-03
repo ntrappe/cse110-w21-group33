@@ -35,7 +35,7 @@
 
 ---
 
-Feature Model
+**Feature Model**
 
 ![roadmap_img1](images/roadmap_features1.png)
 
