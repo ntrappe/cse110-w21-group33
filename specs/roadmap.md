@@ -29,6 +29,8 @@
 - **Counter**: we need some way of tracking both the total number of Pomodoros/short breaks/long breaks completed tht day for the record BUT also we need to count 4 Pomodoros towards a **set** that will then transition the timer into "long break"
 - **Central Control**: we need a way to switch the timer into the different modes: Pomodoro, Short Break, & Long Break
 
+---
+
 ### Sprint #2
 #### Features
 - **Audio Notifications**: allow the user to receive a noise that prompts them to react (e.g. press Start) and to go into next transition
@@ -36,3 +38,6 @@
   - **Feature #2**: (in settings) allow the user to select the type of noise from a short list
     - each time they select one, it will make the sound instantly so they can "sample it"
   - **Feature #3**: (in settings or main) allow user to turn on and off audio
+- **Tab Bar**: in the browser tab, allow the current timer time to be displayed
+- **Calm Mode**: (in main) allow user to switch to 'calm' mode that will represent timer with just minutes NOT seconds
+  - e.g. the timer will show "25m" --> user hits start --> "24m"; the tab bar will mirror that an display "24m"
