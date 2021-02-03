@@ -6,7 +6,9 @@
   - should be front and center and the most prominent element in the screen
 - **Buttons**: user-controlled interactions
   - **Start**: will start the count-down of the timer (the timer must wait for this command)
+    - once start is clicked, it will swapped with 'restart'
   - **Restart**: will reset the timer (e.g. if timer was at 22:59, it will go back to 25:00)
+    - once restart is clicked, it will swapped with 'start'
     - if the timer hits 00:00 then that counts as a successful Pomodoro, a reset will restart *that* Pomodoro
       - e.g. if I was on Pomo #2 and was interupted and re-started the clock, I'm still in #2
   - **Finish**: ends the session; in future sprints, this will show a record of the session's Pomodoro's (but for this sprint, it might not do anything)
