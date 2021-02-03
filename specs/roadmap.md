@@ -14,7 +14,8 @@
     - may change the word label of this
   - buttons will be below the timer and easy to access
   - there should be visible feedback for the hover + click
-- Info/About page: when the user clicks on the '?' icon, a page will hover over the current window with information on the Pomodoro techniue and specific features
+- **Info/About page**: page will hover over the current window with information on the Pomodoro techniue and specific features
+  - need to decide on what signifier we will use to allow the user to find this page (e.g. 'About', '?' icon, button, etc.)
   - we can decide if the user can also modify specific features while in this info page
     - example: "Did you know you can set audio notification" could have a button for that that doesn't just mirror the actual features in settings but also will change audio 
 #### Internal Features
