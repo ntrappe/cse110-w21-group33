@@ -1,7 +1,7 @@
 # Roadmap
 
 ## Sprint #1 (MVP)
-#### Features
+### Features
 - **Timer**: displays the minutes and seconds and counts down to 00:00
   - should be front and center and the most prominent element in the screen
   - once timer hits 00:00, it transitions to the next mode (e.g. Pomo --> short break) and waits for the user to hit 'Start'
@@ -29,7 +29,7 @@
     - example: "Did you know you can set audio notification" could have a button for that that doesn't just mirror the actual features in settings but also will change audio 
     
     
-#### Internal Features
+### Internal Features
 - **Counter**: we need some way of tracking both the total number of Pomodoros/short breaks/long breaks completed tht day for the record BUT also we need to count 4 Pomodoros towards a **set** that will then transition the timer into "long break"
 - **Central Control**: we need a way to switch the timer into the different modes: Pomodoro, Short Break, & Long Break
 
@@ -43,8 +43,8 @@
 
 ---
 
-### Sprint #2
-#### Features
+## Sprint #2
+### Features
 - **Audio Notifications**: allow the user to receive a noise that prompts them to react (e.g. press Start) and to go into next transition
   - **Feature #1**: (in settings) allow the user to set the volume
   - **Feature #2**: (in settings) allow the user to select the type of noise from a short list
