@@ -16,6 +16,9 @@
   - there should be visible feedback for the hover + click
 - **Color**: ideally have a different background color for each mode (Pomodoro, Short Break, Long Break)
   - all colors should be blues/greens/calm colors that are not distracting (e.g. not red lol)
+- **Settings**:
+- **Label**: above the timer, we should have a written label for the mode we are in rather than *just* relying on background color
+  - e.g. in Pomodoro, the label has "Pomodoro"
 - **Info/About page**: page will hover over the current window with information on the Pomodoro techniue and specific features
   - need to decide on what signifier we will use to allow the user to find this page (e.g. 'About', '?' icon, button, etc.)
   - we can decide if the user can also modify specific features while in this info page
