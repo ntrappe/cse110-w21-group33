@@ -35,6 +35,12 @@
 
 ---
 
+Feature Model
+
+![roadmap_img1](images/roadmap_features1.png)
+
+---
+
 ### Sprint #2
 #### Features
 - **Audio Notifications**: allow the user to receive a noise that prompts them to react (e.g. press Start) and to go into next transition
