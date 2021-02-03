@@ -1,6 +1,6 @@
 # Roadmap
 
-### Sprint #1 (MVP)
+## Sprint #1 (MVP)
 #### Features
 - **Timer**: displays the minutes and seconds and counts down to 00:00
   - should be front and center and the most prominent element in the screen
@@ -38,6 +38,8 @@
 **Feature Model**
 
 ![roadmap_img1](images/roadmap_features1.png)
+
+![roadmap_img2](images/roadmap_features2.png)
 
 ---
 
