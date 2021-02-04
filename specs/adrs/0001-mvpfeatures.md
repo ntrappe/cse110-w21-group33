@@ -40,3 +40,8 @@ Chosen options:
 
 * Pros: Easier to implement on initial run, gives user more freedom in timing themselves
 * Cons: Less intuitive, requires that user knows what Pomodoro technique is, requires extra effort in enforcing the Pomodoro technique
+
+### Minimalist UI
+
+* Pros: More user friendly, emphasizes idea of productivity, puts more focus to features of application
+* Cons: ...
