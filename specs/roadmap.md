@@ -9,6 +9,7 @@
   - **Start**: will start the count-down of the timer (the timer must wait for this command)
     - once start is clicked, it will swapped with 'restart'
   - **Restart**: will reset the timer (e.g. if timer was at 22:59, it will go back to 25:00)
+    - the user can restart both Pomorodors and breaks
     - once restart is clicked, it will swapped with 'start'
     - if the timer hits 00:00 then that counts as a successful Pomodoro, a reset will restart *that* Pomodoro
       - e.g. if I was on Pomo #2 and was interupted and re-started the clock, I'm still in #2
@@ -53,3 +54,8 @@
 - **Tab Bar**: in the browser tab, allow the current timer time to be displayed
 - **Calm Mode**: (in main) allow user to switch to 'calm' mode that will represent timer with just minutes NOT seconds
   - e.g. the timer will show "25m" --> user hits start --> "24m"; the tab bar will mirror that an display "24m"
+- **Cookies**: (maybe for Sprint #3) use cookies to save user info in their browser:
+  - in case user closes window or refreshes it, their most recent mode will remain the same (but restarted)
+    - e.g. if in pomodoro #3 and hit refresh before it ended --> pomodoro #3 will be reset
+  - potentially reset cookies at 4am local time to clear it for next day session
+    - since our users are undergrads, many work up until 2am so we shouldn't reset at midnight
