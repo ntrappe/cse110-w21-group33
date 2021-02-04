@@ -15,3 +15,9 @@ Gender: Female
 Occupation: Elementary school kid
 Tech familiarity: As an elementary school student, she has very little experience with web-based apps.
 Wants: "I have a lot of trouble with losing focus at home, my mom wanted me to try this to do my homework."
+
+Person 4: Gillespie
+Gender: Male
+Occupation: Teacher
+Tech Familiarity: As a teacher, I am generally familar with simple web-based apps.
+Wants: "I want my students to develop a strong work ethic and ability to focus, preventing them from spending over 12 hours a week on their homework."
