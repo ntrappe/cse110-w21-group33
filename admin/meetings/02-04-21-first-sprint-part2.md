@@ -4,12 +4,13 @@
 ### Overview
 | Date       | Time      | Type of Meeting   | Where   |
 | ---------- | --------- | ----------------- | ------- |
-| 02/04/2021 | 6-7pm PST |          | Zoom    |
+| 02/04/2021 | 6-7:30pm PST | Present work, Planning         | Zoom    |
 
 
 ### Prep
 If you're very confused about what's currently happening, review the [meeting notes](https://github.com/ntrappe/cse110-w21-group33/blob/main/admin/meetings/02-01-21-first-sprint.md) from Monday. Since we'll be pairing up, these initial tasks have been assigned to temporary pairs. After this session, we will evaluate whether these pairs work well.
-
+- CSS reset: site forces own styles to ensure that all 3 browsers display things the same way
+ 
 ---
 
 **1. User Centered Thinking Documents.** <br/>
@@ -18,6 +19,9 @@ You need to formally document your project's target audience, including [persona
 (which document a broader set of activities the user has with the system, focused more on the task than the user's needs).
 
 **✅ Team Members**: Bryant & Brandon
+
+- Created folder called target_users in specs with 4 personas and user stories
+  - Personas cover people from all walks of life and tech familiarity 
 
 ---
   
@@ -31,6 +35,15 @@ As your team makes decisions, you should be filling out [ADRs](https://adr.githu
 
 **✅ Team Members**: Vy & Michael
 
+- Did lots of brainstorming, less decisions
+- Currently have 3 ADRs
+- Still discussing the UI Decisions ADR
+  - Discussing pair programming as well
+- Mentions we do not have many considered options as group is mostly on same page
+- Might want to add obvious things (why the timer is front center, why timer instead of analog, etc)
+- Having everything in github might be unneccessary, we will bring it up with Chad
+  - For example, there are a huge amount of commits and it makes it harder to track what's happening
+
 ---
 
 **3. Interface Designs.** <br/>
@@ -40,6 +53,21 @@ Start sketching out your app's UI! It's good to incrementally design these in in
 - Nicole did wireframes during Monday's meeting
 
 **✅ Team Members**: (Nicole) + Richard & Lulu
+
+- Presented mockups, current color choices
+- Nicole brought up having a cool tone for the work design
+- Decided against top bar, choosing between side bar and lightbox
+  - Can choose set width for side bar to prevent running out of space
+- Sliding side bar
+- Test animations after functional demo, easy to adjust
+  - Idea: have background signify progress by having it fade into the next session's color
+  - Idea: only have it distracting during break
+  - Perhaps for calm mode
+  - Possible cons: might be distracting
+- TODO: Make in figma, create the animation
+- Change restart to reset 
+- Have Finish be below the other buttons to make it clear it's not to be used often
+  - Have only one Start option below the timer
 
 ---
 
@@ -51,6 +79,9 @@ You need to formally document your application's architecture. These can take mu
 
 **✅ Team Members**: (maybe Nicole) + Felix & Steven
 
+- Miro board: 4C Diagrams
+- Timer, Storage, Setting, Help component
+
 ---
 
 **5. Project Pitch.** Condense your brainstorming and design documents above into a single project pitch that you'll deliver for me. Treat it like you're pitching your project for upper management/an outside company, meaning you need to describe every aspect of your system like I'm an outsider: the problem, audience, architecture, UI design, features, roadmap, etc. To see how you should structure your pitch, see [chapter 6 from Shape Up](https://basecamp.com/shapeup/1.5-chapter-06). You can reuse your existing diagrams, but the pitch itself should be a separate document with the diagrams copied inside.
@@ -60,6 +91,9 @@ You need to formally document your application's architecture. These can take mu
 - You should at least have a rough draft of your system's features, UI, and architecture
 
 **✅ Team Members**: Whole Team (will be done in this meeting)
+
+- Ideas: give background story to explain our problem
+- Rabbit holes: not overdeveloping, not having UI clutter, not distracting
 
 ---
 
@@ -105,12 +139,12 @@ ALSO go to **Projects** > **Pomodoro Timer** > **Setup Sprint (To Do)** and add 
 ---
 
 ### Attendance
-- [ ] Michael Donaldson
-- [ ] Richard Duong
-- [ ] Brandon Liu
-- [ ] Bryant Shao
-- [ ] Steven Steiner
-- [ ] Nicole Trappe
-- [ ] Vy Truong
-- [ ] Felix Zhang
-- [ ] Lulu Zhu
+- [x] Michael Donaldson
+- [x] Richard Duong
+- [x] Brandon Liu
+- [x] Bryant Shao
+- [x] Steven Steiner
+- [x] Nicole Trappe
+- [x] Vy Truong
+- [x] Felix Zhang
+- [x] Lulu Zhu
