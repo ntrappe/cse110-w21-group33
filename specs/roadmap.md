@@ -1,8 +1,27 @@
 # Roadmap
 
 ## Sprint #1 (MVP)
-### Features
-- **Timer**: displays the minutes and seconds and counts down to 00:00
+### Features Overview
+- Timer (minutes, seconds)
+- Button that toggles between "reset" and "start"
+- Button for "finish" 
+- Info/About Page (lightbox) with icon
+- Sidebar for settings
+- Different background color for each mode (Pomo - color1, Short Break - color2, Long Break - color3)
+- Label for the mode (e.g. "Short Break")
+
+### Feature Specifications
+- **Feature 1: Timer**: 
+  - function: displays minutes and seconds; decrements from initial number to 00:00 
+  - inputs: 
+    - "reset" signal: resets the timer to the appropriate number for the mode
+      - e.g. reset for **Pomo**: 25:00; reset for **Short Break**: 5:00; reset for **Long Break**: 15:00
+      - a reset DOES NOT start the timer
+      - if gets a reset in the middle of a Pomo/break, starts that session over and does not move on to the next one
+    - "start" signal: starts decrementing until hits 0:00 or gets a "reset" signal
+  - outputs:
+    - TBD but may send a signal to Central Control
+  
   - should be front and center and the most prominent element in the screen
   - once timer hits 00:00, it transitions to the next mode (e.g. Pomo --> short break) and waits for the user to hit 'Start'
 - **Buttons**: user-controlled interactions
