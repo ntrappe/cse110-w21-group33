@@ -34,7 +34,7 @@
 | 2    | 01/14/2021        | N/A        | N/A                | N/A         | 01/15/2021     | N/A        |
 | 3    | 01/19/2021        | Nicole     | N/A                | N/A         | 01/22/2021     | Steven     |
 | 4    | 01/26/2021        | Brandon    | 01/28/2021         | Michael     | 01/29/2021     | Felix      |
-| 5    | 02/01/2021        | Nicole     | 02/04/2021         | Lulu        |                |            |
+| 5    | 02/01/2021        | Nicole     | 02/04/2021         | Lulu        | 02/05/2021     |            |
 
 `* = if applicable (sometimes we may have only 1 or 2 group meetings / week)`
 
