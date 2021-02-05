@@ -71,5 +71,5 @@ BONUS: <br/>
 ---
 
 #### Event Modelling
-![Version 1](/specs/flow_v1.png)
+![Version 1](/specs/images/flow_v1.png)
 
