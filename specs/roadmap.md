@@ -20,28 +20,32 @@
       - if gets a reset in the middle of a Pomo/break, starts that session over and does not move on to the next one
     - "start" signal: starts decrementing until hits 0:00 or gets a "reset" signal
   - outputs:
-    - TBD but may send a signal to Central Control when hit 00:00 to determine next mod
+    - TBD but may send a signal to Central Control when hit 00:00 to determine next mode
+      - a successful Pomo or break is when the timer hits 00:00 
   - UI: should be front and center and the most prominent element in the screen
-- **Buttons**: user-controlled interactions
-  - **Start**: will start the count-down of the timer (the timer must wait for this command)
-    - once start is clicked, it will swapped with 'restart'
-  - **Restart**: will reset the timer (e.g. if timer was at 22:59, it will go back to 25:00)
-    - the user can restart both Pomorodors and breaks
-    - once restart is clicked, it will swapped with 'start'
-    - if the timer hits 00:00 then that counts as a successful Pomodoro, a reset will restart *that* Pomodoro
-      - e.g. if I was on Pomo #2 and was interupted and re-started the clock, I'm still in #2
-  - **Finish**: ends the session; in future sprints, this will show a record of the session's Pomodoro's (but for this sprint, it might not do anything)
+- **Feature 2: Buttons**: 
+  - function: user input
+    - "start" will start decrementing the clock
+    - "reset" will reset the clock to its intial value at any point from when the user hits "start" to 00:00
+    - once "start" is clicked, it will turn into "restart" and vice-versa
+    - e.g. if I was on Pomo #2 and was interupted and re-started the clock, I'm still in #2
+  - (maybe add): "finish" ends the session; in future sprints, this will show a record of the session's Pomodoro's (but for this sprint, it might not do anything)
     - by session I mean the day of work
     - may change the word label of this
-  - buttons will be below the timer and easy to access
-  - there should be visible feedback for the hover + click
-- **Color**: ideally have a different background color for each mode (Pomodoro, Short Break, Long Break)
+  - UI:
+    - buttons will be below the timer and easy to access
+    - there should be visible feedback for the hover + click
+- **Feature 3: Color**: 
+  - ideally have a different background color for each mode (Pomodoro, Short Break, Long Break)
   - all colors should be blues/greens/calm colors that are not distracting (e.g. not red lol)
-- **Settings**:
-- **Label**: above the timer, we should have a written label for the mode we are in rather than *just* relying on background color
+  - maybe have a gradual color change during the progression of a break but not during a Pomo because it's distracting? (for a future sprint)
+  - all colors should be blues/greens/calm colors that are not distracting (e.g. not red lol)
+- **Feature 4: Settings**:
+  - function: for this sprint, just be able to click an icon and have a sidebar slide out and contract once icon pressed again
+- **Feature 5: Label**: above the timer, we should have a written label for the mode we are in rather than *just* relying on background color
   - e.g. in Pomodoro, the label has "Pomodoro"
   - when the timer hits 00:00, it will change to the next mode and the label accompanying that will change
-- **Info/About page**: page will hover over the current window with information on the Pomodoro techniue and specific features
+- **Feature 6: Info/About page**: page will hover over the current window with information on the Pomodoro techniue and specific features
   - need to decide on what signifier we will use to allow the user to find this page (e.g. 'About', '?' icon, button, etc.)
   - we can decide if the user can also modify specific features while in this info page
     - example: "Did you know you can set audio notification" could have a button for that that doesn't just mirror the actual features in settings but also will change audio 
