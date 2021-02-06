@@ -17,7 +17,7 @@ After deciding on the features of the MVP features, we designed the app as a one
 
 ## Decision Outcome
 
-We have not decided on which option yet.
+We have decided on Option B: Side Bar
 
 ## Pros and Cons of the Options <!-- optional -->
 
