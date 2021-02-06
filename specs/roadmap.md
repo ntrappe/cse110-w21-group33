@@ -42,13 +42,13 @@
   - all colors should be blues/greens/calm colors that are not distracting (e.g. not red lol)
 - **Feature 4: Settings**:
   - function: for this sprint, just be able to click an icon and have a sidebar slide out and contract once icon pressed again
-- **Feature 5: Label**: above the timer, we should have a written label for the mode we are in rather than *just* relying on background color
-  - e.g. in Pomodoro, the label has "Pomodoro"
-  - when the timer hits 00:00, it will change to the next mode and the label accompanying that will change
-- **Feature 6: Info/About page**: page will hover over the current window with information on the Pomodoro techniue and specific features
-  - need to decide on what signifier we will use to allow the user to find this page (e.g. 'About', '?' icon, button, etc.)
-  - we can decide if the user can also modify specific features while in this info page
-    - example: "Did you know you can set audio notification" could have a button for that that doesn't just mirror the actual features in settings but also will change audio 
+- **Feature 5: Label**: 
+  - function: written label for the mode we are in rather than *just* relying on background color (i.e. more accessibility)
+    - e.g. in Pomodoro, the label has "Pomodoro"
+    - when the timer hits 00:00, it will change to the next mode and the label accompanying that will change
+  - UI: will be above the timer
+- **Feature 6: Info/About page**: 
+  - for this sprint, just have user be able to click icon, lightbox pop up, and close it
     
     
 ### Internal Features
@@ -59,9 +59,13 @@
 
 **Feature Model**
 
-![roadmap_img1](images/roadmap_features1.png)
+![roadmap_img1](user_inferface/images/ui_v1_pomo_start.png)
 
-![roadmap_img2](images/roadmap_features2.png)
+![roadmap_img2](user_inferface/images/ui_v1_pomo_reset.png)
+
+![roadmap_img3](user_inferface/images/ui_v1_shortbreak_start.png)
+
+![roadmap_img4](user_inferface/images/ui_v1_longbreak_start.png)
 
 ---
 
@@ -80,3 +84,9 @@
     - e.g. if in pomodoro #3 and hit refresh before it ended --> pomodoro #3 will be reset
   - potentially reset cookies at 4am local time to clear it for next day session
     - since our users are undergrads, many work up until 2am so we shouldn't reset at midnight
+- **Settings**: add elements like set audio, turn on calm mode, etc.
+- **Info/About Page**:
+  - page will hover over the current window with information on the Pomodoro techniue and specific features
+  - need to decide on what signifier we will use to allow the user to find this page (e.g. 'About', '?' icon, button, etc.)
+  - we can decide if the user can also modify specific features while in this info page
+    - example: "Did you know you can set audio notification" could have a button for that that doesn't just mirror the actual features in settings but also will change audio 
