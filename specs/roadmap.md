@@ -20,10 +20,8 @@
       - if gets a reset in the middle of a Pomo/break, starts that session over and does not move on to the next one
     - "start" signal: starts decrementing until hits 0:00 or gets a "reset" signal
   - outputs:
-    - TBD but may send a signal to Central Control
-  
-  - should be front and center and the most prominent element in the screen
-  - once timer hits 00:00, it transitions to the next mode (e.g. Pomo --> short break) and waits for the user to hit 'Start'
+    - TBD but may send a signal to Central Control when hit 00:00 to determine next mod
+  - UI: should be front and center and the most prominent element in the screen
 - **Buttons**: user-controlled interactions
   - **Start**: will start the count-down of the timer (the timer must wait for this command)
     - once start is clicked, it will swapped with 'restart'
