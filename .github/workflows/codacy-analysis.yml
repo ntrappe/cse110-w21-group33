@@ -1,6 +1,6 @@
 name: Codacy Analysis CLI
 
-on 
+on:
   push:
     branches: [master]
   pull_request:
