@@ -16,6 +16,8 @@ name: Lint Code Base
 #############################
 on:
   push:
+    branches-ignore:
+      - master
   pull_request:
     branches: [main]
 
@@ -54,4 +56,4 @@ jobs:
           VALIDATE_CSS: true
           VALIDATE_HTML: true
           VALIDATE_JAVASCRIPT_ES: true
-          FILTER_REGEX_EXCLUDE: .*/Documentation/.*
+          FILTER_REGEX_EXCLUDE: .*/JSDocumentation/.*
