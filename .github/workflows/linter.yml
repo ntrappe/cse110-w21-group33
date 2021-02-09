@@ -16,9 +16,10 @@ name: Lint Code Base
 #############################
 on:
   push:
-    branches: [master]
   pull_request:
-    branches: [master]
+    branches: [main]
+
+  workflow_dispatch:
 
 ###############
 # Set the Job #
@@ -49,6 +50,11 @@ jobs:
       - name: Lint Code Base
         uses: github/super-linter@v3
         env:
-          VALIDATE_ALL_CODEBASE: true
+          VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          VALIDATE_CSS: true
+          VALIDATE_HTML: true
+          VALIDATE_JAVASCRIPT_ES: true
+          FILTER_REGEX_EXCLUDE: .*/Documentation/.*

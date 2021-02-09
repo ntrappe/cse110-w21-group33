@@ -2,9 +2,10 @@ name: Codacy Analysis CLI
 
 on:
   push:
-    branches: [master]
   pull_request:
-    branches: [master]
+    branches: [main]
+    
+  workflow_dispatch:
 
 jobs:
   codacy-analysis-cli:
@@ -12,7 +13,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
 
       - name: Run Codacy Analysis CLI
         uses: codacy/codacy-analysis-cli-action@master
+        with:
+          directory: "./Source"
+        run: |
+          echo LOC - Lines of Code
+          echo CLOC - Commented Lines of Code
+          echo CC - Cyclomatic Complexity
+          echo #methods - Number of Methods
+          echo #classes - Number of Classes
