@@ -15,7 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - run: yarn add --dev jest
-    - run: yarn install
-    - run: npm run test
-    - run: yarn coverage
+    - run: sudo npm install -g jest
+    - run: npm test
+    - run: npm coverage
