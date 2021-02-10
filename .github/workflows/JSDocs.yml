@@ -22,8 +22,8 @@ jobs:
 
       - name: Push changes to repo
         run: |
-          git config --global user.email "bryantshao@gmail.com"
-          git config --global user.name "IntelBear"
+          git config --global user.email "ntrappe@ucsd.edu"
+          git config --global user.name "ntrappe"
           git checkout ${{ github.head_ref }}
           git add .
           git status
