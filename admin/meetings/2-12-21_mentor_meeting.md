@@ -1,23 +1,21 @@
-# Sample Meeting Notes
 ##### Team: Powell's Owls | Group 33
 
 ### Overview
 | Date       | Time      | Type of Meeting   | Where   |
 | ---------- | --------- | ----------------- | ------- |
-| 01/18/2021 | 4-5pm PST | Logistics         | Zoom    |
+| 02/12/2021 | 5-6pm PST | Review         | Zoom    |
 
 
 ### Key Points
-- meeting notes are important
-- we forget everything
+- 
 
 ### Attendance
-- [x] Michael Donaldson
+- [] Michael Donaldson
 - [x] Richard Duong
-- [x] Brandon Liu
+- [] Brandon Liu
 - [x] Bryant Shao
 - [x] Steven Steiner
-- [ ] Nicole Trappe
+- [x] Nicole Trappe
 - [x] Vy Truong
-- [x] Felix Zhang
+- [] Felix Zhang
 - [x] Lulu Zhu
