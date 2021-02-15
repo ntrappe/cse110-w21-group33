@@ -3,13 +3,21 @@
 /** 
  * @NOTE Change these globals to change how long the timer is run and speed of seconds
  */
-const NUM_MIN = 2;      // default number of minutes on clock
-const SEC_SPEED = 250;  // 1/4 sec (how fast clock ticks)
+var NUM_MIN = 2;       // default number of minutes on clock
+var POMODORO_MIN = 1; // default time for Pomodoro work mode
+var SHORT_MIN = 2;    // default time for Short Break mode
+var LONG_MIN = 3;     // default time for Long Break mode
+const SEC_SPEED = 50;   // 1/4 sec (how fast clock ticks)
 const START_NAME = 'Start';
 const RESET_NAME = 'Reset';
+const POMODORO_MODE = "Pomodoro";
+const SHORT_BREAK_MODE = "Short Break";
+const LONG_BREAK_MODE = "Long Break";
 
 // Main Button Toggle
 var toggle_btn = document.getElementById("main-btn");
+// Mode Tracker
+var mode_label = document.getElementById("mode");
 
 /**
  * Listens to any clicks of the Start/Reset button to toggle between the two and
@@ -20,6 +28,7 @@ var toggle_btn = document.getElementById("main-btn");
 toggle_btn.addEventListener('click', function(e) {
     var button_text = toggle_btn.innerHTML;
     if (button_text === START_NAME) {
+        setTimer();
         setResetButton();
         start_timer();
     } else {
@@ -60,6 +69,41 @@ function setResetButton() {
     toggle_btn.innerHTML = RESET_NAME;
 }
 
+/**
+ * Set timer to correct time based on Mode
+ */
+function setTimer() {
+    var mode_text = mode_label.innerHTML;
+    if (mode_text == POMODORO_MODE) {
+        NUM_MIN = POMODORO_MIN;
+    }
+    else if (mode_text == SHORT_BREAK_MODE) {
+        NUM_MIN = SHORT_MIN;
+    } else {
+        NUM_MIN = LONG_MIN;
+    }
+}
+
+/** 
+ * Changes mode to current Mode
+ */
+function change_mode() {
+    if (mode_label.innerHTML == POMODORO_MODE) {
+        if (!(localStorage.getItem('Pomodoro_Count'))) { // Checking if locale storage exist
+            localStorage.setItem('Pomodoro_Count',0); // Creating locale storage 
+        }
+        var pomo_count = localStorage.getItem('Pomodoro_Count'); // Getting pomodoro finished
+        localStorage.setItem('Pomodoro_Count',++pomo_count); // Updating locale storage
+        if (pomo_count % 4 == 0) {                           // Checking what breaks to go to
+            mode_label.innerHTML = LONG_BREAK_MODE;
+        } else { 
+            mode_label.innerHTML = SHORT_BREAK_MODE;
+        }
+    } else {
+        mode_label.innerHTML = POMODORO_MODE;
+    }
+}
+
 //---------------------------------------------------------------------------
 
 // Timer code
@@ -96,6 +140,8 @@ let timer = {
 function tick() {
     // if time has run out, stop "ticking" by clearing Interval and reset the timer
     if (timer.total_seconds == 0) {
+        change_mode();
+        setTimer();
         reset_timer();
         setStartButton();
     // otherwise, keep decrementing seconds and updating time on screen
