@@ -1,0 +1,75 @@
+# Group Contract
+*Term: Winter 2021 <br/>
+Creation: 01/19/2021*
+
+### Part 1: Group Identification
+**Group #**: 33 <br/>
+**Instructor**: Thomas Allen Powell <br/>
+**Team Name**: Powell's Owls <br/>
+
+#### Team Member Info
+| Name              | Preferred First Name | Email             | 
+| ----------------- | -------------------- | ----------------- | 
+| Michael Donaldson | Michael              | mdonalds@ucsd.edu |
+| Richard Duong     | Richard              | riduong@ucsd.edu  |
+| Brandon Liu       | Brandon              | bsliu@ucsd.edu    |
+| Bryant Shao       | Bryant               | bwshao@ucsd.edu   |
+| Steven Steiner    | Steven               | sisteine@ucsd.edu |
+| Nicole Trappe     | Nicole               | ntrappe@ucsd.edu  |
+| Vy Truong         | Vy                   | vntruong@ucsd.edu |
+| Futian Zhang      | Felix                | f6zhang@ucsd.edu  |
+| Zilu Zhu          | Lulu                 | zizhu@ucsd.edu    |
+
+##### :rotating_light: Initial here if the team member information about you is correct: _____ 
+
+---
+
+### Part 2: Primary Means of Communication
+All members will be expected to read and respond to message, polls, and threads in Slack. Ideally, members should respond to direct  or group-wide (e.g. `@everyone` tag is used) messages within 24 hours.
+The invitation link can be found [here](https://join.slack.com/t/cse110-w21-group33/shared_invite/zt-l1o6cpnk-heUleWLule7i100Vz07QsA).
+
+##### :rotating_light: Initial here if you agree to the aforementioned means of communication: _____
+
+---
+
+### Part 3: Scheduling Meetings
+The team will have two meetings a week. The first, a general body meeting wherein the team will collaborate, 
+report on progress, discuss aspects of design or bugs, etc. The second will consist of meeting with the TA and reviewing
+the work done previously. As of now, team meetings wil occur on `Thursdays, 6-7pm PST`. This was decided based off of the availabilities given in the [Lettucemeet](https://lettucemeet.com/l/123Jx). Meetings with the TA have been set for `Fridays, 5-6pm` as of our first meeting. Both are subject to change. The team will agree, at the end of the previous meeting, to set the date and time of the following one. 
+
+##### :rotating_light: Initial here if you agree to attend meetings: _____
+
+___
+
+### Part 4: Responsibilities
+1. Attend meetings on a bi-weekly basis. 
+2. Read and respond to Slack communication within 24 hours.
+3. Follow Github, documentation, and coding standards as agreed upon by the team.
+4. Accomplish deliverables in a timely manner.
+5. Report to their group leader if they have conflicts or concerns (e.g. interpersonal, code, etc.).
+
+##### :rotating_light: Initial here if you agree to the above responsibilities: _____
+
+---
+
+### Part 5: Conflict Resolution
+1. If a team member is not meeting deadlines: <br/>
+(a) if that individual is a member, then the team agrees that that person's group leader should meet with them 1:1 to discuss the issue and steps to move forward. <br/>
+(b) if that individual is a leader, then the team agrees to replace them. <br/>
+2. If a team member is being disrespectful towards another: <br/>
+(a) if that individual is a member, then the team agrees that that person's group leader should meet with them 1:1 to discuss the issue and steps to move forward. <br/>
+(b) if that individual is a leader, then the team agrees to replace them. <br/>
+3. If a team member is failing to meet code, github, or documentation standards: <br/>
+(a) if that individual is a member, then the team agrees that that person's group leader should meet with them 1:1 to discuss the issue and steps to move forward. <br/>
+(b) if that individual is a leader, then the team agrees to replace them. <br/>
+4. If a team member is unresponsive or not keeping in touch, then the team agrees to meet and discuss whether an alternate form of communication is better. Otherwise, they will be reported to the TA.
+
+
+##### :rotating_light: Initial here if you agree to the ways in which we will resolve conflicts: _____
+
+---
+
+##### :rotating_light: By signing below, I am indicating that I have read the above statements and agree to be held accountable. <br/> <br/>
+
+________________________________________________ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ____________________ <br/>
+&nbsp; &nbsp; &nbsp; &nbsp; *Individual Team Member Signature* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *Date*
