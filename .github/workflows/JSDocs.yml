@@ -1,31 +1,31 @@
-name: Make JSDocs
+# name: Make JSDocs
 
-on:
-  pull_request:
-    branches: [main]
+# on:
+#   pull_request:
+#     branches: [main]
 
-jobs:
-  make-docs:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout current branch
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }} 
+# jobs:
+#   make-docs:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout current branch
+#         uses: actions/checkout@v2
+#         with:
+#           ref: ${{ github.head_ref }} 
 
-      - name: Make Docs
-        uses: andstor/jsdoc-action@v1.2.0
-        with:
-          source_dir: ./source
-          output_dir: ./JSDocumentation
-          recurse: true
+#       - name: Make Docs
+#         uses: andstor/jsdoc-action@v1.2.0
+#         with:
+#           source_dir: ./source
+#           output_dir: ./JSDocumentation
+#           recurse: true
 
-      - name: Push changes to repo
-        run: |
-          git config --global user.email "bryantshao@gmail.com"
-          git config --global user.name "IntelBear"
-          git checkout ${{ github.head_ref }}
-          git add .
-          git status
-          git commit -am "Add new comment"
-          git push
+#       - name: Push changes to repo
+#         run: |
+#           git config --global user.email "bryantshao@gmail.com"
+#           git config --global user.name "IntelBear"
+#           git checkout ${{ github.head_ref }}
+#           git add .
+#           git status
+#           git commit -am "Add new comment"
+#           git push
