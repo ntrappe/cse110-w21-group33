@@ -1,31 +1,47 @@
 name: Make JSDocs
 
 on:
+  push:
+    branches-ignore:
+      - main
+      - docs
   pull_request:
-    branches: [main]
+    branches: 
+      - main
+    types: [opened]
+
+  # Can be triggered manually on Actions section on GitHub
+  workflow-dispatch:
 
 jobs:
-  make-docs:
+  run-JSDocs:
+    name: Make JS Documentation
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout current branch
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }} 
 
+    steps:
+      # Job won't trigger unless all other tests pass first
+      - name: Wait on tests
+        uses: lewagon/wait-on-check-action@master
+        with:
+          ref: ${{ github.ref }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
+          running-workflow-name: 'run-JSDocs'
+
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      # Generate documentation based on comments in JS code
       - name: Make Docs
         uses: andstor/jsdoc-action@v1.2.0
         with:
-          source_dir: ./source
-          output_dir: ./JSDocumentation
-          recurse: true
+          source_dir: ./source # Where to start searching
+          output_dir: ./JSDocumentation # Where to output documentation
+          recurse: true # Whether or not to recurse to lower folders
 
-      - name: Push changes to repo
-        run: |
-          git config --global user.email "bryantshao@gmail.com"
-          git config --global user.name "IntelBear"
-          git checkout ${{ github.head_ref }}
-          git add .
-          git status
-          git commit -am "Add new comment"
-          git push
+      # Deploy changes to JS documentation to a branch specifically made for JSDocs
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.0.0
+        with:
+          branch: jsdocs # The branch the action should deploy to.
+          folder: ./JSDocumentation # The folder the action should deploy.
