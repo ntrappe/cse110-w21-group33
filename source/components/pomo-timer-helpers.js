@@ -36,7 +36,7 @@ function display(totalSeconds, timerText) {
 
     // write text to screen
     timerText.textContent = t_min + ':' + t_sec;
-    setTab(t_min, t_sec);
+    //setTab(t_min, t_sec);
 }
 
 /**
