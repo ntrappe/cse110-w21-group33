@@ -5,11 +5,19 @@ class PomoFinish extends HTMLElement {
         const shadow = this.attachShadow({mode: 'open'});
 
         const wrapper = document.createElement('div');
-        const button = document.createElement('button');
+        const finishButton = document.createElement('button');
         const modal = document.createElement('div');
         const modalContent = document.createElement('div');
+        const closeButton = document.createElement('span');
 
         modal.appendChild(modalContent);
+        modalContent.appendChild(closeButton);
+        wrapper.appendChild(finishButton);
+        wrapper.appendChild(modal);
+
+        modalContent.textContent = "TODO";
+        closeButton.textContent = "&times;";
+        finishButton.textContent = "Finish";
 
         modal.style.cssText = `
           display: none;
@@ -31,15 +39,28 @@ class PomoFinish extends HTMLElement {
           height: 95%;
           width: 50%;`;
 
-        modalContent.textContent = "TODO";
+        closeButton.style.cssText = `
+          background-color: red;
+          color: black;
+          float: right;
+          font-size: 50px;
+          width: 20%;
+          display: block;`;
 
-        button.textContent = "Finish";
-        button.onclick = function() {
+        modal.onclick = function(event) {
+          if (event.target != modalContent) {
+            modal.style.display = "none";
+          }
+        }
+        
+        closeButton.onclick = function() {
+          modal.style.display = "none";
+        }
+        
+        finishButton.onclick = function() {
           modal.style.display = "block";
         }
-
-        wrapper.appendChild(button);
-        wrapper.appendChild(modal);
+        
         shadow.appendChild(wrapper);
       }
 }
