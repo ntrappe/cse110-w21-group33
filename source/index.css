@@ -1,17 +1,17 @@
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 16px;
 }
 
 main {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 footer {
-    display: flex;
-    justify-content: flex-end;
-    padding: 16px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
 }
