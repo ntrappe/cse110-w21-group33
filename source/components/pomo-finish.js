@@ -8,15 +8,17 @@ class PomoFinish extends HTMLElement {
         const finishButton = document.createElement('button');
         const modal = document.createElement('div');
         const modalContent = document.createElement('div');
-        const closeButton = document.createElement('span');
+        const content = document.createElement('div');
+        const closeButton = document.createElement('div');
 
         modal.appendChild(modalContent);
+        modalContent.appendChild(content);
         modalContent.appendChild(closeButton);
         wrapper.appendChild(finishButton);
         wrapper.appendChild(modal);
 
-        modalContent.textContent = "TODO";
-        closeButton.textContent = "&times;";
+        content.textContent = "TODO";
+        closeButton.innerHTML = "&times;";
         finishButton.textContent = "Finish";
 
         modal.style.cssText = `
@@ -44,7 +46,6 @@ class PomoFinish extends HTMLElement {
           color: black;
           float: right;
           font-size: 50px;
-          width: 20%;
           display: block;`;
 
         modal.onclick = function(event) {
