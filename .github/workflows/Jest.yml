@@ -1,20 +1,29 @@
-# name: Jest Unit Tests
+name: Jest Unit Tests
 
-# on:
-#   push:
-#     branches-ignore:
-#       - main
-#       - docs
-#   pull_request:
-#     branches:
-#       - main
+on:
+  push:
+    branches-ignore:
+      - main
+      - docs
+  pull_request:
+    branches:
+      - main
+    types: [opened]
 
-# jobs:
-#   Run-Jest:
-#     name: Run Tests/Coverage
-#     runs-on: ubuntu-latest
-#     steps:
-#     - uses: actions/checkout@v2
-#     - run: yarn add --dev jest
-#     - run: yarn test
-#     - run: yarn coverage
+  # Can be triggered manually on Actions section on GitHub
+  workflow-dispatch:
+
+jobs:
+  run-jest:
+    name: Run Tests/Coverage
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      # Run Jest to automatically run unit tests and show code coverage
+      - name: Run Jest
+        run: yarn add --dev jest # Handle installation on virtual machine
+        run: yarn test # Run unit tests and output results
+        run: yarn coverage # Output code coverage of unit tests
