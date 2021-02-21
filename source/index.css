@@ -5,6 +5,11 @@ header {
     padding: 16px;
 }
 
+body {
+    font-family: 'Open Sans', sans-serif;   /* dark mode */
+    background-color: #0E1116;      /* dark mode */
+}
+
 main {
     display: flex;
     justify-content: center;
