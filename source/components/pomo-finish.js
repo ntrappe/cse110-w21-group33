@@ -3,66 +3,102 @@ class PomoFinish extends HTMLElement {
         super();
 
         const shadow = this.attachShadow({mode: 'open'});
-
+        // the window wrapper
         const wrapper = document.createElement('div');
+
         const finishButton = document.createElement('button');
-        const modal = document.createElement('div');
-        const modalContent = document.createElement('div');
-        const content = document.createElement('div');
-        const closeButton = document.createElement('div');
-
-        modal.appendChild(modalContent);
-        modalContent.appendChild(content);
-        modalContent.appendChild(closeButton);
-        wrapper.appendChild(finishButton);
-        wrapper.appendChild(modal);
-
-        content.textContent = "TODO";
-        closeButton.innerHTML = "&times;";
+        finishButton.setAttribute('id', 'finishButton');
         finishButton.textContent = "Finish";
+        finishButton.onclick = function() {
+          // get the session summary
 
-        modal.style.cssText = `
-          display: none;
-          position: fixed;
-          z-index: 1; 
-          left: 0;
-          top: 0;
-          width: 100%; 
-          height: 100%; 
-          overflow: auto; 
-          background-color: rgb(0,0,0); 
-          background-color: rgba(0,0,0,0.5);`;
+          // reset localStorage and the timer
 
-        modalContent.style.cssText = `
-          background-color: #fefefe;
-          margin: 5% auto;
-          padding: 15px;
-          border: 1px solid #888;
-          height: 95%;
-          width: 50%;`;
+          // display the statistics
+          modal.style.display = "block";
+        }
 
-        closeButton.style.cssText = `
-          background-color: red;
-          color: black;
-          float: right;
-          font-size: 50px;
-          display: block;`;
-
+        // the lightbox
+        const modal = document.createElement('div');
+        modal.setAttribute('id', 'modal');
         modal.onclick = function(event) {
-          if (event.target != modalContent) {
+          // close lightbox when click outside of the content area
+          if (event.target != modalContent && event.target != content) {
             modal.style.display = "none";
           }
         }
-        
+
+        // wrapper for the content inside the lightbox
+        const modalContent = document.createElement('div');
+        modalContent.setAttribute('id', 'modalContent');
+
+        // the main content to be display in the lightbox
+        const content = document.createElement('div');
+        content.setAttribute('id', 'content')
+        content.innerHTML = "TODO";
+
+        // button to close the lightbox
+        const closeButton = document.createElement('div');
+        closeButton.setAttribute('id', 'closeButton');
+        closeButton.innerHTML = "&times;";
         closeButton.onclick = function() {
           modal.style.display = "none";
         }
+
+        // append elements to containers
+        modalContent.appendChild(closeButton);
+        modalContent.appendChild(content);
+        modal.appendChild(modalContent);
+        wrapper.appendChild(modal);
+        wrapper.append(finishButton);
+
+        // element containing the styling
+        let style = document.createElement('style');
+        style.textContent = `
+          #modal {
+            display: none;
+            position: fixed;
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto;  
+            background-color: rgba(0,0,0,0.5);
+          }
         
-        finishButton.onclick = function() {
-          modal.style.display = "block";
-        }
+          #modalContent {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 15px;
+            border: 1px solid #888;
+            height: 50%;
+            width: 50%;
+          }
         
+          #closeButton {
+            background-color: red;
+            color: black;
+            float: right;
+            font-size: 30px;
+            padding: 2px ;
+            border: 2px solid #888;
+            border-radius: 2px;
+            display: block;
+          }
+        
+          #content {
+            display: block;
+            background-color: yellow;
+            width: 100%; 
+            height: 100%;
+            margin: 0px 0px 0px;
+          }
+        `
+        
+
         shadow.appendChild(wrapper);
+        shadow.appendChild(style);
       }
 }
 
