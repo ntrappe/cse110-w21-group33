@@ -15,41 +15,46 @@ class PomoTimer extends HTMLElement {
         let wrapper = document.createElement('span');
         wrapper.setAttribute('class', 'wrapper');
 
-        let modeContainer = document.createElement('div');
-        modeContainer.setAttribute('class', 'mode-container');
-        let modeTopSection = document.createElement('div');
-        let modeBottomSection = document.createElement('div');
-        modeContainer.appendChild(modeTopSection);
-        modeContainer.appendChild(modeBottomSection);
-
-        /* empty space (matches background) */
-        let space = document.createElement('p');
-        space.setAttribute('class', 'space');
-        space.textContent = "nada";
-
-        /* text for current and next */
-        modeTopSection.setAttribute('class', 'mode-top-section');
-        modeTopSection.textContent = "UP NEXT";
-        let currentModeLabel = document.createElement('p');
-        currentModeLabel.setAttribute('class', 'mode-label');
-        let nextModeLabel = document.createElement('p');
-        nextModeLabel.setAttribute('class', 'mode-label');
-        //nextModeLabel.textContent = "UP NEXT";
-        modeTopSection.appendChild(currentModeLabel);
-        modeTopSection.appendChild(nextModeLabel);
-
-        /* current and next modes */  
-        modeBottomSection.setAttribute('class', 'mode-bottom-section');
         let currentMode = document.createElement('p');
         currentMode.setAttribute('class', 'mode');
         currentMode.textContent = "WORK";
-        let nextMode = document.createElement('p');
-        nextMode.setAttribute('class', 'next-mode');
-        nextMode.textContent = "SHORT BREAK";
-        modeBottomSection.appendChild(currentMode);
-        modeBottomSection.appendChild(space);
-        modeBottomSection.appendChild(nextMode);
 
+        let modeContainer = document.createElement('div');
+        modeContainer.setAttribute('class', 'mode-container');
+
+        /* empty space (matches background) */
+        let space1 = document.createElement('p');
+        space1.setAttribute('class', 'space');
+        let space2 = document.createElement('p');
+        space2.setAttribute('class', 'space');
+        let space3 = document.createElement('p');
+        space3.setAttribute('class', 'space');
+
+        let square1 = document.createElement('p');
+        square1.setAttribute('class', 'square-on');
+        let square2 = document.createElement('p');
+        square2.setAttribute('class', 'square');
+        let square3 = document.createElement('p');
+        square3.setAttribute('class', 'square');
+        let square4 = document.createElement('p');
+        square4.setAttribute('class', 'square');
+
+        /* text for current and next */
+        let modeTopSection = document.createElement('div');
+        modeTopSection.setAttribute('class', 'mode-top-section');
+        modeContainer.appendChild(modeTopSection);
+        
+        /* break tracker via squares */  
+        let modeBottomSection = document.createElement('div');
+        modeBottomSection.setAttribute('class', 'mode-bottom-section');
+        modeBottomSection.appendChild(square1);
+        modeBottomSection.appendChild(space1);
+        modeBottomSection.appendChild(square2);
+        modeBottomSection.appendChild(space2);
+        modeBottomSection.appendChild(square3);
+        modeBottomSection.appendChild(space3);
+        modeBottomSection.appendChild(square4);
+        modeContainer.appendChild(modeBottomSection);
 
         let timerText = document.createElement('h1');
         timerText.setAttribute('class', 'time');
@@ -79,13 +84,14 @@ class PomoTimer extends HTMLElement {
                 /*display: flex;*/
                 /*flex-direction: col;*/
                 /*justify-content: space-between;*/
-                border-bottom: 1px solid;
-                border-color: #31363C;
-                text-align: right;
+                /* old version of side-by-side */
+                /*border-bottom: 1px solid;*/
+               /* border-color: #31363C;*/
+                /*text-align: right;*/
             }
 
             .mode-top-section {
-                margin-bottom: -23px;
+                /*margin-bottom: -23px;*/
                 align-items: right;
                 color: #80858E;
                 font-size: 10px;
@@ -94,26 +100,32 @@ class PomoTimer extends HTMLElement {
 
             .mode-bottom-section {
                 display: flex;
+                flex-direction: row;
                 justify-content: space-between;
                 align-items: center;
             }
 
-            .mode {
-                color: #F1F6FB;
-                background-color: #FA604E;
-                font-family: 'Work Sans', sans-serif;
-                font-weight: 600;
-                font-size: 18px;
-                margin-botom: -1px; 
-                padding: 5px 20px;
-                border-radius: 6px;
-                border: 1.5px solid;
-                border-color: #EA8872;
+            .square {
+                color: #171B21;
+                background-color: #171B21;
+                border: 1px solid;
+                padding: 7px;
+                border-radius: 3px;
+                border-color: #171B21;
             }
 
-            .next-mode {
-                color: #8D949D;
-                background-color: #22262C;
+            .square-on {
+                color: #459648;
+                background-color: #459648;
+                border: 1px solid;
+                padding: 7px;
+                border-radius: 3px;
+                border-color: #55A758;
+            }
+
+            .mode {
+                color: #F1F6FB;
+                background-color: #63A259;
                 font-family: 'Work Sans', sans-serif;
                 font-weight: 600;
                 font-size: 18px;
@@ -121,11 +133,12 @@ class PomoTimer extends HTMLElement {
                 padding: 5px 20px;
                 border-radius: 6px;
                 border: 1.5px solid;
-                border-color: #31363C;
+                border-color: #67D25A;
             }
 
             .space {
-                color: #0E1116;
+                background-color: #0E1116;
+                padding: 5px;
             }
 
             .time {
@@ -164,6 +177,7 @@ class PomoTimer extends HTMLElement {
 
         shadow.appendChild(style);
         shadow.appendChild(wrapper);
+        wrapper.appendChild(currentMode);
         wrapper.appendChild(modeContainer);
         wrapper.appendChild(timerText);
         wrapper.appendChild(timerButton);
