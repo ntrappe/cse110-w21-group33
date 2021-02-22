@@ -54,7 +54,7 @@ class PomoTimer extends HTMLElement {
                 align-items: center;
             }
 
-            .mode-container {
+            .progress-container {
                 /*display: flex;*/
                 /*flex-direction: col;*/
                 /*justify-content: space-between;*/
@@ -64,7 +64,7 @@ class PomoTimer extends HTMLElement {
                 /*text-align: right;*/
             }
 
-            .mode-top-section {
+            .progress-top-section {
                 /*margin-bottom: -23px;*/
                 align-items: right;
                 color: #80858E;
@@ -72,7 +72,7 @@ class PomoTimer extends HTMLElement {
                 font-weight: 700;
             }
 
-            .mode-bottom-section {
+            .progress-bottom-section {
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
@@ -177,6 +177,11 @@ class PomoTimer extends HTMLElement {
             composed: true
         });
 
+        const timerFinishEvent = new CustomEvent('timerFinish', {
+            bubbles: true,      
+            composed: true
+        });
+
         timerButton.addEventListener('click', () => {
             if (timerButton.textContent === START) {
                 shadow.dispatchEvent(timerStartEvent);
@@ -185,6 +190,7 @@ class PomoTimer extends HTMLElement {
             }
         });
 
+        
         /**
          * Function calls to toggle button and control timer based on user input
          */
@@ -220,6 +226,7 @@ class PomoTimer extends HTMLElement {
         * Timer hits 0:00 and resets
         */
         function timerFinish() {
+            shadow.dispatchEvent(timerFinishEvent);
             clearInterval(ticker);
             totalSeconds = set(NUM_MIN);
             display(totalSeconds, timerText);
