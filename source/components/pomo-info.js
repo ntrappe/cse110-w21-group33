@@ -13,3 +13,5 @@ class PomoInfo extends HTMLElement {
 }
 
 customElements.define('pomo-info', PomoInfo);
+
+export { PomoInfo };

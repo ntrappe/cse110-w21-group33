@@ -13,3 +13,5 @@ class PomoTimer extends HTMLElement {
 }
 
 customElements.define('pomo-timer', PomoTimer);
+
+export { PomoTimer };
