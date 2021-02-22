@@ -20,26 +20,15 @@ class PomoTimer extends HTMLElement {
         currentMode.setAttribute('class', 'mode');
         currentMode.textContent = "WORK";
 
-        /* holds 2 layers of div where the second layer is the progress squares */
-        let modeContainer = document.createElement('div');
-        modeContainer.setAttribute('class', 'mode-container');
-
-        /* text above squares NOT IMPLEMENTED */
-        let modeTopSection = document.createElement('div');
-        modeTopSection.setAttribute('class', 'mode-top-section');
-        modeContainer.appendChild(modeTopSection);
-        
-        /* holder for squares that track break progress */  
-        let modeBottomSection = document.createElement('div');
-        modeContainer.appendChild(modeBottomSection);
-
         /* progress squares */
-        let squares = initProgess(modeBottomSection);
+        let progressContainerItems = initProgess();
+        let progressContainer = progressContainerItems[0];
         function setProgress(progress) {
-            setProgressHelper(progress, squares);
+            setProgressHelper(progress, progressContainerItems[1], progressContainerItems[2],
+                progressContainerItems[3], progressContainerItems[4]);
         }
         /* @NOTE: uncomment to call setProgress function to update squares */
-        //setProgress(2);
+        setProgress(4);
 
         let timerText = document.createElement('h1');
         timerText.setAttribute('class', 'time');
@@ -173,9 +162,28 @@ class PomoTimer extends HTMLElement {
         shadow.appendChild(style);
         shadow.appendChild(wrapper);
         wrapper.appendChild(currentMode);
-        wrapper.appendChild(modeContainer);
+        wrapper.appendChild(progressContainer);
         wrapper.appendChild(timerText);
         wrapper.appendChild(timerButton);
+
+        /* Events */
+        const timerStartEvent = new CustomEvent('timerStart', {
+            bubbles: true,          // event listenable outside of container
+            composed: true
+        });
+
+        const timerResetEvent = new CustomEvent('timerReset', {
+            bubbles: true,      
+            composed: true
+        });
+
+        timerButton.addEventListener('click', () => {
+            if (timerButton.textContent === START) {
+                shadow.dispatchEvent(timerStartEvent);
+            } else {
+                shadow.dispatchEvent(timerResetEvent);
+            }
+        });
 
         /**
          * Function calls to toggle button and control timer based on user input
@@ -184,16 +192,6 @@ class PomoTimer extends HTMLElement {
             if (timerButton.textContent === START) {
                 setResetButton(timerButton);
                 timerStart();
-
-                timerText.style.color = "#E8ECF2";
-                timerText.style.borderColor = "#D2D6DD";
-                setTimeout(function(e) {
-                    /* change button back to default */
-                    timerText.style.color = "#A2AAB5";
-                    timerText.style.borderColor = "#31363C";
-                }, 250);
-                
-
             } else {
                 setStartButton(timerButton);
                 timerReset();

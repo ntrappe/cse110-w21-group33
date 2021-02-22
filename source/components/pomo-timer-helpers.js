@@ -40,16 +40,6 @@ function display(totalSeconds, timerText) {
 }
 
 /**
- * Updates browser tab text and icon to reflect time
- * @param {String} t_min text version of curr minute
- * @param {String} t_sec text version of curr second
- */
-function setTab(t_min, t_sec) {
-    let tabText = document.querySelector('title');
-    tabText.textContent = 'Pomo: ' + t_min + ':' + t_sec;
-}
-
-/**
  * Depending on the minutes given, will set the total seconds of timer appropriately 
  * @param {Number} m Minutes for the timer to run
  * @return {Number} totalSeconds
@@ -80,10 +70,23 @@ function setResetButton(timerButton) {
 }
 
 /**
- * Creates 4 squares on screen with space between to represent break progress
- * @param {Object} modeBottomSection div section that holds all the squares for progress
+ * Creates a div, progressContainer, with an upper and lower div (Sections). Creates
+ * 4 squares (and spaces) that live in the lower div to represent break progress
  */
-function initProgess(modeBottomSection) {
+function initProgess() {
+    /* holds 2 layers of div where the second layer is the progress squares */
+    let progressContainer = document.createElement('div');
+    progressContainer.setAttribute('class', 'mode-container');
+
+    /* text above squares NOT IMPLEMENTED */
+    let progressTopSection = document.createElement('div');
+    progressTopSection.setAttribute('class', 'mode-top-section');
+    progressContainer.appendChild(progressTopSection);
+    
+    /* holder for squares that track break progress */  
+    let progressBottomSection = document.createElement('div');
+    progressContainer.appendChild(progressBottomSection);
+
     /* empty space (matches background) */
     let space1 = document.createElement('p');
     space1.setAttribute('class', 'space');
@@ -106,29 +109,29 @@ function initProgess(modeBottomSection) {
     square4.setAttribute('id', 'square4');
 
     /* break tracker via squares */  
-    modeBottomSection.setAttribute('class', 'mode-bottom-section');
-    modeBottomSection.appendChild(square1);
-    modeBottomSection.appendChild(space1);
-    modeBottomSection.appendChild(square2);
-    modeBottomSection.appendChild(space2);
-    modeBottomSection.appendChild(square3);
-    modeBottomSection.appendChild(space3);
-    modeBottomSection.appendChild(square4);
+    progressBottomSection.setAttribute('class', 'mode-bottom-section');
+    progressBottomSection.appendChild(square1);
+    progressBottomSection.appendChild(space1);
+    progressBottomSection.appendChild(square2);
+    progressBottomSection.appendChild(space2);
+    progressBottomSection.appendChild(square3);
+    progressBottomSection.appendChild(space3);
+    progressBottomSection.appendChild(square4);
 
-    return [square1, square2, square3, square4];
+    // return container to main file can append to wrapper
+    // return squares so setProgressHelper can reference them for style
+    return [progressContainer, square1, square2, square3, square4];
 }
 
 /**
  * Updates the colors of the squares to match number of breaks
  * @param {Number} progress [0,4] that represents number of breaks taken
- * @param {Array} squares array of square elements (created by initProgress)
+ * @param {Object} square1 a square shape (created by initProgress)
+ * @param {Object} square2 a square shape (created by initProgress)
+ * @param {Object} square3 a square shape (created by initProgress)
+ * @param {Object} square4 a square shape (created by initProgress)
  */
-function setProgressHelper(progress, squares) {
-    let square1 = squares[0];
-    let square2 = squares[1];
-    let square3 = squares[2];
-    let square4 = squares[3];
-
+function setProgressHelper(progress, square1, square2, square3, square4) {
     /* clear out all styling first (make all squares dark) */
     square1.setAttribute('class', 'square-on');
     square2.setAttribute('class', 'square-off');
