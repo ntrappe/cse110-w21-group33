@@ -79,6 +79,85 @@ function setResetButton(timerButton) {
     timerButton.innerHTML = RESET;
 }
 
-export {display, setStartButton, setResetButton, set};
+/**
+ * Creates 4 squares on screen with space between to represent break progress
+ * @param {Object} modeBottomSection div section that holds all the squares for progress
+ */
+function initProgess(modeBottomSection) {
+    /* empty space (matches background) */
+    let space1 = document.createElement('p');
+    space1.setAttribute('class', 'space');
+    let space2 = document.createElement('p');
+    space2.setAttribute('class', 'space');
+    let space3 = document.createElement('p');
+    space3.setAttribute('class', 'space');
+
+    let square1 = document.createElement('p');
+    square1.setAttribute('class', 'square-off');
+    square1.setAttribute('id', 'square1');
+    let square2 = document.createElement('p');
+    square2.setAttribute('class', 'square-off');
+    square2.setAttribute('id', 'square2');
+    let square3 = document.createElement('p');
+    square3.setAttribute('class', 'square-off');
+    square3.setAttribute('id', 'square3');
+    let square4 = document.createElement('p');
+    square4.setAttribute('class', 'square-off');
+    square4.setAttribute('id', 'square4');
+
+    /* break tracker via squares */  
+    modeBottomSection.setAttribute('class', 'mode-bottom-section');
+    modeBottomSection.appendChild(square1);
+    modeBottomSection.appendChild(space1);
+    modeBottomSection.appendChild(square2);
+    modeBottomSection.appendChild(space2);
+    modeBottomSection.appendChild(square3);
+    modeBottomSection.appendChild(space3);
+    modeBottomSection.appendChild(square4);
+
+    return [square1, square2, square3, square4];
+}
+
+/**
+ * Updates the colors of the squares to match number of breaks
+ * @param {Number} progress [0,4] that represents number of breaks taken
+ * @param {Array} squares array of square elements (created by initProgress)
+ */
+function setProgressHelper(progress, squares) {
+    let square1 = squares[0];
+    let square2 = squares[1];
+    let square3 = squares[2];
+    let square4 = squares[3];
+
+    /* clear out all styling first (make all squares dark) */
+    square1.setAttribute('class', 'square-on');
+    square2.setAttribute('class', 'square-off');
+    square3.setAttribute('class', 'square-off');
+    square4.setAttribute('class', 'square-off');
+
+    switch (progress) {
+        case 1:
+            square1.setAttribute('class', 'square-on');
+            break;
+        case 2:
+            square1.setAttribute('class', 'square-on');
+            square2.setAttribute('class', 'square-on');
+            break;
+        case 3:
+            square1.setAttribute('class', 'square-on');
+            square2.setAttribute('class', 'square-on');
+            square3.setAttribute('class', 'square-on');
+            break;
+        case 4:
+            square1.setAttribute('class', 'square-on');
+            square2.setAttribute('class', 'square-on');
+            square3.setAttribute('class', 'square-on');
+            square4.setAttribute('class', 'square-on');
+            break;
+        default: break;
+    }
+}
+
+export {display, setStartButton, setResetButton, set, initProgess, setProgressHelper};
 
 /* End pomo-timer-helpers.js */

@@ -1,4 +1,4 @@
-import { setStartButton, setResetButton, display, set } from './pomo-timer-helpers.js';
+import { setStartButton, setResetButton, display, set, initProgess, setProgressHelper } from './pomo-timer-helpers.js';
 
 const START = 'Start';
 const RESET = 'Reset';
@@ -15,46 +15,31 @@ class PomoTimer extends HTMLElement {
         let wrapper = document.createElement('span');
         wrapper.setAttribute('class', 'wrapper');
 
+        /* label for mode e.g. 'Work' / 'Short Break' */
         let currentMode = document.createElement('p');
         currentMode.setAttribute('class', 'mode');
         currentMode.textContent = "WORK";
 
+        /* holds 2 layers of div where the second layer is the progress squares */
         let modeContainer = document.createElement('div');
         modeContainer.setAttribute('class', 'mode-container');
 
-        /* empty space (matches background) */
-        let space1 = document.createElement('p');
-        space1.setAttribute('class', 'space');
-        let space2 = document.createElement('p');
-        space2.setAttribute('class', 'space');
-        let space3 = document.createElement('p');
-        space3.setAttribute('class', 'space');
-
-        let square1 = document.createElement('p');
-        square1.setAttribute('class', 'square-on');
-        let square2 = document.createElement('p');
-        square2.setAttribute('class', 'square');
-        let square3 = document.createElement('p');
-        square3.setAttribute('class', 'square');
-        let square4 = document.createElement('p');
-        square4.setAttribute('class', 'square');
-
-        /* text for current and next */
+        /* text above squares NOT IMPLEMENTED */
         let modeTopSection = document.createElement('div');
         modeTopSection.setAttribute('class', 'mode-top-section');
         modeContainer.appendChild(modeTopSection);
         
-        /* break tracker via squares */  
+        /* holder for squares that track break progress */  
         let modeBottomSection = document.createElement('div');
-        modeBottomSection.setAttribute('class', 'mode-bottom-section');
-        modeBottomSection.appendChild(square1);
-        modeBottomSection.appendChild(space1);
-        modeBottomSection.appendChild(square2);
-        modeBottomSection.appendChild(space2);
-        modeBottomSection.appendChild(square3);
-        modeBottomSection.appendChild(space3);
-        modeBottomSection.appendChild(square4);
         modeContainer.appendChild(modeBottomSection);
+
+        /* progress squares */
+        let squares = initProgess(modeBottomSection);
+        function setProgress(progress) {
+            setProgressHelper(progress, squares);
+        }
+        /* @NOTE: uncomment to call setProgress function to update squares */
+        //setProgress(2);
 
         let timerText = document.createElement('h1');
         timerText.setAttribute('class', 'time');
@@ -105,7 +90,7 @@ class PomoTimer extends HTMLElement {
                 align-items: center;
             }
 
-            .square {
+            .square-off {
                 color: #171B21;
                 background-color: #171B21;
                 border: 1px solid;
@@ -115,12 +100,21 @@ class PomoTimer extends HTMLElement {
             }
 
             .square-on {
-                color: #459648;
-                background-color: #459648;
+                color: #429046;
+                background-color: #429046;
                 border: 1px solid;
                 padding: 7px;
                 border-radius: 3px;
                 border-color: #55A758;
+            }
+
+            #square4[class="square-on"] {
+                color: #67C75C;
+                background-color: #67C75C;
+                border: 1px solid;
+                padding: 7px;
+                border-radius: 3px;
+                border-color: #8CE96B;
             }
 
             .mode {
@@ -138,7 +132,7 @@ class PomoTimer extends HTMLElement {
 
             .space {
                 background-color: #0E1116;
-                padding: 5px;
+                padding: 6px;
             }
 
             .time {
