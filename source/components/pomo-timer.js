@@ -15,21 +15,16 @@ class PomoTimer extends HTMLElement {
         let wrapper = document.createElement('span');
         wrapper.setAttribute('class', 'wrapper');
         
-        let mode = document.createElement('div');
+        let modeContainer = document.createElement('div');
+        modeContainer.setAttribute('class', 'mode-container');
+        let mode = document.createElement('p');
         mode.setAttribute('class', 'mode');
-        let pomo = document.createElement('p');
-        pomo.textContent = "POMODORO";
-        pomo.setAttribute('class', 'pomo');
-        mode.appendChild(pomo);
-        let short = document.createElement('p');
-        short.textContent = "SHORT BREAK";
-        mode.appendChild(short);
-        let long = document.createElement('p');
-        long.textContent = "LONG BREAK";
-        mode.appendChild(long);
+        mode.textContent = "WORK";
+        modeContainer.appendChild(mode);
 
         let timerText = document.createElement('h1');
         timerText.setAttribute('class', 'time');
+        timerText.setAttribute('id', 'timer-text');
         timerText.textContent = "02:00";
         
         let timerButton = document.createElement('button');
@@ -52,23 +47,16 @@ class PomoTimer extends HTMLElement {
             }
 
             .mode {
-                display: flex;
-                flex-direction: row;
-                width: 400px;
-                justify-content: space-between;
-                color: #8D949D;
+                color: #F1F6FB;
+                background-color: #FA604E;
                 font-family: 'Work Sans', sans-serif;
                 font-weight: 600;
                 font-size: 18px;
-                margin-botom: -1px;
-                border-bottom: 1px solid;
-                border-color: #31363C;
-            }
-
-            .pomo {
-                margin-bottom: -2px;
-                border-bottom: 3px solid;
-                border-color: #459648;      /* green */
+                margin-botom: -1px; 
+                padding: 5px 20px;
+                border-radius: 6px;
+                border: 1.5px solid;
+                border-color: #EA8872;
             }
 
             .time {
@@ -76,7 +64,7 @@ class PomoTimer extends HTMLElement {
                 font-weight: 800;
                 background-color: #171B21;
                 color: #A2AAB5;
-                border: 1px solid;
+                border: 1.5px solid;
                 padding: 10px 50px;
                 border-radius: 6px;
                 border-color: #31363C;
@@ -87,11 +75,18 @@ class PomoTimer extends HTMLElement {
                 background-color: #22262C;
                 font-weight: 600;
                 font-size: 15px;
-                border: 1px solid;
+                border: 1.5px solid;
                 padding: 5px 20px;
                 border-radius: 6px;
                 border-color: #31363C;
                 width: 80px;
+            }
+            
+            button:hover {
+                color: #CBD1D8;
+                background-color: #31363C;
+                border-color: #8D949D;
+                transition-duration: .1s;
             }
         `;
 
@@ -100,7 +95,7 @@ class PomoTimer extends HTMLElement {
 
         shadow.appendChild(style);
         shadow.appendChild(wrapper);
-        wrapper.appendChild(mode);
+        wrapper.appendChild(modeContainer);
         wrapper.appendChild(timerText);
         wrapper.appendChild(timerButton);
 
@@ -111,6 +106,16 @@ class PomoTimer extends HTMLElement {
             if (timerButton.textContent === START) {
                 setResetButton(timerButton);
                 timerStart();
+
+                timerText.style.color = "#E8ECF2";
+                timerText.style.borderColor = "#D2D6DD";
+                setTimeout(function(e) {
+                    /* change button back to default */
+                    timerText.style.color = "#A2AAB5";
+                    timerText.style.borderColor = "#31363C";
+                }, 250);
+                
+
             } else {
                 setStartButton(timerButton);
                 timerReset();

@@ -8,7 +8,7 @@ class PomoTab extends HTMLElement {
         icon.rel = 'icon';
         icon.href = '../../green.ico';
         
-        document.title = 'Pomo';
+        document.title = 'Work: 01:40';
         document.head.appendChild(icon);
 
         let button = document.createElement('button');
