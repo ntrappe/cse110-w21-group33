@@ -14,13 +14,42 @@ class PomoTimer extends HTMLElement {
         let style = document.createElement('style');
         let wrapper = document.createElement('span');
         wrapper.setAttribute('class', 'wrapper');
-        
+
         let modeContainer = document.createElement('div');
         modeContainer.setAttribute('class', 'mode-container');
-        let mode = document.createElement('p');
-        mode.setAttribute('class', 'mode');
-        mode.textContent = "WORK";
-        modeContainer.appendChild(mode);
+        let modeTopSection = document.createElement('div');
+        let modeBottomSection = document.createElement('div');
+        modeContainer.appendChild(modeTopSection);
+        modeContainer.appendChild(modeBottomSection);
+
+        /* empty space (matches background) */
+        let space = document.createElement('p');
+        space.setAttribute('class', 'space');
+        space.textContent = "nada";
+
+        /* text for current and next */
+        modeTopSection.setAttribute('class', 'mode-top-section');
+        modeTopSection.textContent = "UP NEXT";
+        let currentModeLabel = document.createElement('p');
+        currentModeLabel.setAttribute('class', 'mode-label');
+        let nextModeLabel = document.createElement('p');
+        nextModeLabel.setAttribute('class', 'mode-label');
+        //nextModeLabel.textContent = "UP NEXT";
+        modeTopSection.appendChild(currentModeLabel);
+        modeTopSection.appendChild(nextModeLabel);
+
+        /* current and next modes */  
+        modeBottomSection.setAttribute('class', 'mode-bottom-section');
+        let currentMode = document.createElement('p');
+        currentMode.setAttribute('class', 'mode');
+        currentMode.textContent = "WORK";
+        let nextMode = document.createElement('p');
+        nextMode.setAttribute('class', 'next-mode');
+        nextMode.textContent = "SHORT BREAK";
+        modeBottomSection.appendChild(currentMode);
+        modeBottomSection.appendChild(space);
+        modeBottomSection.appendChild(nextMode);
+
 
         let timerText = document.createElement('h1');
         timerText.setAttribute('class', 'time');
@@ -46,6 +75,29 @@ class PomoTimer extends HTMLElement {
                 align-items: center;
             }
 
+            .mode-container {
+                /*display: flex;*/
+                /*flex-direction: col;*/
+                /*justify-content: space-between;*/
+                border-bottom: 1px solid;
+                border-color: #31363C;
+                text-align: right;
+            }
+
+            .mode-top-section {
+                margin-bottom: -23px;
+                align-items: right;
+                color: #80858E;
+                font-size: 10px;
+                font-weight: 700;
+            }
+
+            .mode-bottom-section {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
             .mode {
                 color: #F1F6FB;
                 background-color: #FA604E;
@@ -57,6 +109,23 @@ class PomoTimer extends HTMLElement {
                 border-radius: 6px;
                 border: 1.5px solid;
                 border-color: #EA8872;
+            }
+
+            .next-mode {
+                color: #8D949D;
+                background-color: #22262C;
+                font-family: 'Work Sans', sans-serif;
+                font-weight: 600;
+                font-size: 18px;
+                margin-botom: -1px; 
+                padding: 5px 20px;
+                border-radius: 6px;
+                border: 1.5px solid;
+                border-color: #31363C;
+            }
+
+            .space {
+                color: #0E1116;
             }
 
             .time {
