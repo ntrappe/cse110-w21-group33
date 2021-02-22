@@ -130,7 +130,7 @@ class PomoTimer extends HTMLElement {
                 font-weight: 600;
                 font-size: 18px;
                 margin-botom: -1px; 
-                padding: 5px 20px;
+                padding: 5px 25px;
                 border-radius: 6px;
                 border: 1.5px solid;
                 border-color: #67D25A;
@@ -162,6 +162,7 @@ class PomoTimer extends HTMLElement {
                 border-radius: 6px;
                 border-color: #31363C;
                 width: 80px;
+                cursor: pointer;
             }
             
             button:hover {
