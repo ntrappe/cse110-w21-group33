@@ -6,25 +6,25 @@ class PomoFinish extends HTMLElement {
         // the window wrapper
         const wrapper = document.createElement('div');
 
-        const finishButton = document.createElement('button');
-        finishButton.setAttribute('id', 'finishButton');
-        finishButton.textContent = "Finish";
-        finishButton.onclick = function() {
+        this.finishButton = document.createElement('button');
+        this.finishButton.setAttribute('id', 'finishButton');
+        this.finishButton.textContent = "Finish";
+        this.finishButton.onclick = () => {
           // get the session summary
 
           // reset localStorage and the timer
 
           // display the statistics
-          modal.style.display = "block";
+          this.modal.style.display = "block";
         }
 
         // the lightbox
-        const modal = document.createElement('div');
-        modal.setAttribute('id', 'modal');
-        modal.onclick = function(event) {
+        this.modal = document.createElement('div');
+        this.modal.setAttribute('id', 'modal');
+        this.modal.onclick = (event) => {
           // close lightbox when click outside of the content area
-          if (event.target != modalContent && event.target != content) {
-            modal.style.display = "none";
+          if (event.target == this.modal) {
+            this.modal.style.display = "none";
           }
         }
 
@@ -33,24 +33,29 @@ class PomoFinish extends HTMLElement {
         modalContent.setAttribute('id', 'modalContent');
 
         // the main content to be display in the lightbox
-        const content = document.createElement('div');
-        content.setAttribute('id', 'content')
-        content.innerHTML = "TODO";
+        // title
+        const modalTitle = document.createElement('div');
+        modalTitle.setAttribute('class', 'modalTitle');
+        modalTitle.innerHTML = "SESSION SUMMARY";
+        // list of stat
+        this.sessionStatistics = document.createElement('ul');
+        this.sessionStatistics.setAttribute('id', 'statistics-panel');
 
         // button to close the lightbox
         const closeButton = document.createElement('div');
         closeButton.setAttribute('id', 'closeButton');
         closeButton.innerHTML = "&times;";
-        closeButton.onclick = function() {
-          modal.style.display = "none";
+        closeButton.onclick = () => {
+          this.modal.style.display = "none";
         }
 
         // append elements to containers
         modalContent.appendChild(closeButton);
-        modalContent.appendChild(content);
-        modal.appendChild(modalContent);
-        wrapper.appendChild(modal);
-        wrapper.append(finishButton);
+        modalContent.appendChild(modalTitle);
+        modalContent.appendChild(this.sessionStatistics);
+        this.modal.appendChild(modalContent);
+        wrapper.appendChild(this.modal);
+        wrapper.append(this.finishButton);
 
         // element containing the styling
         let style = document.createElement('style');
@@ -87,19 +92,71 @@ class PomoFinish extends HTMLElement {
             display: block;
           }
         
-          #content {
+          #statistics-panel {
             display: block;
+            color: black;
             background-color: yellow;
             width: 100%; 
             height: 100%;
             margin: 0px 0px 0px;
           }
+          
+          li {
+            display: block;
+            color: black;
+            background-color: blue;
+          }
         `
         
-
         shadow.appendChild(wrapper);
         shadow.appendChild(style);
       }
+
+      /**
+       * 
+       * @param {Number} pomodoroCount 
+       * @param {Number} shortCount 
+       * @param {Number} longCount 
+       * @param {Number} productiveTime 
+       * @param {Number} interruptedCount 
+       */
+
+
+      showModal(pomodoroCount, shortCount, longCount, productiveTime, interruptedCount) {
+        let ul = this.sessionStatistics;
+        
+        ["Pomodoro Completed", "Short Breaks", "Long Breaks",
+        "Interrupted Session", "Total Minutes Working"].forEach(function(info) {
+          let li = document.createElement('li');
+          li.setAttribute('class', 'session-statistics');
+          switch(info) {
+            case "Pomodoro Completed":
+              li.innerHTML = `${info}: ${pomodoroCount}`;
+              break;
+            case "Short Breaks":
+              li.innerHTML = `${info}: ${shortCount}`;
+              break;
+            case "Long Breaks":
+              li.innerHTML = `${info}: ${longCount}`;
+              break;
+            case "Interrupted Session":
+              li.innerHTML = `${info}: ${interruptedCount}`;
+              break;
+            case "Total Minutes Working":
+              li.innerHTML = `${info}: ${productiveTime}`;
+              break;
+            default:
+              li.innerHTML = "Buggy!";
+          }
+          ul.appendChild(li);
+        });
+        console.log(this.sessionStatistics);
+        console.log(this);
+      }
+
+
 }
 
 customElements.define('pomo-finish', PomoFinish);
+let pomoFinish = new PomoFinish();
+pomoFinish.showModal(2,0,10,60,0);
