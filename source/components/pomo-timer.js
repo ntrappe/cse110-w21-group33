@@ -172,7 +172,7 @@ class PomoTimer extends HTMLElement {
         }
 
         /**
-         * Function for control to call to set time on clock
+         * For CONTROL to set time on clock for current mode
          * @param {Number} min number of minutes to set the clock to
          */
         function setTimer(min) {
@@ -182,7 +182,7 @@ class PomoTimer extends HTMLElement {
         //setTimer(6);
 
         /**
-         * Updates squares on screen to match number of breaks taken
+         * For CONTROL to update squares on screen to match number of breaks taken
          * @param {Number} progress number of breaks taken
          */
         function setProgress(progress) {
@@ -190,7 +190,10 @@ class PomoTimer extends HTMLElement {
                 progressContainerItems[3], progressContainerItems[4]);
         }
         /* @NOTE: uncomment to call setProgress function to update squares */
-        //setProgress(0);
+        setProgress(1);
+
+        /* @NOTE: uncomment to call setTimer function to set time on clock */
+        //setTimer(6);
         
     }
 }
