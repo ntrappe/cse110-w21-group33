@@ -5,7 +5,8 @@
   align-items: center;
 }
 
-.mode {
+/* normal green version of mode button */
+#mode[class*="work"] {
   color: #79d071;
   background-color: #18221d;
   font-family: 'Open Sans', sans-serif;
@@ -16,6 +17,20 @@
   border-radius: 2em;
   border: 1.5px solid;
   border-color: #355e36;
+}
+
+/* red version of mode button */
+#mode[class*="break"] {
+  color: #e65d51;
+  background-color: #21161a;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 30px;
+  padding: 5px 25px;
+  border-radius: 2em;
+  border: 1.5px solid;
+  border-color: #642828;
 }
 
 .time {

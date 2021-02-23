@@ -21,7 +21,7 @@ class PomoTimer extends HTMLElement {
 
         // label for mode e.g. 'Work'
         let currentMode = document.createElement('p');          
-        currentMode.setAttribute('class', 'mode'); 
+        currentMode.setAttribute('id', 'mode'); 
 
         // squares to represent progress
         let progressContainerItems = initProgess(); 
@@ -36,8 +36,8 @@ class PomoTimer extends HTMLElement {
         let timerButton = document.createElement('button');     
         
         /* Initialize all elements */
-        currentMode.textContent = "WORK";
-        timerText.textContent = "02:00";
+        //currentMode.textContent = "WORK";
+        //timerText.textContent = "02:00";
         timerButton.textContent = START;
 
         let ticker;                                             // timer object
@@ -151,8 +151,8 @@ class PomoTimer extends HTMLElement {
         this.timerFinish = () => {
             shadow.dispatchEvent(timerFinishEvent);
             clearInterval(ticker);
-            this.totalSeconds = set(NUM_MIN);
-            //this.totalSeconds = set(modeDuration);
+            //this.totalSeconds = set(NUM_MIN);
+            this.totalSeconds = set(modeDuration);
             display(this.totalSeconds, timerText);
         }
 
@@ -175,11 +175,15 @@ class PomoTimer extends HTMLElement {
          * For CONTROL to set time on clock for current mode
          * @param {Number} min number of minutes to set the clock to
          */
-        function setTimer(min) {
+        function setTimer(min, mode) {
             modeDuration = min;
+            display(set(min), timerText);
+            currentMode.setAttribute('class', mode);
+            currentMode.textContent = mode.toUpperCase();
         }
         /* @NOTE: uncomment to call setTimer function to set time on clock */
-        //setTimer(6);
+        //setTimer(6, 'short break');
+        //setTimer(25, 'work');
 
         /**
          * For CONTROL to update squares on screen to match number of breaks taken
@@ -190,11 +194,7 @@ class PomoTimer extends HTMLElement {
                 progressContainerItems[3], progressContainerItems[4]);
         }
         /* @NOTE: uncomment to call setProgress function to update squares */
-        setProgress(1);
-
-        /* @NOTE: uncomment to call setTimer function to set time on clock */
-        //setTimer(6);
-        
+        //setProgress(2);
     }
 }
 
