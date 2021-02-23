@@ -72,15 +72,17 @@ function setResetButton(timerButton) {
 /**
  * Creates a div, progressContainer, with an upper and lower div (Sections). Creates
  * 4 squares (and spaces) that live in the lower div to represent break progress
+ * @returns {Array} container for progress elements to append to shadow and individual
+ *                  squares (for styling)
  */
 function initProgess() {
     /* holds 2 layers of div where the second layer is the progress squares */
-    let progressContainer = document.createElement('div');
-    progressContainer.setAttribute('class', 'mode-container');
+    let progressContainer = document.createElement('div');  
+    progressContainer.setAttribute('class', 'progress-container');
 
     /* text above squares NOT IMPLEMENTED */
     let progressTopSection = document.createElement('div');
-    progressTopSection.setAttribute('class', 'mode-top-section');
+    progressTopSection.setAttribute('class', 'progress-top-section');
     progressContainer.appendChild(progressTopSection);
     
     /* holder for squares that track break progress */  
@@ -109,7 +111,7 @@ function initProgess() {
     square4.setAttribute('id', 'square4');
 
     /* break tracker via squares */  
-    progressBottomSection.setAttribute('class', 'mode-bottom-section');
+    progressBottomSection.setAttribute('class', 'progress-bottom-section');
     progressBottomSection.appendChild(square1);
     progressBottomSection.appendChild(space1);
     progressBottomSection.appendChild(square2);

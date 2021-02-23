@@ -1,17 +1,55 @@
-.square-off {
-    color: #171B21;
-    background-color: #171B21;
-    border: 1px solid;
-    padding: 7px;
-    border-radius: 3px;
-    border-color: #171B21;
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.square-on {
-    color: #429046;
-    background-color: #429046;
-    border: 1px solid;
-    padding: 7px;
-    border-radius: 3px;
-    border-color: #55A758;
+.mode {
+    color: #F1F6FB;
+    background-color: #63A259;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 30px; 
+    padding: 5px 25px;
+    border-radius: 6px;
+    border: 1.5px solid;
+    border-color: #67D25A;
+}
+
+.time {
+    font-size: 110px;
+    font-weight: 800;
+    background-color: #171B21;
+    color: #A2AAB5;
+    border: 1.5px solid;
+    padding: 10px 50px;
+    border-radius: 6px;
+    border-color: #31363C;
+}
+
+button {
+    color: #8D949D;
+    background-color: #22262C;
+    font-weight: 600;
+    font-size: 15px;
+    border: 1.5px solid;
+    padding: 5px 20px;
+    border-radius: 6px;
+    border-color: #31363C;
+    width: 80px;
+    cursor: pointer;
+}
+
+button:hover {
+    color: #CBD1D8;
+    background-color: #31363C;
+    border-color: #8D949D;
+    transition-duration: .1s;
+}
+
+.space {
+    background-color: #0E1116;
+    padding: 6px;
 }
