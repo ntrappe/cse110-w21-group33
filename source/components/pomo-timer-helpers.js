@@ -135,7 +135,7 @@ function initProgess() {
  */
 function setProgressHelper(progress, square1, square2, square3, square4) {
     /* clear out all styling first (make all squares dark) */
-    square1.setAttribute('class', 'square-on');
+    square1.setAttribute('class', 'square-off');
     square2.setAttribute('class', 'square-off');
     square3.setAttribute('class', 'square-off');
     square4.setAttribute('class', 'square-off');

@@ -3,9 +3,17 @@ console.log("Control loaded!");
 const timer = document.getElementById('timer');
 
 timer.addEventListener('timerStart', () => {
-    alert('got a start');
+    console.log('got a start');
 });
 
 timer.addEventListener('timerReset', () => {
-    alert('got a reset');
+    console.log('got a reset');
+});
+
+timer.addEventListener('timerFinish', () => {
+    console.log('got a finish');
+});
+
+timer.addEventListener('tick', (event) => {
+    console.log(event.detail.timeRemaining());
 });
