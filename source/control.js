@@ -1,19 +1,19 @@
-console.log("Control loaded!");
+import { PomoFinish } from './components/pomo-finish.js';
+import { PomoInfo } from './components/pomo-info.js';
+import { PomoSettings } from './components/pomo-settings.js';
+import { PomoTimer } from './components/pomo-timer.js';
 
-const timer = document.getElementById('timer');
+const pomoFinish = new PomoFinish();
+const pomoInfo = new PomoInfo();
+const pomoSettings = new PomoSettings();
+const pomoTimer = new PomoTimer();
 
-timer.addEventListener('timerStart', () => {
-    console.log('got a start');
-});
+const header = document.getElementById('header');
+header.appendChild(pomoSettings);
+header.appendChild(pomoInfo);
 
-timer.addEventListener('timerReset', () => {
-    console.log('got a reset');
-});
+const main = document.getElementById('main');
+main.appendChild(pomoTimer);
 
-timer.addEventListener('timerFinish', () => {
-    console.log('got a finish');
-});
-
-timer.addEventListener('tick', (event) => {
-    console.log(event.detail.timeRemaining());
-});
+const footer = document.getElementById('footer');
+footer.appendChild(pomoFinish);

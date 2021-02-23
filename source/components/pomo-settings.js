@@ -13,3 +13,5 @@ class PomoSettings extends HTMLElement {
 }
 
 customElements.define('pomo-settings', PomoSettings);
+
+export { PomoSettings };

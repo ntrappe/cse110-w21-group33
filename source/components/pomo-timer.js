@@ -197,6 +197,8 @@ class PomoTimer extends HTMLElement {
 
 customElements.define('pomo-timer', PomoTimer);
 
+export { PomoTimer };
+
 /* Helpful Resources:
  * https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM
  */
