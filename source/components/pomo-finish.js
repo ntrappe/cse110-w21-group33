@@ -158,5 +158,5 @@ class PomoFinish extends HTMLElement {
 }
 
 customElements.define('pomo-finish', PomoFinish);
-let pomoFinish = new PomoFinish();
-pomoFinish.showModal(2,0,10,60,0);
+
+export { PomoFinish };
