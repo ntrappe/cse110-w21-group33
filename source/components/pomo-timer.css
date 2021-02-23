@@ -1,57 +1,59 @@
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .mode {
-    color: #79D071;
-    background-color: #18221D;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 700;
-    font-size: 18px;
-    margin-bottom: 30px; 
-    padding: 5px 25px;
-    border-radius: 2em;
-    border: 1.5px solid;
-    border-color: #355E36;
+  color: #79d071;
+  background-color: #18221d;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 30px; 
+  padding: 5px 25px;
+  border-radius: 2em;
+  border: 1.5px solid;
+  border-color: #355e36;
 }
 
 .time {
-    font-size: 110px;
-    font-weight: 800;
-    background-color: #171B21;
-    color: #A2AAB5;
-    border: 1.5px solid;
-    padding: 10px 50px;
-    border-radius: 6px;
-    border-color: #31363C;
+  font-size: 110px;
+  font-weight: 800;
+  background-color: #171b21;
+  color: #a2aab5;
+  border: 1.5px solid;
+  padding: 10px 50px;
+  border-radius: 6px;
+  border-color: #31363c;
 }
 
 button {
-    color: #CBD1D8;
-    /*color: #8D949D;*/
-    background-color: #22262C;
-    font-weight: 600;
-    font-size: 16px;
-    border: 1.5px solid;
-    padding: 7px 25px;
-    border-radius: 6px;
-    border-color: #31363C;
-    width: 95px;
-    cursor: pointer;
+  color: #cbd1d8; 
+  /* color: #8D949D; */
+  background-color: #22262c;
+  font-weight: 600;
+  font-size: 16px;
+  border: 1.5px solid;
+  padding: 7px 25px;
+  border-radius: 6px;
+  border-color: #31363c;
+  width: 95px;
+  cursor: pointer;
 }
 
 button:hover {
-    color: #F1F6FB;
-    /*color: #CBD1D8;*/
-    background-color: #31363C;
-    border-color: #8D949D;
-    transition-duration: .1s;
+  color: #f1f6fb;
+  /* color: #cbd1d8; */
+  background-color: #31363c;
+  border-color: #8d949d;
+  transition-duration: .1s;
 }
 
 .space {
-    background-color: #0E1116;
-    padding: 6px;
+  background-color: #0e1116;
+  padding: 6px;
 }
+
+/* end of pomo-timer.css */
