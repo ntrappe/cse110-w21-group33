@@ -42,6 +42,7 @@ class PomoTimer extends HTMLElement {
 
         let ticker;                                             // timer object
         this.totalSeconds = 0;                                  // total seconds in timer
+        let modeDuration = 0;                                   // time to put on clock
 
         style.textContent = `
             .progress-bottom-section {
@@ -128,7 +129,8 @@ class PomoTimer extends HTMLElement {
         this.timerReset = () => {
             shadow.dispatchEvent(timerResetEvent);
             clearInterval(ticker);
-            this.totalSeconds = set(NUM_MIN);
+            //this.totalSeconds = set(NUM_MIN);
+            this.totalSeconds = set(modeDuration);
             display(this.totalSeconds, timerText);
         }
 
@@ -137,7 +139,8 @@ class PomoTimer extends HTMLElement {
          */
         this.timerStart = () => {
             shadow.dispatchEvent(timerStartEvent);
-            this.totalSeconds = set(NUM_MIN);
+            //this.totalSeconds = set(NUM_MIN);
+            this.totalSeconds = set(modeDuration);
             display(this.totalSeconds, timerText);
             ticker = setInterval(this.timerTick, SEC_SPEED);
         }
@@ -149,6 +152,7 @@ class PomoTimer extends HTMLElement {
             shadow.dispatchEvent(timerFinishEvent);
             clearInterval(ticker);
             this.totalSeconds = set(NUM_MIN);
+            //this.totalSeconds = set(modeDuration);
             display(this.totalSeconds, timerText);
         }
 
@@ -168,6 +172,16 @@ class PomoTimer extends HTMLElement {
         }
 
         /**
+         * Function for control to call to set time on clock
+         * @param {Number} min number of minutes to set the clock to
+         */
+        function setTimer(min) {
+            modeDuration = min;
+        }
+        /* @NOTE: uncomment to call setTimer function to set time on clock */
+        //setTimer(6);
+
+        /**
          * Updates squares on screen to match number of breaks taken
          * @param {Number} progress number of breaks taken
          */
@@ -176,7 +190,7 @@ class PomoTimer extends HTMLElement {
                 progressContainerItems[3], progressContainerItems[4]);
         }
         /* @NOTE: uncomment to call setProgress function to update squares */
-        setProgress(3);
+        //setProgress(0);
         
     }
 }
