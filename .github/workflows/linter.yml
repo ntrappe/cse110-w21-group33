@@ -1,59 +1,36 @@
-# ---
-# ###########################
-# ###########################
-# ## Linter GitHub Actions ##
-# ###########################
-# ###########################
-# name: Lint Code Base
+name: Lint Code Base
 
-# #
-# # Documentation:
-# # https://help.github.com/en/articles/workflow-syntax-for-github-actions
-# #
+on:
+  push:
+    branches-ignore:
+      - main
+  pull_request:
+    branches: 
+      - main
+    types: [opened]
 
-# #############################
-# # Start the job on all push #
-# #############################
-# on:
-#   push:
-#     branches-ignore:
-#       - master
-#   pull_request:
-#     branches: [main]
+  # Can be triggered manually on Actions section on GitHub
+  workflow_dispatch:
 
-#   workflow_dispatch:
+jobs:
+  build:
+    name: Lint Code Base
+    runs-on: ubuntu-latest
 
-# ###############
-# # Set the Job #
-# ###############
-# jobs:
-#   build:
-#     # Name the Job
-#     name: Lint Code Base
-#     # Set the agent to run on
-#     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
 
-#     ##################
-#     # Load all steps #
-#     ##################
-#     steps:
-#       ##########################
-#       # Checkout the code base #
-#       ##########################
-#       - name: Checkout Code
-#         uses: actions/checkout@v2
+      # Lints through entire code base for syntax/style errors
+      - name: Lint Code Base
+        uses: github/super-linter@v3
+        env:
+          VALIDATE_ALL_CODEBASE: true
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-#       ################################
-#       # Run Linter against code base #
-#       ################################
-#       - name: Lint Code Base
-#         uses: github/super-linter@v3
-#         env:
-#           VALIDATE_ALL_CODEBASE: true
-#           DEFAULT_BRANCH: master
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-#           VALIDATE_CSS: true
-#           VALIDATE_HTML: true
-#           VALIDATE_JAVASCRIPT_ES: true
-#           FILTER_REGEX_EXCLUDE: .*/JSDocumentation/.*
+          # Set which file types to lint and what folders/files to exclude
+          VALIDATE_CSS: true
+          VALIDATE_HTML: true
+          VALIDATE_JAVASCRIPT_ES: true
+          FILTER_REGEX_EXCLUDE: .*/JSDocumentation/.*
