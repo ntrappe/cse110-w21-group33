@@ -183,7 +183,6 @@ class PomoTimer extends HTMLElement {
         }
         /* @NOTE: uncomment to call setTimer function to set time on clock */
         //setTimer(6, 'short break');
-        //setTimer(25, 'work');
 
         /**
          * For CONTROL to update squares on screen to match number of breaks taken
