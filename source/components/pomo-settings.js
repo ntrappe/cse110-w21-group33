@@ -58,10 +58,19 @@ class PomoSettings extends HTMLElement {
         this.close.setAttribute("type", "button");
         this.close.setAttribute("value", "X");
 
-        const volume = this.settings.appendChild(document.createElement("div"));
-        volume.innerHTML = 
-          `<label>Volume</label>
-          <input type="range" id="volume" min="0" max="100" value="100">`;
+        this.volume = this.settings.appendChild(document.createElement("div"));
+        this.volume.innerHTML = `<label>Volume</label>`;
+        this.volumeSlide = document.createElement("input");
+        this.volumeSlide.setAttribute("type", "range");
+        this.volumeSlide.setAttribute("id", "volume");
+        this.volumeSlide.setAttribute("min", "0");
+        this.volumeSlide.setAttribute("max", "100");
+        this.volumeSlide.setAttribute("value", "100");
+        this.volume.appendChild(this.volumeSlide);
+
+        this.audio = this.settings.appendChild(document.createElement("audio"));
+        this.audio.setAttribute("id", "horn-sound");
+        this.audio.setAttribute("src", "../media/audio/party-horn.mp3");
 
         const sound = this.settings.appendChild(document.createElement("div"));
         sound.innerHTML = 
@@ -89,6 +98,10 @@ class PomoSettings extends HTMLElement {
             this.closeBar();
           }
         });
+
+        this.volumeSlide.addEventListener('change', () => {
+          this.handleVolumeChange();
+        })
       }
 
       openBar = () => {
@@ -97,6 +110,11 @@ class PomoSettings extends HTMLElement {
       
       closeBar = () => {
         this.settings.style.left = "-500px";
+      }
+
+      handleVolumeChange = () => {
+        this.audio.volume = this.volumeSlide.value/100;
+        this.audio.play();
       }
 }
 
