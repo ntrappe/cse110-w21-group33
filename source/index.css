@@ -4,12 +4,6 @@ header {
   justify-content: space-between;
   padding: 16px;
 }
-/*
-body {
-    font-family: 'Open Sans', sans-serif;   /* dark mode 
-    background-color: #0E1116;      /* dark mode 
-}*/
-
 
 main {
   display: flex;
@@ -20,8 +14,4 @@ footer {
   display: flex;
   justify-content: flex-end;
   padding: 16px;
-}
-
-#header.switch.slider.dark_mode {
-  display:none;
 }
