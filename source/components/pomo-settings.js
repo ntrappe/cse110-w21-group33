@@ -38,7 +38,7 @@ class PomoSettings extends HTMLElement {
             padding: 8px 8px 8px 32px;
             color: #818181;
         }
-        #volume, #soundOptions{
+        #volume, #soundOptions, #disableBtn{
             color: #818181;
             float: right;
         }
@@ -72,25 +72,19 @@ class PomoSettings extends HTMLElement {
         this.audio.setAttribute("id", "horn-sound");
         this.audio.setAttribute("src", "../media/audio/party-horn.mp3");
 
-        const disableButton = shadow.appendChild(document.createElement("button"));
-        disableButton.textContent = "Disable";
-        disableButton.onclick = () => {
-          open.disabled = true;
-        }
+        this.soundMenu = this.settings.appendChild(document.createElement("div"));
+        this.soundLabel = this.soundMenu.appendChild(document.createElement("label"));
+        this.soundSelect = this.soundMenu.appendChild(document.createElement("select"));
 
-        const soundMenu = this.settings.appendChild(document.createElement("div"));
-        const soundLabel = soundMenu.appendChild(document.createElement("label"));
-        const soundSelect = soundMenu.appendChild(document.createElement("select"));
+        this.soundLabel.htmlFor = "soundOptions";
+        this.soundLabel.innerHTML = "Sound";
 
-        soundLabel.htmlFor = "soundOptions";
-        soundLabel.innerHTML = "Sound";
-
-        soundSelect.id = "soundOptions";
-        soundSelect.onchange = () => {
-          const sound = soundSelect.value;
+        this.soundSelect.id = "soundOptions";
+        this.soundSelect.onchange = () => {
+          let sound = this.soundSelect.value;
 
           // Temporary plays audio on selection until integration with audio notification issue #33
-          const audio = document.createElement("audio");
+          let audio = document.createElement("audio");
           audio.src = `/media/audio/${sound}.mp3`;
           audio.play();
         }
@@ -100,7 +94,7 @@ class PomoSettings extends HTMLElement {
 
         // Go through audio files and create option in dropdown menu for each one
         for (const sound of soundList) {
-          const option = soundSelect.appendChild(document.createElement("option"));
+          const option = this.soundSelect.appendChild(document.createElement("option"));
           option.value = sound;
           
           // Converts name of audio file to capitalized words
@@ -111,6 +105,15 @@ class PomoSettings extends HTMLElement {
         const calm = this.settings.appendChild(document.createElement("div"));
         calm.innerHTML = `<label for="calm">Calm Mode</label>`;
         shadow.appendChild(this.settings);
+
+        this.disable = this.settings.appendChild(document.createElement("div"));
+        this.disableButton = document.createElement("button");
+        this.disableButton.textContent = "Disable";
+        this.disableButton.onclick = () => {
+          this.open.disabled = true;
+        }
+        this.disableButton.id = "disableBtn";
+        this.disable.appendChild(this.disableButton);
 
         this.open.addEventListener('click', () => {
           this.openBar();
