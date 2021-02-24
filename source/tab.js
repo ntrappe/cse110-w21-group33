@@ -10,21 +10,40 @@ export function setCalm(calm_in) {
 
 /**
  * Updates browser tab text and icon to reflect time remaining
- * @param {Number} sec_in number of seconds remaining
+ * @param {Number} sec number of seconds remaining
+ * @param {String} mode the shorthand of the current mode
  */
-export function setTab(sec_in) {
+export function setTab(sec, mode) {
     let title = document.querySelector('title');
 
-    if (calm) {
-        const minutes = Math.floor(sec_in / 60).toString();
+    // Convert mode shorthand to full title
+    let modeTitle;
+    switch (mode) {
+        case 'work':
+            modeTitle = 'Work'
+            break;
+    
+        case 'short break':
+            modeTitle = 'Short Break';
+            break;
 
-        title.textContent = minutes + 'm Remaining';
-    } else {
-        const minutes = Math.floor(sec_in / 60).toString().padStart(2, '0');
-        const seconds = (sec_in % 60).toString().padStart(2, '0');
-
-        title.textContent = minutes + ':' + seconds + ' Remaining';
+        case 'long break':
+            modeTitle = 'Long Break';
+            break;
+            
+        default:
+            modeTitle = '';
+            break;
     }
+
+    // Calculate minutes remaining, and then pad with '0' if necessary.
+    // For calm mode, round the minute up. For regular mode, round the minute down.
+    const minutes = (calm ? Math.ceil(sec / 60): Math.floor(sec / 60)).toString().padStart(2, '0');
+
+    // For calm mode, always display '00'. For regular mode, display the seconds.
+    const seconds = (calm ? 0 : sec % 60).toString().padStart(2, '0');
+
+    title.textContent = minutes + ':' + seconds + ' - ' + modeTitle;
 }
 
 /**
