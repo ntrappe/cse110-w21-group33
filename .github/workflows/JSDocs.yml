@@ -3,15 +3,10 @@ name: Make JSDocs
 on:
   push:
     branches-ignore:
-      - main
       - docs
-  pull_request:
-    branches: 
-      - main
-    types: [opened]
 
   # Can be triggered manually on Actions section on GitHub
-  workflow-dispatch:
+  workflow_dispatch:
 
 jobs:
   run-JSDocs:
