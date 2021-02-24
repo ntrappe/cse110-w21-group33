@@ -5,6 +5,10 @@ class PomoFinish extends HTMLElement {
         const shadow = this.attachShadow({mode: 'open'});
         // the window wrapper
         const wrapper = document.createElement('div');
+        const link = document.createElement('link');
+        link.setAttribute('id', 'timer-styles');
+        link.setAttribute('rel', 'stylesheet');
+        link.setAttribute('href', './components/pomo-finish.css');
 
         this.finishButton = document.createElement('button');
         this.finishButton.setAttribute('id', 'finishButton');
@@ -42,12 +46,22 @@ class PomoFinish extends HTMLElement {
         this.sessionStatistics.setAttribute('id', 'statistics-panel');
 
         // button to close the lightbox
-        const closeButton = document.createElement('div');
+        let closeButton = document.createElement('div');
         closeButton.setAttribute('id', 'closeButton');
+        closeButton.setAttribute('class', 'button-off');
         closeButton.innerHTML = "&times;";
         closeButton.onclick = () => {
           this.modal.style.display = "none";
         }
+
+        /* mimic a button hover event */
+        closeButton.addEventListener('mouseover', () => {
+          closeButton.setAttribute('class', 'button-on');
+        });
+
+        closeButton.addEventListener('mouseout', () => {
+          closeButton.setAttribute('class', 'button-off');
+        });
 
         // append elements to containers
         modalContent.appendChild(closeButton);
@@ -60,6 +74,7 @@ class PomoFinish extends HTMLElement {
         // element containing the styling
         let style = document.createElement('style');
         style.textContent = `
+          /*
           #modal {
             display: none;
             position: fixed;
@@ -80,18 +95,7 @@ class PomoFinish extends HTMLElement {
             height: 50%;
             width: 50%;
           }
-        
-          #closeButton {
-            background-color: red;
-            color: black;
-            float: right;
-            font-size: 30px;
-            padding: 2px ;
-            border: 2px solid #888;
-            border-radius: 2px;
-            display: block;
-          }
-        
+          
           #statistics-panel {
             display: block;
             color: black;
@@ -99,7 +103,7 @@ class PomoFinish extends HTMLElement {
             width: 100%; 
             height: 100%;
             margin: 0px 0px 0px;
-          }
+          }*/
           
           li {
             display: block;
@@ -110,6 +114,7 @@ class PomoFinish extends HTMLElement {
         
         shadow.appendChild(wrapper);
         shadow.appendChild(style);
+        shadow.appendChild(link);
       }
 
       /**
