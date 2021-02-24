@@ -1,0 +1,93 @@
+button {
+  color: #cbd1d8;
+  background-color: #22262c;
+  font-weight: 600;
+  font-size: 16px;
+  border: 1.5px solid;
+  padding: 7px 25px;
+  border-radius: 6px;
+  border-color: #31363c;
+  width: 100px;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+button:hover {
+  color: #f1f6fb;
+  background-color: #31363c;
+  border-color: #8d949d;
+  transition-duration: 0.1s;
+}
+
+#closeButton[class="button-off"] {
+  background-color: #0e1116;
+  color: #cbd1d8;
+  float: right;
+  font-size: 30px;
+  padding: 2px 14px;
+  border: 1.5px solid;
+  border-color: #31363c;
+  border-radius: 90%;
+  display: block;
+  cursor: pointer;
+}
+
+#closeButton[class="button-on"] {
+  background-color: #22262c;
+  color: #f1f6fb;
+  float: right;
+  font-size: 30px;
+  padding: 2px 14px;
+  border: 1.5px solid;
+  border-color: #8d949d;
+  border-radius: 90%;
+  display: block;
+  cursor: pointer;
+  transition-duration: 0.1s;
+}
+
+#modal {
+  display: none;
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto;  
+  background-color: rgba(0,0,0,0.5);
+}
+
+
+#modalContent {
+  background-color: #171b21;
+  margin: 5% auto;
+  padding: 15px;
+  border: 1.5px solid;
+  border-radius: 6px;
+  border-color: #31363c;
+  height: 70%;
+  width: 70%;
+}
+
+#statistics-panel {
+  display: block;
+  color: black;
+  background-color: yellow;
+  width: 90%; 
+  height: 90%;
+  margin: auto;
+}
+
+/* old version
+#closeButton {
+  background-color: red;
+  color: black;
+  float: right;
+  font-size: 30px;
+  padding: 2px ;
+  border: 2px solid #888;
+  border-radius: 2px;
+  display: block;
+}
+*/
