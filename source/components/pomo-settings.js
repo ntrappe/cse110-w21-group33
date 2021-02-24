@@ -83,6 +83,12 @@ class PomoSettings extends HTMLElement {
         this.close.addEventListener('click', () => {
           this.closeBar();
         });
+
+        document.addEventListener('click', (e) => {
+          if(!this.settings.contains(e.target) && !(e.target==this)){
+            this.closeBar();
+          }
+        });
       }
 
       openBar = () => {
