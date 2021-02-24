@@ -1,20 +1,21 @@
 name: Lint Code Base
 
+# Run for PRs and ignore merges and documentation
 on:
   push:
     branches-ignore:
       - main
+      - gh-pages
   pull_request:
     branches: 
       - main
-    types: [opened]
 
   # Can be triggered manually on Actions section on GitHub
   workflow_dispatch:
 
 jobs:
-  build:
-    name: Lint Code Base
+  run-lint:
+    name: Lint Code Base Job
     runs-on: ubuntu-latest
 
     steps:
@@ -33,4 +34,4 @@ jobs:
           VALIDATE_CSS: true
           VALIDATE_HTML: true
           VALIDATE_JAVASCRIPT_ES: true
-          FILTER_REGEX_EXCLUDE: .*/JSDocumentation/.*
+          FILTER_REGEX_INCLUDE: .*/source/.*

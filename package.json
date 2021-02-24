@@ -1,6 +1,12 @@
 {
     "scripts": {
-    "test": "jest",
-    "coverage": "jest --collectCoverage --"
+        "jest_test": "jest --",
+        "jest_coverage": "jest --collectCoverage --",
+        "cypress_test": "cypress run",
+        "cypress_start": "cypress open"
+    },
+    "devDependencies": {
+        "cypress": "^6.5.0",
+        "jest": "^26.6.3"
     }
-}  
+}
