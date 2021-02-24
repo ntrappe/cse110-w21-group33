@@ -38,6 +38,15 @@ class PomoInfo extends HTMLElement {
         // the main info Content
         const infoContent = document.createElement('div');
         infoContent.setAttribute('id', 'infoContent');
+        const title = document.createElement('h3')
+        const content = document.createElement('div');
+        title.innerHTML = "HOW IT WORKS";
+        content.innerHTML = `The Pomodoro Technique is a time 
+        management method developed by Francesco Cirillo in the 
+        late 1980s. The technique uses a timer to break down work
+        into intervals, traditionally 25 minutes in length, 
+        separated by short breaks, traditionally 5 minutes. After 
+        4 working intervals, the break is 15 minutes`;
 
         // button to close the modal window
         const closeButton = document.createElement('div');
@@ -58,7 +67,10 @@ class PomoInfo extends HTMLElement {
         });
         
         // add element to containers
+        infoContent.appendChild(title);
+        infoContent.appendChild(content);
         modalContent.appendChild(closeButton);
+        modalContent.appendChild(infoContent);
         modal.appendChild(modalContent);
         wrapper.appendChild(modal);
         wrapper.appendChild(this.infoButton);
