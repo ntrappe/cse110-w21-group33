@@ -3,7 +3,6 @@ name: Jest Unit Tests
 on:
   push:
     branches-ignore:
-      - main
       - docs
   pull_request:
     branches:
