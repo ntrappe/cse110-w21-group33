@@ -3,7 +3,6 @@ name: Jest Unit Tests
 on:
   push:
     branches-ignore:
-      - main
       - docs
   pull_request:
     branches:
@@ -11,7 +10,7 @@ on:
     types: [opened]
 
   # Can be triggered manually on Actions section on GitHub
-  workflow-dispatch:
+  workflow_dispatch:
 
 jobs:
   run-jest:
@@ -24,6 +23,7 @@ jobs:
 
       # Run Jest to automatically run unit tests and show code coverage
       - name: Run Jest
-        run: yarn add --dev jest # Handle installation on virtual machine
-        run: yarn test # Run unit tests and output results
-        run: yarn coverage # Output code coverage of unit tests
+        run: | 
+              yarn add --dev jest # Handle installation on virtual machine
+              yarn test # Run unit tests and output results
+              yarn coverage # Output code coverage of unit tests
