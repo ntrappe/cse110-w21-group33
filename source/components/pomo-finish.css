@@ -65,28 +65,27 @@ button:hover {
   border: 1.5px solid;
   border-radius: 6px;
   border-color: #31363c;
-  height: 70%;
-  width: 70%;
+  height: 50%;
+  width: 50%;
 }
 
 #statistics-panel {
   display: block;
   color: black;
-  background-color: yellow;
   width: 90%;
   height: 90%;
   margin: auto;
 }
 
-/* old version
-#closeButton {
-  background-color: red;
-  color: black;
-  float: right;
-  font-size: 30px;
-  padding: 2px ;
-  border: 2px solid #888;
-  border-radius: 2px;
+#statistics-panel li {
   display: block;
+  color: #cbd1d8;
 }
-*/
+
+.modalTitle {
+  border-bottom:#cbd1d8 solid;
+  padding-bottom: 3px;
+  margin: 10px 5%;
+  color: #cbd1d8;
+  text-align: center;
+}

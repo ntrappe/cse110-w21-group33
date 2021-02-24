@@ -36,7 +36,7 @@ class PomoFinish extends HTMLElement {
 
         // the main content to be display in the lightbox
         // title
-        const modalTitle = document.createElement('div');
+        const modalTitle = document.createElement('h3');
         modalTitle.setAttribute('class', 'modalTitle');
         modalTitle.innerHTML = "SESSION SUMMARY";
         // list of stat
@@ -68,50 +68,8 @@ class PomoFinish extends HTMLElement {
         modal.appendChild(modalContent);
         wrapper.appendChild(modal);
         wrapper.append(finishButton);
-
-        // element containing the styling
-        let style = document.createElement('style');
-        style.textContent = `
-          /*
-          #modal {
-            display: none;
-            position: fixed;
-            z-index: 1; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto;  
-            background-color: rgba(0,0,0,0.5);
-          }
-        
-          #modalContent {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 15px;
-            border: 1px solid #888;
-            height: 50%;
-            width: 50%;
-          }
-          
-          #statistics-panel {
-            display: block;
-            color: black;
-            background-color: yellow;
-            width: 100%; 
-            height: 100%;
-            margin: 0px 0px 0px;
-          }*/
-          
-          li {
-            display: block;
-            color: black;
-            background-color: blue;
-          }
-        `
         
         shadow.appendChild(wrapper);
-        shadow.appendChild(style);
         shadow.appendChild(link);
       }
 
