@@ -17,3 +17,4 @@ main.appendChild(pomoTimer);
 
 const footer = document.getElementById('footer');
 footer.appendChild(pomoFinish);
+pomoFinish.showModal(2,1,0,60,0);

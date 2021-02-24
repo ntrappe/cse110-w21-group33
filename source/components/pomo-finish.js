@@ -3,28 +3,26 @@ class PomoFinish extends HTMLElement {
         super();
 
         const shadow = this.attachShadow({mode: 'open'});
-        // the window wrapper
+        
+        // the component wrapper
         const wrapper = document.createElement('div');
 
-        this.finishButton = document.createElement('button');
-        this.finishButton.setAttribute('id', 'finishButton');
-        this.finishButton.textContent = "Finish";
-        this.finishButton.onclick = () => {
-          // get the session summary
-
-          // reset localStorage and the timer
-
+        // button to finish session and display statistics
+        const finishButton = document.createElement('button');
+        finishButton.setAttribute('id', 'finishButton');
+        finishButton.textContent = "Finish";
+        finishButton.onclick = () => {
           // display the statistics
-          this.modal.style.display = "block";
+          modal.style.display = "block";
         }
 
         // the lightbox
-        this.modal = document.createElement('div');
-        this.modal.setAttribute('id', 'modal');
-        this.modal.onclick = (event) => {
+        const modal = document.createElement('div');
+        modal.setAttribute('id', 'modal');
+        modal.onclick = (event) => {
           // close lightbox when click outside of the content area
-          if (event.target == this.modal) {
-            this.modal.style.display = "none";
+          if (event.target == modal) {
+            modal.style.display = "none";
           }
         }
 
@@ -46,16 +44,16 @@ class PomoFinish extends HTMLElement {
         closeButton.setAttribute('id', 'closeButton');
         closeButton.innerHTML = "&times;";
         closeButton.onclick = () => {
-          this.modal.style.display = "none";
+          modal.style.display = "none";
         }
 
         // append elements to containers
         modalContent.appendChild(closeButton);
         modalContent.appendChild(modalTitle);
         modalContent.appendChild(this.sessionStatistics);
-        this.modal.appendChild(modalContent);
-        wrapper.appendChild(this.modal);
-        wrapper.append(this.finishButton);
+        modal.appendChild(modalContent);
+        wrapper.appendChild(modal);
+        wrapper.append(finishButton);
 
         // element containing the styling
         let style = document.createElement('style');
@@ -113,12 +111,13 @@ class PomoFinish extends HTMLElement {
       }
 
       /**
-       * 
-       * @param {Number} pomodoroCount 
-       * @param {Number} shortCount 
-       * @param {Number} longCount 
-       * @param {Number} productiveTime 
-       * @param {Number} interruptedCount 
+       * Render session's statistics to the screen
+       * @param {Number} pomodoroCount    the number of pomodoro sessions completed
+       * @param {Number} shortCount       the number of short breaks
+       * @param {Number} longCount        the number of long breaks
+       * @param {Number} productiveTime   total number of minutes working
+       * @param {Number} interruptedCount the number of time reset because of interruptions
+       * @return {void} 
        */
 
 
@@ -150,8 +149,6 @@ class PomoFinish extends HTMLElement {
           }
           ul.appendChild(li);
         });
-        console.log(this.sessionStatistics);
-        console.log(this);
       }
 
 
