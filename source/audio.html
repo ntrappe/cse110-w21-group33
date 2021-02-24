@@ -1,0 +1,77 @@
+
+<!-- In the future, the html part will be replaced by the buttons and content in the
+main HTML file, and this will just be an audio.js file-->
+
+<button id="btn">start countdown</button><br>
+<pre id="pre"></pre>
+
+<script type="text/javascript">
+    const audio = new Audio("https://dl.dropboxusercontent.com/s/1cdwpm3gca9mlo0/kick.mp3");
+    const enabled = false;
+    
+    let time = 10;
+
+    btn.onclick = e => {
+    // mark our audio element as approved by the user
+    audio.play().then(() => { // pause directly
+        audio.pause();
+        audio.currentTime = 0;
+    });
+    countdown();
+    btn.disabled = true;
+    };
+
+
+    function countdown() {
+    pre.textContent = --time;
+    if(time === 5) return onend();
+    setTimeout(countdown, 1000);
+    }
+
+
+    function onend() {
+    audio.play(); // now we're safe to play it
+    time = 10;
+    btn.disabled = false;
+    }
+
+    // Above is code for working sound
+    // Below are the methods that need to be connected to the rest of the program
+
+    /** TODO: 
+    ability to change sound and volume 
+    drag to change volume 
+    2 sounds */
+
+    /** 
+    Enabled: boolean 
+    Determines if sound should be played
+    */
+    function enableSound(enabled){
+        if(enabled == true){return true;}
+    }
+
+    /**
+     The sound should be played if sound is currently enabled
+     I'm a bit confused on this one, shouldn't this be automatic like in the 
+     onClick function at the top of the file?
+     */
+    function playSound(){
+        if(enableSound){
+            countdown();
+        }
+    }
+
+    /** 
+    sound: string
+    Set location of the sound to be played
+    */
+    function setSound(sound){
+        audio.src = sound;
+    }
+
+    /**
+    Adjust volume based on slider
+    */
+</script>
+
