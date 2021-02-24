@@ -175,25 +175,21 @@ class PomoTimer extends HTMLElement {
          * For CONTROL to set time on clock for current mode
          * @param {Number} min number of minutes to set the clock to
          */
-        function setTimer(min, mode) {
+        this.setTimer = (min, mode) => {
             modeDuration = min;
             display(set(min), timerText);
             currentMode.setAttribute('class', mode);
             currentMode.textContent = mode.toUpperCase();
         }
-        /* @NOTE: uncomment to call setTimer function to set time on clock */
-        //setTimer(6, 'short break');
 
         /**
          * For CONTROL to update squares on screen to match number of breaks taken
          * @param {Number} progress number of breaks taken
          */
-        function setProgress(progress) {
+        this.setProgress = (progress) => {
             setProgressHelper(progress, progressContainerItems[1], progressContainerItems[2],
                 progressContainerItems[3], progressContainerItems[4]);
         }
-        /* @NOTE: uncomment to call setProgress function to update squares */
-        //setProgress(2);
     }
 }
 
