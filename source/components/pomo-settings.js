@@ -72,14 +72,41 @@ class PomoSettings extends HTMLElement {
         this.audio.setAttribute("id", "horn-sound");
         this.audio.setAttribute("src", "../media/audio/party-horn.mp3");
 
-        const sound = this.settings.appendChild(document.createElement("div"));
-        sound.innerHTML = 
-          `<label for="soundOptions">Sound</label>
-          <select id="soundOptions">
-              <option value="Honk">Honk</option>
-              <option value="Moo">Moo</option>
-              <option value="Meow">Meow</option>
-          </select>`;
+        const disableButton = shadow.appendChild(document.createElement("button"));
+        disableButton.textContent = "Disable";
+        disableButton.onclick = () => {
+          open.disabled = true;
+        }
+
+        const soundMenu = this.settings.appendChild(document.createElement("div"));
+        const soundLabel = soundMenu.appendChild(document.createElement("label"));
+        const soundSelect = soundMenu.appendChild(document.createElement("select"));
+
+        soundLabel.htmlFor = "soundOptions";
+        soundLabel.innerHTML = "Sound";
+
+        soundSelect.id = "soundOptions";
+        soundSelect.onchange = () => {
+          const sound = soundSelect.value;
+
+          // Temporary plays audio on selection until integration with audio notification issue #33
+          const audio = document.createElement("audio");
+          audio.src = `/media/audio/${sound}.mp3`;
+          audio.play();
+        }
+
+        // List of names of audio files
+        const soundList = ["angry-monkey", "default", "rooster"];
+
+        // Go through audio files and create option in dropdown menu for each one
+        for (const sound of soundList) {
+          const option = soundSelect.appendChild(document.createElement("option"));
+          option.value = sound;
+          
+          // Converts name of audio file to capitalized words
+          let name = sound.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+          option.text = name;
+        }
 
         const calm = this.settings.appendChild(document.createElement("div"));
         calm.innerHTML = `<label for="calm">Calm Mode</label>`;
