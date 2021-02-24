@@ -72,12 +72,6 @@ class PomoSettings extends HTMLElement {
         this.audio.setAttribute("id", "horn-sound");
         this.audio.setAttribute("src", "../media/audio/party-horn.mp3");
 
-        const disableButton = shadow.appendChild(document.createElement("button"));
-        disableButton.textContent = "Disable";
-        disableButton.onclick = () => {
-          open.disabled = true;
-        }
-
         const soundMenu = this.settings.appendChild(document.createElement("div"));
         const soundLabel = soundMenu.appendChild(document.createElement("label"));
         const soundSelect = soundMenu.appendChild(document.createElement("select"));
