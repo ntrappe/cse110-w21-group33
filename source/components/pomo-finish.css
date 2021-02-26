@@ -20,7 +20,7 @@ button:hover {
 }
 
 #closeButton[class="button-off"] {
-  background-color: #0e1116;
+  background-color: #0f1115;
   color: #cbd1d8;
   float: right;
   font-size: 30px;
@@ -59,7 +59,7 @@ button:hover {
 }
 
 #modalContent {
-  background-color: #171b21;
+  background-color: #0f1115;
   margin: 5% auto;
   padding: 15px;
   border: 1.5px solid;
@@ -83,8 +83,9 @@ button:hover {
 }
 
 .modalTitle {
-  border-bottom: #cbd1d8 solid;
-  padding-bottom: 3px;
+  border-bottom: 1.5px solid;
+  border-color: #31363c;
+  padding-bottom: 15px;
   margin: 10px 5%;
   color: #cbd1d8;
   text-align: center;
