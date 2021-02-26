@@ -15,6 +15,7 @@ export function setCalm(calm_in) {
  */
 export function setTab(sec, mode) {
     let title = document.querySelector('title');
+    title.setAttribute('id', 'tab');
 
     // Convert mode shorthand to full title
     let modeTitle;
@@ -51,6 +52,7 @@ export function setTab(sec, mode) {
  */
 export function defaultTab() {
     let title = document.querySelector('title');
+    title.setAttribute('id', 'tab');
 
     title.textContent = 'Pomodoro Timer';
 }
