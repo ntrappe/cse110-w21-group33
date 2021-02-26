@@ -79,10 +79,12 @@ function initProgess() {
     /* holds 2 layers of div where the second layer is the progress squares */
     let progressContainer = document.createElement('div');  
     progressContainer.setAttribute('class', 'progress-container');
+    progressContainer.setAttribute('id', 'progress-container');
 
     /* text above squares NOT IMPLEMENTED */
     let progressTopSection = document.createElement('div');
     progressTopSection.setAttribute('class', 'progress-top-section');
+    progressTopSection.setAttribute('id', 'progress-top-section');
     progressContainer.appendChild(progressTopSection);
     
     /* holder for squares that track break progress */  
