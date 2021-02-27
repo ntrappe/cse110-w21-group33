@@ -20,7 +20,8 @@
 }
 
 /* red version of mode button */
-#mode[class*="break"] {
+
+/* #mode[class*="break"] {
   color: #e65d51;
   background-color: #21161a;
   font-family: 'Open Sans', sans-serif;
@@ -31,6 +32,32 @@
   border-radius: 2em;
   border: 1.5px solid;
   border-color: #642828;
+} */
+
+#mode[class*="long"] {
+  color: #56cae1;
+  background-color: #1b323e;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 30px;
+  padding: 5px 25px;
+  border-radius: 2em;
+  border: 1.5px solid;
+  border-color: #2e5f66;
+}
+
+#mode[class*="short"] {
+  color: #c1afe6;
+  background-color: #1d1835;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 30px;
+  padding: 5px 25px;
+  border-radius: 2em;
+  border: 1.5px solid;
+  border-color: #4f466b;
 }
 
 .time {
