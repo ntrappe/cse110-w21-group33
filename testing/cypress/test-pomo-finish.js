@@ -7,15 +7,16 @@ describe("Open Page", () => {
 /* Starter Tests to find elements on page */
 describe('Find Finish Elements', { includeShadowDom: true }, () => {
     it('Get element (\'Finish\') via ID', () => {
-        cy.get('p');
+        cy.find('p');
     });
 });
+/*
 describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
     it('Check that element says Finish', () => {
         cy.get('p').then(($el) => {
             expect($el).toBe.contain('Finish');
         });
     });
-});
+});*/
 
 /* Add your own tests here */

@@ -10,12 +10,13 @@ describe('Find Info Elements', { includeShadowDom: true }, () => {
         cy.get('p');
     });
 });
+/*
 describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
     it('Check that element says Info', () => {
         cy.get('p').then(($el) => {
             expect($el).toBe.contain('Info');
         });
     });
-});
+});*/
 
 /* Add your own tests here */
