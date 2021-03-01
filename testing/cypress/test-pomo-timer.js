@@ -27,7 +27,7 @@ describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
 
   it('Button should be \'Start\'', () => {
     cy.get('#button').then(($el) => {
-      expect($el).to.contain('START');
+      expect($el).to.contain('Start');
     });
   });
 });
