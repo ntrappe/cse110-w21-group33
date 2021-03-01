@@ -5,15 +5,15 @@ describe("Open Page", () => {
 });
 
 /* Starter Tests to find elements on page */
-describe('Find Info Elements', { includeShadowDom: true }, () => {
-    it('Get element (\'Info\')', () => {
+describe('Find Settings Elements', { includeShadowDom: true }, () => {
+    it('Get element (\'Settings\')', () => {
         cy.get('p');
     });
 });
 describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
-    it('Check that element says Info', () => {
+    it('Check that element says Settings', () => {
         cy.get('p').then(($el) => {
-            expect($el).to.contain('Info');
+            expect($el).to.contain('Settings');
         });
     });
 });

@@ -6,7 +6,7 @@ describe("Open Page", () => {
 
 /* Starter Tests to find elements on page */
 describe('Find Finish Elements', { includeShadowDom: true }, () => {
-    it('Get element (\'Finish\') via ID', () => {
+    it('Get element (\'Finish\')', () => {
         cy.get('p');
     });
 });
