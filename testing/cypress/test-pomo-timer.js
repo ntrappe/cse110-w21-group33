@@ -36,15 +36,6 @@ describe('Basic Button Toggles', { includeShadowDom: true }, () => {
   it('Button toggles when Start clicked', () => {
     cy.get('#button').click();
     cy.get('#button').then(($el) => {
-      expect($el).to.contain('Reset');
-    });
-  });
-});
-/*
-describe('', { includeShadowDom: true }, () => {
-  it('Button toggles when Start clicked', () => {
-    cy.get('#button').click();
-    cy.get('#button').then(($el) => {
       expect($el).to.have.attr('class', 'reset');
     });
   });
@@ -55,4 +46,4 @@ describe('', { includeShadowDom: true }, () => {
       expect($el).to.have.attr('class', 'start');
     });
   });
-});*/
+});

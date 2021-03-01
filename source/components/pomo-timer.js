@@ -23,6 +23,7 @@ class PomoTimer extends HTMLElement {
         // timer button
         let timerButton = document.createElement('button'); 
         timerButton.setAttribute('id', 'button');
+        timerButton.setAttribute('class', 'start');
         timerButton.textContent = START; 
 
         shadow.appendChild(wrapper);
@@ -47,6 +48,7 @@ class PomoTimer extends HTMLElement {
          */
         function setStartButton(timerButton) {
             timerButton.innerHTML = START;
+            timerButton.setAttribute('class', 'start');
         }
 
         /**
@@ -55,6 +57,7 @@ class PomoTimer extends HTMLElement {
          */
         function setResetButton(timerButton) {
             timerButton.innerHTML = RESET;
+            timerButton.setAttribute('class', 'reset');
         }
     }
 }
