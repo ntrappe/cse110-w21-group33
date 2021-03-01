@@ -6,9 +6,6 @@ on:
     branches-ignore:
       - main
       - gh-pages
-  pull_request:
-    branches:
-      - main
 
   # Can be triggered manually on Actions section on GitHub
   workflow_dispatch:
