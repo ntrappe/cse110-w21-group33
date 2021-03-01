@@ -69,7 +69,7 @@ class PomoSettings extends HTMLElement {
             /* margins match finish button */
             #openButton {
                 margin-left: 15px;
-                background-color: #0f1115;
+                //background-color: #0f1115;
                 color: #31363c;
                 font-size: 65px;
                 border: none;
@@ -102,6 +102,11 @@ class PomoSettings extends HTMLElement {
         const openButton = document.createElement('button');
         openButton.setAttribute('id', 'openButton');
         openButton.innerHTML = "&#9881;";
+
+        //Main Page temporary disable settings button
+        const disableButton = document.createElement('button');
+        disableButton.setAttribute('id', 'disableButton');
+        disableButton.innerHTML = 'Disable';
 
         //Settings Panel div
         const settingsPanel = document.createElement('div');
@@ -260,7 +265,7 @@ class PomoSettings extends HTMLElement {
         pomoLengthLabel.appendChild(longBreakMinutesNumber);
         pomoLengthLabel.appendChild(longBreakSecondsLabel);
         pomoLengthLabel.appendChild(longBreakSecondsNumber);
-
+        shadow.appendChild(disableButton);
 
                 /* Events */
         //calmSetEvent
@@ -304,6 +309,11 @@ class PomoSettings extends HTMLElement {
 
 
         /* Event Listeners */
+
+        //disable settings button
+        disableButton.onclick = () => {
+            openButton.disabled = !openButton.disabled;
+        }
 
         // listen for click on 'open' button to slide out panel
         openButton.onclick = () => {
