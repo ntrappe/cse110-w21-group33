@@ -18,20 +18,6 @@ describe('Find Timer Elements', { includeShadowDom: true }, () => {
   });
 });
 
-describe('Find Timer Elements', { includeShadowDom: true }, () => {
-  it('Get mode text via ID', () => {
-    cy.get('#mode');
-  });
-
-  it('Get timer text via class', () => {
-    cy.get('.time');
-  });
-
-  it('Get toggle button via ID', () => {
-    cy.get('#button');
-  });
-});
-
 describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
   it('Mode should be \'Work\'', () => {
     cy.get('#mode').then(($el) => {
@@ -45,6 +31,7 @@ describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
     });
   });
 });
+/*
 describe('Basic Button Toggles', { includeShadowDom: true }, () => {
   it('Button toggles when Start clicked', () => {
     cy.get('#button').click();
@@ -59,4 +46,4 @@ describe('Basic Button Toggles', { includeShadowDom: true }, () => {
       expect($el).to.have.attr('class', 'start');
     });
   });
-});
+});*/
