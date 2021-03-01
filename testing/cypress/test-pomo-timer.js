@@ -35,6 +35,9 @@ describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
 describe('Basic Button Toggles', { includeShadowDom: true }, () => {
   it('Button toggles when Start clicked', () => {
     cy.get('#button').click();
+    cy.get('#button').then(($el) => {
+      expect($el).to.contain('Reset');
+    });
   });
 });
 /*
