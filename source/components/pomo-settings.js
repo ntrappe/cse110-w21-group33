@@ -2,6 +2,15 @@ class PomoSettings extends HTMLElement {
     constructor() {
         super();
 
+        //Event Variables
+        this.volume;
+        this.sound;
+        this.calm;
+        this.dark;
+        this.work;
+        this.shortBreak;
+        this.longBreak;
+
         const shadow = this.attachShadow({ mode: 'open' });
 
         const styles = document.createElement('link');
@@ -108,6 +117,8 @@ class PomoSettings extends HTMLElement {
         const workSecondsNumber = document.createElement('input');
         workSecondsNumber.setAttribute('id', 'workSecondsNumber');
         workSecondsNumber.setAttribute('type', 'number');
+        workSecondsNumber.setAttribute('min', '0');
+        workSecondsNumber.setAttribute('max', '59');
         workSecondsNumber.setAttribute('value', '0');
 
         const shortBreakLabel = document.createElement('p');
@@ -127,6 +138,8 @@ class PomoSettings extends HTMLElement {
         const shortBreakSecondsNumber = document.createElement('input');
         shortBreakSecondsNumber.setAttribute('id', 'shortBreakSecondsNumber');
         shortBreakSecondsNumber.setAttribute('type', 'number');
+        shortBreakSecondsNumber.setAttribute('min', '0');
+        shortBreakSecondsNumber.setAttribute('max', '59');
         shortBreakSecondsNumber.setAttribute('value', '0');
 
         const longBreakLabel = document.createElement('p');
@@ -146,6 +159,8 @@ class PomoSettings extends HTMLElement {
         const longBreakSecondsNumber = document.createElement('input');
         longBreakSecondsNumber.setAttribute('id', 'longBreakSecondsNumber');
         longBreakSecondsNumber.setAttribute('type', 'number');
+        longBreakSecondsNumber.setAttribute('min', '0');
+        longBreakSecondsNumber.setAttribute('max', '59');
         longBreakSecondsNumber.setAttribute('value', '0');
 
         //shadow.appendChild(link);
@@ -187,13 +202,15 @@ class PomoSettings extends HTMLElement {
         //volumeSetEvent 
         this.volumeSetEvent = new CustomEvent('volumeSet', {
         bubbles: true,
-        composed: true
+        composed: true,
+        detail: {volume: () => this.volume}
         });
 
         //soundSetEvent
         this.soundSetEvent = new CustomEvent('soundSet', {
         bubbles: true,
-        composed: true
+        composed: true,
+        detail: {sound: () => this.sound}
         });
         //darkSetEvent
 /*         this.darkSetEvent = new CustomEvent('darkSet', {
@@ -203,39 +220,33 @@ class PomoSettings extends HTMLElement {
         //workSetEvent
         this.workSetEvent = new CustomEvent('workSet', {
         bubbles: true,
-        composed: true
+        composed: true,
+        detail: {work: () => this.work}
         });
         //shortBreakSetEvent
         this.shortBreakSetEvent = new CustomEvent('shortBreakSet', {
         bubbles: true,
-        composed: true
+        composed: true,
+        detail: {shortBreak: () => this.shortBreak}
         });
         //longBreakSetEvent
         this.longBreakSetEvent = new CustomEvent('longBreakSet', {
         bubbles: true,
-        composed: true
+        composed: true,
+        detail: {longBreak: () => this.longBreak}
         });
 
 
 
         /* Event Listeners */
-
-        //disable settings button
-/*         this.disableSettings() = () => {
-            openButton.disabled = true;
-        } */
-
-        // listen for click on 'open' button to slide out panel
         openButton.onclick = () => {
             settingsPanel.setAttribute('class', 'open');
         }
 
-        // listen for click on 'close' button to slide back
         closeButton.onclick = () => {
             settingsPanel.setAttribute('class', 'close');
         }
 
-        //listen for click outside of settings panel to slide back
         document.onclick = (e) => {
             if (!settingsPanel.contains(e.target) && !(e.target == this)){
                 settingsPanel.setAttribute('class', 'close');
@@ -245,21 +256,24 @@ class PomoSettings extends HTMLElement {
         volumeSlide.oninput = () => {
             console.log("We've changed the volume through the slider.");
             this.volumeSet(volumeSlide.value);
+            shadow.dispatchEvent(this.volumeSetEvent);
         }
 
         volumeNumber.oninput = () => {
             console.log("We've changed the volume through the number");
             this.volumeSet(volumeNumber.value);
+            shadow.dispatchEvent(this.volumeEvent);
         }
 
         this.volumeSet = (volume) => {
             volumeSlide.value = volume;
             volumeNumber.value = volume;
-            shadow.dispatchEvent(this.volumeSetEvent);
+            this.volume = volume;
         }
 
         soundSelect.onchange = () => {
             console.log("We've selected a new sound. Should update these preferences.");
+            this.sound = soundSelect.value;
             shadow.dispatchEvent(this.soundSetEvent);
         }
 
@@ -268,52 +282,82 @@ class PomoSettings extends HTMLElement {
         workMinutesNumber.oninput = () => {
             console.log("We've changed the workMinutes");
             this.workSet();
+            shadow.dispatchEvent(this.workSetEvent);
         }
         workSecondsNumber.oninput = () => {
             console.log("We've changed the workSeconds");
             this.workSet();
+            shadow.dispatchEvent(this.workSetEvent);
         }
 
         this.workSet = () => {
-            let minutes = workMinutesNumber.value;
-            let seconds = workSecondsNumber.value;
+            let minutes = Number(workMinutesNumber.value);
+            let seconds = Number(workSecondsNumber.value);
             let sum = minutes + seconds/60;
-            //need to set local storage, change timer value, how to do?
-            shadow.dispatchEvent(this.workSetEvent);
+            this.work = sum;
         }
 
         shortBreakMinutesNumber.oninput = () => {
             console.log("We've changed the shortBreakMinutes");
             this.shortBreakSet();
+            shadow.dispatchEvent(this.shortBreakSetEvent);
         }
         shortBreakSecondsNumber.oninput = () => {
             console.log("We've changed the shortBreakSeconds");
             this.shortBreakSet();
+            shadow.dispatchEvent(this.shortBreakSetEvent);
         }
 
         this.shortBreakSet = () => {
-            let minutes = shortBreakMinutesNumber.value;
-            let seconds = shortBreakSecondsNumber.value;
+            let minutes = Number(shortBreakMinutesNumber.value);
+            let seconds = Number(shortBreakSecondsNumber.value);
             let sum = minutes + seconds/60;
-            //need to set local storage, change timer value, how to do?
-            shadow.dispatchEvent(this.shortBreakSetEvent);
+            this.shortBreak = sum;
         }
 
         longBreakMinutesNumber.oninput = () => {
             console.log("We've changed the longBreakMinutes");
             this.longBreakSet();
+            shadow.dispatchEvent(this.longBreakSetEvent);
         }
         longBreakSecondsNumber.oninput = () => {
             console.log("We've changed the longBreakSeconds");
             this.longBreakSet();
+            shadow.dispatchEvent(this.longBreakSetEvent);
         }
 
         this.longBreakSet = () => {
-            let minutes = longBreakMinutesNumber.value;
-            let seconds = longBreakSecondsNumber.value;
-            let sum = minutes + seconds/60;
-            //need to set local storage, change timer value, how to do?
-            shadow.dispatchEvent(this.longBreakSetEvent);
+            let minutes = Number(longBreakMinutesNumber.value);
+            let seconds = Number(longBreakSecondsNumber.value);
+            let sum = minutes + seconds / 60;
+            this.longBreak = sum;
+        }
+
+        //enable settings button
+        this.enableSettings = () => {
+            openButton.disabled = false;
+        }
+
+        //disable settings button
+        this.disableSettings = () => {
+            openButton.disabled = true;
+        }
+
+        //load settings 
+        this.loadSettings = (calm, volume, sound, dark, work, shortBreak, longBreak) => {
+            this.volumeSet(volume);
+            this.sound = sound;
+            soundSelect.value = sound;
+            this.work = work;
+            workMinutesNumber.value = Math.trunc(work);
+            workSecondsNumber.value = (work % 1) * 60;
+            this.shortBreak = shortBreak;
+            shortBreakMinutesNumber.value = Math.trunc(shortBreak);
+            shortBreakSecondsNumber.value = (shortBreak % 1) * 60;
+            this.longBreak = longBreak;
+            longBreakMinutesNumber.value = Math.trunc(longBreak);
+            longBreakSecondsNumber.value = (longBreak % 1) * 60;
+
         }
     }
 }
