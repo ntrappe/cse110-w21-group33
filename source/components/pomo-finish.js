@@ -13,3 +13,5 @@ class PomoFinish extends HTMLElement {
 }
 
 customElements.define('pomo-finish', PomoFinish);
+
+export { PomoFinish };
