@@ -14,7 +14,7 @@ class PomoFinish extends HTMLElement {
         // button to finish session and display statistics
         const finishButton = document.createElement('button');
         finishButton.setAttribute('id', 'finishButton');
-        finishButton.textContent = "Finish";
+        finishButton.textContent = "Statistics";
         finishButton.onclick = () => {
           // display the statistics
           modal.style.display = "block";
@@ -37,11 +37,11 @@ class PomoFinish extends HTMLElement {
         // the main content to be display in the lightbox
         // title
         const modalTitle = document.createElement('h3');
-        modalTitle.setAttribute('class', 'modalTitle');
+        modalTitle.setAttribute('id', 'modalTitle');
         modalTitle.innerHTML = "SESSION SUMMARY";
         // list of stat
         this.sessionStatistics = document.createElement('ul');
-        this.sessionStatistics.setAttribute('id', 'statistics-panel');
+        this.sessionStatistics.setAttribute('id', 'statisticsPanel');
 
         // button to close the lightbox
         let closeButton = document.createElement('div');
@@ -113,8 +113,6 @@ class PomoFinish extends HTMLElement {
           ul.appendChild(li);
         });
       }
-
-
 }
 
 customElements.define('pomo-finish', PomoFinish);
