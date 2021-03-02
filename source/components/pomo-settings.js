@@ -4,100 +4,11 @@ class PomoSettings extends HTMLElement {
 
         const shadow = this.attachShadow({ mode: 'open' });
 
-        shadow.innerHTML = 
-        `<style>
-            #settings {
-                height: 100%;
-                width: 400px;
-                position: fixed;
-                z-index: 1;
-                top: 0;
-                left: -500px;
-                background-color: #13151b;
-                overflow-x: hidden;
-                transition: 0.5s;
-                border-right: 1.5px solid;
-                border-color: #31363c;
-            }
-            
-            #settings[class="open"] {
-                left: 0;
-            }
-            
-            #settings[class="close"] {
-                left: -500px;
-            }
-            
-            #closeSettings {
-                border: none;
-                position: absolute;
-                top: 15px;
-                right: 25px;
-                font-size: 36px;
-                margin-left: 50px;
-                background-color: #000;
-                color: #818181;
-            }
-            
-            #closeButton {
-                margin-top: 25px;
-                margin-right: 16px;
-                background-color: #0f1115;
-                float: right;
-                border: 1.5px solid;
-                border-color: #31363c;
-                border-radius: 50%;
-                cursor: pointer;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 50px;
-                height: 50px;
-            }
-            
-            #closeButton:hover {
-                background-color: #22262c;
-                border-color: #8d949d;
-                transition-duration: 0.1s;
-            }
-            
-            #closeButtonIcon {
-                height: 20px;
-                width: 20px;
-            }
-            
-            /* margins match finish button */
-            #openButton {
-                margin-left: 15px;
-                //background-color: #0f1115;
-                color: #31363c;
-                font-size: 65px;
-                border: none;
-                cursor: pointer;
-            }
-            
-            #controls {
-                background-color: royalblue;
-                top: 50px;
-            }
-
-            #controls * {
-                float: right;
-                margin: 50px 0px 50px 0px;
-                color: royalblue;
-            }
-
-            #controls label {
-                float: left;
-                margin-left: 50px;
-            }
-        </style>`;
-
-/*         const styles = document.createElement('link');
+        const styles = document.createElement('link');
         styles.setAttribute('id', 'settings-styles');
         styles.setAttribute('rel', 'stylesheet');
         styles.setAttribute('href', './components/pomo-settings.css');
- */
+ 
         //Main Page open settings button
         const openButton = document.createElement('button');
         openButton.setAttribute('id', 'openButton');
@@ -199,7 +110,6 @@ class PomoSettings extends HTMLElement {
         workSecondsNumber.setAttribute('type', 'number');
         workSecondsNumber.setAttribute('value', '0');
 
-
         const shortBreakLabel = document.createElement('p');
         shortBreakLabel.innerHTML = 'Short Break';
 
@@ -218,7 +128,6 @@ class PomoSettings extends HTMLElement {
         shortBreakSecondsNumber.setAttribute('id', 'shortBreakSecondsNumber');
         shortBreakSecondsNumber.setAttribute('type', 'number');
         shortBreakSecondsNumber.setAttribute('value', '0');
-
 
         const longBreakLabel = document.createElement('p');
         longBreakLabel.innerHTML = 'Long Break';
@@ -240,6 +149,7 @@ class PomoSettings extends HTMLElement {
         longBreakSecondsNumber.setAttribute('value', '0');
 
         //shadow.appendChild(link);
+        shadow.appendChild(styles);
         shadow.appendChild(openButton);
         shadow.appendChild(settingsPanel);
         settingsPanel.appendChild(closeButton);
@@ -311,9 +221,9 @@ class PomoSettings extends HTMLElement {
         /* Event Listeners */
 
         //disable settings button
-        disableButton.onclick = () => {
-            openButton.disabled = !openButton.disabled;
-        }
+/*         this.disableSettings() = () => {
+            openButton.disabled = true;
+        } */
 
         // listen for click on 'open' button to slide out panel
         openButton.onclick = () => {
