@@ -1,17 +1,13 @@
 name: Make JSDocs
 
+# Only run when the main branch has been updated
 on:
   push:
-    branches-ignore:
+    branches:
       - main
-      - docs
-  pull_request:
-    branches: 
-      - main
-    types: [opened]
 
   # Can be triggered manually on Actions section on GitHub
-  workflow-dispatch:
+  workflow_dispatch:
 
 jobs:
   run-JSDocs:
@@ -19,15 +15,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Job won't trigger unless all other tests pass first
-      - name: Wait on tests
-        uses: lewagon/wait-on-check-action@master
-        with:
-          ref: ${{ github.ref }}
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          wait-interval: 10
-          running-workflow-name: 'run-JSDocs'
-
       - name: Checkout Code
         uses: actions/checkout@v2
 
@@ -43,5 +30,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.0.0
         with:
-          branch: jsdocs # The branch the action should deploy to.
+          branch: gh-pages # The branch the action should deploy to.
           folder: ./JSDocumentation # The folder the action should deploy.
