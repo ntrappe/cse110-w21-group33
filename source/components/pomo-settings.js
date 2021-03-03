@@ -302,7 +302,7 @@ class PomoSettings extends HTMLElement {
         volumeNumber.oninput = () => {
             console.log("We've changed the volume through the number");
             this.volumeSet(volumeNumber.value);
-            shadow.dispatchEvent(this.volumeEvent);
+            shadow.dispatchEvent(this.volumeSetEvent);
         }
 
         /**

@@ -7,12 +7,12 @@ describe("Open Page", () => {
 /* Starter Tests to find elements on page */
 describe('Find Settings Elements', { includeShadowDom: true }, () => {
     it('Get element (\'Settings\')', () => {
-        cy.get('p');
+        cy.get('label');
     });
 });
 describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
     it('Check that element says Settings', () => {
-        cy.get('p').then(($el) => {
+        cy.get('h1').then(($el) => {
             expect($el).to.contain('Settings');
         });
     });
@@ -63,7 +63,7 @@ describe('Test sidebar elements', () => {
     });
 
     it('Slider changes when volume input changes', { includeShadowDom: true }, () => {
-        cy.get('#volumeNumber').clear().type('80');
+        cy.get('#volumeNumber').clear({ force: true }).type('80');
     
         cy.get('#volumeSlide')
         .then($el => {
