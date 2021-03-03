@@ -2,7 +2,7 @@ class PomoSettings extends HTMLElement {
     constructor() {
         super();
 
-        //Event Variables
+        // Event variables
         this.volume;
         this.sound;
         this.calm;
@@ -18,12 +18,12 @@ class PomoSettings extends HTMLElement {
         styles.setAttribute('rel', 'stylesheet');
         styles.setAttribute('href', './components/pomo-settings.css');
  
-        //Main Page open settings button
+        // Main page open settings button
         const openButton = document.createElement('button');
         openButton.setAttribute('id', 'openButton');
         openButton.innerHTML = "&#9881;";
 
-        //Main Page temporary disable settings button
+        //Main page temporary disable settings button
         const disableButton = document.createElement('button');
         disableButton.setAttribute('id', 'disableButton');
         disableButton.innerHTML = 'Disable';
@@ -34,7 +34,7 @@ class PomoSettings extends HTMLElement {
 
         //Inside Settings Panel
 
-            //Close button
+        // Button to close sidebar
         const closeButton = document.createElement('button');
         closeButton.setAttribute('id', 'closeButton');
         closeButton.setAttribute('class', 'button-off');
@@ -44,59 +44,11 @@ class PomoSettings extends HTMLElement {
         closeIcon.setAttribute('src', './assets/x.svg');
         closeButton.appendChild(closeIcon);
 
-            //Settings
+        // Settings
         const controls = document.createElement('div');
         controls.setAttribute('id', 'controls');
 
-                //Volume
-        const volumeLabel = document.createElement('label');
-        volumeLabel.innerHTML = 'Volume';
-        volumeLabel.htmlFor = 'volumeSlide';
-
-        const volumeSlide = document.createElement('input');
-        volumeSlide.setAttribute('type', 'range');
-        volumeSlide.setAttribute('id', 'volumeSlide');
-        volumeSlide.setAttribute('min', '0');
-        volumeSlide.setAttribute('max', '100');
-        volumeSlide.setAttribute('value', '100');
-
-        const volumeNumber = document.createElement('input');
-        volumeNumber.setAttribute('type', 'number');
-        volumeNumber.setAttribute('id', 'volumeNumber');
-        volumeNumber.setAttribute('min', '0');
-        volumeNumber.setAttribute('max', '100');
-        volumeNumber.setAttribute('value', '100');
-
-                //Sound Options
-        const soundLabel = document.createElement('label');
-        soundLabel.innerHTML = 'Sound';
-        soundLabel.htmlFor = 'soundSelect';
-
-        const soundSelect = document.createElement('select');
-        soundSelect.setAttribute('id', 'soundSelect');
-        const soundList = ["party-horn", "angry-monkey", "default", "rooster"];
-        for (const sound of soundList) {
-          const option = soundSelect.appendChild(document.createElement("option"));
-          option.value = sound;
-          let name = sound.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
-          option.text = name;
-        }
-
-                //Calm Mode
-        const calmLabel = document.createElement('label');
-        calmLabel.innerHTML = 'Calm Mode';
-        calmLabel.htmlFor = 'calmSwitch';
-
-        //const calmSwitch;
-
-                //Dark Mode
-        const darkLabel = document.createElement('label');
-        darkLabel.innerHTML = 'Dark Mode';
-        darkLabel.htmlFor = 'darkSwitch';
-
-        //const darkSwitch;
-
-                //Edit Pomodoro Length
+        // Edit pomodoro length
         const pomoLengthLabel = document.createElement('p');
         pomoLengthLabel.innerHTML = 'Customize Pomodoro Length';
 
@@ -163,17 +115,60 @@ class PomoSettings extends HTMLElement {
         longBreakSecondsNumber.setAttribute('max', '59');
         longBreakSecondsNumber.setAttribute('value', '0');
 
+        // Volume
+        const volumeLabel = document.createElement('label');
+        volumeLabel.innerHTML = 'Volume';
+        volumeLabel.htmlFor = 'volumeSlide';
+
+        const volumeSlide = document.createElement('input');
+        volumeSlide.setAttribute('type', 'range');
+        volumeSlide.setAttribute('id', 'volumeSlide');
+        volumeSlide.setAttribute('min', '0');
+        volumeSlide.setAttribute('max', '100');
+        volumeSlide.setAttribute('value', '100');
+
+        const volumeNumber = document.createElement('input');
+        volumeNumber.setAttribute('type', 'number');
+        volumeNumber.setAttribute('id', 'volumeNumber');
+        volumeNumber.setAttribute('min', '0');
+        volumeNumber.setAttribute('max', '100');
+        volumeNumber.setAttribute('value', '100');
+
+        // Sound Options
+        const soundLabel = document.createElement('label');
+        soundLabel.innerHTML = 'Sound';
+        soundLabel.htmlFor = 'soundSelect';
+
+        const soundSelect = document.createElement('select');
+        soundSelect.setAttribute('id', 'soundSelect');
+        const soundList = ["party-horn", "angry-monkey", "default", "rooster"];
+        for (const sound of soundList) {
+          const option = soundSelect.appendChild(document.createElement("option"));
+          option.value = sound;
+          let name = sound.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+          option.text = name;
+        }
+
+        // Calm mode
+        const calmLabel = document.createElement('label');
+        calmLabel.innerHTML = 'Calm Mode';
+        calmLabel.htmlFor = 'calmSwitch';
+
+        // const calmSwitch;
+
+        // Dark mode
+        const darkLabel = document.createElement('label');
+        darkLabel.innerHTML = 'Dark Mode';
+        darkLabel.htmlFor = 'darkSwitch';
+
+        //const darkSwitch;
+
         //shadow.appendChild(link);
         shadow.appendChild(styles);
         shadow.appendChild(openButton);
         shadow.appendChild(settingsPanel);
         settingsPanel.appendChild(closeButton);
         settingsPanel.appendChild(controls);
-        controls.appendChild(volumeLabel);
-        volumeLabel.appendChild(volumeSlide);
-        volumeLabel.appendChild(volumeNumber);
-        controls.appendChild(soundLabel);
-        soundLabel.appendChild(soundSelect);
         controls.appendChild(pomoLengthLabel);
         pomoLengthLabel.appendChild(workLabel);
         pomoLengthLabel.appendChild(workMinutesLabel);
@@ -190,9 +185,14 @@ class PomoSettings extends HTMLElement {
         pomoLengthLabel.appendChild(longBreakMinutesNumber);
         pomoLengthLabel.appendChild(longBreakSecondsLabel);
         pomoLengthLabel.appendChild(longBreakSecondsNumber);
+        controls.appendChild(volumeLabel);
+        volumeLabel.appendChild(volumeSlide);
+        volumeLabel.appendChild(volumeNumber);
+        controls.appendChild(soundLabel);
+        soundLabel.appendChild(soundSelect);
         shadow.appendChild(disableButton);
 
-                /* Events */
+        /* Events */
         //calmSetEvent
 /*         this.calmSetEvent = new CustomEvent('calmSet', {
             bubbles: true,
