@@ -5,13 +5,13 @@ class PomoSettings extends HTMLElement {
         super();
 
         // Event variables
-        this.work;
-        this.shortBreak;
-        this.longBreak;
-        this.volume;
-        this.sound;
-        this.calm;
-        this.dark;
+        this.work = 25;
+        this.shortBreak = 5;
+        this.longBreak = 10;
+        this.volume = 50;
+        this.sound = 'default';
+        this.calm = false;
+        this.dark = false;
 
         const shadow = this.attachShadow({ mode: 'open' });
 
@@ -64,7 +64,7 @@ class PomoSettings extends HTMLElement {
         const workMinutesNumber = document.createElement('input');
         workMinutesNumber.setAttribute('id', 'workMinutesNumber');
         workMinutesNumber.setAttribute('type', 'number');
-        workMinutesNumber.setAttribute('value', '25');
+        workMinutesNumber.setAttribute('value', this.work);
         workMinutesNumber.setAttribute('min', '1');
         workMinutesNumber.setAttribute('step', '1');
 
@@ -77,7 +77,7 @@ class PomoSettings extends HTMLElement {
         const shortBreakMinutesNumber = document.createElement('input');
         shortBreakMinutesNumber.setAttribute('id', 'shortBreakMinutesNumber');
         shortBreakMinutesNumber.setAttribute('type', 'number');
-        shortBreakMinutesNumber.setAttribute('value', '5');
+        shortBreakMinutesNumber.setAttribute('value', this.shortBreak);
         shortBreakMinutesNumber.setAttribute('min', '1');
         shortBreakMinutesNumber.setAttribute('step', '1');
 
@@ -90,7 +90,7 @@ class PomoSettings extends HTMLElement {
         const longBreakMinutesNumber = document.createElement('input');
         longBreakMinutesNumber.setAttribute('id', 'longBreakMinutesNumber');
         longBreakMinutesNumber.setAttribute('type', 'number');
-        longBreakMinutesNumber.setAttribute('value', '15');
+        longBreakMinutesNumber.setAttribute('value', this.longBreak);
         longBreakMinutesNumber.setAttribute('min', '1');
         longBreakMinutesNumber.setAttribute('step', '1');
 
@@ -107,7 +107,7 @@ class PomoSettings extends HTMLElement {
         volumeSlide.setAttribute('id', 'volumeSlide');
         volumeSlide.setAttribute('min', '0');
         volumeSlide.setAttribute('max', '100');
-        volumeSlide.setAttribute('value', '50');
+        volumeSlide.setAttribute('value', this.volume);
 
         const volumeNumber = document.createElement('input');
         volumeNumber.setAttribute('type', 'number');
@@ -133,6 +133,7 @@ class PomoSettings extends HTMLElement {
           let name = sound.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
           option.text = name;
         }
+        soundSelect.value = this.sound;
 
 
         // Toggle switch to enable calm mode
