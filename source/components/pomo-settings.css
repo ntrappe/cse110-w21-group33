@@ -68,20 +68,6 @@
     cursor: pointer;
 }
 
-#controls {
-    background-color: royalblue;
-    top: 50px;
-}
-
-#controls * {
-    float: right;
-    margin: 50px 0px 50px 0px;
-    color: royalblue;
-    display: inline;
-}
-
-#controls label {
-    float: left;
-    margin-left: 50px;
-    display: inline;
+#settings label,h1 {
+    color: white;
 }

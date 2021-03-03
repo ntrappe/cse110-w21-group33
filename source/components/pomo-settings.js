@@ -1,121 +1,103 @@
+import { ToggleSwitch } from './pomo-toggle.js';
+
 class PomoSettings extends HTMLElement {
     constructor() {
         super();
 
         // Event variables
+        this.work;
+        this.shortBreak;
+        this.longBreak;
         this.volume;
         this.sound;
         this.calm;
         this.dark;
-        this.work;
-        this.shortBreak;
-        this.longBreak;
 
         const shadow = this.attachShadow({ mode: 'open' });
 
+        // Connect sidebar to CSS
         const styles = document.createElement('link');
         styles.setAttribute('id', 'settings-styles');
         styles.setAttribute('rel', 'stylesheet');
         styles.setAttribute('href', './components/pomo-settings.css');
- 
-        // Main page open settings button
-        const openButton = document.createElement('button');
-        openButton.setAttribute('id', 'openButton');
-        openButton.innerHTML = "&#9881;";
 
-        //Main page temporary disable settings button
+        // Temporary button to disable settings 
         const disableButton = document.createElement('button');
         disableButton.setAttribute('id', 'disableButton');
         disableButton.innerHTML = 'Disable';
 
-        //Settings Panel div
-        const settingsPanel = document.createElement('div');
-        settingsPanel.setAttribute('id', 'settings');
+        // Settings panel
+        const sideBar = document.createElement('div');
+        sideBar.setAttribute('id', 'settings');
 
-        //Inside Settings Panel
+        const settingsTitle = document.createElement('h1');
+        settingsTitle.textContent = 'Settings';
+
+        // Button to open sidebar
+        const openButton = document.createElement('button');
+        openButton.setAttribute('id', 'openButton');
+        openButton.innerHTML = "&#9881;";
 
         // Button to close sidebar
         const closeButton = document.createElement('button');
         closeButton.setAttribute('id', 'closeButton');
         closeButton.setAttribute('class', 'button-off');
-        
+
         const closeIcon = document.createElement('img');
         closeIcon.setAttribute('id', 'closeButtonIcon');
         closeIcon.setAttribute('src', './assets/x.svg');
         closeButton.appendChild(closeIcon);
 
-        // Settings
-        const controls = document.createElement('div');
-        controls.setAttribute('id', 'controls');
 
-        // Edit pomodoro length
-        const pomoLengthLabel = document.createElement('p');
-        pomoLengthLabel.innerHTML = 'Customize Pomodoro Length';
+        // Edit work, short break, and long break lengths
+        const timerSection = document.createElement('div');
 
-        const workLabel = document.createElement('p');
+        const pomoLengthLabel = document.createElement('label');
+        pomoLengthLabel.textContent = 'Customize Pomodoro Length';
+
+        // Input field for work customization
+        const workSection = document.createElement('div');
+
+        const workLabel = document.createElement('label');
         workLabel.innerHTML = 'Work';
 
-        const workMinutesLabel = document.createElement('label');
-        workMinutesLabel.innerHTMl = 'Minutes';
-        workMinutesLabel.htmlFor = 'workMinutesNumber';
         const workMinutesNumber = document.createElement('input');
         workMinutesNumber.setAttribute('id', 'workMinutesNumber');
         workMinutesNumber.setAttribute('type', 'number');
         workMinutesNumber.setAttribute('value', '25');
+        workMinutesNumber.setAttribute('min', '1');
+        workMinutesNumber.setAttribute('step', '1');
 
-        const workSecondsLabel = document.createElement('label');
-        workSecondsLabel.innerHTMl = 'Seconds';
-        workSecondsLabel.htmlFor = 'workSecondsNumber';
-        const workSecondsNumber = document.createElement('input');
-        workSecondsNumber.setAttribute('id', 'workSecondsNumber');
-        workSecondsNumber.setAttribute('type', 'number');
-        workSecondsNumber.setAttribute('min', '0');
-        workSecondsNumber.setAttribute('max', '59');
-        workSecondsNumber.setAttribute('value', '0');
+        // Input field for short break customization
+        const shortSection = document.createElement('div');
 
-        const shortBreakLabel = document.createElement('p');
+        const shortBreakLabel = document.createElement('label');
         shortBreakLabel.innerHTML = 'Short Break';
 
-        const shortBreakMinutesLabel = document.createElement('label');
-        shortBreakMinutesLabel.innerHTMl = 'Minutes';
-        shortBreakMinutesLabel.htmlFor = 'shortBreakMinutesNumber';
         const shortBreakMinutesNumber = document.createElement('input');
         shortBreakMinutesNumber.setAttribute('id', 'shortBreakMinutesNumber');
         shortBreakMinutesNumber.setAttribute('type', 'number');
         shortBreakMinutesNumber.setAttribute('value', '5');
+        shortBreakMinutesNumber.setAttribute('min', '1');
+        shortBreakMinutesNumber.setAttribute('step', '1');
 
-        const shortBreakSecondsLabel = document.createElement('label');
-        shortBreakSecondsLabel.innerHTMl = 'Seconds';
-        shortBreakSecondsLabel.htmlFor = 'shortBreakSecondsNumber';
-        const shortBreakSecondsNumber = document.createElement('input');
-        shortBreakSecondsNumber.setAttribute('id', 'shortBreakSecondsNumber');
-        shortBreakSecondsNumber.setAttribute('type', 'number');
-        shortBreakSecondsNumber.setAttribute('min', '0');
-        shortBreakSecondsNumber.setAttribute('max', '59');
-        shortBreakSecondsNumber.setAttribute('value', '0');
+        // Input field for long break customization
+        const longSection = document.createElement('div');
 
-        const longBreakLabel = document.createElement('p');
+        const longBreakLabel = document.createElement('label');
         longBreakLabel.innerHTML = 'Long Break';
 
-        const longBreakMinutesLabel = document.createElement('label');
-        longBreakMinutesLabel.innerHTMl = 'Minutes';
-        longBreakMinutesLabel.htmlFor = 'longBreakMinutesNumber';
         const longBreakMinutesNumber = document.createElement('input');
         longBreakMinutesNumber.setAttribute('id', 'longBreakMinutesNumber');
         longBreakMinutesNumber.setAttribute('type', 'number');
         longBreakMinutesNumber.setAttribute('value', '15');
+        longBreakMinutesNumber.setAttribute('min', '1');
+        longBreakMinutesNumber.setAttribute('step', '1');
 
-        const longBreakSecondsLabel = document.createElement('label');
-        longBreakSecondsLabel.innerHTMl = 'Seconds';
-        longBreakSecondsLabel.htmlFor = 'longBreakSecondsNumber';
-        const longBreakSecondsNumber = document.createElement('input');
-        longBreakSecondsNumber.setAttribute('id', 'longBreakSecondsNumber');
-        longBreakSecondsNumber.setAttribute('type', 'number');
-        longBreakSecondsNumber.setAttribute('min', '0');
-        longBreakSecondsNumber.setAttribute('max', '59');
-        longBreakSecondsNumber.setAttribute('value', '0');
 
-        // Volume
+        // Input field and slider to change volume
+        const volumeSection = document.createElement('div');
+
         const volumeLabel = document.createElement('label');
         volumeLabel.innerHTML = 'Volume';
         volumeLabel.htmlFor = 'volumeSlide';
@@ -125,16 +107,18 @@ class PomoSettings extends HTMLElement {
         volumeSlide.setAttribute('id', 'volumeSlide');
         volumeSlide.setAttribute('min', '0');
         volumeSlide.setAttribute('max', '100');
-        volumeSlide.setAttribute('value', '100');
+        volumeSlide.setAttribute('value', '50');
 
         const volumeNumber = document.createElement('input');
         volumeNumber.setAttribute('type', 'number');
         volumeNumber.setAttribute('id', 'volumeNumber');
         volumeNumber.setAttribute('min', '0');
         volumeNumber.setAttribute('max', '100');
-        volumeNumber.setAttribute('value', '100');
+        volumeNumber.setAttribute('value', '50');
 
-        // Sound Options
+
+        // Dropdown menu to change audio notification noise
+        const soundSection = document.createElement('div');
         const soundLabel = document.createElement('label');
         soundLabel.innerHTML = 'Sound';
         soundLabel.htmlFor = 'soundSelect';
@@ -142,6 +126,7 @@ class PomoSettings extends HTMLElement {
         const soundSelect = document.createElement('select');
         soundSelect.setAttribute('id', 'soundSelect');
         const soundList = ["party-horn", "angry-monkey", "default", "rooster"];
+
         for (const sound of soundList) {
           const option = soundSelect.appendChild(document.createElement("option"));
           option.value = sound;
@@ -149,108 +134,138 @@ class PomoSettings extends HTMLElement {
           option.text = name;
         }
 
-        // Calm mode
+
+        // Toggle switch to enable calm mode
+        const calmSection = document.createElement('div');
         const calmLabel = document.createElement('label');
         calmLabel.innerHTML = 'Calm Mode';
         calmLabel.htmlFor = 'calmSwitch';
+        const calmSwitch = new ToggleSwitch();
 
-        // const calmSwitch;
 
-        // Dark mode
+        // Toggle switch to enable dark mode
+        const darkSection = document.createElement('div');
         const darkLabel = document.createElement('label');
         darkLabel.innerHTML = 'Dark Mode';
         darkLabel.htmlFor = 'darkSwitch';
+        const darkSwitch = new ToggleSwitch();;
 
-        //const darkSwitch;
 
-        //shadow.appendChild(link);
+        // Attach elements to shadow DOM
         shadow.appendChild(styles);
         shadow.appendChild(openButton);
-        shadow.appendChild(settingsPanel);
-        settingsPanel.appendChild(closeButton);
-        settingsPanel.appendChild(controls);
-        controls.appendChild(pomoLengthLabel);
-        pomoLengthLabel.appendChild(workLabel);
-        pomoLengthLabel.appendChild(workMinutesLabel);
-        pomoLengthLabel.appendChild(workMinutesNumber);
-        pomoLengthLabel.appendChild(workSecondsLabel);
-        pomoLengthLabel.appendChild(workSecondsNumber);
-        pomoLengthLabel.appendChild(shortBreakLabel);
-        pomoLengthLabel.appendChild(shortBreakMinutesLabel);
-        pomoLengthLabel.appendChild(shortBreakMinutesNumber);
-        pomoLengthLabel.appendChild(shortBreakSecondsLabel);
-        pomoLengthLabel.appendChild(shortBreakSecondsNumber);
-        pomoLengthLabel.appendChild(longBreakLabel);
-        pomoLengthLabel.appendChild(longBreakMinutesLabel);
-        pomoLengthLabel.appendChild(longBreakMinutesNumber);
-        pomoLengthLabel.appendChild(longBreakSecondsLabel);
-        pomoLengthLabel.appendChild(longBreakSecondsNumber);
-        controls.appendChild(volumeLabel);
-        volumeLabel.appendChild(volumeSlide);
-        volumeLabel.appendChild(volumeNumber);
-        controls.appendChild(soundLabel);
-        soundLabel.appendChild(soundSelect);
+        shadow.appendChild(sideBar);
+        sideBar.appendChild(closeButton);
+        sideBar.appendChild(pomoLengthLabel);
+        sideBar.appendChild(settingsTitle);
+
+        sideBar.appendChild(timerSection)
+        timerSection.appendChild(pomoLengthLabel);
+        timerSection.appendChild(workSection);
+        timerSection.appendChild(shortSection);
+        timerSection.appendChild(longSection);
+        workSection.appendChild(workLabel);
+        workSection.appendChild(workMinutesNumber);
+        shortSection.appendChild(shortBreakLabel);
+        shortSection.appendChild(shortBreakMinutesNumber);
+        longSection.appendChild(longBreakLabel);
+        longSection.appendChild(longBreakMinutesNumber)
+
+        sideBar.appendChild(volumeSection);
+        volumeSection.appendChild(volumeLabel);
+        volumeSection.appendChild(volumeSlide);
+        volumeSection.appendChild(volumeNumber);
+
+        sideBar.appendChild(soundSection);
+        soundSection.appendChild(soundLabel);
+        soundSection.appendChild(soundSelect);
+
+        sideBar.appendChild(calmSection);
+        calmSection.appendChild(calmLabel);
+        calmSection.appendChild(calmSwitch);
+
+        sideBar.appendChild(darkSection);
+        darkSection.appendChild(darkLabel);
+        darkSection.appendChild(darkSwitch);
+
         shadow.appendChild(disableButton);
 
+        
         /* Events */
-        //calmSetEvent
-/*         this.calmSetEvent = new CustomEvent('calmSet', {
-            bubbles: true,
-            composed: true
-          }); */
-  
-        //volumeSetEvent 
-        this.volumeSetEvent = new CustomEvent('volumeSet', {
-        bubbles: true,
-        composed: true,
-        detail: {volume: () => this.volume}
-        });
-
-        //soundSetEvent
-        this.soundSetEvent = new CustomEvent('soundSet', {
-        bubbles: true,
-        composed: true,
-        detail: {sound: () => this.sound}
-        });
-        //darkSetEvent
-/*         this.darkSetEvent = new CustomEvent('darkSet', {
-        bubbles: true,
-        composed: true
-        }); */
-        //workSetEvent
         this.workSetEvent = new CustomEvent('workSet', {
-        bubbles: true,
-        composed: true,
-        detail: {work: () => this.work}
+            bubbles: true,
+            composed: true,
+            detail: {work: () => this.work}
         });
-        //shortBreakSetEvent
+
         this.shortBreakSetEvent = new CustomEvent('shortBreakSet', {
-        bubbles: true,
-        composed: true,
-        detail: {shortBreak: () => this.shortBreak}
+            bubbles: true,
+            composed: true,
+            detail: {shortBreak: () => this.shortBreak}
         });
-        //longBreakSetEvent
+
         this.longBreakSetEvent = new CustomEvent('longBreakSet', {
-        bubbles: true,
-        composed: true,
-        detail: {longBreak: () => this.longBreak}
+            bubbles: true,
+            composed: true,
+            detail: {longBreak: () => this.longBreak}
+        });
+
+        this.volumeSetEvent = new CustomEvent('volumeSet', {
+            bubbles: true,
+            composed: true,
+            detail: {volume: () => this.volume}
+        });
+
+        this.soundSetEvent = new CustomEvent('soundSet', {
+            bubbles: true,
+            composed: true,
+            detail: {sound: () => this.sound}
+        });
+
+        this.calmSetEvent = new CustomEvent('calmSet', {
+            bubbles: true,
+            composed: true,
+            detail: {calm: () => this.calm}
+        }); 
+
+        this.darkSetEvent = new CustomEvent('darkSet', {
+            bubbles: true,
+            composed: true,
+            detail: {dark: () => this.dark}
         });
 
 
-
-        /* Event Listeners */
+        // Event listeners
         openButton.onclick = () => {
-            settingsPanel.setAttribute('class', 'open');
+            sideBar.setAttribute('class', 'open');
         }
 
         closeButton.onclick = () => {
-            settingsPanel.setAttribute('class', 'close');
+            sideBar.setAttribute('class', 'close');
         }
 
         document.onclick = (e) => {
-            if (!settingsPanel.contains(e.target) && !(e.target == this)){
-                settingsPanel.setAttribute('class', 'close');
+            if (!sideBar.contains(e.target) && !(e.target == this)){
+                sideBar.setAttribute('class', 'close');
             }
+        }
+
+        workMinutesNumber.oninput = () => {
+            console.log("We've changed the workMinutes");
+            this.work = Number(workMinutesNumber.value);
+            shadow.dispatchEvent(this.workSetEvent);
+        }
+
+        shortBreakMinutesNumber.oninput = () => {
+            console.log("We've changed the shortBreakMinutes");
+            this.shortBreak = Number(shortBreakMinutesNumber.value);
+            shadow.dispatchEvent(this.shortBreakSetEvent);
+        }
+
+        longBreakMinutesNumber.oninput = () => {
+            console.log("We've changed the longBreakMinutes");
+            this.longBreak = Number(longBreakMinutesNumber.value);
+            shadow.dispatchEvent(this.longBreakSetEvent);
         }
 
         volumeSlide.oninput = () => {
@@ -277,87 +292,29 @@ class PomoSettings extends HTMLElement {
             shadow.dispatchEvent(this.soundSetEvent);
         }
 
-        //calm on input
-        //dark on input
-        workMinutesNumber.oninput = () => {
-            console.log("We've changed the workMinutes");
-            this.workSet();
-            shadow.dispatchEvent(this.workSetEvent);
-        }
-        workSecondsNumber.oninput = () => {
-            console.log("We've changed the workSeconds");
-            this.workSet();
-            shadow.dispatchEvent(this.workSetEvent);
-        }
-
-        this.workSet = () => {
-            let minutes = Number(workMinutesNumber.value);
-            let seconds = Number(workSecondsNumber.value);
-            let sum = minutes + seconds/60;
-            this.work = sum;
-        }
-
-        shortBreakMinutesNumber.oninput = () => {
-            console.log("We've changed the shortBreakMinutes");
-            this.shortBreakSet();
-            shadow.dispatchEvent(this.shortBreakSetEvent);
-        }
-        shortBreakSecondsNumber.oninput = () => {
-            console.log("We've changed the shortBreakSeconds");
-            this.shortBreakSet();
-            shadow.dispatchEvent(this.shortBreakSetEvent);
-        }
-
-        this.shortBreakSet = () => {
-            let minutes = Number(shortBreakMinutesNumber.value);
-            let seconds = Number(shortBreakSecondsNumber.value);
-            let sum = minutes + seconds/60;
-            this.shortBreak = sum;
-        }
-
-        longBreakMinutesNumber.oninput = () => {
-            console.log("We've changed the longBreakMinutes");
-            this.longBreakSet();
-            shadow.dispatchEvent(this.longBreakSetEvent);
-        }
-        longBreakSecondsNumber.oninput = () => {
-            console.log("We've changed the longBreakSeconds");
-            this.longBreakSet();
-            shadow.dispatchEvent(this.longBreakSetEvent);
-        }
-
-        this.longBreakSet = () => {
-            let minutes = Number(longBreakMinutesNumber.value);
-            let seconds = Number(longBreakSecondsNumber.value);
-            let sum = minutes + seconds / 60;
-            this.longBreak = sum;
-        }
-
-        //enable settings button
+        // Enable settings button
         this.enableSettings = () => {
             openButton.disabled = false;
         }
 
-        //disable settings button
+        // Disable settings button
         this.disableSettings = () => {
             openButton.disabled = true;
         }
 
-        //load settings 
+        // Load settings 
         this.loadSettings = (calm, volume, sound, dark, work, shortBreak, longBreak) => {
+            this.work = work;
+            workMinutesNumber.value = work;
+            this.shortBreak = shortBreak;
+            shortBreakMinutesNumber.value = shortBreak;
+            this.longBreak = longBreak;
+            longBreakMinutesNumber.value = longBreak;
             this.volumeSet(volume);
             this.sound = sound;
             soundSelect.value = sound;
-            this.work = work;
-            workMinutesNumber.value = Math.trunc(work);
-            workSecondsNumber.value = (work % 1) * 60;
-            this.shortBreak = shortBreak;
-            shortBreakMinutesNumber.value = Math.trunc(shortBreak);
-            shortBreakSecondsNumber.value = (shortBreak % 1) * 60;
-            this.longBreak = longBreak;
-            longBreakMinutesNumber.value = Math.trunc(longBreak);
-            longBreakSecondsNumber.value = (longBreak % 1) * 60;
-
+            this.calm = calm;
+            this.dark = dark;
         }
     }
 }
