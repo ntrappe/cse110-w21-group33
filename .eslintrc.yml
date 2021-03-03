@@ -1,0 +1,6 @@
+---
+root: true
+
+extends:
+  # http://eslint.org/docs/user-guide/configuring#using-eslintrecommended
+  - eslint:recommended

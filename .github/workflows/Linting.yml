@@ -27,6 +27,9 @@ jobs:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+          CSS_FILE_NAME: .stylelintrc.json
+          JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.yml
+
           # Set which file types to lint and what folders/files to exclude
           VALIDATE_CSS: true
           VALIDATE_HTML: true
