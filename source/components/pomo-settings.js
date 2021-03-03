@@ -15,16 +15,15 @@ class PomoSettings extends HTMLElement {
 
         const shadow = this.attachShadow({ mode: 'open' });
 
+        // Lightbox background
+        const modal = document.createElement('div');  
+        modal.setAttribute('id', 'modal');
+
         // Connect sidebar to CSS
         const styles = document.createElement('link');
         styles.setAttribute('id', 'settings-styles');
         styles.setAttribute('rel', 'stylesheet');
         styles.setAttribute('href', './components/pomo-settings.css');
-
-        // Temporary button to disable settings 
-        const disableButton = document.createElement('button');
-        disableButton.setAttribute('id', 'disableButton');
-        disableButton.innerHTML = 'Disable';
 
         // Settings panel
         const sideBar = document.createElement('div');
@@ -141,7 +140,7 @@ class PomoSettings extends HTMLElement {
         const calmLabel = document.createElement('label');
         calmLabel.innerHTML = 'Calm Mode';
         calmLabel.htmlFor = 'calmSwitch';
-        const calmSwitch = new ToggleSwitch();
+        const calmSwitch = new ToggleSwitch("calm", "busy");
 
 
         // Toggle switch to enable dark mode
@@ -149,22 +148,25 @@ class PomoSettings extends HTMLElement {
         const darkLabel = document.createElement('label');
         darkLabel.innerHTML = 'Dark Mode';
         darkLabel.htmlFor = 'darkSwitch';
-        const darkSwitch = new ToggleSwitch();;
+        const darkSwitch = new ToggleSwitch("light", "dark");
 
 
         // Attach elements to shadow DOM
+        shadow.appendChild(modal);
         shadow.appendChild(styles);
         shadow.appendChild(openButton);
         shadow.appendChild(sideBar);
+
         sideBar.appendChild(closeButton);
         sideBar.appendChild(pomoLengthLabel);
         sideBar.appendChild(settingsTitle);
+        sideBar.appendChild(timerSection);
 
-        sideBar.appendChild(timerSection)
         timerSection.appendChild(pomoLengthLabel);
         timerSection.appendChild(workSection);
         timerSection.appendChild(shortSection);
         timerSection.appendChild(longSection);
+
         workSection.appendChild(workLabel);
         workSection.appendChild(workMinutesNumber);
         shortSection.appendChild(shortBreakLabel);
@@ -188,8 +190,6 @@ class PomoSettings extends HTMLElement {
         sideBar.appendChild(darkSection);
         darkSection.appendChild(darkLabel);
         darkSection.appendChild(darkSwitch);
-
-        shadow.appendChild(disableButton);
 
         
         /* Events */
@@ -241,6 +241,7 @@ class PomoSettings extends HTMLElement {
          */
         openButton.onclick = () => {
             sideBar.setAttribute('class', 'open');
+            modal.style.display = "block";
         }
 
         /**
@@ -248,16 +249,16 @@ class PomoSettings extends HTMLElement {
          */
         closeButton.onclick = () => {
             sideBar.setAttribute('class', 'close');
+            modal.style.display = "none";
         }
 
         /**
          * Closes the sidebar when clicking outside of sidebar
          * @param {Object} e contains data of what is being clicked on website
          */
-        document.onclick = (e) => {
-            if (!sideBar.contains(e.target) && !(e.target == this)){
-                sideBar.setAttribute('class', 'close');
-            }
+        modal.onclick = (e) => {
+            sideBar.setAttribute('class', 'close');
+            modal.style.display = "none";
         }
 
         /**
@@ -306,7 +307,7 @@ class PomoSettings extends HTMLElement {
         }
 
         /**
-         * Coordinate slider and input with each other and set event variable
+         * Coordinate slider and input with each other and sets volume variable
          * @param {Number} volume volume of audio
          */
         this.volumeSet = (volume) => {
@@ -316,13 +317,29 @@ class PomoSettings extends HTMLElement {
         }
 
         /**
-         * Passes customized audio to event listener
+         * Sets and passes sound variable to control event listener
          */
         soundSelect.onchange = () => {
             console.log("We've selected a new sound. Should update these preferences.");
             this.sound = soundSelect.value;
             shadow.dispatchEvent(this.soundSetEvent);
         }
+
+        /**
+         * Listens for toggleSwitchEvent to set calm and dispatch calmSetEvent
+         */
+        calmSwitch.addEventListener('toggleSwitch', (e) => {
+            this.calm = e.detail.toggle();
+            shadow.dispatchEvent(this.calmSetEvent);
+        });
+
+        /**
+         * Listens for toggleSwitchEvent to set dark and dispatch darkSetEvent
+         */
+        darkSwitch.addEventListener('toggleSwitch', (e) => {
+            this.dark = e.detail.toggle();
+            shadow.dispatchEvent(this.darkSetEvent);
+        })
 
         /**
          * Enable settings by re-enabling settings button
@@ -339,7 +356,7 @@ class PomoSettings extends HTMLElement {
         }
 
         /**
-         * For control, updates the default settings with values previously had from local storage
+         * Called from control, updates the default settings with values previously had from local storage
          * @param {Boolean} calm whether or not calm mode is turned on
          * @param {Number} volume value of audio volume
          * @param {String} sound type of audio notification noise

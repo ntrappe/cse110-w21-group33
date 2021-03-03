@@ -1,5 +1,5 @@
 class ToggleSwitch extends HTMLElement {
-  constructor() {
+  constructor(mode1, mode2) {
     super();
 
     const shadow = this.attachShadow({mode: 'open'});
@@ -14,13 +14,29 @@ class ToggleSwitch extends HTMLElement {
     let toggle_slider = document.createElement('div');  
     toggle_slider.setAttribute('class', 'slider');
 
+/*     this.setMode = () => {
+      if(mode = "dark"){
+        let light_mode = document.createElement('span');  
+        light_mode.setAttribute('class', 'light_mode');
+        light_mode.textContent = "Light"
+
+        let dark_mode = document.createElement('span');  
+        dark_mode.setAttribute('class', 'dark_mode');
+        dark_mode.textContent = "Dark"
+      }
+      else{
+        let calmMode = document.createElement('span');
+        calmMode.set
+      }
+    } */
+
     let light_mode = document.createElement('span');  
-    light_mode.setAttribute('class', 'light_mode');
-    light_mode.textContent = "Light"
+    light_mode.setAttribute('class', `${mode1}_mode`);
+    light_mode.textContent = "On";
 
     let dark_mode = document.createElement('span');  
-    dark_mode.setAttribute('class', 'dark_mode');
-    dark_mode.textContent = "Dark"
+    dark_mode.setAttribute('class', `${mode2}_mode`);
+    dark_mode.textContent = "Off";
 
     shadow.append(style);
     shadow.appendChild(toggle_switch);
@@ -28,6 +44,7 @@ class ToggleSwitch extends HTMLElement {
     toggle_switch.appendChild(toggle_slider);
     toggle_slider.appendChild(light_mode);
     toggle_slider.appendChild(dark_mode);
+    
 
     /* Links Used
     https://stackoverflow.com/questions/44061473/move-text-on-toggle-switch-on-off
@@ -91,7 +108,7 @@ class ToggleSwitch extends HTMLElement {
     }
     
     
-    .dark_mode,.light_mode {
+    .${mode2}_mode,.${mode1}_mode {
       color: white; /*color of text (light/dark)*/
       position: absolute;
       /*transform: translate(-50%, -50%);*/
@@ -101,33 +118,42 @@ class ToggleSwitch extends HTMLElement {
     }
   
     /* Hides dark mode text initially*/
-    .dark_mode {
+    .${mode2}_mode {
       display:none;
     }
     /*Moves the light_mode text to the right*/
-    .light_mode {
+    .${mode1}_mode {
       display:block;
       left:50px;
     }
     `;
+
+    this.toggleSwitchEvent = new CustomEvent('toggleSwitch', {
+      bubbles: true,
+      composed: true,
+      detail: {toggle: () => dark_mode.style.display == 'block'}
+    });
+
     toggle_slider.onclick = () => {
+      shadow.dispatchEvent(this.toggleSwitchEvent);
       if(dark_mode.style.display == 'block') {
-        /* Changes to Light Mode */
+        // Changes to Light Mode 
         dark_mode.style.display = 'none';
         light_mode.style.display = 'block';
-        let body = document.getElementById('test');
+/*         let body = document.getElementById('test');
         body.style.fontFamily = 'Open Sans';
-        body.style.backgroundColor = 'white';
+        body.style.backgroundColor = 'white'; */
       }
       else {
-        /*Changes to Dark Mode*/
+        //Changes to Dark Mode
         dark_mode.style.display = 'block';
         light_mode.style.display = 'none';
-        let body = document.getElementById('test');
+/*         let body = document.getElementById('test');
         body.style.fontFamily = 'Open Sans';
-        body.style.backgroundColor = '#0e1116';
+        body.style.backgroundColor = '#0e1116'; */
+
       }
-    }
+    } 
   }
 }
 customElements.define('toggle-switch', ToggleSwitch);

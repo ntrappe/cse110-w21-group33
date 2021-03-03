@@ -1,8 +1,20 @@
+#modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 #settings {
     height: 100%;
     width: 400px;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     top: 0;
     left: -500px;
     background-color: #13151b;
@@ -60,6 +72,7 @@
 
 /* margins match finish button */
 #openButton {
+    z-index: 2;
     margin-left: 15px;
     background-color: #0f1115;
     color: #31363c;
