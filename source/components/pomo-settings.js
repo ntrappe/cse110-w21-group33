@@ -53,7 +53,7 @@ class PomoSettings extends HTMLElement {
         const timerSection = document.createElement('div');
 
         const pomoLengthLabel = document.createElement('label');
-        pomoLengthLabel.textContent = 'Customize Pomodoro Length';
+        pomoLengthLabel.textContent = 'Time (minutes)';
 
         // Input field for work customization
         const workSection = document.createElement('div');
@@ -236,74 +236,118 @@ class PomoSettings extends HTMLElement {
         });
 
 
-        // Event listeners
+        /**
+         * Opens the sidebar when clicking open button
+         */
         openButton.onclick = () => {
             sideBar.setAttribute('class', 'open');
         }
 
+        /**
+         * Closes the sidebar when clicking close button
+         */
         closeButton.onclick = () => {
             sideBar.setAttribute('class', 'close');
         }
 
+        /**
+         * Closes the sidebar when clicking outside of sidebar
+         * @param {Object} e contains data of what is being clicked on website
+         */
         document.onclick = (e) => {
             if (!sideBar.contains(e.target) && !(e.target == this)){
                 sideBar.setAttribute('class', 'close');
             }
         }
 
+        /**
+         * Passes customized work minutes to event listener
+         */
         workMinutesNumber.oninput = () => {
             console.log("We've changed the workMinutes");
             this.work = Number(workMinutesNumber.value);
             shadow.dispatchEvent(this.workSetEvent);
         }
 
+        /**
+         * Passes customized short break minutes to event listener
+         */
         shortBreakMinutesNumber.oninput = () => {
             console.log("We've changed the shortBreakMinutes");
             this.shortBreak = Number(shortBreakMinutesNumber.value);
             shadow.dispatchEvent(this.shortBreakSetEvent);
         }
 
+        /**
+         * Passes customized long break minutes to event listener
+         */
         longBreakMinutesNumber.oninput = () => {
             console.log("We've changed the longBreakMinutes");
             this.longBreak = Number(longBreakMinutesNumber.value);
             shadow.dispatchEvent(this.longBreakSetEvent);
         }
 
+        /**
+         * Passes customized volume from slider to event listener
+         */
         volumeSlide.oninput = () => {
             console.log("We've changed the volume through the slider.");
             this.volumeSet(volumeSlide.value);
             shadow.dispatchEvent(this.volumeSetEvent);
         }
 
+        /**
+         * Passes customized volume from input to event listener
+         */
         volumeNumber.oninput = () => {
             console.log("We've changed the volume through the number");
             this.volumeSet(volumeNumber.value);
             shadow.dispatchEvent(this.volumeEvent);
         }
 
+        /**
+         * Coordinate slider and input with each other and set event variable
+         * @param {Number} volume volume of audio
+         */
         this.volumeSet = (volume) => {
             volumeSlide.value = volume;
             volumeNumber.value = volume;
             this.volume = volume;
         }
 
+        /**
+         * Passes customized audio to event listener
+         */
         soundSelect.onchange = () => {
             console.log("We've selected a new sound. Should update these preferences.");
             this.sound = soundSelect.value;
             shadow.dispatchEvent(this.soundSetEvent);
         }
 
-        // Enable settings button
+        /**
+         * Enable settings by re-enabling settings button
+         */
         this.enableSettings = () => {
             openButton.disabled = false;
         }
 
-        // Disable settings button
+        /**
+         * Disable settings by disabling settings button
+         */
         this.disableSettings = () => {
             openButton.disabled = true;
         }
 
-        // Load settings 
+        /**
+         * For control, updates the default settings with values previously had from local storage
+         * @param {Boolean} calm whether or not calm mode is turned on
+         * @param {Number} volume value of audio volume
+         * @param {String} sound type of audio notification noise
+         * @param {Boolean} dark whether or not dark mode is turned on
+         * @param {Number} work length of each work session in minutes
+         * @param {Number} shortBreak length of each short break session in minutes
+         * @param {Number} longBreak length of each long break session in minutes
+         */
         this.loadSettings = (calm, volume, sound, dark, work, shortBreak, longBreak) => {
             this.work = work;
             workMinutesNumber.value = work;
