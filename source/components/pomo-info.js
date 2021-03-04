@@ -23,7 +23,9 @@ class PomoInfo extends HTMLElement {
 
         // the modal window
         const modal = document.createElement('div');
-        modal.setAttribute('id', 'modal');
+        modal.setAttribute('class', 'modal');
+        modal.setAttribute('id', 'infoModal');
+        modal.style.display = 'none';
         modal.onclick = (event) => {
           // close lightbox when click outside of the content area
           if (event.target == modal) {
@@ -33,7 +35,8 @@ class PomoInfo extends HTMLElement {
 
         // the lightbox
         const modalContent = document.createElement('div');
-        modalContent.setAttribute('id', 'modalContent');
+        modalContent.setAttribute('class', 'modalContent');
+        modalContent.setAttribute('id', 'infoModalContent');
 
         // the main info Content
         const infoContent = document.createElement('div');
@@ -50,7 +53,8 @@ class PomoInfo extends HTMLElement {
 
         // button to close the modal window
         const closeButton = document.createElement('div');
-        closeButton.setAttribute('id', 'closeButton');
+        closeButton.setAttribute('class', 'closeButton');
+        closeButton.setAttribute('id', 'infoCloseButton');
         closeButton.setAttribute('class', 'button-off');
         closeButton.onclick = () => {
           modal.style.display = 'none';
