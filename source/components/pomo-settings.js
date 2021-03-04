@@ -15,6 +15,10 @@ class PomoSettings extends HTMLElement {
 
         const shadow = this.attachShadow({ mode: 'open' });
 
+        // Audio so users can test volume + audio type
+        const audio = document.createElement("audio");
+        audio.src = `/media/audio/default.mp3`;
+
         // Lightbox background
         const modal = document.createElement('div');  
         modal.setAttribute('id', 'modal');
@@ -124,11 +128,17 @@ class PomoSettings extends HTMLElement {
 
         const soundSelect = document.createElement('select');
         soundSelect.setAttribute('id', 'soundSelect');
+
+
+        // List of names of audio files
         const soundList = ["party-horn", "angry-monkey", "default", "rooster"];
 
+        // Create option in dropdown menu for each audio file
         for (const sound of soundList) {
           const option = soundSelect.appendChild(document.createElement("option"));
           option.value = sound;
+
+          // Converts name of audio file to capitalized word with spaces
           let name = sound.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
           option.text = name;
         }
@@ -264,7 +274,7 @@ class PomoSettings extends HTMLElement {
         /**
          * Passes customized work minutes to event listener
          */
-        workMinutesNumber.oninput = () => {
+        workMinutesNumber.onchange = () => {
             console.log("We've changed the workMinutes");
             this.work = Number(workMinutesNumber.value);
             shadow.dispatchEvent(this.workSetEvent);
@@ -273,7 +283,7 @@ class PomoSettings extends HTMLElement {
         /**
          * Passes customized short break minutes to event listener
          */
-        shortBreakMinutesNumber.oninput = () => {
+        shortBreakMinutesNumber.onchange = () => {
             console.log("We've changed the shortBreakMinutes");
             this.shortBreak = Number(shortBreakMinutesNumber.value);
             shadow.dispatchEvent(this.shortBreakSetEvent);
@@ -282,7 +292,7 @@ class PomoSettings extends HTMLElement {
         /**
          * Passes customized long break minutes to event listener
          */
-        longBreakMinutesNumber.oninput = () => {
+        longBreakMinutesNumber.onchange = () => {
             console.log("We've changed the longBreakMinutes");
             this.longBreak = Number(longBreakMinutesNumber.value);
             shadow.dispatchEvent(this.longBreakSetEvent);
@@ -291,7 +301,7 @@ class PomoSettings extends HTMLElement {
         /**
          * Passes customized volume from slider to event listener
          */
-        volumeSlide.oninput = () => {
+        volumeSlide.onchange = () => {
             console.log("We've changed the volume through the slider.");
             this.volumeSet(volumeSlide.value);
             shadow.dispatchEvent(this.volumeSetEvent);
@@ -300,28 +310,50 @@ class PomoSettings extends HTMLElement {
         /**
          * Passes customized volume from input to event listener
          */
-        volumeNumber.oninput = () => {
+        volumeNumber.onchange = () => {
             console.log("We've changed the volume through the number");
             this.volumeSet(volumeNumber.value);
             shadow.dispatchEvent(this.volumeSetEvent);
         }
 
         /**
-         * Coordinate slider and input with each other and sets volume variable
+         * Stops audio if user decides to change volume 
+         */
+        volumeSlide.oninput = () => {
+            audio.currentTime = 0;
+            audio.pause();
+        }
+
+        /**
+         * Stops audio if user decides to change volume 
+         */
+        volumeNumber.oninput = () => {
+            audio.currentTime = 0;
+            audio.pause();
+        }
+
+        /**
+         * Coordinate slider and input with each other, sets volume variable, 
+         * and plays audio so the user can test volume
          * @param {Number} volume volume of audio
          */
         this.volumeSet = (volume) => {
             volumeSlide.value = volume;
             volumeNumber.value = volume;
             this.volume = volume;
+            audio.volume = volume / 100;
+            audio.play();
         }
 
         /**
-         * Sets and passes sound variable to control event listener
+         * Sets and passes sound variable to control event listener, and plays
+         * audio so that the user can test audio sound
          */
         soundSelect.onchange = () => {
             console.log("We've selected a new sound. Should update these preferences.");
             this.sound = soundSelect.value;
+            audio.src = `/media/audio/${this.sound}.mp3`;
+            audio.play();
             shadow.dispatchEvent(this.soundSetEvent);
         }
 
