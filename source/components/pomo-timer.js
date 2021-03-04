@@ -1,30 +1,46 @@
+import { setStartButton, setResetButton, display, set, initProgess, setProgressHelper } from './pomo-timer-helpers.js'
+
 const START = 'Start';
 const RESET = 'Reset';
+const SEC_SPEED = 250;
 class PomoTimer extends HTMLElement {
     constructor() {
         super();
 
         const shadow = this.attachShadow({mode: 'open'});
 
+        /*
+        const link = document.createElement('link');
+        link.setAttribute('id', 'timer-styles');
+        link.setAttribute('rel', 'stylesheet');
+        link.setAttribute('href', './components/pomo-timer.css');
+        */
+
         const wrapper = document.createElement('span');
         wrapper.setAttribute('class', 'wrapper');
 
         // label for mode e.g. 'Work'
         let currentMode = document.createElement('p');          
-        currentMode.setAttribute('id', 'mode'); 
-        currentMode.textContent = "WORK";
+        currentMode.setAttribute('id', 'timer-mode'); 
 
         // timer countdown display
-        let timerText = document.createElement('h1')            
+        let timerText = document.createElement('h1')  
+        timerText.setAttribute('id', 'timer-text');          
         timerText.setAttribute('class', 'time');
-        timerText.setAttribute('id', 'timer-text');
-        timerText.textContent = "TIME";
 
         // timer button
         let timerButton = document.createElement('button'); 
-        timerButton.setAttribute('id', 'button');
+        timerButton.setAttribute('id', 'timer-button');
         timerButton.setAttribute('class', 'start');
+
+        /* Initialize elements */
+        currentMode.textContent = "WORK";
+        timerText.textContent = "TIME";
         timerButton.textContent = START; 
+
+        let ticker;                                             // timer object
+        this.totalSeconds = 0;                                  // total seconds in timer
+        let modeDuration = 0;                                   // time to put on clock
 
         shadow.appendChild(wrapper);
         wrapper.appendChild(currentMode);
@@ -37,28 +53,81 @@ class PomoTimer extends HTMLElement {
         timerButton.onclick = () => {
             if (timerButton.textContent === START) {
                 setResetButton(timerButton);
+                this.timerStart();
             } else {
                 setStartButton(timerButton);
+                this.timerReset();
             }
         };
 
         /**
-         * Changes button to represent Start
-         *  @param {Button} timerButton button for Start/Reset timer
-         */
-        function setStartButton(timerButton) {
-            timerButton.innerHTML = START;
-            timerButton.setAttribute('class', 'start');
+        * Stops the timer from ticking and resets it based on button click
+        */
+        this.timerReset = () => {
+            //shadow.dispatchEvent(timerResetEvent);
+            clearInterval(ticker);
+            //this.totalSeconds = set(NUM_MIN);
+            this.totalSeconds = set(modeDuration);
+            display(this.totalSeconds, timerText);
         }
 
         /**
-         * Changes button to represent Reset
-         *  @param {Button} timerButton button for Start/Reset timer
+         * Sets time on timer and starts ticking based on button click
          */
-        function setResetButton(timerButton) {
-            timerButton.innerHTML = RESET;
-            timerButton.setAttribute('class', 'reset');
+        this.timerStart = () => {
+            //shadow.dispatchEvent(timerStartEvent);
+            //this.totalSeconds = set(NUM_MIN);
+            this.totalSeconds = set(modeDuration);
+            display(this.totalSeconds, timerText);
+            ticker = setInterval(this.timerTick, SEC_SPEED);
         }
+
+        /**
+        * Timer hits 0:00 and resets
+        */
+        this.timerFinish = () => {
+            //shadow.dispatchEvent(timerFinishEvent);
+            clearInterval(ticker);
+            //this.totalSeconds = set(NUM_MIN);
+            this.totalSeconds = set(modeDuration);
+            display(this.totalSeconds, timerText);
+        }
+
+        /**
+        * Decrement each second. If time has run out, stop "ticking" by clearing Interval and 
+        * reset the timer. Otherwise, keep decrementing seconds and updating time on screen
+        */
+        this.timerTick = () => {
+            //shadow.dispatchEvent(tickEvent);
+            if (this.totalSeconds == 0) {
+                this.timerFinish();
+                setStartButton(timerButton);
+            } else {
+                this.totalSeconds = this.totalSeconds - 1;
+                display(this.totalSeconds, timerText);
+            }  
+        }
+
+        /**
+         * For CONTROL to set time on clock for current mode
+         * @param {Number} min number of minutes to set the clock to
+         */
+        this.setTimer = (min, mode) => {
+            modeDuration = min;
+            display(set(min), timerText);
+            currentMode.setAttribute('class', mode);
+            currentMode.textContent = mode.toUpperCase();
+        }
+        
+        /**
+         * For CONTROL to update squares on screen to match number of breaks taken
+         * @param {Number} progress number of breaks taken
+         */
+        /*
+        this.setProgress = (progress) => {
+            setProgressHelper(progress, progressContainerItems[1], progressContainerItems[2],
+                progressContainerItems[3], progressContainerItems[4]);
+        }*/
     }
 }
 
