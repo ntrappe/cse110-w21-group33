@@ -74,7 +74,7 @@ function getVolume() {
   if(!(localStorage.getItem('volume'))) { // Checking if there is a volume value stored in local storage
     setVolume(50); // Setting default volume to be 50
   }
-  return localStorage.getItem('volume');
+  return eval(localStorage.getItem('volume'));
 }
   
 /**
@@ -128,7 +128,7 @@ function getWork() {
   if(!(localStorage.getItem('work'))) { // Checking if the duration of work mode has been changed
     setWork(25); // Setting default work mode to be 25 minutes
   }
-  return localStorage.getItem('work');
+  return eval(localStorage.getItem('work'));
 }
     
 /**
@@ -146,7 +146,7 @@ function getShortBreak() {
   if(!(localStorage.getItem('shortBreak'))) { // Checking if the duration of short break has been changed
     setShortBreak(5); // Setting default short break to be 5 minutes
   }
-  return localStorage.getItem('shortBreak');
+  return eval(localStorage.getItem('shortBreak'));
 }
       
 /**
@@ -164,7 +164,7 @@ function getLongBreak() {
   if(!(localStorage.getItem('longBreak'))) { // Checking if the duration of long break has been changed
     setLongBreak(15); // Setting default long break to be 15 minutes
   }
-  return localStorage.getItem('longBreak');
+  return eval(localStorage.getItem('longBreak'));
 }
 
 /**
