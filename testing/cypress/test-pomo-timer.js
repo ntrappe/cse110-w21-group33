@@ -30,8 +30,8 @@ describe('Find Timer Elements', { includeShadowDom: true }, () => {
   });
 });
 
-describe('Call timer\'s public functions', { includeShadowDom: true }, () => {
-  let num = 12;
+describe('Initialize timer with public functions', { includeShadowDom: true }, () => {
+  let num = 2;
 
   // SET WORK MODE
   it('Call setTimer for work', () => {
@@ -57,30 +57,36 @@ describe('Call timer\'s public functions', { includeShadowDom: true }, () => {
       expect($el).to.contain('Start');
     });
   });
+});
 
-  // SET SHORT BREAK
-  num = 5;
-  it('Call setTimer for short break', () => {
-    cy.window().then((win) => {
-        win.pomoTimer.setTimer(num, 'short break');
+describe('Run through 1 work session', { includeShadowDom: true }, () => {
+  it('Click Start button', () => {
+    cy.get('#timer-button').click();
+
+    // listen for timer counting down with tick
+    cy.get('#pomo-timer').then(($el) => {
+      return new Cypress.Promise(resolve => {
+        const onTick = () => {
+          $el[0].removeEventListener('tick', onTick);
+          resolve();
+        };
+        $el[0].addEventListener('tick', onTick);
+      });
     });
-  });
 
-  it('Check that total seconds is accurate', () => {
-    cy.window().then((win) => {
-        expect(win.pomoTimer.totalSeconds).to.eq(num * 60);
-    });
-  });
-
-  it('Mode should be \'Short Break\'', () => {
-    cy.get('#timer-mode').then(($el) => {
-      expect($el).to.contain('SHORT');
-    });
-  });
-
-  it('Button should be \'Start\'', () => {
-    cy.get('#timer-button').then(($el) => {
-      expect($el).to.contain('Start');
+    // wait until work session done (2m) and listen for a finish
+    cy.wait(30000);
+    cy.get('#pomo-timer').then(($el) => {
+      return new Cypress.Promise(resolve => {
+        const onFinish = () => {
+          $el[0].removeEventListener('timerFinish', onFinish);
+          resolve();
+          cy.window().then((win) => {
+            win.pomoTimer.setTimer(3, 'short break');
+          })
+        };
+        $el[0].addEventListener('timerFinish', onFinish);
+      });
     });
   });
 });
