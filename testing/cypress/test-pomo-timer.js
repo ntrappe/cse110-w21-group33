@@ -16,7 +16,6 @@ describe('Find Timer Element with JS', () => {
 });
 
 /* Add your own tests here */
-
 describe('Find Timer Elements', { includeShadowDom: true }, () => {
   it('Get mode text via ID', () => {
     cy.get('#timer-mode');
@@ -31,6 +30,7 @@ describe('Find Timer Elements', { includeShadowDom: true }, () => {
   });
 });
 
+/*
 describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
   it('Mode should be \'Work\'', () => {
     cy.get('#timer-mode').then(($el) => {
@@ -59,4 +59,4 @@ describe('Basic Button Toggles', { includeShadowDom: true }, () => {
       expect($el).to.have.attr('class', 'start');
     });
   });
-});
+});*/

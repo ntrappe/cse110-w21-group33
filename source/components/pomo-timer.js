@@ -49,6 +49,28 @@ class PomoTimer extends HTMLElement {
         wrapper.appendChild(timerText);
         wrapper.appendChild(timerButton);
 
+        /* Events */
+        const timerStartEvent = new CustomEvent('timerStart', {
+            bubbles: true,          // event listenable outside of container
+            composed: true
+        });
+
+        const timerResetEvent = new CustomEvent('timerReset', {
+            bubbles: true,      
+            composed: true
+        });
+
+        const timerFinishEvent = new CustomEvent('timerFinish', {
+            bubbles: true,      
+            composed: true
+        });
+
+        const tickEvent = new CustomEvent('tick', {
+            bubbles: true,      
+            composed: true,
+            detail: {timeRemaining: () => this.totalSeconds}
+        });
+
         /**
          * Function calls to toggle button and control timer based on user input
          */
@@ -66,7 +88,7 @@ class PomoTimer extends HTMLElement {
         * Stops the timer from ticking and resets it based on button click
         */
         this.timerReset = () => {
-            //shadow.dispatchEvent(timerResetEvent);
+            shadow.dispatchEvent(timerResetEvent);
             clearInterval(ticker);
             //this.totalSeconds = set(NUM_MIN);
             this.totalSeconds = set(modeDuration);
@@ -77,7 +99,7 @@ class PomoTimer extends HTMLElement {
          * Sets time on timer and starts ticking based on button click
          */
         this.timerStart = () => {
-            //shadow.dispatchEvent(timerStartEvent);
+            shadow.dispatchEvent(timerStartEvent);
             //this.totalSeconds = set(NUM_MIN);
             this.totalSeconds = set(modeDuration);
             display(this.totalSeconds, timerText);
@@ -88,7 +110,7 @@ class PomoTimer extends HTMLElement {
         * Timer hits 0:00 and resets
         */
         this.timerFinish = () => {
-            //shadow.dispatchEvent(timerFinishEvent);
+            shadow.dispatchEvent(timerFinishEvent);
             clearInterval(ticker);
             //this.totalSeconds = set(NUM_MIN);
             this.totalSeconds = set(modeDuration);
@@ -100,7 +122,7 @@ class PomoTimer extends HTMLElement {
         * reset the timer. Otherwise, keep decrementing seconds and updating time on screen
         */
         this.timerTick = () => {
-            //shadow.dispatchEvent(tickEvent);
+            shadow.dispatchEvent(tickEvent);
             if (this.totalSeconds == 0) {
                 this.timerFinish();
                 setStartButton(timerButton);
@@ -125,11 +147,10 @@ class PomoTimer extends HTMLElement {
          * For CONTROL to update squares on screen to match number of breaks taken
          * @param {Number} progress number of breaks taken
          */
-        /*
         this.setProgress = (progress) => {
             setProgressHelper(progress, progressContainerItems[1], progressContainerItems[2],
                 progressContainerItems[3], progressContainerItems[4]);
-        }*/
+        }
     }
 }
 
