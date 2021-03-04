@@ -22,7 +22,7 @@ describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
 /* Add your own tests here */
 describe('Test sidebar elements', () => {
   beforeEach(() => {
-    cy.visit('http://127.0.0.1:5500/source/index.html');
+    cy.visit('./source/index.html');
     cy.get('#openButton').click();
   });
 
