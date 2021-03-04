@@ -6,7 +6,11 @@
         "cypress_start": "cypress open"
     },
     "devDependencies": {
+        "@babel/plugin-transform-modules-commonjs": "^7.13.8",
         "cypress": "^6.5.0",
         "jest": "^26.6.3"
+    },
+    "jest": {
+        "testEnvironment": "jest-environment-node"
     }
 }
