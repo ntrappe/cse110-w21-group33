@@ -17,7 +17,8 @@ class PomoSettings extends HTMLElement {
 
     // Audio so users can test volume + audio type
     const audio = document.createElement("audio");
-    audio.src = `/media/audio/default.mp3`;
+    audio.setAttribute('id', 'audioSound');
+    audio.src = '/media/audio/default.mp3';
 
     // Lightbox background
     const modal = document.createElement('div');  
@@ -166,6 +167,7 @@ class PomoSettings extends HTMLElement {
     shadow.appendChild(styles);
     shadow.appendChild(openButton);
     shadow.appendChild(sideBar);
+    shadow.appendChild(audio);
 
     sideBar.appendChild(closeButton);
     sideBar.appendChild(pomoLengthLabel);
