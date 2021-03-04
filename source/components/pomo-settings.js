@@ -153,14 +153,12 @@ class PomoSettings extends HTMLElement {
     calmLabel.htmlFor = 'calmSwitch';
     const calmSwitch = new ToggleSwitch("calm", "busy");
 
-
     // Toggle switch to enable dark mode
     const darkSection = document.createElement('div');
     const darkLabel = document.createElement('label');
     darkLabel.innerHTML = 'Dark Mode';
     darkLabel.htmlFor = 'darkSwitch';
-    const darkSwitch = new ToggleSwitch("light", "dark");
-
+    const darkSwitch = new ToggleSwitch("dark", "light");
 
     // Attach elements to shadow DOM
     shadow.appendChild(modal);
@@ -312,7 +310,7 @@ class PomoSettings extends HTMLElement {
     /**
      * Passes customized volume from input to event listener
      */
-    volumeNumber.onchange = () => {
+    volumeNumber.onchange = (e) => {
       console.log("We've changed the volume through the number");
       this.volumeSet(volumeNumber.value);
       shadow.dispatchEvent(this.volumeSetEvent);
@@ -406,11 +404,24 @@ class PomoSettings extends HTMLElement {
       shortBreakMinutesNumber.value = shortBreak;
       this.longBreak = longBreak;
       longBreakMinutesNumber.value = longBreak;
+      this.volume = volume;
       this.volumeSet(volume);
       this.sound = sound;
       soundSelect.value = sound;
       this.calm = calm;
+      if(calm){
+        calmSwitch.setOn();
+      }
+      else{
+        calmSwitch.setOff();
+      }
       this.dark = dark;
+      if(dark){
+        darkSwitch.setOn();
+      }
+      else{
+        darkSwitch.setOff();
+      }
     }
   }
 }
