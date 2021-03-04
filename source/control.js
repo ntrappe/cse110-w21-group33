@@ -3,11 +3,26 @@ import { PomoInfo } from './components/pomo-info.js';
 import { PomoSettings } from './components/pomo-settings.js';
 import { PomoTimer } from './components/pomo-timer.js';
 
+// Initialize web components
 const pomoFinish = new PomoFinish();
-const pomoInfo = new PomoInfo();
-const pomoSettings = new PomoSettings();
-const pomoTimer = new PomoTimer();
+pomoFinish.setAttribute('id', 'pomo-finish');
 
+const pomoInfo = new PomoInfo();
+pomoInfo.setAttribute('id', 'pomo-info');
+
+const pomoSettings = new PomoSettings();
+pomoSettings.setAttribute('id', 'pomo-settings');
+
+const pomoTimer = new PomoTimer();
+pomoTimer.setAttribute('id', 'pomo-timer');
+
+// Attach elements to the window for Cypress testing
+window.pomoFinish = pomoFinish;
+window.pomoInfo = pomoInfo;
+window.pomoSettings = pomoSettings;
+window.pomoTimer = pomoTimer;
+
+// Add components to their proper locations on the page
 const header = document.getElementById('header');
 header.appendChild(pomoSettings);
 header.appendChild(pomoInfo);
