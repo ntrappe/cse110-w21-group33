@@ -29,7 +29,6 @@ header.appendChild(pomoInfo);
 
 const main = document.getElementById('main');
 main.appendChild(pomoTimer);
-//pomoTimer.setTimer(10, 'work');
 
 const footer = document.getElementById('footer');
 footer.appendChild(pomoFinish);

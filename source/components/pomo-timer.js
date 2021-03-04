@@ -36,9 +36,8 @@ class PomoTimer extends HTMLElement {
         /* Initialize elements */
         /*
         currentMode.textContent = "WORK";
-        timerText.textContent = "TIME";
+        timerText.textContent = "TIME"; */
         timerButton.textContent = START; 
-        */
 
         let ticker;                                             // timer object
         this.totalSeconds = 0;                                  // total seconds in timer
@@ -138,7 +137,8 @@ class PomoTimer extends HTMLElement {
          */
         this.setTimer = (min, mode) => {
             modeDuration = min;
-            display(set(min), timerText);
+            this.totalSeconds = set(min);
+            display(this.totalSeconds, timerText);
             currentMode.setAttribute('class', mode);
             currentMode.textContent = mode.toUpperCase();
         }
