@@ -4,6 +4,19 @@ describe("Open Page", () => {
   });
 });
 
+/* Starter Tests to find elements on page */
+
+// Used for calling functions on the component
+describe('Find Timer Element with JS', () => {
+  it('Get element (\'Timer\')', () => {
+      cy.window().then((win) => {
+          expect(win.pomoTimer).to.exist;
+      });
+  });
+});
+
+/* Add your own tests here */
+
 describe('Find Timer Elements', { includeShadowDom: true }, () => {
   it('Get mode text via ID', () => {
     cy.get('#mode');

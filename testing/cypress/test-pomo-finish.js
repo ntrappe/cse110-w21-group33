@@ -5,15 +5,22 @@ describe("Open Page", () => {
 });
 
 /* Starter Tests to find elements on page */
-describe('Find Finish Elements', { includeShadowDom: true }, () => {
-    it('Get element (\'Finish\')', () => {
-        cy.get('p');
-    });
-});
-describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
-    it('Check that element says Finish', () => {
+
+// Used for testing component visuals
+// Remove this when the component has been implemented
+describe('Find Finish Element with ID', { includeShadowDom: true }, () => {
+    it('Check for element (\'Finish\')', () => {
         cy.get('p').then(($el) => {
             expect($el).to.contain('Finish');
+        });
+    });
+});
+
+// Used for calling functions on the component
+describe('Find Finish Element with JS', () => {
+    it('Get element (\'Finish\')', () => {
+        cy.window().then((win) => {
+            expect(win.pomoFinish).to.exist;
         });
     });
 });
