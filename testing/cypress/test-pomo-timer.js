@@ -19,7 +19,7 @@ describe('Find Timer Element with JS', () => {
 
 describe('Find Timer Elements', { includeShadowDom: true }, () => {
   it('Get mode text via ID', () => {
-    cy.get('#mode');
+    cy.get('#timer-mode');
   });
 
   it('Get timer text via class', () => {
@@ -27,19 +27,19 @@ describe('Find Timer Elements', { includeShadowDom: true }, () => {
   });
 
   it('Get toggle button via ID', () => {
-    cy.get('#button');
+    cy.get('#timer-button');
   });
 });
 
 describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
   it('Mode should be \'Work\'', () => {
-    cy.get('#mode').then(($el) => {
+    cy.get('#timer-mode').then(($el) => {
       expect($el).to.contain('WORK');
     });
   });
 
   it('Button should be \'Start\'', () => {
-    cy.get('#button').then(($el) => {
+    cy.get('#timer-button').then(($el) => {
       expect($el).to.contain('Start');
     });
   });
@@ -47,15 +47,15 @@ describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
 
 describe('Basic Button Toggles', { includeShadowDom: true }, () => {
   it('Button toggles when Start clicked', () => {
-    cy.get('#button').click();
-    cy.get('#button').then(($el) => {
+    cy.get('#timer-button').click();
+    cy.get('#timer-button').then(($el) => {
       expect($el).to.have.attr('class', 'reset');
     });
   });
 
   it('Button toggles when Reset clicked', () => {
-    cy.get('#button').click();
-    cy.get('#button').then(($el) => {
+    cy.get('#timer-button').click();
+    cy.get('#timer-button').then(($el) => {
       expect($el).to.have.attr('class', 'start');
     });
   });
