@@ -72,7 +72,7 @@ function setCalm(calm) {
  */
 function getVolume() {
   if(!(localStorage.getItem('volume'))) { // Checking if there is a volume value stored in local storage
-    setVolume(50); // Setting default volume to be 50
+    setVolume(100); // Setting default volume to be 50
   }
   return eval(localStorage.getItem('volume'));
 }
@@ -90,7 +90,7 @@ function setVolume(vol) {
  */
 function getSound() {
   if(!(localStorage.getItem('sound'))) { // Checking if there is a sound value stored in local storage
-    setSound('bell'); // Setting default sound to be bell
+    setSound('zapsplat_household_alarm_clock_old_fashioned_ring_very_short_44062.mp3'); // Setting default sound to be bell
   }
   return localStorage.getItem('sound');
 }

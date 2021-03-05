@@ -109,7 +109,7 @@ test('setCalm to be false', () => {
 });
 
 test('getVolume without setVolume', () => {
-  expect(getVolume()).toBe(50);
+  expect(getVolume()).toBe(100);
 });
 
 test('setVolume to be 80', () => {
@@ -118,7 +118,7 @@ test('setVolume to be 80', () => {
 });
 
 test('getSound without setSound', () => {
-  expect(getSound()).toBe('bell');
+  expect(getSound()).toBe('zapsplat_household_alarm_clock_old_fashioned_ring_very_short_44062.mp3');
 });
 
 test('setSound to be jingle', () => {
