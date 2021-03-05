@@ -58,6 +58,38 @@ describe('Initialize timer with public functions', { includeShadowDom: true }, (
   });
 });
 
+describe('Check Resets',  { includeShadowDom: true }, () => {
+  // NOTE: timeout length should change if timer speed does
+ it('Check if we can reset at 01:59', () => {
+   cy.get('#timer-button').click();
+   cy.get('#timer-text').contains('01:59').then(($el) => {
+     cy.get('#timer-button').click().then(($el) => {
+       expect($el).to.have.attr('class', 'start');
+     });
+   });
+ });
+
+  // NOTE: timeout length should change if timer speed does
+ it('Check if we can reset at 00:01', () => {
+   cy.get('#timer-button').click();
+   cy.get('#timer-text').contains('00:01', { timeout: 30000 }).then(($el) => {
+     cy.get('#timer-button').click().then(($el) => {
+       expect($el).to.have.attr('class', 'start');
+     });
+   });
+ });
+
+  // NOTE: timeout length should change if timer speed does
+ it('Check if we can reset at 00:00', () => {
+   cy.get('#timer-button').click();
+   cy.get('#timer-text').contains('00:00', { timeout: 30500 }).then(($el) => {
+     cy.get('#timer-button').click().then(($el) => {
+       expect($el).to.have.attr('class', 'start');
+     });
+   });
+ });
+});
+
 describe('Check all events', { includeShadowDom: true }, () => {
   it('Button shows start', () => {
     cy.get('#timer-button').then(($el) => {
@@ -127,53 +159,15 @@ describe('Check all events', { includeShadowDom: true }, () => {
   });
 }); 
 
-describe('Check Resets',  { includeShadowDom: true }, () => {
-  it('Use waits to Start then Reset', () => {
-    cy.get('#timer-button').click();
-    cy.wait(4000);
-    cy.get('#timer-button').click();
-  });
-
-   // NOTE: timeout length should change if timer speed does
-   /*
-  it('Check if we can reset at 01:59', () => {
-    cy.get('#timer-button').click();
-    cy.get('#timer-text').contains('01:59').then(($el) => {
-      cy.get('#timer-button').then(($el) => {
-        expect($el).to.have.attr('class', 'start');
-      });
-    });
-  }); */
-
-   // NOTE: timeout length should change if timer speed does
-  it('Check if we can reset at 00:01', () => {
-    cy.get('#timer-button').click();
-    cy.get('#timer-text').contains('00:01', { timeout: 30000 }).then(($el) => {
-      cy.get('#timer-button').click().then(($el) => {
-        expect($el).to.have.attr('class', 'start');
-      });
-    });
-  });
-
-   // NOTE: timeout length should change if timer speed does
-  it('Check if we can reset at 00:00', () => {
-    cy.get('#timer-button').click();
-    cy.get('#timer-text').contains('00:00', { timeout: 30500 }).then(($el) => {
-      cy.get('#timer-button').click().then(($el) => {
-        expect($el).to.have.attr('class', 'start');
-      });
-    });
-  });
-});
-
 describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, () => {
-  it('> Set Timer for Work #1 with 2m', () => {
+  it('Set Timer for Work #1 with 2m', () => {
+    cy.get('#timer-button').click();      // first reset
     cy.window().then((win) => {
       win.pomoTimer.setTimer(2, 'work');
     });
   });
 
-  it('Check mode, timer text, & button for Work #1', () => {
+  it('> Check mode, timer text, & button for Work #1', () => {
     cy.get('#timer-mode').then(($el) => {
       expect($el).to.contain('WORK');
     });
@@ -185,7 +179,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
     });
   });
 
-  it('> Set Timer for Short Break #1 after listening for Work #1 end', () => {
+  it('Set Timer for Short Break #1 after listening for Work #1 end', () => {
     cy.get('#timer-button').click();
     cy.wait(30000);
     const eventPromise = new Cypress.Promise((resolve) => {
@@ -201,7 +195,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
     cy.wrap(eventPromise);
   });
 
-  it('Check mode, timer text, & button for Short Break #1', () => {
+  it('> Check mode, timer text, & button for Short Break #1', () => {
     cy.get('#timer-mode').then(($el) => {
       expect($el).to.contain('SHORT BREAK');
     });
@@ -213,7 +207,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
     });
   });
 
-  it('> Set Timer for Work #2 after listening for Short Break #1 end', () => {
+  it('Set Timer for Work #2 after listening for Short Break #1 end', () => {
     cy.get('#timer-button').click();
     cy.wait(30000);
     const eventPromise = new Cypress.Promise((resolve) => {
@@ -229,7 +223,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
     cy.wrap(eventPromise);
   });
 
-  it('Check mode, timer text, & button for Work #2', () => {
+  it('> Check mode, timer text, & button for Work #2', () => {
     cy.get('#timer-mode').then(($el) => {
       expect($el).to.contain('WORK');
     });
@@ -241,7 +235,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
     });
   });
 
-  it('> Set Timer for Short Break #2 after listening for Work #2 end', () => {
+  it('Set Timer for Short Break #2 after listening for Work #2 end', () => {
     cy.get('#timer-button').click();
     cy.wait(30000);
     const eventPromise = new Cypress.Promise((resolve) => {
@@ -257,7 +251,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
     cy.wrap(eventPromise);
   });
 
-  it('Check mode, timer text for Short Break #2', () => {
+  it('> Check mode, timer text for Short Break #2', () => {
     cy.get('#timer-mode').then(($el) => {
       expect($el).to.contain('SHORT BREAK');
     });
@@ -269,7 +263,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
     });
   });
 
-  it('> Set Timer for Work #3 after listening for Short Break #2 end', () => {
+  it('Set Timer for Work #3 after listening for Short Break #2 end', () => {
     cy.get('#timer-button').click();
     cy.wait(15000);
     const eventPromise = new Cypress.Promise((resolve) => {
@@ -285,7 +279,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
     cy.wrap(eventPromise);
   });
 
-  it('Check mode, timer text for Work #3', () => {
+  it('> Check mode, timer text for Work #3', () => {
     cy.get('#timer-mode').then(($el) => {
       expect($el).to.contain('WORK');
     });
@@ -297,7 +291,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
     });
   });
 
-  it('> Set Timer for Short Break #3 after listening for Work #3 end', () => {
+  it('Set Timer for Short Break #3 after listening for Work #3 end', () => {
     cy.get('#timer-button').click();
     cy.wait(15000);
     const eventPromise = new Cypress.Promise((resolve) => {
@@ -313,7 +307,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
     cy.wrap(eventPromise);
   });
 
-  it('Check mode, timer text for Short Break #3', () => {
+  it('> Check mode, timer text for Short Break #3', () => {
     cy.get('#timer-mode').then(($el) => {
       expect($el).to.contain('SHORT BREAK');
     });
@@ -325,7 +319,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
     });
   });
 
-  it('> Set Timer for Work #4 after listening for Short Break #3 end', () => {
+  it('Set Timer for Work #4 after listening for Short Break #3 end', () => {
     cy.get('#timer-button').click();
     cy.wait(15000);
     const eventPromise = new Cypress.Promise((resolve) => {
@@ -341,7 +335,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
     cy.wrap(eventPromise);
   });
 
-  it('Check mode, timer text for Work #4', () => {
+  it('> Check mode, timer text for Work #4', () => {
     cy.get('#timer-mode').then(($el) => {
       expect($el).to.contain('WORK');
     });
@@ -353,7 +347,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
     });
   });
 
-  it('> Set Timer for Long Break #1 after listening for Work #4 end', () => {
+  it('Set Timer for Long Break #1 after listening for Work #4 end', () => {
     cy.get('#timer-button').click();
     cy.wait(15000);
     const eventPromise = new Cypress.Promise((resolve) => {
@@ -369,7 +363,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
     cy.wrap(eventPromise);
   });
 
-  it('Check mode, timer text for Long Break #1', () => {
+  it('> Check mode, timer text for Long Break #1', () => {
     cy.get('#timer-mode').then(($el) => {
       expect($el).to.contain('LONG BREAK');
     });
