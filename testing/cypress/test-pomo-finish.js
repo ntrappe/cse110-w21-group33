@@ -92,17 +92,18 @@ describe('Check Lightbox Controls', { includeShadowDom: true}, () => {
     });
 })
 
-describe('Check Statistics Panel Elements', { includeShadowDom: true }, () => {
+describe('Check Statistics Panel Elements With showModal()', { includeShadowDom: true }, () => {
     it('Check statistics panel has all elements', () => {
         cy.visit('./source/index.html');
-        // finishButton will invoke showModal(2, 1, 0, 50, 0);
-        cy.get('#finishButton').click();
+        cy.window().then((win) => {
+            win.pomoFinish.showModal(3, 2, 0, 0, 75);
+        });
         cy.get('#statisticsPanel').then(($el) => {
-            expect($el).to.contain('Pomodoro Completed: 2');
-            expect($el).to.contain('Short Breaks: 1');
+            expect($el).to.contain('Pomodoro Completed: 3');
+            expect($el).to.contain('Short Breaks: 2');
             expect($el).to.contain('Long Breaks: 0');
             expect($el).to.contain('Interrupted Session: 0');
-            expect($el).to.contain('Total Minutes Working: 50');
+            expect($el).to.contain('Total Minutes Working: 75');
         });
         cy.get('#statisticsModal').should('have.css', 'display', 'block');
     });
