@@ -19,7 +19,7 @@ button:hover {
   transition-duration: 0.1s;
 }
 
-#closeButton[class="button-off"] {
+#statisticsCloseButton[class="button-off"], #infoCloseButton[class="button-off"]{
   background-color: #0f1115;
   color: #cbd1d8;
   float: right;
@@ -32,7 +32,7 @@ button:hover {
   cursor: pointer;
 }
 
-#closeButton[class="button-on"] {
+#statisticsCloseButton[class="button-on"], #infoCloseButton[class="button-on"]{
   background-color: #22262c;
   color: #f1f6fb;
   float: right;
@@ -46,7 +46,7 @@ button:hover {
   transition-duration: 0.1s;
 }
 
-#modal {
+.modal {
   display: none;
   position: fixed;
   z-index: 1;
@@ -58,7 +58,7 @@ button:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-#modalContent {
+.modalContent {
   background-color: #0f1115;
   margin: 5% auto;
   padding: 15px;
@@ -82,7 +82,7 @@ button:hover {
   color: #cbd1d8;
 }
 
-#modalTitle {
+.modalTitle {
   border-bottom: 1.5px solid;
   border-color: #31363c;
   padding-bottom: 15px;

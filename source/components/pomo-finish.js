@@ -25,7 +25,8 @@ class PomoFinish extends HTMLElement {
 
         // the lightbox
         const modal = document.createElement('div');
-        modal.setAttribute('id', 'modal');
+        modal.setAttribute('class', 'modal')
+        modal.setAttribute('id', 'statisticsModal');
         modal.onclick = (event) => {
           // close lightbox when click outside of the content area
           if (event.target == modal) {
@@ -35,12 +36,14 @@ class PomoFinish extends HTMLElement {
 
         // wrapper for the content inside the lightbox
         const modalContent = document.createElement('div');
-        modalContent.setAttribute('id', 'modalContent');
+        modalContent.setAttribute('class', 'modalContent');
+        modalContent.setAttribute('id', 'statisticsModalContent');
 
         // the main content to be display in the lightbox
         // title
         const modalTitle = document.createElement('h3');
-        modalTitle.setAttribute('id', 'modalTitle');
+        modalTitle.setAttribute('class', 'modalTitle');
+        modalTitle.setAttribute('id', 'statisticsModalTitle');
         modalTitle.innerHTML = "SESSION SUMMARY";
         // list of stat
         this.sessionStatistics = document.createElement('ul');
@@ -48,7 +51,7 @@ class PomoFinish extends HTMLElement {
 
         // button to close the lightbox
         let closeButton = document.createElement('div');
-        closeButton.setAttribute('id', 'closeButton');
+        closeButton.setAttribute('id', 'statisticsCloseButton');
         closeButton.setAttribute('class', 'button-off');
         closeButton.innerHTML = "&times;";
         closeButton.onclick = () => {
@@ -86,7 +89,6 @@ class PomoFinish extends HTMLElement {
        * @return {void} 
        */
 
-
       showModal(workCount, shortBreakCount, longBreakCount, interruptedCount, totalMinutesWorked) {
         let ul = this.sessionStatistics;
         ul.innerHTML = "";  // clear the list before appending elements
@@ -119,7 +121,7 @@ class PomoFinish extends HTMLElement {
         });
 
         // show the statistics panel
-        this.shadowRoot.getElementById("modal").style.display = 'block';
+        this.shadowRoot.getElementById("statisticsModal").style.display = 'block';
       }
 }
 
