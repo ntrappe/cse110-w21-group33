@@ -113,7 +113,7 @@ class PomoSettings extends HTMLElement {
     volumeNumber.setAttribute('id', 'volumeNumber');
     volumeNumber.setAttribute('min', '0');
     volumeNumber.setAttribute('max', '100');
-    volumeNumber.setAttribute('value', '50');
+    volumeNumber.setAttribute('value', this.volume);
 
 
     // Dropdown menu to change audio notification noise
@@ -148,6 +148,7 @@ class PomoSettings extends HTMLElement {
     calmLabel.htmlFor = 'calmSwitch';
     calmLabel.setAttribute('id', 'calmSwitch');
     const calmSwitch = new ToggleSwitch("calm", "busy");
+    window.calmMode = calmSwitch;
 
     // Toggle switch to enable dark mode
     const darkSection = document.createElement('div');
@@ -156,6 +157,7 @@ class PomoSettings extends HTMLElement {
     darkLabel.htmlFor = 'darkSwitch';
     darkLabel.setAttribute('id', 'darkSwitch');
     const darkSwitch = new ToggleSwitch("dark", "light");
+    window.darkMode = darkSwitch;
 
     // Attach elements to shadow DOM
     shadow.appendChild(modal);
@@ -272,6 +274,11 @@ class PomoSettings extends HTMLElement {
      */
     workMinutesNumber.onchange = () => {
       console.log("We've changed the workMinutes");
+/*       let val = Math.round(Number(workMinutesNumber.value));
+      if(val < 1){
+        this.work = 1;
+      }
+       */
       this.work = Number(workMinutesNumber.value);
       shadow.dispatchEvent(this.workSetEvent);
     }
@@ -298,7 +305,6 @@ class PomoSettings extends HTMLElement {
      * Passes customized volume from slider to event listener
      */
     volumeSlide.onchange = () => {
-      console.log("We've changed the volume through the slider.");
       this.volumeSet(volumeSlide.value);
       shadow.dispatchEvent(this.volumeSetEvent);
     }
@@ -306,8 +312,8 @@ class PomoSettings extends HTMLElement {
     /**
      * Passes customized volume from input to event listener
      */
-    volumeNumber.onchange = (e) => {
-      console.log("We've changed the volume through the number");
+    volumeNumber.onchange = () => {
+      console.log('volumeNumber.value is' + volumeNumber.value);
       this.volumeSet(volumeNumber.value);
       shadow.dispatchEvent(this.volumeSetEvent);
     }
@@ -318,6 +324,7 @@ class PomoSettings extends HTMLElement {
      * @param {Number} volume volume of audio
      */
     this.volumeSet = (volume) => {
+      console.log('volume is' + volume);
       volumeSlide.value = volume;
       volumeNumber.value = volume;
       this.volume = volume;

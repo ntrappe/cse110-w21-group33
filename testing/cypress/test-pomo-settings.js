@@ -22,11 +22,11 @@ describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
 /* Add your own tests here */
 describe('Test sidebar elements', () => {
   beforeEach(() => {
-    cy.visit('./source/index.html');
+    cy.visit('./source');
     cy.get('#openButton').click();
   });
 
-  /* it('Sidebar opens when gear is pressed', { includeShadowDom: true }, () => {
+  it('Sidebar opens when gear is pressed', { includeShadowDom: true }, () => {
     cy.get('#closeButton').click();
     cy.get('#openButton').click();
 
@@ -71,42 +71,6 @@ describe('Test sidebar elements', () => {
       expect($el).to.have.value(80);
     });
   });
-
-  it('Audio volume changes when slider changes', {includeShadowDom: true}, () => {
-    cy.get('#volumeSlide').invoke('val', 1).trigger('change');
-
-    cy.get('#audioSound')
-    .then($el => {
-      expect($el).to.have.prop('volume', 0.01)
-    });
-  });
-  
-  it('Audio plays when slider changes', {includeShadowDom: true}, () => {
-    cy.get('#volumeSlide').invoke('val', 75).trigger('change');
-
-    cy.get('#audioSound')
-    .then($el => {
-      expect($el).to.have.prop('paused', false);
-    });
-  });
-
-  it('Audio sound changes when dropdown option is selected', {includeShadowDom: true}, () => {
-    cy.get('#soundSelect').select('rooster');
-
-    cy.get('#audioSound')
-    .then($el => {
-      expect($el).to.have.attr('src', '/media/audio/rooster.mp3');
-    });
-  });
-
-  it('Audio plays when dropdown option is selected', {includeShadowDom: true}, () => {
-    cy.get('#soundSelect').select('rooster');
-
-    cy.get('#audioSound')
-    .then($el => {
-      expect($el).to.have.prop('paused', false);
-    }); 
-  });*/
 
   it('Values are set when calling loadSettings()', {includeShadowDom: true}, () => {
     //loadSettings()
@@ -189,35 +153,127 @@ describe('Test sidebar elements', () => {
     });
   });
 
-  it('changing settings fires appropriate events', {includeShadowDom: true}, () => {
+  it('changing volumeSlide fires appropriate events', {includeShadowDom: true}, () => {
+    const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-settings').then($el => {
-
-      const test = new Cypress.Promise(resolve => {
         const onVolumeSet = (e) => {
-          console.log('hello');
           expect(e.detail.volume()).to.eq('20');
           $el[0].removeEventListener('volumeSet', onVolumeSet);
           resolve();
         };
         $el[0].addEventListener('volumeSet', onVolumeSet);
-        console.log('hello');
+        cy.get('#volumeSlide').invoke('val', 20).trigger('change');
       });
-      console.log('hello 206');
-      cy.get('#volumeSlide').invoke('val', 20).trigger('change');
-    }); 
-   
-    
-/*     cy.get('#pomo-settings').then($el => {
-      return new Cypress.Promise(resolve => {
+    });
+    cy.wrap(eventPromise);
+  });
+
+   it('changing volumeNumber fires appropriate events', {includeShadowDom: true}, () => {
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-settings').then($el => {
+        const onVolumeSet = (e) => {
+          expect(e.detail.volume()).to.eq('20');
+          $el[0].removeEventListener('volumeSet', onVolumeSet);
+          resolve();
+        };
+        $el[0].addEventListener('volumeSet', onVolumeSet);
+        cy.get('#volumeNumber').type('{selectall}{backspace}20', {force: true}).trigger('change');
+      });
+    });
+    cy.wrap(eventPromise);
+  }); 
+
+  it('changing soundSelect fires appropriate events', {includeShadowDom: true}, () => {
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-settings').then($el => {
+        const onSoundSet = (e) => {
+          expect(e.detail.sound()).to.eq('rooster');
+          $el[0].removeEventListener('soundSet', onSoundSet);
+          resolve();
+        };
+        $el[0].addEventListener('soundSet', onSoundSet);
+        cy.get('#soundSelect').select('rooster');
+      });
+    });
+    cy.wrap(eventPromise);
+  });
+
+   it('changing calmSwitch fires appropriate events', {includeShadowDom: true}, () => {
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-settings').then($el => {
         const onCalmSet = (e) => {
-          expect(e.detail.calm()).to.be(true);
+          expect(e.detail.calm()).to.eq(true);
           $el[0].removeEventListener('calmSet', onCalmSet);
           resolve();
         };
         $el[0].addEventListener('calmSet', onCalmSet);
-        cy.get('#calmSlider').click();
+        cy.window().then((win) => {
+          win.window.calmMode.setOn();
+        })
       });
-    }); */
+    });
+    cy.wrap(eventPromise);
+  }); 
 
-  })
+  it('changing darkSwitch fires appropriate events', {includeShadowDom: true}, () => {
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-settings').then($el => {
+        const onDarkSet = (e) => {
+          expect(e.detail.dark()).to.eq(true);
+          $el[0].removeEventListener('darkSet', onDarkSet);
+          resolve();
+        };
+        $el[0].addEventListener('darkSet', onDarkSet);
+        cy.window().then((win) => {
+          win.window.darkMode.setOn();
+        })
+      });
+    });
+    cy.wrap(eventPromise);
+  }); 
+
+   it('changing workMinuteNumber fires appropriate events', {includeShadowDom: true}, () => {
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-settings').then($el => {
+        const onWorkSet = (e) => {
+          expect(e.detail.work()).to.eq(20);
+          $el[0].removeEventListener('workSet', onWorkSet);
+          resolve();
+        };
+        $el[0].addEventListener('workSet', onWorkSet);
+        cy.get('#workMinutesNumber').type('{selectall}{backspace}20', {force: true}).trigger('change');
+      });
+    });
+    cy.wrap(eventPromise);
+  }); 
+
+  it('changing shortBreakMinutesNumber fires appropriate events', {includeShadowDom: true}, () => {
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-settings').then($el => {
+        const onShortBreakSet = (e) => {
+          expect(e.detail.shortBreak()).to.eq(20);
+          $el[0].removeEventListener('shortBreakSet', onShortBreakSet);
+          resolve();
+        };
+        $el[0].addEventListener('shortBreakSet', onShortBreakSet);
+        cy.get('#shortBreakMinutesNumber').type('{selectall}{backspace}20', {force: true}).trigger('change');
+      });
+    });
+    cy.wrap(eventPromise);
+  }); 
+
+  it('changing longBreakMinutesNumber fires appropriate events', {includeShadowDom: true}, () => {
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-settings').then($el => {
+        const onLongBreakSet = (e) => {
+          expect(e.detail.longBreak()).to.eq(20);
+          $el[0].removeEventListener('longBreakSet', onLongBreakSet);
+          resolve();
+        };
+        $el[0].addEventListener('longBreakSet', onLongBreakSet);
+        cy.get('#longBreakMinutesNumber').type('{selectall}{backspace}20', {force: true}).trigger('change');
+      });
+    });
+    cy.wrap(eventPromise);
+  }); 
 });
