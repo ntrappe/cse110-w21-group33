@@ -59,6 +59,38 @@ describe('Initialize timer with public functions', { includeShadowDom: true }, (
   });
 });
 
+describe('Check all events', { includeShadowDom: true }, () => {
+  it('Button shows start', () => {
+    cy.get('#timer-button').then(($el) => {
+      expect($el).to.contain('Start');
+    });
+  });
+
+  it('Click start and check event', () => {
+    cy.get('#pomo-timer').then(($el) => {
+      return new Cypress.Promise(resolve => {
+        const onStart = () => {
+          $el[0].removeEventListener('timerStart', onStart);
+          resolve();
+        };
+        $el[0].addEventListener('timerStart', onStart);
+      });
+    });
+
+    cy.get('#timer-button').click();
+    
+    cy.get('#pomo-timer').then(($el) => {
+      return new Cypress.Promise(resolve => {
+        const onReset = () => {
+          $el[0].removeEventListener('timerReset', onReset);
+          resolve();
+        };
+        $el[0].addEventListener('timerReset', onReset);
+      });
+    });
+  });
+});
+/*
 describe('Run through 1 work session', { includeShadowDom: true }, () => {
   it('Click Start button', () => {
     cy.get('#timer-button').click();
@@ -73,6 +105,8 @@ describe('Run through 1 work session', { includeShadowDom: true }, () => {
         $el[0].addEventListener('tick', onTick);
       });
     });
+
+
 
     // wait until work session done (2m) and listen for a finish
     cy.wait(30000);
@@ -89,7 +123,7 @@ describe('Run through 1 work session', { includeShadowDom: true }, () => {
       });
     });
   });
-});
+});*/
 
 /*
 describe('Basic Button Toggles', { includeShadowDom: true }, () => {
