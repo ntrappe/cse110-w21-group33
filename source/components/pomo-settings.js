@@ -15,11 +15,6 @@ class PomoSettings extends HTMLElement {
 
     const shadow = this.attachShadow({ mode: 'open' });
 
-    // Audio so users can test volume + audio type
-    const audio = document.createElement("audio");
-    audio.setAttribute('id', 'audioSound');
-    audio.src = '/media/audio/default.mp3';
-
     // Lightbox background
     const modal = document.createElement('div');  
     modal.setAttribute('id', 'modal');
@@ -167,7 +162,6 @@ class PomoSettings extends HTMLElement {
     shadow.appendChild(styles);
     shadow.appendChild(openButton);
     shadow.appendChild(sideBar);
-    shadow.appendChild(audio);
 
     sideBar.appendChild(closeButton);
     sideBar.appendChild(pomoLengthLabel);
@@ -317,23 +311,7 @@ class PomoSettings extends HTMLElement {
       this.volumeSet(volumeNumber.value);
       shadow.dispatchEvent(this.volumeSetEvent);
     }
-
-    /**
-     * Stops audio if user decides to change volume 
-     */
-    volumeSlide.oninput = () => {
-      audio.currentTime = 0;
-      audio.pause();
-    }
-
-    /**
-     * Stops audio if user decides to change volume 
-     */
-    volumeNumber.oninput = () => {
-      audio.currentTime = 0;
-      audio.pause();
-    }
-
+    
     /**
      * Coordinate slider and input with each other, sets volume variable, 
      * and plays audio so the user can test volume
@@ -343,8 +321,6 @@ class PomoSettings extends HTMLElement {
       volumeSlide.value = volume;
       volumeNumber.value = volume;
       this.volume = volume;
-      audio.volume = volume / 100;
-      audio.play();
     }
 
     /**
@@ -354,8 +330,6 @@ class PomoSettings extends HTMLElement {
     soundSelect.onchange = () => {
       console.log("We've selected a new sound. Should update these preferences.");
       this.sound = soundSelect.value;
-      audio.src = `/media/audio/${this.sound}.mp3`;
-      audio.play();
       shadow.dispatchEvent(this.soundSetEvent);
     }
 
