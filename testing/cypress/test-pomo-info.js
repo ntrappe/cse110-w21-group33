@@ -33,9 +33,6 @@ describe('Check The Initial State of Component pomo-info', { includeShadowDom: t
 });
 
 describe('Check The Enabling/Disabling Info Button', { includeShadowDom: true}, () => {
-    beforeEach(() => {
-        cy.visit('./source/index.html');
-    });
     it('Check that the button can be disabled', () => {
         cy.window().then((win) => {
             win.pomoInfo.disableInfo();
@@ -57,7 +54,7 @@ describe('Check Ligthbox Controls', { includeShadowDom: true }, () => {
 
     it('Check that Info button opens lightbox', () => {
         cy.get('#infoButton').click();
-        cy.get('#infoModal', { multiple: true }).should('have.css', 'display', 'block');
+        cy.get('#infoModal').should('have.css', 'display', 'block');
     });
 
     it('Check that close button closes lightbox', () => {
