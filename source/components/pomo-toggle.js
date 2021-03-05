@@ -32,10 +32,12 @@ class ToggleSwitch extends HTMLElement {
 
     let light_mode = document.createElement('span');  
     light_mode.setAttribute('class', `${mode1}_mode`);
+    light_mode.setAttribute('id', `${mode1}_mode`);
     light_mode.textContent = "On";
 
     let dark_mode = document.createElement('span');  
     dark_mode.setAttribute('class', `${mode2}_mode`);
+    dark_mode.setAttribute('id', `${mode2}_mode`);
     dark_mode.textContent = "Off";
 
     shadow.append(style);
@@ -140,20 +142,24 @@ class ToggleSwitch extends HTMLElement {
         // Changes to Light Mode 
         dark_mode.style.display = 'none';
         light_mode.style.display = 'block';
-/*         let body = document.getElementById('test');
-        body.style.fontFamily = 'Open Sans';
-        body.style.backgroundColor = 'white'; */
       }
       else {
         //Changes to Dark Mode
         dark_mode.style.display = 'block';
         light_mode.style.display = 'none';
-/*         let body = document.getElementById('test');
-        body.style.fontFamily = 'Open Sans';
-        body.style.backgroundColor = '#0e1116'; */
 
       }
     } 
+
+    this.setOn = () => {
+      dark_mode.style.display = 'none';
+      light_mode.style.display = 'block';
+    }
+
+    this.setOff = () => {
+      dark_mode.style.display = 'block';
+      light_mode.style.display = 'none';
+    }
   }
 }
 customElements.define('toggle-switch', ToggleSwitch);
