@@ -16,11 +16,18 @@ describe('Find Finish Element with ID', { includeShadowDom: true }, () => {
     });
 });
 
-// Used for calling functions on the component
-describe('Find Finish Element with JS', () => {
-    it('Get element (\'Finish\')', () => {
+describe('Check Statistics Panel Elements With showModal()', { includeShadowDom: true }, () => {
+    it('Check statistics panel has all elements', () => {
+        cy.visit('./source/index.html');
         cy.window().then((win) => {
-            expect(win.pomoFinish).to.exist;
+            win.pomoFinish.showModal(3, 2, 0, 0, 75);
+        });
+        cy.get('#statisticsPanel').then(($el) => {
+            expect($el).to.contain('Pomodoro Completed: 3');
+            expect($el).to.contain('Short Breaks: 2');
+            expect($el).to.contain('Long Breaks: 0');
+            expect($el).to.contain('Interrupted Session: 0');
+            expect($el).to.contain('Total Minutes Working: 75');
         });
     });
 });
