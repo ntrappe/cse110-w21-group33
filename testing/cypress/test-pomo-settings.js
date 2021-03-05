@@ -5,15 +5,22 @@ describe("Open Page", () => {
 });
 
 /* Starter Tests to find elements on page */
-describe('Find Settings Elements', { includeShadowDom: true }, () => {
-    it('Get element (\'Settings\')', () => {
-        cy.get('p');
-    });
-});
-describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
-    it('Check that element says Settings', () => {
+
+// Used for testing component visuals
+// Remove this when the component has been implemented
+describe('Find Settings Element with ID', { includeShadowDom: true }, () => {
+    it('Check for element (\'Settings\')', () => {
         cy.get('p').then(($el) => {
             expect($el).to.contain('Settings');
+        });
+    });
+});
+
+// Used for calling functions on the component
+describe('Find Settings Element with JS', () => {
+    it('Get element (\'Settings\')', () => {
+        cy.window().then((win) => {
+            expect(win.pomoSettings).to.exist;
         });
     });
 });
