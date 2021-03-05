@@ -151,6 +151,7 @@ class PomoSettings extends HTMLElement {
     const calmLabel = document.createElement('label');
     calmLabel.innerHTML = 'Calm Mode';
     calmLabel.htmlFor = 'calmSwitch';
+    calmLabel.setAttribute('id', 'calmSwitch');
     const calmSwitch = new ToggleSwitch("calm", "busy");
 
     // Toggle switch to enable dark mode
@@ -158,6 +159,7 @@ class PomoSettings extends HTMLElement {
     const darkLabel = document.createElement('label');
     darkLabel.innerHTML = 'Dark Mode';
     darkLabel.htmlFor = 'darkSwitch';
+    darkLabel.setAttribute('id', 'darkSwitch');
     const darkSwitch = new ToggleSwitch("dark", "light");
 
     // Attach elements to shadow DOM

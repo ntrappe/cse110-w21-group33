@@ -190,19 +190,34 @@ describe('Test sidebar elements', () => {
   });
 
   it('changing settings fires appropriate events', {includeShadowDom: true}, () => {
-    cy.get('#pomo-settings').then($el => {
-      return new Cypress.Promise(resolve => {
-        const onVolumeSet = () => {
+      cy.get('#pomo-settings').then($el => {
+
+      const test = new Cypress.Promise(resolve => {
+        const onVolumeSet = (e) => {
           console.log('hello');
-          expect(e.detail.volume()).to.be(20);
+          expect(e.detail.volume()).to.eq('20');
           $el[0].removeEventListener('volumeSet', onVolumeSet);
           resolve();
         };
         $el[0].addEventListener('volumeSet', onVolumeSet);
-        cy.get('#volumeNumber').clear().type('20');
-        cy.get('#volumeNumber').trigger('change');
+        console.log('hello');
       });
-    });
+      console.log('hello 206');
+      cy.get('#volumeSlide').invoke('val', 20).trigger('change');
+    }); 
+   
+    
+/*     cy.get('#pomo-settings').then($el => {
+      return new Cypress.Promise(resolve => {
+        const onCalmSet = (e) => {
+          expect(e.detail.calm()).to.be(true);
+          $el[0].removeEventListener('calmSet', onCalmSet);
+          resolve();
+        };
+        $el[0].addEventListener('calmSet', onCalmSet);
+        cy.get('#calmSlider').click();
+      });
+    }); */
 
   })
 });

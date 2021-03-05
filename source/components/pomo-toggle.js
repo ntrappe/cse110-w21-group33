@@ -13,6 +13,7 @@ class ToggleSwitch extends HTMLElement {
 
     let toggle_slider = document.createElement('div');  
     toggle_slider.setAttribute('class', 'slider');
+    toggle_slider.setAttribute('id', `${mode1}Slider`);
 
 /*     this.setMode = () => {
       if(mode = "dark"){
@@ -133,11 +134,10 @@ class ToggleSwitch extends HTMLElement {
     this.toggleSwitchEvent = new CustomEvent('toggleSwitch', {
       bubbles: true,
       composed: true,
-      detail: {toggle: () => dark_mode.style.display == 'block'}
+      detail: {toggle: () => light_mode.style.display == 'block'}
     });
 
     toggle_slider.onclick = () => {
-      shadow.dispatchEvent(this.toggleSwitchEvent);
       if(dark_mode.style.display == 'block') {
         // Changes to Light Mode 
         dark_mode.style.display = 'none';
@@ -147,18 +147,20 @@ class ToggleSwitch extends HTMLElement {
         //Changes to Dark Mode
         dark_mode.style.display = 'block';
         light_mode.style.display = 'none';
-
       }
+      shadow.dispatchEvent(this.toggleSwitchEvent);
     } 
 
     this.setOn = () => {
       dark_mode.style.display = 'none';
       light_mode.style.display = 'block';
+      shadow.dispatchEvent(this.toggleSwitchEvent);
     }
 
     this.setOff = () => {
       dark_mode.style.display = 'block';
       light_mode.style.display = 'none';
+      shadow.dispatchEvent(this.toggleSwitchEvent);
     }
   }
 }
