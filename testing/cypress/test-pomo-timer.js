@@ -5,7 +5,6 @@ describe("Open Page", () => {
 });
 
 /* Starter Tests to find elements on page */
-
 // Used for calling functions on the component
 describe('Find Timer Element with JS', () => {
   it('Get element (\'Timer\')', () => {
@@ -57,7 +56,7 @@ describe('Initialize timer with public functions', { includeShadowDom: true }, (
       expect($el).to.contain('Start');
     });
   });
-});
+});/*
 
 describe('Check all events', { includeShadowDom: true }, () => {
   it('Button shows start', () => {
@@ -66,64 +65,332 @@ describe('Check all events', { includeShadowDom: true }, () => {
     });
   });
 
-  it('Click start and check event', () => {
-    cy.get('#pomo-timer').then(($el) => {
-      return new Cypress.Promise(resolve => {
-        const onStart = () => {
+  it('Listen for event after \'Start\' is clicked', () => {
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-timer').then(($el) => {
+        const onStart = (e) => {
           $el[0].removeEventListener('timerStart', onStart);
           resolve();
         };
         $el[0].addEventListener('timerStart', onStart);
+        cy.get('#timer-button').click();
       });
     });
+    cy.wrap(eventPromise);
+  });
 
-    cy.get('#timer-button').click();
-    
-    cy.get('#pomo-timer').then(($el) => {
-      return new Cypress.Promise(resolve => {
-        const onReset = () => {
+  // NOTE: timeout length should change if timer speed does
+  it('Listen for event after \'Reset\' is clicked at 01:30', () => {
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-timer').then(($el) => {
+        const onReset = (e) => {
           $el[0].removeEventListener('timerReset', onReset);
           resolve();
         };
         $el[0].addEventListener('timerReset', onReset);
+        cy.get('#timer-text').contains('1:30', { timeout: 10000 }).then(($el) => {
+          cy.get('#timer-button').click();
+        });
       });
     });
+    cy.wrap(eventPromise);
   });
-});
-/*
-describe('Run through 1 work session', { includeShadowDom: true }, () => {
-  it('Click Start button', () => {
-    cy.get('#timer-button').click();
 
-    // listen for timer counting down with tick
-    cy.get('#pomo-timer').then(($el) => {
-      return new Cypress.Promise(resolve => {
-        const onTick = () => {
+  // NOTE: timeout length should change if timer speed does
+  it('Listen for event after timer finishes at 00:00', () => {
+    cy.get('#timer-button').click();
+    cy.wait(30000);
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-timer').then(($el) => {
+        const onFinish = (e) => {
+          $el[0].removeEventListener('timerFinish', onFinish);
+          resolve();
+        };
+        $el[0].addEventListener('timerFinish', onFinish);
+      });
+    });
+    cy.wrap(eventPromise);
+  });
+
+  it('Listen for event \'tick\' while timer counts down', () => {
+    cy.get('#timer-button').click();
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-timer').then(($el) => {
+        const onTick = (e) => {
           $el[0].removeEventListener('tick', onTick);
           resolve();
         };
         $el[0].addEventListener('tick', onTick);
       });
     });
+    cy.wrap(eventPromise);
+  });
+});
+*/
 
+/*
+describe('Check Resets',  { includeShadowDom: true }, () => {
+   // NOTE: timeout length should change if timer speed does
+  it('Check if we can reset at 01:59', () => {
+    cy.get('#timer-button').click();
+    cy.get('#timer-text').contains('1:59', { timeout: 1000 }).then(($el) => {
+      cy.get('#timer-button').click().then(($el) => {
+        expect($el).to.have.attr('class', 'start');
+      });
+    });;
+  });
 
+   // NOTE: timeout length should change if timer speed does
+  it('Check if we can reset at 00:01', () => {
+    cy.get('#timer-button').click();
+    cy.get('#timer-text').contains('00:01', { timeout: 30000 }).then(($el) => {
+      cy.get('#timer-button').click().then(($el) => {
+        expect($el).to.have.attr('class', 'start');
+      });
+    });
+  });
 
-    // wait until work session done (2m) and listen for a finish
+   // NOTE: timeout length should change if timer speed does
+  it('Check if we can reset at 00:00', () => {
+    cy.get('#timer-button').click();
+    cy.get('#timer-text').contains('00:00', { timeout: 30500 }).then(($el) => {
+      cy.get('#timer-button').click().then(($el) => {
+        expect($el).to.have.attr('class', 'start');
+      });
+    });
+  });
+});
+*/
+
+describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, () => {
+  it('> Set Timer for Work #1 with 2m', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setTimer(2, 'work');
+    });
+  });
+
+  it('Check mode, timer text, & button for Work #1', () => {
+    cy.get('#timer-mode').then(($el) => {
+      expect($el).to.contain('WORK');
+    });
+    cy.get('#timer-text').then(($el) => {
+      expect($el).to.contain('2:00');
+    });
+    cy.get('#timer-button').then(($el) => {
+      expect($el).to.contain('Start');
+    });
+  });
+
+  it('> Set Timer for Short Break #1 after listening for Work #1 end', () => {
+    cy.get('#timer-button').click();
     cy.wait(30000);
-    cy.get('#pomo-timer').then(($el) => {
-      return new Cypress.Promise(resolve => {
-        const onFinish = () => {
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-timer').then(($el) => {
+        const onFinish = (e) => {
           $el[0].removeEventListener('timerFinish', onFinish);
+          $el[0].setTimer(2, 'short break');
           resolve();
-          cy.window().then((win) => {
-            win.pomoTimer.setTimer(3, 'short break');
-          })
         };
         $el[0].addEventListener('timerFinish', onFinish);
       });
     });
+    cy.wrap(eventPromise);
   });
-});*/
+
+  it('Check mode, timer text, & button for Short Break #1', () => {
+    cy.get('#timer-mode').then(($el) => {
+      expect($el).to.contain('SHORT BREAK');
+    });
+    cy.get('#timer-text').then(($el) => {
+      expect($el).to.contain('2:00');
+    });
+    cy.get('#timer-button').then(($el) => {
+      expect($el).to.contain('Start');
+    });
+  });
+
+  it('> Set Timer for Work #2 after listening for Short Break #1 end', () => {
+    cy.get('#timer-button').click();
+    cy.wait(30000);
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-timer').then(($el) => {
+        const onFinish = (e) => {
+          $el[0].removeEventListener('timerFinish', onFinish);
+          $el[0].setTimer(2, 'work');
+          resolve();
+        };
+        $el[0].addEventListener('timerFinish', onFinish);
+      });
+    });
+    cy.wrap(eventPromise);
+  });
+
+  it('Check mode, timer text, & button for Work #2', () => {
+    cy.get('#timer-mode').then(($el) => {
+      expect($el).to.contain('WORK');
+    });
+    cy.get('#timer-text').then(($el) => {
+      expect($el).to.contain('2:00');
+    });
+    cy.get('#timer-button').then(($el) => {
+      expect($el).to.contain('Start');
+    });
+  });
+
+  it('> Set Timer for Short Break #2 after listening for Work #2 end', () => {
+    cy.get('#timer-button').click();
+    cy.wait(30000);
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-timer').then(($el) => {
+        const onFinish = (e) => {
+          $el[0].removeEventListener('timerFinish', onFinish);
+          $el[0].setTimer(1, 'short break');
+          resolve();
+        };
+        $el[0].addEventListener('timerFinish', onFinish);
+      });
+    });
+    cy.wrap(eventPromise);
+  });
+
+  it('Check mode, timer text for Short Break #2', () => {
+    cy.get('#timer-mode').then(($el) => {
+      expect($el).to.contain('SHORT BREAK');
+    });
+    cy.get('#timer-text').then(($el) => {
+      expect($el).to.contain('1:00');
+    });
+    cy.get('#timer-button').then(($el) => {
+      expect($el).to.contain('Start');
+    });
+  });
+
+  it('> Set Timer for Work #3 after listening for Short Break #2 end', () => {
+    cy.get('#timer-button').click();
+    cy.wait(15000);
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-timer').then(($el) => {
+        const onFinish = (e) => {
+          $el[0].removeEventListener('timerFinish', onFinish);
+          $el[0].setTimer(1, 'work');
+          resolve();
+        };
+        $el[0].addEventListener('timerFinish', onFinish);
+      });
+    });
+    cy.wrap(eventPromise);
+  });
+
+  it('Check mode, timer text for Work #3', () => {
+    cy.get('#timer-mode').then(($el) => {
+      expect($el).to.contain('WORK');
+    });
+    cy.get('#timer-text').then(($el) => {
+      expect($el).to.contain('1:00');
+    });
+    cy.get('#timer-button').then(($el) => {
+      expect($el).to.contain('Start');
+    });
+  });
+
+  it('> Set Timer for Short Break #3 after listening for Work #3 end', () => {
+    cy.get('#timer-button').click();
+    cy.wait(15000);
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-timer').then(($el) => {
+        const onFinish = (e) => {
+          $el[0].removeEventListener('timerFinish', onFinish);
+          $el[0].setTimer(1, 'short break');
+          resolve();
+        };
+        $el[0].addEventListener('timerFinish', onFinish);
+      });
+    });
+    cy.wrap(eventPromise);
+  });
+
+  it('Check mode, timer text for Short Break #3', () => {
+    cy.get('#timer-mode').then(($el) => {
+      expect($el).to.contain('SHORT BREAK');
+    });
+    cy.get('#timer-text').then(($el) => {
+      expect($el).to.contain('1:00');
+    });
+    cy.get('#timer-button').then(($el) => {
+      expect($el).to.contain('Start');
+    });
+  });
+
+  it('> Set Timer for Work #4 after listening for Short Break #3 end', () => {
+    cy.get('#timer-button').click();
+    cy.wait(15000);
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-timer').then(($el) => {
+        const onFinish = (e) => {
+          $el[0].removeEventListener('timerFinish', onFinish);
+          $el[0].setTimer(1, 'work');
+          resolve();
+        };
+        $el[0].addEventListener('timerFinish', onFinish);
+      });
+    });
+    cy.wrap(eventPromise);
+  });
+
+  it('Check mode, timer text for Work #4', () => {
+    cy.get('#timer-mode').then(($el) => {
+      expect($el).to.contain('WORK');
+    });
+    cy.get('#timer-text').then(($el) => {
+      expect($el).to.contain('1:00');
+    });
+    cy.get('#timer-button').then(($el) => {
+      expect($el).to.contain('Start');
+    });
+  });
+
+  it('> Set Timer for Long Break #1 after listening for Work #4 end', () => {
+    cy.get('#timer-button').click();
+    cy.wait(15000);
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-timer').then(($el) => {
+        const onFinish = (e) => {
+          $el[0].removeEventListener('timerFinish', onFinish);
+          $el[0].setTimer(1, 'long break');
+          resolve();
+        };
+        $el[0].addEventListener('timerFinish', onFinish);
+      });
+    });
+    cy.wrap(eventPromise);
+  });
+
+  it('Check mode, timer text for Long Break #1', () => {
+    cy.get('#timer-mode').then(($el) => {
+      expect($el).to.contain('LONG BREAK');
+    });
+    cy.get('#timer-text').then(($el) => {
+      expect($el).to.contain('1:00');
+    });
+    cy.get('#timer-button').then(($el) => {
+      expect($el).to.contain('Start');
+    });
+  });
+});
+
+describe('Bad Behavior: Invalid Timer Setting', { includeShadowDom: true }, () => {
+  it('Set timer to 10,000m', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setTimer(10000, 'work');
+    });
+  });
+
+  it('Timer should have defaulted to 2m (via helpers.js)', () => {
+    cy.window().then((win) => {
+      expect(win.pomoTimer.totalSeconds).to.be.eq(2 * 60);
+    });
+  })
+});
 
 /*
 describe('Basic Button Toggles', { includeShadowDom: true }, () => {
