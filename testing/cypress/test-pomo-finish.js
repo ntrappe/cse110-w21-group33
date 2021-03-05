@@ -40,9 +40,11 @@ describe('Check Lightbox Controls', { includeShadowDom: true}, () => {
     beforeEach(() => {
         cy.visit('./source/index.html');
     });
-    it('Check that finish button opens lightbox', () => {
+    it('Check that finish button opens lightbox and background is right color', () => {
         cy.get('#finishButton').click();
         cy.get('#statisticsModal').should('have.css', 'display', 'block');
+        cy.get('#statisticsModal').should('have.css', 'background-color')
+        .and('eq', 'rgba(0, 0, 0, 0.5)');
     });
     it('Check that close button closes lightbox', () => {
         cy.get('#finishButton').click();
