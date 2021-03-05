@@ -21,7 +21,7 @@ test('getDayCount for a new day', () => {
   var date = new Date();
   localStorage.setItem('prevYear',date.getFullYear());  
   localStorage.setItem('prevMonth',date.getMonth()+1);
-  localStorage.setItem('prevDay',1);
+  localStorage.setItem('prevDay',date.getDate()-1); // Previous date is 1 day before current day
   localStorage.setItem('pomodoroCount',10);
   expect(getDayCount()).toBe(0);
 });
@@ -29,7 +29,7 @@ test('getDayCount for a new day', () => {
 test('getDayCount for a new Month', () => {
   var date = new Date();
   localStorage.setItem('prevYear',date.getFullYear());  
-  localStorage.setItem('prevMonth',2);
+  localStorage.setItem('prevMonth',date.getMonth()); // Will be the month before current month
   localStorage.setItem('prevDay',date.getDate());
   localStorage.setItem('pomodoroCount',10);
 expect(getDayCount()).toBe(0);
@@ -37,7 +37,7 @@ expect(getDayCount()).toBe(0);
 
 test('getDayCount for a new Year', () => {
   var date = new Date();
-  localStorage.setItem('prevYear',2020);  
+  localStorage.setItem('prevYear',date.getFullYear()-1); // Will be the year before current year 
   localStorage.setItem('prevMonth',date.getMonth()+1);
   localStorage.setItem('prevDay',date.getDate());
   localStorage.setItem('pomodoroCount',10);
@@ -63,7 +63,7 @@ test('setDayCount for a new day', () => {
   var date = new Date();
   localStorage.setItem('prevYear',date.getFullYear());  
   localStorage.setItem('prevMonth',date.getMonth()+1);
-  localStorage.setItem('prevDay',1);
+  localStorage.setItem('prevDay',date.getDate()-1); // Previous date is 1 day before current day
   localStorage.setItem('pomodoroCount',10);
   setDayCount(5);
   expect(getDayCount()).toBe(5);
@@ -72,7 +72,7 @@ test('setDayCount for a new day', () => {
 test('setDayCount for a new Month', () => {
   var date = new Date();
   localStorage.setItem('prevYear',date.getFullYear());  
-  localStorage.setItem('prevMonth',2);
+  localStorage.setItem('prevMonth',date.getMonth()); // Will be the month before current month
   localStorage.setItem('prevDay',date.getDate());
   localStorage.setItem('pomodoroCount',10);
   setDayCount(11);
@@ -81,7 +81,7 @@ test('setDayCount for a new Month', () => {
 
 test('setDayCount for a new Year', () => {
   var date = new Date();
-  localStorage.setItem('prevYear',2020);  
+  localStorage.setItem('prevYear',date.getFullYear()-1); // Will be the year before current year 
   localStorage.setItem('prevMonth',date.getMonth()+1);
   localStorage.setItem('prevDay',date.getDate());
   localStorage.setItem('pomodoroCount',10);
