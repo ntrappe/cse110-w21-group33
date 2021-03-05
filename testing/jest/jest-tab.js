@@ -63,7 +63,7 @@ describe('test setTab with calm mode', () => {
   });
 });
 
-/* Test for setTab with calm mode */
+/* Test for setTab with default */
 describe('test setTab with default', () => {
 
   let tabText = {textContent: ""};
