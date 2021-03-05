@@ -56,7 +56,7 @@ describe('Initialize timer with public functions', { includeShadowDom: true }, (
       expect($el).to.contain('Start');
     });
   });
-});/*
+});
 
 describe('Check all events', { includeShadowDom: true }, () => {
   it('Button shows start', () => {
@@ -126,9 +126,7 @@ describe('Check all events', { includeShadowDom: true }, () => {
     cy.wrap(eventPromise);
   });
 });
-*/
 
-/*
 describe('Check Resets',  { includeShadowDom: true }, () => {
    // NOTE: timeout length should change if timer speed does
   it('Check if we can reset at 01:59', () => {
@@ -160,7 +158,6 @@ describe('Check Resets',  { includeShadowDom: true }, () => {
     });
   });
 });
-*/
 
 describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, () => {
   it('> Set Timer for Work #1 with 2m', () => {
