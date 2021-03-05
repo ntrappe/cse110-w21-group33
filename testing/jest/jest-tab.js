@@ -9,7 +9,7 @@ describe('test setTab without calm mode', () => {
    * Test 10:01 and 01:10 to see if the function can handle padding 0
    * Also test for work/short break/long break
    */
-  test('setTab 10:01 - work', () => {
+  test('setTab 10:01 - Work', () => {
     tabHelper.setCalm(false);
     tabHelper.setTab(601, "work", tabText);
     expect(tabText.textContent).toBe("10:01 - Work");
@@ -32,6 +32,13 @@ describe('test setTab without calm mode', () => {
     tabHelper.setCalm(false);
     tabHelper.setTab(754, "long work", tabText);
     expect(tabText.textContent).toBe("12:34 - ");
+  });
+
+  /* Test for 00:00 */
+  test('setTab 00:00 - Work', () => {
+    tabHelper.setCalm(false);
+    tabHelper.setTab(0, "work", tabText);
+    expect(tabText.textContent).toBe("00:00 - Work");
   });
 });
 
@@ -60,6 +67,13 @@ describe('test setTab with calm mode', () => {
     tabHelper.setCalm(true);
     tabHelper.setTab(720, "long break", tabText);
     expect(tabText.textContent).toBe("12:00 - Long Break");
+  });
+
+  /* Test for 00:00 */
+  test('setTab 00:00 - Work', () => {
+    tabHelper.setCalm(true);
+    tabHelper.setTab(0, "work", tabText);
+    expect(tabText.textContent).toBe("00:00 - Work");
   });
 });
 
