@@ -139,7 +139,8 @@ class PomoSettings extends HTMLElement {
       option.value = sound;
 
       // Converts name of audio file to capitalized word with spaces
-      let name = sound.split("-").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+      let name = sound.split("-").map(word => word.charAt(0).toUpperCase() + 
+        word.slice(1)).join(" ");
       option.text = name;
     }
     soundSelect.value = this.sound;
@@ -417,7 +418,7 @@ class PomoSettings extends HTMLElement {
     }
 
     /**
-     * Called from control, updates the default settings with values previously had from local storage
+     * Called by control, updates the default settings with values previously had from local storage
      * @param {Boolean} calm whether or not calm mode is turned on
      * @param {Number} volume value of audio volume
      * @param {String} sound type of audio notification noise
@@ -438,14 +439,14 @@ class PomoSettings extends HTMLElement {
       this.sound = sound;
       soundSelect.value = sound;
       this.calm = calm;
-      if(calm){
+      if (calm) {
         calmSwitch.setOn();
       }
       else{
         calmSwitch.setOff();
       }
       this.dark = dark;
-      if(dark){
+      if (dark) {
         darkSwitch.setOn();
       }
       else{
