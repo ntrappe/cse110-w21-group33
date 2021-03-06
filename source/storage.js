@@ -3,21 +3,19 @@ console.log("Storage loaded!");
 /* Functions for Local Storage updates */
 
 /**
- * Function to get the current day and check if it should reset local storage
+ * Function to get the pomodoro completed for the day and check if it should reset local storage
  */
 function getDayCount() {
-  if(!(localStorage.getItem('pomodoroCount'))) {
+  if(!(localStorage.getItem('pomodoroCount'))) { // If local storage for pomodro completed is does not exist then we set current count to 0
     setDayCount(0);
   }
-  // Clears local storage for the day if its a new day and past 4am
+  // Clears local storage for the day if its a new day
   var date = new Date();
   if (date.getFullYear() > localStorage.getItem('prevYear') || date.getMonth()+1 > localStorage.getItem('prevMonth') || date.getDate() > localStorage.getItem('prevDay')) {
-    if (date.getHours() >= 4) {
-      localStorage.setItem('prevYear',date.getFullYear());
-      localStorage.setItem('prevMonth',date.getMonth()+1);
-      localStorage.setItem('prevDay',date.getDate());
-      localStorage.setItem('pomodoroCount',0);
-    }
+    localStorage.setItem('prevYear',date.getFullYear());
+    localStorage.setItem('prevMonth',date.getMonth()+1);
+    localStorage.setItem('prevDay',date.getDate());
+    localStorage.setItem('pomodoroCount',0);
   }
   return parseInt(localStorage.getItem('pomodoroCount'));
 }
@@ -29,27 +27,23 @@ function getDayCount() {
 function setDayCount(count) {
   var date = new Date();
   if(!(localStorage.getItem('prevDay'))) { // Creating new local storage for pomodoroCount if it is the first time
-  localStorage.setItem('prevYear',date.getFullYear());
-  localStorage.setItem('prevMonth',date.getMonth()+1);
-  localStorage.setItem('prevDay',date.getDate());
-  localStorage.setItem('pomodoroCount',0);
+    localStorage.setItem('prevYear',date.getFullYear());
+    localStorage.setItem('prevMonth',date.getMonth()+1);
+    localStorage.setItem('prevDay',date.getDate());
+    localStorage.setItem('pomodoroCount',0);
   }
-  // Clears local storage for the day if its a new day and past 4am
+  // Clears local storage for the day if its a new day
   if (date.getFullYear() > localStorage.getItem('prevYear') || date.getMonth()+1 > localStorage.getItem('prevMonth') || date.getDate() > localStorage.getItem('prevDay')) {
-    if (date.getHours() >= 4) {
-      localStorage.setItem('prevYear',date.getFullYear());
-      localStorage.setItem('prevMonth',date.getMonth()+1);
-      localStorage.setItem('prevDay',date.getDate());
-      localStorage.setItem('pomodoroCount',0);
-    }
+    localStorage.setItem('prevYear',date.getFullYear());
+    localStorage.setItem('prevMonth',date.getMonth()+1);
+    localStorage.setItem('prevDay',date.getDate());
+    localStorage.setItem('pomodoroCount',0);
   }
-
   localStorage.setItem('pomodoroCount',count + getDayCount());
 }
 
 /**
  * Function to get the current Calm value
- * *** Bug *** -> Doesn't work as a boolean
  */
 function getCalm() {
   if(!(localStorage.getItem('isCalm'))) { // Checking if there is a calm mode value stored in local storage
