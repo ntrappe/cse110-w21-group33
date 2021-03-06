@@ -2,27 +2,30 @@ class ToggleSwitch extends HTMLElement {
   constructor(mode1, mode2) {
     super();
 
+    this.toggle = true;
+
     const shadow = this.attachShadow({mode: 'open'});
-    const toggle_switch = document.createElement('label');  
-    toggle_switch.setAttribute('class', 'switch');
+    const toggleSwitch = document.createElement('label');  
+    toggleSwitch.setAttribute('class', 'switch');
 
 
-    const toggle_checkbox = document.createElement('input');  
-    toggle_checkbox.setAttribute('type', 'checkbox');
+    const toggleCheckbox = document.createElement('input');  
+    toggleCheckbox.setAttribute('type', 'checkbox');
+    toggleCheckbox.setAttribute('disabled', 'disabled');
 
-    const toggle_slider = document.createElement('div');  
-    toggle_slider.setAttribute('class', 'slider');
-    toggle_slider.setAttribute('id', `${mode1}Slider`);
+    const toggleSlider = document.createElement('div');  
+    toggleSlider.setAttribute('class', 'slider');
+    toggleSlider.setAttribute('id', `${mode1}Slider`);
 
-    const light_mode = document.createElement('span');  
-    light_mode.setAttribute('class', `${mode1}_mode`);
-    light_mode.setAttribute('id', `${mode1}_mode`);
-    light_mode.textContent = "On";
+    const onMode = document.createElement('span');  
+    onMode.setAttribute('class', `${mode1}_mode`);
+    onMode.setAttribute('id', `${mode1}_mode`);
+    onMode.textContent = "On";
 
-    const dark_mode = document.createElement('span');  
-    dark_mode.setAttribute('class', `${mode2}_mode`);
-    dark_mode.setAttribute('id', `${mode2}_mode`);
-    dark_mode.textContent = "Off";
+    const offMode = document.createElement('span');  
+    offMode.setAttribute('class', `${mode2}_mode`);
+    offMode.setAttribute('id', `${mode2}_mode`);
+    offMode.textContent = "Off";
 
     /* Links Used
     https://stackoverflow.com/questions/44061473/move-text-on-toggle-switch-on-off
@@ -91,52 +94,52 @@ class ToggleSwitch extends HTMLElement {
         font-size: 20px; /*Size of text*/
       }
     
-      /* Hides dark mode text initially*/
+      /* Hides offMode text initially*/
       .${mode2}_mode {
         display:none;
       }
-      /*Moves the light_mode text to the right*/
+      /*Moves the onMode text to the right*/
       .${mode1}_mode {
         display:block;
         left:50px;
       }`;
 
     shadow.append(style);
-    shadow.appendChild(toggle_switch);
-    toggle_switch.appendChild(toggle_checkbox);
-    toggle_switch.appendChild(toggle_slider);
-    toggle_slider.appendChild(light_mode);
-    toggle_slider.appendChild(dark_mode);
+    shadow.appendChild(toggleSwitch);
+    toggleSwitch.appendChild(toggleCheckbox);
+    toggleSwitch.appendChild(toggleSlider);
+    toggleSlider.appendChild(onMode);
+    toggleSlider.appendChild(offMode);
 
     this.toggleSwitchEvent = new CustomEvent('toggleSwitch', {
       bubbles: true,
       composed: true,
-      detail: {toggle: () => light_mode.style.display == 'block'}
+      detail: {toggle: () => this.toggle}
     });
 
-    toggle_slider.onclick = () => {
-      if(dark_mode.style.display == 'block') {
-        // Changes to Light Mode 
-        dark_mode.style.display = 'none';
-        light_mode.style.display = 'block';
+    toggleSlider.onclick = () => {
+      toggleCheckbox.checked = !toggleCheckbox.checked;
+      if(this.toggle){
+        this.setOff();
       }
-      else {
-        //Changes to Dark Mode
-        dark_mode.style.display = 'block';
-        light_mode.style.display = 'none';
+      else{
+        this.setOn();
       }
-      shadow.dispatchEvent(this.toggleSwitchEvent);
+      toggleSlider.style.pointerEvents = "none";
+      setTimeout(() => {toggleSlider.style.pointerEvents = "auto";}, 200);
     } 
 
     this.setOn = () => {
-      dark_mode.style.display = 'none';
-      light_mode.style.display = 'block';
+      offMode.style.display = 'none';
+      onMode.style.display = 'block';
+      this.toggle = true;
       shadow.dispatchEvent(this.toggleSwitchEvent);
     }
 
     this.setOff = () => {
-      dark_mode.style.display = 'block';
-      light_mode.style.display = 'none';
+      offMode.style.display = 'block';
+      onMode.style.display = 'none';
+      this.toggle = false;
       shadow.dispatchEvent(this.toggleSwitchEvent);
     }
   }

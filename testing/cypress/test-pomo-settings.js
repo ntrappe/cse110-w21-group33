@@ -128,7 +128,7 @@ describe('Test sidebar elements', () => {
   it('disableSettings() disables settings button', {includeShadowDom: true}, () => {
     cy.get('#openButton')
     .then($el => {
-      $el.disabled = true;
+      $el.removeAttr('disabled');
     });
     cy.window().then((win) => {
       win.pomoSettings.disableSettings();
@@ -142,7 +142,7 @@ describe('Test sidebar elements', () => {
   it('endableSettings() enables settings button', {includeShadowDom: true}, () => {
     cy.get('#openButton')
     .then($el => {
-      $el.disabled = false;
+      $el.attr('disabled', 'disabled');
     });
     cy.window().then((win) => {
       win.pomoSettings.enableSettings();
