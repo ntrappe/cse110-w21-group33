@@ -8,7 +8,6 @@ class ToggleSwitch extends HTMLElement {
     const toggleSwitch = document.createElement('label');  
     toggleSwitch.setAttribute('class', 'switch');
 
-
     const toggleCheckbox = document.createElement('input');  
     toggleCheckbox.setAttribute('type', 'checkbox');
     toggleCheckbox.setAttribute('disabled', 'disabled');
@@ -34,14 +33,14 @@ class ToggleSwitch extends HTMLElement {
 
     const style = document.createElement('style');
     style.textContent = `
-      /* Hides the Checkbox */
+      /* Hides the checkbox */
       .switch input {
         opacity: 0;
         width: 0;
         height: 0;
       }
         
-      /* Size of toggle background*/
+      /* Size of toggle background */
       .switch { 
         position: relative;
         display: inline-block;
@@ -49,7 +48,7 @@ class ToggleSwitch extends HTMLElement {
         height: 50px;
       }
 
-      /* Toggle Background*/
+      /* Toggle background */
       .slider {
         border-radius: 30px; /* makes the slider box round*/
         position: absolute;
@@ -62,7 +61,7 @@ class ToggleSwitch extends HTMLElement {
         transition: .4s;
       }
 
-      /*Creates the toggle button*/
+      /* Creates the toggle button */
       .slider:before {
         border-radius: 30px; /* Makes the button that you click on round*/
         position: absolute;
@@ -75,14 +74,14 @@ class ToggleSwitch extends HTMLElement {
         transition: .4s;
       }
 
-      /* Changes the color of the slider when toggled*/
+      /* Changes the color of the slider when toggled */
       input:checked + .slider {
         background-color: blue;
       }
 
 
       input:checked + .slider:before {
-        transform: translateX(52px); /* How far the toggle circle moves*/
+        transform: translateX(52px); /* How far the toggle circle moves */
       }
 
       .${mode2}_mode,.${mode1}_mode {
@@ -94,14 +93,25 @@ class ToggleSwitch extends HTMLElement {
         font-size: 20px; /*Size of text*/
       }
     
-      /* Hides offMode text initially*/
+      /* Hides offMode text initially */
       .${mode2}_mode {
         display:none;
       }
-      /*Moves the onMode text to the right*/
+      /* Moves the onMode text to the right */
       .${mode1}_mode {
         display:block;
         left:50px;
+      }
+      
+      /* Prevent highlight of toggle switch */
+      span {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
       }`;
 
     shadow.append(style);
@@ -117,6 +127,9 @@ class ToggleSwitch extends HTMLElement {
       detail: {toggle: () => this.toggle}
     });
 
+    /**
+     * Toggle slider from one mode to another on click with delay
+     */
     toggleSlider.onclick = () => {
       toggleCheckbox.checked = !toggleCheckbox.checked;
       if(this.toggle){
@@ -129,6 +142,9 @@ class ToggleSwitch extends HTMLElement {
       setTimeout(() => {toggleSlider.style.pointerEvents = "auto";}, 200);
     } 
 
+    /**
+     * Helper function to toggle slider on
+     */
     this.setOn = () => {
       offMode.style.display = 'none';
       onMode.style.display = 'block';
@@ -136,6 +152,9 @@ class ToggleSwitch extends HTMLElement {
       shadow.dispatchEvent(this.toggleSwitchEvent);
     }
 
+    /**
+     * Helper function to toggle slider off
+     */
     this.setOff = () => {
       offMode.style.display = 'block';
       onMode.style.display = 'none';

@@ -80,6 +80,7 @@ class PomoSettings extends HTMLElement {
     shortBreakNumber.setAttribute('min', '1');
     shortBreakNumber.setAttribute('max', '60');
     shortBreakNumber.setAttribute('step', '1');
+    shortBreakNumber.setAttribute('oninput', `validity.valid|| (value="${shortBreakNumber.max}")`)
 
     // Input field for long break customization
     const longSection = document.createElement('div');
@@ -94,6 +95,7 @@ class PomoSettings extends HTMLElement {
     longBreakNumber.setAttribute('min', '1');
     longBreakNumber.setAttribute('max', '60');
     longBreakNumber.setAttribute('step', '1');
+    longBreakNumber.setAttribute('oninput', `validity.valid|| (value="${longBreakNumber.max}")`)
 
 
     // Input field and slider to change volume
@@ -279,17 +281,20 @@ class PomoSettings extends HTMLElement {
      */
     workNumber.onchange = () => {
       let workMin = Math.round(Number(workNumber.value));
-      if(workMin < 1){
-        window.alert('Work must be an integer between 1 and 60.');
-        workMin = 1;
-      }
-      else if(workMin > 60){
-        window.alert('Work must be an integer between 1 and 60.');
-        workMin = 60;
-      }
       workNumber.value = workMin;
       this.work = workMin;
       shadow.dispatchEvent(this.workSetEvent);
+    }
+
+    /**
+     * Ensures the user cannot put invalid inputs
+     */
+    workNumber.oninput = () => {
+      if (!workNumber.validity.valid) {
+        // Round invalid input to either min or max value
+        workNumber.value = workNumber.value <= 0 ? 
+          workNumber.min : workNumber.max;
+      }
     }
 
     /**
@@ -297,17 +302,20 @@ class PomoSettings extends HTMLElement {
      */
     shortBreakNumber.onchange = () => {
       let shortBreakMin = Math.round(Number(shortBreakNumber.value));
-      if(shortBreakMin < 1){
-        window.alert('Short Break must be an integer between 1 and 60.');
-        shortBreakMin = 1;
-      }
-      else if(shortBreakMin > 60){
-        window.alert('Short Break must be an integer between 1 and 60.');
-        shortBreakMin = 60;
-      }
       shortBreakNumber.value = shortBreakMin;
       this.shortBreak = shortBreakMin;
       shadow.dispatchEvent(this.shortBreakSetEvent);
+    }
+
+    /**
+     * Ensures the user cannot put invalid inputs
+     */
+    shortBreakNumber.oninput = () => {
+      if (!shortBreakNumber.validity.valid) {
+        // Round invalid input to either min or max value
+        shortBreakNumber.value = shortBreakNumber.value <= 0 ? 
+          shortBreakNumber.min : shortBreakNumber.max;
+      }
     }
 
     /**
@@ -315,17 +323,20 @@ class PomoSettings extends HTMLElement {
      */
     longBreakNumber.onchange = () => {
       let longBreakMin = Math.round(Number(longBreakNumber.value));
-      if(longBreakMin < 1){
-        window.alert('Long Break must be an integer between 1 and 60.');
-        longBreakMin = 1;
-      }
-      else if(longBreakMin > 60){
-        window.alert('Long Break must be an integer between 1 and 60.');
-        longBreakMin = 60;
-      }
       longBreakNumber.value = longBreakMin;
       this.longBreak = longBreakMin;
       shadow.dispatchEvent(this.longBreakSetEvent);
+    }
+
+    /**
+     * Ensures the user cannot put invalid inputs
+     */
+    longBreakNumber.oninput = () => {
+      if (!longBreakNumber.validity.valid) {
+        // Round invalid input to either min or max value
+        longBreakNumber.value = longBreakNumber.value <= 0 ? 
+        longBreakNumber.min : longBreakNumber.max;
+      }
     }
 
     /**
@@ -343,20 +354,23 @@ class PomoSettings extends HTMLElement {
     }
     
     /**
+     * Ensures the user cannot put invalid inputs
+     */
+    volumeNumber.oninput = () => {
+      if (!volumeNumber.validity.valid) {
+        // Round invalid input to either min or max value
+        volumeNumber.value = volumeNumber.value <= 0 ? 
+        volumeNumber.min : volumeNumber.max;
+      }
+    }
+
+    /**
      * Coordinate slider and input with each other, sets volume variable, 
      * and plays audio so the user can test volume
      * @param {Number} volume volume of audio
      */
     this.volumeSet = (volume) => {
       let vol = Math.round(volume);
-      if(vol > 100){
-        window.alert('Volume must be an integer between 0 and 100.');
-        vol = 100;
-      }
-      else if(vol < 0){
-        window.alert('Volume must be an integer between 0 and 100.');
-        vol = 0;
-      }
       volumeSlide.value = vol;
       volumeNumber.value = vol;
       this.volume = vol;
