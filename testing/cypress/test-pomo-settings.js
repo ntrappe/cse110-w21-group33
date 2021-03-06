@@ -84,17 +84,17 @@ describe('Test sidebar elements', () => {
       expect(win.pomoSettings.calm).to.eq(true);
       expect(win.pomoSettings.dark).to.eq(true);
       //work
-      cy.get('#workMinutesNumber')
+      cy.get('#workNumber')
       .then($el => {
         expect($el).to.have.value(20);
       });
       //short Break
-      cy.get('#shortBreakMinutesNumber')
+      cy.get('#shortBreakNumber')
       .then($el => {
         expect($el).to.have.value(10);
       });
       //long Break
-      cy.get('#longBreakMinutesNumber')
+      cy.get('#longBreakNumber')
       .then($el => {
         expect($el).to.have.value(20);
       });
@@ -157,7 +157,7 @@ describe('Test sidebar elements', () => {
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-settings').then($el => {
         const onVolumeSet = (e) => {
-          expect(e.detail.volume()).to.eq('20');
+          expect(e.detail.volume()).to.eq(20);
           $el[0].removeEventListener('volumeSet', onVolumeSet);
           resolve();
         };
@@ -172,7 +172,7 @@ describe('Test sidebar elements', () => {
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-settings').then($el => {
         const onVolumeSet = (e) => {
-          expect(e.detail.volume()).to.eq('20');
+          expect(e.detail.volume()).to.eq(20);
           $el[0].removeEventListener('volumeSet', onVolumeSet);
           resolve();
         };
@@ -241,13 +241,13 @@ describe('Test sidebar elements', () => {
           resolve();
         };
         $el[0].addEventListener('workSet', onWorkSet);
-        cy.get('#workMinutesNumber').type('{selectall}{backspace}20', {force: true}).trigger('change');
+        cy.get('#workNumber').type('{selectall}{backspace}20', {force: true}).trigger('change');
       });
     });
     cy.wrap(eventPromise);
   }); 
 
-  it('changing shortBreakMinutesNumber fires appropriate events', {includeShadowDom: true}, () => {
+  it('changing shortBreakNumber fires appropriate events', {includeShadowDom: true}, () => {
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-settings').then($el => {
         const onShortBreakSet = (e) => {
@@ -256,13 +256,13 @@ describe('Test sidebar elements', () => {
           resolve();
         };
         $el[0].addEventListener('shortBreakSet', onShortBreakSet);
-        cy.get('#shortBreakMinutesNumber').type('{selectall}{backspace}20', {force: true}).trigger('change');
+        cy.get('#shortBreakNumber').type('{selectall}{backspace}20', {force: true}).trigger('change');
       });
     });
     cy.wrap(eventPromise);
   }); 
 
-  it('changing longBreakMinutesNumber fires appropriate events', {includeShadowDom: true}, () => {
+  it('changing longBreakNumber fires appropriate events', {includeShadowDom: true}, () => {
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-settings').then($el => {
         const onLongBreakSet = (e) => {
@@ -271,7 +271,7 @@ describe('Test sidebar elements', () => {
           resolve();
         };
         $el[0].addEventListener('longBreakSet', onLongBreakSet);
-        cy.get('#longBreakMinutesNumber').type('{selectall}{backspace}20', {force: true}).trigger('change');
+        cy.get('#longBreakNumber').type('{selectall}{backspace}20', {force: true}).trigger('change');
       });
     });
     cy.wrap(eventPromise);

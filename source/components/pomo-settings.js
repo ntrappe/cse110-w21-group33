@@ -35,7 +35,7 @@ class PomoSettings extends HTMLElement {
     // Button to open sidebar
     const openButton = document.createElement('button');
     openButton.setAttribute('id', 'openButton');
-    openButton.innerHTML = "&#9881;";
+    openButton.innerHTML = '&#9881;';
 
     // Button to close sidebar
     const closeButton = document.createElement('button');
@@ -45,7 +45,6 @@ class PomoSettings extends HTMLElement {
     const closeIcon = document.createElement('img');
     closeIcon.setAttribute('id', 'closeButtonIcon');
     closeIcon.setAttribute('src', './assets/x.svg');
-    closeButton.appendChild(closeIcon);
 
 
     // Edit work, short break, and long break lengths
@@ -60,12 +59,13 @@ class PomoSettings extends HTMLElement {
     const workLabel = document.createElement('label');
     workLabel.innerHTML = 'Work';
 
-    const workMinutesNumber = document.createElement('input');
-    workMinutesNumber.setAttribute('id', 'workMinutesNumber');
-    workMinutesNumber.setAttribute('type', 'number');
-    workMinutesNumber.setAttribute('value', this.work);
-    workMinutesNumber.setAttribute('min', '1');
-    workMinutesNumber.setAttribute('step', '1');
+    const workNumber = document.createElement('input');
+    workNumber.setAttribute('id', 'workNumber');
+    workNumber.setAttribute('type', 'number');
+    workNumber.setAttribute('value', this.work);
+    workNumber.setAttribute('min', '1');
+    workNumber.setAttribute('max', '60');
+    workNumber.setAttribute('step', '1');
 
     // Input field for short break customization
     const shortSection = document.createElement('div');
@@ -73,12 +73,13 @@ class PomoSettings extends HTMLElement {
     const shortBreakLabel = document.createElement('label');
     shortBreakLabel.innerHTML = 'Short Break';
 
-    const shortBreakMinutesNumber = document.createElement('input');
-    shortBreakMinutesNumber.setAttribute('id', 'shortBreakMinutesNumber');
-    shortBreakMinutesNumber.setAttribute('type', 'number');
-    shortBreakMinutesNumber.setAttribute('value', this.shortBreak);
-    shortBreakMinutesNumber.setAttribute('min', '1');
-    shortBreakMinutesNumber.setAttribute('step', '1');
+    const shortBreakNumber = document.createElement('input');
+    shortBreakNumber.setAttribute('id', 'shortBreakNumber');
+    shortBreakNumber.setAttribute('type', 'number');
+    shortBreakNumber.setAttribute('value', this.shortBreak);
+    shortBreakNumber.setAttribute('min', '1');
+    shortBreakNumber.setAttribute('max', '60');
+    shortBreakNumber.setAttribute('step', '1');
 
     // Input field for long break customization
     const longSection = document.createElement('div');
@@ -86,12 +87,13 @@ class PomoSettings extends HTMLElement {
     const longBreakLabel = document.createElement('label');
     longBreakLabel.innerHTML = 'Long Break';
 
-    const longBreakMinutesNumber = document.createElement('input');
-    longBreakMinutesNumber.setAttribute('id', 'longBreakMinutesNumber');
-    longBreakMinutesNumber.setAttribute('type', 'number');
-    longBreakMinutesNumber.setAttribute('value', this.longBreak);
-    longBreakMinutesNumber.setAttribute('min', '1');
-    longBreakMinutesNumber.setAttribute('step', '1');
+    const longBreakNumber = document.createElement('input');
+    longBreakNumber.setAttribute('id', 'longBreakNumber');
+    longBreakNumber.setAttribute('type', 'number');
+    longBreakNumber.setAttribute('value', this.longBreak);
+    longBreakNumber.setAttribute('min', '1');
+    longBreakNumber.setAttribute('max', '60');
+    longBreakNumber.setAttribute('step', '1');
 
 
     // Input field and slider to change volume
@@ -148,8 +150,7 @@ class PomoSettings extends HTMLElement {
     calmLabel.htmlFor = 'calmSwitch';
     calmLabel.setAttribute('id', 'calmSwitch');
     const calmSwitch = new ToggleSwitch("calm", "busy");
-    window.calmMode = calmSwitch;
-
+    
     // Toggle switch to enable dark mode
     const darkSection = document.createElement('div');
     const darkLabel = document.createElement('label');
@@ -157,6 +158,9 @@ class PomoSettings extends HTMLElement {
     darkLabel.htmlFor = 'darkSwitch';
     darkLabel.setAttribute('id', 'darkSwitch');
     const darkSwitch = new ToggleSwitch("dark", "light");
+
+    //attach for Cypress testing
+    window.calmMode = calmSwitch;
     window.darkMode = darkSwitch;
 
     // Attach elements to shadow DOM
@@ -166,6 +170,7 @@ class PomoSettings extends HTMLElement {
     shadow.appendChild(sideBar);
 
     sideBar.appendChild(closeButton);
+    closeButton.appendChild(closeIcon);
     sideBar.appendChild(pomoLengthLabel);
     sideBar.appendChild(settingsTitle);
     sideBar.appendChild(timerSection);
@@ -176,11 +181,11 @@ class PomoSettings extends HTMLElement {
     timerSection.appendChild(longSection);
 
     workSection.appendChild(workLabel);
-    workSection.appendChild(workMinutesNumber);
+    workSection.appendChild(workNumber);
     shortSection.appendChild(shortBreakLabel);
-    shortSection.appendChild(shortBreakMinutesNumber);
+    shortSection.appendChild(shortBreakNumber);
     longSection.appendChild(longBreakLabel);
-    longSection.appendChild(longBreakMinutesNumber)
+    longSection.appendChild(longBreakNumber)
 
     sideBar.appendChild(volumeSection);
     volumeSection.appendChild(volumeLabel);
@@ -272,32 +277,54 @@ class PomoSettings extends HTMLElement {
     /**
      * Passes customized work minutes to event listener
      */
-    workMinutesNumber.onchange = () => {
-      console.log("We've changed the workMinutes");
-/*       let val = Math.round(Number(workMinutesNumber.value));
-      if(val < 1){
-        this.work = 1;
+    workNumber.onchange = () => {
+      let workMin = Math.round(Number(workNumber.value));
+      if(workMin < 1){
+        window.alert('Work must be an integer between 1 and 60.');
+        workMin = 1;
       }
-       */
-      this.work = Number(workMinutesNumber.value);
+      else if(workMin > 60){
+        window.alert('Work must be an integer between 1 and 60.');
+        workMin = 60;
+      }
+      workNumber.value = workMin;
+      this.work = workMin;
       shadow.dispatchEvent(this.workSetEvent);
     }
 
     /**
      * Passes customized short break minutes to event listener
      */
-    shortBreakMinutesNumber.onchange = () => {
-      console.log("We've changed the shortBreakMinutes");
-      this.shortBreak = Number(shortBreakMinutesNumber.value);
+    shortBreakNumber.onchange = () => {
+      let shortBreakMin = Math.round(Number(shortBreakNumber.value));
+      if(shortBreakMin < 1){
+        window.alert('Short Break must be an integer between 1 and 60.');
+        shortBreakMin = 1;
+      }
+      else if(shortBreakMin > 60){
+        window.alert('Short Break must be an integer between 1 and 60.');
+        shortBreakMin = 60;
+      }
+      shortBreakNumber.value = shortBreakMin;
+      this.shortBreak = shortBreakMin;
       shadow.dispatchEvent(this.shortBreakSetEvent);
     }
 
     /**
      * Passes customized long break minutes to event listener
      */
-    longBreakMinutesNumber.onchange = () => {
-      console.log("We've changed the longBreakMinutes");
-      this.longBreak = Number(longBreakMinutesNumber.value);
+    longBreakNumber.onchange = () => {
+      let longBreakMin = Math.round(Number(longBreakNumber.value));
+      if(longBreakMin < 1){
+        window.alert('Long Break must be an integer between 1 and 60.');
+        longBreakMin = 1;
+      }
+      else if(longBreakMin > 60){
+        window.alert('Long Break must be an integer between 1 and 60.');
+        longBreakMin = 60;
+      }
+      longBreakNumber.value = longBreakMin;
+      this.longBreak = longBreakMin;
       shadow.dispatchEvent(this.longBreakSetEvent);
     }
 
@@ -305,17 +332,14 @@ class PomoSettings extends HTMLElement {
      * Passes customized volume from slider to event listener
      */
     volumeSlide.onchange = () => {
-      this.volumeSet(volumeSlide.value);
-      shadow.dispatchEvent(this.volumeSetEvent);
+      this.volumeSet(Number(volumeSlide.value));
     }
 
     /**
      * Passes customized volume from input to event listener
      */
     volumeNumber.onchange = () => {
-      console.log('volumeNumber.value is' + volumeNumber.value);
-      this.volumeSet(volumeNumber.value);
-      shadow.dispatchEvent(this.volumeSetEvent);
+      this.volumeSet(Number(volumeNumber.value));
     }
     
     /**
@@ -324,10 +348,19 @@ class PomoSettings extends HTMLElement {
      * @param {Number} volume volume of audio
      */
     this.volumeSet = (volume) => {
-      console.log('volume is' + volume);
-      volumeSlide.value = volume;
-      volumeNumber.value = volume;
-      this.volume = volume;
+      let vol = Math.round(volume);
+      if(vol > 100){
+        window.alert('Volume must be an integer between 0 and 100.');
+        vol = 100;
+      }
+      else if(vol < 0){
+        window.alert('Volume must be an integer between 0 and 100.');
+        vol = 0;
+      }
+      volumeSlide.value = vol;
+      volumeNumber.value = vol;
+      this.volume = vol;
+      shadow.dispatchEvent(this.volumeSetEvent);
     }
 
     /**
@@ -335,7 +368,6 @@ class PomoSettings extends HTMLElement {
      * audio so that the user can test audio sound
      */
     soundSelect.onchange = () => {
-      console.log("We've selected a new sound. Should update these preferences.");
       this.sound = soundSelect.value;
       shadow.dispatchEvent(this.soundSetEvent);
     }
@@ -354,7 +386,7 @@ class PomoSettings extends HTMLElement {
     darkSwitch.addEventListener('toggleSwitch', (e) => {
       this.dark = e.detail.toggle();
       shadow.dispatchEvent(this.darkSetEvent);
-    })
+    });
 
     /**
      * Enable settings by re-enabling settings button
@@ -382,11 +414,11 @@ class PomoSettings extends HTMLElement {
      */
     this.loadSettings = (calm, volume, sound, dark, work, shortBreak, longBreak) => {
       this.work = work;
-      workMinutesNumber.value = work;
+      workNumber.value = work;
       this.shortBreak = shortBreak;
-      shortBreakMinutesNumber.value = shortBreak;
+      shortBreakNumber.value = shortBreak;
       this.longBreak = longBreak;
-      longBreakMinutesNumber.value = longBreak;
+      longBreakNumber.value = longBreak;
       this.volume = volume;
       this.volumeSet(volume);
       this.sound = sound;
