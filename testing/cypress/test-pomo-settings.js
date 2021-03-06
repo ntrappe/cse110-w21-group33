@@ -29,7 +29,6 @@ describe('Test sidebar elements', () => {
   it('Sidebar opens when gear is pressed', { includeShadowDom: true }, () => {
     cy.get('#closeButton').click();
     cy.get('#openButton').click();
-
     cy.get('#settings')
     .then($el => {
       expect($el).to.have.attr('class', 'open');
@@ -38,7 +37,6 @@ describe('Test sidebar elements', () => {
 
   it('Sidebar closes when x is pressed', { includeShadowDom: true }, () => {
     cy.get('#closeButton').click();
-
     cy.get('#settings')
     .then($el => {
       expect($el).to.have.attr('class', 'close');
@@ -47,7 +45,6 @@ describe('Test sidebar elements', () => {
 
   it('Sidebar closes when clicking outside of sidebar', { includeShadowDom: true }, () => {
     cy.get('body').click();
-
     cy.get('#settings')
     .then($el => {
       expect($el).to.have.attr('class', 'close');
@@ -56,23 +53,86 @@ describe('Test sidebar elements', () => {
 
   it('Volume input changes when slider changes', { includeShadowDom: true }, () => {
     cy.get('#volumeSlide').invoke('val', 20).trigger('change');
-
     cy.get('#volumeNumber')
     .then($el => {
       expect($el).to.have.value(20);
     });
   });
 
-  it('Slider changes when volume input changes', { includeShadowDom: true }, () => {
+  it('Slider changes when volume input changes', 
+  { includeShadowDom: true }, () => {
     cy.get('#volumeNumber').clear({force: true}).type('80', {force: true}).trigger('change');
-
     cy.get('#volumeSlide')
     .then($el => {
       expect($el).to.have.value(80);
     });
   });
 
-  it('Values are set when calling loadSettings()', {includeShadowDom: true}, () => {
+  it('volumeNumber inputs lower than lower bound become 0', { includeShadowDom: true }, () => {
+    cy.get('#volumeNumber').type('{selectall}{backspace}-1', {force: true}).trigger('change');
+    cy.get('#volumeNumber')
+    .then($el => {
+      expect($el).to.have.value(0);
+    });
+  });
+
+  it('workNumber inputs lower than lower bound become 1', { includeShadowDom: true }, () => {
+    cy.get('#workNumber').type('{selectall}{backspace}-1', {force: true}).trigger('change');
+    cy.get('#workNumber')
+    .then($el => {
+      expect($el).to.have.value(1);
+    });
+  });
+
+  it('shortBreakNumber inputs lower than lower bound become 1', { includeShadowDom: true }, () => {
+    cy.get('#shortBreakNumber').type('{selectall}{backspace}-1', {force: true}).trigger('change');
+    cy.get('#shortBreakNumber')
+    .then($el => {
+      expect($el).to.have.value(1);
+    });
+  });
+
+  it('longBreakNumber inputs lower than lower bound become 1', { includeShadowDom: true }, () => {
+    cy.get('#longBreakNumber').type('{selectall}{backspace}-1', {force: true}).trigger('change');
+    cy.get('#longBreakNumber')
+    .then($el => {
+      expect($el).to.have.value(1);
+    });
+  });
+
+  it('volumeNumber inputs higher than upper bound become 100', { includeShadowDom: true }, () => {
+    cy.get('#volumeNumber').type('{selectall}{backspace}200', {force: true}).trigger('change');
+    cy.get('#volumeNumber')
+    .then($el => {
+      expect($el).to.have.value(100);
+    });
+  });
+
+  it('workNumber inputs higher than upper bound become 60', { includeShadowDom: true }, () => {
+    cy.get('#workNumber').type('{selectall}{backspace}200', {force: true}).trigger('change');
+    cy.get('#workNumber')
+    .then($el => {
+      expect($el).to.have.value(60);
+    });
+  });
+
+  it('shortBreakNumber input higher than upper bound become 60', { includeShadowDom: true }, () => {
+    cy.get('#shortBreakNumber').type('{selectall}{backspace}200', {force: true}).trigger('change');
+    cy.get('#shortBreakNumber')
+    .then($el => {
+      expect($el).to.have.value(60);
+    });
+  });
+
+  it('longBreakNumber inputs higher than upper bound become 60', { includeShadowDom: true }, () => {
+    cy.get('#longBreakNumber').type('{selectall}{backspace}200', {force: true}).trigger('change');
+    cy.get('#longBreakNumber')
+    .then($el => {
+      expect($el).to.have.value(60);
+    });
+  });
+
+  it('Values are set when calling loadSettings()', { includeShadowDom: true }, () => {
     //loadSettings()
     cy.window().then((win) => {
       win.pomoSettings.loadSettings(true, 10, 'rooster', true, 20, 10, 20);
@@ -125,7 +185,7 @@ describe('Test sidebar elements', () => {
     });
   });
 
-  it('disableSettings() disables settings button', {includeShadowDom: true}, () => {
+  it('disableSettings() disables settings button', { includeShadowDom: true }, () => {
     cy.get('#openButton')
     .then($el => {
       $el.removeAttr('disabled');
@@ -139,7 +199,7 @@ describe('Test sidebar elements', () => {
     });
   });
 
-  it('endableSettings() enables settings button', {includeShadowDom: true}, () => {
+  it('endableSettings() enables settings button', { includeShadowDom: true }, () => {
     cy.get('#openButton')
     .then($el => {
       $el.attr('disabled', 'disabled');
@@ -153,7 +213,7 @@ describe('Test sidebar elements', () => {
     });
   });
 
-  it('changing volumeSlide fires appropriate events', {includeShadowDom: true}, () => {
+  it('changing volumeSlide fires appropriate events', { includeShadowDom: true }, () => {
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-settings').then($el => {
         const onVolumeSet = (e) => {
@@ -168,7 +228,7 @@ describe('Test sidebar elements', () => {
     cy.wrap(eventPromise);
   });
 
-   it('changing volumeNumber fires appropriate events', {includeShadowDom: true}, () => {
+   it('changing volumeNumber fires appropriate events', { includeShadowDom: true }, () => {
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-settings').then($el => {
         const onVolumeSet = (e) => {
@@ -177,13 +237,14 @@ describe('Test sidebar elements', () => {
           resolve();
         };
         $el[0].addEventListener('volumeSet', onVolumeSet);
-        cy.get('#volumeNumber').type('{selectall}{backspace}20', {force: true}).trigger('change');
+        cy.get('#volumeNumber').type('{selectall}{backspace}20', {force: true})
+        .trigger('change');
       });
     });
     cy.wrap(eventPromise);
   }); 
 
-  it('changing soundSelect fires appropriate events', {includeShadowDom: true}, () => {
+  it('changing soundSelect fires appropriate events', { includeShadowDom: true }, () => {
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-settings').then($el => {
         const onSoundSet = (e) => {
@@ -198,7 +259,7 @@ describe('Test sidebar elements', () => {
     cy.wrap(eventPromise);
   });
 
-   it('changing calmSwitch fires appropriate events', {includeShadowDom: true}, () => {
+   it('changing calmSwitch fires appropriate events', { includeShadowDom: true }, () => {
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-settings').then($el => {
         const onCalmSet = (e) => {
@@ -215,7 +276,7 @@ describe('Test sidebar elements', () => {
     cy.wrap(eventPromise);
   }); 
 
-  it('changing darkSwitch fires appropriate events', {includeShadowDom: true}, () => {
+  it('changing darkSwitch fires appropriate events', { includeShadowDom: true }, () => {
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-settings').then($el => {
         const onDarkSet = (e) => {
@@ -232,7 +293,7 @@ describe('Test sidebar elements', () => {
     cy.wrap(eventPromise);
   }); 
 
-   it('changing workMinuteNumber fires appropriate events', {includeShadowDom: true}, () => {
+   it('changing workMinuteNumber fires appropriate events', { includeShadowDom: true }, () => {
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-settings').then($el => {
         const onWorkSet = (e) => {
@@ -247,7 +308,7 @@ describe('Test sidebar elements', () => {
     cy.wrap(eventPromise);
   }); 
 
-  it('changing shortBreakNumber fires appropriate events', {includeShadowDom: true}, () => {
+  it('changing shortBreakNumber fires appropriate events', { includeShadowDom: true }, () => {
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-settings').then($el => {
         const onShortBreakSet = (e) => {
@@ -256,13 +317,14 @@ describe('Test sidebar elements', () => {
           resolve();
         };
         $el[0].addEventListener('shortBreakSet', onShortBreakSet);
-        cy.get('#shortBreakNumber').type('{selectall}{backspace}20', {force: true}).trigger('change');
+        cy.get('#shortBreakNumber').type('{selectall}{backspace}20', {force: true})
+        .trigger('change');
       });
     });
     cy.wrap(eventPromise);
   }); 
 
-  it('changing longBreakNumber fires appropriate events', {includeShadowDom: true}, () => {
+  it('changing longBreakNumber fires appropriate events', { includeShadowDom: true }, () => {
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-settings').then($el => {
         const onLongBreakSet = (e) => {
@@ -271,7 +333,8 @@ describe('Test sidebar elements', () => {
           resolve();
         };
         $el[0].addEventListener('longBreakSet', onLongBreakSet);
-        cy.get('#longBreakNumber').type('{selectall}{backspace}20', {force: true}).trigger('change');
+        cy.get('#longBreakNumber').type('{selectall}{backspace}20', {force: true})
+        .trigger('change');
       });
     });
     cy.wrap(eventPromise);

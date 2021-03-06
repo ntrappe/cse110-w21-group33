@@ -119,7 +119,7 @@ class ToggleSwitch extends HTMLElement {
 
     toggleSlider.onclick = () => {
       toggleCheckbox.checked = !toggleCheckbox.checked;
-      if(this.toggle){
+      if (this.toggle) {
         this.setOff();
       }
       else{
