@@ -55,6 +55,8 @@ describe('Check Ligthbox Controls', { includeShadowDom: true }, () => {
     it('Check that Info button opens lightbox', () => {
         cy.get('#infoButton').click();
         cy.get('#infoModal').should('have.css', 'display', 'block');
+        cy.get('#infoModal').should('have.css', 'background-color')
+        .and('eq', 'rgba(0, 0, 0, 0.5)');
     });
 
     it('Check that close button closes lightbox', () => {
