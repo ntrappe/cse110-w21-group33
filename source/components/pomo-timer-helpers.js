@@ -12,31 +12,44 @@ const RESET = 'Reset';
  * @param {Number} totalSeconds current total number of seconds on timer
  * @param {String} timerText text for current time on timer
  */
-function display(totalSeconds, timerText) {
+function display(totalSeconds, timerText, calmTimerText) {
     // calculate minutes and seconds from total seconds in timer
     let minutes = Math.floor(totalSeconds / MAX_SEC);
     let seconds = totalSeconds - (minutes * MAX_SEC);
 
-    let t_min;              // text repr of minutes 
-    let t_sec;              // text repr of seconds
-
-    // pad with zeros if necessary
-    if (minutes < TWO_DIGIT) {
-        t_min = '0' + String(minutes);
+    // only show minute + 'm'
+    if (calmTimerText) {
+        // if at something like 2:00, show just min => 2m
+        // otherwise round to the nearest min, like 1:59 => 2m
+        if (seconds == 0) {
+            console.log(String(minutes) + 'm');
+            timerText.textContent = String(minutes) + 'm';
+        } else {
+            console.log(String(minutes + 1) + 'm');
+            timerText.textContent = String(minutes + 1) + 'm';
+        }
+    // show both minutes and seconds and pad them
     } else {
-        t_min = String(minutes);
-    }
+        let t_min;              // text repr of minutes 
+        let t_sec;              // text repr of seconds
 
-    // pad with zeros if necessary
-    if (seconds < TWO_DIGIT) {
-        t_sec = '0' + String(seconds);
-    } else {
-        t_sec = String(seconds);
-    }
+        // pad with zeros if necessary
+        if (minutes < TWO_DIGIT) {
+            t_min = '0' + String(minutes);
+        } else {
+            t_min = String(minutes);
+        }
 
-    // write text to screen
-    timerText.textContent = t_min + ':' + t_sec;
-    //setTab(t_min, t_sec);
+        // pad with zeros if necessary
+        if (seconds < TWO_DIGIT) {
+            t_sec = '0' + String(seconds);
+        } else {
+            t_sec = String(seconds);
+        }
+
+        // write text to screen
+        timerText.textContent = t_min + ':' + t_sec;
+    }
 }
 
 /**

@@ -23,6 +23,11 @@ class PomoTimer extends HTMLElement {
         let currentMode = document.createElement('p');          
         currentMode.setAttribute('id', 'timer-mode'); 
 
+        // squares to represent progress
+        let progressContainerItems = initProgess(); 
+        const progressContainer = progressContainerItems[0];
+        progressContainer.setAttribute('id', 'timer-progress-container');
+
         // timer countdown display
         let timerText = document.createElement('h1')  
         timerText.setAttribute('id', 'timer-text');          
@@ -42,9 +47,11 @@ class PomoTimer extends HTMLElement {
         let ticker;                                             // timer object
         this.totalSeconds = 0;                                  // total seconds in timer
         let modeDuration = 0;                                   // time to put on clock
+        this.calmTimerText = false;                             // display w or w/o sec
 
         shadow.appendChild(wrapper);
         wrapper.appendChild(currentMode);
+        wrapper.appendChild(progressContainer);
         wrapper.appendChild(timerText);
         wrapper.appendChild(timerButton);
 
@@ -91,7 +98,7 @@ class PomoTimer extends HTMLElement {
             clearInterval(ticker);
             //this.totalSeconds = set(NUM_MIN);
             this.totalSeconds = set(modeDuration);
-            display(this.totalSeconds, timerText);
+            display(this.totalSeconds, timerText, this.calmTimerText);
         }
 
         /**
@@ -101,7 +108,7 @@ class PomoTimer extends HTMLElement {
             shadow.dispatchEvent(timerStartEvent);
             //this.totalSeconds = set(NUM_MIN);
             this.totalSeconds = set(modeDuration);
-            display(this.totalSeconds, timerText);
+            display(this.totalSeconds, timerText, this.calmTimerText);
             ticker = setInterval(this.timerTick, SEC_SPEED);
         }
 
@@ -113,7 +120,7 @@ class PomoTimer extends HTMLElement {
             clearInterval(ticker);
             //this.totalSeconds = set(NUM_MIN);
             this.totalSeconds = set(modeDuration);
-            display(this.totalSeconds, timerText);
+            display(this.totalSeconds, timerText, this.calmTimerText);
         }
 
         /**
@@ -127,29 +134,61 @@ class PomoTimer extends HTMLElement {
                 setStartButton(timerButton);
             } else {
                 this.totalSeconds = this.totalSeconds - 1;
-                display(this.totalSeconds, timerText);
+                display(this.totalSeconds, timerText, this.calmTimerText);
             }  
         }
 
         /**
          * For CONTROL to set time on clock for current mode
-         * @param {Number} min number of minutes to set the clock to
+         * @param {Number} min - number of minutes to set the clock to
+         * @param {String} mode - current state: 'work'/'short break'/'long break'
          */
         this.setTimer = (min, mode) => {
             modeDuration = min;
             this.totalSeconds = set(min);
-            display(this.totalSeconds, timerText);
+            display(this.totalSeconds, timerText, this.calmTimerText);
             currentMode.setAttribute('class', mode);
             currentMode.textContent = mode.toUpperCase();
         }
         
         /**
          * For CONTROL to update squares on screen to match number of breaks taken
-         * @param {Number} progress number of breaks taken
+         * @param {Number} progress - number of breaks taken
          */
         this.setProgress = (progress) => {
             setProgressHelper(progress, progressContainerItems[1], progressContainerItems[2],
                 progressContainerItems[3], progressContainerItems[4]);
+        }
+
+        /**
+         * For CONTROL to set color scheme to dark mode or light mode
+         * Sets data attribute of all elements to match => css will handle
+         * @param {Boolean} dark - true for dark mode; false for light mode
+         */
+        this.setDark = (dark) => {
+            if (dark) {
+                // set data attribute to dark mode for all elements
+                currentMode.setAttribute('data-mode', 'dark-mode');
+                progressContainer.setAttribute('data-mode', 'dark-mode');
+                timerText.setAttribute('data-mode', 'dark-mode');
+                timerButton.setAttribute('data-mode', 'dark-mode');
+            } else {
+                // set data attribute to light mode for all elements
+                currentMode.setAttribute('data-mode', 'light-mode');
+                progressContainer.setAttribute('data-mode', 'light-mode');
+                timerText.setAttribute('data-mode', 'light-mode');
+                timerButton.setAttribute('data-mode', 'light-mode');
+            }
+        }
+
+        /**
+         * For CONTROL to determine if timer text display will show normal
+         * minutes & seconds or just minutes
+         * @param {Boolean} calm - true for min; false for min and sec
+         */
+        this.setCalm = (calm) => {
+            this.calmTimerText = calm;
+            display(this.totalSeconds, timerText, this.calmTimerText);
         }
     }
 }
