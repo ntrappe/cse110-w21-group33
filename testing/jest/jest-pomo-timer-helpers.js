@@ -1,6 +1,6 @@
 import * as pomoHelper from "../../source/components/pomo-timer-helpers"
 
-/* Test for function display */
+/* Test for function display without calm mode */
 describe('test display', () => {
 
   /* A fake element with attribute textContent */
@@ -8,13 +8,39 @@ describe('test display', () => {
 
   /* Test 10:01 and 01:10 to see if the function can handle padding 0 */
   test('display 10:01', () => {
-    pomoHelper.display(601, timerText);
+    pomoHelper.display(601, timerText, false);
     expect(timerText.textContent).toBe("10:01");
   });
 
   test('display 01:10', () => {
-    pomoHelper.display(70, timerText);
+    pomoHelper.display(70, timerText, false);
     expect(timerText.textContent).toBe("01:10");
+  });
+});
+
+/* Test for function display with calm mode */
+describe('test display', () => {
+
+  /* A fake element with attribute textContent */
+  let timerText = {textContent: ""};
+
+  /* Test 10:01 and 01:10 to see if the function can display ceiling mins
+   * Also, to see if the function can handle one and two digits of num
+   */
+  test('display 10:01', () => {
+    pomoHelper.display(601, timerText, true);
+    expect(timerText.textContent).toBe("11m");
+  });
+
+  test('display 01:10', () => {
+    pomoHelper.display(70, timerText, true);
+    expect(timerText.textContent).toBe("2m");
+  });
+
+  /* Test to see if the function can handle whole mins */
+  test('display 20:00', () => {
+    pomoHelper.display(1200, timerText, true);
+    expect(timerText.textContent).toBe("20m");
   });
 });
 
