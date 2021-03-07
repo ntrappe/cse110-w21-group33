@@ -201,20 +201,55 @@ describe('Test Calm Mode', { includeShadowDom: true }, () => {
     }); 
   });
    
-  it('Run through 2m and check 01:59 => 2m, 01:01 => 2m, 01:00 => 1m', () => {
+  it('Check that 01:59 => 2m', () => {
     cy.get('#timer-button').then(($el) => {
       expect($el).to.contain('Start');
     });
     cy.get('#timer-button').click();
 
-    cy.wait(250);
+    cy.wait(250);   // wait 1 sec
     cy.window().then((win) => {
       console.log(win.pomoTimer.totalSeconds);
       cy.get('#timer-text').then(($el) => {
         expect($el).to.contain('2m');
       });
     });
+    cy.get('#timer-button').click();    // reset for next test
   });
+
+  it('Check that 01:01 => 2m', () => {
+    cy.get('#timer-button').then(($el) => {
+      expect($el).to.contain('Start');
+    });
+    cy.get('#timer-button').click();
+
+    cy.wait(15000);   // wait 1 sec
+    cy.window().then((win) => {
+      console.log(win.pomoTimer.totalSeconds);
+      cy.get('#timer-text').then(($el) => {
+        expect($el).to.contain('2m');
+      });
+    });
+    cy.get('#timer-button').click();    // reset for next test
+  });
+
+  it('Check that 01:00 => 1m', () => {
+    cy.get('#timer-button').then(($el) => {
+      expect($el).to.contain('Start');
+    });
+    cy.get('#timer-button').click();
+
+    cy.wait(15250);   // wait 1 sec
+    cy.window().then((win) => {
+      console.log(win.pomoTimer.totalSeconds);
+      cy.get('#timer-text').then(($el) => {
+        expect($el).to.contain('1m');
+      });
+    });
+    cy.get('#timer-button').click();    // reset for next test
+  });
+
+
 /*
   it('Check that 01:01 => 2m', () => {
     cy.wait(15000);     // wait a fast 1m ish
