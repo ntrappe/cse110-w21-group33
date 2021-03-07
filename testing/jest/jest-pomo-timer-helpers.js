@@ -1,7 +1,7 @@
 import * as pomoHelper from "../../source/components/pomo-timer-helpers"
 
 /* Test for function display without calm mode */
-describe('test display calm', () => {
+describe('test display non calm', () => {
 
   /* A fake element with attribute textContent */
   let timerText = {textContent: ""};
@@ -19,7 +19,7 @@ describe('test display calm', () => {
 });
 
 /* Test for function display with calm mode */
-describe('test display non calm', () => {
+describe('test display calm', () => {
 
   /* A fake element with attribute textContent */
   let timerText = {textContent: ""};
