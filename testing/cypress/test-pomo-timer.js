@@ -57,7 +57,7 @@ describe('Initialize timer with public functions', { includeShadowDom: true }, (
     });
   });
 });
-
+/*
 describe('Check Resets',  { includeShadowDom: true }, () => {
   // NOTE: timeout length should change if timer speed does
  it('Check if we can reset at 01:59', () => {
@@ -88,9 +88,224 @@ describe('Check Resets',  { includeShadowDom: true }, () => {
      });
    });
  });
+}); */
+
+// UI TESTING
+describe('Check setting dark and light mode', { includeShadowDom: true }, () => {
+  it('Set to Dark Mode', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setDark(true);
+    });
+  });
+
+  it('Check elements were set to Dark Mode', () => {
+    cy.get('#timer-mode').then(($el) => {
+      expect($el).to.have.attr('data-mode', 'dark-mode');
+    });
+    cy.get('#timer-progress-container').then(($el) => {
+      expect($el).to.have.attr('data-mode', 'dark-mode');
+    });
+    cy.get('#timer-text').then(($el) => {
+      expect($el).to.have.attr('data-mode', 'dark-mode');
+    });
+    cy.get('#timer-button').then(($el) => {
+      expect($el).to.have.attr('data-mode', 'dark-mode');
+    });
+  });
+
+  it('Set to Light Mode', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setDark(false);
+    });
+  });
+
+  it('Check elements were set to Light Mode', () => {
+    cy.get('#timer-mode').then(($el) => {
+      expect($el).to.have.attr('data-mode', 'light-mode');
+    });
+    cy.get('#timer-progress-container').then(($el) => {
+      expect($el).to.have.attr('data-mode', 'light-mode');
+    });
+    cy.get('#timer-text').then(($el) => {
+      expect($el).to.have.attr('data-mode', 'light-mode');
+    });
+    cy.get('#timer-button').then(($el) => {
+      expect($el).to.have.attr('data-mode', 'light-mode');
+    });
+  });
 });
 
+describe('Toggle between Calm and not Calm Mode', { includeShadowDom: true }, () => {
+  it('Set to Calm Mode & 5m', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setTimer(5, 'work');
+      win.pomoTimer.setCalm(true);
+    });
+  });
+
+  it('Check that timer text only shows minutes', () => {
+    cy.get('#timer-text').then(($el) => {
+      expect($el).to.contain('5m');
+    });
+  });
+
+  it('Set to not Calm Mode & 1m', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setTimer(1, 'work');
+      win.pomoTimer.setCalm(false);
+    });
+  });
+
+  it('Check that timer text shows minutes + seconds', () => {
+    cy.get('#timer-text').then(($el) => {
+      expect($el).to.contain(':00');
+    });
+  });
+});
+
+// NOTE: it can be hard to determine how long to wait for so switch to NOT
+// calm mode to test timeout against min/sec on screen
+// cy.get('#timer-text').contains('1:01', { timeout: 15000 }).then(($el) => {});
+// otherwise work against totalSeconds to be precise
+describe('Test Calm Mode', { includeShadowDom: true }, () => {
+  it('Set to Calm Mode & 2m', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setTimer(2, 'work');
+      win.pomoTimer.setCalm(true);
+    });
+  });
+
+  it('Check that timer text only shows minutes', () => {
+    cy.get('#timer-text').then(($el) => {
+      expect($el).to.contain('2m');
+    });
+  });
+
+  it('Check that 1:59 => 2m', () => {
+    cy.get('#timer-button').click();
+    cy.wait(250);     // wait a fast 1s
+    cy.window().then((win) => {
+      expect(win.pomoTimer.totalSeconds).to.eq(119);    // 01:59
+      cy.get('#timer-text').then(($el) => {
+        expect($el).to.contain('2m');
+      });
+    });
+  });
+
+  it('Check that text is 2m when reset after a 4 sec', () => {
+    cy.wait(4000);
+    cy.get('#timer-button').click().then(() => {
+      cy.get('#timer-text').then(($el) => {
+        expect($el).to.contain('2m');
+      });
+    }); 
+  });
+
+  it('Check that 01:01 => 2m', () => {
+    cy.get('#timer-button').then(($el) => {
+      expect($el).to.contain('Start');
+    });
+    cy.get('#timer-button').click();
+
+    cy.wait(14750);   // wait 1 sec
+    cy.window().then((win) => {
+      expect(win.pomoTimer.totalSeconds).to.eq(61);
+      cy.get('#timer-text').then(($el) => {
+        expect($el).to.contain('2m');
+      });
+    });
+    cy.get('#timer-button').click();    // reset for next test
+  });
+
+  it('Check that 01:00 => 1m & 00:59 => 1m', () => {
+    cy.get('#timer-button').then(($el) => {
+      expect($el).to.contain('Start');
+    });
+    cy.get('#timer-button').click();
+
+    cy.wait(15000);   // wait 1 min
+    cy.window().then((win) => {
+      expect(win.pomoTimer.totalSeconds).to.eq(60);
+      cy.get('#timer-text').then(($el) => {
+        expect($el).to.contain('1m');
+      });
+    });
+
+    cy.wait(250);     // wait 1 sec
+    cy.window().then((win) => {
+      expect(win.pomoTimer.totalSeconds).to.eq(59);
+      cy.get('#timer-text').then(($el) => {
+        expect($el).to.contain('1m');
+      });
+    });
+
+    cy.get('#timer-button').click();    // reset for next test
+  });
+
+  it('Check that 00:50 => 1m', () => {
+    cy.get('#timer-button').then(($el) => {
+      expect($el).to.contain('Start');
+    });
+    cy.get('#timer-button').click();
+
+    cy.wait(17500);   // wait 1 min, 10 sec
+    cy.window().then((win) => {
+      expect(win.pomoTimer.totalSeconds).to.eq(50);
+      cy.get('#timer-text').then(($el) => {
+        expect($el).to.contain('1m');
+      });
+    });
+    cy.get('#timer-button').click();    // reset for next test
+  });
+
+  it('Check that 00:01 => 1m & 00:00 => 0m', () => {
+    cy.get('#timer-button').then(($el) => {
+      expect($el).to.contain('Start');
+    });
+    cy.get('#timer-button').click();
+
+    cy.wait(29750);   // wait 1 min, 59 sec
+    cy.window().then((win) => {
+      expect(win.pomoTimer.totalSeconds).to.eq(1);
+      cy.get('#timer-text').then(($el) => {
+        expect($el).to.contain('1m');
+      });
+    });
+
+    cy.wait(250);     // wait 1 sec
+    cy.window().then((win) => {
+      expect(win.pomoTimer.totalSeconds).to.eq(0);
+      cy.get('#timer-text').then(($el) => {
+        expect($el).to.contain('0m');
+      });
+    });
+
+    cy.get('#timer-button').click();    // reset for next test 
+  });
+
+  it('Check that it resets normally => 2m', () => {
+    cy.wait(250);
+    cy.get('#timer-button').then(($el) => {
+      expect($el).to.contain('Start');
+    });
+    cy.window().then((win) => {
+      expect(win.pomoTimer.totalSeconds).to.eq(120);
+      cy.get('#timer-text').then(($el) => {
+        expect($el).to.contain('2m');
+      });
+    });
+  });
+});
+
+/*
 describe('Check all events', { includeShadowDom: true }, () => {
+  it('Set not Calm mode & 2m', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setTimer(2, 'work');
+      win.pomoTimer.setCalm(false);
+    });
+  });
+
   it('Button shows start', () => {
     cy.get('#timer-button').then(($el) => {
       expect($el).to.contain('Start');
@@ -388,7 +603,7 @@ describe('Bad Behavior: Invalid Timer Setting', { includeShadowDom: true }, () =
       expect(win.pomoTimer.totalSeconds).to.be.eq(2 * 60);
     });
   })
-});
+});*/
 
 /*
 describe('Basic Button Toggles', { includeShadowDom: true }, () => {
