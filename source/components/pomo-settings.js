@@ -80,7 +80,6 @@ class PomoSettings extends HTMLElement {
     shortBreakNumber.setAttribute('min', '1');
     shortBreakNumber.setAttribute('max', '60');
     shortBreakNumber.setAttribute('step', '1');
-    shortBreakNumber.setAttribute('oninput', `validity.valid|| (value="${shortBreakNumber.max}")`)
 
     // Input field for long break customization
     const longSection = document.createElement('div');
@@ -95,9 +94,8 @@ class PomoSettings extends HTMLElement {
     longBreakNumber.setAttribute('min', '1');
     longBreakNumber.setAttribute('max', '60');
     longBreakNumber.setAttribute('step', '1');
-    longBreakNumber.setAttribute('oninput', `validity.valid|| (value="${longBreakNumber.max}")`)
 
-
+    
     // Input field and slider to change volume
     const volumeSection = document.createElement('div');
 
