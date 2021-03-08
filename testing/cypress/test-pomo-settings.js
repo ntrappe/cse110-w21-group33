@@ -268,9 +268,9 @@ describe('Test sidebar elements', () => {
           resolve();
         };
         $el[0].addEventListener('calmSet', onCalmSet);
-        cy.window().then((win) => {
-          win.window.calmMode.setOn();
-        })
+        cy.get('#calmSwitch').then($el => {
+          $el[0].setOn();
+        });
       });
     });
     cy.wrap(eventPromise);
@@ -285,8 +285,8 @@ describe('Test sidebar elements', () => {
           resolve();
         };
         $el[0].addEventListener('darkSet', onDarkSet);
-        cy.window().then((win) => {
-          win.window.darkMode.setOn();
+        cy.get('#darkSwitch').then($el => {
+          $el[0].setOn();
         })
       });
     });
@@ -338,5 +338,5 @@ describe('Test sidebar elements', () => {
       });
     });
     cy.wrap(eventPromise);
-  }); 
+  });
 });

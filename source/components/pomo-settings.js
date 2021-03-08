@@ -21,7 +21,7 @@ class PomoSettings extends HTMLElement {
 
     // Connect sidebar to CSS
     const styles = document.createElement('link');
-    styles.setAttribute('id', 'settings-styles');
+    styles.setAttribute('id', 'settingsStyles');
     styles.setAttribute('rel', 'stylesheet');
     styles.setAttribute('href', './components/pomo-settings.css');
 
@@ -40,8 +40,7 @@ class PomoSettings extends HTMLElement {
     // Button to close sidebar
     const closeButton = document.createElement('button');
     closeButton.setAttribute('id', 'closeButton');
-    closeButton.setAttribute('class', 'button-off');
-
+    
     const closeIcon = document.createElement('img');
     closeIcon.setAttribute('id', 'closeButtonIcon');
     closeIcon.setAttribute('src', './assets/x.svg');
@@ -149,20 +148,16 @@ class PomoSettings extends HTMLElement {
     const calmLabel = document.createElement('label');
     calmLabel.innerHTML = 'Calm Mode';
     calmLabel.htmlFor = 'calmSwitch';
-    calmLabel.setAttribute('id', 'calmSwitch');
     const calmSwitch = new ToggleSwitch("calm", "busy");
+    calmSwitch.setAttribute('id', 'calmSwitch');
     
     // Toggle switch to enable dark mode
     const darkSection = document.createElement('div');
     const darkLabel = document.createElement('label');
     darkLabel.innerHTML = 'Dark Mode';
     darkLabel.htmlFor = 'darkSwitch';
-    darkLabel.setAttribute('id', 'darkSwitch');
     const darkSwitch = new ToggleSwitch("dark", "light");
-
-    //attach for Cypress testing
-    window.calmMode = calmSwitch;
-    window.darkMode = darkSwitch;
+    darkSwitch.setAttribute('id', 'darkSwitch');
 
     // Attach elements to shadow DOM
     shadow.appendChild(modal);
