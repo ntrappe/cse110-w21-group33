@@ -2,73 +2,20 @@
 <!-- In the future, the html part will be replaced by the buttons and content in the
 main HTML file, and this will just be an audio.js file-->
 
-<button id="btn">start countdown</button><br>
-<input id="volume-slider" name="volume-slider" type="range" min="0" max="100" value="100">
-<pre id="pre"></pre>
-
-<script type="text/javascript">
-    const audio = new Audio("https://dl.dropboxusercontent.com/s/1cdwpm3gca9mlo0/kick.mp3");
-    const enabled = false;
-    var slider = document.getElementById("volume-slider")
-    
-    let time = 10;
-
-    btn.onclick = e => {
-    audio.play().then(() => { // Pause
-        audio.pause();
-        audio.currentTime = 0;
-    });
-    countdown();
-    btn.disabled = true;
-    };
+<!--Sound effects obtained from https://www.zapsplat.com-->
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <button id="btn">start countdown</button><br>
+        <input id="volume-slider" name="volume-slider" type="range" min="0" max="100" value="100">
+        <pre id="pre"></pre>
+        <audio id="alarm-sound" src="/media/audio/zapsplat_household_alarm_clock_old_fashioned_ring_very_short_44062.mp3"></audio>
+        <script src="audio.js"></script>
+    </body>
+</html>
 
 
-    function countdown() {
-    pre.textContent = --time;
-    if(time === 5){
-        playSound();
-    } else if(time === 0){
-        // For actual code, change to next pomodoro mode
-        return;
-    }
-    setTimeout(countdown, 1000);
-    }
 
-    /**
-     * The sound should be played if sound is currently enabled
-     */
-    function playSound() {
-        if(enableSound){
-            audio.play(); 
-            //time = 10;
-            //btn.disabled = false;
-        }
-    }
-
-    /**
-     * Changes volume based on slider value
-     */
-    slider.oninput = function(){
-        audio.volume = this.value * 0.01;
-    }
-
-    /**
-     * Determines if sound should be played
-     * 
-     * enabled: boolean
-     */
-    function enableSound(enabled){
-        if(enabled == true){return true;}
-    }
-
-    /**
-     * Set location of the sound to be played
-     * 
-     * sound: string
-     */
-    function setSound(sound){
-        audio.src = sound;
-    }
-
-</script>
 
