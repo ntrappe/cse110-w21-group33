@@ -10,7 +10,7 @@ describe("Open Page", () => {
 // Remove this when the component has been implemented
 describe('Find Finish Element with ID', { includeShadowDom: true }, () => {
     it('Check for element (\'Finish\')', () => {
-        cy.get('p').then(($el) => {
+        cy.get('#finishButton').then(($el) => {
             expect($el).to.contain('Finish');
         });
     });
@@ -20,9 +20,9 @@ describe('Check Statistics Panel Elements With showModal()', { includeShadowDom:
     it('Check statistics panel has all elements', () => {
         cy.visit('./source/index.html');
         cy.window().then((win) => {
-            win.pomoFinish.showModal(3, 2, 0, 0, 75);
+            win.pomoFinish.showModal(3, 2, 0, 75, 0);
         });
-        cy.get('#statisticsPanel').then(($el) => {
+        cy.get('#statistics-panel').then(($el) => {
             expect($el).to.contain('Pomodoro Completed: 3');
             expect($el).to.contain('Short Breaks: 2');
             expect($el).to.contain('Long Breaks: 0');
