@@ -1,3 +1,7 @@
+/* Links Used
+https://stackoverflow.com/questions/44061473/move-text-on-toggle-switch-on-off
+https://www.w3schools.com/howto/howto_css_switch.asp
+*/
 class ToggleSwitch extends HTMLElement {
   constructor(mode1, mode2) {
     super();
@@ -5,6 +9,13 @@ class ToggleSwitch extends HTMLElement {
     this.toggle = true;
 
     const shadow = this.attachShadow({mode: 'open'});
+
+    // Connect toggleSwitch to CSS
+    const style = document.createElement('link');
+    style.setAttribute('id', 'settingsStyles');
+    style.setAttribute('rel', 'stylesheet');
+    style.setAttribute('href', './components/pomo-toggle.css');
+
     const toggleSwitch = document.createElement('label');  
     toggleSwitch.setAttribute('class', 'switch');
 
@@ -17,102 +28,14 @@ class ToggleSwitch extends HTMLElement {
     toggleSlider.setAttribute('id', `${mode1}Slider`);
 
     const onMode = document.createElement('span');  
-    onMode.setAttribute('class', `${mode1}_mode`);
-    onMode.setAttribute('id', `${mode1}_mode`);
+    onMode.setAttribute('class', 'onMode');
+    onMode.setAttribute('id', `${mode1}Mode`);
     onMode.textContent = "On";
 
     const offMode = document.createElement('span');  
-    offMode.setAttribute('class', `${mode2}_mode`);
-    offMode.setAttribute('id', `${mode2}_mode`);
+    offMode.setAttribute('class', 'offMode');
+    offMode.setAttribute('id', `${mode2}Mode`);
     offMode.textContent = "Off";
-
-    /* Links Used
-    https://stackoverflow.com/questions/44061473/move-text-on-toggle-switch-on-off
-    https://www.w3schools.com/howto/howto_css_switch.asp
-    */
-
-    const style = document.createElement('style');
-    style.textContent = `
-      /* Hides the checkbox */
-      .switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-      }
-        
-      /* Size of toggle background */
-      .switch { 
-        position: relative;
-        display: inline-block;
-        width: 100px;
-        height: 50px;
-      }
-
-      /* Toggle background */
-      .slider {
-        border-radius: 30px; /* makes the slider box round*/
-        position: absolute;
-        cursor: pointer;
-        top: 0;  /* Position of toggle background*/ 
-        left: 0; 
-        right: 0;
-        bottom: 0;
-        background-color:cyan;
-        transition: .4s;
-      }
-
-      /* Creates the toggle button */
-      .slider:before {
-        border-radius: 30px; /* Makes the button that you click on round*/
-        position: absolute;
-        content: "";
-        height: 40px; /* Changes circle size*/
-        width: 40px; /* Changes circle size*/
-        left: 3px; /* Changes circle starting position (Left/Right)*/
-        bottom: 5px; /* Changes circle starting position (Top/Bottom)*/
-        background-color:green; /* Circle Color*/
-        transition: .4s;
-      }
-
-      /* Changes the color of the slider when toggled */
-      input:checked + .slider {
-        background-color: blue;
-      }
-
-
-      input:checked + .slider:before {
-        transform: translateX(52px); /* How far the toggle circle moves */
-      }
-
-      .${mode2}_mode,.${mode1}_mode {
-        color: white; /*color of text (light/dark)*/
-        position: absolute;
-        /*transform: translate(-50%, -50%);*/
-        top: 25%; /*Position of text*/
-        left: 10%;
-        font-size: 20px; /*Size of text*/
-      }
-    
-      /* Hides offMode text initially */
-      .${mode2}_mode {
-        display:none;
-      }
-      /* Moves the onMode text to the right */
-      .${mode1}_mode {
-        display:block;
-        left:50px;
-      }
-      
-      /* Prevent highlight of toggle switch */
-      span {
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        -o-user-select: none;
-        user-select: none;
-      }`;
 
     shadow.append(style);
     shadow.appendChild(toggleSwitch);
@@ -160,6 +83,23 @@ class ToggleSwitch extends HTMLElement {
       onMode.style.display = 'none';
       this.toggle = false;
       shadow.dispatchEvent(this.toggleSwitchEvent);
+    }
+
+    /**
+     * Helper function to enable toggle switch
+     */
+    this.enable = () => {
+      toggleSlider.style.pointerEvents = "auto";
+      toggleSlider.style.opacity = "1";
+
+    }
+
+    /**
+     * Helper function to disable toggle switch
+     */
+    this.disable = () => {
+      toggleSlider.style.pointerEvents = "none";
+      toggleSlider.style.opacity = "0.6";
     }
   }
 }

@@ -94,29 +94,6 @@ class PomoSettings extends HTMLElement {
     longBreakNumber.setAttribute('max', '60');
     longBreakNumber.setAttribute('step', '1');
 
-    
-    // Input field and slider to change volume
-    const volumeSection = document.createElement('div');
-
-    const volumeLabel = document.createElement('label');
-    volumeLabel.innerHTML = 'Volume';
-    volumeLabel.htmlFor = 'volumeSlide';
-
-    const volumeSlide = document.createElement('input');
-    volumeSlide.setAttribute('type', 'range');
-    volumeSlide.setAttribute('id', 'volumeSlide');
-    volumeSlide.setAttribute('min', '0');
-    volumeSlide.setAttribute('max', '100');
-    volumeSlide.setAttribute('value', this.volume);
-
-    const volumeNumber = document.createElement('input');
-    volumeNumber.setAttribute('type', 'number');
-    volumeNumber.setAttribute('id', 'volumeNumber');
-    volumeNumber.setAttribute('min', '0');
-    volumeNumber.setAttribute('max', '100');
-    volumeNumber.setAttribute('value', this.volume);
-
-
     // Dropdown menu to change audio notification noise
     const soundSection = document.createElement('div');
     const soundLabel = document.createElement('label');
@@ -159,6 +136,27 @@ class PomoSettings extends HTMLElement {
     const darkSwitch = new ToggleSwitch("dark", "light");
     darkSwitch.setAttribute('id', 'darkSwitch');
 
+    // Input slider and number to change volume
+    const volumeSection = document.createElement('div');
+
+    const volumeLabel = document.createElement('label');
+    volumeLabel.innerHTML = 'Volume';
+    volumeLabel.htmlFor = 'volumeSlide';
+
+    const volumeSlide = document.createElement('input');
+    volumeSlide.setAttribute('type', 'range');
+    volumeSlide.setAttribute('id', 'volumeSlide');
+    volumeSlide.setAttribute('min', '0');
+    volumeSlide.setAttribute('max', '100');
+    volumeSlide.setAttribute('value', this.volume);
+
+    const volumeNumber = document.createElement('input');
+    volumeNumber.setAttribute('type', 'number');
+    volumeNumber.setAttribute('id', 'volumeNumber');
+    volumeNumber.setAttribute('min', '0');
+    volumeNumber.setAttribute('max', '100');
+    volumeNumber.setAttribute('value', this.volume);
+
     // Attach elements to shadow DOM
     shadow.appendChild(modal);
     shadow.appendChild(styles);
@@ -183,11 +181,6 @@ class PomoSettings extends HTMLElement {
     longSection.appendChild(longBreakLabel);
     longSection.appendChild(longBreakNumber)
 
-    sideBar.appendChild(volumeSection);
-    volumeSection.appendChild(volumeLabel);
-    volumeSection.appendChild(volumeSlide);
-    volumeSection.appendChild(volumeNumber);
-
     sideBar.appendChild(soundSection);
     soundSection.appendChild(soundLabel);
     soundSection.appendChild(soundSelect);
@@ -200,7 +193,11 @@ class PomoSettings extends HTMLElement {
     darkSection.appendChild(darkLabel);
     darkSection.appendChild(darkSwitch);
 
-    
+    sideBar.appendChild(volumeSection);
+    volumeSection.appendChild(volumeLabel);
+    volumeSection.appendChild(volumeSlide);
+    volumeSection.appendChild(volumeNumber);
+
     /* Events */
     this.workSetEvent = new CustomEvent('workSet', {
       bubbles: true,
@@ -275,6 +272,9 @@ class PomoSettings extends HTMLElement {
      */
     workNumber.onchange = () => {
       let workMin = Math.round(Number(workNumber.value));
+      if (workMin < 1){
+        workMin = 1;
+      }
       workNumber.value = workMin;
       this.work = workMin;
       shadow.dispatchEvent(this.workSetEvent);
@@ -296,6 +296,9 @@ class PomoSettings extends HTMLElement {
      */
     shortBreakNumber.onchange = () => {
       let shortBreakMin = Math.round(Number(shortBreakNumber.value));
+      if (shortBreakMin < 1){
+        shortBreakMin = 1;
+      }
       shortBreakNumber.value = shortBreakMin;
       this.shortBreak = shortBreakMin;
       shadow.dispatchEvent(this.shortBreakSetEvent);
@@ -317,6 +320,9 @@ class PomoSettings extends HTMLElement {
      */
     longBreakNumber.onchange = () => {
       let longBreakMin = Math.round(Number(longBreakNumber.value));
+      if (longBreakMin < 1){
+        longBreakMin = 1;
+      }
       longBreakNumber.value = longBreakMin;
       this.longBreak = longBreakMin;
       shadow.dispatchEvent(this.longBreakSetEvent);
@@ -359,6 +365,13 @@ class PomoSettings extends HTMLElement {
     }
 
     /**
+     * Have volumeNumber input show the same value as volumeSlide
+     */
+    volumeSlide.oninput = () => {
+      volumeNumber.value = volumeSlide.value;
+    }
+
+    /**
      * Coordinate slider and input with each other, sets volume variable, 
      * and plays audio so the user can test volume
      * @param {Number} volume volume of audio
@@ -397,17 +410,28 @@ class PomoSettings extends HTMLElement {
     });
 
     /**
-     * Enable settings by re-enabling settings button
+     * Enable settings 
      */
     this.enableSettings = () => {
-      openButton.disabled = false;
+      workNumber.disabled = false;
+      shortBreakNumber.disabled = false;
+      longBreakNumber.disabled = false;
+      soundSelect.disabled = false;
+      calmSwitch.enable();
+      darkSwitch.enable();
     }
 
     /**
-     * Disable settings by disabling settings button
+     * Disable settings besides volume
      */
     this.disableSettings = () => {
-      openButton.disabled = true;
+      workNumber.disabled = true;
+      shortBreakNumber.disabled = true;
+      longBreakNumber.disabled = true;
+      soundSelect.disabled = true;
+      soundSelect.style.opacity = "1";
+      calmSwitch.disable();
+      darkSwitch.disable();
     }
 
     /**

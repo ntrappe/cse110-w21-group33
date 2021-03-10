@@ -68,6 +68,25 @@ describe('Test sidebar elements', () => {
     });
   });
 
+  it('On blank input, number inputs revert to min', { includeShadowDom: true }, () => {
+    cy.get('#workNumber').type('{selectall}{backspace}', {force: true}).trigger('change');
+    cy.get('#workNumber').then($el => {
+      expect($el).to.have.value(1);
+    });
+    cy.get('#shortBreakNumber').type('{selectall}{backspace}', {force: true}).trigger('change');
+    cy.get('#shortBreakNumber').then($el => {
+      expect($el).to.have.value(1);
+    });
+    cy.get('#longBreakNumber').type('{selectall}{backspace}', {force: true}).trigger('change');
+    cy.get('#longBreakNumber').then($el => {
+      expect($el).to.have.value(1);
+    });
+    cy.get('#volumeNumber').type('{selectall}{backspace}', {force: true}).trigger('change');
+    cy.get('#volumeNumber').then($el => {
+      expect($el).to.have.value(0);
+    });
+  })
+
   it('volumeNumber inputs lower than lower bound become 0', { includeShadowDom: true }, () => {
     cy.get('#volumeNumber').type('{selectall}{backspace}-1', {force: true}).trigger('change');
     cy.get('#volumeNumber')
@@ -173,41 +192,85 @@ describe('Test sidebar elements', () => {
         expect($el).to.have.value('rooster');
       })
       //calm
-      cy.get('#calm_mode')
+      cy.get('#calmMode')
       .then($el => {
         expect($el[0].style.display).to.eq('block');
       });
       //dark
-      cy.get('#dark_mode')
+      cy.get('#darkMode')
       .then($el => {
         expect($el[0].style.display).to.eq('block');
       });
     });
   });
 
-  it('disableSettings() disables settings button', { includeShadowDom: true }, () => {
-    cy.get('#openButton')
-    .then($el => {
-      $el.removeAttr('disabled');
-    });
+  it('disableSettings() disables settings besides volume', { includeShadowDom: true }, () => {
     cy.window().then((win) => {
       win.pomoSettings.disableSettings();
     });
-    cy.get('#openButton')
+    cy.get('#workNumber')
     .then($el => {
       expect($el).to.have.attr('disabled');
     });
+    cy.get('#shortBreakNumber')
+    .then($el => {
+      expect($el).to.have.attr('disabled');
+    });
+    cy.get('#longBreakNumber')
+    .then($el => {
+      expect($el).to.have.attr('disabled');
+    });
+    cy.get('#calmSlider')
+    .then($el => {
+      expect($el[0].style.pointerEvents).to.eq('none');
+      expect($el[0].style.opacity).to.eq('0.6');
+    });
+    cy.get('#darkSlider')
+    .then($el => {
+      expect($el[0].style.pointerEvents).to.eq('none');
+      expect($el[0].style.opacity).to.eq('0.6');
+    });
+    cy.get('#volumeSlide')
+    .then($el => {
+      expect($el).to.not.have.attr('disabled');
+    });
+    cy.get('#volumeNumber')
+    .then($el => {
+      expect($el).to.not.have.attr('disabled');
+    });
   });
 
-  it('endableSettings() enables settings button', { includeShadowDom: true }, () => {
-    cy.get('#openButton')
-    .then($el => {
-      $el.attr('disabled', 'disabled');
-    });
+  it('endableSettings() enables all settings', { includeShadowDom: true }, () => {
     cy.window().then((win) => {
       win.pomoSettings.enableSettings();
     });
-    cy.get('#openButton')
+    cy.get('#workNumber')
+    .then($el => {
+      expect($el).to.not.have.attr('disabled');
+    });
+    cy.get('#shortBreakNumber')
+    .then($el => {
+      expect($el).to.not.have.attr('disabled');
+    });
+    cy.get('#longBreakNumber')
+    .then($el => {
+      expect($el).to.not.have.attr('disabled');
+    });
+    cy.get('#calmSlider')
+    .then($el => {
+      expect($el[0].style.pointerEvents).to.eq('auto');
+      expect($el[0].style.opacity).to.eq('1');
+    });
+    cy.get('#darkSlider')
+    .then($el => {
+      expect($el[0].style.pointerEvents).to.eq('auto');
+      expect($el[0].style.opacity).to.eq('1');
+    });
+    cy.get('#volumeSlide')
+    .then($el => {
+      expect($el).to.not.have.attr('disabled');
+    });
+    cy.get('#volumeNumber')
     .then($el => {
       expect($el).to.not.have.attr('disabled');
     });
@@ -334,6 +397,68 @@ describe('Test sidebar elements', () => {
         };
         $el[0].addEventListener('longBreakSet', onLongBreakSet);
         cy.get('#longBreakNumber').type('{selectall}{backspace}20', {force: true})
+        .trigger('change');
+      });
+    });
+    cy.wrap(eventPromise);
+  });
+
+  it('Blank workNumber input fires events', { includeShadowDom: true }, () => {
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-settings').then($el => {
+        const onWorkSet = (e) => {
+          expect(e.detail.work()).to.eq(1);
+          $el[0].removeEventListener('workSet', onWorkSet);
+          resolve();
+        };
+        $el[0].addEventListener('workSet', onWorkSet);
+        cy.get('#workNumber').type('{selectall}{backspace}', {force: true}).trigger('change');
+      });
+    });
+    cy.wrap(eventPromise);
+  });
+
+  it('Blank shortBreakNumber input fires events', { includeShadowDom: true }, () => {
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-settings').then($el => {
+        const onShortBreakSet = (e) => {
+          expect(e.detail.shortBreak()).to.eq(1);
+          $el[0].removeEventListener('shortBreakSet', onShortBreakSet);
+          resolve();
+        };
+        $el[0].addEventListener('shortBreakSet', onShortBreakSet);
+        cy.get('#shortBreakNumber').type('{selectall}{backspace}', {force: true}).trigger('change');
+      });
+    });
+    cy.wrap(eventPromise);
+  });
+
+  it('Blank longNumber input fires events', { includeShadowDom: true }, () => {
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-settings').then($el => {
+        const onLongBreakSet = (e) => {
+          expect(e.detail.longBreak()).to.eq(1);
+          $el[0].removeEventListener('longBreakSet', onLongBreakSet);
+          resolve();
+        };
+        $el[0].addEventListener('longBreakSet', onLongBreakSet);
+        cy.get('#longBreakNumber').type('{selectall}{backspace}', {force: true})
+        .trigger('change');
+      });
+    });
+    cy.wrap(eventPromise);
+  });
+
+  it('Blank volumeNumber input fires events', { includeShadowDom: true }, () => {
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-settings').then($el => {
+        const onVolumeSet = (e) => {
+          expect(e.detail.volume()).to.eq(0);
+          $el[0].removeEventListener('volumeSet', onVolumeSet);
+          resolve();
+        };
+        $el[0].addEventListener('volumeSet', onVolumeSet);
+        cy.get('#volumeNumber').type('{selectall}{backspace}', {force: true})
         .trigger('change');
       });
     });
