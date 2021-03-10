@@ -1,4 +1,6 @@
-import { getDayCount, setDayCount, getCalm, setCalm, getVolume, setVolume, getSound, setSound, getDark, setDark, getWork, setWork, getShortBreak, setShortBreak, getLongBreak, setLongBreak } from '../../source/storage';
+import { getDayCount, setDayCount, getCalm, setCalm, getVolume, setVolume, getSound, setSound,
+   getDark, setDark, getWork, setWork, getShortBreak, setShortBreak, getLongBreak, setLongBreak }
+    from '../../source/storage';
 
 beforeEach(() => {
   localStorage.clear();
@@ -81,7 +83,7 @@ test('setDayCount for a new Month', () => {
 
 test('setDayCount for a new Year', () => {
   var date = new Date();
-  localStorage.setItem('prevYear',date.getFullYear()-1); // Will be the year before current year 
+  localStorage.setItem('prevYear',date.getFullYear()-1); // Will be the year before current year
   localStorage.setItem('prevMonth',date.getMonth()+1);
   localStorage.setItem('prevDay',date.getDate());
   localStorage.setItem('pomodoroCount',10);

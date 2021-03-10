@@ -1,5 +1,4 @@
-console.log("Storage loaded!");
-
+/* Variables for Local Storage */
 const DEFAULT_WORK = 25;
 const DEFAULT_SHORT_BREAK = 5;
 const DEFAULT_LONG_BREAK = 15;
@@ -64,7 +63,6 @@ function getCalm() {
       setCalm(false); // Creating local storage for calm mode if it doesn't exist
   }
   return eval(localStorage.getItem('isCalm'));
-
 }
 
 /**
@@ -193,6 +191,6 @@ function setLongBreak(longBreak) {
   localStorage.setItem('longBreak',longBreak);
 }
 
-export {getDayCount,setDayCount,getCalm,setCalm,getVolume,setVolume,getSound,setSound,
-  getDark,setDark,getWork,setWork,getShortBreak,setShortBreak,getLongBreak,setLongBreak}
+export {getDayCount, setDayCount, getCalm, setCalm, getVolume, setVolume, getSound, setSound,
+  getDark, setDark, getWork, setWork, getShortBreak, setShortBreak, getLongBreak, setLongBreak}
 /* End of functions for Local Storage */
