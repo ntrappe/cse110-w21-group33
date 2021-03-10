@@ -4,78 +4,58 @@ class PomoAudio extends HTMLElement {
 
         const shadow = this.attachShadow({mode: 'open'});
 
-        const slider = document.createElement('input');
-        slider.setAttribute('id', 'volume-slider');
-        slider.setAttribute('name', 'volume-slider');
-        slider.setAttribute('type', 'range');
-        slider.setAttribute('min', '0');
-        slider.setAttribute('max', '100');
-
         const audio = document.createElement('audio');
         audio.setAttribute('id', 'alarm-sound');
-        audio.setAttribute('src', '/media/audio/zapsplat_household_alarm_clock_old_fashioned_ring_very_short_44062.mp3')
+        audio.setAttribute('src', '/media/audio/bike_chime.mp3')
 
-        const btn = document.createElement('btn');
-        btn.setAttribute('id', 'btn');
-        btn.textContent = 'start countdown';
-        
-        shadow.appendChild(slider);
         shadow.appendChild(audio);
-        shadow.appendChild(btn);
 
-        const enabled = false;
+        this.enabled = true;
 
-        btn.onclick = e => {
-            audio.play();
+        /**
+         * Allows the sound to be played
+         */
+        this.enableSound = () => {
+            this.enabled = true;
         };
 
         /**
-         * Changes volume based on slider value
+         * Prevents the sound from being played
          */
-        slider.oninput = function(){
-            audio.volume = this.value * 0.01;
-        }
+         this.disableSound = () => {
+            this.enabled = false;
+        };
 
         /**
-         * Counts seconds down, checks for correct time to call function to play sound
-         */
-        this.countdown = () => {
-            pre.textContent = --time;
-            if(time === 5){
-                playSound();
-            } else if(time === 0){
-                // For actual code, change to next pomodoro mode
-                return;
-            }
-            setTimeout(countdown, 1000);
-        }
-
-        /**
-         * The sound should be played if sound is currently enabled
+         * Play the current sound at the current volume
          */
         this.playSound = () => {
-            if(enableSound(enabled)){
+            if (this.enabled) {
                 audio.play(); 
             }
-        }
+        };
 
         /**
-         * Determines if sound should be played
-         * @param {boolean} enabled - If sound is enabled or not
+         * Set the volume of the audio component
+         * @param {Number} volume - Volume level from 0 to 100
          */
-        this.enableSound = (enabled) => {
-            if(enabled == true){return true;}
-            return false;
+        this.setVolume = (volume) => {
+            // Invalid input received
+            if (volume < 0 || volume > 100) {
+                return;
+            }
+
+            audio.volume = volume * 0.01; // Scale range to 0 to 1.0
         }
 
         /**
          * Set location of the sound to be played
-         * @param {string} sound - Relative path of sound
+         * @param {String} sound - Absolute path of sound
          */
         this.setSound = (sound) => {
             audio.src = sound;
         }
-      }
+    }
 }
 
 customElements.define('pomo-audio', PomoAudio);
