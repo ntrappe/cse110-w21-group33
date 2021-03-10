@@ -50,38 +50,56 @@ class PomoTimer extends HTMLElement {
 
         /* Events */
         const timerStartEvent = new CustomEvent('timerStart', {
-            bubbles: true,          // event listenable outside of container
-            composed: true
+          bubbles: true,          // event listenable outside of container
+          composed: true
         });
 
         const timerResetEvent = new CustomEvent('timerReset', {
-            bubbles: true,      
-            composed: true
+          bubbles: true,      
+          composed: true
         });
 
         const timerFinishEvent = new CustomEvent('timerFinish', {
-            bubbles: true,      
-            composed: true
+          bubbles: true,      
+          composed: true
         });
 
         const tickEvent = new CustomEvent('tick', {
-            bubbles: true,      
-            composed: true,
-            detail: {timeRemaining: () => this.totalSeconds}
+          bubbles: true,      
+          composed: true,
+          detail: {timeRemaining: () => this.totalSeconds}
         });
 
         /**
          * Function calls to toggle button and control timer based on user input
          */
         timerButton.onclick = () => {
-            if (timerButton.textContent === START) {
-                setResetButton(timerButton);
-                this.timerStart();
-            } else {
-                setStartButton(timerButton);
-                this.timerReset();
-            }
+          if (timerButton.textContent === START) {
+            setResetButton(timerButton);
+              this.timerStart();
+          } else {
+            setStartButton(timerButton);
+            this.timerReset();
+          }
         };
+
+        /**
+         * Functions that calls timerButton.onclick() if s or r key is pressed
+         * @param {Number} e value that the eventListener gets when a key is clicked
+         */
+        function keyHolder(e) {
+          if (e.key == 's') { // Checking if the key clicked is a s
+            if (timerButton.textContent == START) {
+              timerButton.onclick(); // Forces a onclick button for timerButton
+            }
+          }
+          else if (e.key == 'r') { // Checking if the key clicked is a r
+            if(timerButton.textContent == RESET) {
+              timerButton.onclick(); // Forces a onclick button for timerButton 
+            }
+          }
+        }
+        document.addEventListener("keydown",keyHolder);
 
         /**
         * Stops the timer from ticking and resets it based on button click

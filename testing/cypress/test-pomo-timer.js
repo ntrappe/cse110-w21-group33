@@ -101,3 +101,20 @@ describe('Basic Button Toggles', { includeShadowDom: true }, () => {
     });
   });
 });*/
+
+describe('Basic Button Toggles for Accessibility', { includeShadowDom: true }, () => {
+  it('Button toggles when s is pressed (Start)', () => {
+    cy.get('body').type('s').then(() => {
+      cy.get('#timer-button').then(($el) => {
+        expect($el).to.contain('Reset');
+      });
+    });
+  });
+  it('Button toggles when r is pressed (Reset)', () => {
+    cy.get('body').type('r').then(() => {
+      cy.get('#timer-button').then(($el) => {
+        expect($el).to.contain('Start');
+      });
+    });
+  });
+})
