@@ -14,35 +14,27 @@
 
 /* Toggle background */
 .slider {
-  /* makes the slider box round*/
   border-radius: 30px;
   position: absolute;
   cursor: pointer;
-  /* Position of toggle background*/ 
   top: 0;
-  left: 0; 
+  left: 0;
   right: 0;
   bottom: 0;
-  background-color:cyan;
+  background-color: cyan;
   transition: 0.4s;
 }
 
 /* Creates the toggle button */
 .slider::before {
-  /* Makes the button that you click on round*/
   border-radius: 30px;
   position: absolute;
   content: "";
-  /* Changes circle size*/
   height: 40px;
-  /* Changes circle size*/
   width: 40px;
-  /* Changes circle starting position (Left/Right)*/
   left: 3px;
-  /* Changes circle starting position (Top/Bottom)*/
   bottom: 5px;
-  /* Circle Color*/
-  background-color:green;
+  background-color: green;
   transition: 0.4s;
 }
 
@@ -52,19 +44,22 @@ input:checked + .slider {
 }
 
 input:checked + .slider::before {
-  /* How far the toggle circle moves */
   transform: translateX(52px);
 }
 
-.offMode, .onMode {
-  /*color of text (light/dark)*/
+.offMode {
   color: white;
   position: absolute;
-  /*transform: translate(-50%, -50%);*/
-  /*Position of text*/
   top: 25%;
   left: 10%;
-  /*Size of text*/
+  font-size: 20px;
+}
+
+.onMode {
+  color: white;
+  position: absolute;
+  top: 25%;
+  left: 10%;
   font-size: 20px;
 }
 
