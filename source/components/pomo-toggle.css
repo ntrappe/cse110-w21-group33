@@ -3,9 +3,9 @@
   width: 0;
   height: 0;
 }
-  
+
 /* Size of toggle background */
-.switch { 
+.switch {
   position: relative;
   display: inline-block;
   width: 100px;
@@ -14,28 +14,36 @@
 
 /* Toggle background */
 .slider {
-  border-radius: 30px; /* makes the slider box round*/
+  /* makes the slider box round*/
+  border-radius: 30px;
   position: absolute;
   cursor: pointer;
-  top: 0;  /* Position of toggle background*/ 
+  /* Position of toggle background*/ 
+  top: 0;
   left: 0; 
   right: 0;
   bottom: 0;
   background-color:cyan;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 /* Creates the toggle button */
-.slider:before {
-  border-radius: 30px; /* Makes the button that you click on round*/
+.slider::before {
+  /* Makes the button that you click on round*/
+  border-radius: 30px;
   position: absolute;
   content: "";
-  height: 40px; /* Changes circle size*/
-  width: 40px; /* Changes circle size*/
-  left: 3px; /* Changes circle starting position (Left/Right)*/
-  bottom: 5px; /* Changes circle starting position (Top/Bottom)*/
-  background-color:green; /* Circle Color*/
-  transition: .4s;
+  /* Changes circle size*/
+  height: 40px;
+  /* Changes circle size*/
+  width: 40px;
+  /* Changes circle starting position (Left/Right)*/
+  left: 3px;
+  /* Changes circle starting position (Top/Bottom)*/
+  bottom: 5px;
+  /* Circle Color*/
+  background-color:green;
+  transition: 0.4s;
 }
 
 /* Changes the color of the slider when toggled */
@@ -43,28 +51,32 @@ input:checked + .slider {
   background-color: blue;
 }
 
-
-input:checked + .slider:before {
-  transform: translateX(52px); /* How far the toggle circle moves */
+input:checked + .slider::before {
+  /* How far the toggle circle moves */
+  transform: translateX(52px);
 }
 
-.offMode,.onMode {
-  color: white; /*color of text (light/dark)*/
+.offMode, .onMode {
+  /*color of text (light/dark)*/
+  color: white;
   position: absolute;
   /*transform: translate(-50%, -50%);*/
-  top: 25%; /*Position of text*/
+  /*Position of text*/
+  top: 25%;
   left: 10%;
-  font-size: 20px; /*Size of text*/
+  /*Size of text*/
+  font-size: 20px;
 }
 
 /* Hides offMode text initially */
 .offMode {
-  display:none;
+  display: none;
 }
+
 /* Moves the onMode text to the right */
 .onMode {
-  display:block;
-  left:50px;
+  display: block;
+  left: 50px;
 }
 
 /* Prevent highlight of toggle switch */
