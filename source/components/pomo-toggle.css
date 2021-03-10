@@ -48,30 +48,21 @@ input:checked + .slider::before {
 }
 
 .offMode {
-  color: white;
-  position: absolute;
-  top: 25%;
-  left: 10%;
-  font-size: 20px;
-}
-
-.onMode {
-  color: white;
-  position: absolute;
-  top: 25%;
-  left: 10%;
-  font-size: 20px;
-}
-
-/* Hides offMode text initially */
-.offMode {
   display: none;
+  color: white;
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  font-size: 20px;
 }
 
-/* Moves the onMode text to the right */
 .onMode {
   display: block;
-  left: 50px;
+  color: white;
+  position: absolute;
+  top: 25%;
+  left: 50px; 
+  font-size: 20px;
 }
 
 /* Prevent highlight of toggle switch */
