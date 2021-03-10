@@ -1,6 +1,6 @@
-describe("Open Page", () => {
-  it("Opens index.html", () => {
-      cy.visit('./source/index.html')
+describe('Open Page', () => {
+  it('Opens index.html', () => {
+    cy.visit('./source/index.html');
   });
 });
 
@@ -19,13 +19,13 @@ describe('Find Timer Elements', { includeShadowDom: true }, () => {
 });
 
 describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
-  it('Mode should be \'Work\'', () => {
+  it("Mode should be 'Work'", () => {
     cy.get('#mode').then(($el) => {
       expect($el).to.contain('WORK');
     });
   });
 
-  it('Button should be \'Start\'', () => {
+  it("Button should be 'Start'", () => {
     cy.get('#button').then(($el) => {
       expect($el).to.contain('Start');
     });

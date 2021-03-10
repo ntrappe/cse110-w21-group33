@@ -2,7 +2,8 @@
   "extends": [
     "airbnb",
     "plugin:prettier/recommended",
-    "prettier"
+    "prettier",
+    "plugin:cypress/recommended"
   ],
   "env": {
     "browser": true,
