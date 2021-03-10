@@ -2,6 +2,10 @@
 https://stackoverflow.com/questions/44061473/move-text-on-toggle-switch-on-off
 https://www.w3schools.com/howto/howto_css_switch.asp
 */
+const TOGGLE_DELAY = 200;
+const ENABLE_OPACITY = "1";
+const DISABLE_OPACITY = "0.6";
+
 class ToggleSwitch extends HTMLElement {
   constructor(mode1, mode2) {
     super();
@@ -62,7 +66,7 @@ class ToggleSwitch extends HTMLElement {
         this.setOn();
       }
       toggleSlider.style.pointerEvents = "none";
-      setTimeout(() => {toggleSlider.style.pointerEvents = "auto";}, 200);
+      setTimeout(() => {toggleSlider.style.pointerEvents = "auto";}, TOGGLE_DELAY);
     } 
 
     /**
@@ -90,7 +94,7 @@ class ToggleSwitch extends HTMLElement {
      */
     this.enable = () => {
       toggleSlider.style.pointerEvents = "auto";
-      toggleSlider.style.opacity = "1";
+      toggleSlider.style.opacity = ENABLE_OPACITY;
 
     }
 
@@ -99,7 +103,7 @@ class ToggleSwitch extends HTMLElement {
      */
     this.disable = () => {
       toggleSlider.style.pointerEvents = "none";
-      toggleSlider.style.opacity = "0.6";
+      toggleSlider.style.opacity = DISABLE_OPACITY;
     }
   }
 }

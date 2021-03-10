@@ -9,7 +9,7 @@ class PomoFinish extends HTMLElement {
         element.textContent = "Finish";
         
         shadow.appendChild(element);
-      }
+    }
 }
 
 customElements.define('pomo-finish', PomoFinish);

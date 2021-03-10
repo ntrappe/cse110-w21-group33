@@ -1,5 +1,11 @@
 import { ToggleSwitch } from './pomo-toggle.js';
 
+const MIN_MINUTES = '1';
+const MAX_MINUTES = '60';
+const MIN_VOLUME = '0';
+const MAX_VOLUME = '100';
+const ERROR_FLASH_LENGTH = 100;
+
 class PomoSettings extends HTMLElement {
   constructor() {
     super();
@@ -62,8 +68,8 @@ class PomoSettings extends HTMLElement {
     workNumber.setAttribute('id', 'workNumber');
     workNumber.setAttribute('type', 'number');
     workNumber.setAttribute('value', this.work);
-    workNumber.setAttribute('min', '1');
-    workNumber.setAttribute('max', '60');
+    workNumber.setAttribute('min', MIN_MINUTES);
+    workNumber.setAttribute('max', MAX_MINUTES);
     workNumber.setAttribute('step', '1');
 
     // Input field for short break customization
@@ -76,8 +82,8 @@ class PomoSettings extends HTMLElement {
     shortBreakNumber.setAttribute('id', 'shortBreakNumber');
     shortBreakNumber.setAttribute('type', 'number');
     shortBreakNumber.setAttribute('value', this.shortBreak);
-    shortBreakNumber.setAttribute('min', '1');
-    shortBreakNumber.setAttribute('max', '60');
+    shortBreakNumber.setAttribute('min', MIN_MINUTES);
+    shortBreakNumber.setAttribute('max', MAX_MINUTES);
     shortBreakNumber.setAttribute('step', '1');
 
     // Input field for long break customization
@@ -90,8 +96,8 @@ class PomoSettings extends HTMLElement {
     longBreakNumber.setAttribute('id', 'longBreakNumber');
     longBreakNumber.setAttribute('type', 'number');
     longBreakNumber.setAttribute('value', this.longBreak);
-    longBreakNumber.setAttribute('min', '1');
-    longBreakNumber.setAttribute('max', '60');
+    longBreakNumber.setAttribute('min', MIN_MINUTES);
+    longBreakNumber.setAttribute('max', MAX_MINUTES);
     longBreakNumber.setAttribute('step', '1');
 
     // Dropdown menu to change audio notification noise
@@ -146,15 +152,15 @@ class PomoSettings extends HTMLElement {
     const volumeSlide = document.createElement('input');
     volumeSlide.setAttribute('type', 'range');
     volumeSlide.setAttribute('id', 'volumeSlide');
-    volumeSlide.setAttribute('min', '0');
-    volumeSlide.setAttribute('max', '100');
+    volumeSlide.setAttribute('min', MIN_VOLUME);
+    volumeSlide.setAttribute('max', MAX_VOLUME);
     volumeSlide.setAttribute('value', this.volume);
 
     const volumeNumber = document.createElement('input');
     volumeNumber.setAttribute('type', 'number');
     volumeNumber.setAttribute('id', 'volumeNumber');
-    volumeNumber.setAttribute('min', '0');
-    volumeNumber.setAttribute('max', '100');
+    volumeNumber.setAttribute('min', MIN_VOLUME);
+    volumeNumber.setAttribute('max', MAX_VOLUME);
     volumeNumber.setAttribute('value', this.volume);
 
     // Attach elements to shadow DOM
@@ -294,7 +300,7 @@ class PomoSettings extends HTMLElement {
           workNumber.min : workNumber.max;
 
         // After waiting, turn textbox border back to normal
-        setTimeout(() => {workNumber.classList.remove('invalid')}, 100);
+        setTimeout(() => {workNumber.classList.remove('invalid')}, ERROR_FLASH_LENGTH);
       }
     }
 
@@ -325,7 +331,7 @@ class PomoSettings extends HTMLElement {
           shortBreakNumber.min : shortBreakNumber.max;
 
         // After waiting, turn textbox border back to normal
-        setTimeout(() => {shortBreakNumber.classList.remove('invalid')}, 100);
+        setTimeout(() => {shortBreakNumber.classList.remove('invalid')}, ERROR_FLASH_LENGTH);
       }
     }
 
@@ -356,7 +362,7 @@ class PomoSettings extends HTMLElement {
         longBreakNumber.min : longBreakNumber.max;
 
         // After waiting, turn textbox border back to normal
-        setTimeout(() => {longBreakNumber.classList.remove('invalid')}, 100);
+        setTimeout(() => {longBreakNumber.classList.remove('invalid')}, ERROR_FLASH_LENGTH);
       }
     }
 
@@ -388,7 +394,7 @@ class PomoSettings extends HTMLElement {
         volumeNumber.min : volumeNumber.max;
 
         // After waiting, turn textbox border back to normal
-        setTimeout(() => {volumeNumber.classList.remove('invalid')}, 100);
+        setTimeout(() => {volumeNumber.classList.remove('invalid')}, ERROR_FLASH_LENGTH);
       }
     }
 
