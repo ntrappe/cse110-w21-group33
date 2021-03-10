@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  run-lint:
+  run-tests:
     name: Lint Code Base Job
     runs-on: ubuntu-latest
 
@@ -19,24 +19,8 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
 
-      - name: Install linters
+      # Run Jest and Cypress to automatically run tests and show code coverage
+      - name: Run Eslint, Stylelint, Htmlhint
         run: | 
               npm i # Handle installation on virtual machine
-
-      # Lints through entire code base for syntax/style errors
-      - name: Lint Code Base
-        uses: github/super-linter@v3
-        env:
-          VALIDATE_ALL_CODEBASE: true
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-          LINTER_RULES_PATH: /
-          CSS_FILE_NAME: .stylelintrc.json
-          JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
-
-          # Set which file types to lint and what folders/files to exclude
-          VALIDATE_CSS: true
-          VALIDATE_HTML: true
-          VALIDATE_JAVASCRIPT_ES: true
-          FILTER_REGEX_INCLUDE: .*/source/.*
+              npm run lint_test # Run linter tests and output results
