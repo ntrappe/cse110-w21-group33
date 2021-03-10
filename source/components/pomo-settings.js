@@ -285,9 +285,16 @@ class PomoSettings extends HTMLElement {
      */
     workNumber.oninput = () => {
       if (!workNumber.validity.valid) {
+        
+        // Turn textbox border red temporarily
+        workNumber.classList.add('invalid');
+
         // Round invalid input to either min or max value
         workNumber.value = workNumber.value <= 0 ? 
           workNumber.min : workNumber.max;
+
+        // After waiting, turn textbox border back to normal
+        setTimeout(() => {workNumber.classList.remove('invalid')}, 100);
       }
     }
 
@@ -309,9 +316,16 @@ class PomoSettings extends HTMLElement {
      */
     shortBreakNumber.oninput = () => {
       if (!shortBreakNumber.validity.valid) {
+
+        // Turn textbox border red temporarily
+        shortBreakNumber.classList.add('invalid');
+
         // Round invalid input to either min or max value
         shortBreakNumber.value = shortBreakNumber.value <= 0 ? 
           shortBreakNumber.min : shortBreakNumber.max;
+
+        // After waiting, turn textbox border back to normal
+        setTimeout(() => {shortBreakNumber.classList.remove('invalid')}, 100);
       }
     }
 
@@ -333,9 +347,16 @@ class PomoSettings extends HTMLElement {
      */
     longBreakNumber.oninput = () => {
       if (!longBreakNumber.validity.valid) {
+
+        // Turn textbox border red temporarily
+        longBreakNumber.classList.add('invalid');
+
         // Round invalid input to either min or max value
         longBreakNumber.value = longBreakNumber.value <= 0 ? 
         longBreakNumber.min : longBreakNumber.max;
+
+        // After waiting, turn textbox border back to normal
+        setTimeout(() => {longBreakNumber.classList.remove('invalid')}, 100);
       }
     }
 
@@ -358,9 +379,16 @@ class PomoSettings extends HTMLElement {
      */
     volumeNumber.oninput = () => {
       if (!volumeNumber.validity.valid) {
+
+        // Turn textbox border red temporarily
+        volumeNumber.classList.add('invalid');
+
         // Round invalid input to either min or max value
         volumeNumber.value = volumeNumber.value <= 0 ? 
         volumeNumber.min : volumeNumber.max;
+
+        // After waiting, turn textbox border back to normal
+        setTimeout(() => {volumeNumber.classList.remove('invalid')}, 100);
       }
     }
 
