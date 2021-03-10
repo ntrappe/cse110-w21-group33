@@ -62,3 +62,5 @@ function enableSound(enabled){
 function setSound(sound){
     audio.src = sound;
 }
+
+export {countdown, playSound, enableSound, setSound};

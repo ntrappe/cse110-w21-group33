@@ -1,20 +1,13 @@
 import * as audioHelper from "../../source/audio"
 
-test('enabled is false', () => {
-    expect(audioHelper.enableSound(false)).toBe(false);
-});
-
 /* Test for enableSound */
-// describe('test enableSound', () => {
-//     const enableSound = require('../../source/audio');
-//     test('enabled is false', () => {
-//         // Press button first
-//         expect(enableSound(false)).toBe(false);
-//     });
+describe('test enableSound', () => {
+
+    test('enabled is false', () => {
+        expect(audioHelper.enableSound(false)).toBe(false);
+    });
+    test('enabled is true', () => {
+        expect(audioHelper.enableSound(true)).toBe(true);
+    });
   
-//   });
-
-
-/* Test for setSound */
-
-/* Test for playSound */
+  });
