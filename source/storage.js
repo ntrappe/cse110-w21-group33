@@ -193,5 +193,6 @@ function setLongBreak(longBreak) {
   localStorage.setItem('longBreak',longBreak);
 }
 
-export {getDayCount,setDayCount,getCalm,setCalm,getVolume,setVolume,getSound,setSound,getDark,setDark,getWork,setWork,getShortBreak,setShortBreak,getLongBreak,setLongBreak}
+export {getDayCount,setDayCount,getCalm,setCalm,getVolume,setVolume,getSound,setSound,
+  getDark,setDark,getWork,setWork,getShortBreak,setShortBreak,getLongBreak,setLongBreak}
 /* End of functions for Local Storage */
