@@ -1,9 +1,9 @@
-import { 
-  setStartButton, 
-  setResetButton, 
-  display, 
-  setTime, 
-  initProgess, 
+import {
+  setStartButton,
+  setResetButton,
+  display,
+  setTime,
+  initProgess,
   setProgressHelper,
 } from './pomo-timer-helpers.js';
 
@@ -30,7 +30,7 @@ class PomoTimer extends HTMLElement {
     currentMode.setAttribute('id', 'timer-mode');
 
     // squares to represent progress
-    const progressContainerItems = initProgess(); 
+    const progressContainerItems = initProgess();
     const progressContainer = progressContainerItems[0];
     progressContainer.setAttribute('id', 'timer-progress-container');
 
@@ -155,8 +155,13 @@ class PomoTimer extends HTMLElement {
      * @param {Number} progress - number of breaks taken
      */
     this.setProgress = (progress) => {
-      setProgressHelper(progress, progressContainerItems[1], progressContainerItems[2],
-        progressContainerItems[3], progressContainerItems[4]);
+      setProgressHelper(
+        progress,
+        progressContainerItems[1],
+        progressContainerItems[2],
+        progressContainerItems[3],
+        progressContainerItems[4]
+      );
     };
 
     /**
