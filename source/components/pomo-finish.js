@@ -19,14 +19,14 @@ class PomoFinish extends HTMLElement {
 
         // button to finish session and display statistics
         const finishButton = document.createElement('button');
-        finishButton.setAttribute('id', 'finishButton');
+        finishButton.setAttribute('id', 'finish-button');
         finishButton.textContent = "Statistics";
         finishButton.onclick = () => { shadow.dispatchEvent(this.event) };
 
         // the lightbox
         const modal = document.createElement('div');
         modal.setAttribute('class', 'modal')
-        modal.setAttribute('id', 'statisticsModal');
+        modal.setAttribute('id', 'statistics-modal');
         modal.onclick = (event) => {
           // close lightbox when click outside of the content area
           if (event.target == modal) {
@@ -37,21 +37,21 @@ class PomoFinish extends HTMLElement {
         // wrapper for the content inside the lightbox
         const modalContent = document.createElement('div');
         modalContent.setAttribute('class', 'modalContent');
-        modalContent.setAttribute('id', 'statisticsModalContent');
+        modalContent.setAttribute('id', 'statistics-modal-content');
 
         // the main content to be display in the lightbox
         // title
         const modalTitle = document.createElement('h3');
         modalTitle.setAttribute('class', 'modalTitle');
-        modalTitle.setAttribute('id', 'statisticsModalTitle');
+        modalTitle.setAttribute('id', 'statistics-modal-title');
         modalTitle.innerHTML = "SESSION SUMMARY";
         // list of stat
         this.sessionStatistics = document.createElement('ul');
-        this.sessionStatistics.setAttribute('id', 'statisticsPanel');
+        this.sessionStatistics.setAttribute('id', 'statistics-panel');
 
         // button to close the lightbox
         let closeButton = document.createElement('div');
-        closeButton.setAttribute('id', 'statisticsCloseButton');
+        closeButton.setAttribute('id', 'statistics-close-button');
         closeButton.setAttribute('class', 'button-off');
         closeButton.innerHTML = "&times;";
         closeButton.onclick = () => {
@@ -121,7 +121,7 @@ class PomoFinish extends HTMLElement {
         });
 
         // show the statistics panel
-        this.shadowRoot.getElementById("statisticsModal").style.display = 'block';
+        this.shadowRoot.getElementById("statistics-modal").style.display = 'block';
       }
 }
 
