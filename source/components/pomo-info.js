@@ -13,14 +13,6 @@ class PomoInfo extends HTMLElement {
     link.setAttribute('rel', 'stylesheet');
     link.setAttribute('href', './components/pomo-finish.css');
 
-    // info button
-    this.infoButton = document.createElement('button');
-    this.infoButton.setAttribute('id', 'info-button');
-    this.infoButton.onclick = () => {
-      modal.style.display = 'block';
-    }
-    this.infoButton.innerHTML = 'Info';
-
     // the modal window
     const modal = document.createElement('div');
     modal.setAttribute('class', 'modal');
@@ -32,6 +24,14 @@ class PomoInfo extends HTMLElement {
         modal.style.display = 'none';
       }
     };
+
+    // info button
+    this.infoButton = document.createElement('button');
+    this.infoButton.setAttribute('id', 'info-button');
+    this.infoButton.onclick = () => {
+      modal.style.display = 'block';
+    };
+    this.infoButton.innerHTML = 'Info';
 
     // the lightbox
     const modalContent = document.createElement('div');

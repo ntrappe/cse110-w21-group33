@@ -1,4 +1,3 @@
-
 class PomoFinish extends HTMLElement {
   constructor() {
     super();

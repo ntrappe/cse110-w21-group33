@@ -61,10 +61,10 @@ describe('Check Ligthbox Controls', { includeShadowDom: true }, () => {
   it('Check that close button closes lightbox', () => {
     cy.get('#info-button').click();
     cy.get('#info-close-button')
-    .click()
-    .then(() => {
-      cy.get('#info-modal').should('have.css', 'display', 'none');
-    });
+      .click()
+      .then(() => {
+        cy.get('#info-modal').should('have.css', 'display', 'none');
+      });
   });
   it('Check clicking top of the modal closes lightbox', () => {
     cy.get('#info-button').click();
