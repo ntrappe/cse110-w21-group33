@@ -25,14 +25,13 @@ export function setCalm(calmIn) {
  * @param {String} mode the shorthand of the current mode
  */
 export function setTab(sec, mode) {
-
   // Convert mode shorthand to full title
   let modeTitle;
   switch (mode) {
     case 'work':
       modeTitle = WORK;
       break;
-    
+
     case 'short break':
       modeTitle = SHORTBREAK;
       break;
@@ -40,7 +39,7 @@ export function setTab(sec, mode) {
     case 'long break':
       modeTitle = LONGBREAK;
       break;
-            
+
     default:
       modeTitle = '';
       break;
@@ -48,12 +47,14 @@ export function setTab(sec, mode) {
 
   // Calculate minutes remaining, and then pad with '0' if necessary.
   // For calm mode, round the minute up. For regular mode, round the minute down.
-  const minutes = (calm ? Math.ceil(sec / SEC_IN_MIN): Math.floor(sec / SEC_IN_MIN)).toString().padStart(PADDING, '0');
+  const minutes = (calm ? Math.ceil(sec / SEC_IN_MIN) : Math.floor(sec / SEC_IN_MIN))
+    .toString()
+    .padStart(PADDING, '0');
 
   // For calm mode, always display '00'. For regular mode, display the seconds.
   const seconds = (calm ? 0 : sec % 60).toString().padStart(PADDING, '0');
 
-  pageTitle.textContent = minutes + ':' + seconds + ' - ' + modeTitle;
+  pageTitle.textContent = `${minutes}:${seconds} - ${modeTitle}`;
 }
 
 /**
