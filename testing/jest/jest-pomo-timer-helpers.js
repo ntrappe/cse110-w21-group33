@@ -56,7 +56,7 @@ describe('test setResetButton', () => {
 /* Test for function initProgess */
 describe('test initProgess', () => {
   test('initProgess', () => {
-    const output = pomoHelper.initProgess();
+    // const output = pomoHelper.initProgess();
     /*
     // @Bryant please refactor to match new pomo-timer-helpers code
     expect(output.length).toBe(5);

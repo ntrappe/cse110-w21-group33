@@ -95,7 +95,7 @@ describe('Check Resets',  { includeShadowDom: true }, () => {
 
   it('Check if we can reset at 01:59', () => {
     cy.get('#timer-button').click();
-    cy.get('#timer-text').contains('01:59').then(($el) => {
+    cy.get('#timer-text').contains('01:59').then(() => {
       cy.get('#timer-button').click().then(($el) => {
         expect($el).to.have.attr('class', 'start');
       });
@@ -105,7 +105,7 @@ describe('Check Resets',  { includeShadowDom: true }, () => {
   // NOTE: timeout length should change if timer speed does
   it('Check if we can reset at 00:01', () => {
     cy.get('#timer-button').click();
-    cy.get('#timer-text').contains('00:01', { timeout: 30000 }).then(($el) => {
+    cy.get('#timer-text').contains('00:01', { timeout: 30000 }).then(() => {
       cy.get('#timer-button').click().then(($el) => {
         expect($el).to.have.attr('class', 'start');
       });
@@ -114,7 +114,7 @@ describe('Check Resets',  { includeShadowDom: true }, () => {
   // NOTE: timeout length should change if timer speed does
   it('Check if we can reset at 00:00', () => {
     cy.get('#timer-button').click();
-    cy.get('#timer-text').contains('00:00', { timeout: 30500 }).then(($el) => {
+    cy.get('#timer-text').contains('00:00', { timeout: 30500 }).then(() => {
       cy.get('#timer-button').click().then(($el) => {
         expect($el).to.have.attr('class', 'start');
       });
@@ -295,7 +295,7 @@ describe('Check all events', { includeShadowDom: true }, () => {
   it('Listen for event after \'Start\' is clicked', () => {
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-timer').then(($el) => {
-        const onStart = (e) => {
+        const onStart = () => {
           $el[0].removeEventListener('timerStart', onStart);
           resolve();
         };
@@ -309,12 +309,12 @@ describe('Check all events', { includeShadowDom: true }, () => {
   it('Listen for event after \'Reset\' is clicked at 01:30', () => {
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-timer').then(($el) => {
-        const onReset = (e) => {
+        const onReset = () => {
           $el[0].removeEventListener('timerReset', onReset);
           resolve();
         };
         $el[0].addEventListener('timerReset', onReset);
-        cy.get('#timer-text').contains('1:30', { timeout: 10000 }).then(($el) => {
+        cy.get('#timer-text').contains('1:30', { timeout: 10000 }).then(() => {
           cy.get('#timer-button').click();
         });
       });
@@ -327,7 +327,7 @@ describe('Check all events', { includeShadowDom: true }, () => {
     cy.wait(30000);
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-timer').then(($el) => {
-        const onFinish = (e) => {
+        const onFinish = () => {
           $el[0].removeEventListener('timerFinish', onFinish);
           resolve();
         };
@@ -340,7 +340,7 @@ describe('Check all events', { includeShadowDom: true }, () => {
     cy.get('#timer-button').click();
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-timer').then(($el) => {
-        const onTick = (e) => {
+        const onTick = () => {
           $el[0].removeEventListener('tick', onTick);
           resolve();
         };
@@ -374,7 +374,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
     cy.wait(30000);
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-timer').then(($el) => {
-        const onFinish = (e) => {
+        const onFinish = () => {
           $el[0].removeEventListener('timerFinish', onFinish);
           $el[0].setTimer(2, 'short break');
           resolve();
@@ -400,7 +400,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
     cy.wait(30000);
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-timer').then(($el) => {
-        const onFinish = (e) => {
+        const onFinish = () => {
           $el[0].removeEventListener('timerFinish', onFinish);
           $el[0].setTimer(2, 'work');
           resolve();
@@ -426,7 +426,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
     cy.wait(30000);
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-timer').then(($el) => {
-        const onFinish = (e) => {
+        const onFinish = () => {
           $el[0].removeEventListener('timerFinish', onFinish);
           $el[0].setTimer(1, 'short break');
           resolve();
@@ -452,7 +452,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
     cy.wait(15000);
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-timer').then(($el) => {
-        const onFinish = (e) => {
+        const onFinish = () => {
           $el[0].removeEventListener('timerFinish', onFinish);
           $el[0].setTimer(1, 'work');
           resolve();
@@ -478,7 +478,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
     cy.wait(15000);
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-timer').then(($el) => {
-        const onFinish = (e) => {
+        const onFinish = () => {
           $el[0].removeEventListener('timerFinish', onFinish);
           $el[0].setTimer(1, 'short break');
           resolve();
@@ -504,7 +504,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
     cy.wait(15000);
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-timer').then(($el) => {
-        const onFinish = (e) => {
+        const onFinish = () => {
           $el[0].removeEventListener('timerFinish', onFinish);
           $el[0].setTimer(1, 'work');
           resolve();
@@ -530,7 +530,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
     cy.wait(15000);
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-timer').then(($el) => {
-        const onFinish = (e) => {
+        const onFinish = () => {
           $el[0].removeEventListener('timerFinish', onFinish);
           $el[0].setTimer(1, 'long break');
           resolve();
