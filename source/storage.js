@@ -31,7 +31,7 @@ function getDayCount() {
   return parseInt(localStorage.getItem('pomodoroCount'), 10);
 }
 
-export {getDayCount}
+export { getDayCount }
 
 /**
  * Function to set the pomodoro completed for the day into local storage
@@ -60,7 +60,7 @@ function setDayCount(count) {
   localStorage.setItem('pomodoroCount', count + getDayCount());
 }
 
-export {setDayCount}
+export { setDayCount }
 
 /**
  * Function to get the current Calm value
@@ -77,7 +77,7 @@ function getCalm() {
   return false;
 }
 
-export {getCalm}
+export { getCalm }
 
 /**
  * Function to be called whenever the onClick event is listened to for calm mode
@@ -87,7 +87,7 @@ function setCalm(calm) {
   localStorage.setItem('isCalm', calm);
 }
 
-export {setCalm}
+export { setCalm }
 
 /**
  * Function to get the current volume value
@@ -101,7 +101,7 @@ function getVolume() {
   return parseInt(localStorage.getItem('volume'), 10);
 }
 
-export {getVolume}
+export { getVolume }
 
 /**
  * Function to be called whenever the current volume is changed
@@ -111,7 +111,7 @@ function setVolume(vol) {
   localStorage.setItem('volume', vol);
 }
 
-export {setVolume}
+export { setVolume }
 
 /**
  * Function to get the current sound
@@ -128,7 +128,7 @@ function getSound() {
   return localStorage.getItem('sound');
 }
 
-export {getSound}
+export { getSound }
 
 /**
  * Function to be called whenever the current sound is changed
@@ -138,7 +138,7 @@ function setSound(sound) {
   localStorage.setItem('sound', sound);
 }
 
-export {setSound}
+export { setSound }
 
 /**
  * Function to get the current sound
@@ -155,7 +155,7 @@ function getDark() {
   return false;
 }
 
-export {getDark}
+export { getDark }
 
 /**
  * Function to be called whenever the onClick event is listened to for dark mode
@@ -165,7 +165,7 @@ function setDark(dark) {
   localStorage.setItem('isDark', dark);
 }
 
-export {setDark}
+export { setDark }
 
 /**
  * Function to get the duration of the work timer in minutes
@@ -179,7 +179,7 @@ function getWork() {
   return parseInt(localStorage.getItem('work'), 10);
 }
 
-export {getWork}
+export { getWork }
 
 /**
  * Function to be called whenever the duration of work mode is changed
@@ -189,7 +189,7 @@ function setWork(work) {
   localStorage.setItem('work', work);
 }
 
-export {setWork}
+export { setWork }
 
 /**
  * Function to get the duration of the short break timer in minutes
@@ -204,7 +204,7 @@ function getShortBreak() {
   return parseInt(localStorage.getItem('shortBreak'), 10);
 }
 
-export {getShortBreak}
+export { getShortBreak }
 
 /**
  * Function to be called whenever the duration of short break is changed
@@ -214,7 +214,7 @@ function setShortBreak(shortBreak) {
   localStorage.setItem('shortBreak', shortBreak);
 }
 
-export {setShortBreak}
+export { setShortBreak }
 
 /**
  * Function to get the duration of the long break timer in minutes
@@ -229,7 +229,7 @@ function getLongBreak() {
   return parseInt(localStorage.getItem('longBreak'), 10);
 }
 
-export {getLongBreak}
+export { getLongBreak }
 
 /**
  * Function to be called whenever the duration of long break is changed
@@ -239,6 +239,6 @@ function setLongBreak(longBreak) {
   localStorage.setItem('longBreak', longBreak);
 }
 
-export {setLongBreak}
+export { setLongBreak }
 
 /* End of functions for Local Storage */
