@@ -7,6 +7,8 @@ const LONGBREAK = 'Long Break';
 const SEC_IN_MIN = 60;
 const PADDING = 2;
 
+const pageTitle = document.getElementsByTagName('title')[0]; // We know there is only one title element.
+
 let calm = false;
 
 /**
@@ -21,9 +23,8 @@ export function setCalm(calmIn) {
  * Updates browser tab text to reflect time remaining
  * @param {Number} sec number of seconds remaining
  * @param {String} mode the shorthand of the current mode
- * @param {String} tabText element in the document
  */
-export function setTab(sec, mode, tabText) {
+export function setTab(sec, mode) {
 
   // Convert mode shorthand to full title
   let modeTitle;
@@ -52,13 +53,12 @@ export function setTab(sec, mode, tabText) {
   // For calm mode, always display '00'. For regular mode, display the seconds.
   const seconds = (calm ? 0 : sec % 60).toString().padStart(PADDING, '0');
 
-  tabText.textContent = minutes + ':' + seconds + ' - ' + modeTitle;
+  pageTitle.textContent = minutes + ':' + seconds + ' - ' + modeTitle;
 }
 
 /**
  * Resets browser tab title to the default
- * @param {String} tabText element in the document
  */
-export function defaultTab(tabText) {
-  tabText.textContent = DEFAULT;
+export function defaultTab() {
+  pageTitle.textContent = DEFAULT;
 }
