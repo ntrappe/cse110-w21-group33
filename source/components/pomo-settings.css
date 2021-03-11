@@ -70,7 +70,7 @@
   width: 20px;
 }
 
-/* margins match finish button */
+/* Margins match finish button */
 #openButton {
   z-index: 2;
   margin-left: 15px;
@@ -81,6 +81,7 @@
   cursor: pointer;
 }
 
+/* Prevent labels from being highlighted */
 #settings label,
 h1 {
   color: white;
@@ -93,6 +94,7 @@ h1 {
   user-select: none;
 }
 
+/* Add red border on invalid input */
 .invalid:focus {
   outline: none !important;
   border-color: red;

@@ -68,7 +68,7 @@
   width: 15px;
 }
 
-/* margins match finish button */
+/* Margins match finish button */
 #openButton {
   z-index: 2;
   margin-left: 15px;
@@ -79,6 +79,7 @@
   cursor: pointer;
 }
 
+/* Holds title of sidebar */
 #settings-title {
   color: #c9d1d9;
   font-family: 'Open Sans', sans-serif;
@@ -87,7 +88,7 @@
   margin-top: 25px;
 }
 
-/* says: "Time (minutes) */
+/* Says: "Time (minutes)" */
 #pomo-length-label,
 #audio-label,
 #display-label {
@@ -99,7 +100,7 @@
   margin-bottom: 15px;
 }
 
-/* holds work, short/long break labels and inputs */
+/* Holds work, short/long break labels and inputs */
 #timer-settings,
 #audio-settings,
 #display-section {
@@ -113,6 +114,7 @@
   background-color: #161b22;
 }
 
+/* Style content for work, short, sound select, and calm mode */
 #settings-work-section,
 #settings-short-section,
 #sound-section,
@@ -128,6 +130,7 @@
   border-color: #30363d;
 }
 
+/* Style content for long, volume, and dark mode */
 #settings-long-section,
 #volume-section,
 #dark-section {
@@ -140,7 +143,7 @@
   padding-bottom: 7px;
 }
 
-/* says "Work" / "Short Break" / "Long Break" */
+/* Says "Work" / "Short Break" / "Long Break" */
 #settings-work-sec-label,
 #settings-short-sec-label,
 #settings-long-sec-label,
@@ -173,7 +176,7 @@
   bottom: 2.5px;
 }
 
-/* input fields for work/break lengths */
+/* Input fields for work/break lengths */
 #workNumber,
 #shortBreakNumber,
 #longBreakNumber,
@@ -207,6 +210,7 @@
   left: 142px;
 }
 
+/* Add red border on invalid input */
 #workNumber:focus.invalid,
 #shortBreakNumber:focus.invalid,
 #longBreakNumber:focus.invalid,
@@ -214,6 +218,7 @@
   border-color: red;
 }
 
+/* Add whitish border on selected input */
 #workNumber:focus,
 #shortBreakNumber:focus,
 #longBreakNumber:focus,
@@ -271,12 +276,14 @@ input:checked + .slider {
   border-color: #161b22;
 }
 
+/* Handles toggle switch movement when toggled */
 input:checked + .slider::before {
   transform: translateX(38px);
   background-color: #161b22;
   border-color: #161b22;
 }
 
+/* Handles visuals of toggle switch when off */
 .offMode {
   display: none;
   color: #161b22;
@@ -286,6 +293,7 @@ input:checked + .slider::before {
   font-size: 15px;
 }
 
+/* Handles visuals of toggle switch when on */
 .onMode {
   display: block;
   color: #c9d1d9;
