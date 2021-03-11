@@ -31,6 +31,8 @@ function getDayCount() {
   return parseInt(localStorage.getItem('pomodoroCount'), 10);
 }
 
+export {getDayCount}
+
 /**
  * Function to set the pomodoro completed for the day into local storage
  * @param {Number} count pomodoro completed
@@ -58,6 +60,8 @@ function setDayCount(count) {
   localStorage.setItem('pomodoroCount', count + getDayCount());
 }
 
+export {setDayCount}
+
 /**
  * Function to get the current Calm value
  * @return {Boolean} boolean value of whether the user wanted calm more
@@ -68,9 +72,12 @@ function getCalm() {
     localStorage.setItem('isCalm', false); // Creating local storage for calm mode
   }
   if (localStorage.getItem('isCalm') === 'true') {
-    return true; }
+    return true;
+  }
   return false;
 }
+
+export {getCalm}
 
 /**
  * Function to be called whenever the onClick event is listened to for calm mode
@@ -79,6 +86,8 @@ function getCalm() {
 function setCalm(calm) {
   localStorage.setItem('isCalm', calm);
 }
+
+export {setCalm}
 
 /**
  * Function to get the current volume value
@@ -92,6 +101,8 @@ function getVolume() {
   return parseInt(localStorage.getItem('volume'), 10);
 }
 
+export {getVolume}
+
 /**
  * Function to be called whenever the current volume is changed
  * @param {Number} vol volume saved
@@ -100,18 +111,24 @@ function setVolume(vol) {
   localStorage.setItem('volume', vol);
 }
 
+export {setVolume}
+
 /**
  * Function to get the current sound
  * @return {String} last saved sound for alarm
  */
 function getSound() {
-  if (!localStorage.getItem('sound')) { // Checking if sound local storage was created
+  // Checking if sound local storage was created
+  if (!localStorage.getItem('sound')) {
     localStorage.setItem(
-      'sound', 'zapsplat_household_alarm_clock_old_fashioned_ring_very_short_44062.mp3'
+      'sound',
+      'zapsplat_household_alarm_clock_old_fashioned_ring_very_short_44062.mp3'
     );
   }
   return localStorage.getItem('sound');
 }
+
+export {getSound}
 
 /**
  * Function to be called whenever the current sound is changed
@@ -120,6 +137,8 @@ function getSound() {
 function setSound(sound) {
   localStorage.setItem('sound', sound);
 }
+
+export {setSound}
 
 /**
  * Function to get the current sound
@@ -131,9 +150,12 @@ function getDark() {
     localStorage.setItem('isDark', false); // Setting default mode into light mode
   }
   if (localStorage.getItem('isDark') === 'true') {
-    return true; }
+    return true;
+  }
   return false;
 }
+
+export {getDark}
 
 /**
  * Function to be called whenever the onClick event is listened to for dark mode
@@ -142,6 +164,8 @@ function getDark() {
 function setDark(dark) {
   localStorage.setItem('isDark', dark);
 }
+
+export {setDark}
 
 /**
  * Function to get the duration of the work timer in minutes
@@ -155,6 +179,8 @@ function getWork() {
   return parseInt(localStorage.getItem('work'), 10);
 }
 
+export {getWork}
+
 /**
  * Function to be called whenever the duration of work mode is changed
  * @param {Number} work duration of new work mode
@@ -162,6 +188,8 @@ function getWork() {
 function setWork(work) {
   localStorage.setItem('work', work);
 }
+
+export {setWork}
 
 /**
  * Function to get the duration of the short break timer in minutes
@@ -175,7 +203,9 @@ function getShortBreak() {
   }
   return parseInt(localStorage.getItem('shortBreak'), 10);
 }
-      
+
+export {getShortBreak}
+
 /**
  * Function to be called whenever the duration of short break is changed
  * @param {Number} work duration of new short break
@@ -183,6 +213,8 @@ function getShortBreak() {
 function setShortBreak(shortBreak) {
   localStorage.setItem('shortBreak', shortBreak);
 }
+
+export {setShortBreak}
 
 /**
  * Function to get the duration of the long break timer in minutes
@@ -197,6 +229,8 @@ function getLongBreak() {
   return parseInt(localStorage.getItem('longBreak'), 10);
 }
 
+export {getLongBreak}
+
 /**
  * Function to be called whenever the duration of long break is changed
  * @param {Number} work duration of new long break
@@ -205,7 +239,6 @@ function setLongBreak(longBreak) {
   localStorage.setItem('longBreak', longBreak);
 }
 
-export {getDayCount,  setDayCount,  getCalm,  setCalm,  getVolume,  setVolume,  getSound,
-  setSound,  getDark,  setDark,  getWork,  setWork,  getShortBreak,  setShortBreak,
-  getLongBreak,  setLongBreak}
+export {setLongBreak}
+
 /* End of functions for Local Storage */
