@@ -36,13 +36,13 @@ class PomoFinish extends HTMLElement {
 
         // wrapper for the content inside the lightbox
         const modalContent = document.createElement('div');
-        modalContent.setAttribute('class', 'modalContent');
+        modalContent.setAttribute('class', 'modal-content');
         modalContent.setAttribute('id', 'statistics-modal-content');
 
         // the main content to be display in the lightbox
         // title
         const modalTitle = document.createElement('h3');
-        modalTitle.setAttribute('class', 'modalTitle');
+        modalTitle.setAttribute('class', 'modal-title');
         modalTitle.setAttribute('id', 'statistics-modal-title');
         modalTitle.innerHTML = "SESSION SUMMARY";
         // list of stat
