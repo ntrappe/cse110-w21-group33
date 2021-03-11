@@ -7,50 +7,50 @@ const EMPTY_VALUE = 0;
 /* Functions for Local Storage updates */
 
 /**
+ * Function to set the pomodoro completed for the day into local storage
+ * @param {Number} count pomodoro completed
+ */
+function setDayCount(count) {
+  const date = new Date();
+  // Creating new local storage for pomodoroCount if it is the first time
+  if(!localStorage.getItem('prevDay')) {
+     localStorage.setItem('prevYear',date.getFullYear());
+     localStorage.setItem('prevMonth',date.getMonth()+1);
+     localStorage.setItem('prevDay',date.getDate());
+     localStorage.setItem('pomodoroCount',EMPTY_VALUE);
+  }
+  // Clears local storage for the day if its a new day
+  if(date.getFullYear() > localStorage.getItem('prevYear') ||
+      date.getMonth()+1 > localStorage.getItem('prevMonth') ||
+      date.getDate() > localStorage.getItem('prevDay')) {
+     localStorage.setItem('prevYear',date.getFullYear());
+     localStorage.setItem('prevMonth',date.getMonth()+1);
+     localStorage.setItem('prevDay',date.getDate());
+     localStorage.setItem('pomodoroCount',EMPTY_VALUE);
+  }
+  localStorage.setItem('pomodoroCount',count + getDayCount());
+}
+
+/**
  * Function to get the pomodoro completed for the day and check if it should reset local storage
  * @return {Number} total amount of Pomodoro completed for the day
  */
 function getDayCount() {
   // If local storage for pomodro completed is does not exist then we set current count to 0
-  if(!(localStorage.getItem('pomodoroCount'))) {
+  if(!localStorage.getItem('pomodoroCount')) {
     setDayCount(0);
   }
   // Clears local storage for the day if its a new day
-  let date = new Date();
-  if (date.getFullYear() > localStorage.getItem('prevYear') ||
-  date.getMonth()+1 > localStorage.getItem('prevMonth') ||
-  date.getDate() > localStorage.getItem('prevDay')) {
-    localStorage.setItem('prevYear',date.getFullYear());
-    localStorage.setItem('prevMonth',date.getMonth()+1);
-    localStorage.setItem('prevDay',date.getDate());
-    localStorage.setItem('pomodoroCount',EMPTY_VALUE);
+  const date = new Date();
+  if(date.getFullYear() > localStorage.getItem('prevYear') ||
+      date.getMonth()+1 > localStorage.getItem('prevMonth') ||
+      date.getDate() > localStorage.getItem('prevDay')) {
+     localStorage.setItem('prevYear',date.getFullYear());
+     localStorage.setItem('prevMonth',date.getMonth()+1);
+     localStorage.setItem('prevDay',date.getDate());
+     localStorage.setItem('pomodoroCount',EMPTY_VALUE);
   }
   return parseInt(localStorage.getItem('pomodoroCount'));
-}
-
-/**
- * Function to set the pomodoro completed for the day into local storage
- * @param {Number} count pomodoro completed
- */
-function setDayCount(count) {
-  let date = new Date();
-  // Creating new local storage for pomodoroCount if it is the first time
-  if(!(localStorage.getItem('prevDay'))) {
-    localStorage.setItem('prevYear',date.getFullYear());
-    localStorage.setItem('prevMonth',date.getMonth()+1);
-    localStorage.setItem('prevDay',date.getDate());
-    localStorage.setItem('pomodoroCount',EMPTY_VALUE);
-  }
-  // Clears local storage for the day if its a new day
-  if (date.getFullYear() > localStorage.getItem('prevYear') ||
-  date.getMonth()+1 > localStorage.getItem('prevMonth') ||
-  date.getDate() > localStorage.getItem('prevDay')) {
-    localStorage.setItem('prevYear',date.getFullYear());
-    localStorage.setItem('prevMonth',date.getMonth()+1);
-    localStorage.setItem('prevDay',date.getDate());
-    localStorage.setItem('pomodoroCount',EMPTY_VALUE);
-  }
-  localStorage.setItem('pomodoroCount',count + getDayCount());
 }
 
 /**
@@ -137,7 +137,7 @@ function setDark(dark) {
  * @return {Number} saved value of work mode duration
  */
 function getWork() {
-  if(!(localStorage.getItem('work'))) { // Checking if the duration of work mode has been changed
+  if(!localStorage.getItem('work')) { // Checking if the duration of work mode has been changed
     setWork(DEFAULT_WORK); // Setting default work mode to be 25 minutes
   }
   return eval(localStorage.getItem('work'));
@@ -157,7 +157,7 @@ function setWork(work) {
  */
 function getShortBreak() {
   // Checking if the duration of short break has been changed
-  if(!(localStorage.getItem('shortBreak'))) {
+  if(!localStorage.getItem('shortBreak')) {
     setShortBreak(DEFAULT_SHORT_BREAK); // Setting default short break to be 5 minutes
   }
   return eval(localStorage.getItem('shortBreak'));
@@ -177,7 +177,7 @@ function setShortBreak(shortBreak) {
  */
 function getLongBreak() {
   // Checking if the duration of long break has been changed
-  if(!(localStorage.getItem('longBreak'))) {
+  if(!localStorage.getItem('longBreak')) {
     setLongBreak(DEFAULT_LONG_BREAK); // Setting default long break to be 15 minutes
   }
   return eval(localStorage.getItem('longBreak'));
