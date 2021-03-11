@@ -20,10 +20,6 @@
   background-color: #13151b;
   overflow-x: hidden;
   transition: 0.5s;
-  /*
-  border-right: 1.5px solid;
-  border-color: #31363c;
-  */
 }
 
 #settings[class="open"] {
@@ -226,8 +222,7 @@
 }
 
 /* Toggle CSS */
-.switch
-input {
+.switch input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -265,7 +260,7 @@ input {
   height: 22px;
   width: 22px;
   left: 3px;
-  bottom: 2px; 
+  bottom: 2px;
   background-color: #c9d1d9;
   transition: 0.4s;
 }
