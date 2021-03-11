@@ -5,7 +5,7 @@ beforeEach(() => {
 });
 
 test('getDayCount without setDayCount', () => {
-  expect(getDayCount()).toBe(0);
+  expect(storageHelper.getDayCount()).toBe(0);
 });
 
 test('getDayCount for same day/month/year', () => {
@@ -45,8 +45,8 @@ test('getDayCount for a new Year', () => {
 });
 
 test('setDayCount for the first time', () => {
-  setDayCount(5);
-  expect(getDayCount()).toBe(5);
+  storageHelper.setDayCount(5);
+  expect(storageHelper.getDayCount()).toBe(5);
 });
 
 test('setDayCount for same day/month/year', () => {
@@ -114,11 +114,12 @@ test('setVolume to be 80', () => {
 
 test('getSound without setSound', () => {
   expect(storageHelper.getSound()).toBe(
-    'zapsplat_household_alarm_clock_old_fashioned_ring_very_short_44062.mp3');
+    'zapsplat_household_alarm_clock_old_fashioned_ring_very_short_44062.mp3'
+  );
 });
 
 test('setSound to be jingle', () => {
-  sstorageHelper.etSound('jingle');
+  storageHelper.setSound('jingle');
   expect(storageHelper.getSound()).toBe('jingle');
 });
 
@@ -161,4 +162,18 @@ test('getLongBreak without setLongBreak', () => {
 test('setLongBreak to be 20', () => {
   storageHelper.setLongBreak(20);
   expect(storageHelper.getLongBreak()).toBe(20);
+});
+
+test('getAccessibility without setAccessbility', () => {
+  expect(storageHelper.getAccessibility()).toBe(true);
+});
+
+test('setAccessbility to be true', () => {
+  storageHelper.setAccessibility(true);
+  expect(storageHelper.getAccessibility()).toBe(true);
+});
+
+test('setAccessbility to be false', () => {
+  storageHelper.setAccessibility(false);
+  expect(storageHelper.getAccessibility()).toBe(false);
 });
