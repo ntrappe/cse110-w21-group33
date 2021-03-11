@@ -1,0 +1,270 @@
+#modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#settings {
+  height: 100%;
+  width: 350px;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: -350px;
+  background-color: #13151b;
+  overflow-x: hidden;
+  transition: 0.5s;
+/*   border-right: 1.5px solid;
+  border-color: #31363c; */
+}
+
+#settings[class="open"] {
+  left: 0;
+}
+
+#settings[class="close"] {
+  left: -500px;
+}
+
+#closeSettings {
+  border: none;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  background-color: #000;
+  color: #818181;
+}
+
+#closeButton {
+  margin-top: 25px;
+  margin-right: 16px;
+  background-color: #0f1115;
+  float: right;
+  border: 1.5px solid;
+  border-color: #31363c;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+}
+
+#closeButton:hover {
+  background-color: #22262c;
+  border-color: #8d949d;
+  transition-duration: 0.1s;
+}
+
+#closeButtonIcon {
+  height: 15px;
+  width: 15px;
+}
+
+/* margins match finish button */
+#openButton {
+  z-index: 2;
+  margin-left: 15px;
+  background-color: #0f1115;
+  color: #31363c;
+  font-size: 65px;
+  border: none;
+  cursor: pointer;
+}
+
+#settings-title {
+  color: #c9d1d9;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  margin-left: 25px;
+  margin-top: 25px;
+}
+
+/* says: "Time (minutes) */
+#pomo-length-label,
+#audio-label,
+#display-label {
+  color: #8b949e;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 25px;
+  margin-bottom: 15px;
+}
+
+/* holds work, short/long break labels and inputs */
+#timer-settings,
+#audio-settings,
+#display-section {
+  color: #30363d;
+  font-family: 'Source Sans Pro', sans-serif;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1.5px solid;
+  background-color: #161b22;
+}
+
+#settings-work-section,
+#settings-short-section,
+#sound-section,
+#calm-section {
+  color: #c9d1d9;
+  font-size: 12px;
+  font-weight: 600;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border-bottom: 1.5px solid;
+  border-color: #30363d;
+}
+
+#settings-long-section,
+#volume-section,
+#dark-section {
+  color: #c9d1d9;
+  font-size: 12px;
+  font-weight: 600;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+/* says "Work" / "Short Break" / "Long Break" */
+#settings-work-sec-label,
+#settings-short-sec-label,
+#settings-long-sec-label,
+#sound-label,
+#volume-label,
+#calm-label,
+#dark-label {
+  margin-right: 10px;
+}
+
+/* input fields for work/break lengths */
+#workNumber,
+#shortBreakNumber,
+#longBreakNumber,
+#soundSelect,
+#volumeNumber {
+  background-color: #0d1117;
+  color: #8b949e;
+  border: 1.5px solid;
+  border-color: #21262d;
+  border-radius: 6px;
+  padding: 5px;
+  cursor: auto;
+  outline: none;
+}
+
+#workNumber:focus.invalid,
+#shortBreakNumber:focus.invalid,
+#longBreakNumber:focus.invalid,
+#volumeNumber:focus.invalid {
+  border-color: red;
+}
+
+#workNumber:focus,
+#shortBreakNumber:focus,
+#longBreakNumber:focus,
+#volumeNumber:focus {
+  border-color: #8d949d;
+}
+
+/* Toggle CSS */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Size of toggle background */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 70px;
+  height: 30px;
+}
+
+/* Toggle background */
+.slider {
+  border-radius: 22px;
+  border-color: #c9d1d9;
+  border-width: 2px;
+  border-style: solid;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0d1117;
+  transition: 0.4s;
+}
+
+/* Creates the toggle button */
+.slider::before {
+  border-radius: 22px;
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 2px; 
+  background-color: #c9d1d9;
+  transition: 0.4s;
+}
+
+/* Changes the color of the slider when toggled */
+input:checked + .slider {
+  background-color: #c9d1d9;
+  border-color: #161b22;
+}
+
+input:checked + .slider::before {
+  transform: translateX(38px);
+  background-color: #161b22;
+  border-color: #161b22;
+}
+
+.offMode {
+  display: none;
+  color: #161b22;
+  position: absolute;
+  top: 2px;
+  left: 7px;
+  font-size: 15px;
+}
+
+.onMode {
+  display: block;
+  color: #c9d1d9;
+  position: absolute;
+  top: 2px;
+  right: 7px;
+  font-size: 15px;
+}
+
+/* Prevent highlight of toggle switch or label*/
+span,
+label {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}

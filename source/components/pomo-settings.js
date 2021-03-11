@@ -29,13 +29,15 @@ class PomoSettings extends HTMLElement {
     const styles = document.createElement('link');
     styles.setAttribute('id', 'settingsStyles');
     styles.setAttribute('rel', 'stylesheet');
-    styles.setAttribute('href', './components/pomo-settings.css');
+    styles.setAttribute('href', './components/settings-dark.css');
+    //styles.setAttribute('href', './components/pomo-settings.css');
 
     // Settings panel
     const sideBar = document.createElement('div');
     sideBar.setAttribute('id', 'settings');
 
     const settingsTitle = document.createElement('h1');
+    settingsTitle.setAttribute('id', 'settings-title');
     settingsTitle.textContent = 'Settings';
 
     // Button to open sidebar
@@ -51,18 +53,23 @@ class PomoSettings extends HTMLElement {
     closeIcon.setAttribute('id', 'closeButtonIcon');
     closeIcon.setAttribute('src', './assets/x.svg');
 
+    const pomoLengthLabel = document.createElement('label');
+    pomoLengthLabel.textContent = 'Time (minutes)';
+    pomoLengthLabel.setAttribute('id', 'pomo-length-label');
 
     // Edit work, short break, and long break lengths
     const timerSection = document.createElement('div');
+    timerSection.setAttribute('id', 'timer-settings');
 
-    const pomoLengthLabel = document.createElement('label');
-    pomoLengthLabel.textContent = 'Time (minutes)';
 
     // Input field for work customization
     const workSection = document.createElement('div');
+    workSection.setAttribute('id', 'settings-work-section');
 
     const workLabel = document.createElement('label');
-    workLabel.innerHTML = 'Work';
+    workLabel.setAttribute('id', 'settings-work-sec-label');
+    workLabel.textContent = 'Work';
+    workLabel.htmlFor = 'workNumber';
 
     const workNumber = document.createElement('input');
     workNumber.setAttribute('id', 'workNumber');
@@ -74,9 +81,12 @@ class PomoSettings extends HTMLElement {
 
     // Input field for short break customization
     const shortSection = document.createElement('div');
+    shortSection.setAttribute('id', 'settings-short-section');
 
     const shortBreakLabel = document.createElement('label');
-    shortBreakLabel.innerHTML = 'Short Break';
+    shortBreakLabel.setAttribute('id', 'settings-short-sec-label');
+    shortBreakLabel.textContent = 'Short Break';
+    shortBreakLabel.htmlFor = 'shortBreakNumber';
 
     const shortBreakNumber = document.createElement('input');
     shortBreakNumber.setAttribute('id', 'shortBreakNumber');
@@ -88,9 +98,12 @@ class PomoSettings extends HTMLElement {
 
     // Input field for long break customization
     const longSection = document.createElement('div');
+    longSection.setAttribute('id', 'settings-long-section')
 
     const longBreakLabel = document.createElement('label');
-    longBreakLabel.innerHTML = 'Long Break';
+    longBreakLabel.setAttribute('id', 'settings-long-sec-label')
+    longBreakLabel.textContent = 'Long Break';
+    longBreakLabel.htmlFor = 'longBreakNumber';
 
     const longBreakNumber = document.createElement('input');
     longBreakNumber.setAttribute('id', 'longBreakNumber');
@@ -100,10 +113,49 @@ class PomoSettings extends HTMLElement {
     longBreakNumber.setAttribute('max', MAX_MINUTES);
     longBreakNumber.setAttribute('step', '1');
 
+    const displayLabel = document.createElement('label');
+    displayLabel.setAttribute('id', 'display-label');
+    displayLabel.textContent = 'Display';
+
+    const displaySection = document.createElement('div');
+    displaySection.setAttribute('id', 'display-section');
+
+    // Toggle switch to enable calm mode
+    const calmSection = document.createElement('div');
+    calmSection.setAttribute('id', 'calm-section');
+
+    const calmLabel = document.createElement('label');
+    calmLabel.setAttribute('id', 'calm-label');
+    calmLabel.textContent = 'Calm Mode';
+    calmLabel.htmlFor = 'calmSwitch';
+    const calmSwitch = new ToggleSwitch("calm", "busy");
+    calmSwitch.setAttribute('id', 'calmSwitch');
+    
+    // Toggle switch to enable dark mode
+    const darkSection = document.createElement('div');
+    darkSection.setAttribute('id', 'dark-section');
+
+    const darkLabel = document.createElement('label');
+    darkLabel.setAttribute('id', 'dark-label');
+    darkLabel.textContent = 'Dark Mode';
+    darkLabel.htmlFor = 'darkSwitch';
+    const darkSwitch = new ToggleSwitch("dark", "light");
+    darkSwitch.setAttribute('id', 'darkSwitch');
+
+    const audioLabel = document.createElement('label');
+    audioLabel.setAttribute('id', 'audio-label');
+    audioLabel.textContent = 'Audio';
+
+    const audioSection = document.createElement('div');
+    audioSection.setAttribute('id', 'audio-settings');
+
     // Dropdown menu to change audio notification noise
     const soundSection = document.createElement('div');
+    soundSection.setAttribute('id', 'sound-section');
+
     const soundLabel = document.createElement('label');
-    soundLabel.innerHTML = 'Sound';
+    soundLabel.setAttribute('id', 'sound-label');
+    soundLabel.textContent = 'Sound';
     soundLabel.htmlFor = 'soundSelect';
 
     const soundSelect = document.createElement('select');
@@ -125,29 +177,16 @@ class PomoSettings extends HTMLElement {
     }
     soundSelect.value = this.sound;
 
-
-    // Toggle switch to enable calm mode
-    const calmSection = document.createElement('div');
-    const calmLabel = document.createElement('label');
-    calmLabel.innerHTML = 'Calm Mode';
-    calmLabel.htmlFor = 'calmSwitch';
-    const calmSwitch = new ToggleSwitch("calm", "busy");
-    calmSwitch.setAttribute('id', 'calmSwitch');
-    
-    // Toggle switch to enable dark mode
-    const darkSection = document.createElement('div');
-    const darkLabel = document.createElement('label');
-    darkLabel.innerHTML = 'Dark Mode';
-    darkLabel.htmlFor = 'darkSwitch';
-    const darkSwitch = new ToggleSwitch("dark", "light");
-    darkSwitch.setAttribute('id', 'darkSwitch');
-
     // Input slider and number to change volume
-    const volumeSection = document.createElement('div');
-
     const volumeLabel = document.createElement('label');
-    volumeLabel.innerHTML = 'Volume';
-    volumeLabel.htmlFor = 'volumeSlide';
+    volumeLabel.setAttribute('id', 'volume-label');
+    volumeLabel.textContent = 'Volume';
+    volumeLabel.htmlFor = 'volumeNumber';
+
+    const volumeSection = document.createElement('div');
+    volumeSection.setAttribute('id', 'volume-section');
+
+    const volumeInputs = document.createElement('div');
 
     const volumeSlide = document.createElement('input');
     volumeSlide.setAttribute('type', 'range');
@@ -170,12 +209,21 @@ class PomoSettings extends HTMLElement {
     shadow.appendChild(sideBar);
 
     sideBar.appendChild(closeButton);
-    closeButton.appendChild(closeIcon);
-    sideBar.appendChild(pomoLengthLabel);
     sideBar.appendChild(settingsTitle);
+
+    sideBar.appendChild(pomoLengthLabel);
     sideBar.appendChild(timerSection);
 
-    timerSection.appendChild(pomoLengthLabel);
+    sideBar.appendChild(displayLabel);
+    sideBar.appendChild(displaySection);
+
+    sideBar.appendChild(audioLabel);
+    sideBar.appendChild(audioSection);
+
+    closeButton.appendChild(closeIcon);
+
+
+    //timerSection.appendChild(pomoLengthLabel);
     timerSection.appendChild(workSection);
     timerSection.appendChild(shortSection);
     timerSection.appendChild(longSection);
@@ -187,22 +235,24 @@ class PomoSettings extends HTMLElement {
     longSection.appendChild(longBreakLabel);
     longSection.appendChild(longBreakNumber)
 
-    sideBar.appendChild(soundSection);
-    soundSection.appendChild(soundLabel);
-    soundSection.appendChild(soundSelect);
+    displaySection.appendChild(calmSection);
+    displaySection.appendChild(darkSection);
 
-    sideBar.appendChild(calmSection);
     calmSection.appendChild(calmLabel);
     calmSection.appendChild(calmSwitch);
-
-    sideBar.appendChild(darkSection);
     darkSection.appendChild(darkLabel);
     darkSection.appendChild(darkSwitch);
 
-    sideBar.appendChild(volumeSection);
-    volumeSection.appendChild(volumeLabel);
-    volumeSection.appendChild(volumeSlide);
-    volumeSection.appendChild(volumeNumber);
+    audioSection.appendChild(soundSection);
+    audioSection.appendChild(volumeSection);
+
+    soundSection.appendChild(soundLabel);
+    soundSection.appendChild(soundSelect);
+
+    volumeSection.appendChild(volumeInputs);
+    volumeInputs.appendChild(volumeLabel);
+    volumeInputs.appendChild(volumeSlide);
+    volumeInputs.appendChild(volumeNumber);
 
     /* Events */
     this.workSetEvent = new CustomEvent('workSet', {

@@ -21,7 +21,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: cyan;
+  background-color: #0d1117;
   transition: 0.4s;
 }
 
@@ -34,22 +34,23 @@
   width: 40px;
   left: 3px;
   bottom: 5px;
-  background-color: green;
+  background-color: #161b22;
   transition: 0.4s;
 }
 
 /* Changes the color of the slider when toggled */
 input:checked + .slider {
-  background-color: blue;
+  background-color: #c9d1d9;
 }
 
 input:checked + .slider::before {
   transform: translateX(52px);
+  background-color: #161b22;
 }
 
 .offMode {
   display: none;
-  color: white;
+  color: #161b22;
   position: absolute;
   top: 25%;
   left: 10%;
@@ -58,7 +59,7 @@ input:checked + .slider::before {
 
 .onMode {
   display: block;
-  color: white;
+  color: #c9d1d9;
   position: absolute;
   top: 25%;
   left: 50px;

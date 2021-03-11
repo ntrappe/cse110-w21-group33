@@ -18,7 +18,7 @@ class ToggleSwitch extends HTMLElement {
     const style = document.createElement('link');
     style.setAttribute('id', 'settingsStyles');
     style.setAttribute('rel', 'stylesheet');
-    style.setAttribute('href', './components/pomo-toggle.css');
+    style.setAttribute('href', './components/settings-dark.css');
 
     const toggleSwitch = document.createElement('label');  
     toggleSwitch.setAttribute('class', 'switch');
