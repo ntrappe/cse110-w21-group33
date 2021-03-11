@@ -46,8 +46,8 @@ class PomoFinish extends HTMLElement {
         modalTitle.setAttribute('id', 'statisticsModalTitle');
         modalTitle.innerHTML = "SESSION SUMMARY";
         // list of stat
-        this.sessionStatistics = document.createElement('ul');
-        this.sessionStatistics.setAttribute('id', 'statisticsPanel');
+        let sessionStatistics = document.createElement('ul');
+        sessionStatistics.setAttribute('id', 'statisticsPanel');
 
         // button to close the lightbox
         let closeButton = document.createElement('div');
@@ -70,16 +70,15 @@ class PomoFinish extends HTMLElement {
         // append elements to containers
         modalContent.appendChild(closeButton);
         modalContent.appendChild(modalTitle);
-        modalContent.appendChild(this.sessionStatistics);
+        modalContent.appendChild(sessionStatistics);
         modal.appendChild(modalContent);
         wrapper.appendChild(modal);
         wrapper.append(finishButton);
         
         shadow.appendChild(wrapper);
         shadow.appendChild(link);
-      }
 
-      /**
+        /**
        * Render session's statistics to the screen
        * @param {Number} workCount            the number of pomodoro sessions completed
        * @param {Number} shortBreakCount      the number of short breaks
@@ -88,40 +87,41 @@ class PomoFinish extends HTMLElement {
        * @param {Number} totalMinutesWorked   total number of minutes working
        * @return {void} 
        */
+        this.showModal = (workCount, shortBreakCount, longBreakCount, 
+                                interruptedCount, totalMinutesWorked) => {
 
-      showModal(workCount, shortBreakCount, longBreakCount, interruptedCount, totalMinutesWorked) {
-        let ul = this.sessionStatistics;
-        ul.innerHTML = "";  // clear the list before appending elements
-        
-        // render infomation
-        ["Pomodoro Completed", "Short Breaks", "Long Breaks",
-        "Interrupted Session", "Total Minutes Working"].forEach(function(info) {
-          let li = document.createElement('li');
-          li.setAttribute('class', 'session-statistics');
-          switch(info) {
-            case "Pomodoro Completed":
-              li.innerHTML = `${info}: ${workCount}`;
-              break;
-            case "Short Breaks":
-              li.innerHTML = `${info}: ${shortBreakCount}`;
-              break;
-            case "Long Breaks":
-              li.innerHTML = `${info}: ${longBreakCount}`;
-              break;
-            case "Interrupted Session":
-              li.innerHTML = `${info}: ${interruptedCount}`;
-              break;
-            case "Total Minutes Working":
-              li.innerHTML = `${info}: ${totalMinutesWorked}`;
-              break;
-            default:
-              li.innerHTML = "Buggy!";
-          }
-          ul.appendChild(li);
-        });
-
-        // show the statistics panel
-        this.shadowRoot.getElementById("statisticsModal").style.display = 'block';
+          sessionStatistics.innerHTML = "";  // clear the list before appending elements
+          
+          // render infomation
+          ["Pomodoro Completed", "Short Breaks", "Long Breaks",
+          "Interrupted Session", "Total Minutes Working"].forEach(function(info) {
+            let li = document.createElement('li');
+            li.setAttribute('class', 'session-statistics');
+            switch(info) {
+              case "Pomodoro Completed":
+                li.innerHTML = `${info}: ${workCount}`;
+                break;
+              case "Short Breaks":
+                li.innerHTML = `${info}: ${shortBreakCount}`;
+                break;
+              case "Long Breaks":
+                li.innerHTML = `${info}: ${longBreakCount}`;
+                break;
+              case "Interrupted Session":
+                li.innerHTML = `${info}: ${interruptedCount}`;
+                break;
+              case "Total Minutes Working":
+                li.innerHTML = `${info}: ${totalMinutesWorked}`;
+                break;
+              default:
+                li.innerHTML = "Buggy!";
+            }
+            sessionStatistics.appendChild(li);
+          });
+  
+          // show the statistics panel
+          modal.style.display = 'block';
+        }
       }
 }
 
