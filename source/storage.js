@@ -21,13 +21,14 @@ function getDayCount() {
   if (
     date.getFullYear() > localStorage.getItem('prevYear') ||
     date.getMonth() + 1 > localStorage.getItem('prevMonth') ||
-    date.getDate() > localStorage.getItem('prevDay')) {
+    date.getDate() > localStorage.getItem('prevDay')
+    ) {
     localStorage.setItem('prevYear', date.getFullYear());
-    localStorage.setItem('prevMonth', date.getMonth()+1);
+    localStorage.setItem('prevMonth', date.getMonth() + 1);
     localStorage.setItem('prevDay', date.getDate());
     localStorage.setItem('pomodoroCount', EMPTY_VALUE);
   }
-  return parseInt(localStorage.getItem('pomodoroCount'));
+  return parseInt(localStorage.getItem('pomodoroCount'), 10);
 }
 
 /**
@@ -39,7 +40,7 @@ function setDayCount(count) {
   // Creating new local storage for pomodoroCount if it is the first time
   if (!localStorage.getItem('prevDay')) {
     localStorage.setItem('prevYear', date.getFullYear());
-    localStorage.setItem('prevMonth', date.getMonth()+1);
+    localStorage.setItem('prevMonth', date.getMonth() + 1);
     localStorage.setItem('prevDay', date.getDate());
     localStorage.setItem('pomodoroCount', EMPTY_VALUE);
   }
@@ -47,13 +48,14 @@ function setDayCount(count) {
   if (
     date.getFullYear() > localStorage.getItem('prevYear') ||
     date.getMonth() + 1 > localStorage.getItem('prevMonth') ||
-    date.getDate() > localStorage.getItem('prevDay')) {
+    date.getDate() > localStorage.getItem('prevDay')
+    ) {
     localStorage.setItem('prevYear', date.getFullYear());
-    localStorage.setItem('prevMonth', date.getMonth()+1);
+    localStorage.setItem('prevMonth', date.getMonth() + 1);
     localStorage.setItem('prevDay', date.getDate());
     localStorage.setItem('pomodoroCount', EMPTY_VALUE);
   }
-   localStorage.setItem('pomodoroCount',count + getDayCount());
+  localStorage.setItem('pomodoroCount', count + getDayCount());
 }
 
 /**
@@ -65,7 +67,12 @@ function getCalm() {
   if (!localStorage.getItem('isCalm')) {
     localStorage.setItem('isCalm', false); // Creating local storage for calm mode
   }
-  return Boolean(localStorage.getItem('isCalm'));
+  if (localStorage.getItem('isCalm') == 'true') {
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 /**
@@ -85,7 +92,7 @@ function getVolume() {
   if (!localStorage.getItem('volume')) {
     localStorage.setItem('volume', MAX_VOL); // setting default volume to be 100
   }
-  return Number(localStorage.getItem('volume'));
+  return parseInt(localStorage.getItem('volume'), 10);
 }
 
 /**
@@ -101,9 +108,10 @@ function setVolume(vol) {
  * @return {String} last saved sound for alarm
  */
 function getSound() {
-  if (!(localStorage.getItem('sound'))) { // Checking if sound local storage was created
-    localStorage.setItem('sound',
-      'zapsplat_household_alarm_clock_old_fashioned_ring_very_short_44062.mp3');
+  if (!localStorage.getItem('sound')) { // Checking if sound local storage was created
+    localStorage.setItem(
+      'sound', 'zapsplat_household_alarm_clock_old_fashioned_ring_very_short_44062.mp3'
+      );
   }
   return localStorage.getItem('sound');
 }
@@ -125,7 +133,12 @@ function getDark() {
   if (!localStorage.getItem('isDark')) {
     localStorage.setItem('isDark', false); // Setting default mode into light mode
   }
-  return Boolean(localStorage.getItem('isDark'));
+  if (localStorage.getItem('isDark') == 'true') {
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 /**
@@ -145,7 +158,7 @@ function getWork() {
   if (!localStorage.getItem('work')) {
     localStorage.setItem('work', DEFAULT_WORK); // Setting default work mode to be 25 minutes
   }
-  return Number(localStorage.getItem('work'));
+  return parseInt(localStorage.getItem('work'), 10);
 }
 
 /**
@@ -166,7 +179,7 @@ function getShortBreak() {
     // Setting default short break to be 5 minutes
     localStorage.setItem('shortBreak', DEFAULT_SHORT_BREAK);
   }
-  return Number(localStorage.getItem('shortBreak'));
+  return parseInt(localStorage.getItem('shortBreak'), 10);
 }
       
 /**
@@ -187,7 +200,7 @@ function getLongBreak() {
     // Setting default long break to be 15 minutes
     localStorage.setItem('longBreak', DEFAULT_LONG_BREAK);
   }
-  return Number(localStorage.getItem('longBreak'));
+  return parseInt(localStorage.getItem('longBreak'), 10);
 }
 
 /**

@@ -12,7 +12,7 @@ test('getDayCount without setDayCount', () => {
 
 test('getDayCount for same day/month/year', () => {
   const date = new Date();
-  localStorage.setItem('prevYear', date.getFullYear());  
+  localStorage.setItem('prevYear', date.getFullYear());
   localStorage.setItem('prevMonth', date.getMonth() + 1);
   localStorage.setItem('prevDay', date.getDate());
   localStorage.setItem('pomodoroCount', 10);
@@ -21,7 +21,7 @@ test('getDayCount for same day/month/year', () => {
 
 test('getDayCount for a new day', () => {
   const date = new Date();
-  localStorage.setItem('prevYear', date.getFullYear());  
+  localStorage.setItem('prevYear', date.getFullYear());
   localStorage.setItem('prevMonth', date.getMonth() + 1);
   localStorage.setItem('prevDay', date.getDate() - 1); // Previous date before current day
   localStorage.setItem('pomodoroCount', 10);
@@ -30,16 +30,16 @@ test('getDayCount for a new day', () => {
 
 test('getDayCount for a new Month', () => {
   const date = new Date();
-  localStorage.setItem('prevYear', date.getFullYear());  
+  localStorage.setItem('prevYear', date.getFullYear());
   localStorage.setItem('prevMonth', date.getMonth()); // Will be the month before current month
   localStorage.setItem('prevDay', date.getDate());
   localStorage.setItem('pomodoroCount', 10);
-expect(getDayCount()).toBe(0);
+  expect(getDayCount()).toBe(0);
 });
 
 test('getDayCount for a new Year', () => {
   const date = new Date();
-  localStorage.setItem('prevYear', date.getFullYear() - 1); // Year before current year 
+  localStorage.setItem('prevYear', date.getFullYear() - 1); // Year before current year
   localStorage.setItem('prevMonth', date.getMonth() + 1);
   localStorage.setItem('prevDay', date.getDate());
   localStorage.setItem('pomodoroCount', 10);
@@ -53,7 +53,7 @@ test('setDayCount for the first time', () => {
 
 test('setDayCount for same day/month/year', () => {
   const date = new Date();
-  localStorage.setItem('prevYear', date.getFullYear());  
+  localStorage.setItem('prevYear', date.getFullYear());
   localStorage.setItem('prevMonth', date.getMonth() + 1);
   localStorage.setItem('prevDay', date.getDate());
   localStorage.setItem('pomodoroCount', 10);
@@ -63,7 +63,7 @@ test('setDayCount for same day/month/year', () => {
 
 test('setDayCount for a new day', () => {
   const date = new Date();
-  localStorage.setItem('prevYear', date.getFullYear());  
+  localStorage.setItem('prevYear', date.getFullYear());
   localStorage.setItem('prevMonth', date.getMonth() + 1);
   localStorage.setItem('prevDay', date.getDate() - 1); // Previous date before current day
   localStorage.setItem('pomodoroCount', 10);
@@ -73,7 +73,7 @@ test('setDayCount for a new day', () => {
 
 test('setDayCount for a new Month', () => {
   const date = new Date();
-  localStorage.setItem('prevYear', date.getFullYear());  
+  localStorage.setItem('prevYear', date.getFullYear());
   localStorage.setItem('prevMonth', date.getMonth()); // Month before current month
   localStorage.setItem('prevDay', date.getDate());
   localStorage.setItem('pomodoroCount', 10);
