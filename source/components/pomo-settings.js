@@ -1,17 +1,17 @@
 class PomoSettings extends HTMLElement {
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        const shadow = this.attachShadow({mode: 'open'});
+    const shadow = this.attachShadow({ mode: 'open' });
 
-        const element = document.createElement('p');
+    const element = document.createElement('p');
 
-        element.textContent = "Settings";
-        
-        shadow.appendChild(element);
-      }
+    element.textContent = 'Settings';
+
+    shadow.appendChild(element);
+  }
 }
 
 customElements.define('pomo-settings', PomoSettings);
 
-export { PomoSettings };
+export default PomoSettings;
