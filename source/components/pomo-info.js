@@ -1,17 +1,17 @@
 class PomoInfo extends HTMLElement {
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        const shadow = this.attachShadow({mode: 'open'});
+    const shadow = this.attachShadow({ mode: 'open' });
 
-        const element = document.createElement('p');
+    const element = document.createElement('p');
 
-        element.textContent = "Info";
-        
-        shadow.appendChild(element);
-      }
+    element.textContent = 'Info';
+
+    shadow.appendChild(element);
+  }
 }
 
 customElements.define('pomo-info', PomoInfo);
 
-export { PomoInfo };
+export default PomoInfo;

@@ -1,6 +1,6 @@
 class PomoFinish extends HTMLElement {
-    constructor() {
-        super();
+  constructor() {
+    super();
 
         const shadow = this.attachShadow({mode: 'open'});
         
@@ -128,4 +128,4 @@ class PomoFinish extends HTMLElement {
 
 customElements.define('pomo-finish', PomoFinish);
 
-export { PomoFinish };
+export default PomoFinish;
