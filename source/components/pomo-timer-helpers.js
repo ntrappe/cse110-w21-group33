@@ -1,6 +1,7 @@
 /* Helper Functions for Timer (imported by pomo-timer.js) */
 
 const MAX_SEC = 60;
+const MAX_POMO_MIN = 59;
 const NUM_MIN = 2;
 const TWO_DIGIT = 10;
 const START = 'Start';
@@ -35,7 +36,6 @@ function display(totalSeconds, timerText) {
 
   // write text to screen
   timerText.textContent = `${tMin}:${tSec}`;
-  // setTab(t_min, t_sec);
 }
 
 /**
@@ -43,9 +43,9 @@ function display(totalSeconds, timerText) {
  * @param {Number} m Minutes for the timer to run
  * @return {Number} totalSeconds
  */
-function set(m) {
+function setTime(m) {
   // Error catching: make sure minimum 1m and maximum 59m
-  if (m < 1 || m > 59) {
+  if (m < 1 || m > MAX_POMO_MIN) {
     return NUM_MIN * MAX_SEC;
   }
   return m * MAX_SEC;
@@ -78,15 +78,6 @@ function initProgess() {
   const progressContainer = document.createElement('div');
   progressContainer.setAttribute('class', 'progress-container');
 
-  /* text above squares NOT IMPLEMENTED */
-  const progressTopSection = document.createElement('div');
-  progressTopSection.setAttribute('class', 'progress-top-section');
-  progressContainer.appendChild(progressTopSection);
-
-  /* holder for squares that track break progress */
-  const progressBottomSection = document.createElement('div');
-  progressContainer.appendChild(progressBottomSection);
-
   /* empty space (matches background) */
   const space1 = document.createElement('p');
   space1.setAttribute('class', 'space');
@@ -109,14 +100,13 @@ function initProgess() {
   square4.setAttribute('id', 'square4');
 
   /* break tracker via squares */
-  progressBottomSection.setAttribute('class', 'progress-bottom-section');
-  progressBottomSection.appendChild(square1);
-  progressBottomSection.appendChild(space1);
-  progressBottomSection.appendChild(square2);
-  progressBottomSection.appendChild(space2);
-  progressBottomSection.appendChild(square3);
-  progressBottomSection.appendChild(space3);
-  progressBottomSection.appendChild(square4);
+  progressContainer.appendChild(square1);
+  progressContainer.appendChild(space1);
+  progressContainer.appendChild(square2);
+  progressContainer.appendChild(space2);
+  progressContainer.appendChild(square3);
+  progressContainer.appendChild(space3);
+  progressContainer.appendChild(square4);
 
   // return container to main file can append to wrapper
   // return squares so setProgressHelper can reference them for style
@@ -162,6 +152,6 @@ function setProgressHelper(progress, square1, square2, square3, square4) {
   }
 }
 
-export { display, setStartButton, setResetButton, set, initProgess, setProgressHelper };
+export { display, setStartButton, setResetButton, setTime, initProgess, setProgressHelper };
 
 /* End pomo-timer-helpers.js */

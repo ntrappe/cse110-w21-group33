@@ -1,4 +1,4 @@
-import { setStartButton, setResetButton, display, set } from './pomo-timer-helpers.js';
+import { setStartButton, setResetButton, display, setTime, initProgess, setProgressHelper } from './pomo-timer-helpers.js';
 
 const START = 'Start';
 const SEC_SPEED = 250;
@@ -22,6 +22,11 @@ class PomoTimer extends HTMLElement {
     const currentMode = document.createElement('p');
     currentMode.setAttribute('id', 'timer-mode');
 
+    // squares to represent progress
+    const progressContainerItems = initProgess(); 
+    const progressContainer = progressContainerItems[0];
+    progressContainer.setAttribute('id', 'timer-progress-container');
+
     // timer countdown display
     const timerText = document.createElement('h1');
     timerText.setAttribute('id', 'timer-text');
@@ -33,9 +38,6 @@ class PomoTimer extends HTMLElement {
     timerButton.setAttribute('class', 'start');
 
     /* Initialize elements */
-    /*
-        currentMode.textContent = "WORK";
-        timerText.textContent = "TIME"; */
     timerButton.textContent = START;
 
     let ticker; // timer object
@@ -88,8 +90,7 @@ class PomoTimer extends HTMLElement {
     this.timerReset = () => {
       shadow.dispatchEvent(timerResetEvent);
       clearInterval(ticker);
-      // this.totalSeconds = set(NUM_MIN);
-      this.totalSeconds = set(modeDuration);
+      this.totalSeconds = setTime(modeDuration);
       display(this.totalSeconds, timerText);
     };
 
@@ -98,8 +99,7 @@ class PomoTimer extends HTMLElement {
      */
     this.timerStart = () => {
       shadow.dispatchEvent(timerStartEvent);
-      // this.totalSeconds = set(NUM_MIN);
-      this.totalSeconds = set(modeDuration);
+      this.totalSeconds = setTime(modeDuration);
       display(this.totalSeconds, timerText);
       ticker = setInterval(this.timerTick, SEC_SPEED);
     };
@@ -110,8 +110,7 @@ class PomoTimer extends HTMLElement {
     this.timerFinish = () => {
       shadow.dispatchEvent(timerFinishEvent);
       clearInterval(ticker);
-      // this.totalSeconds = set(NUM_MIN);
-      this.totalSeconds = set(modeDuration);
+      this.totalSeconds = setTime(modeDuration);
       display(this.totalSeconds, timerText);
     };
 
@@ -136,7 +135,7 @@ class PomoTimer extends HTMLElement {
      */
     this.setTimer = (min, mode) => {
       modeDuration = min;
-      this.totalSeconds = set(min);
+      this.totalSeconds = setTime(min);
       display(this.totalSeconds, timerText);
       currentMode.setAttribute('class', mode);
       currentMode.textContent = mode.toUpperCase();
