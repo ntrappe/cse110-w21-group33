@@ -15,7 +15,7 @@ class PomoInfo extends HTMLElement {
 
         // info button
         this.infoButton = document.createElement('button');
-        this.infoButton.setAttribute('id', 'infoButton');
+        this.infoButton.setAttribute('id', 'info-button');
         this.infoButton.onclick = () => {
           modal.style.display = 'block';
         }
@@ -24,7 +24,7 @@ class PomoInfo extends HTMLElement {
         // the modal window
         const modal = document.createElement('div');
         modal.setAttribute('class', 'modal');
-        modal.setAttribute('id', 'infoModal');
+        modal.setAttribute('id', 'info-modal');
         modal.style.display = 'none';
         modal.onclick = (event) => {
           // close lightbox when click outside of the content area
@@ -35,12 +35,12 @@ class PomoInfo extends HTMLElement {
 
         // the lightbox
         const modalContent = document.createElement('div');
-        modalContent.setAttribute('class', 'modalContent');
-        modalContent.setAttribute('id', 'infoModalContent');
+        modalContent.setAttribute('class', 'modal-content');
+        modalContent.setAttribute('id', 'info-modal-content');
 
         // the main info Content
         const infoContent = document.createElement('div');
-        infoContent.setAttribute('id', 'infoContent');
+        infoContent.setAttribute('id', 'info-content');
         const title = document.createElement('h3')
         const content = document.createElement('div');
         title.innerHTML = "HOW IT WORKS";
@@ -53,8 +53,8 @@ class PomoInfo extends HTMLElement {
 
         // button to close the modal window
         const closeButton = document.createElement('div');
-        closeButton.setAttribute('class', 'closeButton');
-        closeButton.setAttribute('id', 'infoCloseButton');
+        closeButton.setAttribute('class', 'close-button');
+        closeButton.setAttribute('id', 'info-close-button');
         closeButton.setAttribute('class', 'button-off');
         closeButton.onclick = () => {
           modal.style.display = 'none';
