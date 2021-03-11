@@ -4,8 +4,8 @@
         "jest_coverage": "jest --collectCoverage --",
         "cypress_test": "cypress run",
         "cypress_start": "cypress open",
-        "lint_test": "eslint \"source/**/*.js\" \"testing/**/*.js\" && stylelint \"source/**/*.js\" \"testing/**/*.js\" && htmlhint \"source/**/*.html\"",
-        "lint_fix": "eslint --fix \"source/**/*.js\" \"testing/**/*.js\" && stylelint --fix \"source/**/*.js\" \"testing/**/*.js\" && htmlhint \"source/**/*.html\""
+        "lint_test": "eslint \"source/**/*.js\" \"testing/**/*.js\" && stylelint \"source/**/*.css\" && htmlhint \"source/**/*.html\"",
+        "lint_fix": "eslint --fix \"source/**/*.js\" \"testing/**/*.js\" && stylelint --fix \"source/**/*.css\" \"testing/**/*.css\" && htmlhint \"source/**/*.html\""
     },
     "devDependencies": {
         "@babel/eslint-parser": "^7.13.10",
