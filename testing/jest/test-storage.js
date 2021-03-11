@@ -1,6 +1,6 @@
-import { getDayCount, setDayCount, getCalm, setCalm, getVolume, setVolume, getSound, setSound,
-   getDark, setDark, getWork, setWork, getShortBreak, setShortBreak, getLongBreak, setLongBreak }
-    from '../../source/storage';
+import { getDayCount,  setDayCount,  getCalm,  setCalm,  getVolume,  setVolume,  getSound,
+  setSound,  getDark,  setDark,  getWork,  setWork,  getShortBreak,  setShortBreak,
+  getLongBreak,  setLongBreak } from '../../source/storage';
 
 beforeEach(() => {
   localStorage.clear();
@@ -11,38 +11,38 @@ test('getDayCount without setDayCount', () => {
 });
 
 test('getDayCount for same day/month/year', () => {
-  var date = new Date();
-  localStorage.setItem('prevYear',date.getFullYear());  
-  localStorage.setItem('prevMonth',date.getMonth()+1);
-  localStorage.setItem('prevDay',date.getDate());
-  localStorage.setItem('pomodoroCount',10);
+  const date = new Date();
+  localStorage.setItem('prevYear', date.getFullYear());  
+  localStorage.setItem('prevMonth', date.getMonth() + 1);
+  localStorage.setItem('prevDay', date.getDate());
+  localStorage.setItem('pomodoroCount', 10);
   expect(getDayCount()).toBe(10);
 });
 
 test('getDayCount for a new day', () => {
-  var date = new Date();
-  localStorage.setItem('prevYear',date.getFullYear());  
-  localStorage.setItem('prevMonth',date.getMonth()+1);
-  localStorage.setItem('prevDay',date.getDate()-1); // Previous date is 1 day before current day
-  localStorage.setItem('pomodoroCount',10);
+  const date = new Date();
+  localStorage.setItem('prevYear', date.getFullYear());  
+  localStorage.setItem('prevMonth', date.getMonth() + 1);
+  localStorage.setItem('prevDay', date.getDate() - 1); // Previous date before current day
+  localStorage.setItem('pomodoroCount', 10);
   expect(getDayCount()).toBe(0);
 });
 
 test('getDayCount for a new Month', () => {
-  var date = new Date();
-  localStorage.setItem('prevYear',date.getFullYear());  
-  localStorage.setItem('prevMonth',date.getMonth()); // Will be the month before current month
-  localStorage.setItem('prevDay',date.getDate());
-  localStorage.setItem('pomodoroCount',10);
+  const date = new Date();
+  localStorage.setItem('prevYear', date.getFullYear());  
+  localStorage.setItem('prevMonth', date.getMonth()); // Will be the month before current month
+  localStorage.setItem('prevDay', date.getDate());
+  localStorage.setItem('pomodoroCount', 10);
 expect(getDayCount()).toBe(0);
 });
 
 test('getDayCount for a new Year', () => {
-  var date = new Date();
-  localStorage.setItem('prevYear',date.getFullYear()-1); // Will be the year before current year 
-  localStorage.setItem('prevMonth',date.getMonth()+1);
-  localStorage.setItem('prevDay',date.getDate());
-  localStorage.setItem('pomodoroCount',10);
+  const date = new Date();
+  localStorage.setItem('prevYear', date.getFullYear() - 1); // Year before current year 
+  localStorage.setItem('prevMonth', date.getMonth() + 1);
+  localStorage.setItem('prevDay', date.getDate());
+  localStorage.setItem('pomodoroCount', 10);
   expect(getDayCount()).toBe(0);
 });
 
@@ -52,53 +52,53 @@ test('setDayCount for the first time', () => {
 });
 
 test('setDayCount for same day/month/year', () => {
-  var date = new Date();
-  localStorage.setItem('prevYear',date.getFullYear());  
-  localStorage.setItem('prevMonth',date.getMonth()+1);
-  localStorage.setItem('prevDay',date.getDate());
-  localStorage.setItem('pomodoroCount',10);
+  const date = new Date();
+  localStorage.setItem('prevYear', date.getFullYear());  
+  localStorage.setItem('prevMonth', date.getMonth() + 1);
+  localStorage.setItem('prevDay', date.getDate());
+  localStorage.setItem('pomodoroCount', 10);
   setDayCount(5);
   expect(getDayCount()).toBe(15);
 });
 
 test('setDayCount for a new day', () => {
-  var date = new Date();
-  localStorage.setItem('prevYear',date.getFullYear());  
-  localStorage.setItem('prevMonth',date.getMonth()+1);
-  localStorage.setItem('prevDay',date.getDate()-1); // Previous date is 1 day before current day
-  localStorage.setItem('pomodoroCount',10);
+  const date = new Date();
+  localStorage.setItem('prevYear', date.getFullYear());  
+  localStorage.setItem('prevMonth', date.getMonth() + 1);
+  localStorage.setItem('prevDay', date.getDate() - 1); // Previous date before current day
+  localStorage.setItem('pomodoroCount', 10);
   setDayCount(5);
   expect(getDayCount()).toBe(5);
 });
 
 test('setDayCount for a new Month', () => {
-  var date = new Date();
-  localStorage.setItem('prevYear',date.getFullYear());  
-  localStorage.setItem('prevMonth',date.getMonth()); // Will be the month before current month
-  localStorage.setItem('prevDay',date.getDate());
-  localStorage.setItem('pomodoroCount',10);
+  const date = new Date();
+  localStorage.setItem('prevYear', date.getFullYear());  
+  localStorage.setItem('prevMonth', date.getMonth()); // Month before current month
+  localStorage.setItem('prevDay', date.getDate());
+  localStorage.setItem('pomodoroCount', 10);
   setDayCount(11);
   expect(getDayCount()).toBe(11);
 });
 
 test('setDayCount for a new Year', () => {
-  var date = new Date();
-  localStorage.setItem('prevYear',date.getFullYear()-1); // Will be the year before current year
-  localStorage.setItem('prevMonth',date.getMonth()+1);
-  localStorage.setItem('prevDay',date.getDate());
-  localStorage.setItem('pomodoroCount',10);
+  const date = new Date();
+  localStorage.setItem('prevYear', date.getFullYear() - 1); // Year before current year
+  localStorage.setItem('prevMonth', date.getMonth() + 1);
+  localStorage.setItem('prevDay', date.getDate());
+  localStorage.setItem('pomodoroCount', 10);
   setDayCount(12);
   expect(getDayCount()).toBe(12);
 });
 
 test('setCalm to be true', () => {
-    setCalm(true);
-    expect(getCalm()).toBe(true);
-  });
+  setCalm(true);
+  expect(getCalm()).toBe(true);
+});
 
 test('getCalm without setCalm', () => {
   expect(getCalm()).toBe(false);
-}); 
+});
 
 test('setCalm to be true', () => {
   setCalm(true);
@@ -154,7 +154,7 @@ test('setWork to be 30', () => {
 test('getShortBreak without setShortBreak', () => {
   expect(getShortBreak()).toBe(5);
 });
-  
+
 test('setShortBreak to be 10', () => {
   setShortBreak(10);
   expect(getShortBreak()).toBe(10);
@@ -163,7 +163,7 @@ test('setShortBreak to be 10', () => {
 test('getLongBreak without setLongBreak', () => {
   expect(getLongBreak()).toBe(15);
 });
-    
+
 test('setLongBreak to be 20', () => {
   setLongBreak(20);
   expect(getLongBreak()).toBe(20);
