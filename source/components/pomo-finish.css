@@ -19,7 +19,7 @@ button:hover {
   transition-duration: 0.1s;
 }
 
-#infoCloseButton[class="button-off"] {
+#info-close-button[class="button-off"] {
   background-color: #0e1116;
   color: #cbd1d8;
   float: right;
@@ -32,7 +32,7 @@ button:hover {
   cursor: pointer;
 }
 
-#infoCloseButton[class="button-on"] {
+#info-close-button[class="button-on"] {
   background-color: #22262c;
   color: #f1f6fb;
   float: right;
@@ -58,7 +58,7 @@ button:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modalContent {
+.modal-content {
   background-color: #171b21;
   margin: 5% auto;
   padding: 15px;
@@ -78,14 +78,14 @@ button:hover {
   margin: auto;
 }
 
-#infoContent {
+#info-content {
   display: block;
   color: #cbd1d8;
   margin: 5% 5%;
   width: 90%;
 }
 
-#infoContent h3 {
+#info-content h3 {
   padding-bottom: 2px;
   border-bottom: #cbd1d8 solid;
 }
