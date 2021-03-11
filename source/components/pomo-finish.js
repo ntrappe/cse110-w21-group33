@@ -48,7 +48,7 @@ class PomoFinish extends HTMLElement {
         // list of stat
 
         let sessionStatistics = document.createElement('ul');
-        sessionStatistics.setAttribute('id', 'statisticsPanel');
+        sessionStatistics.setAttribute('id', 'statistics-panel');
 
         // button to close the lightbox
         let closeButton = document.createElement('div');
