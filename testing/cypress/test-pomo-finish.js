@@ -10,16 +10,16 @@ describe('Find Finish Elements', { includeShadowDom: true }, () => {
         cy.visit('./source/index.html');
     });
     it('Get element finish button', () => {
-        cy.get('#finishButton');
+        cy.get('#finish-button');
     });
     it('Get element close button', () => {
-        cy.get('#statisticsCloseButton');
+        cy.get('#statistics-close-button');
     });
     it('Get lightbox title', () => {
-        cy.get('#statisticsModalTitle');
+        cy.get('#statistics-modal-title');
     });
     it('Get element statistics panel', () => {
-        cy.get('#statisticsPanel');
+        cy.get('#statistics-panel');
     });
 });
 describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
@@ -27,12 +27,12 @@ describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
         cy.visit('./source/index.html');
     });
     it('Check that button labeled Statistics', () => {
-        cy.get('#finishButton').then(($el) => {
+        cy.get('#finish-button').then(($el) => {
             expect($el).to.contain('Statistics');
         });
     });
     it('Check that lightbox is not displayed initially', () => {
-        cy.get('#statisticsModal').should('have.css', 'display', 'none');
+        cy.get('#statistics-modal').should('have.css', 'display', 'none');
     });
 });
 
@@ -41,56 +41,56 @@ describe('Check Lightbox Controls', { includeShadowDom: true}, () => {
         cy.visit('./source/index.html');
     });
     it('Check that finish button opens lightbox and background is right color', () => {
-        cy.get('#finishButton').click();
-        cy.get('#statisticsModal').should('have.css', 'display', 'block');
-        cy.get('#statisticsModal').should('have.css', 'background-color')
+        cy.get('#finish-button').click();
+        cy.get('#statistics-modal').should('have.css', 'display', 'block');
+        cy.get('#statistics-modal').should('have.css', 'background-color')
         .and('eq', 'rgba(0, 0, 0, 0.5)');
     });
     it('Check that close button closes lightbox', () => {
-        cy.get('#finishButton').click();
-        cy.get('#statisticsCloseButton').click().then(() => {
-            cy.get('#statisticsModal').should('have.css', 'display', 'none');
+        cy.get('#finish-button').click();
+        cy.get('#statistics-close-button').click().then(() => {
+            cy.get('#statistics-modal').should('have.css', 'display', 'none');
         });
     });
     it('Check clicking top of the modal closes lightbox', () => {
-        cy.get('#finishButton').click();
-        cy.get('#statisticsModal').click('top');
-        cy.get('#statisticsModal').should('have.css', 'display', 'none');
+        cy.get('#finish-button').click();
+        cy.get('#statistics-modal').click('top');
+        cy.get('#statistics-modal').should('have.css', 'display', 'none');
     });
     it('Check clicking top right of the modal closes lightbox', () => {
-        cy.get('#finishButton').click();
-        cy.get('#statisticsModal').click('topRight');
-        cy.get('#statisticsModal').should('have.css', 'display', 'none');
+        cy.get('#finish-button').click();
+        cy.get('#statistics-modal').click('topRight');
+        cy.get('#statistics-modal').should('have.css', 'display', 'none');
     });
     it('Check clicking top left of the modal closes lightbox', () => {
-        cy.get('#finishButton').click();
-        cy.get('#statisticsModal').click('topLeft');
-        cy.get('#statisticsModal').should('have.css', 'display', 'none');
+        cy.get('#finish-button').click();
+        cy.get('#statistics-modal').click('topLeft');
+        cy.get('#statistics-modal').should('have.css', 'display', 'none');
     });
     it('Check clicking bottom of the modal closes lightbox', () => {
-        cy.get('#finishButton').click();
-        cy.get('#statisticsModal').click('bottom');
-        cy.get('#statisticsModal').should('have.css', 'display', 'none');
+        cy.get('#finish-button').click();
+        cy.get('#statistics-modal').click('bottom');
+        cy.get('#statistics-modal').should('have.css', 'display', 'none');
     });
     it('Check clicking bottom right of the modal closes lightbox', () => {
-        cy.get('#finishButton').click();
-        cy.get('#statisticsModal').click('bottomRight');
-        cy.get('#statisticsModal').should('have.css', 'display', 'none');
+        cy.get('#finish-button').click();
+        cy.get('#statistics-modal').click('bottomRight');
+        cy.get('#statistics-modal').should('have.css', 'display', 'none');
     });
     it('Check clicking bottom left of the modal closes lightbox', () => {
-        cy.get('#finishButton').click();
-        cy.get('#statisticsModal').click('bottomLeft');
-        cy.get('#statisticsModal').should('have.css', 'display', 'none');
+        cy.get('#finish-button').click();
+        cy.get('#statistics-modal').click('bottomLeft');
+        cy.get('#statistics-modal').should('have.css', 'display', 'none');
     });
     it('Check clicking left of the modal closes lightbox', () => {
-        cy.get('#finishButton').click();
-        cy.get('#statisticsModal').click('left');
-        cy.get('#statisticsModal').should('have.css', 'display', 'none');
+        cy.get('#finish-button').click();
+        cy.get('#statistics-modal').click('left');
+        cy.get('#statistics-modal').should('have.css', 'display', 'none');
     });
     it('Check clicking right left of the modal closes lightbox', () => {
-        cy.get('#finishButton').click();
-        cy.get('#statisticsModal').click('right');
-        cy.get('#statisticsModal').should('have.css', 'display', 'none');
+        cy.get('#finish-button').click();
+        cy.get('#statistics-modal').click('right');
+        cy.get('#statistics-modal').should('have.css', 'display', 'none');
     });
 })
 
@@ -100,14 +100,14 @@ describe('Check Statistics Panel Elements With showModal()', { includeShadowDom:
         cy.window().then((win) => {
             win.pomoFinish.showModal(3, 2, 0, 0, 75);
         });
-        cy.get('#statisticsPanel').then(($el) => {
+        cy.get('#statistics-panel').then(($el) => {
             expect($el).to.contain('Pomodoro Completed: 3');
             expect($el).to.contain('Short Breaks: 2');
             expect($el).to.contain('Long Breaks: 0');
             expect($el).to.contain('Interrupted Session: 0');
             expect($el).to.contain('Total Minutes Working: 75');
         });
-        cy.get('#statisticsModal').should('have.css', 'display', 'block');
+        cy.get('#statistics-modal').should('have.css', 'display', 'block');
     });
 });
 
