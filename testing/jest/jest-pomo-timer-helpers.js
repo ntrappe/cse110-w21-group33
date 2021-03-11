@@ -59,7 +59,7 @@ describe('test initProgess', () => {
     const output = pomoHelper.initProgess();
 
     /* Verify progress container contains all elements in expected order */
-    expect(output.length).toBe(7);
+    expect(output.length).toBe(5);
     expect(output[0].getAttribute('class')).toBe('progress-container');
 
     /* Verify that squares and spaces are in right order */
