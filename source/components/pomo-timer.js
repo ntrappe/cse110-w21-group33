@@ -16,10 +16,10 @@ class PomoTimer extends HTMLElement {
     const shadow = this.attachShadow({ mode: 'open' });
 
     /*
-    const link = document.createElement('link');
-    link.setAttribute('id', 'timer-styles');
-    link.setAttribute('rel', 'stylesheet');
-    link.setAttribute('href', './components/pomo-timer.css');
+      const link = document.createElement('link');
+      link.setAttribute('id', 'timer-styles');
+      link.setAttribute('rel', 'stylesheet');
+      link.setAttribute('href', './components/pomo-timer.css');
     */
 
     const wrapper = document.createElement('span');
