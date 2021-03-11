@@ -3,7 +3,7 @@ class PomoFinish extends HTMLElement {
     super();
 
     const shadow = this.attachShadow({ mode: 'open' });
-        
+
     // the component wrapper
     const wrapper = document.createElement('div');
     const link = document.createElement('link');
@@ -14,7 +14,7 @@ class PomoFinish extends HTMLElement {
     // custom event for modal display
     this.event = new CustomEvent('modalRequest', {
       bubbles: true,
-      composed: true
+      composed: true,
     });
 
     // button to finish session and display statistics
@@ -22,7 +22,7 @@ class PomoFinish extends HTMLElement {
     finishButton.setAttribute('id', 'finish-button');
     finishButton.textContent = 'Statistics';
     finishButton.onclick = () => {
-      shadow.dispatchEvent(this.event)
+      shadow.dispatchEvent(this.event);
     };
 
     // the lightbox
@@ -31,7 +31,7 @@ class PomoFinish extends HTMLElement {
     modal.setAttribute('id', 'statistics-modal');
     modal.onclick = (event) => {
       // close lightbox when click outside of the content area
-      if (event.target == modal) {
+      if (event.target === modal) {
         modal.style.display = 'none';
       }
     };
@@ -76,7 +76,7 @@ class PomoFinish extends HTMLElement {
     modal.appendChild(modalContent);
     wrapper.appendChild(modal);
     wrapper.append(finishButton);
-        
+
     shadow.appendChild(wrapper);
     shadow.appendChild(link);
 
@@ -87,29 +87,29 @@ class PomoFinish extends HTMLElement {
      * @param {Number} longBreakCount       the number of long breaks
      * @param {Number} interruptedCount     the number of time reset because of interruptions
      * @param {Number} totalMinutesWorked   total number of minutes working
-     * @return {void} 
+     * @return {void}
      */
     this.showModal = (
-      workCount, 
-      shortBreakCount, 
-      longBreakCount, 
+      workCount,
+      shortBreakCount,
+      longBreakCount,
       interruptedCount,
       totalMinutesWorked
     ) => {
+      // clear the list before appending elements
+      sessionStatistics.innerHTML = '';
 
-      sessionStatistics.innerHTML = '';  // clear the list before appending elements
-      
       // render infomation
       [
         'Pomodoro Completed',
         'Short Breaks',
         'Long Breaks',
         'Interrupted Session',
-        'Total Minutes Working'
+        'Total Minutes Working',
       ].forEach((info) => {
-        let li = document.createElement('li');
+        const li = document.createElement('li');
         li.setAttribute('class', 'session-statistics');
-        switch(info) {
+        switch (info) {
           case 'Pomodoro Completed':
             li.innerHTML = `${info}: ${workCount}`;
             break;
@@ -127,7 +127,7 @@ class PomoFinish extends HTMLElement {
             break;
           default:
             li.innerHTML = 'Buggy!';
-        };
+        }
         sessionStatistics.appendChild(li);
       });
 

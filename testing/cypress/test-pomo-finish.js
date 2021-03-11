@@ -28,13 +28,14 @@ describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
   });
   it('Check that button labeled Statistics', () => {
     cy.get('#finish-button').then(($el) => {
-        expect($el).to.contain('Statistics');
+      expect($el).to.contain('Statistics');
     });
   });
   it('Check that lightbox is half transparent and is not displayed initially', () => {
     cy.get('#statistics-modal').should('have.css', 'display', 'none');
-    cy.get('#statistics-modal').should('have.css', 'background-color')
-    .and('eq', 'rgba(0, 0, 0, 0.5)');
+    cy.get('#statistics-modal')
+      .should('have.css', 'background-color')
+      .and('eq', 'rgba(0, 0, 0, 0.5)');
   });
 });
 
@@ -60,8 +61,8 @@ describe('Check Lightbox Closing Options', { includeShadowDom: true }, () => {
     cy.get('#statistics-close-button')
       .click()
       .then(() => {
-      cy.get('#statistics-modal').should('have.css', 'display', 'none');
-    });
+        cy.get('#statistics-modal').should('have.css', 'display', 'none');
+      });
   });
   it('Check clicking top of the modal closes lightbox', () => {
     cy.get('#statistics-modal').click('top');
@@ -95,7 +96,7 @@ describe('Check Lightbox Closing Options', { includeShadowDom: true }, () => {
     cy.get('#statistics-modal').click('right');
     cy.get('#statistics-modal').should('have.css', 'display', 'none');
   });
-})
+});
 
 describe('Check Statistics Panel Elements With showModal()', { includeShadowDom: true }, () => {
   it('Check statistics panel has all elements', () => {
