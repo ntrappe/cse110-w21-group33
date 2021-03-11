@@ -19,8 +19,8 @@ button:hover {
   transition-duration: 0.1s;
 }
 
-#statisticsCloseButton[class="button-off"],
-#infoCloseButton[class="button-off"] {
+#statistics-close-button[class="button-off"],
+#info-close-button[class="button-off"] {
   background-color: #0f1115;
   color: #cbd1d8;
   float: right;
@@ -33,8 +33,8 @@ button:hover {
   cursor: pointer;
 }
 
-#statisticsCloseButton[class="button-on"],
-#infoCloseButton[class="button-on"] {
+#statistics-close-button[class="button-on"],
+#info-close-button[class="button-on"] {
   background-color: #22262c;
   color: #f1f6fb;
   float: right;
@@ -60,7 +60,7 @@ button:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modalContent {
+.modal-content {
   background-color: #0f1115;
   margin: 5% auto;
   padding: 15px;
@@ -71,7 +71,7 @@ button:hover {
   width: 50%;
 }
 
-#statisticsPanel {
+#statistics-panel {
   display: block;
   color: black;
   width: 90%;
@@ -79,12 +79,12 @@ button:hover {
   margin: auto;
 }
 
-#statisticsPanel li {
+#statistics-panel li {
   display: block;
   color: #cbd1d8;
 }
 
-.modalTitle {
+.modal-title {
   border-bottom: 1.5px solid;
   border-color: #31363c;
   padding-bottom: 15px;
