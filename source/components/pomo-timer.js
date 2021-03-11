@@ -1,4 +1,11 @@
-import { setStartButton, setResetButton, display, setTime, initProgess, setProgressHelper } from './pomo-timer-helpers.js';
+import { 
+  setStartButton, 
+  setResetButton, 
+  display, 
+  setTime, 
+  initProgess, 
+  setProgressHelper,
+} from './pomo-timer-helpers.js';
 
 const START = 'Start';
 const SEC_SPEED = 250;

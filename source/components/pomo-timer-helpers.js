@@ -19,12 +19,12 @@ function display(totalSeconds, timerText, calmTimerText) {
   const seconds = totalSeconds - minutes * MAX_SEC;
 
   if (calmTimerText) {
-    if (seconds == 0) {
+    if (seconds === 0) {
       // if at something like 2:00, show just min => 2m
-      timerText.textContent = String(minutes) + 'm';
+      timerText.textContent = `${String(minutes)}m`;
     } else {
       // otherwise round to the nearest min, like 1:59 => 2m
-      timerText.textContent = String(minutes + 1) + 'm';
+      timerText.textContent = `${String(minutes + 1)}m`;
     }
   } else {
     let tMin; // text repr of minutes
