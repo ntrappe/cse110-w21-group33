@@ -16,6 +16,7 @@
   "rules": {
     "import/extensions": 0, // Allow .js in filenames
     "no-param-reassign": [2, { "props": false }], // Prevent warning when updating DOM elements
+    "cypress/no-unnecessary-waiting": 0,
     "max-len": [
       "warn",
       {
