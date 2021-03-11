@@ -9,11 +9,11 @@ class PomoTimer extends HTMLElement {
     const shadow = this.attachShadow({ mode: 'open' });
 
     /*
-        const link = document.createElement('link');
-        link.setAttribute('id', 'timer-styles');
-        link.setAttribute('rel', 'stylesheet');
-        link.setAttribute('href', './components/pomo-timer.css');
-        */
+    const link = document.createElement('link');
+    link.setAttribute('id', 'timer-styles');
+    link.setAttribute('rel', 'stylesheet');
+    link.setAttribute('href', './components/pomo-timer.css');
+    */
 
     const wrapper = document.createElement('span');
     wrapper.setAttribute('class', 'wrapper');
@@ -43,9 +43,11 @@ class PomoTimer extends HTMLElement {
     let ticker; // timer object
     this.totalSeconds = 0; // total seconds in timer
     let modeDuration = 0; // time to put on clock
+    this.calmTimerText = false; // display w or w/o sec
 
     shadow.appendChild(wrapper);
     wrapper.appendChild(currentMode);
+    wrapper.appendChild(progressContainer);
     wrapper.appendChild(timerText);
     wrapper.appendChild(timerButton);
 
@@ -91,7 +93,7 @@ class PomoTimer extends HTMLElement {
       shadow.dispatchEvent(timerResetEvent);
       clearInterval(ticker);
       this.totalSeconds = setTime(modeDuration);
-      display(this.totalSeconds, timerText);
+      display(this.totalSeconds, timerText, this.calmTimerText);
     };
 
     /**
@@ -100,7 +102,7 @@ class PomoTimer extends HTMLElement {
     this.timerStart = () => {
       shadow.dispatchEvent(timerStartEvent);
       this.totalSeconds = setTime(modeDuration);
-      display(this.totalSeconds, timerText);
+      display(this.totalSeconds, timerText, this.calmTimerText);
       ticker = setInterval(this.timerTick, SEC_SPEED);
     };
 
@@ -111,7 +113,7 @@ class PomoTimer extends HTMLElement {
       shadow.dispatchEvent(timerFinishEvent);
       clearInterval(ticker);
       this.totalSeconds = setTime(modeDuration);
-      display(this.totalSeconds, timerText);
+      display(this.totalSeconds, timerText, this.calmTimerText);
     };
 
     /**
@@ -125,7 +127,7 @@ class PomoTimer extends HTMLElement {
         setStartButton(timerButton);
       } else {
         this.totalSeconds -= 1;
-        display(this.totalSeconds, timerText);
+        display(this.totalSeconds, timerText, this.calmTimerText);
       }
     };
 
@@ -136,9 +138,28 @@ class PomoTimer extends HTMLElement {
     this.setTimer = (min, mode) => {
       modeDuration = min;
       this.totalSeconds = setTime(min);
-      display(this.totalSeconds, timerText);
+      display(this.totalSeconds, timerText, this.calmTimerText);
       currentMode.setAttribute('class', mode);
       currentMode.textContent = mode.toUpperCase();
+    };
+
+    /**
+     * For CONTROL to update squares on screen to match number of breaks taken
+     * @param {Number} progress - number of breaks taken
+     */
+    this.setProgress = (progress) => {
+      setProgressHelper(progress, progressContainerItems[1], progressContainerItems[2],
+        progressContainerItems[3], progressContainerItems[4]);
+    };
+
+    /**
+     * For CONTROL to determine if timer text display will show normal
+     * minutes & seconds or just minutes
+     * @param {Boolean} calm - true for min; false for min and sec
+     */
+    this.setCalm = (calm) => {
+      this.calmTimerText = calm;
+      display(this.totalSeconds, timerText, this.calmTimerText);
     };
   }
 }

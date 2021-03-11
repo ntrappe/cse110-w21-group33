@@ -7,12 +7,12 @@ describe('test display', () => {
 
   /* Test 10:01 and 01:10 to see if the function can handle padding 0 */
   test('display 10:01', () => {
-    pomoHelper.display(601, timerText);
+    pomoHelper.display(601, timerText, false);
     expect(timerText.textContent).toBe('10:01');
   });
 
   test('display 01:10', () => {
-    pomoHelper.display(70, timerText);
+    pomoHelper.display(70, timerText, false);
     expect(timerText.textContent).toBe('01:10');
   });
 });

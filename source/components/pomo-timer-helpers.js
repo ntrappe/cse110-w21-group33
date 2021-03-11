@@ -11,31 +11,42 @@ const RESET = 'Reset';
  * Uses the total seconds to split into minutes and seconds and display on screen
  * @param {Number} totalSeconds current total number of seconds on timer
  * @param {String} timerText text for current time on timer
+ * @param {Boolean} calmTimerText true if should only display min; false for min : sec
  */
-function display(totalSeconds, timerText) {
+function display(totalSeconds, timerText, calmTimerText) {
   // calculate minutes and seconds from total seconds in timer
   const minutes = Math.floor(totalSeconds / MAX_SEC);
   const seconds = totalSeconds - minutes * MAX_SEC;
 
-  let tMin; // text repr of minutes
-  let tSec; // text repr of seconds
-
-  // pad with zeros if necessary
-  if (minutes < TWO_DIGIT) {
-    tMin = `0${String(minutes)}`;
+  if (calmTimerText) {
+    if (seconds == 0) {
+      // if at something like 2:00, show just min => 2m
+      timerText.textContent = String(minutes) + 'm';
+    } else {
+      // otherwise round to the nearest min, like 1:59 => 2m
+      timerText.textContent = String(minutes + 1) + 'm';
+    }
   } else {
-    tMin = String(minutes);
-  }
+    let tMin; // text repr of minutes
+    let tSec; // text repr of seconds
 
-  // pad with zeros if necessary
-  if (seconds < TWO_DIGIT) {
-    tSec = `0${String(seconds)}`;
-  } else {
-    tSec = String(seconds);
-  }
+    // pad with zeros if necessary
+    if (minutes < TWO_DIGIT) {
+      tMin = `0${String(minutes)}`;
+    } else {
+      tMin = String(minutes);
+    }
 
-  // write text to screen
-  timerText.textContent = `${tMin}:${tSec}`;
+    // pad with zeros if necessary
+    if (seconds < TWO_DIGIT) {
+      tSec = `0${String(seconds)}`;
+    } else {
+      tSec = String(seconds);
+    }
+
+    // write text to screen
+    timerText.textContent = `${tMin}:${tSec}`;
+  }
 }
 
 /**
