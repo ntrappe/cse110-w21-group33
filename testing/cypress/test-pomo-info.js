@@ -1,7 +1,7 @@
-describe("Open Page", () => {
-    it("Opens index.html", () => {
-        cy.visit('./source/index.html')
-    });
+describe('Open Page', () => {
+  it('Opens index.html', () => {
+    cy.visit('./source/index.html');
+  });
 });
 
 /* Tests to check if all elements exists in the shadow DOM */

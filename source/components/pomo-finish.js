@@ -1,18 +1,18 @@
 
 class PomoFinish extends HTMLElement {
   constructor() {
-      super();
+    super();
 
-      const shadow = this.attachShadow({mode: 'open'});
+    const shadow = this.attachShadow({ mode: 'open' });
 
-      const element = document.createElement('p');
+    const element = document.createElement('p');
 
-      element.textContent = "Finish";
-      
-      shadow.appendChild(element);
-    }
+    element.textContent = 'Finish';
+
+    shadow.appendChild(element);
+  }
 }
 
 customElements.define('pomo-finish', PomoFinish);
 
-export { PomoFinish };
+export default PomoFinish;
