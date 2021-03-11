@@ -22,7 +22,7 @@ function getDayCount() {
     date.getFullYear() > localStorage.getItem('prevYear') ||
     date.getMonth() + 1 > localStorage.getItem('prevMonth') ||
     date.getDate() > localStorage.getItem('prevDay')
-    ) {
+  ) {
     localStorage.setItem('prevYear', date.getFullYear());
     localStorage.setItem('prevMonth', date.getMonth() + 1);
     localStorage.setItem('prevDay', date.getDate());
@@ -49,7 +49,7 @@ function setDayCount(count) {
     date.getFullYear() > localStorage.getItem('prevYear') ||
     date.getMonth() + 1 > localStorage.getItem('prevMonth') ||
     date.getDate() > localStorage.getItem('prevDay')
-    ) {
+  ) {
     localStorage.setItem('prevYear', date.getFullYear());
     localStorage.setItem('prevMonth', date.getMonth() + 1);
     localStorage.setItem('prevDay', date.getDate());
@@ -67,12 +67,9 @@ function getCalm() {
   if (!localStorage.getItem('isCalm')) {
     localStorage.setItem('isCalm', false); // Creating local storage for calm mode
   }
-  if (localStorage.getItem('isCalm') == 'true') {
-    return true;
-  }
-  else {
-    return false;
-  }
+  if (localStorage.getItem('isCalm') === 'true') {
+    return true; }
+  return false;
 }
 
 /**
@@ -111,7 +108,7 @@ function getSound() {
   if (!localStorage.getItem('sound')) { // Checking if sound local storage was created
     localStorage.setItem(
       'sound', 'zapsplat_household_alarm_clock_old_fashioned_ring_very_short_44062.mp3'
-      );
+    );
   }
   return localStorage.getItem('sound');
 }
@@ -133,12 +130,9 @@ function getDark() {
   if (!localStorage.getItem('isDark')) {
     localStorage.setItem('isDark', false); // Setting default mode into light mode
   }
-  if (localStorage.getItem('isDark') == 'true') {
-    return true;
-  }
-  else {
-    return false;
-  }
+  if (localStorage.getItem('isDark') === 'true') {
+    return true; }
+  return false;
 }
 
 /**
