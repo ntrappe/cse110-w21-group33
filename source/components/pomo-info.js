@@ -28,10 +28,10 @@ class PomoInfo extends HTMLElement {
     modal.style.display = 'none';
     modal.onclick = (event) => {
       // close lightbox when click outside of the content area
-      if (event.target == modal) {
-        modal.style.display = "none";
+      if (event.target === modal) {
+        modal.style.display = 'none';
       }
-    }
+    };
 
     // the lightbox
     const modalContent = document.createElement('div');
@@ -41,9 +41,9 @@ class PomoInfo extends HTMLElement {
     // the main info Content
     const infoContent = document.createElement('div');
     infoContent.setAttribute('id', 'info-content');
-    const title = document.createElement('h3')
+    const title = document.createElement('h3');
     const content = document.createElement('div');
-    title.innerHTML = "HOW IT WORKS";
+    title.innerHTML = 'HOW IT WORKS';
     content.innerHTML = `The Pomodoro Technique is a time 
     management method developed by Francesco Cirillo in the 
     late 1980s. The technique uses a timer to break down work
@@ -58,9 +58,9 @@ class PomoInfo extends HTMLElement {
     closeButton.setAttribute('class', 'button-off');
     closeButton.onclick = () => {
       modal.style.display = 'none';
-    }
-    closeButton.innerHTML = "&times;";
-        
+    };
+    closeButton.innerHTML = '&times;';
+
     /* mimic a button hover event */
     closeButton.addEventListener('mouseover', () => {
       closeButton.setAttribute('class', 'button-on');
@@ -69,7 +69,7 @@ class PomoInfo extends HTMLElement {
     closeButton.addEventListener('mouseout', () => {
       closeButton.setAttribute('class', 'button-off');
     });
-        
+
     // add element to containers
     infoContent.appendChild(title);
     infoContent.appendChild(content);
@@ -80,7 +80,7 @@ class PomoInfo extends HTMLElement {
     wrapper.appendChild(this.infoButton);
 
     shadow.appendChild(wrapper);
-    shadow.appendChild(link)
+    shadow.appendChild(link);
   }
 
   /**
