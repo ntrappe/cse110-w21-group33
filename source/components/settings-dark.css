@@ -153,6 +153,28 @@
   margin-right: 10px;
 }
 
+/* Position volume slightly higher */
+#volume-label {
+  position: relative;
+  bottom: 4px;
+}
+
+/* Position labels towards center */
+#calm-label,
+#dark-label {
+  position: relative;
+  top: 7px;
+}
+
+/* Position input fields slightly higher */
+#workNumber,
+#shortBreakNumber,
+#longBreakNumber,
+#soundSelect {
+  position: relative;
+  bottom: 2.5px;
+}
+
 /* input fields for work/break lengths */
 #workNumber,
 #shortBreakNumber,
@@ -161,12 +183,30 @@
 #volumeNumber {
   background-color: #0d1117;
   color: #8b949e;
+  float: right;
   border: 1.5px solid;
   border-color: #21262d;
   border-radius: 6px;
-  padding: 5px;
   cursor: auto;
   outline: none;
+}
+
+/* Float volume slider to left of input */
+#volumeSlide {
+  position: relative;
+  left: 25px;
+}
+
+/* Align switches to float right */
+#calmSwitch {
+  position: relative;
+  left: 140px;
+}
+
+/* Align switches to float right */
+#darkSwitch {
+  position: relative;
+  left: 142px;
 }
 
 #workNumber:focus.invalid,
