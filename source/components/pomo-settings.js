@@ -191,8 +191,6 @@ class PomoSettings extends HTMLElement {
     const volumeSection = document.createElement('div');
     volumeSection.setAttribute('id', 'volume-section');
 
-    const volumeInputs = document.createElement('div');
-
     const volumeSlide = document.createElement('input');
     volumeSlide.setAttribute('type', 'range');
     volumeSlide.setAttribute('id', 'volume-slide');
@@ -274,10 +272,9 @@ class PomoSettings extends HTMLElement {
     soundSection.appendChild(soundLabel);
     soundSection.appendChild(soundSelect);
 
-    volumeSection.appendChild(volumeInputs);
-    volumeInputs.appendChild(volumeLabel);
-    volumeInputs.appendChild(volumeSlide);
-    volumeInputs.appendChild(volumeNumber);
+    volumeSection.appendChild(volumeLabel);
+    volumeSection.appendChild(volumeSlide);
+    volumeSection.appendChild(volumeNumber);
 
     accessibilitySection.appendChild(accessSection);
     accessSection.appendChild(accessLabel);
