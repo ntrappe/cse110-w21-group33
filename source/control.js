@@ -1,4 +1,4 @@
-import { PomoAudio } from './components/pomo-audio.js';
+import PomoAudio from './components/pomo-audio.js';
 import PomoFinish from './components/pomo-finish.js';
 import PomoInfo from './components/pomo-info.js';
 import PomoSettings from './components/pomo-settings.js';
