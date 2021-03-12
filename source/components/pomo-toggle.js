@@ -16,7 +16,7 @@ class ToggleSwitch extends HTMLElement {
 
     // Connect toggleSwitch to CSS
     const style = document.createElement('link');
-    style.setAttribute('id', 'settingsStyles');
+    style.setAttribute('id', 'toggle-styles');
     style.setAttribute('rel', 'stylesheet');
     style.setAttribute('href', './components/settings-dark.css');
 
@@ -29,17 +29,17 @@ class ToggleSwitch extends HTMLElement {
 
     const toggleSlider = document.createElement('div');
     toggleSlider.setAttribute('class', 'slider');
-    toggleSlider.setAttribute('id', `${mode1}Slider`);
+    toggleSlider.setAttribute('id', `${mode1}-slider`);
 
-    const onMode = document.createElement('span');
-    onMode.setAttribute('class', 'onMode');
-    onMode.setAttribute('id', `${mode1}Mode`);
-    onMode.textContent = 'On';
+    const onMode = document.createElement('span');  
+    onMode.setAttribute('class', 'on-mode');
+    onMode.setAttribute('id', `${mode1}-mode`);
+    onMode.textContent = "On";
 
-    const offMode = document.createElement('span');
-    offMode.setAttribute('class', 'offMode');
-    offMode.setAttribute('id', `${mode2}Mode`);
-    offMode.textContent = 'Off';
+    const offMode = document.createElement('span');  
+    offMode.setAttribute('class', 'off-mode');
+    offMode.setAttribute('id', `${mode2}-mode`);
+    offMode.textContent = "Off";
 
     shadow.append(style);
     shadow.appendChild(toggleSwitch);
@@ -58,7 +58,6 @@ class ToggleSwitch extends HTMLElement {
      * Toggle slider from one mode to another on click with delay
      */
     toggleSlider.onclick = () => {
-      toggleCheckbox.checked = !toggleCheckbox.checked;
       if (this.toggle) {
         this.setOff();
       } else {
@@ -74,6 +73,7 @@ class ToggleSwitch extends HTMLElement {
      * Helper function to toggle slider on
      */
     this.setOn = () => {
+      toggleCheckbox.checked = false;
       offMode.style.display = 'none';
       onMode.style.display = 'block';
       this.toggle = true;
@@ -84,6 +84,7 @@ class ToggleSwitch extends HTMLElement {
      * Helper function to toggle slider off
      */
     this.setOff = () => {
+      toggleCheckbox.checked = true;
       offMode.style.display = 'block';
       onMode.style.display = 'none';
       this.toggle = false;

@@ -18,16 +18,17 @@ class PomoSettings extends HTMLElement {
     this.sound = 'default';
     this.calm = false;
     this.dark = false;
+    this.accessible = true;
 
     const shadow = this.attachShadow({ mode: 'open' });
 
     // Lightbox background
-    const modal = document.createElement('div');
-    modal.setAttribute('id', 'modal');
+    const settingsModal = document.createElement('div');  
+    settingsModal.setAttribute('id', 'settings-modal');
 
     // Connect sidebar to CSS
     const styles = document.createElement('link');
-    styles.setAttribute('id', 'settingsStyles');
+    styles.setAttribute('id', 'settings-style');
     styles.setAttribute('rel', 'stylesheet');
     styles.setAttribute('href', './components/settings-dark.css');
     // styles.setAttribute('href', './components/pomo-settings.css');
@@ -42,15 +43,15 @@ class PomoSettings extends HTMLElement {
 
     // Button to open sidebar
     const openButton = document.createElement('button');
-    openButton.setAttribute('id', 'openButton');
+    openButton.setAttribute('id', 'open-button');
     openButton.innerHTML = '&#9881;';
 
     // Button to close sidebar
     const closeButton = document.createElement('button');
-    closeButton.setAttribute('id', 'closeButton');
-
+    closeButton.setAttribute('id', 'close-button');
+    
     const closeIcon = document.createElement('img');
-    closeIcon.setAttribute('id', 'closeButtonIcon');
+    closeIcon.setAttribute('id', 'close-button-icon');
     closeIcon.setAttribute('src', './assets/x.svg');
 
     const pomoLengthLabel = document.createElement('label');
@@ -59,19 +60,19 @@ class PomoSettings extends HTMLElement {
 
     // Edit work, short break, and long break lengths
     const timerSection = document.createElement('div');
-    timerSection.setAttribute('id', 'timer-settings');
+    timerSection.setAttribute('id', 'timer-section');
 
     // Input field for work customization
     const workSection = document.createElement('div');
-    workSection.setAttribute('id', 'settings-work-section');
+    workSection.setAttribute('id', 'work-section');
 
     const workLabel = document.createElement('label');
-    workLabel.setAttribute('id', 'settings-work-sec-label');
+    workLabel.setAttribute('id', 'work-sec-label');
     workLabel.textContent = 'Work';
-    workLabel.htmlFor = 'workNumber';
+    workLabel.htmlFor = 'work-number';
 
     const workNumber = document.createElement('input');
-    workNumber.setAttribute('id', 'workNumber');
+    workNumber.setAttribute('id', 'work-number');
     workNumber.setAttribute('type', 'number');
     workNumber.setAttribute('value', this.work);
     workNumber.setAttribute('min', MIN_MINUTES);
@@ -80,15 +81,15 @@ class PomoSettings extends HTMLElement {
 
     // Input field for short break customization
     const shortSection = document.createElement('div');
-    shortSection.setAttribute('id', 'settings-short-section');
+    shortSection.setAttribute('id', 'short-section');
 
     const shortBreakLabel = document.createElement('label');
-    shortBreakLabel.setAttribute('id', 'settings-short-sec-label');
+    shortBreakLabel.setAttribute('id', 'short-sec-label');
     shortBreakLabel.textContent = 'Short Break';
-    shortBreakLabel.htmlFor = 'shortBreakNumber';
+    shortBreakLabel.htmlFor = 'short-break-number';
 
     const shortBreakNumber = document.createElement('input');
-    shortBreakNumber.setAttribute('id', 'shortBreakNumber');
+    shortBreakNumber.setAttribute('id', 'short-break-number');
     shortBreakNumber.setAttribute('type', 'number');
     shortBreakNumber.setAttribute('value', this.shortBreak);
     shortBreakNumber.setAttribute('min', MIN_MINUTES);
@@ -97,15 +98,15 @@ class PomoSettings extends HTMLElement {
 
     // Input field for long break customization
     const longSection = document.createElement('div');
-    longSection.setAttribute('id', 'settings-long-section');
+    longSection.setAttribute('id', 'long-section')
 
     const longBreakLabel = document.createElement('label');
-    longBreakLabel.setAttribute('id', 'settings-long-sec-label');
+    longBreakLabel.setAttribute('id', 'long-sec-label')
     longBreakLabel.textContent = 'Long Break';
-    longBreakLabel.htmlFor = 'longBreakNumber';
+    longBreakLabel.htmlFor = 'long-break-number';
 
     const longBreakNumber = document.createElement('input');
-    longBreakNumber.setAttribute('id', 'longBreakNumber');
+    longBreakNumber.setAttribute('id', 'long-break-number');
     longBreakNumber.setAttribute('type', 'number');
     longBreakNumber.setAttribute('value', this.longBreak);
     longBreakNumber.setAttribute('min', MIN_MINUTES);
@@ -126,10 +127,11 @@ class PomoSettings extends HTMLElement {
     const calmLabel = document.createElement('label');
     calmLabel.setAttribute('id', 'calm-label');
     calmLabel.textContent = 'Calm Mode';
-    calmLabel.htmlFor = 'calmSwitch';
-    const calmSwitch = new ToggleSwitch('calm', 'busy');
-    calmSwitch.setAttribute('id', 'calmSwitch');
-
+    calmLabel.htmlFor = 'calm-switch';
+    const calmSwitch = new ToggleSwitch("calm", "busy");
+    calmSwitch.setOff();
+    calmSwitch.setAttribute('id', 'calm-switch');
+    
     // Toggle switch to enable dark mode
     const darkSection = document.createElement('div');
     darkSection.setAttribute('id', 'dark-section');
@@ -137,16 +139,17 @@ class PomoSettings extends HTMLElement {
     const darkLabel = document.createElement('label');
     darkLabel.setAttribute('id', 'dark-label');
     darkLabel.textContent = 'Dark Mode';
-    darkLabel.htmlFor = 'darkSwitch';
-    const darkSwitch = new ToggleSwitch('dark', 'light');
-    darkSwitch.setAttribute('id', 'darkSwitch');
+    darkLabel.htmlFor = 'dark-switch';
+    const darkSwitch = new ToggleSwitch("dark", "light");
+    darkSwitch.setOff();
+    darkSwitch.setAttribute('id', 'dark-switch');
 
     const audioLabel = document.createElement('label');
     audioLabel.setAttribute('id', 'audio-label');
     audioLabel.textContent = 'Audio';
 
     const audioSection = document.createElement('div');
-    audioSection.setAttribute('id', 'audio-settings');
+    audioSection.setAttribute('id', 'audio-section');
 
     // Dropdown menu to change audio notification noise
     const soundSection = document.createElement('div');
@@ -155,10 +158,10 @@ class PomoSettings extends HTMLElement {
     const soundLabel = document.createElement('label');
     soundLabel.setAttribute('id', 'sound-label');
     soundLabel.textContent = 'Sound';
-    soundLabel.htmlFor = 'soundSelect';
+    soundLabel.htmlFor = 'sound-select';
 
     const soundSelect = document.createElement('select');
-    soundSelect.setAttribute('id', 'soundSelect');
+    soundSelect.setAttribute('id', 'sound-select');
 
     // List of names of audio files
     const soundList = ['party-horn', 'angry-monkey', 'default', 'rooster'];
@@ -183,7 +186,7 @@ class PomoSettings extends HTMLElement {
     const volumeLabel = document.createElement('label');
     volumeLabel.setAttribute('id', 'volume-label');
     volumeLabel.textContent = 'Volume';
-    volumeLabel.htmlFor = 'volumeNumber';
+    volumeLabel.htmlFor = 'volume-number';
 
     const volumeSection = document.createElement('div');
     volumeSection.setAttribute('id', 'volume-section');
@@ -192,20 +195,39 @@ class PomoSettings extends HTMLElement {
 
     const volumeSlide = document.createElement('input');
     volumeSlide.setAttribute('type', 'range');
-    volumeSlide.setAttribute('id', 'volumeSlide');
+    volumeSlide.setAttribute('id', 'volume-slide');
     volumeSlide.setAttribute('min', MIN_VOLUME);
     volumeSlide.setAttribute('max', MAX_VOLUME);
     volumeSlide.setAttribute('value', this.volume);
 
     const volumeNumber = document.createElement('input');
     volumeNumber.setAttribute('type', 'number');
-    volumeNumber.setAttribute('id', 'volumeNumber');
+    volumeNumber.setAttribute('id', 'volume-number');
     volumeNumber.setAttribute('min', MIN_VOLUME);
     volumeNumber.setAttribute('max', MAX_VOLUME);
     volumeNumber.setAttribute('value', this.volume);
 
+    //Accessibility Section 
+    const accessibilityLabel = document.createElement('label');
+    accessibilityLabel.setAttribute('id', 'accessibility-label');
+    accessibilityLabel.textContent = 'Accessibility';
+
+    const accessibilitySection = document.createElement('div');
+    accessibilitySection.setAttribute('id', 'accessibility-section');
+
+    const accessSection = document.createElement('div');
+    accessSection.setAttribute('id', 'access-section');
+
+    const accessLabel = document.createElement('label');
+    accessLabel.setAttribute('id', 'access-label');
+    accessLabel.textContent = 'Accessibility';
+    accessLabel.htmlFor = 'access-switch';
+    const accessSwitch = new ToggleSwitch("accessible", "inaccessible");
+    accessSwitch.setOn();
+    accessSwitch.setAttribute('id', 'access-switch');
+
     // Attach elements to shadow DOM
-    shadow.appendChild(modal);
+    shadow.appendChild(settingsModal);
     shadow.appendChild(styles);
     shadow.appendChild(openButton);
     shadow.appendChild(sideBar);
@@ -222,9 +244,11 @@ class PomoSettings extends HTMLElement {
     sideBar.appendChild(audioLabel);
     sideBar.appendChild(audioSection);
 
+    sideBar.appendChild(accessibilityLabel);
+    sideBar.appendChild(accessibilitySection);
+
     closeButton.appendChild(closeIcon);
 
-    // timerSection.appendChild(pomoLengthLabel);
     timerSection.appendChild(workSection);
     timerSection.appendChild(shortSection);
     timerSection.appendChild(longSection);
@@ -254,6 +278,10 @@ class PomoSettings extends HTMLElement {
     volumeInputs.appendChild(volumeLabel);
     volumeInputs.appendChild(volumeSlide);
     volumeInputs.appendChild(volumeNumber);
+
+    accessibilitySection.appendChild(accessSection);
+    accessSection.appendChild(accessLabel);
+    accessSection.appendChild(accessSwitch);
 
     /* Events */
     this.workSetEvent = new CustomEvent('workSet', {
@@ -298,30 +326,37 @@ class PomoSettings extends HTMLElement {
       detail: { dark: () => this.dark },
     });
 
+    this.accessSetEvent = new CustomEvent('accessSet', {
+      bubbles: true,
+      composed: true,
+      detail: {accessible: () => this.accessible}
+    });
+
+
     /**
      * Opens the sidebar when clicking open button
      */
     openButton.onclick = () => {
       sideBar.setAttribute('class', 'open');
-      modal.style.display = 'block';
-    };
+      settingsModal.style.display = "block";
+    }
 
     /**
      * Closes the sidebar when clicking close button
      */
     closeButton.onclick = () => {
       sideBar.setAttribute('class', 'close');
-      modal.style.display = 'none';
-    };
+      settingsModal.style.display = "none";
+    }
 
     /**
      * Closes the sidebar when clicking outside of sidebar
      * @param {Object} e contains data of what is being clicked on website
      */
-    modal.onclick = (e) => {
+    settingsModal.onclick = (e) => {
       sideBar.setAttribute('class', 'close');
-      modal.style.display = 'none';
-    };
+      settingsModal.style.display = "none";
+    }
 
     /**
      * Passes customized work minutes to event listener
@@ -495,6 +530,14 @@ class PomoSettings extends HTMLElement {
       shadow.dispatchEvent(this.darkSetEvent);
     });
 
+    /** 
+     * Listens for toggleSwitchEvent to set accessible and dispatch accessSetEvent
+     */
+    accessSwitch.addEventListener('toggleSwitch', (e) => {
+      this.accessible = e.detail.toggle();
+      shadow.dispatchEvent(this.accessSetEvent);
+    })
+
     /**
      * Enable settings
      */
@@ -505,7 +548,8 @@ class PomoSettings extends HTMLElement {
       soundSelect.disabled = false;
       calmSwitch.enable();
       darkSwitch.enable();
-    };
+      accessSwitch.enable();
+    }
 
     /**
      * Disable settings besides volume
@@ -518,7 +562,8 @@ class PomoSettings extends HTMLElement {
       soundSelect.style.opacity = '1';
       calmSwitch.disable();
       darkSwitch.disable();
-    };
+      accessSwitch.disable();
+    }
 
     /**
      * Called by control, updates the default settings with values previously had from local storage
@@ -530,7 +575,7 @@ class PomoSettings extends HTMLElement {
      * @param {Number} shortBreak length of each short break session in minutes
      * @param {Number} longBreak length of each long break session in minutes
      */
-    this.loadSettings = (calm, volume, sound, dark, work, shortBreak, longBreak) => {
+    this.loadSettings = (calm, volume, sound, dark, work, shortBreak, longBreak, access) => {
       this.work = work;
       workNumber.value = work;
       this.shortBreak = shortBreak;
@@ -544,16 +589,25 @@ class PomoSettings extends HTMLElement {
       this.calm = calm;
       if (calm) {
         calmSwitch.setOn();
-      } else {
+      }
+      else {
         calmSwitch.setOff();
       }
       this.dark = dark;
       if (dark) {
         darkSwitch.setOn();
-      } else {
+      }
+      else {
         darkSwitch.setOff();
       }
-    };
+      this.accessible = access;
+      if (access) {
+        accessSwitch.setOn();
+      }
+      else {
+        accessSwitch.setOff();
+      }
+    }
   }
 }
 
