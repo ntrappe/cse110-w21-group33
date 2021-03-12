@@ -12,11 +12,11 @@
 
 #settings {
   height: 100%;
-  width: 350px;
+  width: 310px;
   position: fixed;
   z-index: 2;
   top: 0;
-  left: -350px;
+  left: -310px;
   background-color: #13151b;
   overflow-x: hidden;
   transition: 0.5s;
@@ -53,8 +53,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
 }
 
 #closeButton:hover {
@@ -64,8 +64,8 @@
 }
 
 #closeButtonIcon {
-  height: 15px;
-  width: 15px;
+  height: 10px;
+  width: 10px;
 }
 
 /* Margins match finish button */
@@ -86,9 +86,10 @@
   font-size: 20px;
   margin-left: 25px;
   margin-top: 25px;
+  padding-bottom: 10px;
 }
 
-/* Says: "Time (minutes)" */
+/* Says: "Time (minutes)" / "Display" / "Audio" */
 #pomo-length-label,
 #audio-label,
 #display-label {
@@ -97,10 +98,12 @@
   font-size: 14px;
   font-weight: 500;
   margin-left: 25px;
-  margin-bottom: 15px;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
-/* Holds work, short/long break labels and inputs */
+/* Holds timer options / display options / audio options */
 #timer-settings,
 #audio-settings,
 #display-section {
@@ -109,12 +112,13 @@
   margin-left: 25px;
   margin-right: 25px;
   margin-top: 5px;
+  margin-bottom: 20px;
   border-radius: 6px;
   border: 1.5px solid;
   background-color: #161b22;
 }
 
-/* Style content for work, short, sound select, and calm mode */
+/* Holder for inputs & labels for work/breaks / sound select / calm mode */
 #settings-work-section,
 #settings-short-section,
 #sound-section,
@@ -122,42 +126,54 @@
   color: #c9d1d9;
   font-size: 12px;
   font-weight: 600;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-bottom: 1.5px solid;
-  border-color: #30363d;
+  border-color: #21262d;
 }
 
-/* Style content for long, volume, and dark mode */
-#settings-long-section,
-#volume-section,
-#dark-section {
+/* Bottom holder for inputs & labels of long break */
+#settings-long-section {
   color: #c9d1d9;
   font-size: 12px;
   font-weight: 600;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-/* Says "Work" / "Short Break" / "Long Break" */
+/* Override previous padding for calm mode / dark mode / volume selector */
+#dark-section,
+#calm-section,
+#volume-section {
+  color: #c9d1d9;
+  font-size: 12px;
+  font-weight: 600;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+/* Says "Work" / "Short Break" / "Long Break" / "Calm Mode" / etc */
 #settings-work-sec-label,
 #settings-short-sec-label,
 #settings-long-sec-label,
-#sound-label,
-#volume-label,
 #calm-label,
-#dark-label {
+#dark-label,
+#sound-label,
+#volume-label {
   margin-right: 10px;
+  justify-content: left;
+  align-items: center;
 }
 
-/* Position volume slightly higher */
 #volume-label {
   position: relative;
-  bottom: 4px;
+  top: -4px;
 }
 
 /* Position labels towards center */
@@ -167,47 +183,76 @@
   top: 7px;
 }
 
-/* Position input fields slightly higher */
+/* Vertically center input fields in div */
 #workNumber,
 #shortBreakNumber,
-#longBreakNumber,
-#soundSelect {
+#longBreakNumber {
   position: relative;
-  bottom: 2.5px;
+  bottom: 5px;
 }
 
-/* Input fields for work/break lengths */
+/* Input fields for work/break lengths / volume */
 #workNumber,
 #shortBreakNumber,
 #longBreakNumber,
-#soundSelect,
 #volumeNumber {
   background-color: #0d1117;
   color: #8b949e;
   float: right;
   border: 1.5px solid;
-  border-color: #21262d;
+  border-color: #30363d;
   border-radius: 6px;
   cursor: auto;
   outline: none;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 5px 5px 5px;
+  width: 100px;
+}
+
+/* Drop down selector for sound */
+#soundSelect {
+  background-color: #0d1117;
+  font-size: 10px;
+  color: #8b949e;
+  float: right;
+  border: 1.5px solid;
+  border-color: #30363d;
+  border-radius: 6px;
+  cursor: auto;
+  outline: none;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 2px 4px 2px;
+  width: 100px;
+  position: relative;
+  bottom: 5px;
+}
+
+/* make volume numbr input field small */
+#volumeNumber {
+  width: 30px;
+  position: relative;
+  bottom: 2px;
 }
 
 /* Float volume slider to left of input */
 #volumeSlide {
   position: relative;
-  left: 25px;
+  left: 15px;
+  bottom: -1.5px;
 }
 
 /* Align switches to float right */
 #calmSwitch {
   position: relative;
-  left: 140px;
+  left: 90px;
 }
 
 /* Align switches to float right */
 #darkSwitch {
   position: relative;
-  left: 142px;
+  left: 92px;
 }
 
 /* Add red border on invalid input */
@@ -233,74 +278,73 @@
   height: 0;
 }
 
-/* Size of toggle background */
+/* Size of toggle switch */
 .switch {
   position: relative;
   display: inline-block;
-  width: 70px;
-  height: 30px;
+  width: 66px;
+  height: 28px;
 }
 
-/* Toggle background */
+/* Create main toggle body + switch ON: background & border color */
 .slider {
-  border-radius: 22px;
-  border-color: #c9d1d9;
-  border-width: 2px;
-  border-style: solid;
+  border-radius: 50px;
+  border: 1.5px solid;
+  border-color: #355e36;
   position: absolute;
   cursor: pointer;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #0d1117;
+  background-color: #18221d;
   transition: 0.4s;
 }
 
-/* Creates the toggle button */
+/* Create circle + toggle switch ON: circle color */
 .slider::before {
-  border-radius: 22px;
+  border-radius: 50px;
   position: absolute;
   content: "";
-  height: 22px;
-  width: 22px;
+  height: 20px;
+  width: 20px;
   left: 3px;
-  bottom: 2px;
-  background-color: #c9d1d9;
+  bottom: 3px;
+  background-color: #79d071;
   transition: 0.4s;
 }
 
-/* Changes the color of the slider when toggled */
+/* Toggle switch OFF: background & border color */
 input:checked + .slider {
-  background-color: #c9d1d9;
-  border-color: #161b22;
+  background-color: #0d1117;
+  border-color: #21262d;
 }
 
-/* Handles toggle switch movement when toggled */
+/* Toggle switch OFF: circle color */
 input:checked + .slider::before {
+  /* movement of circle in x direction */
   transform: translateX(38px);
-  background-color: #161b22;
-  border-color: #161b22;
+  background-color: #70757a;
 }
 
-/* Handles visuals of toggle switch when off */
+/* Toggle switch OFF: text */
 .offMode {
   display: none;
-  color: #161b22;
+  color: #8b949e;
   position: absolute;
-  top: 2px;
-  left: 7px;
-  font-size: 15px;
+  top: 5px;
+  left: 10px;
+  font-size: 12px;
 }
 
-/* Handles visuals of toggle switch when on */
+/* Toggle switch ON: text */
 .onMode {
   display: block;
-  color: #c9d1d9;
+  color: #79d071;
   position: absolute;
-  top: 2px;
-  right: 7px;
-  font-size: 15px;
+  top: 5px;
+  right: 10px;
+  font-size: 12px;
 }
 
 /* Prevent highlight of toggle switch or label */
@@ -313,4 +357,42 @@ label {
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
+}
+
+/* remove volume slider fault styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100px;
+  background-color: transparent;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+/* override volume slider track color */
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #30363d;
+  height: 2px;
+}
+
+input[type="range"]::-moz-range-track {
+  background: #30363d;
+  height: 2px;
+}
+
+/* override volume slider thumb color */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: #8b949e;
+  margin-top: -5px;
+  border-radius: 50%;
+}
+
+input[type="range"]::-moz-range-thumb {
+  background: #8b949e;
+  margin-top: -5px;
+  border-radius: 50%;
 }
