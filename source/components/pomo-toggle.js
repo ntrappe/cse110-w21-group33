@@ -31,15 +31,15 @@ class ToggleSwitch extends HTMLElement {
     toggleSlider.setAttribute('class', 'slider');
     toggleSlider.setAttribute('id', `${mode1}-slider`);
 
-    const onMode = document.createElement('span');  
+    const onMode = document.createElement('span');
     onMode.setAttribute('class', 'on-mode');
     onMode.setAttribute('id', `${mode1}-mode`);
-    onMode.textContent = "On";
+    onMode.textContent = 'On';
 
-    const offMode = document.createElement('span');  
+    const offMode = document.createElement('span');
     offMode.setAttribute('class', 'off-mode');
     offMode.setAttribute('id', `${mode2}-mode`);
-    offMode.textContent = "Off";
+    offMode.textContent = 'Off';
 
     shadow.append(style);
     shadow.appendChild(toggleSwitch);

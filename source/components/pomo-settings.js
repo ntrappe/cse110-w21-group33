@@ -23,7 +23,7 @@ class PomoSettings extends HTMLElement {
     const shadow = this.attachShadow({ mode: 'open' });
 
     // Lightbox background
-    const settingsModal = document.createElement('div');  
+    const settingsModal = document.createElement('div');
     settingsModal.setAttribute('id', 'settings-modal');
 
     // Connect sidebar to CSS
@@ -49,7 +49,7 @@ class PomoSettings extends HTMLElement {
     // Button to close sidebar
     const closeButton = document.createElement('button');
     closeButton.setAttribute('id', 'close-button');
-    
+
     const closeIcon = document.createElement('img');
     closeIcon.setAttribute('id', 'close-button-icon');
     closeIcon.setAttribute('src', './assets/x.svg');
@@ -98,10 +98,10 @@ class PomoSettings extends HTMLElement {
 
     // Input field for long break customization
     const longSection = document.createElement('div');
-    longSection.setAttribute('id', 'long-section')
+    longSection.setAttribute('id', 'long-section');
 
     const longBreakLabel = document.createElement('label');
-    longBreakLabel.setAttribute('id', 'long-sec-label')
+    longBreakLabel.setAttribute('id', 'long-sec-label');
     longBreakLabel.textContent = 'Long Break';
     longBreakLabel.htmlFor = 'long-break-number';
 
@@ -128,10 +128,10 @@ class PomoSettings extends HTMLElement {
     calmLabel.setAttribute('id', 'calm-label');
     calmLabel.textContent = 'Calm Mode';
     calmLabel.htmlFor = 'calm-switch';
-    const calmSwitch = new ToggleSwitch("calm", "busy");
+    const calmSwitch = new ToggleSwitch('calm', 'busy');
     calmSwitch.setOff();
     calmSwitch.setAttribute('id', 'calm-switch');
-    
+
     // Toggle switch to enable dark mode
     const darkSection = document.createElement('div');
     darkSection.setAttribute('id', 'dark-section');
@@ -140,7 +140,7 @@ class PomoSettings extends HTMLElement {
     darkLabel.setAttribute('id', 'dark-label');
     darkLabel.textContent = 'Dark Mode';
     darkLabel.htmlFor = 'dark-switch';
-    const darkSwitch = new ToggleSwitch("dark", "light");
+    const darkSwitch = new ToggleSwitch('dark', 'light');
     darkSwitch.setOff();
     darkSwitch.setAttribute('id', 'dark-switch');
 
@@ -207,7 +207,7 @@ class PomoSettings extends HTMLElement {
     volumeNumber.setAttribute('max', MAX_VOLUME);
     volumeNumber.setAttribute('value', this.volume);
 
-    //Accessibility Section 
+    // Accessibility Section
     const accessibilityLabel = document.createElement('label');
     accessibilityLabel.setAttribute('id', 'accessibility-label');
     accessibilityLabel.textContent = 'Accessibility';
@@ -222,7 +222,7 @@ class PomoSettings extends HTMLElement {
     accessLabel.setAttribute('id', 'access-label');
     accessLabel.textContent = 'Accessibility';
     accessLabel.htmlFor = 'access-switch';
-    const accessSwitch = new ToggleSwitch("accessible", "inaccessible");
+    const accessSwitch = new ToggleSwitch('accessible', 'inaccessible');
     accessSwitch.setOn();
     accessSwitch.setAttribute('id', 'access-switch');
 
@@ -329,34 +329,33 @@ class PomoSettings extends HTMLElement {
     this.accessSetEvent = new CustomEvent('accessSet', {
       bubbles: true,
       composed: true,
-      detail: {accessible: () => this.accessible}
+      detail: { accessible: () => this.accessible },
     });
-
 
     /**
      * Opens the sidebar when clicking open button
      */
     openButton.onclick = () => {
       sideBar.setAttribute('class', 'open');
-      settingsModal.style.display = "block";
-    }
+      settingsModal.style.display = 'block';
+    };
 
     /**
      * Closes the sidebar when clicking close button
      */
     closeButton.onclick = () => {
       sideBar.setAttribute('class', 'close');
-      settingsModal.style.display = "none";
-    }
+      settingsModal.style.display = 'none';
+    };
 
     /**
      * Closes the sidebar when clicking outside of sidebar
      * @param {Object} e contains data of what is being clicked on website
      */
-    settingsModal.onclick = (e) => {
+    settingsModal.onclick = () => {
       sideBar.setAttribute('class', 'close');
-      settingsModal.style.display = "none";
-    }
+      settingsModal.style.display = 'none';
+    };
 
     /**
      * Passes customized work minutes to event listener
@@ -530,13 +529,13 @@ class PomoSettings extends HTMLElement {
       shadow.dispatchEvent(this.darkSetEvent);
     });
 
-    /** 
+    /**
      * Listens for toggleSwitchEvent to set accessible and dispatch accessSetEvent
      */
     accessSwitch.addEventListener('toggleSwitch', (e) => {
       this.accessible = e.detail.toggle();
       shadow.dispatchEvent(this.accessSetEvent);
-    })
+    });
 
     /**
      * Enable settings
@@ -549,7 +548,7 @@ class PomoSettings extends HTMLElement {
       calmSwitch.enable();
       darkSwitch.enable();
       accessSwitch.enable();
-    }
+    };
 
     /**
      * Disable settings besides volume
@@ -563,7 +562,7 @@ class PomoSettings extends HTMLElement {
       calmSwitch.disable();
       darkSwitch.disable();
       accessSwitch.disable();
-    }
+    };
 
     /**
      * Called by control, updates the default settings with values previously had from local storage
@@ -589,25 +588,22 @@ class PomoSettings extends HTMLElement {
       this.calm = calm;
       if (calm) {
         calmSwitch.setOn();
-      }
-      else {
+      } else {
         calmSwitch.setOff();
       }
       this.dark = dark;
       if (dark) {
         darkSwitch.setOn();
-      }
-      else {
+      } else {
         darkSwitch.setOff();
       }
       this.accessible = access;
       if (access) {
         accessSwitch.setOn();
-      }
-      else {
+      } else {
         accessSwitch.setOff();
       }
-    }
+    };
   }
 }
 
