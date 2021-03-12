@@ -3,8 +3,8 @@ https://stackoverflow.com/questions/44061473/move-text-on-toggle-switch-on-off
 https://www.w3schools.com/howto/howto_css_switch.asp
 */
 const TOGGLE_DELAY = 200;
-const ENABLE_OPACITY = "1";
-const DISABLE_OPACITY = "0.6";
+const ENABLE_OPACITY = '1';
+const DISABLE_OPACITY = '0.6';
 
 class ToggleSwitch extends HTMLElement {
   constructor(mode1, mode2) {
@@ -12,7 +12,7 @@ class ToggleSwitch extends HTMLElement {
 
     this.toggle = true;
 
-    const shadow = this.attachShadow({mode: 'open'});
+    const shadow = this.attachShadow({ mode: 'open' });
 
     // Connect toggleSwitch to CSS
     const style = document.createElement('link');
@@ -20,26 +20,26 @@ class ToggleSwitch extends HTMLElement {
     style.setAttribute('rel', 'stylesheet');
     style.setAttribute('href', './components/settings-dark.css');
 
-    const toggleSwitch = document.createElement('label');  
+    const toggleSwitch = document.createElement('label');
     toggleSwitch.setAttribute('class', 'switch');
 
-    const toggleCheckbox = document.createElement('input');  
+    const toggleCheckbox = document.createElement('input');
     toggleCheckbox.setAttribute('type', 'checkbox');
     toggleCheckbox.setAttribute('disabled', 'disabled');
 
-    const toggleSlider = document.createElement('div');  
+    const toggleSlider = document.createElement('div');
     toggleSlider.setAttribute('class', 'slider');
     toggleSlider.setAttribute('id', `${mode1}Slider`);
 
-    const onMode = document.createElement('span');  
+    const onMode = document.createElement('span');
     onMode.setAttribute('class', 'onMode');
     onMode.setAttribute('id', `${mode1}Mode`);
-    onMode.textContent = "On";
+    onMode.textContent = 'On';
 
-    const offMode = document.createElement('span');  
+    const offMode = document.createElement('span');
     offMode.setAttribute('class', 'offMode');
     offMode.setAttribute('id', `${mode2}Mode`);
-    offMode.textContent = "Off";
+    offMode.textContent = 'Off';
 
     shadow.append(style);
     shadow.appendChild(toggleSwitch);
@@ -51,7 +51,7 @@ class ToggleSwitch extends HTMLElement {
     this.toggleSwitchEvent = new CustomEvent('toggleSwitch', {
       bubbles: true,
       composed: true,
-      detail: {toggle: () => this.toggle}
+      detail: { toggle: () => this.toggle },
     });
 
     /**
@@ -61,13 +61,14 @@ class ToggleSwitch extends HTMLElement {
       toggleCheckbox.checked = !toggleCheckbox.checked;
       if (this.toggle) {
         this.setOff();
-      }
-      else{
+      } else {
         this.setOn();
       }
-      toggleSlider.style.pointerEvents = "none";
-      setTimeout(() => {toggleSlider.style.pointerEvents = "auto";}, TOGGLE_DELAY);
-    } 
+      toggleSlider.style.pointerEvents = 'none';
+      setTimeout(() => {
+        toggleSlider.style.pointerEvents = 'auto';
+      }, TOGGLE_DELAY);
+    };
 
     /**
      * Helper function to toggle slider on
@@ -77,7 +78,7 @@ class ToggleSwitch extends HTMLElement {
       onMode.style.display = 'block';
       this.toggle = true;
       shadow.dispatchEvent(this.toggleSwitchEvent);
-    }
+    };
 
     /**
      * Helper function to toggle slider off
@@ -87,26 +88,25 @@ class ToggleSwitch extends HTMLElement {
       onMode.style.display = 'none';
       this.toggle = false;
       shadow.dispatchEvent(this.toggleSwitchEvent);
-    }
+    };
 
     /**
      * Helper function to enable toggle switch
      */
     this.enable = () => {
-      toggleSlider.style.pointerEvents = "auto";
+      toggleSlider.style.pointerEvents = 'auto';
       toggleSlider.style.opacity = ENABLE_OPACITY;
-
-    }
+    };
 
     /**
      * Helper function to disable toggle switch
      */
     this.disable = () => {
-      toggleSlider.style.pointerEvents = "none";
+      toggleSlider.style.pointerEvents = 'none';
       toggleSlider.style.opacity = DISABLE_OPACITY;
-    }
+    };
   }
 }
 customElements.define('toggle-switch', ToggleSwitch);
 
-export {ToggleSwitch};
+export default ToggleSwitch;

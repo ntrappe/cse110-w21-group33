@@ -1,4 +1,4 @@
-import { ToggleSwitch } from './pomo-toggle.js';
+import ToggleSwitch from './pomo-toggle.js';
 
 const MIN_MINUTES = '1';
 const MAX_MINUTES = '60';
@@ -22,7 +22,7 @@ class PomoSettings extends HTMLElement {
     const shadow = this.attachShadow({ mode: 'open' });
 
     // Lightbox background
-    const modal = document.createElement('div');  
+    const modal = document.createElement('div');
     modal.setAttribute('id', 'modal');
 
     // Connect sidebar to CSS
@@ -30,7 +30,7 @@ class PomoSettings extends HTMLElement {
     styles.setAttribute('id', 'settingsStyles');
     styles.setAttribute('rel', 'stylesheet');
     styles.setAttribute('href', './components/settings-dark.css');
-    //styles.setAttribute('href', './components/pomo-settings.css');
+    // styles.setAttribute('href', './components/pomo-settings.css');
 
     // Settings panel
     const sideBar = document.createElement('div');
@@ -48,7 +48,7 @@ class PomoSettings extends HTMLElement {
     // Button to close sidebar
     const closeButton = document.createElement('button');
     closeButton.setAttribute('id', 'closeButton');
-    
+
     const closeIcon = document.createElement('img');
     closeIcon.setAttribute('id', 'closeButtonIcon');
     closeIcon.setAttribute('src', './assets/x.svg');
@@ -60,7 +60,6 @@ class PomoSettings extends HTMLElement {
     // Edit work, short break, and long break lengths
     const timerSection = document.createElement('div');
     timerSection.setAttribute('id', 'timer-settings');
-
 
     // Input field for work customization
     const workSection = document.createElement('div');
@@ -98,10 +97,10 @@ class PomoSettings extends HTMLElement {
 
     // Input field for long break customization
     const longSection = document.createElement('div');
-    longSection.setAttribute('id', 'settings-long-section')
+    longSection.setAttribute('id', 'settings-long-section');
 
     const longBreakLabel = document.createElement('label');
-    longBreakLabel.setAttribute('id', 'settings-long-sec-label')
+    longBreakLabel.setAttribute('id', 'settings-long-sec-label');
     longBreakLabel.textContent = 'Long Break';
     longBreakLabel.htmlFor = 'longBreakNumber';
 
@@ -128,9 +127,9 @@ class PomoSettings extends HTMLElement {
     calmLabel.setAttribute('id', 'calm-label');
     calmLabel.textContent = 'Calm Mode';
     calmLabel.htmlFor = 'calmSwitch';
-    const calmSwitch = new ToggleSwitch("calm", "busy");
+    const calmSwitch = new ToggleSwitch('calm', 'busy');
     calmSwitch.setAttribute('id', 'calmSwitch');
-    
+
     // Toggle switch to enable dark mode
     const darkSection = document.createElement('div');
     darkSection.setAttribute('id', 'dark-section');
@@ -139,7 +138,7 @@ class PomoSettings extends HTMLElement {
     darkLabel.setAttribute('id', 'dark-label');
     darkLabel.textContent = 'Dark Mode';
     darkLabel.htmlFor = 'darkSwitch';
-    const darkSwitch = new ToggleSwitch("dark", "light");
+    const darkSwitch = new ToggleSwitch('dark', 'light');
     darkSwitch.setAttribute('id', 'darkSwitch');
 
     const audioLabel = document.createElement('label');
@@ -161,18 +160,21 @@ class PomoSettings extends HTMLElement {
     const soundSelect = document.createElement('select');
     soundSelect.setAttribute('id', 'soundSelect');
 
-
     // List of names of audio files
-    const soundList = ["party-horn", "angry-monkey", "default", "rooster"];
+    const soundList = ['party-horn', 'angry-monkey', 'default', 'rooster'];
 
     // Create option in dropdown menu for each audio file
-    for (const sound of soundList) {
-      const option = soundSelect.appendChild(document.createElement("option"));
+    for (let i = 0; i < soundList.length; i += 1) {
+      const sound = soundList[i];
+
+      const option = soundSelect.appendChild(document.createElement('option'));
       option.value = sound;
 
       // Converts name of audio file to capitalized word with spaces
-      let name = sound.split("-").map(word => word.charAt(0).toUpperCase() + 
-        word.slice(1)).join(" ");
+      const name = sound
+        .split('-')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
       option.text = name;
     }
     soundSelect.value = this.sound;
@@ -222,8 +224,7 @@ class PomoSettings extends HTMLElement {
 
     closeButton.appendChild(closeIcon);
 
-
-    //timerSection.appendChild(pomoLengthLabel);
+    // timerSection.appendChild(pomoLengthLabel);
     timerSection.appendChild(workSection);
     timerSection.appendChild(shortSection);
     timerSection.appendChild(longSection);
@@ -233,7 +234,7 @@ class PomoSettings extends HTMLElement {
     shortSection.appendChild(shortBreakLabel);
     shortSection.appendChild(shortBreakNumber);
     longSection.appendChild(longBreakLabel);
-    longSection.appendChild(longBreakNumber)
+    longSection.appendChild(longBreakNumber);
 
     displaySection.appendChild(calmSection);
     displaySection.appendChild(darkSection);
@@ -258,61 +259,60 @@ class PomoSettings extends HTMLElement {
     this.workSetEvent = new CustomEvent('workSet', {
       bubbles: true,
       composed: true,
-      detail: {work: () => this.work}
+      detail: { work: () => this.work },
     });
 
     this.shortBreakSetEvent = new CustomEvent('shortBreakSet', {
       bubbles: true,
       composed: true,
-      detail: {shortBreak: () => this.shortBreak}
+      detail: { shortBreak: () => this.shortBreak },
     });
 
     this.longBreakSetEvent = new CustomEvent('longBreakSet', {
       bubbles: true,
       composed: true,
-      detail: {longBreak: () => this.longBreak}
+      detail: { longBreak: () => this.longBreak },
     });
 
     this.volumeSetEvent = new CustomEvent('volumeSet', {
       bubbles: true,
       composed: true,
-      detail: {volume: () => this.volume}
+      detail: { volume: () => this.volume },
     });
 
     this.soundSetEvent = new CustomEvent('soundSet', {
       bubbles: true,
       composed: true,
-      detail: {sound: () => this.sound}
+      detail: { sound: () => this.sound },
     });
 
     this.calmSetEvent = new CustomEvent('calmSet', {
       bubbles: true,
       composed: true,
-      detail: {calm: () => this.calm}
-    }); 
+      detail: { calm: () => this.calm },
+    });
 
     this.darkSetEvent = new CustomEvent('darkSet', {
       bubbles: true,
       composed: true,
-      detail: {dark: () => this.dark}
+      detail: { dark: () => this.dark },
     });
-
 
     /**
      * Opens the sidebar when clicking open button
      */
     openButton.onclick = () => {
       sideBar.setAttribute('class', 'open');
-      modal.style.display = "block";
-    }
+      modal.style.display = 'block';
+    };
 
     /**
      * Closes the sidebar when clicking close button
      */
     closeButton.onclick = () => {
       sideBar.setAttribute('class', 'close');
-      modal.style.display = "none";
-    }
+      modal.style.display = 'none';
+    };
 
     /**
      * Closes the sidebar when clicking outside of sidebar
@@ -320,153 +320,155 @@ class PomoSettings extends HTMLElement {
      */
     modal.onclick = (e) => {
       sideBar.setAttribute('class', 'close');
-      modal.style.display = "none";
-    }
+      modal.style.display = 'none';
+    };
 
     /**
      * Passes customized work minutes to event listener
      */
     workNumber.onchange = () => {
       let workMin = Math.round(Number(workNumber.value));
-      if (workMin < 1){
+      if (workMin < 1) {
         workMin = 1;
       }
       workNumber.value = workMin;
       this.work = workMin;
       shadow.dispatchEvent(this.workSetEvent);
-    }
+    };
 
     /**
      * Ensures the user cannot put invalid inputs
      */
     workNumber.oninput = () => {
       if (!workNumber.validity.valid) {
-        
         // Turn textbox border red temporarily
         workNumber.classList.add('invalid');
 
         // Round invalid input to either min or max value
-        workNumber.value = workNumber.value <= 0 ? 
-          workNumber.min : workNumber.max;
+        workNumber.value = workNumber.value <= 0 ? workNumber.min : workNumber.max;
 
         // After waiting, turn textbox border back to normal
-        setTimeout(() => {workNumber.classList.remove('invalid')}, ERROR_FLASH_LENGTH);
+        setTimeout(() => {
+          workNumber.classList.remove('invalid');
+        }, ERROR_FLASH_LENGTH);
       }
-    }
+    };
 
     /**
      * Passes customized short break minutes to event listener
      */
     shortBreakNumber.onchange = () => {
       let shortBreakMin = Math.round(Number(shortBreakNumber.value));
-      if (shortBreakMin < 1){
+      if (shortBreakMin < 1) {
         shortBreakMin = 1;
       }
       shortBreakNumber.value = shortBreakMin;
       this.shortBreak = shortBreakMin;
       shadow.dispatchEvent(this.shortBreakSetEvent);
-    }
+    };
 
     /**
      * Ensures the user cannot put invalid inputs
      */
     shortBreakNumber.oninput = () => {
       if (!shortBreakNumber.validity.valid) {
-
         // Turn textbox border red temporarily
         shortBreakNumber.classList.add('invalid');
 
         // Round invalid input to either min or max value
-        shortBreakNumber.value = shortBreakNumber.value <= 0 ? 
-          shortBreakNumber.min : shortBreakNumber.max;
+        shortBreakNumber.value =
+          shortBreakNumber.value <= 0 ? shortBreakNumber.min : shortBreakNumber.max;
 
         // After waiting, turn textbox border back to normal
-        setTimeout(() => {shortBreakNumber.classList.remove('invalid')}, ERROR_FLASH_LENGTH);
+        setTimeout(() => {
+          shortBreakNumber.classList.remove('invalid');
+        }, ERROR_FLASH_LENGTH);
       }
-    }
+    };
 
     /**
      * Passes customized long break minutes to event listener
      */
     longBreakNumber.onchange = () => {
       let longBreakMin = Math.round(Number(longBreakNumber.value));
-      if (longBreakMin < 1){
+      if (longBreakMin < 1) {
         longBreakMin = 1;
       }
       longBreakNumber.value = longBreakMin;
       this.longBreak = longBreakMin;
       shadow.dispatchEvent(this.longBreakSetEvent);
-    }
+    };
 
     /**
      * Ensures the user cannot put invalid inputs
      */
     longBreakNumber.oninput = () => {
       if (!longBreakNumber.validity.valid) {
-
         // Turn textbox border red temporarily
         longBreakNumber.classList.add('invalid');
 
         // Round invalid input to either min or max value
-        longBreakNumber.value = longBreakNumber.value <= 0 ? 
-        longBreakNumber.min : longBreakNumber.max;
+        longBreakNumber.value =
+          longBreakNumber.value <= 0 ? longBreakNumber.min : longBreakNumber.max;
 
         // After waiting, turn textbox border back to normal
-        setTimeout(() => {longBreakNumber.classList.remove('invalid')}, ERROR_FLASH_LENGTH);
+        setTimeout(() => {
+          longBreakNumber.classList.remove('invalid');
+        }, ERROR_FLASH_LENGTH);
       }
-    }
+    };
 
     /**
      * Passes customized volume from slider to event listener
      */
     volumeSlide.onchange = () => {
       this.volumeSet(Number(volumeSlide.value));
-    }
+    };
 
     /**
      * Passes customized volume from input to event listener
      */
     volumeNumber.onchange = () => {
       this.volumeSet(Number(volumeNumber.value));
-    }
-    
+    };
+
     /**
      * Ensures the user cannot put invalid inputs
      */
     volumeNumber.oninput = () => {
       if (!volumeNumber.validity.valid) {
-
         // Turn textbox border red temporarily
         volumeNumber.classList.add('invalid');
 
         // Round invalid input to either min or max value
-        volumeNumber.value = volumeNumber.value <= 0 ? 
-        volumeNumber.min : volumeNumber.max;
+        volumeNumber.value = volumeNumber.value <= 0 ? volumeNumber.min : volumeNumber.max;
 
         // After waiting, turn textbox border back to normal
-        setTimeout(() => {volumeNumber.classList.remove('invalid')}, ERROR_FLASH_LENGTH);
+        setTimeout(() => {
+          volumeNumber.classList.remove('invalid');
+        }, ERROR_FLASH_LENGTH);
       }
-    }
+    };
 
     /**
      * Have volumeNumber input show the same value as volumeSlide
      */
     volumeSlide.oninput = () => {
       volumeNumber.value = volumeSlide.value;
-    }
+    };
 
     /**
-     * Coordinate slider and input with each other, sets volume variable, 
+     * Coordinate slider and input with each other, sets volume variable,
      * and plays audio so the user can test volume
      * @param {Number} volume volume of audio
      */
     this.volumeSet = (volume) => {
-      let vol = Math.round(volume);
+      const vol = Math.round(volume);
       volumeSlide.value = vol;
       volumeNumber.value = vol;
       this.volume = vol;
       shadow.dispatchEvent(this.volumeSetEvent);
-    }
+    };
 
     /**
      * Sets and passes sound variable to control event listener, and plays
@@ -475,7 +477,7 @@ class PomoSettings extends HTMLElement {
     soundSelect.onchange = () => {
       this.sound = soundSelect.value;
       shadow.dispatchEvent(this.soundSetEvent);
-    }
+    };
 
     /**
      * Listens for toggleSwitchEvent to set calm and dispatch calmSetEvent
@@ -494,7 +496,7 @@ class PomoSettings extends HTMLElement {
     });
 
     /**
-     * Enable settings 
+     * Enable settings
      */
     this.enableSettings = () => {
       workNumber.disabled = false;
@@ -503,7 +505,7 @@ class PomoSettings extends HTMLElement {
       soundSelect.disabled = false;
       calmSwitch.enable();
       darkSwitch.enable();
-    }
+    };
 
     /**
      * Disable settings besides volume
@@ -513,10 +515,10 @@ class PomoSettings extends HTMLElement {
       shortBreakNumber.disabled = true;
       longBreakNumber.disabled = true;
       soundSelect.disabled = true;
-      soundSelect.style.opacity = "1";
+      soundSelect.style.opacity = '1';
       calmSwitch.disable();
       darkSwitch.disable();
-    }
+    };
 
     /**
      * Called by control, updates the default settings with values previously had from local storage
@@ -542,21 +544,19 @@ class PomoSettings extends HTMLElement {
       this.calm = calm;
       if (calm) {
         calmSwitch.setOn();
-      }
-      else{
+      } else {
         calmSwitch.setOff();
       }
       this.dark = dark;
       if (dark) {
         darkSwitch.setOn();
-      }
-      else{
+      } else {
         darkSwitch.setOff();
       }
-    }
+    };
   }
 }
 
 customElements.define('pomo-settings', PomoSettings);
 
-export { PomoSettings };
+export default PomoSettings;
