@@ -10,6 +10,10 @@ class PomoAudio extends HTMLElement {
 
     shadow.appendChild(audio);
 
+    const VOLUME_SCALER = 0.01;
+    const MIN_VOLUME = 0;
+    const MAX_VOLUME = 100;
+
     this.enabled = true;
 
     /**
@@ -41,11 +45,11 @@ class PomoAudio extends HTMLElement {
      */
     this.setVolume = (volume) => {
       // Invalid input received
-      if (volume < 0 || volume > 100) {
+      if (volume < MIN_VOLUME || volume > MAX_VOLUME) {
         return;
       }
 
-      audio.volume = volume * 0.01; // Scale range to 0 to 1.0
+      audio.volume = volume * VOLUME_SCALER; // Scale range to 0 to 1.0
     };
 
     /**
