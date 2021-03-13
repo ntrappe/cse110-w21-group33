@@ -54,7 +54,7 @@ describe('Check Lightbox Closing Options', { includeShadowDom: true }, () => {
   beforeEach(() => {
     cy.visit('./source/index.html');
     cy.window().then((win) => {
-      win.pomoFinish.showModal(3, 2, 0, 0, 75);
+      win.pomoFinish.showModal(3, 2, 0, 0);
     });
   });
   it('Check that close button closes lightbox', () => {
@@ -102,14 +102,13 @@ describe('Check Statistics Panel Elements With showModal()', { includeShadowDom:
   it('Check statistics panel has all elements', () => {
     cy.visit('./source/index.html');
     cy.window().then((win) => {
-      win.pomoFinish.showModal(3, 2, 0, 0, 75);
+      win.pomoFinish.showModal(3, 2, 0, 0);
     });
     cy.get('#statistics-panel').then(($el) => {
       expect($el).to.contain('Pomodoro Completed: 3');
       expect($el).to.contain('Short Breaks: 2');
       expect($el).to.contain('Long Breaks: 0');
       expect($el).to.contain('Interrupted Session: 0');
-      expect($el).to.contain('Total Minutes Working: 75');
     });
     cy.get('#statistics-modal').should('have.css', 'display', 'block');
   });

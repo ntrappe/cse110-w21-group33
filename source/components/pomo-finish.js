@@ -86,50 +86,36 @@ class PomoFinish extends HTMLElement {
      * @param {Number} shortBreakCount      the number of short breaks
      * @param {Number} longBreakCount       the number of long breaks
      * @param {Number} interruptedCount     the number of time reset because of interruptions
-     * @param {Number} totalMinutesWorked   total number of minutes working
      * @return {void}
      */
-    this.showModal = (
-      workCount,
-      shortBreakCount,
-      longBreakCount,
-      interruptedCount,
-      totalMinutesWorked
-    ) => {
+    this.showModal = (workCount, shortBreakCount, longBreakCount, interruptedCount) => {
       // clear the list before appending elements
       sessionStatistics.innerHTML = '';
 
       // render infomation
-      [
-        'Pomodoro Completed',
-        'Short Breaks',
-        'Long Breaks',
-        'Interrupted Session',
-        'Total Minutes Working',
-      ].forEach((info) => {
-        const li = document.createElement('li');
-        li.setAttribute('class', 'session-statistics');
-        switch (info) {
-          case 'Pomodoro Completed':
-            li.innerHTML = `${info}: ${workCount}`;
-            break;
-          case 'Short Breaks':
-            li.innerHTML = `${info}: ${shortBreakCount}`;
-            break;
-          case 'Long Breaks':
-            li.innerHTML = `${info}: ${longBreakCount}`;
-            break;
-          case 'Interrupted Session':
-            li.innerHTML = `${info}: ${interruptedCount}`;
-            break;
-          case 'Total Minutes Working':
-            li.innerHTML = `${info}: ${totalMinutesWorked}`;
-            break;
-          default:
-            li.innerHTML = 'Buggy!';
+      ['Pomodoro Completed', 'Short Breaks', 'Long Breaks', 'Interrupted Session'].forEach(
+        (info) => {
+          const li = document.createElement('li');
+          li.setAttribute('class', 'session-statistics');
+          switch (info) {
+            case 'Pomodoro Completed':
+              li.innerHTML = `${info}: ${workCount}`;
+              break;
+            case 'Short Breaks':
+              li.innerHTML = `${info}: ${shortBreakCount}`;
+              break;
+            case 'Long Breaks':
+              li.innerHTML = `${info}: ${longBreakCount}`;
+              break;
+            case 'Interrupted Session':
+              li.innerHTML = `${info}: ${interruptedCount}`;
+              break;
+            default:
+              li.innerHTML = 'Buggy!';
+          }
+          sessionStatistics.appendChild(li);
         }
-        sessionStatistics.appendChild(li);
-      });
+      );
 
       // show the statistics panel
       modal.style.display = 'block';
