@@ -4,7 +4,7 @@ const MIN_MINUTES = '1';
 const MAX_MINUTES = '60';
 const MIN_VOLUME = '0';
 const MAX_VOLUME = '100';
-const ERROR_FLASH_LENGTH = 100;
+const RESET_LENGTH = 200;
 
 class PomoSettings extends HTMLElement {
   constructor() {
@@ -375,13 +375,11 @@ class PomoSettings extends HTMLElement {
         // Turn textbox border red temporarily
         workNumber.classList.add('invalid');
 
-        // Round invalid input to either min or max value
-        workNumber.value = workNumber.value <= 0 ? workNumber.min : workNumber.max;
-
-        // After waiting, turn textbox border back to normal
+        // After waiting, turn textbox border back to normal and round invalid input
         setTimeout(() => {
           workNumber.classList.remove('invalid');
-        }, ERROR_FLASH_LENGTH);
+          workNumber.value = workNumber.value <= 0 ? workNumber.min : workNumber.max;
+        }, RESET_LENGTH);
       }
     };
 
@@ -406,14 +404,12 @@ class PomoSettings extends HTMLElement {
         // Turn textbox border red temporarily
         shortBreakNumber.classList.add('invalid');
 
-        // Round invalid input to either min or max value
-        shortBreakNumber.value =
-          shortBreakNumber.value <= 0 ? shortBreakNumber.min : shortBreakNumber.max;
-
-        // After waiting, turn textbox border back to normal
+        // After waiting, turn textbox border back to normal and round invalid input
         setTimeout(() => {
           shortBreakNumber.classList.remove('invalid');
-        }, ERROR_FLASH_LENGTH);
+          shortBreakNumber.value =
+            shortBreakNumber.value <= 0 ? shortBreakNumber.min : shortBreakNumber.max;
+        }, RESET_LENGTH);
       }
     };
 
@@ -438,14 +434,12 @@ class PomoSettings extends HTMLElement {
         // Turn textbox border red temporarily
         longBreakNumber.classList.add('invalid');
 
-        // Round invalid input to either min or max value
-        longBreakNumber.value =
-          longBreakNumber.value <= 0 ? longBreakNumber.min : longBreakNumber.max;
-
-        // After waiting, turn textbox border back to normal
+        // After waiting, turn textbox border back to normal and round invalid input
         setTimeout(() => {
           longBreakNumber.classList.remove('invalid');
-        }, ERROR_FLASH_LENGTH);
+          longBreakNumber.value =
+            longBreakNumber.value <= 0 ? longBreakNumber.min : longBreakNumber.max;
+        }, RESET_LENGTH);
       }
     };
 
@@ -471,13 +465,11 @@ class PomoSettings extends HTMLElement {
         // Turn textbox border red temporarily
         volumeNumber.classList.add('invalid');
 
-        // Round invalid input to either min or max value
-        volumeNumber.value = volumeNumber.value <= 0 ? volumeNumber.min : volumeNumber.max;
-
-        // After waiting, turn textbox border back to normal
+        // After waiting, turn textbox border back to normal and round invalid input
         setTimeout(() => {
           volumeNumber.classList.remove('invalid');
-        }, ERROR_FLASH_LENGTH);
+          volumeNumber.value = volumeNumber.value <= 0 ? volumeNumber.min : volumeNumber.max;
+        }, RESET_LENGTH);
       }
     };
 
