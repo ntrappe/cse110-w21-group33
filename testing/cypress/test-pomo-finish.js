@@ -120,13 +120,7 @@ describe('Check Dark/Light Settings', { includeShadowDom: true }, () => {
     cy.window().then((win) => {
       win.pomoFinish.setDark(true);
     });
-    cy.get('#timer-styles').should('have.attr', 'href', './components/pomo-finish-dark.css');
-    cy.get('#finish-button').should('have.attr', 'data-mode', 'dark-mode');
-    cy.get('#statistics-modal').should('have.attr', 'data-mode', 'dark-mode');
-    cy.get('#statistics-modal-content').should('have.attr', 'data-mode', 'dark-mode');
-    cy.get('#statistics-modal-title').should('have.attr', 'data-mode', 'dark-mode');
-    cy.get('#statistics-panel').should('have.attr', 'data-mode', 'dark-mode');
-    cy.get('#statistics-close-button').should('have.attr', 'data-mode', 'dark-mode');
+    cy.get('#statistics-timer-styles').should('have.attr', 'href', './components/pomo-finish-dark.css');
   });
 
   it('Check that setDark(false) sets light mode', () => {
@@ -134,12 +128,6 @@ describe('Check Dark/Light Settings', { includeShadowDom: true }, () => {
     cy.window().then((win) => {
       win.pomoFinish.setDark(false);
     });
-    cy.get('#timer-styles').should('have.attr', 'href', './components/pomo-finish-light.css');
-    cy.get('#finish-button').should('have.attr', 'data-mode', 'light-mode');
-    cy.get('#statistics-modal').should('have.attr', 'data-mode', 'light-mode');
-    cy.get('#statistics-modal-content').should('have.attr', 'data-mode', 'light-mode');
-    cy.get('#statistics-modal-title').should('have.attr', 'data-mode', 'light-mode');
-    cy.get('#statistics-panel').should('have.attr', 'data-mode', 'light-mode');
-    cy.get('#statistics-close-button').should('have.attr', 'data-mode', 'light-mode');
+    cy.get('#statistics-timer-styles').should('have.attr', 'href', './components/pomo-finish-light.css');
   });
 });

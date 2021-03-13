@@ -7,7 +7,7 @@ class PomoFinish extends HTMLElement {
     // the component wrapper
     const wrapper = document.createElement('div');
     const link = document.createElement('link');
-    link.setAttribute('id', 'timer-styles');
+    link.setAttribute('id', 'statistics-timer-styles');
     link.setAttribute('rel', 'stylesheet');
     link.setAttribute('href', './components/pomo-finish-light.css');
 
@@ -86,25 +86,10 @@ class PomoFinish extends HTMLElement {
      */
 
     this.setDark = (isDark) => {
-      const components = [
-        finishButton,
-        modal,
-        modalContent,
-        modalTitle,
-        sessionStatistics,
-        closeButton,
-      ];
-
       if (isDark) {
         link.setAttribute('href', './components/pomo-finish-dark.css');
-        components.forEach((el) => {
-          el.setAttribute('data-mode', 'dark-mode');
-        });
       } else {
         link.setAttribute('href', './components/pomo-finish-light.css');
-        components.forEach((el) => {
-          el.setAttribute('data-mode', 'light-mode');
-        });
       }
     };
 
