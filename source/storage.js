@@ -11,7 +11,7 @@ const MAX_VOL = 100;
  * Function to get the pomodoro completed for the day and check if it should reset local storage
  * @return {Number} total amount of Pomodoro completed for the day
  */
-function getDayCount() {
+export function getDayCount() {
   // If local storage for pomodro completed is does not exist then we set current count to 0
   if (!localStorage.getItem('pomodoroCount')) {
     localStorage.setItem('pomodoroCount', EMPTY_VALUE);
@@ -31,13 +31,11 @@ function getDayCount() {
   return parseInt(localStorage.getItem('pomodoroCount'), 10);
 }
 
-export { getDayCount };
-
 /**
  * Function to set the pomodoro completed for the day into local storage
  * @param {Number} count pomodoro completed
  */
-function setDayCount(count) {
+export function setDayCount(count) {
   const date = new Date();
   // Creating new local storage for pomodoroCount if it is the first time
   if (!localStorage.getItem('prevDay')) {
@@ -60,13 +58,11 @@ function setDayCount(count) {
   localStorage.setItem('pomodoroCount', count + getDayCount());
 }
 
-export { setDayCount };
-
 /**
  * Function to get the current Calm value
  * @return {Boolean} boolean value of whether the user wanted calm more
  */
-function getCalm() {
+export function getCalm() {
   // Checking if there is a calm mode value stored in local storage
   if (!localStorage.getItem('isCalm')) {
     localStorage.setItem('isCalm', false); // Creating local storage for calm mode
@@ -77,23 +73,19 @@ function getCalm() {
   return false;
 }
 
-export { getCalm };
-
 /**
  * Function to be called whenever the onClick event is listened to for calm mode
  * @param {Boolean} calm setting of current calm mode
  */
-function setCalm(calm) {
+export function setCalm(calm) {
   localStorage.setItem('isCalm', calm);
 }
-
-export { setCalm };
 
 /**
  * Function to get the current volume value
  * @return {Number} value of last saved volume
  */
-function getVolume() {
+export function getVolume() {
   // Checking if there is a volume value stored in local storage
   if (!localStorage.getItem('volume')) {
     localStorage.setItem('volume', MAX_VOL); // setting default volume to be 100
@@ -101,23 +93,19 @@ function getVolume() {
   return parseInt(localStorage.getItem('volume'), 10);
 }
 
-export { getVolume };
-
 /**
  * Function to be called whenever the current volume is changed
  * @param {Number} vol volume saved
  */
-function setVolume(vol) {
+export function setVolume(vol) {
   localStorage.setItem('volume', vol);
 }
-
-export { setVolume };
 
 /**
  * Function to get the current sound
  * @return {String} last saved sound for alarm
  */
-function getSound() {
+export function getSound() {
   // Checking if sound local storage was created
   if (!localStorage.getItem('sound')) {
     localStorage.setItem(
@@ -128,23 +116,19 @@ function getSound() {
   return localStorage.getItem('sound');
 }
 
-export { getSound };
-
 /**
  * Function to be called whenever the current sound is changed
  * @param {String} sound alarm sound saved
  */
-function setSound(sound) {
+export function setSound(sound) {
   localStorage.setItem('sound', sound);
 }
-
-export { setSound };
 
 /**
  * Function to get the current sound
  * @return {Boolean} boolean value of whether or not dark mode is enabled
  */
-function getDark() {
+export function getDark() {
   // Checking if dark mode local storage was created
   if (!localStorage.getItem('isDark')) {
     localStorage.setItem('isDark', false); // Setting default mode into light mode
@@ -155,23 +139,19 @@ function getDark() {
   return false;
 }
 
-export { getDark };
-
 /**
  * Function to be called whenever the onClick event is listened to for dark mode
  * @param {Boolean} dark Setting of current dark mode
  */
-function setDark(dark) {
+export function setDark(dark) {
   localStorage.setItem('isDark', dark);
 }
-
-export { setDark };
 
 /**
  * Function to get the duration of the work timer in minutes
  * @return {Number} saved value of work mode duration
  */
-function getWork() {
+export function getWork() {
   // Checking if the duration of work mode has been changed
   if (!localStorage.getItem('work')) {
     localStorage.setItem('work', DEFAULT_WORK); // Setting default work mode to be 25 minutes
@@ -179,23 +159,19 @@ function getWork() {
   return parseInt(localStorage.getItem('work'), 10);
 }
 
-export { getWork };
-
 /**
  * Function to be called whenever the duration of work mode is changed
  * @param {Number} work duration of new work mode
  */
-function setWork(work) {
+export function setWork(work) {
   localStorage.setItem('work', work);
 }
-
-export { setWork };
 
 /**
  * Function to get the duration of the short break timer in minutes
  * @return {Number} saved value of short break duration
  */
-function getShortBreak() {
+export function getShortBreak() {
   // Checking if the duration of short break has been changed
   if (!localStorage.getItem('shortBreak')) {
     // Setting default short break to be 5 minutes
@@ -204,23 +180,19 @@ function getShortBreak() {
   return parseInt(localStorage.getItem('shortBreak'), 10);
 }
 
-export { getShortBreak };
-
 /**
  * Function to be called whenever the duration of short break is changed
  * @param {Number} work duration of new short break
  */
-function setShortBreak(shortBreak) {
+export function setShortBreak(shortBreak) {
   localStorage.setItem('shortBreak', shortBreak);
 }
-
-export { setShortBreak };
 
 /**
  * Function to get the duration of the long break timer in minutes
  * @return {Number} saved value of long break duration
  */
-function getLongBreak() {
+export function getLongBreak() {
   // Checking if the duration of long break has been changed
   if (!localStorage.getItem('longBreak')) {
     // Setting default long break to be 15 minutes
@@ -229,23 +201,19 @@ function getLongBreak() {
   return parseInt(localStorage.getItem('longBreak'), 10);
 }
 
-export { getLongBreak };
-
 /**
  * Function to be called whenever the duration of long break is changed
  * @param {Number} work duration of new long break
  */
-function setLongBreak(longBreak) {
+export function setLongBreak(longBreak) {
   localStorage.setItem('longBreak', longBreak);
 }
-
-export { setLongBreak };
 
 /**
  * Function to get the current accessibility setting
  * @return {Boolean} boolean value of whether the user wants app to be accessible by keystroke
  */
-function getAccessibility() {
+export function getAccessibility() {
   // Checking if there is a accessible value stored in local storage
   if (!localStorage.getItem('isAccessible')) {
     localStorage.setItem('isAccessible', true); // Default is on
@@ -256,16 +224,12 @@ function getAccessibility() {
   return false;
 }
 
-export { getAccessibility };
-
 /**
  * Function to be called whenever the onClick event is listened to for accessibility
  * @param {Boolean} accessibility setting of accessibility
  */
-function setAccessibility(accessibility) {
+export function setAccessibility(accessibility) {
   localStorage.setItem('isAccessible', accessibility);
 }
-
-export { setAccessibility };
 
 /* End of functions for Local Storage */
