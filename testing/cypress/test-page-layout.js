@@ -42,26 +42,26 @@ describe('Verify element layout', { includeShadowDom: true }, () => {
     cy.window().then((win) => {
       win.pomoTimer.setTimer(1, 'work');
 
-      /* Coordinates for each element*/
-      let timerCoords = win.pomoTimer.getBoundingClientRect();
-      let settingCoords = win.pomoSettings.getBoundingClientRect();
-      let infoCoords = win.pomoInfo.getBoundingClientRect();
-      let finishCoords = win.pomoFinish.getBoundingClientRect();
+      /* Coordinates for each element */
+      const timerCoords = win.pomoTimer.getBoundingClientRect();
+      const settingCoords = win.pomoSettings.getBoundingClientRect();
+      const infoCoords = win.pomoInfo.getBoundingClientRect();
+      const finishCoords = win.pomoFinish.getBoundingClientRect();
 
       /* Criteria for correct positions are relative to the total size of the window */
       const PARTITION = 4;
       const WIDTH = Cypress.config().viewportWidth;
       const HEIGHT = Cypress.config().viewportHeight;
-      
-      const LEFT_SIDE =  WIDTH / 4;
-      const RIGHT_SIDE = WIDTH - (WIDTH / 4);
 
-      //NOTE: temporary value for BOTTOM_POSITION because finish button isn't in right place
-      //const BOTTOM_POS = HEIGHT - (HEIGHT / 4);
+      const LEFT_SIDE = WIDTH / PARTITION;
+      const RIGHT_SIDE = WIDTH - WIDTH / PARTITION;
+
+      // NOTE: temporary value for BOTTOM_POSITION because finish button isn't in right place
+      // const BOTTOM_POS = HEIGHT - (HEIGHT / PARTITION);
       const BOTTOM_POS = 150;
-      const TOP_POS = HEIGHT / 4;
+      const TOP_POS = HEIGHT / PARTITION;
 
-      /* Criteria for timer being centered is relative to other elements*/
+      /* Criteria for timer being centered is relative to other elements */
       const CENTER_LEFT = settingCoords.x + settingCoords.width;
       const CENTER_RIGHT = infoCoords.x;
       const CENTER_TOP = settingCoords.y + settingCoords.height;
@@ -79,7 +79,7 @@ describe('Verify element layout', { includeShadowDom: true }, () => {
       expect(finishCoords.x).to.be.above(RIGHT_SIDE);
       expect(finishCoords.y).to.be.above(BOTTOM_POS);
 
-      /* Verify timer is centered between elements in the top and bottom areas*/
+      /* Verify timer is centered between elements in the top and bottom areas */
       expect(timerCoords.x).to.be.within(CENTER_LEFT, CENTER_RIGHT);
       expect(timerCoords.y).to.be.within(CENTER_TOP, CENTER_BOTTOM);
     });
