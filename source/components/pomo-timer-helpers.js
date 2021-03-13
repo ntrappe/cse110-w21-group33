@@ -1,6 +1,7 @@
 /* Helper Functions for Timer (imported by pomo-timer.js) */
 
 const MAX_SEC = 60;
+const MAX_POMO_MIN = 59;
 const NUM_MIN = 2;
 const TWO_DIGIT = 10;
 const START = 'Start';
@@ -10,32 +11,42 @@ const RESET = 'Reset';
  * Uses the total seconds to split into minutes and seconds and display on screen
  * @param {Number} totalSeconds current total number of seconds on timer
  * @param {String} timerText text for current time on timer
+ * @param {Boolean} calmTimerText true if should only display min; false for min : sec
  */
-function display(totalSeconds, timerText) {
+function display(totalSeconds, timerText, calmTimerText) {
   // calculate minutes and seconds from total seconds in timer
   const minutes = Math.floor(totalSeconds / MAX_SEC);
   const seconds = totalSeconds - minutes * MAX_SEC;
 
-  let tMin; // text repr of minutes
-  let tSec; // text repr of seconds
-
-  // pad with zeros if necessary
-  if (minutes < TWO_DIGIT) {
-    tMin = `0${String(minutes)}`;
+  if (calmTimerText) {
+    if (seconds === 0) {
+      // if at something like 2:00, show just min => 2m
+      timerText.textContent = `${String(minutes)}m`;
+    } else {
+      // otherwise round to the nearest min, like 1:59 => 2m
+      timerText.textContent = `${String(minutes + 1)}m`;
+    }
   } else {
-    tMin = String(minutes);
-  }
+    let tMin; // text repr of minutes
+    let tSec; // text repr of seconds
 
-  // pad with zeros if necessary
-  if (seconds < TWO_DIGIT) {
-    tSec = `0${String(seconds)}`;
-  } else {
-    tSec = String(seconds);
-  }
+    // pad with zeros if necessary
+    if (minutes < TWO_DIGIT) {
+      tMin = `0${String(minutes)}`;
+    } else {
+      tMin = String(minutes);
+    }
 
-  // write text to screen
-  timerText.textContent = `${tMin}:${tSec}`;
-  // setTab(t_min, t_sec);
+    // pad with zeros if necessary
+    if (seconds < TWO_DIGIT) {
+      tSec = `0${String(seconds)}`;
+    } else {
+      tSec = String(seconds);
+    }
+
+    // write text to screen
+    timerText.textContent = `${tMin}:${tSec}`;
+  }
 }
 
 /**
@@ -43,9 +54,9 @@ function display(totalSeconds, timerText) {
  * @param {Number} m Minutes for the timer to run
  * @return {Number} totalSeconds
  */
-function set(m) {
+function setTime(m) {
   // Error catching: make sure minimum 1m and maximum 59m
-  if (m < 1 || m > 59) {
+  if (m < 1 || m > MAX_POMO_MIN) {
     return NUM_MIN * MAX_SEC;
   }
   return m * MAX_SEC;
@@ -78,15 +89,6 @@ function initProgess() {
   const progressContainer = document.createElement('div');
   progressContainer.setAttribute('class', 'progress-container');
 
-  /* text above squares NOT IMPLEMENTED */
-  const progressTopSection = document.createElement('div');
-  progressTopSection.setAttribute('class', 'progress-top-section');
-  progressContainer.appendChild(progressTopSection);
-
-  /* holder for squares that track break progress */
-  const progressBottomSection = document.createElement('div');
-  progressContainer.appendChild(progressBottomSection);
-
   /* empty space (matches background) */
   const space1 = document.createElement('p');
   space1.setAttribute('class', 'space');
@@ -109,14 +111,13 @@ function initProgess() {
   square4.setAttribute('id', 'square4');
 
   /* break tracker via squares */
-  progressBottomSection.setAttribute('class', 'progress-bottom-section');
-  progressBottomSection.appendChild(square1);
-  progressBottomSection.appendChild(space1);
-  progressBottomSection.appendChild(square2);
-  progressBottomSection.appendChild(space2);
-  progressBottomSection.appendChild(square3);
-  progressBottomSection.appendChild(space3);
-  progressBottomSection.appendChild(square4);
+  progressContainer.appendChild(square1);
+  progressContainer.appendChild(space1);
+  progressContainer.appendChild(square2);
+  progressContainer.appendChild(space2);
+  progressContainer.appendChild(square3);
+  progressContainer.appendChild(space3);
+  progressContainer.appendChild(square4);
 
   // return container to main file can append to wrapper
   // return squares so setProgressHelper can reference them for style
@@ -162,6 +163,6 @@ function setProgressHelper(progress, square1, square2, square3, square4) {
   }
 }
 
-export { display, setStartButton, setResetButton, set, initProgess, setProgressHelper };
+export { display, setStartButton, setResetButton, setTime, initProgess, setProgressHelper };
 
 /* End pomo-timer-helpers.js */
