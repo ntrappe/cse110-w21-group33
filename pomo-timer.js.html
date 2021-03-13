@@ -26,7 +26,14 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { setStartButton, setResetButton, display, set } from './pomo-timer-helpers.js';
+            <pre class="prettyprint source linenums"><code>import {
+  setStartButton,
+  setResetButton,
+  display,
+  setTime,
+  initProgess,
+  setProgressHelper,
+} from './pomo-timer-helpers.js';
 
 const START = 'Start';
 const SEC_SPEED = 250;
@@ -37,11 +44,11 @@ class PomoTimer extends HTMLElement {
     const shadow = this.attachShadow({ mode: 'open' });
 
     /*
-        const link = document.createElement('link');
-        link.setAttribute('id', 'timer-styles');
-        link.setAttribute('rel', 'stylesheet');
-        link.setAttribute('href', './components/pomo-timer.css');
-        */
+      const link = document.createElement('link');
+      link.setAttribute('id', 'timer-styles');
+      link.setAttribute('rel', 'stylesheet');
+      link.setAttribute('href', './components/pomo-timer.css');
+    */
 
     const wrapper = document.createElement('span');
     wrapper.setAttribute('class', 'wrapper');
@@ -49,6 +56,11 @@ class PomoTimer extends HTMLElement {
     // label for mode e.g. 'Work'
     const currentMode = document.createElement('p');
     currentMode.setAttribute('id', 'timer-mode');
+
+    // squares to represent progress
+    const progressContainerItems = initProgess();
+    const progressContainer = progressContainerItems[0];
+    progressContainer.setAttribute('id', 'timer-progress-container');
 
     // timer countdown display
     const timerText = document.createElement('h1');
@@ -61,17 +73,16 @@ class PomoTimer extends HTMLElement {
     timerButton.setAttribute('class', 'start');
 
     /* Initialize elements */
-    /*
-        currentMode.textContent = "WORK";
-        timerText.textContent = "TIME"; */
     timerButton.textContent = START;
 
     let ticker; // timer object
     this.totalSeconds = 0; // total seconds in timer
     let modeDuration = 0; // time to put on clock
+    this.calmTimerText = false; // display w or w/o sec
 
     shadow.appendChild(wrapper);
     wrapper.appendChild(currentMode);
+    wrapper.appendChild(progressContainer);
     wrapper.appendChild(timerText);
     wrapper.appendChild(timerButton);
 
@@ -116,9 +127,8 @@ class PomoTimer extends HTMLElement {
     this.timerReset = () => {
       shadow.dispatchEvent(timerResetEvent);
       clearInterval(ticker);
-      // this.totalSeconds = set(NUM_MIN);
-      this.totalSeconds = set(modeDuration);
-      display(this.totalSeconds, timerText);
+      this.totalSeconds = setTime(modeDuration);
+      display(this.totalSeconds, timerText, this.calmTimerText);
     };
 
     /**
@@ -126,9 +136,8 @@ class PomoTimer extends HTMLElement {
      */
     this.timerStart = () => {
       shadow.dispatchEvent(timerStartEvent);
-      // this.totalSeconds = set(NUM_MIN);
-      this.totalSeconds = set(modeDuration);
-      display(this.totalSeconds, timerText);
+      this.totalSeconds = setTime(modeDuration);
+      display(this.totalSeconds, timerText, this.calmTimerText);
       ticker = setInterval(this.timerTick, SEC_SPEED);
     };
 
@@ -138,9 +147,8 @@ class PomoTimer extends HTMLElement {
     this.timerFinish = () => {
       shadow.dispatchEvent(timerFinishEvent);
       clearInterval(ticker);
-      // this.totalSeconds = set(NUM_MIN);
-      this.totalSeconds = set(modeDuration);
-      display(this.totalSeconds, timerText);
+      this.totalSeconds = setTime(modeDuration);
+      display(this.totalSeconds, timerText, this.calmTimerText);
     };
 
     /**
@@ -154,7 +162,7 @@ class PomoTimer extends HTMLElement {
         setStartButton(timerButton);
       } else {
         this.totalSeconds -= 1;
-        display(this.totalSeconds, timerText);
+        display(this.totalSeconds, timerText, this.calmTimerText);
       }
     };
 
@@ -164,10 +172,34 @@ class PomoTimer extends HTMLElement {
      */
     this.setTimer = (min, mode) => {
       modeDuration = min;
-      this.totalSeconds = set(min);
-      display(this.totalSeconds, timerText);
+      this.totalSeconds = setTime(min);
+      display(this.totalSeconds, timerText, this.calmTimerText);
       currentMode.setAttribute('class', mode);
       currentMode.textContent = mode.toUpperCase();
+    };
+
+    /**
+     * For CONTROL to update squares on screen to match number of breaks taken
+     * @param {Number} progress - number of breaks taken
+     */
+    this.setProgress = (progress) => {
+      setProgressHelper(
+        progress,
+        progressContainerItems[1],
+        progressContainerItems[2],
+        progressContainerItems[3],
+        progressContainerItems[4]
+      );
+    };
+
+    /**
+     * For CONTROL to determine if timer text display will show normal
+     * minutes &amp; seconds or just minutes
+     * @param {Boolean} calm - true for min; false for min and sec
+     */
+    this.setCalm = (calm) => {
+      this.calmTimerText = calm;
+      display(this.totalSeconds, timerText, this.calmTimerText);
     };
   }
 }
@@ -185,13 +217,13 @@ export default PomoTimer;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#defaultTab">defaultTab</a></li><li><a href="global.html#display">display</a></li><li><a href="global.html#initProgess">initProgess</a></li><li><a href="global.html#set">set</a></li><li><a href="global.html#setCalm">setCalm</a></li><li><a href="global.html#setProgressHelper">setProgressHelper</a></li><li><a href="global.html#setResetButton">setResetButton</a></li><li><a href="global.html#setStartButton">setStartButton</a></li><li><a href="global.html#setTab">setTab</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#defaultTab">defaultTab</a></li><li><a href="global.html#display">display</a></li><li><a href="global.html#initProgess">initProgess</a></li><li><a href="global.html#setCalm">setCalm</a></li><li><a href="global.html#setProgressHelper">setProgressHelper</a></li><li><a href="global.html#setResetButton">setResetButton</a></li><li><a href="global.html#setStartButton">setStartButton</a></li><li><a href="global.html#setTab">setTab</a></li><li><a href="global.html#setTime">setTime</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Fri Mar 12 2021 06:05:39 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Mar 13 2021 00:39:04 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
