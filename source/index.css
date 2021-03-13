@@ -1,13 +1,12 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
 header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 16px;
-}
-
-body {
-  font-family: 'Open Sans', sans-serif;
-  background-color: #0e1116;
 }
 
 main {
