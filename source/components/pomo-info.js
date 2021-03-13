@@ -9,9 +9,9 @@ class PomoInfo extends HTMLElement {
 
     // style element for the component
     const link = document.createElement('link');
-    link.setAttribute('id', 'timer-styles');
+    link.setAttribute('id', 'info-timer-styles');
     link.setAttribute('rel', 'stylesheet');
-    link.setAttribute('href', './components/pomo-finish.css');
+    link.setAttribute('href', './components/pomo-info-dark.css');
 
     // the modal window
     const modal = document.createElement('div');
@@ -26,12 +26,12 @@ class PomoInfo extends HTMLElement {
     };
 
     // info button
-    this.infoButton = document.createElement('button');
-    this.infoButton.setAttribute('id', 'info-button');
-    this.infoButton.onclick = () => {
+    const infoButton = document.createElement('button');
+    infoButton.setAttribute('id', 'info-button');
+    infoButton.onclick = () => {
       modal.style.display = 'block';
     };
-    this.infoButton.innerHTML = 'Info';
+    infoButton.innerHTML = 'Info';
 
     // the lightbox
     const modalContent = document.createElement('div');
@@ -77,24 +77,44 @@ class PomoInfo extends HTMLElement {
     modalContent.appendChild(infoContent);
     modal.appendChild(modalContent);
     wrapper.appendChild(modal);
-    wrapper.appendChild(this.infoButton);
+    wrapper.appendChild(infoButton);
 
     shadow.appendChild(wrapper);
     shadow.appendChild(link);
-  }
 
-  /**
-   * Allows the control to open the info page
-   */
-  enableInfo() {
-    this.infoButton.disabled = false;
-  }
+    /**
+     * Allows the control to open the info page
+     */
+    this.enableInfo = () => {
+      infoButton.disabled = false;
+    };
 
-  /**
-   * Prevent the control from open the info page
-   */
-  disableInfo() {
-    this.infoButton.disabled = true;
+    /**
+     * Prevent the control from open the info page
+     */
+    this.disableInfo = () => {
+      infoButton.disabled = true;
+    };
+
+    /**
+     * Modify elements' data-mode to dark-mode or light-mode
+     * @param {Boolean} isDark  indicate whether or not the setting is in dark mode
+     */
+    this.setDark = (isDark) => {
+      const components = [infoButton, modal, modalContent, infoContent, closeButton];
+
+      if (isDark) {
+        link.setAttribute('href', './components/pomo-info-dark.css');
+        components.forEach((el) => {
+          el.setAttribute('data-mode', 'dark-mode');
+        });
+      } else {
+        link.setAttribute('href', './components/pomo-info-light.css');
+        components.forEach((el) => {
+          el.setAttribute('data-mode', 'light-mode');
+        });
+      }
+    };
   }
 }
 

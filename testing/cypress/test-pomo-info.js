@@ -47,7 +47,7 @@ describe('Check The Enabling/Disabling Info Button', { includeShadowDom: true },
   });
 });
 
-describe('Check Ligthbox Controls', { includeShadowDom: true }, () => {
+describe('Check Lightbox Controls', { includeShadowDom: true }, () => {
   beforeEach(() => {
     cy.visit('./source/index.html');
   });
@@ -108,4 +108,30 @@ describe('Check Ligthbox Controls', { includeShadowDom: true }, () => {
   });
 });
 
-/* Add your own tests here */
+describe('Check Dark/Light Settings', { includeShadowDom: true }, () => {
+  it('Check that setDark(true) sets dark mode', () => {
+    cy.visit('./source/index.html');
+    cy.window().then((win) => {
+      win.pomoInfo.setDark(true);
+    });
+    cy.get('#info-timer-styles').should('have.attr', 'href', './components/pomo-info-dark.css');
+    cy.get('#info-button').should('have.attr', 'data-mode', 'dark-mode');
+    cy.get('#info-modal').should('have.attr', 'data-mode', 'dark-mode');
+    cy.get('#info-modal-content').should('have.attr', 'data-mode', 'dark-mode');
+    cy.get('#info-content').should('have.attr', 'data-mode', 'dark-mode');
+    cy.get('#info-close-button').should('have.attr', 'data-mode', 'dark-mode');
+  });
+
+  it('Check that setDark(false) sets light mode', () => {
+    cy.visit('./source/index.html');
+    cy.window().then((win) => {
+      win.pomoInfo.setDark(false);
+    });
+    cy.get('#info-timer-styles').should('have.attr', 'href', './components/pomo-info-light.css');
+    cy.get('#info-button').should('have.attr', 'data-mode', 'light-mode');
+    cy.get('#info-modal').should('have.attr', 'data-mode', 'light-mode');
+    cy.get('#info-modal-content').should('have.attr', 'data-mode', 'light-mode');
+    cy.get('#info-content').should('have.attr', 'data-mode', 'light-mode');
+    cy.get('#info-close-button').should('have.attr', 'data-mode', 'light-mode');
+  });
+});
