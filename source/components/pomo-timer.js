@@ -15,12 +15,12 @@ class PomoTimer extends HTMLElement {
 
     const shadow = this.attachShadow({ mode: 'open' });
 
-    /*
-      const link = document.createElement('link');
-      link.setAttribute('id', 'timer-styles');
-      link.setAttribute('rel', 'stylesheet');
-      link.setAttribute('href', './components/pomo-timer.css');
-    */
+    const style = document.createElement('style');
+
+    const link = document.createElement('link');
+    link.setAttribute('id', 'timer-style-dark');
+    link.setAttribute('rel', 'stylesheet');
+    link.setAttribute('href', './components/pomo-timer.css');
 
     const wrapper = document.createElement('span');
     wrapper.setAttribute('class', 'wrapper');
@@ -53,6 +53,8 @@ class PomoTimer extends HTMLElement {
     this.calmTimerText = false; // display w or w/o sec
 
     shadow.appendChild(wrapper);
+    shadow.appendChild(link);
+    shadow.appendChild(style);
     wrapper.appendChild(currentMode);
     wrapper.appendChild(progressContainer);
     wrapper.appendChild(timerText);
@@ -173,6 +175,27 @@ class PomoTimer extends HTMLElement {
       this.calmTimerText = calm;
       display(this.totalSeconds, timerText, this.calmTimerText);
     };
+
+    this.setDark = (dark) => {
+      if (dark) {
+        shadow.removeChild(shadow.getElementById('timer-style-light'));
+      } else {
+        const lightStyle = document.createElement('link');
+        lightStyle.setAttribute('id', 'timer-style-light');
+        lightStyle.setAttribute('rel', 'stylesheet');
+        lightStyle.setAttribute('href', './components/pomo-timer-light.css');
+        shadow.append(lightStyle);
+      }
+    };
+
+    style.textContent = `
+      .progress-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    `;
   }
 }
 
