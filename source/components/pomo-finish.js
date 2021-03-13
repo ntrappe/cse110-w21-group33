@@ -9,7 +9,7 @@ class PomoFinish extends HTMLElement {
     const link = document.createElement('link');
     link.setAttribute('id', 'timer-styles');
     link.setAttribute('rel', 'stylesheet');
-    link.setAttribute('href', './components/pomo-finish.css');
+    link.setAttribute('href', './components/pomo-finish-light.css');
 
     // custom event for modal display
     this.event = new CustomEvent('modalRequest', {
