@@ -81,6 +81,34 @@ class PomoFinish extends HTMLElement {
     shadow.appendChild(link);
 
     /**
+     * Modify elements' data-mode to dark-mode or light-mode
+     * @param {Boolean} isDark  indicate whether or not the setting is in dark mode
+     */
+
+    this.setDark = (isDark) => {
+      const components = [
+        finishButton,
+        modal,
+        modalContent,
+        modalTitle,
+        sessionStatistics,
+        closeButton,
+      ];
+
+      if (isDark) {
+        link.setAttribute('href', './components/pomo-finish-dark.css');
+        components.forEach((el) => {
+          el.setAttribute('data-mode', 'dark-mode');
+        });
+      } else {
+        link.setAttribute('href', './components/pomo-finish-light.css');
+        components.forEach((el) => {
+          el.setAttribute('data-mode', 'light-mode');
+        });
+      }
+    };
+
+    /**
      * Render session's statistics to the screen
      * @param {Number} workCount            the number of pomodoro sessions completed
      * @param {Number} shortBreakCount      the number of short breaks
