@@ -201,6 +201,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  height: 2px;
   width: 100px;
   background-color: #161b22;
 }
@@ -280,7 +281,7 @@
 /* Align switches to float right */
 #access-switch {
   position: relative;
-  left: 85px;
+  left: 45px;
 }
 
 /* Add red border on invalid input */

@@ -218,7 +218,7 @@ class PomoSettings extends HTMLElement {
 
     const accessLabel = document.createElement('label');
     accessLabel.setAttribute('id', 'access-label');
-    accessLabel.textContent = 'Accessibility';
+    accessLabel.textContent = 'Keyboard Shortcuts';
     accessLabel.htmlFor = 'access-switch';
     const accessSwitch = new ToggleSwitch('accessible', 'inaccessible');
     accessSwitch.setOn();
@@ -378,7 +378,7 @@ class PomoSettings extends HTMLElement {
         // After waiting, turn textbox border back to normal and round invalid input
         setTimeout(() => {
           workNumber.classList.remove('invalid');
-          workNumber.value = workNumber.value <= 0 ? workNumber.min : workNumber.max;
+          workNumber.value = workNumber.value <= 1 ? workNumber.min : workNumber.max;
         }, RESET_LENGTH);
       }
     };
@@ -408,7 +408,7 @@ class PomoSettings extends HTMLElement {
         setTimeout(() => {
           shortBreakNumber.classList.remove('invalid');
           shortBreakNumber.value =
-            shortBreakNumber.value <= 0 ? shortBreakNumber.min : shortBreakNumber.max;
+            shortBreakNumber.value <= 1 ? shortBreakNumber.min : shortBreakNumber.max;
         }, RESET_LENGTH);
       }
     };
@@ -438,7 +438,7 @@ class PomoSettings extends HTMLElement {
         setTimeout(() => {
           longBreakNumber.classList.remove('invalid');
           longBreakNumber.value =
-            longBreakNumber.value <= 0 ? longBreakNumber.min : longBreakNumber.max;
+            longBreakNumber.value <= 1 ? longBreakNumber.min : longBreakNumber.max;
         }, RESET_LENGTH);
       }
     };
@@ -468,7 +468,7 @@ class PomoSettings extends HTMLElement {
         // After waiting, turn textbox border back to normal and round invalid input
         setTimeout(() => {
           volumeNumber.classList.remove('invalid');
-          volumeNumber.value = volumeNumber.value <= 0 ? volumeNumber.min : volumeNumber.max;
+          volumeNumber.value = volumeNumber.value <= 1 ? volumeNumber.min : volumeNumber.max;
         }, RESET_LENGTH);
       }
     };

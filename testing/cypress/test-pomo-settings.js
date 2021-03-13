@@ -1,3 +1,5 @@
+const WAIT_TIME = 100;
+
 describe('Open Page', () => {
   it('Opens index.html', () => {
     cy.visit('./source/index.html');
@@ -83,6 +85,7 @@ describe('Test sidebar elements', () => {
 
   it('volumeNumber inputs lower than lower bound become 0', { includeShadowDom: true }, () => {
     cy.get('#volume-number').type('{selectall}{backspace}-1', { force: true }).trigger('change');
+    cy.wait(WAIT_TIME);
     cy.get('#volume-number').then(($el) => {
       expect($el).to.have.value(0);
     });
@@ -90,6 +93,7 @@ describe('Test sidebar elements', () => {
 
   it('workNumber inputs lower than lower bound become 1', { includeShadowDom: true }, () => {
     cy.get('#work-number').type('{selectall}{backspace}-1', { force: true }).trigger('change');
+    cy.wait(WAIT_TIME);
     cy.get('#work-number').then(($el) => {
       expect($el).to.have.value(1);
     });
@@ -99,6 +103,7 @@ describe('Test sidebar elements', () => {
     cy.get('#short-break-number')
       .type('{selectall}{backspace}-1', { force: true })
       .trigger('change');
+    cy.wait(WAIT_TIME);
     cy.get('#short-break-number').then(($el) => {
       expect($el).to.have.value(1);
     });
@@ -108,6 +113,7 @@ describe('Test sidebar elements', () => {
     cy.get('#long-break-number')
       .type('{selectall}{backspace}-1', { force: true })
       .trigger('change');
+    cy.wait(WAIT_TIME);
     cy.get('#long-break-number').then(($el) => {
       expect($el).to.have.value(1);
     });
@@ -115,6 +121,7 @@ describe('Test sidebar elements', () => {
 
   it('volumeNumber inputs higher than upper bound become 100', { includeShadowDom: true }, () => {
     cy.get('#volume-number').type('{selectall}{backspace}200', { force: true }).trigger('change');
+    cy.wait(WAIT_TIME);
     cy.get('#volume-number').then(($el) => {
       expect($el).to.have.value(100);
     });
@@ -122,6 +129,7 @@ describe('Test sidebar elements', () => {
 
   it('workNumber inputs higher than upper bound become 60', { includeShadowDom: true }, () => {
     cy.get('#work-number').type('{selectall}{backspace}200', { force: true }).trigger('change');
+    cy.wait(WAIT_TIME);
     cy.get('#work-number').then(($el) => {
       expect($el).to.have.value(60);
     });
@@ -131,6 +139,7 @@ describe('Test sidebar elements', () => {
     cy.get('#short-break-number')
       .type('{selectall}{backspace}200', { force: true })
       .trigger('change');
+    cy.wait(WAIT_TIME);
     cy.get('#short-break-number').then(($el) => {
       expect($el).to.have.value(60);
     });
@@ -140,6 +149,7 @@ describe('Test sidebar elements', () => {
     cy.get('#long-break-number')
       .type('{selectall}{backspace}200', { force: true })
       .trigger('change');
+    cy.wait(WAIT_TIME);
     cy.get('#long-break-number').then(($el) => {
       expect($el).to.have.value(60);
     });
