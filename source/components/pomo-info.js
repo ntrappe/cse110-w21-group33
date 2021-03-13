@@ -101,18 +101,10 @@ class PomoInfo extends HTMLElement {
      * @param {Boolean} isDark  indicate whether or not the setting is in dark mode
      */
     this.setDark = (isDark) => {
-      const components = [infoButton, modal, modalContent, infoContent, closeButton];
-
       if (isDark) {
         link.setAttribute('href', './components/pomo-info-dark.css');
-        components.forEach((el) => {
-          el.setAttribute('data-mode', 'dark-mode');
-        });
       } else {
         link.setAttribute('href', './components/pomo-info-light.css');
-        components.forEach((el) => {
-          el.setAttribute('data-mode', 'light-mode');
-        });
       }
     };
   }
