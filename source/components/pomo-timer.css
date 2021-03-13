@@ -13,7 +13,7 @@
   font-weight: 700;
   font-size: 18px;
   margin-bottom: 30px;
-  padding: 5px 25px;
+  padding: 7px 25px;
   border-radius: 2em;
   border: 1.5px solid;
   border-color: #355e36;
@@ -26,13 +26,15 @@
   font-weight: 700;
   font-size: 18px;
   margin-bottom: 30px;
-  padding: 5px 25px;
+  padding: 7px 25px;
   border-radius: 2em;
   border: 1.5px solid;
   border-color: #1a4b73;
 }
 
-#timer-mode[class*="short"] {
+/* older version with lavender */
+
+/* #timer-mode[class*="short"] {
   color: #c1afe6;
   background-color: #1d1835;
   font-family: 'Open Sans', sans-serif;
@@ -43,6 +45,19 @@
   border-radius: 2em;
   border: 1.5px solid;
   border-color: #4f466b;
+} */
+
+#timer-mode[class*="short"] {
+  color: #9066ff;
+  background-color: #180a32;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 30px;
+  padding: 7px 25px;
+  border-radius: 2em;
+  border: 1.5px solid;
+  border-color: #572499;
 }
 
 .time {

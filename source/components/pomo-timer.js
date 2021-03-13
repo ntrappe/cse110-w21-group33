@@ -16,11 +16,11 @@ class PomoTimer extends HTMLElement {
     const shadow = this.attachShadow({ mode: 'open' });
 
     const style = document.createElement('style');
-
-    const link = document.createElement('link');
-    link.setAttribute('id', 'timer-style-dark');
-    link.setAttribute('rel', 'stylesheet');
-    link.setAttribute('href', './components/pomo-timer.css');
+    const darkStyle = document.createElement('link');
+    darkStyle.setAttribute('id', 'timer-style-dark');
+    darkStyle.setAttribute('rel', 'stylesheet');
+    darkStyle.setAttribute('href', './components/pomo-timer.css');
+    shadow.append(darkStyle);
 
     const wrapper = document.createElement('span');
     wrapper.setAttribute('class', 'wrapper');
@@ -53,7 +53,6 @@ class PomoTimer extends HTMLElement {
     this.calmTimerText = false; // display w or w/o sec
 
     shadow.appendChild(wrapper);
-    shadow.appendChild(link);
     shadow.appendChild(style);
     wrapper.appendChild(currentMode);
     wrapper.appendChild(progressContainer);
@@ -169,16 +168,23 @@ class PomoTimer extends HTMLElement {
     /**
      * For CONTROL to determine if timer text display will show normal
      * minutes & seconds or just minutes
-     * @param {Boolean} calm - true for min; false for min and sec
+     * @param {Boolean} calm true for min; false for min and sec
      */
     this.setCalm = (calm) => {
       this.calmTimerText = calm;
       display(this.totalSeconds, timerText, this.calmTimerText);
     };
 
+    /**
+     * For CONTROL to determine whether to use default dark styling
+     * or use light to override some colors of dark
+     * @param {Boolean} dark true for dark css; false for light css
+     */
     this.setDark = (dark) => {
       if (dark) {
-        shadow.removeChild(shadow.getElementById('timer-style-light'));
+        if (shadow.getElementById('timer-style-light')) {
+          shadow.removeChild(shadow.getElementById('timer-style-light'));
+        }
       } else {
         const lightStyle = document.createElement('link');
         lightStyle.setAttribute('id', 'timer-style-light');
@@ -188,12 +194,40 @@ class PomoTimer extends HTMLElement {
       }
     };
 
+    /* add style to progress section */
     style.textContent = `
       .progress-container {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+      }
+
+      .square-off {
+        color: #171b21;
+        background-color: #171b21;
+        border: 1px solid;
+        padding: 7px;
+        border-radius: 3px;
+        border-color: #171b21;
+      }
+
+      .square-on {
+        color: #429046;
+        background-color: #429046;
+        border: 1px solid;
+        padding: 7px;
+        border-radius: 3px;
+        border-color: #55a758;
+      }
+
+      #square4[class="square-on"] {
+        color: #67c75c;
+        background-color: #67c75c;
+        border: 1px solid;
+        padding: 7px;
+        border-radius: 3px;
+        border-color: #8ce96b;
       }
     `;
   }
