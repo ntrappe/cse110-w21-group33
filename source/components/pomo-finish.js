@@ -22,7 +22,8 @@ class PomoFinish extends HTMLElement {
     finishButton.setAttribute('id', 'finish-button');
     finishButton.textContent = 'Statistics';
     finishButton.onclick = () => {
-      shadow.dispatchEvent(this.event);
+      //shadow.dispatchEvent(this.event);
+      modal.style.display = 'block'
     };
 
     // the lightbox
