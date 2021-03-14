@@ -33,10 +33,10 @@
 #close-button {
   margin-top: 25px;
   margin-right: 16px;
-  background-color: #ffffff;
+  background-color: #fff;
   float: right;
   border: 1.5px solid;
-  border-color: #DADBDC;
+  border-color: #dadbdc;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -47,7 +47,7 @@
 }
 
 #close-button:hover {
-  background-color: #E5E8EA;
+  background-color: #e5e8ea;
   border-color: #8d949d;
   transition-duration: 0.1s;
 }
@@ -61,8 +61,8 @@
 #open-button {
   z-index: 2;
   margin-left: 15px;
-  background-color: #63CC63;
-  color: #ffffff;
+  background-color: #63cc63;
+  color: #fff;
   font-size: 65px;
   border: none;
   cursor: pointer;
@@ -70,7 +70,7 @@
 
 /* Holds title of sidebar */
 #settings-title {
-  color: #23272C;
+  color: #23272c;
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   margin-left: 25px;
@@ -83,7 +83,7 @@
 #audio-label,
 #display-label,
 #accessibility-label {
-  color: #23272C;
+  color: #23272c;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -98,7 +98,7 @@
 #audio-section,
 #display-section,
 #accessibility-section {
-  color: #DADBDC;
+  color: #dadbdc;
   font-family: 'Source Sans Pro', sans-serif;
   margin-left: 25px;
   margin-right: 25px;
@@ -106,7 +106,7 @@
   margin-bottom: 20px;
   border-radius: 6px;
   border: 1.5px solid;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 /* Sizing for work, short, long, sound, volume sections */
@@ -115,7 +115,7 @@
 #long-section,
 #sound-section,
 #volume-section {
-  color: #23272C;
+  color: #23272c;
   font-size: 12px;
   font-weight: 600;
   padding-left: 15px;
@@ -128,7 +128,7 @@
 #dark-section,
 #calm-section,
 #access-section {
-  color: #23272C;
+  color: #23272c;
   font-size: 12px;
   font-weight: 600;
   padding-left: 15px;
@@ -142,7 +142,7 @@
 #short-section,
 #calm-section,
 #sound-section {
-  border-bottom: 1.5px solid #DADBDC;
+  border-bottom: 1.5px solid #dadbdc;
 }
 
 /* Says "Work" / "Short Break" / "Long Break" / "Calm Mode" / etc */
@@ -172,11 +172,11 @@
 #short-break-number,
 #long-break-number,
 #sound-select {
-  background-color: #E5E8EA;
-  color: #23272C;
+  background-color: #e5e8ea;
+  color: #23272c;
   float: right;
   border: 1.5px solid;
-  border-color: #DADBDC;
+  border-color: #dadbdc;
   border-radius: 6px;
   cursor: auto;
   outline: none;
@@ -203,7 +203,7 @@
   appearance: none;
   height: 2px;
   width: 100px;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 #sound-select:focus,
@@ -214,13 +214,13 @@
 /* safari/chrome volume slider track */
 #volume-slide::-webkit-slider-runnable-track {
   height: 2px;
-  background: #E5E8EA;
+  background: #e5e8ea;
   margin-top: -6px;
 }
 
 /* firefox volume slider track */
 #volume-slide::-moz-range-track {
-  background: #E5E8EA;
+  background: #e5e8ea;
   margin-top: 2px;
 }
 
@@ -248,11 +248,11 @@
 
 /* make volume numbr input field small */
 #volume-number {
-  background-color: #E5E8EA;
-  color: #23272C;
+  background-color: #e5e8ea;
+  color: #23272c;
   float: right;
   border: 1.5px solid;
-  border-color: #E5E8EA;
+  border-color: #e5e8ea;
   border-radius: 6px;
   cursor: auto;
   outline: none;
@@ -316,14 +316,14 @@
 .slider {
   border-radius: 50px;
   border: 1.5px solid;
-  border-color: #63CC63;
+  border-color: #63cc63;
   position: absolute;
   cursor: pointer;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #63CC63;
+  background-color: #63cc63;
   transition: 0.4s;
 }
 
@@ -336,28 +336,27 @@
   width: 20px;
   left: 3px;
   bottom: 2.8px;
-  background-color: #51A552;
+  background-color: #51a552;
   transition: 0.4s;
 }
 
 /* Toggle switch OFF: background & border color */
 input:checked + .slider {
-  background-color: #E5E8EA;
-  border-color: #E5E8EA;
-  ;
+  background-color: #e5e8ea;
+  border-color: #e5e8ea;
 }
 
 /* Toggle switch OFF: circle color */
 input:checked + .slider::before {
   /* movement of circle in x direction */
   transform: translateX(38px);
-  background-color: #979DA4;
+  background-color: #979da4;
 }
 
 /* Toggle switch OFF: text */
 .off-mode {
   display: none;
-  color: #23272C;
+  color: #23272c;
   position: absolute;
   top: 5px;
   left: 10px;
@@ -386,7 +385,7 @@ label {
   user-select: none;
 }
 
-div.disabled>* {
+div.disabled > * {
   opacity: 0.6;
   pointer-events: none;
 }

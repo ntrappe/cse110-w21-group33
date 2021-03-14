@@ -385,7 +385,7 @@ label {
   user-select: none;
 }
 
-div.disabled>* {
+div.disabled > * {
   opacity: 0.4;
   pointer-events: none;
 }
