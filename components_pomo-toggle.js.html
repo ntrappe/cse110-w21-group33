@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/pomo-toggle.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/pomo-toggle.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* Links Used
+https://stackoverflow.com/questions/44061473/move-text-on-toggle-switch-on-off
+https://www.w3schools.com/howto/howto_css_switch.asp
+*/
+const TOGGLE_DELAY = 200;
+const ENABLE_OPACITY = '1';
+const DISABLE_OPACITY = '0.6';
+
+class ToggleSwitch extends HTMLElement {
+  constructor(mode1, mode2) {
+    super();
+
+    this.toggle = true;
+
+    const shadow = this.attachShadow({ mode: 'open' });
+
+    // Connect toggleSwitch to CSS
+    const style = document.createElement('link');
+    style.setAttribute('id', 'toggle-styles');
+    style.setAttribute('rel', 'stylesheet');
+
+    const toggleSwitch = document.createElement('label');
+    toggleSwitch.setAttribute('class', 'switch');
+
+    const toggleCheckbox = document.createElement('input');
+    toggleCheckbox.setAttribute('type', 'checkbox');
+    toggleCheckbox.setAttribute('disabled', 'disabled');
+
+    const toggleSlider = document.createElement('div');
+    toggleSlider.setAttribute('class', 'slider');
+    toggleSlider.setAttribute('id', `${mode1}-slider`);
+
+    const onMode = document.createElement('span');
+    onMode.setAttribute('class', 'on-mode');
+    onMode.setAttribute('id', `${mode1}-mode`);
+    onMode.textContent = 'On';
+
+    const offMode = document.createElement('span');
+    offMode.setAttribute('class', 'off-mode');
+    offMode.setAttribute('id', `${mode2}-mode`);
+    offMode.textContent = 'Off';
+
+    shadow.append(style);
+    shadow.appendChild(toggleSwitch);
+    toggleSwitch.appendChild(toggleCheckbox);
+    toggleSwitch.appendChild(toggleSlider);
+    toggleSlider.appendChild(onMode);
+    toggleSlider.appendChild(offMode);
+
+    this.toggleSwitchEvent = new CustomEvent('toggleSwitch', {
+      bubbles: true,
+      composed: true,
+      detail: { toggle: () => this.toggle },
+    });
+
+    /**
+     * Toggle slider from one mode to another on click with delay
+     */
+    toggleSlider.onclick = () => {
+      if (this.toggle) {
+        this.setOff();
+      } else {
+        this.setOn();
+      }
+      toggleSlider.style.pointerEvents = 'none';
+      setTimeout(() => {
+        toggleSlider.style.pointerEvents = 'auto';
+      }, TOGGLE_DELAY);
+    };
+
+    /**
+     * Helper function to toggle slider on
+     */
+    this.setOn = () => {
+      toggleCheckbox.checked = false;
+      offMode.style.display = 'none';
+      onMode.style.display = 'block';
+      this.toggle = true;
+      shadow.dispatchEvent(this.toggleSwitchEvent);
+    };
+
+    /**
+     * Helper function to toggle slider off
+     */
+    this.setOff = () => {
+      toggleCheckbox.checked = true;
+      offMode.style.display = 'block';
+      onMode.style.display = 'none';
+      this.toggle = false;
+      shadow.dispatchEvent(this.toggleSwitchEvent);
+    };
+
+    /**
+     * Helper function to enable toggle switch
+     */
+    this.enable = () => {
+      toggleSlider.style.pointerEvents = 'auto';
+      toggleSlider.style.opacity = ENABLE_OPACITY;
+    };
+
+    /**
+     * Helper function to disable toggle switch
+     */
+    this.disable = () => {
+      toggleSlider.style.pointerEvents = 'none';
+      toggleSlider.style.opacity = DISABLE_OPACITY;
+    };
+
+    /**
+     * Toggles light/dark color scheme for toggle switch
+     * @param {Boolean} dark turn dark color scheme if dark mode is on
+     */
+    this.setDark = (dark) => {
+      if (dark) {
+        style.setAttribute('href', './components/settings-dark.css');
+      } else {
+        style.setAttribute('href', './components/settings-light.css');
+      }
+    };
+  }
+}
+customElements.define('toggle-switch', ToggleSwitch);
+
+export default ToggleSwitch;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#defaultTab">defaultTab</a></li><li><a href="global.html#display">display</a></li><li><a href="global.html#getAccessibility">getAccessibility</a></li><li><a href="global.html#getCalm">getCalm</a></li><li><a href="global.html#getDark">getDark</a></li><li><a href="global.html#getDayCount">getDayCount</a></li><li><a href="global.html#getLongBreak">getLongBreak</a></li><li><a href="global.html#getShortBreak">getShortBreak</a></li><li><a href="global.html#getSound">getSound</a></li><li><a href="global.html#getVolume">getVolume</a></li><li><a href="global.html#getWork">getWork</a></li><li><a href="global.html#initProgess">initProgess</a></li><li><a href="global.html#setAccessibility">setAccessibility</a></li><li><a href="global.html#setCalm">setCalm</a></li><li><a href="global.html#setDark">setDark</a></li><li><a href="global.html#setDayCount">setDayCount</a></li><li><a href="global.html#setLongBreak">setLongBreak</a></li><li><a href="global.html#setProgressHelper">setProgressHelper</a></li><li><a href="global.html#setResetButton">setResetButton</a></li><li><a href="global.html#setShortBreak">setShortBreak</a></li><li><a href="global.html#setSound">setSound</a></li><li><a href="global.html#setStartButton">setStartButton</a></li><li><a href="global.html#setTab">setTab</a></li><li><a href="global.html#setTime">setTime</a></li><li><a href="global.html#setVolume">setVolume</a></li><li><a href="global.html#setWork">setWork</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sun Mar 14 2021 23:52:04 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
