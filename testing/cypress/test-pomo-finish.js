@@ -115,16 +115,13 @@ describe('Check Statistics Panel Elements With showModal()', { includeShadowDom:
 });
 
 describe('Check Dark/Light Settings', { includeShadowDom: true }, () => {
+  // NOTE: add color tests here
   it('Check that setDark(true) sets dark mode', () => {
     cy.visit('./source/index.html');
     cy.window().then((win) => {
       win.pomoFinish.setDark(true);
     });
-    cy.get('#statistics-timer-styles').should(
-      'have.attr',
-      'href',
-      './components/pomo-finish-dark.css'
-    );
+    cy.get('#statistics-styles').should('have.attr', 'href', './components/pomo-finish.css');
   });
 
   it('Check that setDark(false) sets light mode', () => {
@@ -132,10 +129,6 @@ describe('Check Dark/Light Settings', { includeShadowDom: true }, () => {
     cy.window().then((win) => {
       win.pomoFinish.setDark(false);
     });
-    cy.get('#statistics-timer-styles').should(
-      'have.attr',
-      'href',
-      './components/pomo-finish-light.css'
-    );
+    cy.get('#statistics-styles').should('have.attr', 'href', './components/pomo-finish-light.css');
   });
 });

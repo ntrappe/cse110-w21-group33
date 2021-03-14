@@ -1,3 +1,5 @@
+/* dark mode css for timer */
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -99,7 +101,7 @@
   border-color: #572499;
 }
 
-.time {
+#timer-text {
   font-size: 110px;
   font-weight: 800;
   background-color: #171b21;

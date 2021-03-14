@@ -1,3 +1,7 @@
+/* light mode css for timer */
+
+@import "./pomo-timer.css";
+
 /* green version of work mode */
 #timer-mode[class*="work"] {
   color: #fff;
@@ -41,42 +45,35 @@
   border-color: #63d55c;
 }
 
-.time {
-  color: #25292e;
-  background-color: #fafbfc;
-  border-color: #d9dbdc;
+#timer-text {
+  color: #21262c;
+  background-color: #eff1f2;
+  border: none;
+  border-bottom: 4px solid;
+  border-bottom-left-radius: 0%;
+  border-bottom-right-radius: 0%;
+}
+
+#timer-text[class*="work"] {
+  border-color: #24cf53;
+}
+
+#timer-text[class*="long"] {
+  border-color: #0bb4ff;
+}
+
+#timer-text[class*="short"] {
+  border-color: #2ec9ad;
 }
 
 #timer-button {
-  color: #fff;
+  color: #24282c;
+  background-color: #e5e7ea;
+  border-color: #d8dbdc;
 }
 
-#timer-button[class*="work"] {
-  background-color: #24cf53;
-  border-color: #21bf4d;
-}
-
-#timer-button[class*="work"]:hover {
-  background-color: #1cac42;
-  border-color: #169638;
-}
-
-#timer-button[class*="long"] {
-  background-color: #0bb4ff;
-  border-color: #08a4e7;
-}
-
-#timer-button[class*="long"]:hover {
-  background-color: #1b94ed;
-  border-color: #1886d4;
-}
-
-#timer-button[class*="short"] {
-  background-color: #2ec9ad;
-  border-color: #28b39a;
-}
-
-#timer-button[class*="short"]:hover {
-  background-color: #1da088;
-  border-color: #168672;
+#timer-button:hover {
+  color: #24282c;
+  background-color: #edeff3;
+  border-color: #f5f2f2;
 }

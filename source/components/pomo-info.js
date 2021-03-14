@@ -8,10 +8,11 @@ class PomoInfo extends HTMLElement {
     const wrapper = document.createElement('div');
 
     // style element for the component
-    const link = document.createElement('link');
-    link.setAttribute('id', 'info-timer-styles');
-    link.setAttribute('rel', 'stylesheet');
-    link.setAttribute('href', './components/pomo-info-dark.css');
+    const infoStyle = document.createElement('link');
+    infoStyle.setAttribute('id', 'info-styles');
+    infoStyle.setAttribute('rel', 'stylesheet');
+    infoStyle.setAttribute('href', './components/pomo-info.css');
+    shadow.append(infoStyle);
 
     // the modal window
     const modal = document.createElement('div');
@@ -80,7 +81,6 @@ class PomoInfo extends HTMLElement {
     wrapper.appendChild(infoButton);
 
     shadow.appendChild(wrapper);
-    shadow.appendChild(link);
 
     /**
      * Allows the control to open the info page
@@ -98,13 +98,13 @@ class PomoInfo extends HTMLElement {
 
     /**
      * Modify elements' data-mode to dark-mode or light-mode
-     * @param {Boolean} isDark  indicate whether or not the setting is in dark mode
+     * @param {Boolean} dark  indicate whether or not the setting is in dark mode
      */
-    this.setDark = (isDark) => {
-      if (isDark) {
-        link.setAttribute('href', './components/pomo-info-dark.css');
+    this.setDark = (dark) => {
+      if (dark) {
+        infoStyle.setAttribute('href', './components/pomo-info.css');
       } else {
-        link.setAttribute('href', './components/pomo-info-light.css');
+        infoStyle.setAttribute('href', './components/pomo-info-light.css');
       }
     };
   }
