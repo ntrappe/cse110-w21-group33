@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/pomo-info.js</title>
+    <title>JSDoc: Source: components/pomo-finish.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/pomo-info.js</h1>
+    <h1 class="page-title">Source: components/pomo-finish.js</h1>
 
     
 
@@ -26,26 +26,37 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>class PomoInfo extends HTMLElement {
+            <pre class="prettyprint source linenums"><code>class PomoFinish extends HTMLElement {
   constructor() {
     super();
 
     const shadow = this.attachShadow({ mode: 'open' });
 
-    // wrapper for element
+    // the component wrapper
     const wrapper = document.createElement('div');
-
-    // style element for the component
     const link = document.createElement('link');
-    link.setAttribute('id', 'info-timer-styles');
+    link.setAttribute('id', 'statistics-timer-styles');
     link.setAttribute('rel', 'stylesheet');
-    link.setAttribute('href', './components/pomo-info-dark.css');
+    link.setAttribute('href', './components/pomo-finish-light.css');
 
-    // the modal window
+    // custom event for modal display
+    this.event = new CustomEvent('modalRequest', {
+      bubbles: true,
+      composed: true,
+    });
+
+    // button to finish session and display statistics
+    const finishButton = document.createElement('button');
+    finishButton.setAttribute('id', 'finish-button');
+    finishButton.textContent = 'Statistics';
+    finishButton.onclick = () => {
+      shadow.dispatchEvent(this.event);
+    };
+
+    // the lightbox
     const modal = document.createElement('div');
     modal.setAttribute('class', 'modal');
-    modal.setAttribute('id', 'info-modal');
-    modal.style.display = 'none';
+    modal.setAttribute('id', 'statistics-modal');
     modal.onclick = (event) => {
       // close lightbox when click outside of the content area
       if (event.target === modal) {
@@ -53,41 +64,29 @@
       }
     };
 
-    // info button
-    const infoButton = document.createElement('button');
-    infoButton.setAttribute('id', 'info-button');
-    infoButton.onclick = () => {
-      modal.style.display = 'block';
-    };
-    infoButton.innerHTML = 'Info';
-
-    // the lightbox
+    // wrapper for the content inside the lightbox
     const modalContent = document.createElement('div');
     modalContent.setAttribute('class', 'modal-content');
-    modalContent.setAttribute('id', 'info-modal-content');
+    modalContent.setAttribute('id', 'statistics-modal-content');
 
-    // the main info Content
-    const infoContent = document.createElement('div');
-    infoContent.setAttribute('id', 'info-content');
-    const title = document.createElement('h3');
-    const content = document.createElement('div');
-    title.innerHTML = 'HOW IT WORKS';
-    content.innerHTML = `The Pomodoro Technique is a time 
-    management method developed by Francesco Cirillo in the 
-    late 1980s. The technique uses a timer to break down work
-    into intervals, traditionally 25 minutes in length, 
-    separated by short breaks, traditionally 5 minutes. After 
-    4 working intervals, the break is 15 minutes`;
+    // the main content to be display in the lightbox
+    // title
+    const modalTitle = document.createElement('h3');
+    modalTitle.setAttribute('class', 'modal-title');
+    modalTitle.setAttribute('id', 'statistics-modal-title');
+    modalTitle.innerHTML = 'SESSION SUMMARY';
+    // list of stat
+    const sessionStatistics = document.createElement('ul');
+    sessionStatistics.setAttribute('id', 'statistics-panel');
 
-    // button to close the modal window
+    // button to close the lightbox
     const closeButton = document.createElement('div');
-    closeButton.setAttribute('class', 'close-button');
-    closeButton.setAttribute('id', 'info-close-button');
+    closeButton.setAttribute('id', 'statistics-close-button');
     closeButton.setAttribute('class', 'button-off');
+    closeButton.innerHTML = '&amp;times;';
     closeButton.onclick = () => {
       modal.style.display = 'none';
     };
-    closeButton.innerHTML = '&amp;times;';
 
     /* mimic a button hover event */
     closeButton.addEventListener('mouseover', () => {
@@ -98,49 +97,76 @@
       closeButton.setAttribute('class', 'button-off');
     });
 
-    // add element to containers
-    infoContent.appendChild(title);
-    infoContent.appendChild(content);
+    // append elements to containers
     modalContent.appendChild(closeButton);
-    modalContent.appendChild(infoContent);
+    modalContent.appendChild(modalTitle);
+    modalContent.appendChild(sessionStatistics);
     modal.appendChild(modalContent);
     wrapper.appendChild(modal);
-    wrapper.appendChild(infoButton);
+    wrapper.append(finishButton);
 
     shadow.appendChild(wrapper);
     shadow.appendChild(link);
 
     /**
-     * Allows the control to open the info page
-     */
-    this.enableInfo = () => {
-      infoButton.disabled = false;
-    };
-
-    /**
-     * Prevent the control from open the info page
-     */
-    this.disableInfo = () => {
-      infoButton.disabled = true;
-    };
-
-    /**
      * Modify elements' data-mode to dark-mode or light-mode
      * @param {Boolean} isDark  indicate whether or not the setting is in dark mode
      */
+
     this.setDark = (isDark) => {
       if (isDark) {
-        link.setAttribute('href', './components/pomo-info-dark.css');
+        link.setAttribute('href', './components/pomo-finish-dark.css');
       } else {
-        link.setAttribute('href', './components/pomo-info-light.css');
+        link.setAttribute('href', './components/pomo-finish-light.css');
       }
+    };
+
+    /**
+     * Render session's statistics to the screen
+     * @param {Number} workCount            the number of pomodoro sessions completed
+     * @param {Number} shortBreakCount      the number of short breaks
+     * @param {Number} longBreakCount       the number of long breaks
+     * @param {Number} interruptedCount     the number of time reset because of interruptions
+     * @return {void}
+     */
+    this.showModal = (workCount, shortBreakCount, longBreakCount, interruptedCount) => {
+      // clear the list before appending elements
+      sessionStatistics.innerHTML = '';
+
+      // render infomation
+      ['Pomodoro Completed', 'Short Breaks', 'Long Breaks', 'Interrupted Session'].forEach(
+        (info) => {
+          const li = document.createElement('li');
+          li.setAttribute('class', 'session-statistics');
+          switch (info) {
+            case 'Pomodoro Completed':
+              li.innerHTML = `${info}: ${workCount}`;
+              break;
+            case 'Short Breaks':
+              li.innerHTML = `${info}: ${shortBreakCount}`;
+              break;
+            case 'Long Breaks':
+              li.innerHTML = `${info}: ${longBreakCount}`;
+              break;
+            case 'Interrupted Session':
+              li.innerHTML = `${info}: ${interruptedCount}`;
+              break;
+            default:
+              li.innerHTML = 'Buggy!';
+          }
+          sessionStatistics.appendChild(li);
+        }
+      );
+
+      // show the statistics panel
+      modal.style.display = 'block';
     };
   }
 }
 
-customElements.define('pomo-info', PomoInfo);
+customElements.define('pomo-finish', PomoFinish);
 
-export default PomoInfo;
+export default PomoFinish;
 </code></pre>
         </article>
     </section>
