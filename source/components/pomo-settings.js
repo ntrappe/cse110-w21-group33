@@ -30,8 +30,7 @@ class PomoSettings extends HTMLElement {
     const styles = document.createElement('link');
     styles.setAttribute('id', 'settings-style');
     styles.setAttribute('rel', 'stylesheet');
-    // styles.setAttribute('href', './components/settings-dark.css');
-    styles.setAttribute('href', './components/settings-light.css');
+    styles.setAttribute('href', './components/settings-dark.css');
 
     // Settings panel
     const sideBar = document.createElement('div');
@@ -468,7 +467,7 @@ class PomoSettings extends HTMLElement {
         // After waiting, turn textbox border back to normal and round invalid input
         setTimeout(() => {
           volumeNumber.classList.remove('invalid');
-          volumeNumber.value = volumeNumber.value <= 1 ? volumeNumber.min : volumeNumber.max;
+          volumeNumber.value = volumeNumber.value <= 0 ? volumeNumber.min : volumeNumber.max;
         }, RESET_LENGTH);
       }
     };
@@ -542,6 +541,13 @@ class PomoSettings extends HTMLElement {
      * Enable settings
      */
     this.enableSettings = () => {
+      workSection.classList.remove('disabled');
+      shortSection.classList.remove('disabled');
+      longSection.classList.remove('disabled');
+      soundSection.classList.remove('disabled');
+      calmSection.classList.remove('disabled');
+      darkSection.classList.remove('disabled');
+      accessSection.classList.remove('disabled');
       workNumber.disabled = false;
       shortBreakNumber.disabled = false;
       longBreakNumber.disabled = false;
@@ -555,11 +561,17 @@ class PomoSettings extends HTMLElement {
      * Disable settings besides volume
      */
     this.disableSettings = () => {
+      workSection.classList.add('disabled');
+      shortSection.classList.add('disabled');
+      longSection.classList.add('disabled');
+      soundSection.classList.add('disabled');
+      calmSection.classList.add('disabled');
+      darkSection.classList.add('disabled');
+      accessSection.classList.add('disabled');
       workNumber.disabled = true;
       shortBreakNumber.disabled = true;
       longBreakNumber.disabled = true;
       soundSelect.disabled = true;
-      soundSelect.style.opacity = '1';
       calmSwitch.disable();
       darkSwitch.disable();
       accessSwitch.disable();

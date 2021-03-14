@@ -191,9 +191,9 @@
 
 /* clear out default browser styling for drop down */
 #sound-select {
-  -webkit-appearance: none;
+  /* -webkit-appearance: none;
   -moz-appearance: none;
-  appearance: none;
+  appearance: none; */
   height: 28px;
 }
 
@@ -214,15 +214,12 @@
 /* safari/chrome volume slider track */
 #volume-slide::-webkit-slider-runnable-track {
   height: 2px;
-  width: 100px;
   background: #30363d;
-  margin-top: -9px;
+  margin-top: -6px;
 }
 
 /* firefox volume slider track */
 #volume-slide::-moz-range-track {
-  height: 2px;
-  width: 100px;
   background: #30363d;
   margin-top: 2px;
 }
@@ -386,4 +383,9 @@ label {
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
+}
+
+div.disabled>* {
+  opacity: 0.4;
+  pointer-events: none;
 }

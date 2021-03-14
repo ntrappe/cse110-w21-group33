@@ -17,7 +17,7 @@
   z-index: 2;
   top: 0;
   left: -310px;
-  background-color: #13151b;
+  background-color: #fafbfc;
   overflow-x: hidden;
   transition: 0.5s;
 }
@@ -33,10 +33,10 @@
 #close-button {
   margin-top: 25px;
   margin-right: 16px;
-  background-color: #0f1115;
+  background-color: #ffffff;
   float: right;
   border: 1.5px solid;
-  border-color: #31363c;
+  border-color: #DADBDC;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -47,7 +47,7 @@
 }
 
 #close-button:hover {
-  background-color: #22262c;
+  background-color: #E5E8EA;
   border-color: #8d949d;
   transition-duration: 0.1s;
 }
@@ -61,8 +61,8 @@
 #open-button {
   z-index: 2;
   margin-left: 15px;
-  background-color: #0f1115;
-  color: #31363c;
+  background-color: #63CC63;
+  color: #ffffff;
   font-size: 65px;
   border: none;
   cursor: pointer;
@@ -70,7 +70,7 @@
 
 /* Holds title of sidebar */
 #settings-title {
-  color: #c9d1d9;
+  color: #23272C;
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   margin-left: 25px;
@@ -83,7 +83,7 @@
 #audio-label,
 #display-label,
 #accessibility-label {
-  color: #8b949e;
+  color: #23272C;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -98,7 +98,7 @@
 #audio-section,
 #display-section,
 #accessibility-section {
-  color: #30363d;
+  color: #DADBDC;
   font-family: 'Source Sans Pro', sans-serif;
   margin-left: 25px;
   margin-right: 25px;
@@ -106,7 +106,7 @@
   margin-bottom: 20px;
   border-radius: 6px;
   border: 1.5px solid;
-  background-color: #161b22;
+  background-color: #ffffff;
 }
 
 /* Sizing for work, short, long, sound, volume sections */
@@ -115,7 +115,7 @@
 #long-section,
 #sound-section,
 #volume-section {
-  color: #c9d1d9;
+  color: #23272C;
   font-size: 12px;
   font-weight: 600;
   padding-left: 15px;
@@ -128,7 +128,7 @@
 #dark-section,
 #calm-section,
 #access-section {
-  color: #c9d1d9;
+  color: #23272C;
   font-size: 12px;
   font-weight: 600;
   padding-left: 15px;
@@ -142,7 +142,7 @@
 #short-section,
 #calm-section,
 #sound-section {
-  border-bottom: 1.5px solid #21262d;
+  border-bottom: 1.5px solid #DADBDC;
 }
 
 /* Says "Work" / "Short Break" / "Long Break" / "Calm Mode" / etc */
@@ -171,16 +171,12 @@
 #work-number,
 #short-break-number,
 #long-break-number,
-#sound-select,
-#volume-number {
-  box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  background-color: #0d1117;
-  color: #8b949e;
+#sound-select {
+  background-color: #E5E8EA;
+  color: #23272C;
   float: right;
   border: 1.5px solid;
-  border-color: #30363d;
+  border-color: #DADBDC;
   border-radius: 6px;
   cursor: auto;
   outline: none;
@@ -193,70 +189,78 @@
   height: 16px;
 }
 
-/* make volume numbr input field small */
-#volume-number {
-  width: 38px;
+/* clear out default browser styling for drop down */
+#sound-select {
+  /* -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; */
+  height: 28px;
 }
 
-/* Float volume slider to left of input */
 #volume-slide {
-  position: relative;
-  left: 15px;
-  bottom: 3px;
-}
-
-input[type=range] {
   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 2px;
   width: 100px;
-  background-color: #161b22;
+  background-color: #ffffff;
 }
 
-input[type=range]:focus {
+#sound-select:focus,
+#volume-slide:focus {
   outline: none;
 }
 
-input[type=range]::-webkit-slider-runnable-track {
+/* safari/chrome volume slider track */
+#volume-slide::-webkit-slider-runnable-track {
   height: 2px;
-  background: #30363d;
+  background: #E5E8EA;
+  margin-top: -6px;
 }
 
-input[type=range]::-webkit-slider-thumb {
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background: #8b949e;
+/* firefox volume slider track */
+#volume-slide::-moz-range-track {
+  background: #E5E8EA;
+  margin-top: 2px;
+}
+
+/* safari/chrome volume slider thumb */
+#volume-slide::-webkit-slider-thumb {
   -webkit-appearance: none;
-  margin-top: -7px;
-}
-
-input[type=range]::-moz-range-track {
-  width: 100%;
-  height: 2px;
-  cursor: pointer;
-  background-color: #30363d;
-  top: 10px;
-}
-
-input[type=range]::-moz-range-thumb {
-  height: 16px;
-  width: 16px;
+  height: 10px;
+  width: 10px;
   border-radius: 50%;
   background: #8b949e;
+  margin-top: -4px;
+  cursor: pointer;
 }
 
-input[type=range]::-ms-track {
-  width: 100%;
-  height: 2px;
-  background: #30363d;
-  color: transparent;
-}
-
-input[type=range]::-ms-thumb {
-  height: 16px;
-  width: 16px;
+/* firefox volume slider thumb */
+#volume-slide::-moz-range-thumb {
+  -moz-appearance: none;
+  height: 10px;
+  width: 10px;
   border-radius: 50%;
   background: #8b949e;
+  margin-top: 2px;
   cursor: pointer;
+}
+
+/* make volume numbr input field small */
+#volume-number {
+  background-color: #E5E8EA;
+  color: #23272C;
+  float: right;
+  border: 1.5px solid;
+  border-color: #E5E8EA;
+  border-radius: 6px;
+  cursor: auto;
+  outline: none;
+  padding: 5px 5px 5px 5px;
+  width: 38px;
+  position: relative;
+  bottom: 6.5px;
+  height: 16px;
 }
 
 /* Align switches to float right */
@@ -274,7 +278,7 @@ input[type=range]::-ms-thumb {
 /* Align switches to float right */
 #access-switch {
   position: relative;
-  left: 85px;
+  left: 45px;
 }
 
 /* Add red border on invalid input */
@@ -312,14 +316,14 @@ input[type=range]::-ms-thumb {
 .slider {
   border-radius: 50px;
   border: 1.5px solid;
-  border-color: #355e36;
+  border-color: #63CC63;
   position: absolute;
   cursor: pointer;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #18221d;
+  background-color: #63CC63;
   transition: 0.4s;
 }
 
@@ -332,27 +336,28 @@ input[type=range]::-ms-thumb {
   width: 20px;
   left: 3px;
   bottom: 2.8px;
-  background-color: #79d071;
+  background-color: #51A552;
   transition: 0.4s;
 }
 
 /* Toggle switch OFF: background & border color */
 input:checked + .slider {
-  background-color: #0d1117;
-  border-color: #21262d;
+  background-color: #E5E8EA;
+  border-color: #E5E8EA;
+  ;
 }
 
 /* Toggle switch OFF: circle color */
 input:checked + .slider::before {
   /* movement of circle in x direction */
   transform: translateX(38px);
-  background-color: #70757a;
+  background-color: #979DA4;
 }
 
 /* Toggle switch OFF: text */
 .off-mode {
   display: none;
-  color: #8b949e;
+  color: #23272C;
   position: absolute;
   top: 5px;
   left: 10px;
@@ -362,7 +367,7 @@ input:checked + .slider::before {
 /* Toggle switch ON: text */
 .on-mode {
   display: block;
-  color: #79d071;
+  color: #fff;
   position: absolute;
   top: 5px;
   right: 10px;
@@ -379,4 +384,9 @@ label {
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
+}
+
+div.disabled>* {
+  opacity: 0.6;
+  pointer-events: none;
 }
