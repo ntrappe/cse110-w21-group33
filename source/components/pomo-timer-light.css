@@ -1,0 +1,82 @@
+/* green version of work mode */
+#timer-mode[class*="work"] {
+  color: #fff;
+  background-color: #24cf53;
+  border-color: #21bf4d;
+}
+
+/* blue version of long break */
+#timer-mode[class*="long"] {
+  color: #fff;
+  background-color: #0bb4ff;
+  border-color: #08a4e7;
+}
+
+/* teal version of short break */
+#timer-mode[class*="short"] {
+  color: #fff;
+  background-color: #2ec9ad;
+  border-color: #28b39a;
+}
+
+.space {
+  background-color: white;
+}
+
+.square-off {
+  color: #171b21;
+  background-color: #e4e6e9;
+  border-color: #e4e6e9;
+}
+
+.square-on {
+  color: #24cf53;
+  background-color: #24cf53;
+  border-color: #21bf4d;
+}
+
+#square4[class="square-on"] {
+  color: #0ce84d;
+  background-color: #0ce84d;
+  border-color: #63d55c;
+}
+
+.time {
+  color: #25292e;
+  background-color: #fafbfc;
+  border-color: #d9dbdc;
+}
+
+#timer-button {
+  color: #fff;
+}
+
+#timer-button[class*="work"] {
+  background-color: #24cf53;
+  border-color: #21bf4d;
+}
+
+#timer-button[class*="work"]:hover {
+  background-color: #1cac42;
+  border-color: #169638;
+}
+
+#timer-button[class*="long"] {
+  background-color: #0bb4ff;
+  border-color: #08a4e7;
+}
+
+#timer-button[class*="long"]:hover {
+  background-color: #1b94ed;
+  border-color: #1886d4;
+}
+
+#timer-button[class*="short"] {
+  background-color: #2ec9ad;
+  border-color: #28b39a;
+}
+
+#timer-button[class*="short"]:hover {
+  background-color: #1da088;
+  border-color: #168672;
+}

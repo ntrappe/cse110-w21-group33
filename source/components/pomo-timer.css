@@ -1,0 +1,131 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.space {
+  background-color: #0e1116;
+  padding: 6px;
+}
+
+.square-off {
+  color: #171b21;
+  background-color: #171b21;
+  border: 1px solid;
+  padding: 7px;
+  border-radius: 3px;
+  border-color: #171b21;
+}
+
+.square-on {
+  color: #429046;
+  background-color: #429046;
+  border: 1px solid;
+  padding: 7px;
+  border-radius: 3px;
+  border-color: #55a758;
+}
+
+#square4[class="square-on"] {
+  color: #67c75c;
+  background-color: #67c75c;
+  border: 1px solid;
+  padding: 7px;
+  border-radius: 3px;
+  border-color: #8ce96b;
+}
+
+/* normal green version of mode button */
+#timer-mode[class*="work"] {
+  color: #79d071;
+  background-color: #18221d;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 30px;
+  padding: 7px 25px;
+  border-radius: 2em;
+  border: 1.5px solid;
+  border-color: #355e36;
+}
+
+#timer-mode[class*="long"] {
+  color: #3ba9ff;
+  background-color: #0c2237;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 30px;
+  padding: 7px 25px;
+  border-radius: 2em;
+  border: 1.5px solid;
+  border-color: #1a4b73;
+}
+
+/* older version with lavender */
+
+/* #timer-mode[class*="short"] {
+  color: #c1afe6;
+  background-color: #1d1835;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 30px;
+  padding: 5px 25px;
+  border-radius: 2em;
+  border: 1.5px solid;
+  border-color: #4f466b;
+} */
+
+#timer-mode[class*="short"] {
+  color: #9066ff;
+  background-color: #180a32;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 30px;
+  padding: 7px 25px;
+  border-radius: 2em;
+  border: 1.5px solid;
+  border-color: #572499;
+}
+
+.time {
+  font-size: 110px;
+  font-weight: 800;
+  background-color: #171b21;
+  color: #a2aab5;
+  border: 1.5px solid;
+  padding: 10px 50px;
+  border-radius: 6px;
+  border-color: #31363c;
+}
+
+#timer-button {
+  color: #cbd1d8;
+  background-color: #22262c;
+  font-weight: 600;
+  font-size: 16px;
+  border: 1.5px solid;
+  padding: 7px 25px;
+  border-radius: 6px;
+  border-color: #31363c;
+  width: 95px;
+  cursor: pointer;
+}
+
+#timer-button:hover {
+  color: #f1f6fb;
+  background-color: #31363c;
+  border-color: #8d949d;
+  transition-duration: 0.1s;
+}
