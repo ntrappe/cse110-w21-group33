@@ -134,6 +134,47 @@ describe('Check Resets', { includeShadowDom: true }, () => {
   });
 });
 
+describe('Check setting Dark and Light Mode', { includeShadowDom: true }, () => {
+  it('Set to Dark Mode', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setTimer(2, 'work');
+      win.pomoTimer.setDark(true);
+    });
+  });
+
+  it('Check that button is in dark mode', () => {
+    cy.get('#timer-button').then(($el) => {
+      expect($el).to.have.css('backgroundColor', 'rgb(34, 38, 44)');
+    });
+  });
+
+  it('Set to Light Mode', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setTimer(2, 'work');
+      win.pomoTimer.setDark(false);
+    });
+  });
+
+  it('Check that button is in light mode', () => {
+    cy.get('#timer-button').then(($el) => {
+      expect($el).to.have.css('color', 'rgb(199, 49, 49)');
+    });
+  });
+
+  it('Reset to Dark Mode', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setTimer(2, 'work');
+      win.pomoTimer.setDark(true);
+    });
+  });
+
+  it('Check that button is in dark mode', () => {
+    cy.get('#timer-button').then(($el) => {
+      expect($el).to.have.css('backgroundColor', 'rgb(34, 38, 44)');
+    });
+  });
+});
+
 describe('Toggle between Calm and not Calm Mode', { includeShadowDom: true }, () => {
   it('Set to Calm Mode & 5m', () => {
     cy.window().then((win) => {
@@ -385,6 +426,20 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
       expect($el).to.contain('Start');
     });
   });
+  it('> No progress should have been made', () => {
+    cy.get('#square1').then(($el) => {
+      expect($el).to.have.attr('class', 'square-off');
+    });
+    cy.get('#square2').then(($el) => {
+      expect($el).to.have.attr('class', 'square-off');
+    });
+    cy.get('#square3').then(($el) => {
+      expect($el).to.have.attr('class', 'square-off');
+    });
+    cy.get('#square4').then(($el) => {
+      expect($el).to.have.attr('class', 'square-off');
+    });
+  });
   it('Set Timer for Short Break #1 after listening for Work #1 end', () => {
     cy.get('#timer-button').click();
     cy.wait(30000);
@@ -393,6 +448,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
         const onFinish = () => {
           $el[0].removeEventListener('timerFinish', onFinish);
           $el[0].setTimer(2, 'short break');
+          $el[0].setProgress(1);
           resolve();
         };
         $el[0].addEventListener('timerFinish', onFinish);
@@ -403,6 +459,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
   it('> Check mode, timer text, & button for Short Break #1', () => {
     cy.get('#timer-mode').then(($el) => {
       expect($el).to.contain('SHORT BREAK');
+      expect($el).to.have.css('color', 'rgb(144, 102, 255)');
     });
     cy.get('#timer-text').then(($el) => {
       expect($el).to.contain('2:00');
@@ -411,6 +468,21 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
       expect($el).to.contain('Start');
     });
   });
+  it('> Check progress was updated (to 1)', () => {
+    cy.get('#square1').then(($el) => {
+      expect($el).to.have.attr('class', 'square-on');
+    });
+    cy.get('#square2').then(($el) => {
+      expect($el).to.have.attr('class', 'square-off');
+    });
+    cy.get('#square3').then(($el) => {
+      expect($el).to.have.attr('class', 'square-off');
+    });
+    cy.get('#square4').then(($el) => {
+      expect($el).to.have.attr('class', 'square-off');
+    });
+  });
+
   it('Set Timer for Work #2 after listening for Short Break #1 end', () => {
     cy.get('#timer-button').click();
     cy.wait(30000);
@@ -429,12 +501,27 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
   it('> Check mode, timer text, & button for Work #2', () => {
     cy.get('#timer-mode').then(($el) => {
       expect($el).to.contain('WORK');
+      expect($el).to.have.css('color', 'rgb(121, 208, 113)');
     });
     cy.get('#timer-text').then(($el) => {
       expect($el).to.contain('2:00');
     });
     cy.get('#timer-button').then(($el) => {
       expect($el).to.contain('Start');
+    });
+  });
+  it('> Check no new progress made', () => {
+    cy.get('#square1').then(($el) => {
+      expect($el).to.have.attr('class', 'square-on');
+    });
+    cy.get('#square2').then(($el) => {
+      expect($el).to.have.attr('class', 'square-off');
+    });
+    cy.get('#square3').then(($el) => {
+      expect($el).to.have.attr('class', 'square-off');
+    });
+    cy.get('#square4').then(($el) => {
+      expect($el).to.have.attr('class', 'square-off');
     });
   });
   it('Set Timer for Short Break #2 after listening for Work #2 end', () => {
@@ -445,6 +532,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
         const onFinish = () => {
           $el[0].removeEventListener('timerFinish', onFinish);
           $el[0].setTimer(1, 'short break');
+          $el[0].setProgress(2);
           resolve();
         };
         $el[0].addEventListener('timerFinish', onFinish);
@@ -455,12 +543,27 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
   it('> Check mode, timer text for Short Break #2', () => {
     cy.get('#timer-mode').then(($el) => {
       expect($el).to.contain('SHORT BREAK');
+      expect($el).to.have.css('color', 'rgb(144, 102, 255)');
     });
     cy.get('#timer-text').then(($el) => {
       expect($el).to.contain('1:00');
     });
     cy.get('#timer-button').then(($el) => {
       expect($el).to.contain('Start');
+    });
+  });
+  it('> Check progress was updated (to 2)', () => {
+    cy.get('#square1').then(($el) => {
+      expect($el).to.have.attr('class', 'square-on');
+    });
+    cy.get('#square2').then(($el) => {
+      expect($el).to.have.attr('class', 'square-on');
+    });
+    cy.get('#square3').then(($el) => {
+      expect($el).to.have.attr('class', 'square-off');
+    });
+    cy.get('#square4').then(($el) => {
+      expect($el).to.have.attr('class', 'square-off');
     });
   });
   it('Set Timer for Work #3 after listening for Short Break #2 end', () => {
@@ -481,6 +584,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
   it('> Check mode, timer text for Work #3', () => {
     cy.get('#timer-mode').then(($el) => {
       expect($el).to.contain('WORK');
+      expect($el).to.have.css('color', 'rgb(121, 208, 113)');
     });
     cy.get('#timer-text').then(($el) => {
       expect($el).to.contain('1:00');
@@ -497,6 +601,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
         const onFinish = () => {
           $el[0].removeEventListener('timerFinish', onFinish);
           $el[0].setTimer(1, 'short break');
+          $el[0].setProgress(3);
           resolve();
         };
         $el[0].addEventListener('timerFinish', onFinish);
@@ -513,6 +618,20 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
     });
     cy.get('#timer-button').then(($el) => {
       expect($el).to.contain('Start');
+    });
+  });
+  it('> Check progress was updated (to 3)', () => {
+    cy.get('#square1').then(($el) => {
+      expect($el).to.have.attr('class', 'square-on');
+    });
+    cy.get('#square2').then(($el) => {
+      expect($el).to.have.attr('class', 'square-on');
+    });
+    cy.get('#square3').then(($el) => {
+      expect($el).to.have.attr('class', 'square-on');
+    });
+    cy.get('#square4').then(($el) => {
+      expect($el).to.have.attr('class', 'square-off');
     });
   });
   it('Set Timer for Work #4 after listening for Short Break #3 end', () => {
@@ -533,6 +652,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
   it('> Check mode, timer text for Work #4', () => {
     cy.get('#timer-mode').then(($el) => {
       expect($el).to.contain('WORK');
+      expect($el).to.have.css('color', 'rgb(121, 208, 113)');
     });
     cy.get('#timer-text').then(($el) => {
       expect($el).to.contain('1:00');
@@ -549,6 +669,7 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
         const onFinish = () => {
           $el[0].removeEventListener('timerFinish', onFinish);
           $el[0].setTimer(1, 'long break');
+          $el[0].setProgress(4);
           resolve();
         };
         $el[0].addEventListener('timerFinish', onFinish);
@@ -559,12 +680,57 @@ describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, (
   it('> Check mode, timer text for Long Break #1', () => {
     cy.get('#timer-mode').then(($el) => {
       expect($el).to.contain('LONG BREAK');
+      expect($el).to.have.css('color', 'rgb(59, 169, 255)');
     });
     cy.get('#timer-text').then(($el) => {
       expect($el).to.contain('1:00');
     });
     cy.get('#timer-button').then(($el) => {
       expect($el).to.contain('Start');
+    });
+  });
+  it('> Check progress was updated (to 4)', () => {
+    cy.get('#square1').then(($el) => {
+      expect($el).to.have.attr('class', 'square-on');
+    });
+    cy.get('#square2').then(($el) => {
+      expect($el).to.have.attr('class', 'square-on');
+    });
+    cy.get('#square3').then(($el) => {
+      expect($el).to.have.attr('class', 'square-on');
+    });
+    cy.get('#square4').then(($el) => {
+      expect($el).to.have.attr('class', 'square-on');
+    });
+  });
+  it('> Set Timer for Work #1 after listening for Long Break #1 end', () => {
+    cy.get('#timer-button').click();
+    cy.wait(15000);
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('#pomo-timer').then(($el) => {
+        const onFinish = () => {
+          $el[0].removeEventListener('timerFinish', onFinish);
+          $el[0].setTimer(1, 'work');
+          $el[0].setProgress(0);
+          resolve();
+        };
+        $el[0].addEventListener('timerFinish', onFinish);
+      });
+    });
+    cy.wrap(eventPromise);
+  });
+  it('> Check progress was cleared', () => {
+    cy.get('#square1').then(($el) => {
+      expect($el).to.have.attr('class', 'square-off');
+    });
+    cy.get('#square2').then(($el) => {
+      expect($el).to.have.attr('class', 'square-off');
+    });
+    cy.get('#square3').then(($el) => {
+      expect($el).to.have.attr('class', 'square-off');
+    });
+    cy.get('#square4').then(($el) => {
+      expect($el).to.have.attr('class', 'square-off');
     });
   });
 });
