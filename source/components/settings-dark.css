@@ -195,6 +195,7 @@
   -moz-appearance: none;
   appearance: none; */
   height: 28px;
+  width: 125px;
 }
 
 #volume-slide {
