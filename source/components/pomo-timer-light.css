@@ -1,21 +1,21 @@
 /* green version of work mode */
 #timer-mode[class*="work"] {
-  color: #ffffff;
+  color: #fff;
   background-color: #24cf53;
   border-color: #21bf4d;
 }
 
 /* blue version of long break */
 #timer-mode[class*="long"] {
-  color: #ffffff;
+  color: #fff;
   background-color: #0bb4ff;
   border-color: #08a4e7;
 }
 
 /* teal version of short break */
 #timer-mode[class*="short"] {
-  color: #ffffff;
-  background-color: #2EC9AD;
+  color: #fff;
+  background-color: #2ec9ad;
   border-color: #28b39a;
 }
 
@@ -42,13 +42,13 @@
 }
 
 .time {
-  color: #25292E;
-  background-color: #FAFBFC;
-  border-color: #D9DBDC;
+  color: #25292e;
+  background-color: #fafbfc;
+  border-color: #d9dbdc;
 }
 
 #timer-button[class*="work"] {
-  color: #ffffff;
+  color: #fff;
   background-color: #24cf53;
   border-color: #21bf4d;
 }
@@ -59,19 +59,19 @@
 }
 
 #timer-button[class*="long"] {
-  color: #ffffff;
+  color: #fff;
   background-color: #0bb4ff;
   border-color: #08a4e7;
 }
 
 #timer-button[class*="long"]:hover {
-  background-color: #1B94ED;
+  background-color: #1b94ed;
   border-color: #1886d4;
 }
 
 #timer-button[class*="short"] {
-  color: #ffffff;
-  background-color: #2EC9AD;
+  color: #fff;
+  background-color: #2ec9ad;
   border-color: #28b39a;
 }
 
