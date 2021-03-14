@@ -15,8 +15,6 @@ const pomoSettings = new PomoSettings();
 pomoSettings.setAttribute('id', 'pomo-settings');
 
 const pomoTimer = new PomoTimer();
-pomoTimer.setAttribute('id', 'pomo-timer');
-pomoTimer.setTimer(10, 'work');
 
 // Attach elements to the window for Cypress testing
 window.pomoFinish = pomoFinish;
