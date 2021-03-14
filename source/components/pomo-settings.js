@@ -530,7 +530,7 @@ class PomoSettings extends HTMLElement {
     accessSwitch.addEventListener('toggleSwitch', (e) => {
       this.accessible = e.detail.toggle();
       shadow.dispatchEvent(this.accessSetEvent);
-    }); 
+    });
 
     /**
      * Toggles light/dark color scheme for sidebar
