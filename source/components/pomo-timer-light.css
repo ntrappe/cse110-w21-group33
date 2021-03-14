@@ -47,38 +47,36 @@
   border-color: #d9dbdc;
 }
 
-#timer-button[class*="work"] {
+#timer-button {
   color: #fff;
+}
+
+#timer-button[class*="work"] {
   background-color: #24cf53;
   border-color: #21bf4d;
 }
 
 #timer-button[class*="work"]:hover {
-  color: #fff;
   background-color: #1cac42;
   border-color: #169638;
 }
 
 #timer-button[class*="long"] {
-  color: #fff;
   background-color: #0bb4ff;
   border-color: #08a4e7;
 }
 
 #timer-button[class*="long"]:hover {
-  color: #fff;
   background-color: #1b94ed;
   border-color: #1886d4;
 }
 
 #timer-button[class*="short"] {
-  color: #fff;
   background-color: #2ec9ad;
   border-color: #28b39a;
 }
 
 #timer-button[class*="short"]:hover {
-  color: #fff;
   background-color: #1da088;
   border-color: #168672;
 }
