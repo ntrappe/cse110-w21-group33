@@ -11,14 +11,16 @@ describe('Verify setDark colors for pomoTimer', { includeShadowDom: true }, () =
     });
   });
 
-  it('Check setDark colors for initial progress/timer backgrounds', () => {
+  it('Check setDark colors for initial colors', () => {
     cy.window().then((win) => {
       win.pomoTimer.setDark(true);
 
-      /* Verify background colors */
+      /* Verify border/background colors */
       cy.get('.space').should('have.css', 'background-color', 'rgb(14, 17, 22)');
       cy.get('.time').should('have.css', 'background-color', 'rgb(23, 27, 33)');
       cy.get('.square-off').should('have.css', 'color', 'rgb(23, 27, 33)');
+      cy.get('#timer-button').should('have.css', 'background-color', 'rgb(34, 38, 44)');
+      cy.get('#timer-button').should('have.css', 'border-color', 'rgb(49, 54, 60)');
     });
   });
 
@@ -27,6 +29,7 @@ describe('Verify setDark colors for pomoTimer', { includeShadowDom: true }, () =
       win.pomoTimer.setDark(true);
       win.pomoTimer.setProgress(4);
 
+      /* Check lit progress square color, last square has a different color */
       cy.get('.square-on').should('have.css', 'color', 'rgb(66, 144, 70)');
       cy.get('#square4').should('have.css', 'color', 'rgb(103, 199, 92)');
     });
@@ -75,17 +78,11 @@ describe('Test setCalm on pomoTimer', { includeShadowDom: true }, () => {
       win.pomoTimer.setTimer(1, 'work');
       win.pomoTimer.setCalm(true);
 
+      /* Timer shouldn't display seconds in calm mode */
       cy.get('#timer-text').then(($text) => {
         expect($text).to.contain('1m');
         expect($text).to.not.contain(':');
       });
     });
-  });
-});
-
-describe('Test Timer Button UI', { includeShadowDom: true }, () => {
-  it('Check initial button colors', () => {
-    cy.get('#timer-button').should('have.css', 'background-color', 'rgb(34, 38, 44)');
-    cy.get('#timer-button').should('have.css', 'border-color', 'rgb(49, 54, 60)');
   });
 });
