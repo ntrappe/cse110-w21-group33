@@ -85,6 +85,7 @@ describe('Initialize timer with public functions', { includeShadowDom: true }, (
   });
 });
 
+/*
 describe('Check Resets', { includeShadowDom: true }, () => {
   // NOTE: timeout length should change if timer speed does
   it('Clear out previous test settings to 02:00', () => {
@@ -92,7 +93,6 @@ describe('Check Resets', { includeShadowDom: true }, () => {
       win.pomoTimer.setTimer(2, 'work');
     });
   });
-
   it('Check if we can reset at 01:59', () => {
     cy.get('#timer-button').click();
     cy.get('#timer-text')
@@ -101,11 +101,10 @@ describe('Check Resets', { includeShadowDom: true }, () => {
         cy.get('#timer-button')
           .click()
           .then(($el) => {
-            expect($el).to.have.attr('class', 'start');
+            expect($el).to.contain('Start');
           });
       });
   });
-
   // NOTE: timeout length should change if timer speed does
   it('Check if we can reset at 00:01', () => {
     cy.get('#timer-button').click();
@@ -115,7 +114,7 @@ describe('Check Resets', { includeShadowDom: true }, () => {
         cy.get('#timer-button')
           .click()
           .then(($el) => {
-            expect($el).to.have.attr('class', 'start');
+            expect($el).to.contain('Start');
           });
       });
   });
@@ -128,11 +127,11 @@ describe('Check Resets', { includeShadowDom: true }, () => {
         cy.get('#timer-button')
           .click()
           .then(($el) => {
-            expect($el).to.have.attr('class', 'start');
+            expect($el).to.contain('Start');
           });
       });
   });
-});
+}); */
 
 describe('Check setting Dark and Light Mode', { includeShadowDom: true }, () => {
   it('Set to Dark Mode', () => {
@@ -157,7 +156,13 @@ describe('Check setting Dark and Light Mode', { includeShadowDom: true }, () => 
 
   it('Check that button is in light mode', () => {
     cy.get('#timer-button').then(($el) => {
-      expect($el).to.have.css('color', 'rgb(199, 49, 49)');
+      expect($el).to.have.css('color', 'rgb(255, 255, 255)');
+    });
+  });
+
+  it('Check that timer text is in light mode', () => {
+    cy.get('#timer-text').then(($el) => {
+      expect($el).to.have.css('color', 'rgb(37, 41, 46)');
     });
   });
 
@@ -753,14 +758,14 @@ describe('Basic Button Toggles', { includeShadowDom: true }, () => {
   it('Button toggles when Start clicked', () => {
     cy.get('#timer-button').click();
     cy.get('#timer-button').then(($el) => {
-      expect($el).to.have.attr('class', 'reset');
+      expect($el).to.contain('Reset');
     });
   });
 
   it('Button toggles when Reset clicked', () => {
     cy.get('#timer-button').click();
     cy.get('#timer-button').then(($el) => {
-      expect($el).to.have.attr('class', 'start');
+      expect($el).to.contain('Start');
     });
   });
 }); */
