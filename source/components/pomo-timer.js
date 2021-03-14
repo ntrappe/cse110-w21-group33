@@ -15,7 +15,6 @@ class PomoTimer extends HTMLElement {
 
     const shadow = this.attachShadow({ mode: 'open' });
 
-    const style = document.createElement('style');
     const darkStyle = document.createElement('link');
     darkStyle.setAttribute('id', 'timer-style-dark');
     darkStyle.setAttribute('rel', 'stylesheet');
@@ -42,7 +41,6 @@ class PomoTimer extends HTMLElement {
     // timer button
     const timerButton = document.createElement('button');
     timerButton.setAttribute('id', 'timer-button');
-    timerButton.setAttribute('class', 'start');
 
     /* Initialize elements */
     timerButton.textContent = START;
@@ -53,7 +51,6 @@ class PomoTimer extends HTMLElement {
     this.calmTimerText = false; // display w or w/o sec
 
     shadow.appendChild(wrapper);
-    shadow.appendChild(style);
     wrapper.appendChild(currentMode);
     wrapper.appendChild(progressContainer);
     wrapper.appendChild(timerText);
@@ -149,6 +146,7 @@ class PomoTimer extends HTMLElement {
       display(this.totalSeconds, timerText, this.calmTimerText);
       currentMode.setAttribute('class', mode);
       currentMode.textContent = mode.toUpperCase();
+      timerButton.setAttribute('class', mode);
     };
 
     /**
@@ -193,43 +191,6 @@ class PomoTimer extends HTMLElement {
         shadow.append(lightStyle);
       }
     };
-
-    /* add style to progress section */
-    style.textContent = `
-      .progress-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .square-off {
-        color: #171b21;
-        background-color: #171b21;
-        border: 1px solid;
-        padding: 7px;
-        border-radius: 3px;
-        border-color: #171b21;
-      }
-
-      .square-on {
-        color: #429046;
-        background-color: #429046;
-        border: 1px solid;
-        padding: 7px;
-        border-radius: 3px;
-        border-color: #55a758;
-      }
-
-      #square4[class="square-on"] {
-        color: #67c75c;
-        background-color: #67c75c;
-        border: 1px solid;
-        padding: 7px;
-        border-radius: 3px;
-        border-color: #8ce96b;
-      }
-    `;
   }
 }
 
