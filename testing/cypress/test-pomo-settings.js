@@ -155,6 +155,18 @@ describe('Test sidebar elements', () => {
     });
   });
 
+  it('Stylesheet is switched when calling setDark()', { includeShadowDom: true}, () => {
+    cy.get('#settings-style').then(($el) => {
+      expect($el).to.have.attr('href', './components/settings-light.css');
+    });
+    cy.window().then((win) => {
+      win.pomoSettings.setDark(true);
+      cy.get('#settings-style').then(($el) => {
+        expect($el).to.have.attr('href', './components/settings-dark.css');
+      });
+    });
+  });
+
   it('Values are set when calling loadSettings()', { includeShadowDom: true }, () => {
     // loadSettings()
     cy.window().then((win) => {

@@ -30,8 +30,8 @@ class PomoSettings extends HTMLElement {
     const styles = document.createElement('link');
     styles.setAttribute('id', 'settings-style');
     styles.setAttribute('rel', 'stylesheet');
-    styles.setAttribute('href', './components/settings-dark.css');
-    // styles.setAttribute('href', './components/pomo-settings.css');
+    // styles.setAttribute('href', './components/settings-dark.css');
+    styles.setAttribute('href', './components/settings-light.css');
 
     // Settings panel
     const sideBar = document.createElement('div');
@@ -525,6 +525,18 @@ class PomoSettings extends HTMLElement {
       this.accessible = e.detail.toggle();
       shadow.dispatchEvent(this.accessSetEvent);
     });
+
+    /**
+     * Toggles light/dark color scheme for sidebar
+     * @param {Boolean} dark turn dark color scheme if dark mode is on
+     */
+    this.setDark = (dark) => {
+      if (dark) {
+        styles.setAttribute('href', './components/settings-dark.css');
+      } else {
+        styles.setAttribute('href', './components/settings-light.css');
+      }
+    };
 
     /**
      * Enable settings
