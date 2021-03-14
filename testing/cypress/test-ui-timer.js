@@ -23,7 +23,7 @@ describe('Verify setDark colors for pomoTimer', { includeShadowDom: true }, () =
   });
 
   it('Check setDark colors for lit progress squares', () => {
-    cy.window().then(win => {
+    cy.window().then((win) => {
       win.pomoTimer.setDark(true);
       win.pomoTimer.setProgress(4);
 

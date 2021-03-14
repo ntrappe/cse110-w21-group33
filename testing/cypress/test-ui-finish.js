@@ -24,8 +24,7 @@ describe('Verify setDark colors for pomoFinish', { includeShadowDom: true }, () 
 
       /* Verify background colors of info modal */
       cy.get('#statistics-modal').should('have.css', 'background-color', 'rgba(0, 0, 0, 0.5)');
-      cy.get('#statistics-modal-content')
-        .should('have.css', 'background-color', 'rgb(15, 17, 21)');
+      cy.get('#statistics-modal-content').should('have.css', 'background-color', 'rgb(15, 17, 21)');
     });
   });
 });
