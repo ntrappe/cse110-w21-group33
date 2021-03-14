@@ -30,7 +30,7 @@ class PomoSettings extends HTMLElement {
     const styles = document.createElement('link');
     styles.setAttribute('id', 'settings-style');
     styles.setAttribute('rel', 'stylesheet');
-    styles.setAttribute('href', './components/settings-dark.css');
+    styles.setAttribute('href', './components/settings-light.css');
 
     // Settings panel
     const sideBar = document.createElement('div');
@@ -128,6 +128,7 @@ class PomoSettings extends HTMLElement {
     calmLabel.textContent = 'Calm Mode';
     calmLabel.htmlFor = 'calm-switch';
     const calmSwitch = new ToggleSwitch('calm', 'busy');
+    calmSwitch.setDark(false);
     calmSwitch.setOff();
     calmSwitch.setAttribute('id', 'calm-switch');
 
@@ -140,6 +141,7 @@ class PomoSettings extends HTMLElement {
     darkLabel.textContent = 'Dark Mode';
     darkLabel.htmlFor = 'dark-switch';
     const darkSwitch = new ToggleSwitch('dark', 'light');
+    darkSwitch.setDark(false);
     darkSwitch.setOff();
     darkSwitch.setAttribute('id', 'dark-switch');
 
@@ -220,6 +222,7 @@ class PomoSettings extends HTMLElement {
     accessLabel.textContent = 'Keyboard Shortcuts';
     accessLabel.htmlFor = 'access-switch';
     const accessSwitch = new ToggleSwitch('accessible', 'inaccessible');
+    accessSwitch.setDark(false);
     accessSwitch.setOn();
     accessSwitch.setAttribute('id', 'access-switch');
 
@@ -535,6 +538,9 @@ class PomoSettings extends HTMLElement {
       } else {
         styles.setAttribute('href', './components/settings-light.css');
       }
+      calmSwitch.setDark(dark);
+      darkSwitch.setDark(dark);
+      accessSwitch.setDark(dark);
     };
 
     /**

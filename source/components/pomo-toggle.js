@@ -18,7 +18,6 @@ class ToggleSwitch extends HTMLElement {
     const style = document.createElement('link');
     style.setAttribute('id', 'toggle-styles');
     style.setAttribute('rel', 'stylesheet');
-    style.setAttribute('href', './components/settings-dark.css');
 
     const toggleSwitch = document.createElement('label');
     toggleSwitch.setAttribute('class', 'switch');
@@ -105,6 +104,18 @@ class ToggleSwitch extends HTMLElement {
     this.disable = () => {
       toggleSlider.style.pointerEvents = 'none';
       toggleSlider.style.opacity = DISABLE_OPACITY;
+    };
+
+    /**
+     * Toggles light/dark color scheme for toggle switch
+     * @param {Boolean} dark turn dark color scheme if dark mode is on
+     */
+    this.setDark = (dark) => {
+      if (dark) {
+        style.setAttribute('href', './components/settings-dark.css');
+      } else {
+        style.setAttribute('href', './components/settings-light.css');
+      }
     };
   }
 }
