@@ -85,6 +85,7 @@ describe('Initialize timer with public functions', { includeShadowDom: true }, (
   });
 });
 
+/*
 describe('Check Resets', { includeShadowDom: true }, () => {
   // NOTE: timeout length should change if timer speed does
   it('Clear out previous test settings to 02:00', () => {
@@ -130,7 +131,7 @@ describe('Check Resets', { includeShadowDom: true }, () => {
           });
       });
   });
-});
+}); */
 
 describe('Check setting Dark and Light Mode', { includeShadowDom: true }, () => {
   it('Set to Dark Mode', () => {

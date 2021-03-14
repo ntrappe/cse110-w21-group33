@@ -54,6 +54,7 @@
 }
 
 #timer-button[class*="work"]:hover {
+  color: #fff;
   background-color: #1cac42;
   border-color: #169638;
 }
@@ -65,6 +66,7 @@
 }
 
 #timer-button[class*="long"]:hover {
+  color: #fff;
   background-color: #1b94ed;
   border-color: #1886d4;
 }
@@ -76,6 +78,7 @@
 }
 
 #timer-button[class*="short"]:hover {
+  color: #fff;
   background-color: #1da088;
   border-color: #168672;
 }
