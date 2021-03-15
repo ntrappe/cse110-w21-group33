@@ -10,8 +10,13 @@
   border-radius: 6px;
   border-color: #31363c;
   width: 100px;
+  height: 40px;
   cursor: pointer;
   margin-right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 #finish-button:hover {
@@ -19,6 +24,18 @@
   background-color: #31363c;
   border-color: #8d949d;
   transition-duration: 0.1s;
+}
+
+#finish-button img {
+  max-width: 20%;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#finish-button > p {
+  color: #cbd1d8;
+  font-weight: 600;
+  font-size: 16px;
 }
 
 #statistics-close-button[class="button-off"] {
@@ -92,3 +109,4 @@
   color: #cbd1d8;
   text-align: center;
 }
+
