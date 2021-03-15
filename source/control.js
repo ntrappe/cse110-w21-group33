@@ -109,7 +109,7 @@ const resizeElements = () => {
         .concat(') translateX(')
         .concat(
           (
-            (((window.innerWidth - MIN_WIDTH ) / window.innerWidth) * MIN_WIDTH) /
+            (((window.innerWidth - MIN_WIDTH) / window.innerWidth) * MIN_WIDTH) /
             X_OFFSET_FACTOR
           ).toString()
         )
@@ -119,7 +119,7 @@ const resizeElements = () => {
         .concat(') translateX(')
         .concat(
           (
-            (((window.innerWidth - MIN_WIDTH ) / window.innerWidth) * MIN_WIDTH) /
+            (((window.innerWidth - MIN_WIDTH) / window.innerWidth) * MIN_WIDTH) /
             X_OFFSET_FACTOR
           ).toString()
         )
