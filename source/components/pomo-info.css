@@ -33,6 +33,7 @@
 #info-button:disabled {
   opacity: 0.6;
   pointer-events: none;
+  border: none;
 }
 
 #info-button:hover {
