@@ -15,11 +15,11 @@ class PomoTimer extends HTMLElement {
 
     const shadow = this.attachShadow({ mode: 'open' });
 
-    const darkStyle = document.createElement('link');
-    darkStyle.setAttribute('id', 'timer-style-dark');
-    darkStyle.setAttribute('rel', 'stylesheet');
-    darkStyle.setAttribute('href', './components/pomo-timer.css');
-    shadow.append(darkStyle);
+    const timerStyle = document.createElement('link');
+    timerStyle.setAttribute('id', 'timer-style-dark');
+    timerStyle.setAttribute('rel', 'stylesheet');
+    timerStyle.setAttribute('href', './components/pomo-timer.css');
+    shadow.append(timerStyle);
 
     const wrapper = document.createElement('span');
     wrapper.setAttribute('class', 'wrapper');
@@ -36,7 +36,6 @@ class PomoTimer extends HTMLElement {
     // timer countdown display
     const timerText = document.createElement('h1');
     timerText.setAttribute('id', 'timer-text');
-    timerText.setAttribute('class', 'time');
 
     // timer button
     const timerButton = document.createElement('button');
@@ -146,7 +145,7 @@ class PomoTimer extends HTMLElement {
       display(this.totalSeconds, timerText, this.calmTimerText);
       currentMode.setAttribute('class', mode);
       currentMode.textContent = mode.toUpperCase();
-      timerButton.setAttribute('class', mode);
+      timerText.setAttribute('class', mode);
     };
 
     /**
@@ -180,15 +179,9 @@ class PomoTimer extends HTMLElement {
      */
     this.setDark = (dark) => {
       if (dark) {
-        if (shadow.getElementById('timer-style-light')) {
-          shadow.removeChild(shadow.getElementById('timer-style-light'));
-        }
+        timerStyle.setAttribute('href', './components/pomo-timer.css');
       } else {
-        const lightStyle = document.createElement('link');
-        lightStyle.setAttribute('id', 'timer-style-light');
-        lightStyle.setAttribute('rel', 'stylesheet');
-        lightStyle.setAttribute('href', './components/pomo-timer-light.css');
-        shadow.append(lightStyle);
+        timerStyle.setAttribute('href', './components/pomo-timer-light.css');
       }
     };
   }

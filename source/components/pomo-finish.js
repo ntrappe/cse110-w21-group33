@@ -6,10 +6,11 @@ class PomoFinish extends HTMLElement {
 
     // the component wrapper
     const wrapper = document.createElement('div');
-    const link = document.createElement('link');
-    link.setAttribute('id', 'statistics-timer-styles');
-    link.setAttribute('rel', 'stylesheet');
-    link.setAttribute('href', './components/pomo-finish-light.css');
+    const statsStyle = document.createElement('link');
+    statsStyle.setAttribute('id', 'statistics-styles');
+    statsStyle.setAttribute('rel', 'stylesheet');
+    statsStyle.setAttribute('href', './components/pomo-finish.css');
+    shadow.append(statsStyle);
 
     // custom event for modal display
     this.event = new CustomEvent('modalRequest', {
@@ -78,18 +79,17 @@ class PomoFinish extends HTMLElement {
     wrapper.append(finishButton);
 
     shadow.appendChild(wrapper);
-    shadow.appendChild(link);
 
     /**
      * Modify elements' data-mode to dark-mode or light-mode
-     * @param {Boolean} isDark  indicate whether or not the setting is in dark mode
+     * @param {Boolean} dark  indicate whether or not the setting is in dark mode
      */
 
-    this.setDark = (isDark) => {
-      if (isDark) {
-        link.setAttribute('href', './components/pomo-finish-dark.css');
+    this.setDark = (dark) => {
+      if (dark) {
+        statsStyle.setAttribute('href', './components/pomo-finish.css');
       } else {
-        link.setAttribute('href', './components/pomo-finish-light.css');
+        statsStyle.setAttribute('href', './components/pomo-finish-light.css');
       }
     };
 

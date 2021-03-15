@@ -1,0 +1,392 @@
+#settings-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#settings {
+  height: 100%;
+  width: 310px;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: -310px;
+  background-color: #fafbfc;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+#settings[class="open"] {
+  left: 0;
+}
+
+#settings[class="close"] {
+  left: -500px;
+}
+
+#close-button {
+  margin-top: 25px;
+  margin-right: 16px;
+  background-color: #fff;
+  float: right;
+  border: 1.5px solid;
+  border-color: #dadbdc;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+}
+
+#close-button:hover {
+  background-color: #e5e8ea;
+  border-color: #8d949d;
+  transition-duration: 0.1s;
+}
+
+#close-button-icon {
+  height: 10px;
+  width: 10px;
+}
+
+/* Margins match finish button */
+#open-button {
+  z-index: 2;
+  margin-left: 15px;
+  background-color: #63cc63;
+  color: #fff;
+  font-size: 65px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Holds title of sidebar */
+#settings-title {
+  color: #23272c;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  margin-left: 25px;
+  margin-top: 25px;
+  padding-bottom: 10px;
+}
+
+/* Says: "Time (minutes)" / "Display" / "Audio" */
+#pomo-length-label,
+#audio-label,
+#display-label,
+#accessibility-label {
+  color: #23272c;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 25px;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+/* Holds timer options / display options / audio options */
+#timer-section,
+#audio-section,
+#display-section,
+#accessibility-section {
+  color: #dadbdc;
+  font-family: 'Source Sans Pro', sans-serif;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  border: 1.5px solid;
+  background-color: #fff;
+}
+
+/* Sizing for work, short, long, sound, volume sections */
+#work-section,
+#short-section,
+#long-section,
+#sound-section,
+#volume-section {
+  color: #23272c;
+  font-size: 12px;
+  font-weight: 600;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Sizing for dark, calm, access sections */
+#dark-section,
+#calm-section,
+#access-section {
+  color: #23272c;
+  font-size: 12px;
+  font-weight: 600;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+/* Bottom border for work, short, calm, sound */
+#work-section,
+#short-section,
+#calm-section,
+#sound-section {
+  border-bottom: 1.5px solid #dadbdc;
+}
+
+/* Says "Work" / "Short Break" / "Long Break" / "Calm Mode" / etc */
+#work-sec-label,
+#short-sec-label,
+#long-sec-label,
+#calm-label,
+#dark-label,
+#sound-label,
+#volume-label,
+#access-label {
+  margin-right: 10px;
+  justify-content: left;
+  align-items: center;
+}
+
+/* Position labels slightly down towards center */
+#calm-label,
+#dark-label,
+#access-label {
+  position: relative;
+  top: 5px;
+}
+
+/* Input fields for work/break lengths / volume */
+#work-number,
+#short-break-number,
+#long-break-number,
+#sound-select {
+  background-color: #e5e8ea;
+  color: #23272c;
+  float: right;
+  border: 1.5px solid;
+  border-color: #dadbdc;
+  border-radius: 6px;
+  cursor: auto;
+  outline: none;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 5px 5px 5px;
+  width: 100px;
+  position: relative;
+  bottom: 6.5px;
+  height: 16px;
+}
+
+/* clear out default browser styling for drop down */
+#sound-select {
+  /* -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; */
+  height: 28px;
+  width: 125px;
+}
+
+#volume-slide {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 2px;
+  width: 100px;
+  background-color: #fff;
+}
+
+#sound-select:focus,
+#volume-slide:focus {
+  outline: none;
+}
+
+/* safari/chrome volume slider track */
+#volume-slide::-webkit-slider-runnable-track {
+  height: 2px;
+  background: #e5e8ea;
+  margin-top: -6px;
+}
+
+/* firefox volume slider track */
+#volume-slide::-moz-range-track {
+  background: #e5e8ea;
+  margin-top: 2px;
+}
+
+/* safari/chrome volume slider thumb */
+#volume-slide::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: #8b949e;
+  margin-top: -4px;
+  cursor: pointer;
+}
+
+/* firefox volume slider thumb */
+#volume-slide::-moz-range-thumb {
+  -moz-appearance: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: #8b949e;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+/* make volume numbr input field small */
+#volume-number {
+  background-color: #e5e8ea;
+  color: #23272c;
+  float: right;
+  border: 1.5px solid;
+  border-color: #e5e8ea;
+  border-radius: 6px;
+  cursor: auto;
+  outline: none;
+  padding: 5px 5px 5px 5px;
+  width: 38px;
+  position: relative;
+  bottom: 6.5px;
+  height: 16px;
+}
+
+/* Align switches to float right */
+#calm-switch {
+  position: relative;
+  left: 90px;
+}
+
+/* Align switches to float right */
+#dark-switch {
+  position: relative;
+  left: 92px;
+}
+
+/* Align switches to float right */
+#access-switch {
+  position: relative;
+  left: 45px;
+}
+
+/* Add red border on invalid input */
+#work-number:focus.invalid,
+#short-break-number:focus.invalid,
+#long-break-number:focus.invalid,
+#volume-number:focus.invalid {
+  border-color: red;
+}
+
+/* Add whitish border on selected input */
+#work-number:focus,
+#short-break-number:focus,
+#long-break-number:focus,
+#volume-number:focus {
+  border-color: #8d949d;
+}
+
+/* Toggle CSS */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Size of toggle switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 66px;
+  height: 28px;
+}
+
+/* Create main toggle body + switch ON: background & border color */
+.slider {
+  border-radius: 50px;
+  border: 1.5px solid;
+  border-color: #63cc63;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #63cc63;
+  transition: 0.4s;
+}
+
+/* Create circle + toggle switch ON: circle color */
+.slider::before {
+  border-radius: 50px;
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 2.8px;
+  background-color: #51a552;
+  transition: 0.4s;
+}
+
+/* Toggle switch OFF: background & border color */
+input:checked + .slider {
+  background-color: #e5e8ea;
+  border-color: #e5e8ea;
+}
+
+/* Toggle switch OFF: circle color */
+input:checked + .slider::before {
+  /* movement of circle in x direction */
+  transform: translateX(38px);
+  background-color: #979da4;
+}
+
+/* Toggle switch OFF: text */
+.off-mode {
+  display: none;
+  color: #23272c;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  font-size: 12px;
+}
+
+/* Toggle switch ON: text */
+.on-mode {
+  display: block;
+  color: #fff;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 12px;
+}
+
+/* Prevent highlight of toggle switch or label */
+span,
+label {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+div.disabled > * {
+  opacity: 0.6;
+  pointer-events: none;
+}
