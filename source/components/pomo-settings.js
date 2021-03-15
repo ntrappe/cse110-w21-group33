@@ -6,9 +6,6 @@ const MIN_VOLUME = '0';
 const MAX_VOLUME = '100';
 const RESET_LENGTH = 200;
 
-const LEFTOPEN = 0;
-const LEFTCLOSE = -500;
-
 class PomoSettings extends HTMLElement {
   constructor() {
     super();
@@ -638,10 +635,10 @@ class PomoSettings extends HTMLElement {
     };
 
     /**
-      * For transforming the whole object
-      * @param {String} buttonText the text to put in transform css
-      * @param {Number} leftOffset left offset of settingPanel
-      */
+     * For transforming the whole object
+     * @param {String} buttonText the text to put in transform css
+     * @param {Number} leftOffset left offset of settingPanel
+     */
     this.changeTransform = (buttonText, panelText, leftOffset) => {
       openButton.style.transform = buttonText;
       sideBar.style.transform = panelText;
@@ -649,12 +646,12 @@ class PomoSettings extends HTMLElement {
       /* Change style of left offset if panel is open, 
        * Or store it if it is closed.
        */
-      if (sideBar.getAttribute('class') == 'open'){
-        sideBar.style.left = (LEFTOPEN - leftOffset).toString() + 'px';
-      }else{
-        leftOffsetTemp = (LEFTOPEN - leftOffset).toString() + 'px';
+      if (sideBar.getAttribute('class') === 'open'){
+        sideBar.style.left = (0 - leftOffset).toString() + 'px';
+      } else {
+        leftOffsetTemp = (0 - leftOffset).toString() + 'px';
       }
-    }
+    };
   }
 }
 

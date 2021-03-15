@@ -11,11 +11,6 @@ const MIN_HEIGHT_STOP_CHANGE = 500;
 
 const X_OFFSET_FACTOR = 6;
 
-const FINISH_MARGIN_RIGHT = 15;
-
-const MOBILE_FINISH_SCALE = 1.5;
-const MOBILE_FINISH_TRANY_FACTOR = 5;
-
 // Initialize web components
 const pomoAudio = new PomoAudio();
 pomoAudio.setAttribute('id', 'pomo-audio');
@@ -53,7 +48,6 @@ main.appendChild(pomoTimer);
 
 const footer = document.getElementById('footer');
 footer.appendChild(pomoFinish);
-
 
 /**
  * For resizing elements depends on the window size
@@ -98,7 +92,7 @@ const resizeElements = function() {
     pomoInfo.changeTransform(null);
     pomoSettings.changeTransform(null, null, null)
   }
-}
+};
 
 window.addEventListener("resize", resizeElements);
 window.addEventListener("load", resizeElements);

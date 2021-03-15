@@ -135,12 +135,12 @@ class PomoFinish extends HTMLElement {
     };
 
     /**
-      * For transforming the whole object
-      * @param {String} transformText the text to put in transform css
-      */
+     * For transforming the whole object
+     * @param {String} transformText the text to put in transform css
+     */
     this.changeTransform = (transformText) => {
       finishButton.style.transform = transformText;
-    }
+    };
   }
 }
 
