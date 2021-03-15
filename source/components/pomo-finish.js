@@ -26,7 +26,7 @@ class PomoFinish extends HTMLElement {
 
     const iconHolder = document.createElement('img');
     iconHolder.setAttribute('id', 'closeButtonIcon');
-    iconHolder.setAttribute('src', './assets/bar-chart.png');
+    //iconHolder.setAttribute('src', './assets/bar-chart.png');
     finishButton.appendChild(iconHolder);
 
     const textHolder = document.createElement('p');
