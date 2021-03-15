@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/pomo-tab.js</title>
+    <title>JSDoc: Source: components/pomo-audio.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/pomo-tab.js</h1>
+    <h1 class="page-title">Source: components/pomo-audio.js</h1>
 
     
 
@@ -26,71 +26,73 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>// Mode and default titles
-const DEFAULT = 'Pomodoro Timer';
-const WORK = 'Work';
-const SHORTBREAK = 'Short Break';
-const LONGBREAK = 'Long Break';
+            <pre class="prettyprint source linenums"><code>class PomoAudio extends HTMLElement {
+  constructor() {
+    super();
 
-const SEC_IN_MIN = 60;
-const PADDING = 2;
+    const shadow = this.attachShadow({ mode: 'open' });
 
-const pageTitle = document.getElementsByTagName('title')[0]; // We know there is only one title element.
+    const audio = document.createElement('audio');
+    audio.setAttribute('id', 'alarm-sound');
+    audio.setAttribute('src', '/media/audio/bike_chime.mp3');
 
-let calm = false;
+    shadow.appendChild(audio);
 
-/**
- * Responds to calm mode and hides the second display
- * @param {Boolean} calmIn indicating if calm mode is enabled
- */
-export function setCalm(calmIn) {
-  calm = calmIn;
-}
+    const VOLUME_SCALER = 0.01;
+    const MIN_VOLUME = 0;
+    const MAX_VOLUME = 100;
 
-/**
- * Updates browser tab text to reflect time remaining
- * @param {Number} sec number of seconds remaining
- * @param {String} mode the shorthand of the current mode
- */
-export function setTab(sec, mode) {
-  // Convert mode shorthand to full title
-  let modeTitle;
-  switch (mode) {
-    case 'work':
-      modeTitle = WORK;
-      break;
+    this.enabled = true;
 
-    case 'short break':
-      modeTitle = SHORTBREAK;
-      break;
+    /**
+     * Allows the sound to be played
+     */
+    this.enableSound = () => {
+      this.enabled = true;
+    };
 
-    case 'long break':
-      modeTitle = LONGBREAK;
-      break;
+    /**
+     * Prevents the sound from being played
+     */
+    this.disableSound = () => {
+      this.enabled = false;
+    };
 
-    default:
-      modeTitle = '';
-      break;
+    /**
+     * Play the current sound at the current volume
+     */
+    this.playSound = () => {
+      if (this.enabled) {
+        audio.play();
+      }
+    };
+
+    /**
+     * Set the volume of the audio component
+     * @param {Number} volume - Volume level from 0 to 100
+     */
+    this.setVolume = (volume) => {
+      // Invalid input received
+      if (volume &lt; MIN_VOLUME || volume > MAX_VOLUME) {
+        return;
+      }
+
+      audio.volume = volume * VOLUME_SCALER; // Scale range to 0 to 1.0
+    };
+
+    /**
+     * Set location of the sound to be played
+     * @param {String} sound - Absolute path of sound
+     */
+    this.setSound = (sound) => {
+      audio.src = sound;
+    };
   }
-
-  // Calculate minutes remaining, and then pad with '0' if necessary.
-  // For calm mode, round the minute up. For regular mode, round the minute down.
-  const minutes = (calm ? Math.ceil(sec / SEC_IN_MIN) : Math.floor(sec / SEC_IN_MIN))
-    .toString()
-    .padStart(PADDING, '0');
-
-  // For calm mode, always display '00'. For regular mode, display the seconds.
-  const seconds = (calm ? 0 : sec % 60).toString().padStart(PADDING, '0');
-
-  pageTitle.textContent = `${minutes}:${seconds} - ${modeTitle}`;
 }
 
-/**
- * Resets browser tab title to the default
- */
-export function defaultTab() {
-  pageTitle.textContent = DEFAULT;
-}
+customElements.define('pomo-audio', PomoAudio);
+
+export default PomoAudio;
 </code></pre>
         </article>
     </section>
