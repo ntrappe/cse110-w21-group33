@@ -154,7 +154,7 @@ describe('Check a 225 * 400 screen', { includeShadowDom: true }, () => {
         'scale(0.5) translateX(-75px)',
         'scale(0.5) translateX(-75px)',
         45
-        );
+      );
     });
   });
 
@@ -240,7 +240,7 @@ describe('Check a iphoneX screen', { includeShadowDom: true }, () => {
         'scale(0.8333333333333334) translateX(-15px)',
         'scale(0.8333333333333334) translateX(-15px)',
         15
-        );
+      );
     });
   });
 });

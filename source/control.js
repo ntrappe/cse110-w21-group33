@@ -61,8 +61,8 @@ const resizeElements = () => {
       .concat('translateY(')
       .concat(
         (window.innerHeight < MIN_HEIGHT_STOP_CHANGE
-        ? -100 
-        : (window.innerHeight - MIN_HEIGHT) / 2
+          ? -100
+          : (window.innerHeight - MIN_HEIGHT) / 2
         ).toString()
       )
       .concat('px)');
@@ -71,8 +71,8 @@ const resizeElements = () => {
   if (window.innerWidth < MIN_WIDTH) {
     inputText = inputText
       .concat(' scale(')
-      .concat((window.innerWidth / MIN_WIDTH).toString()
-      ).concat(') ');
+      .concat((window.innerWidth / MIN_WIDTH).toString())
+      .concat(') ');
   }
 
   pomoTimer.changeTransform(inputText);
@@ -83,33 +83,51 @@ const resizeElements = () => {
       'scale('
       .concat((window.innerWidth / MIN_WIDTH).toString())
       .concat(') translateX(')
-      .concat(((MIN_WIDTH - window.innerWidth) / 
-      window.innerWidth * MIN_WIDTH / X_OFFSET_FACTOR).toString()
+      .concat(
+        (
+          (MIN_WIDTH - window.innerWidth) /
+          window.innerWidth * MIN_WIDTH / 
+          X_OFFSET_FACTOR
+        ).toString()
       )
-      .concat('px)'));
+      .concat('px)')
+    );
     pomoInfo.changeTransform(
       'scale('
       .concat((window.innerWidth / MIN_WIDTH).toString())
       .concat(') translateX(')
-      .concat(((MIN_WIDTH - window.innerWidth) / 
-      window.innerWidth * MIN_WIDTH / X_OFFSET_FACTOR).toString()
+      .concat(
+        (
+          (MIN_WIDTH - window.innerWidth) / 
+          window.innerWidth * MIN_WIDTH / 
+          X_OFFSET_FACTOR
+        ).toString()
       )
-      .concat('px)'));
+      .concat('px)')
+    );
     pomoSettings.changeTransform('scale('
       .concat((window.innerWidth / MIN_WIDTH).toString())
       .concat(') translateX(')
       .concat(  
-      ((window.innerWidth - MIN_WIDTH ) / 
-      window.innerWidth * MIN_WIDTH / X_OFFSET_FACTOR).toString()
+        (
+          (window.innerWidth - MIN_WIDTH ) / 
+          window.innerWidth * MIN_WIDTH / 
+          X_OFFSET_FACTOR
+        ).toString()
       )
       .concat('px)'), 
       'scale('.concat( (window.innerWidth / MIN_WIDTH).toString())
       .concat(') translateX(')
-      .concat(((window.innerWidth - MIN_WIDTH ) / 
-      window.innerWidth * MIN_WIDTH / X_OFFSET_FACTOR).toString()
+      .concat(
+        (
+          (window.innerWidth - MIN_WIDTH ) / 
+          window.innerWidth * MIN_WIDTH / 
+          X_OFFSET_FACTOR
+        ).toString()
       )
       .concat('px)'),
-      (MIN_WIDTH - window.innerWidth) / 5);
+      (MIN_WIDTH - window.innerWidth) / 5
+    );
   } else {
     pomoFinish.changeTransform(null);
     pomoInfo.changeTransform(null);
