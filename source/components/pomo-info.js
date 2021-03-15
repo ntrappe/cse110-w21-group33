@@ -35,15 +35,14 @@ class PomoInfo extends HTMLElement {
 
     const iconHolder = document.createElement('img');
     iconHolder.setAttribute('id', 'closeButtonIcon');
-    //iconHolder.setAttribute('src', './assets/info.png');
     infoButton.appendChild(iconHolder);
 
     const textHolder = document.createElement('p');
     textHolder.textContent = 'Info';
     infoButton.append(textHolder);
-    
+
     // Uncomment below to see info button disabled
-    // infoButton.disabled = true; 
+    // infoButton.disabled = true;
 
     // the lightbox
     const modalContent = document.createElement('div');

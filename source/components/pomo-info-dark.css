@@ -85,5 +85,5 @@ button:hover {
   max-width: 40%;
   padding-left: 8px;
   padding-right: 8px;
-  content: url('../assets/info-light.png')
+  content: url('../assets/info-light.png');
 }

@@ -26,7 +26,6 @@ class PomoFinish extends HTMLElement {
 
     const iconHolder = document.createElement('img');
     iconHolder.setAttribute('id', 'closeButtonIcon');
-    //iconHolder.setAttribute('src', './assets/bar-chart.png');
     finishButton.appendChild(iconHolder);
 
     const textHolder = document.createElement('p');
@@ -139,6 +138,20 @@ class PomoFinish extends HTMLElement {
 
       // show the statistics panel
       modal.style.display = 'block';
+    };
+
+    /**
+     * Enabling finishButton when called
+     */
+    this.enableStat = () => {
+      finishButton.disabled = false;
+    };
+
+    /**
+     * Disabling finishButton when called
+     */
+    this.disableStat = () => {
+      finishButton.disabled = true;
     };
   }
 }
