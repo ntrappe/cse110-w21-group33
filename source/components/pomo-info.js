@@ -107,6 +107,14 @@ class PomoInfo extends HTMLElement {
         infoStyle.setAttribute('href', './components/pomo-info-light.css');
       }
     };
+
+    /**
+      * For transforming the whole object
+      * @param {String} transformText the text to put in transform css
+      */
+    this.changeTransform = (transformText) => {
+      infoButton.style.transform = transformText;
+    }
   }
 }
 

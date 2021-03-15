@@ -184,6 +184,14 @@ class PomoTimer extends HTMLElement {
         timerStyle.setAttribute('href', './components/pomo-timer-light.css');
       }
     };
+
+    /**
+      * For transforming the whole object
+      * @param {String} transformText the text to put in transform css
+      */
+    this.changeTransform = (transformText) => {
+      wrapper.style.transform = transformText;
+    }
   }
 }
 
