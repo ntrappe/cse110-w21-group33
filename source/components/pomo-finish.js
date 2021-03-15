@@ -20,6 +20,9 @@ class PomoFinish extends HTMLElement {
 
     const finishButton = document.createElement('button');
     finishButton.setAttribute('id', 'finish-button');
+    finishButton.onclick = () => {
+      shadow.dispatchEvent(this.event);
+    };
 
     const iconHolder = document.createElement('img');
     iconHolder.setAttribute('id', 'closeButtonIcon');
