@@ -1,4 +1,4 @@
-button {
+#finish-button {
   color: #cbd1d8;
   background-color: #22262c;
   font-weight: 600;
@@ -12,11 +12,16 @@ button {
   margin-right: 15px;
 }
 
-button:hover {
+#finish-button:hover {
   color: #f1f6fb;
   background-color: #31363c;
   border-color: #8d949d;
   transition-duration: 0.1s;
+}
+
+#finish-button:disabled {
+  opacity: 0.6;
+  pointer-events: none;
 }
 
 #statistics-close-button[class="button-off"] {
@@ -95,5 +100,5 @@ button:hover {
   max-width: 20%;
   padding-left: 8px;
   padding-right: 8px;
-  content: url('../assets/bar-chart.png')
+  content: url('../assets/bar-chart.png');
 }

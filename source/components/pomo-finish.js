@@ -139,6 +139,20 @@ class PomoFinish extends HTMLElement {
       // show the statistics panel
       modal.style.display = 'block';
     };
+
+    /**
+     * Enabling finishButton when called
+     */
+    this.enableStat = () => {
+      finishButton.disabled = false;
+    };
+
+    /**
+     * Disabling finishButton when called
+     */
+    this.disableStat = () => {
+      finishButton.disabled = true;
+    };
   }
 }
 
