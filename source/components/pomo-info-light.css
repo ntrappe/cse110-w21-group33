@@ -1,82 +1,15 @@
-button {
-  color: #cbd1d8;
-  background-color: #22262c;
-  font-weight: 600;
-  font-size: 16px;
-  border: 1.5px solid;
-  padding: 7px 25px;
-  border-radius: 6px;
-  border-color: #31363c;
-  width: 100px;
-  cursor: pointer;
-  margin-right: 15px;
+/* light css for info */
+
+@import "./pomo-info.css";
+
+#info-button {
+  color: #24282c;
+  background-color: #e5e7ea;
+  border-color: #d8dbdc;
 }
 
-button:hover {
-  color: #f1f6fb;
-  background-color: #31363c;
-  border-color: #8d949d;
-  transition-duration: 0.1s;
-}
-
-#info-close-button[class="button-off"] {
-  background-color: #0e1116;
-  color: #cbd1d8;
-  float: right;
-  font-size: 30px;
-  padding: 2px 14px;
-  border: 1.5px solid;
-  border-color: #31363c;
-  border-radius: 90%;
-  display: block;
-  cursor: pointer;
-}
-
-#info-close-button[class="button-on"] {
-  background-color: #22262c;
-  color: #f1f6fb;
-  float: right;
-  font-size: 30px;
-  padding: 2px 14px;
-  border: 1.5px solid;
-  border-color: #8d949d;
-  border-radius: 90%;
-  display: block;
-  cursor: pointer;
-  transition-duration: 0.1s;
-}
-
-#info-modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-#info-modal-content {
-  background-color: #171b21;
-  margin: 5% auto;
-  padding: 15px;
-  border: 1.5px solid;
-  border-radius: 6px;
-  border-color: #31363c;
-  height: 70%;
-  width: 70%;
-}
-
-#info-content {
-  display: block;
-  color: #cbd1d8;
-  margin: 5% 5%;
-  width: 90%;
-}
-
-#info-content h3 {
-  padding-bottom: 2px;
-  border-bottom: #cbd1d8 solid;
+#info-button:hover {
+  color: #24282c;
+  background-color: #edeff3;
+  border-color: #f5f2f2;
 }
