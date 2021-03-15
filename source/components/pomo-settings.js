@@ -643,13 +643,13 @@ class PomoSettings extends HTMLElement {
       openButton.style.transform = buttonText;
       sideBar.style.transform = panelText;
 
-      /* Change style of left offset if panel is open, 
+      /* Change style of left offset if panel is open,
        * Or store it if it is closed.
        */
-      if (sideBar.getAttribute('class') === 'open'){
-        sideBar.style.left = (0 - leftOffset).toString() + 'px';
+      if (sideBar.getAttribute('class') === 'open') {
+        sideBar.style.left = (0 - leftOffset).toString().concat('px');
       } else {
-        leftOffsetTemp = (0 - leftOffset).toString() + 'px';
+        leftOffsetTemp = (0 - leftOffset).toString().concat('px');
       }
     };
   }
