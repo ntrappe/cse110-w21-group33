@@ -43,7 +43,38 @@ describe('Verify setDark colors for pomoSettings', { includeShadowDom: true }, (
       cy.get('#sound-select').should('have.css', 'background-color', 'rgb(13, 17, 23)');
       cy.get('#volume-slide').should('have.css', 'background-color', 'rgb(22, 27, 34)');
 
-      cy.get('#access-switch').should('have.css', 'background-color', 'rgb(22, 27, 34)');
+      /* Verify colors of toggle switches */
+      cy.get('#busy-mode.off-mode').should('have.css', 'color', 'rgb(139, 148, 158)');
+      cy.get('#busy-mode.off-mode').should('have.css', 'display', 'block');
+      
+      cy.get('#calm-mode.on-mode').should('have.css', 'color', 'rgb(121, 208, 113)');
+      cy.get('#calm-mode.on-mode').should('have.css', 'display', 'none');
+
+      cy.get('#light-mode.off-mode').should('have.css', 'color', 'rgb(139, 148, 158)');
+      cy.get('#light-mode.off-mode').should('have.css', 'display', 'block');
+      
+      cy.get('#dark-mode.on-mode').should('have.css', 'color', 'rgb(121, 208, 113)');
+      cy.get('#dark-mode.on-mode').should('have.css', 'display', 'none');
+
+      cy.get('#accessible-mode.on-mode').should('have.css', 'color', 'rgb(121, 208, 113)');
+      cy.get('#accessible-mode.on-mode').should('have.css', 'display', 'block');
+
+      cy.get('#inaccessible-mode.off-mode').should('have.css', 'color', 'rgb(139, 148, 158)');
+      cy.get('#inaccessible-mode.off-mode').should('have.css', 'display', 'none');
     });
+  });
+
+  it('Verify toggle switch UI change', () => {
+    cy.get('#calm-slider').click();
+    cy.get('#dark-slider').click();
+    cy.get('#accessible-slider').click();
+
+    cy.get('#calm-mode.on-mode').should('have.css', 'display', 'block');
+    cy.get('#dark-mode.on-mode').should('have.css', 'display', 'block');
+    cy.get('#inaccessible-mode.off-mode').should('have.css', 'display', 'block');
+
+    cy.get('#busy-mode.off-mode').should('have.css', 'display', 'none');
+    cy.get('#light-mode.off-mode').should('have.css', 'display', 'none');
+    cy.get('#accessible-mode.on-mode').should('have.css', 'display', 'none');
   });
 });
