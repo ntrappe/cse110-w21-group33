@@ -47,7 +47,15 @@ class PomoSettings extends HTMLElement {
     // Button to open sidebar
     const openButton = document.createElement('button');
     openButton.setAttribute('id', 'open-button');
-    openButton.innerHTML = '&#9881;';
+    
+    const iconHolder = document.createElement('img');
+    iconHolder.setAttribute('id', 'open-button-icon');
+    iconHolder.setAttribute('src', './assets/gear.png');
+    openButton.appendChild(iconHolder);
+
+    const textHolder = document.createElement('p');
+    textHolder.textContent = 'Settings';
+    openButton.appendChild(textHolder);
 
     // Button to close sidebar
     const closeButton = document.createElement('button');
