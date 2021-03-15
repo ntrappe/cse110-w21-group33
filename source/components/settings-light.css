@@ -62,10 +62,10 @@
   z-index: 2;
   margin-left: 15px;
   background-color: #63cc63;
-  color: #fff;
   font-size: 16px;
   font-weight: 600;
-  border: none;
+  border-radius: 6px;
+  border-color: #f1f6fb;
   cursor: pointer;
   width: 100px;
   height: 40px;
@@ -74,15 +74,26 @@
   align-items: center;
 }
 
+/* Styling for the button's icon */
 #open-button > img {
   max-width: 20%;
   padding-right: 5px;
+  content: url('../assets/light_gear.png');
 }
 
+/* Styling for the button label */
 #open-button > p {
-  color: #cbd1d8;
+  color: #22262c;
   font-weight: 600;
   font-size: 16px;
+}
+
+/* Add feedback when hovered */
+#open-button:hover {
+  color: #f1f6fb;
+  /* background-color: #31363c; */
+  border-color: #8d949d;
+  transition-duration: 0.1s;
 }
 
 /* Holds title of sidebar */
