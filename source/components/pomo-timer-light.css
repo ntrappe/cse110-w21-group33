@@ -1,0 +1,79 @@
+/* light mode css for timer */
+
+@import "./pomo-timer.css";
+
+/* green version of work mode */
+#timer-mode[class*="work"] {
+  color: #fff;
+  background-color: #24cf53;
+  border-color: #21bf4d;
+}
+
+/* blue version of long break */
+#timer-mode[class*="long"] {
+  color: #fff;
+  background-color: #0bb4ff;
+  border-color: #08a4e7;
+}
+
+/* teal version of short break */
+#timer-mode[class*="short"] {
+  color: #fff;
+  background-color: #2ec9ad;
+  border-color: #28b39a;
+}
+
+.space {
+  background-color: white;
+}
+
+.square-off {
+  color: #171b21;
+  background-color: #e4e6e9;
+  border-color: #e4e6e9;
+}
+
+.square-on {
+  color: #24cf53;
+  background-color: #24cf53;
+  border-color: #21bf4d;
+}
+
+#square4[class="square-on"] {
+  color: #0ce84d;
+  background-color: #0ce84d;
+  border-color: #63d55c;
+}
+
+#timer-text {
+  color: #21262c;
+  background-color: #eff1f2;
+  border: none;
+  border-bottom: 4px solid;
+  border-bottom-left-radius: 0%;
+  border-bottom-right-radius: 0%;
+}
+
+#timer-text[class*="work"] {
+  border-color: #24cf53;
+}
+
+#timer-text[class*="long"] {
+  border-color: #0bb4ff;
+}
+
+#timer-text[class*="short"] {
+  border-color: #2ec9ad;
+}
+
+#timer-button {
+  color: #24282c;
+  background-color: #e5e7ea;
+  border-color: #d8dbdc;
+}
+
+#timer-button:hover {
+  color: #24282c;
+  background-color: #edeff3;
+  border-color: #f5f2f2;
+}

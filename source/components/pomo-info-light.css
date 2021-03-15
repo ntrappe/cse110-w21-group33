@@ -1,0 +1,15 @@
+/* light css for info */
+
+@import "./pomo-info.css";
+
+#info-button {
+  color: #24282c;
+  background-color: #e5e7ea;
+  border-color: #d8dbdc;
+}
+
+#info-button:hover {
+  color: #24282c;
+  background-color: #edeff3;
+  border-color: #f5f2f2;
+}

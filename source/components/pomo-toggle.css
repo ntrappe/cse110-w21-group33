@@ -1,0 +1,78 @@
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Size of toggle background */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+}
+
+/* Toggle background */
+.slider {
+  border-radius: 30px;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0d1117;
+  transition: 0.4s;
+}
+
+/* Creates the toggle button */
+.slider::before {
+  border-radius: 30px;
+  position: absolute;
+  content: "";
+  height: 40px;
+  width: 40px;
+  left: 3px;
+  bottom: 5px;
+  background-color: #161b22;
+  transition: 0.4s;
+}
+
+/* Changes the color of the slider when toggled */
+input:checked + .slider {
+  background-color: #c9d1d9;
+}
+
+input:checked + .slider::before {
+  transform: translateX(52px);
+  background-color: #161b22;
+}
+
+.offMode {
+  display: none;
+  color: #161b22;
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  font-size: 20px;
+}
+
+.onMode {
+  display: block;
+  color: #c9d1d9;
+  position: absolute;
+  top: 25%;
+  left: 50px;
+  font-size: 20px;
+}
+
+/* Prevent highlight of toggle switch */
+span {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
