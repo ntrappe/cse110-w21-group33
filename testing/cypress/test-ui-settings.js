@@ -3,7 +3,7 @@ describe('Open Page', () => {
     cy.visit('./source/index.html');
   });
 });
-  
+
 describe('Verify setDark colors for pomoSettings', { includeShadowDom: true }, () => {
   it('Check if pomoSettings exists', () => {
     cy.window().then((win) => {
@@ -12,12 +12,10 @@ describe('Verify setDark colors for pomoSettings', { includeShadowDom: true }, (
   });
 
   it('Check settings title', () => {
-    cy.window().then((win) => {
-      cy.get('#open-button').click();
+    cy.get('#open-button').click();
 
-      cy.get('#settings-title').then(($title) => {
-        expect($title[0].textContent).to.eq('Settings');
-      });
+    cy.get('#settings-title').then(($title) => {
+      expect($title[0].textContent).to.eq('Settings');
     });
   });
 
@@ -46,13 +44,13 @@ describe('Verify setDark colors for pomoSettings', { includeShadowDom: true }, (
       /* Verify colors of toggle switches */
       cy.get('#busy-mode.off-mode').should('have.css', 'color', 'rgb(139, 148, 158)');
       cy.get('#busy-mode.off-mode').should('have.css', 'display', 'block');
-      
+
       cy.get('#calm-mode.on-mode').should('have.css', 'color', 'rgb(121, 208, 113)');
       cy.get('#calm-mode.on-mode').should('have.css', 'display', 'none');
 
       cy.get('#light-mode.off-mode').should('have.css', 'color', 'rgb(139, 148, 158)');
       cy.get('#light-mode.off-mode').should('have.css', 'display', 'block');
-      
+
       cy.get('#dark-mode.on-mode').should('have.css', 'color', 'rgb(121, 208, 113)');
       cy.get('#dark-mode.on-mode').should('have.css', 'display', 'none');
 
