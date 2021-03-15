@@ -133,6 +133,22 @@ class PomoFinish extends HTMLElement {
       // show the statistics panel
       modal.style.display = 'block';
     };
+
+    /**
+     * Functions that opens and closes the finish page with the f key
+     * @param {Number} e value that the eventListener gets when a key is clicked
+     */
+    function keyHolder(e) {
+      // Checking if the key clicked is a f
+      if (e.key === 'f' && pomoStorage.getAccessibility() === true) {
+        if (modal.style.display === 'block') {
+          closeButton.onclick();
+        } else {
+          finishButton.onclick();
+        }
+      }
+    }
+    document.addEventListener('keydown', keyHolder);
   }
 }
 

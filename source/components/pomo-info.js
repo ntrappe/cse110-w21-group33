@@ -107,6 +107,22 @@ class PomoInfo extends HTMLElement {
         infoStyle.setAttribute('href', './components/pomo-info-light.css');
       }
     };
+
+    /**
+     * Functions that opens and closes the info page with the i key
+     * @param {Number} e value that the eventListener gets when a key is clicked
+     */
+    function keyHolder(e) {
+      // Checking if the key clicked is a i
+      if (e.key === 'i' && pomoStorage.getAccessibility() === true) {
+        if (modal.style.display === 'none') {
+          infoButton.onclick();
+        } else if (modal.style.display === 'block') {
+          closeButton.onclick();
+        }
+      }
+    }
+    document.addEventListener('keydown', keyHolder);
   }
 }
 

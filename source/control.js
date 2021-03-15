@@ -4,6 +4,7 @@ import PomoInfo from './components/pomo-info.js';
 import PomoSettings from './components/pomo-settings.js';
 import PomoTimer from './components/pomo-timer.js';
 import * as PomoTab from './components/pomo-tab.js';
+import * as PomoStorage from './storage.js';
 
 // Initialize web components
 const pomoAudio = new PomoAudio();
@@ -28,6 +29,7 @@ window.pomoInfo = pomoInfo;
 window.pomoSettings = pomoSettings;
 window.pomoTimer = pomoTimer;
 window.pomoTab = PomoTab;
+window.pomoStorage = PomoStorage;
 
 // Add components to their proper locations on the page
 const body = document.getElementById('body');
@@ -42,3 +44,8 @@ main.appendChild(pomoTimer);
 
 const footer = document.getElementById('footer');
 footer.appendChild(pomoFinish);
+
+// Mock showModal for testing
+document.addEventListener('modalRequest', () => {
+  pomoFinish.showModal(1, 2, 3, 4);
+});

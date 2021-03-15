@@ -8,6 +8,7 @@ import {
 } from './pomo-timer-helpers.js';
 
 const START = 'Start';
+const RESET = 'Reset';
 const SEC_SPEED = 250;
 class PomoTimer extends HTMLElement {
   constructor() {
@@ -184,6 +185,25 @@ class PomoTimer extends HTMLElement {
         timerStyle.setAttribute('href', './components/pomo-timer-light.css');
       }
     };
+
+    /**
+     * Functions that calls timerButton.onclick() if s or r key is pressed
+     * @param {Number} e value that the eventListener gets when a key is clicked
+     */
+    function keyHolder(e) {
+      // Checking if the key clicked is a s
+      if (e.key === 's' && pomoStorage.getAccessibility() === true) {
+        if (timerButton.innerHTML === START) {
+          timerButton.onclick(); // Forces a onclick button for timerButton
+        }
+        // Key clicked is a e
+      } else if (e.key === 'r' && pomoStorage.getAccessibility() === true) {
+        if (timerButton.innerHTML === RESET) {
+          timerButton.onclick(); // Forces a onclick button for timerButton
+        }
+      }
+    }
+    document.addEventListener('keydown', keyHolder);
   }
 }
 

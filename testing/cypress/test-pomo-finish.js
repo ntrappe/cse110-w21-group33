@@ -132,3 +132,44 @@ describe('Check Dark/Light Settings', { includeShadowDom: true }, () => {
     cy.get('#statistics-styles').should('have.attr', 'href', './components/pomo-finish-light.css');
   });
 });
+
+describe('Lightbox Closing for Accessibility', { includeShadowDom: true }, () => {
+  beforeEach(() => {
+    cy.visit('./source/index.html');
+    cy.window().then((win) => {
+      win.pomoFinish.showModal(3, 2, 0, 0);
+    });
+  });
+
+  it('Check that f button closes lightbox', () => {
+    cy.get('body').type('f');
+    cy.get('#statistics-modal').should('have.css', 'display', 'none');
+  });
+
+  it('Checks that f button doesnt close lightbox when Accessibility is off', () => {
+    cy.window().then((win) => {
+      win.pomoStorage.setAccessibility(false);
+    });
+    cy.get('body').type('f');
+    cy.get('#statistics-modal').should('have.css', 'display', 'block');
+  });
+});
+
+describe('Opening Stats Page', { includeShadowDom: true }, () => {
+  beforeEach(() => {
+    cy.visit('./source/index.html');
+  });
+
+  it('Opening stats page with f and Accessibility on', () => {
+    cy.get('body').type('f');
+    cy.get('#statistics-modal').should('have.css', 'display', 'block');
+  });
+
+  it('Opening stats page with f and Accessibility off', () => {
+    cy.window().then((win) => {
+      win.pomoStorage.setAccessibility(false);
+    });
+    cy.get('body').type('f');
+    cy.get('#statistics-modal').should('have.css', 'display', 'none');
+  });
+});
