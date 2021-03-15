@@ -50,7 +50,7 @@ class PomoSettings extends HTMLElement {
 
     const iconHolder = document.createElement('img');
     iconHolder.setAttribute('id', 'open-button-icon');
-    iconHolder.setAttribute('src', './assets/gear.png');
+    //iconHolder.setAttribute('src', './assets/gear.png');
     openButton.appendChild(iconHolder);
 
     const textHolder = document.createElement('p');

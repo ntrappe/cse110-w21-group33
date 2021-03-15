@@ -13,3 +13,10 @@
   background-color: #edeff3;
   border-color: #f5f2f2;
 }
+
+#finish-button img {
+  max-width: 20%;
+  padding-left: 8px;
+  padding-right: 8px;
+  content: url('../assets/light_bar_chart.png')
+}

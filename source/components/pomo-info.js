@@ -35,7 +35,7 @@ class PomoInfo extends HTMLElement {
 
     const iconHolder = document.createElement('img');
     iconHolder.setAttribute('id', 'closeButtonIcon');
-    iconHolder.setAttribute('src', './assets/info.png');
+    //iconHolder.setAttribute('src', './assets/info.png');
     infoButton.appendChild(iconHolder);
 
     const textHolder = document.createElement('p');
