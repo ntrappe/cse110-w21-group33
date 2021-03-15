@@ -83,7 +83,7 @@ describe('Check a 800 * 600 screen', { includeShadowDom: true }, () => {
     cy.viewport(800, 600);
     cy.window().trigger('resize');
   });
-    
+
   it('Check resize event triggered', () => {
     cy.wrap().should(() => {
       expect(resizeTriggered).to.eq(true);
@@ -150,9 +150,10 @@ describe('Check a 225 * 400 screen', { includeShadowDom: true }, () => {
 
   it('Check settting resize is called', () => {
     cy.wrap().should(() => {
-      expect(spySetting).to.be.calledWith('scale(0.5) translateX(-75px)',
-          'scale(0.5) translateX(-75px)',
-          45);
+      expect(spySetting).to.be.calledWith(
+        'scale(0.5) translateX(-75px)',
+        'scale(0.5) translateX(-75px)',
+        45);
     });
   });
 
@@ -201,8 +202,8 @@ describe('Check a iphoneX screen', { includeShadowDom: true }, () => {
     });
     cy.window().then((win) => {
       win.addEventListener('resize', () => {
-          resizeTriggered = true;
-      })
+        resizeTriggered = true;
+      });
     });
     cy.viewport('iphone-x');
     cy.window().trigger('resize');
@@ -210,8 +211,8 @@ describe('Check a iphoneX screen', { includeShadowDom: true }, () => {
 
   it('Check mobile resize event triggered', () => {
     cy.wrap().should(() => {
-        expect(resizeTriggered).to.eq(true);
-      });
+      expect(resizeTriggered).to.eq(true);
+    });
   });
 
   it('Check mobile timer resize is called', () => {
@@ -222,7 +223,7 @@ describe('Check a iphoneX screen', { includeShadowDom: true }, () => {
 
   it('Check mobile finish resize is called', () => {
     cy.wrap().should(() => {
-        expect(spyFinish).to.be.calledWith('scale(0.8333333333333334) translateX(15px)');
+      expect(spyFinish).to.be.calledWith('scale(0.8333333333333334) translateX(15px)');
     });
   });
 
@@ -234,9 +235,10 @@ describe('Check a iphoneX screen', { includeShadowDom: true }, () => {
 
   it('Check mobile settting resize is called', () => {
     cy.wrap().should(() => {
-      expect(spySetting).to.be.calledWith('scale(0.8333333333333334) translateX(-15px)',
-            'scale(0.8333333333333334) translateX(-15px)',
-            15);
+      expect(spySetting).to.be.calledWith(
+        'scale(0.8333333333333334) translateX(-15px)',
+        'scale(0.8333333333333334) translateX(-15px)',
+        15);
     });
   });
 });
