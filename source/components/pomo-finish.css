@@ -16,7 +16,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 #finish-button:hover {
@@ -109,4 +108,3 @@
   color: #cbd1d8;
   text-align: center;
 }
-

@@ -35,8 +35,7 @@ class PomoFinish extends HTMLElement {
     finishButton.appendChild(iconHolder);
 
     const textHolder = document.createElement('p');
-    textHolder.textContent = "Stats";
-    textHolder.style.color='white';
+    textHolder.textContent = 'Stats';
     finishButton.append(textHolder);
 
     // the lightbox

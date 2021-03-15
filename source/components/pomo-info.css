@@ -14,7 +14,7 @@
   margin-right: 15px;
 }
 
-#info-button:disabled{
+#info-button:disabled {
   opacity: 0.6;
   pointer-events: none;
 }
