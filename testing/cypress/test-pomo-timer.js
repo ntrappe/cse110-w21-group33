@@ -21,8 +21,12 @@ describe('Find Timer Elements', { includeShadowDom: true }, () => {
     cy.get('#timer-mode');
   });
 
-  it('Get timer text via class', () => {
-    cy.get('.time');
+  it('Get timer text via ID', () => {
+    cy.get('#timer-text');
+  });
+
+  it('Get space via class', () => {
+    cy.get('.space');
   });
 
   it('Get toggle button via ID', () => {
@@ -141,9 +145,9 @@ describe('Check setting Dark and Light Mode', { includeShadowDom: true }, () => 
     });
   });
 
-  it('Check that button is in dark mode', () => {
-    cy.get('#timer-button').then(($el) => {
-      expect($el).to.have.css('backgroundColor', 'rgb(34, 38, 44)');
+  it('Check that timer text is in dark mode', () => {
+    cy.get('#timer-text').then(($el) => {
+      expect($el).to.have.css('color', 'rgb(162, 170, 181)');
     });
   });
 
@@ -154,15 +158,9 @@ describe('Check setting Dark and Light Mode', { includeShadowDom: true }, () => 
     });
   });
 
-  it('Check that button is in light mode', () => {
-    cy.get('#timer-button').then(($el) => {
-      expect($el).to.have.css('color', 'rgb(255, 255, 255)');
-    });
-  });
-
   it('Check that timer text is in light mode', () => {
     cy.get('#timer-text').then(($el) => {
-      expect($el).to.have.css('color', 'rgb(37, 41, 46)');
+      expect($el).to.have.css('color', 'rgb(33, 38, 44)');
     });
   });
 
@@ -173,9 +171,9 @@ describe('Check setting Dark and Light Mode', { includeShadowDom: true }, () => 
     });
   });
 
-  it('Check that button is in dark mode', () => {
-    cy.get('#timer-button').then(($el) => {
-      expect($el).to.have.css('backgroundColor', 'rgb(34, 38, 44)');
+  it('Check that timer text is in dark mode', () => {
+    cy.get('#timer-text').then(($el) => {
+      expect($el).to.have.css('color', 'rgb(162, 170, 181)');
     });
   });
 });
