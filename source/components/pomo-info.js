@@ -33,6 +33,7 @@ class PomoInfo extends HTMLElement {
       modal.style.display = 'block';
     };
     infoButton.innerHTML = 'Info';
+    infoButton.disabled = true; // For testing
 
     // the lightbox
     const modalContent = document.createElement('div');
