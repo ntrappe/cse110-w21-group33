@@ -81,51 +81,53 @@ const resizeElements = () => {
   if (window.innerWidth < MIN_WIDTH) {
     pomoFinish.changeTransform(
       'scale('
-      .concat((window.innerWidth / MIN_WIDTH).toString())
-      .concat(') translateX(')
-      .concat(
-        (
-          (MIN_WIDTH - window.innerWidth) /
-          window.innerWidth * MIN_WIDTH / 
-          X_OFFSET_FACTOR
-        ).toString()
-      )
-      .concat('px)')
+        .concat((window.innerWidth / MIN_WIDTH).toString())
+        .concat(') translateX(')
+        .concat(
+          (
+            (MIN_WIDTH - window.innerWidth) /
+            window.innerWidth * MIN_WIDTH / 
+            X_OFFSET_FACTOR
+          ).toString()
+        )
+        .concat('px)')
     );
     pomoInfo.changeTransform(
       'scale('
-      .concat((window.innerWidth / MIN_WIDTH).toString())
-      .concat(') translateX(')
-      .concat(
-        (
-          (MIN_WIDTH - window.innerWidth) / 
-          window.innerWidth * MIN_WIDTH / 
-          X_OFFSET_FACTOR
-        ).toString()
-      )
-      .concat('px)')
+        .concat((window.innerWidth / MIN_WIDTH).toString())
+        .concat(') translateX(')
+        .concat(
+          (
+            (MIN_WIDTH - window.innerWidth) / 
+            window.innerWidth * MIN_WIDTH / 
+            X_OFFSET_FACTOR
+          ).toString()
+        )
+        .concat('px)')
     );
-    pomoSettings.changeTransform('scale('
-      .concat((window.innerWidth / MIN_WIDTH).toString())
-      .concat(') translateX(')
-      .concat(  
-        (
-          (window.innerWidth - MIN_WIDTH ) / 
-          window.innerWidth * MIN_WIDTH / 
-          X_OFFSET_FACTOR
-        ).toString()
-      )
-      .concat('px)'), 
-      'scale('.concat( (window.innerWidth / MIN_WIDTH).toString())
-      .concat(') translateX(')
-      .concat(
-        (
-          (window.innerWidth - MIN_WIDTH ) / 
-          window.innerWidth * MIN_WIDTH / 
-          X_OFFSET_FACTOR
-        ).toString()
-      )
-      .concat('px)'),
+    pomoSettings.changeTransform(
+      'scale('
+        .concat((window.innerWidth / MIN_WIDTH).toString())
+        .concat(') translateX(')
+        .concat(  
+          (
+            (window.innerWidth - MIN_WIDTH ) / 
+            window.innerWidth * MIN_WIDTH / 
+            X_OFFSET_FACTOR
+          ).toString()
+        )
+        .concat('px)'), 
+      'scale('
+        .concat( (window.innerWidth / MIN_WIDTH).toString())
+        .concat(') translateX(')
+        .concat(
+          (
+            (window.innerWidth - MIN_WIDTH ) / 
+            window.innerWidth * MIN_WIDTH / 
+            X_OFFSET_FACTOR
+          ).toString()
+        )
+        .concat('px)'),
       (MIN_WIDTH - window.innerWidth) / 5
     );
   } else {
