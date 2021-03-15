@@ -39,7 +39,7 @@ describe('Check a 1024 * 768 screen', { includeShadowDom: true }, () => {
 
   it('Check timer resize is called', () => {
     cy.wrap().should(() => {
-      expect(spyTimer).to.be.calledWith("");
+      expect(spyTimer).to.be.calledWith('');
     });
   });
 
@@ -75,7 +75,7 @@ describe('Check a 800 * 600 screen', { includeShadowDom: true }, () => {
     cy.window().then((win) => {
       win.addEventListener('resize', () => {
         resizeTriggered = true;
-      })
+      });
     });
 
     // run these tests as if in a desktop
@@ -83,7 +83,6 @@ describe('Check a 800 * 600 screen', { includeShadowDom: true }, () => {
     cy.viewport(800, 600);
     cy.window().trigger('resize');
   });
-    
     
   it('Check resize event triggered', () => {
     cy.wrap().should(() => {
@@ -119,13 +118,12 @@ describe('Check a 225 * 400 screen', { includeShadowDom: true }, () => {
     cy.window().then((win) => {
       win.addEventListener('resize', () => {
         resizeTriggered = true;
-      })
+      });
     });
     cy.viewport(225, 400);
     cy.window().trigger('resize');
   });
-    
-    
+
   it('Check resize event triggered', () => {
     cy.wrap().should(() => {
       expect(resizeTriggered).to.eq(true);
@@ -152,10 +150,12 @@ describe('Check a 225 * 400 screen', { includeShadowDom: true }, () => {
 
   it('Check settting resize is called', () => {
     cy.wrap().should(() => {
-      expect(spySetting).to.be.calledWith('scale(0.5) translateX(-75px)', 
-          'scale(0.5) translateX(-75px)', 45);
+      expect(spySetting).to.be.calledWith('scale(0.5) translateX(-75px)',
+          'scale(0.5) translateX(-75px)',
+          45);
     });
   });
+
   it('Check timer changeTransform called', () => {
     cy.get('.wrapper').then(($el) => {
       expect($el).to.have.css('transform', 'matrix(0.5, 0, 0, 0.5, 0, -100)');
@@ -181,7 +181,6 @@ describe('Check a 225 * 400 screen', { includeShadowDom: true }, () => {
     });
   });
 });
-
 
 // Check a iphoneX screen
 describe('Check a iphoneX screen', { includeShadowDom: true }, () => {
@@ -227,10 +226,17 @@ describe('Check a iphoneX screen', { includeShadowDom: true }, () => {
     });
   });
 
+  it('Check mobile info resize is called', () => {
+    cy.wrap().should(() => {
+      expect(spyInfo).to.be.calledWith('scale(0.8333333333333334) translateX(15px)');
+    });
+  });
+
   it('Check mobile settting resize is called', () => {
     cy.wrap().should(() => {
-      expect(spySetting).to.be.calledWith('scale(0.8333333333333334) translateX(-15px)', 
-            'scale(0.8333333333333334) translateX(-15px)', 15);
+      expect(spySetting).to.be.calledWith('scale(0.8333333333333334) translateX(-15px)',
+            'scale(0.8333333333333334) translateX(-15px)',
+            15);
     });
   });
 });
