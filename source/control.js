@@ -2,8 +2,9 @@ import PomoAudio from './components/pomo-audio.js';
 import PomoFinish from './components/pomo-finish.js';
 import PomoInfo from './components/pomo-info.js';
 import PomoSettings from './components/pomo-settings.js';
-import PomoTimer from './components/pomo-timer.js';
+import * as PomoStorage from './storage.js';
 import * as PomoTab from './components/pomo-tab.js';
+import PomoTimer from './components/pomo-timer.js';
 
 // Initialize page styling
 const stylesheet = document.createElement('link');
@@ -11,10 +12,9 @@ stylesheet.rel = 'stylesheet';
 stylesheet.href = './index.css';
 document.head.appendChild(stylesheet);
 
-// const stylesheetLight = document.createElement('link');
-// stylesheetLight.rel = 'stylesheet';
-// stylesheetLight.href = './index-light.css';
-// document.head.appendChild(stylesheetLight);
+const stylesheetLight = document.createElement('link');
+stylesheetLight.rel = 'stylesheet';
+stylesheetLight.href = './index-light.css';
 
 // Initialize web components
 const pomoAudio = new PomoAudio();
@@ -56,18 +56,62 @@ footer.appendChild(pomoFinish);
 
 let currentMode = '';
 
-const pomoLength = 1;
-const shortLength = 1;
-const longLength = 1;
+let workLength = 1;
+let shortLength = 1;
+let longLength = 1;
 
-let pomoCount = 0;
-let shortCount = 0;
-let longCount = 0;
+let workCount = 0;
+let shortBreakCount = 0;
+let longBreakCount = 0;
+let interruptCount = 0;
 
 function onload() {
+  // Load user preferences from storage
+  const calmIn = PomoStorage.getCalm();
+  const volumeIn = PomoStorage.getVolume();
+  const soundIn = PomoStorage.getSound();
+  const darkIn = PomoStorage.getDark();
+  const workIn = PomoStorage.getWork();
+  const shortBreakIn = PomoStorage.getShortBreak();
+  const longBreakIn = PomoStorage.getLongBreak();
+  const accessIn = PomoStorage.getAccessibility();
+
+  // Update settings to reflect current values
+  pomoSettings.loadSettings(
+    calmIn,
+    volumeIn,
+    soundIn,
+    darkIn,
+    workIn,
+    shortBreakIn,
+    longBreakIn,
+    accessIn
+  );
+
+  const {
+    work: workCountIn,
+    shortBreak: shortBreakCountIn,
+    longBreak: longBreakCountIn,
+    interrupts: interruptCountIn,
+  } = PomoStorage.getDayCounts();
+
+  // Update control variables
+  workLength = workIn;
+  shortLength = shortBreakIn;
+  longLength = longBreakIn;
+
+  workCount = workCountIn;
+  shortBreakCount = shortBreakCountIn;
+  longBreakCount = longBreakCountIn;
+  interruptCount = interruptCountIn;
+
   currentMode = 'work';
 
-  pomoTimer.setTimer(pomoLength, 'work');
+  // pomoAudio.setSound('./assets/bike_chime.mp3');
+  pomoAudio.setVolume(100);
+
+  // Configure initial component state
+  pomoTimer.setTimer(workLength, currentMode);
   pomoSettings.enableSettings();
   pomoInfo.enableInfo();
   PomoTab.defaultTab();
@@ -85,6 +129,9 @@ function onTick(e) {
 pomoTimer.addEventListener('tick', onTick);
 
 function onReset() {
+  interruptCount += 1;
+  PomoStorage.setDayCounts(workCount, shortBreakCount, longBreakCount, interruptCount);
+
   pomoSettings.enableSettings();
   pomoInfo.enableInfo();
   PomoTab.defaultTab();
@@ -94,30 +141,36 @@ pomoTimer.addEventListener('timerReset', onReset);
 function onFinish() {
   switch (currentMode) {
     case 'work':
-      pomoCount += 1;
+      workCount += 1;
+      PomoStorage.setDayCounts(workCount, shortBreakCount, longBreakCount, interruptCount);
 
-      if (pomoCount !== 0 && pomoCount % 4 === 0) {
+      pomoAudio.playSound();
+      if (workCount !== 0 && workCount % 4 === 0) {
         pomoTimer.setProgress(4);
         currentMode = 'long break';
         pomoTimer.setTimer(longLength, 'long break');
       } else {
-        pomoTimer.setProgress(pomoCount % 4);
+        pomoTimer.setProgress(workCount % 4);
         currentMode = 'short break';
         pomoTimer.setTimer(shortLength, 'short break');
       }
       break;
 
     case 'short break':
-      shortCount += 1;
+      shortBreakCount += 1;
+      PomoStorage.setDayCounts(workCount, shortBreakCount, longBreakCount, interruptCount);
       currentMode = 'work';
-      pomoTimer.setTimer(pomoLength, 'work');
+      pomoAudio.playSound();
+      pomoTimer.setTimer(workLength, 'work');
       break;
 
     case 'long break':
       pomoTimer.setProgress(0);
-      longCount += 1;
+      longBreakCount += 1;
+      PomoStorage.setDayCounts(workCount, shortBreakCount, longBreakCount, interruptCount);
       currentMode = 'work';
-      pomoTimer.setTimer(pomoLength, 'work');
+      pomoAudio.playSound();
+      pomoTimer.setTimer(workLength, 'work');
       break;
 
     default:
@@ -130,8 +183,72 @@ function onFinish() {
 pomoTimer.addEventListener('timerFinish', onFinish);
 
 function onModalRequest() {
-  pomoFinish.showModal();
+  pomoFinish.showModal(workCount, shortBreakCount, longBreakCount, interruptCount);
 }
 pomoFinish.addEventListener('modalRequest', onModalRequest);
+
+function workSet(event) {
+  const work = event.detail.work();
+  PomoStorage.setWork(work);
+}
+
+pomoSettings.addEventListener('workSet', workSet);
+
+function shortBreakSet(event) {
+  const shortBreak = event.detail.shortBreak();
+  PomoStorage.setShortBreak(shortBreak);
+}
+
+pomoSettings.addEventListener('shortBreakSet', shortBreakSet);
+
+function longBreakSet(event) {
+  const longBreak = event.detail.longBreak();
+  PomoStorage.setLongBreak(longBreak);
+}
+
+pomoSettings.addEventListener('longBreakSet', longBreakSet);
+
+function volumeSet(event) {
+  const volume = event.detail.volume();
+  PomoStorage.setVolume(volume);
+}
+
+pomoSettings.addEventListener('volumeSet', volumeSet);
+
+function soundSet(event) {
+  const sound = event.detail.sound();
+  PomoStorage.setSound(sound);
+}
+
+pomoSettings.addEventListener('soundSet', soundSet);
+
+function calmSet(event) {
+  const calm = event.detail.calm();
+  PomoStorage.setCalm(calm);
+  pomoTimer.setCalm(calm);
+  PomoTab.setCalm(calm);
+}
+
+pomoSettings.addEventListener('calmSet', calmSet);
+
+function darkSet(event) {
+  const dark = event.detail.dark();
+  PomoStorage.setDark(dark);
+
+  if (dark) {
+    document.head.removeChild(stylesheetLight);
+  } else {
+    document.head.appendChild(stylesheetLight);
+  }
+}
+
+pomoSettings.addEventListener('darkSet', darkSet);
+
+function accessSet(event) {
+  const accessible = event.detail.accessible();
+  PomoStorage.setAccessibility(accessible);
+}
+
+pomoSettings.addEventListener('accessSet', accessSet);
 
 onload();
