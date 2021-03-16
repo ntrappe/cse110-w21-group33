@@ -159,6 +159,7 @@ describe('Check setting Dark and Light Mode', { includeShadowDom: true }, () => 
   });
 
   it('Check that timer text is in light mode', () => {
+    cy.wait(1000);
     cy.get('#timer-text').then(($el) => {
       expect($el).to.have.css('color', 'rgb(33, 38, 44)');
     });
