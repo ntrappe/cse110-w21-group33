@@ -26,9 +26,9 @@ describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
   beforeEach(() => {
     cy.visit('./source/index.html');
   });
-  it('Check that button labeled Statistics', () => {
+  it('Check that button labeled Stat', () => {
     cy.get('#finish-button').then(($el) => {
-      expect($el).to.contain('Statistics');
+      expect($el).to.contain('Stat');
     });
   });
   it('Check that lightbox is half transparent and is not displayed initially', () => {
