@@ -15,12 +15,11 @@ class PomoTimer extends HTMLElement {
 
     const shadow = this.attachShadow({ mode: 'open' });
 
-    /*
-      const link = document.createElement('link');
-      link.setAttribute('id', 'timer-styles');
-      link.setAttribute('rel', 'stylesheet');
-      link.setAttribute('href', './components/pomo-timer.css');
-    */
+    const timerStyle = document.createElement('link');
+    timerStyle.setAttribute('id', 'timer-style-dark');
+    timerStyle.setAttribute('rel', 'stylesheet');
+    timerStyle.setAttribute('href', './components/pomo-timer.css');
+    shadow.append(timerStyle);
 
     const wrapper = document.createElement('span');
     wrapper.setAttribute('class', 'wrapper');
@@ -37,12 +36,10 @@ class PomoTimer extends HTMLElement {
     // timer countdown display
     const timerText = document.createElement('h1');
     timerText.setAttribute('id', 'timer-text');
-    timerText.setAttribute('class', 'time');
 
     // timer button
     const timerButton = document.createElement('button');
     timerButton.setAttribute('id', 'timer-button');
-    timerButton.setAttribute('class', 'start');
 
     /* Initialize elements */
     timerButton.textContent = START;
@@ -148,6 +145,7 @@ class PomoTimer extends HTMLElement {
       display(this.totalSeconds, timerText, this.calmTimerText);
       currentMode.setAttribute('class', mode);
       currentMode.textContent = mode.toUpperCase();
+      timerText.setAttribute('class', mode);
     };
 
     /**
@@ -167,11 +165,24 @@ class PomoTimer extends HTMLElement {
     /**
      * For CONTROL to determine if timer text display will show normal
      * minutes & seconds or just minutes
-     * @param {Boolean} calm - true for min; false for min and sec
+     * @param {Boolean} calm true for min; false for min and sec
      */
     this.setCalm = (calm) => {
       this.calmTimerText = calm;
       display(this.totalSeconds, timerText, this.calmTimerText);
+    };
+
+    /**
+     * For CONTROL to determine whether to use default dark styling
+     * or use light to override some colors of dark
+     * @param {Boolean} dark true for dark css; false for light css
+     */
+    this.setDark = (dark) => {
+      if (dark) {
+        timerStyle.setAttribute('href', './components/pomo-timer.css');
+      } else {
+        timerStyle.setAttribute('href', './components/pomo-timer-light.css');
+      }
     };
   }
 }

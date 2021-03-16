@@ -2,7 +2,7 @@
 
 const MAX_SEC = 60;
 const MAX_POMO_MIN = 59;
-const NUM_MIN = 2;
+const DEFAULT_POMO_MIN = 2;
 const TWO_DIGIT = 10;
 const START = 'Start';
 const RESET = 'Reset';
@@ -13,7 +13,7 @@ const RESET = 'Reset';
  * @param {String} timerText text for current time on timer
  * @param {Boolean} calmTimerText true if should only display min; false for min : sec
  */
-function display(totalSeconds, timerText, calmTimerText) {
+export function display(totalSeconds, timerText, calmTimerText) {
   // calculate minutes and seconds from total seconds in timer
   const minutes = Math.floor(totalSeconds / MAX_SEC);
   const seconds = totalSeconds - minutes * MAX_SEC;
@@ -54,10 +54,10 @@ function display(totalSeconds, timerText, calmTimerText) {
  * @param {Number} m Minutes for the timer to run
  * @return {Number} totalSeconds
  */
-function setTime(m) {
+export function setTime(m) {
   // Error catching: make sure minimum 1m and maximum 59m
   if (m < 1 || m > MAX_POMO_MIN) {
-    return NUM_MIN * MAX_SEC;
+    return DEFAULT_POMO_MIN * MAX_SEC;
   }
   return m * MAX_SEC;
 }
@@ -66,7 +66,7 @@ function setTime(m) {
  * Changes button to represent Start
  *  @param {Button} timerButton button for Start/Reset timer
  */
-function setStartButton(timerButton) {
+export function setStartButton(timerButton) {
   timerButton.innerHTML = START;
 }
 
@@ -74,7 +74,7 @@ function setStartButton(timerButton) {
  * Changes button to represent Reset
  *  @param {Button} timerButton button for Start/Reset timer
  */
-function setResetButton(timerButton) {
+export function setResetButton(timerButton) {
   timerButton.innerHTML = RESET;
 }
 
@@ -84,7 +84,7 @@ function setResetButton(timerButton) {
  * @returns {Array} container for progress elements to append to shadow and individual
  *                  squares (for styling)
  */
-function initProgess() {
+export function initProgess() {
   /* holds 2 layers of div where the second layer is the progress squares */
   const progressContainer = document.createElement('div');
   progressContainer.setAttribute('class', 'progress-container');
@@ -132,7 +132,7 @@ function initProgess() {
  * @param {Object} square3 a square shape (created by initProgress)
  * @param {Object} square4 a square shape (created by initProgress)
  */
-function setProgressHelper(progress, square1, square2, square3, square4) {
+export function setProgressHelper(progress, square1, square2, square3, square4) {
   /* clear out all styling first (make all squares dark) */
   square1.setAttribute('class', 'square-off');
   square2.setAttribute('class', 'square-off');
@@ -162,7 +162,5 @@ function setProgressHelper(progress, square1, square2, square3, square4) {
       break;
   }
 }
-
-export { display, setStartButton, setResetButton, setTime, initProgess, setProgressHelper };
 
 /* End pomo-timer-helpers.js */

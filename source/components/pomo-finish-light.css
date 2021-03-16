@@ -1,0 +1,15 @@
+/* light css for finish/statistics */
+
+@import "./pomo-finish.css";
+
+#finish-button {
+  color: #24282c;
+  background-color: #e5e7ea;
+  border-color: #d8dbdc;
+}
+
+#finish-button:hover {
+  color: #24282c;
+  background-color: #edeff3;
+  border-color: #f5f2f2;
+}
