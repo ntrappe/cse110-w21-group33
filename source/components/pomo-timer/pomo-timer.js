@@ -19,7 +19,7 @@ class PomoTimer extends HTMLElement {
     const timerStyle = document.createElement('link');
     timerStyle.setAttribute('id', 'timer-style-dark');
     timerStyle.setAttribute('rel', 'stylesheet');
-    timerStyle.setAttribute('href', './components/pomo-timer.css');
+    timerStyle.setAttribute('href', './components/pomo-timer/pomo-timer.css');
     shadow.append(timerStyle);
 
     const wrapper = document.createElement('span');
@@ -181,9 +181,9 @@ class PomoTimer extends HTMLElement {
      */
     this.setDark = (dark) => {
       if (dark) {
-        timerStyle.setAttribute('href', './components/pomo-timer.css');
+        timerStyle.setAttribute('href', './components/pomo-timer/pomo-timer.css');
       } else {
-        timerStyle.setAttribute('href', './components/pomo-timer-light.css');
+        timerStyle.setAttribute('href', './components/pomo-timer/pomo-timer-light.css');
       }
     };
 

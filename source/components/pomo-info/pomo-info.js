@@ -26,7 +26,7 @@ class PomoInfo extends HTMLElement {
     const infoStyle = document.createElement('link');
     infoStyle.setAttribute('id', 'info-styles');
     infoStyle.setAttribute('rel', 'stylesheet');
-    infoStyle.setAttribute('href', './components/pomo-info.css');
+    infoStyle.setAttribute('href', './components/pomo-info/pomo-info.css');
     shadow.append(infoStyle);
 
     // the modal window
@@ -45,11 +45,18 @@ class PomoInfo extends HTMLElement {
     // info button
     const infoButton = document.createElement('button');
     infoButton.setAttribute('id', 'info-button');
+
+    const infoIcon = document.createElement('img');
+    infoIcon.setAttribute('id', 'info-button-icon');
+    infoIcon.setAttribute('src', './assets/i_info.png');
+    infoIcon.textContent = 'Info';
+
+    infoButton.appendChild(infoIcon);
+
     infoButton.onclick = () => {
       modal.style.display = 'block';
       shadow.dispatchEvent(this.openEvent);
     };
-    infoButton.innerHTML = 'Info';
 
     // the lightbox
     const modalContent = document.createElement('div');
@@ -120,9 +127,11 @@ class PomoInfo extends HTMLElement {
      */
     this.setDark = (dark) => {
       if (dark) {
-        infoStyle.setAttribute('href', './components/pomo-info.css');
+        infoStyle.setAttribute('href', './components/pomo-info/pomo-info.css');
+        infoIcon.setAttribute('src', './assets/i_info.png');
       } else {
-        infoStyle.setAttribute('href', './components/pomo-info-light.css');
+        infoStyle.setAttribute('href', './components/pomo-info/pomo-info-light.css');
+        infoIcon.setAttribute('src', './assets/i_info_light.png');
       }
     };
 
