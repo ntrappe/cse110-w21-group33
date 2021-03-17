@@ -38,11 +38,6 @@ class PomoSettings extends HTMLElement {
     const styles = document.createElement('link');
     styles.setAttribute('id', 'settings-style');
     styles.setAttribute('rel', 'stylesheet');
-    if (this.dark) {
-      styles.setAttribute('href', './components/settings-dark.css');
-    } else {
-      styles.setAttribute('href', './components/settings-light.css');
-    }
 
     // Settings panel
     const sideBar = document.createElement('div');
@@ -52,10 +47,25 @@ class PomoSettings extends HTMLElement {
     settingsTitle.setAttribute('id', 'settings-title');
     settingsTitle.textContent = 'Settings';
 
-    // Button to open sidebar
-    const openButton = document.createElement('button');
-    openButton.setAttribute('id', 'open-button');
-    openButton.innerHTML = '&#9881;';
+    // Button to open settings sidebar
+    const settingsButton = document.createElement('button');
+    settingsButton.setAttribute('id', 'settings-button');
+
+    const settingsIcon = document.createElement('img');
+    settingsIcon.setAttribute('id', 'settings-button-icon');
+    // settingsIcon.setAttribute('src', './assets/gear_settings_light.png');
+    settingsIcon.textContent = 'Settings';
+
+    settingsButton.appendChild(settingsIcon);
+
+    // update css for button and sidebar if dark vs not mode
+    if (this.dark) {
+      styles.setAttribute('href', './components/pomo-settings.css');
+      settingsIcon.setAttribute('src', './assets/gear_settings.png');
+    } else {
+      styles.setAttribute('href', './components/pomo-settings-light.css');
+      settingsIcon.setAttribute('src', './assets/gear_settings_light.png');
+    }
 
     // Button to close sidebar
     const closeButton = document.createElement('button');
@@ -241,7 +251,7 @@ class PomoSettings extends HTMLElement {
     // Attach elements to shadow DOM
     shadow.appendChild(settingsModal);
     shadow.appendChild(styles);
-    shadow.appendChild(openButton);
+    shadow.appendChild(settingsButton);
     shadow.appendChild(sideBar);
 
     sideBar.appendChild(closeButton);
@@ -346,7 +356,7 @@ class PomoSettings extends HTMLElement {
     /**
      * Opens the sidebar when clicking open button
      */
-    openButton.onclick = () => {
+    settingsButton.onclick = () => {
       sideBar.setAttribute('class', 'open');
       settingsModal.style.display = 'block';
     };
@@ -546,9 +556,9 @@ class PomoSettings extends HTMLElement {
      */
     this.setDark = (dark) => {
       if (dark) {
-        styles.setAttribute('href', './components/settings-dark.css');
+        styles.setAttribute('href', './components/pomo-settings.css');
       } else {
-        styles.setAttribute('href', './components/settings-light.css');
+        styles.setAttribute('href', './components/pomo-settings-light.css');
       }
       calmSwitch.setDark(dark);
       darkSwitch.setDark(dark);

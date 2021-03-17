@@ -1,0 +1,112 @@
+/* light mode css for settings */
+
+@import "./pomo-settings.css";
+
+#settings {
+  background-color: #fafbfc;
+  transition: 0.5s;
+}
+
+#close-button {
+  background-color: #fff;
+  border-color: #dadbdc;
+}
+
+#close-button:hover {
+  background-color: #e5e8ea;
+  border-color: #8d949d;
+  transition-duration: 0.1s;
+}
+
+/* button to open settings */
+#settings-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #e5e7ea;
+  border-color: #d8dbdc;
+  color: transparent;
+}
+
+#settings-button:hover {
+  background-color: #edeff3;
+  border-color: #f5f2f2;
+  transition-duration: 0.1s;
+}
+
+/* Holds title of sidebar */
+#settings-title {
+  color: #23272c;
+}
+
+/* Says: "Time (minutes)" / "Display" / "Audio" */
+#pomo-length-label,
+#audio-label,
+#display-label,
+#accessibility-label {
+  color: #23272c;
+}
+
+/* Holds timer options / display options / audio options */
+#timer-section,
+#audio-section,
+#display-section,
+#accessibility-section {
+  color: #dadbdc;
+  background-color: #fff;
+}
+
+/* Sizing for work, short, long, sound, volume sections */
+#work-section,
+#short-section,
+#long-section,
+#sound-section,
+#volume-section {
+  color: #23272c;
+}
+
+/* Sizing for dark, calm, access sections */
+#dark-section,
+#calm-section,
+#access-section {
+  color: #23272c;
+}
+
+/* Bottom border for work, short, calm, sound */
+#work-section,
+#short-section,
+#calm-section,
+#sound-section {
+  border-bottom: 1.5px solid #dadbdc;
+}
+
+/* Input fields for work/break lengths / volume */
+#work-number,
+#short-break-number,
+#long-break-number,
+#sound-select {
+  background-color: #e5e8ea;
+  color: #23272c;
+  border-color: #dadbdc;
+}
+
+#volume-slide {
+  background-color: #fff;
+}
+
+/* safari/chrome volume slider track */
+#volume-slide::-webkit-slider-runnable-track {
+  background: #e5e8ea;
+}
+
+/* firefox volume slider track */
+#volume-slide::-moz-range-track {
+  background: #e5e8ea;
+}
+
+/* make volume numbr input field small */
+#volume-number {
+  background-color: #e5e8ea;
+  color: #23272c;
+  border-color: #e5e8ea;
+}
