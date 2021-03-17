@@ -81,12 +81,23 @@
 
 #info-content {
   display: block;
-  color: #cbd1d8;
+  color: #8b949e;
   margin: 5% 5%;
   width: 90%;
 }
 
+#info-content h1 {
+  color: #afb3b8;
+}
+
+#info-content h2 {
+  color: #123354;
+}
+
 #info-content h3 {
-  padding-bottom: 2px;
-  border-bottom: #cbd1d8 solid;
+  color: #104e8b;
+}
+
+#info-content b {
+  color: #fff;
 }
