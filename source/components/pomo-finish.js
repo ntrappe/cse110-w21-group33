@@ -18,6 +18,9 @@ class PomoFinish extends HTMLElement {
       composed: true,
     });
 
+    // value of accessibility
+    this.accessible = true;
+
     // button to finish session and display statistics
     const finishButton = document.createElement('button');
     finishButton.setAttribute('id', 'finish-button');

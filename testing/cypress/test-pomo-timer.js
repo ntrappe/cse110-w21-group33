@@ -777,7 +777,7 @@ describe('Accessibility when click then reset', { includeShadowDom: true }, () =
   });
   it('Button toggles when r is pressed (Reset) & True', () => {
     cy.window().then((win) => {
-      win.pomoStorage.setAccessibility(true);
+      win.pomoTimer.setAccessibility(true);
     });
     cy.get('body')
       .type('r')
@@ -791,6 +791,9 @@ describe('Accessibility when click then reset', { includeShadowDom: true }, () =
 
 describe('Basic Button Toggles for Accessibility when on', { includeShadowDom: true }, () => {
   it('Button toggles when s is pressed (Start) & True', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setAccessibility(true);
+    });
     cy.get('body')
       .type('s')
       .then(() => {
@@ -800,6 +803,9 @@ describe('Basic Button Toggles for Accessibility when on', { includeShadowDom: t
       });
   });
   it('Button toggles when r is pressed (Reset) & True', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setAccessibility(true);
+    });
     cy.get('body')
       .type('r')
       .then(() => {
@@ -813,7 +819,7 @@ describe('Basic Button Toggles for Accessibility when on', { includeShadowDom: t
 describe('Basic Button Toggles for Accessibility when off', { includeShadowDom: true }, () => {
   it('Button toggles when s is pressed (Start) & False', () => {
     cy.window().then((win) => {
-      win.pomoStorage.setAccessibility(false);
+      win.pomoTimer.setAccessibility(false);
     });
     cy.get('body')
       .type('s')
@@ -824,6 +830,9 @@ describe('Basic Button Toggles for Accessibility when off', { includeShadowDom: 
       });
   });
   it('Button toggles when r is pressed (Reset) & False', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setAccessibility(false);
+    });
     cy.get('body')
       .type('r')
       .then(() => {
@@ -836,6 +845,9 @@ describe('Basic Button Toggles for Accessibility when off', { includeShadowDom: 
 
 describe('Accessibility when on then off then on', { includeShadowDom: true }, () => {
   it('Button toggles when s is pressed (Start) & True', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setAccessibility(true);
+    });
     cy.get('body')
       .type('s')
       .then(() => {
@@ -846,7 +858,7 @@ describe('Accessibility when on then off then on', { includeShadowDom: true }, (
   });
   it('Button toggles when r is pressed (Reset) & False', () => {
     cy.window().then((win) => {
-      win.pomoStorage.setAccessibility(false);
+      win.pomoTimer.setAccessibility(false);
     });
     cy.get('body')
       .type('r')
@@ -858,7 +870,7 @@ describe('Accessibility when on then off then on', { includeShadowDom: true }, (
   });
   it('Button toggles when r is pressed (Reset) & True', () => {
     cy.window().then((win) => {
-      win.pomoStorage.setAccessibility(true);
+      win.pomoTimer.setAccessibility(true);
     });
     cy.get('body')
       .type('r')
@@ -873,7 +885,7 @@ describe('Accessibility when on then off then on', { includeShadowDom: true }, (
 describe('Accessibility when off then click', { includeShadowDom: true }, () => {
   it('Button toggles when s is pressed (Start) & False', () => {
     cy.window().then((win) => {
-      win.pomoStorage.setAccessibility(false);
+      win.pomoTimer.setAccessibility(false);
     });
     cy.get('body')
       .type('s')
@@ -885,7 +897,7 @@ describe('Accessibility when off then click', { includeShadowDom: true }, () => 
   });
   it('Button toggles when r is pressed (Reset) & True', () => {
     cy.window().then((win) => {
-      win.pomoStorage.setAccessibility(true);
+      win.pomoTimer.setAccessibility(true);
     });
     cy.get('body')
       .type('r')
@@ -896,3 +908,4 @@ describe('Accessibility when off then click', { includeShadowDom: true }, () => 
       });
   });
 });
+

@@ -10,6 +10,16 @@ class PomoSettings extends HTMLElement {
   constructor() {
     super();
 
+    this.openEvent = new CustomEvent('openEvent', {
+      bubbles: true,
+      composed: true,
+    });
+
+    this.closeEvent = new CustomEvent('closeEvent', {
+      bubbles: true,
+      composed: true,
+    });
+
     // Event variables
     this.work = 25;
     this.shortBreak = 5;
@@ -341,7 +351,7 @@ class PomoSettings extends HTMLElement {
     openButton.onclick = () => {
       sideBar.setAttribute('class', 'open');
       settingsModal.style.display = 'block';
-      shadow.dispatchEvent(this.event);
+      shadow.dispatchEvent(this.openEvent);
     };
 
     /**
@@ -350,7 +360,7 @@ class PomoSettings extends HTMLElement {
     closeButton.onclick = () => {
       sideBar.setAttribute('class', 'close');
       settingsModal.style.display = 'none';
-      shadow.dispatchEvent(this.event);
+      shadow.dispatchEvent(this.closeEvent);
     };
 
     /**
@@ -638,7 +648,7 @@ class PomoSettings extends HTMLElement {
     this.setAccessibility = (enabled) => {
       this.accessible = enabled;
     };
-
+    
     /**
      * Functions that opens and closes the setting page with the q key
      * @param {Number} e value that the eventListener gets when a key is clicked

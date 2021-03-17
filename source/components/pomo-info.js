@@ -2,8 +2,22 @@ class PomoInfo extends HTMLElement {
   constructor() {
     super();
 
-    this.accessible = true;
     const shadow = this.attachShadow({ mode: 'open' });
+
+    // event listener for opening info page
+    this.openEvent = new CustomEvent('openEvent', {
+      bubbles: true,
+      composed: true,
+    });
+
+    // event listener for closing info page
+    this.closeEvent = new CustomEvent('closeEvent', {
+      bubbles: true,
+      composed: true,
+    });
+
+    // value of accessibility
+    this.accessible = true;
 
     // wrapper for element
     const wrapper = document.createElement('div');
@@ -24,7 +38,7 @@ class PomoInfo extends HTMLElement {
       // close lightbox when click outside of the content area
       if (event.target === modal) {
         modal.style.display = 'none';
-        shadow.dispatchEvent(this.event);
+        shadow.dispatchEvent(this.closeEvent);
       }
     };
 
@@ -33,7 +47,7 @@ class PomoInfo extends HTMLElement {
     infoButton.setAttribute('id', 'info-button');
     infoButton.onclick = () => {
       modal.style.display = 'block';
-      shadow.dispatchEvent(this.event);
+      shadow.dispatchEvent(this.openEvent);
     };
     infoButton.innerHTML = 'Info';
 
@@ -62,7 +76,7 @@ class PomoInfo extends HTMLElement {
     closeButton.setAttribute('class', 'button-off');
     closeButton.onclick = () => {
       modal.style.display = 'none';
-      shadow.dispatchEvent(this.event);
+      shadow.dispatchEvent(this.closeEvent);
     };
     closeButton.innerHTML = '&times;';
 
@@ -118,6 +132,7 @@ class PomoInfo extends HTMLElement {
      */
     this.setAccessibility = (enabled) => {
       this.accessible = enabled;
+      console.log('inside setAccessibility',this.accessible)
     };
 
     /**
@@ -125,6 +140,7 @@ class PomoInfo extends HTMLElement {
      * @param {Number} e value that the eventListener gets when a key is clicked
      */
     function keyHolder(e) {
+      console.log('inside eventListener',this.accessible)
       // Checking if the key clicked is a i
       if (e.key === 'i' && this.accessible === true) {
         if (modal.style.display === 'none') {

@@ -506,6 +506,9 @@ describe('Sidebar Testing with Accessibility', { includeShadowDom: true }, () =>
   });
 
   it('Sidebar opens when q is pressed & Accesibility is on', () => {
+    cy.window().then((win) => {
+      win.pomoSettings.setAccessibility(true);
+    });
     cy.get('body').type('q');
     cy.get('#settings').then(($el) => {
       expect($el).to.have.attr('class', 'open');
@@ -513,6 +516,9 @@ describe('Sidebar Testing with Accessibility', { includeShadowDom: true }, () =>
   });
 
   it('Sidebar closes when q is pressed & Accesibility is on', () => {
+    cy.window().then((win) => {
+      win.pomoSettings.setAccessibility(true);
+    });
     cy.get('body').type('q');
     cy.get('body').type('q');
     cy.get('#settings').then(($el) => {
@@ -521,10 +527,13 @@ describe('Sidebar Testing with Accessibility', { includeShadowDom: true }, () =>
   });
 
   it('Sidebar opens when q is pressed & Accesibility is off', () => {
+    cy.window().then((win) => {
+      win.pomoSettings.setAccessibility(true);
+    });
     cy.get('body').type('q');
     cy.get('body').type('q');
     cy.window().then((win) => {
-      win.pomoStorage.setAccessibility(false);
+      win.pomoSettings.setAccessibility(false);
     });
     cy.get('body').type('q');
     cy.get('#settings').then(($el) => {
@@ -533,9 +542,12 @@ describe('Sidebar Testing with Accessibility', { includeShadowDom: true }, () =>
   });
 
   it('Sidebar closes when q is pressed & Accesibility is off', () => {
+    cy.window().then((win) => {
+      win.pomoSettings.setAccessibility(true);
+    });
     cy.get('body').type('q');
     cy.window().then((win) => {
-      win.pomoStorage.setAccessibility(false);
+      win.pomoSettings.setAccessibility(false);
     });
     cy.get('body').type('q');
     cy.get('#settings').then(($el) => {

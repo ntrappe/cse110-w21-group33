@@ -49,6 +49,7 @@ class PomoTimer extends HTMLElement {
     this.totalSeconds = 0; // total seconds in timer
     let modeDuration = 0; // time to put on clock
     this.calmTimerText = false; // display w or w/o sec
+    this.accessible = true;
 
     shadow.appendChild(wrapper);
     wrapper.appendChild(currentMode);
