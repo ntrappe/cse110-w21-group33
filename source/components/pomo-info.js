@@ -35,6 +35,7 @@ class PomoInfo extends HTMLElement {
 
     const iconHolder = document.createElement('img');
     iconHolder.setAttribute('id', 'closeButtonIcon');
+    iconHolder.setAttribute('src', './assets/info.png');
     infoButton.appendChild(iconHolder);
 
     const textHolder = document.createElement('p');
@@ -113,8 +114,10 @@ class PomoInfo extends HTMLElement {
     this.setDark = (dark) => {
       if (dark) {
         infoStyle.setAttribute('href', './components/pomo-info.css');
+        iconHolder.setAttribute('src', './assets/info.png');
       } else {
         infoStyle.setAttribute('href', './components/pomo-info-light.css');
+        iconHolder.setAttribute('src', './assets/light_info.png');
       }
     };
   }
