@@ -5,12 +5,6 @@ import PomoSettings from './components/pomo-settings.js';
 import PomoTimer from './components/pomo-timer.js';
 import * as PomoTab from './components/pomo-tab.js';
 
-const MIN_WIDTH = 450;
-const MIN_HEIGHT = 700;
-const MIN_HEIGHT_STOP_CHANGE = 500;
-
-const X_OFFSET_FACTOR = 6;
-
 // Initialize web components
 const pomoAudio = new PomoAudio();
 pomoAudio.setAttribute('id', 'pomo-audio');
