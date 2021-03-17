@@ -44,8 +44,3 @@ main.appendChild(pomoTimer);
 
 const footer = document.getElementById('footer');
 footer.appendChild(pomoFinish);
-
-// Mock showModal for testing
-document.addEventListener('modalRequest', () => {
-  pomoFinish.showModal(1, 2, 3, 4);
-});
