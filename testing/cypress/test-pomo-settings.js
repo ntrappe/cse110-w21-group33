@@ -25,12 +25,12 @@ describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
 describe('Test sidebar elements', () => {
   beforeEach(() => {
     cy.visit('./source');
-    cy.get('#open-button').click();
+    cy.get('#settings-button').click();
   });
 
   it('Sidebar opens when gear is pressed', { includeShadowDom: true }, () => {
     cy.get('#close-button').click();
-    cy.get('#open-button').click();
+    cy.get('#settings-button').click();
     cy.get('#settings').then(($el) => {
       expect($el).to.have.attr('class', 'open');
     });
@@ -156,19 +156,20 @@ describe('Test sidebar elements', () => {
   });
 
   it('Stylesheet is switched when calling setDark()', { includeShadowDom: true }, () => {
+    // Note: maybe add css checks for toggle bc now has pomo-toggle.css and -light.css
     cy.get('#settings-style').then(($el) => {
-      expect($el).to.have.attr('href', './components/settings-light.css');
+      expect($el).to.have.attr('href', './components/pomo-settings/pomo-settings-light.css');
     });
     cy.window().then((win) => {
       win.pomoSettings.setDark(true);
       cy.get('#settings-style').then(($el) => {
-        expect($el).to.have.attr('href', './components/settings-dark.css');
+        expect($el).to.have.attr('href', './components/pomo-settings/pomo-settings.css');
       });
     });
     cy.window().then((win) => {
       win.pomoSettings.setDark(false);
       cy.get('#settings-style').then(($el) => {
-        expect($el).to.have.attr('href', './components/settings-light.css');
+        expect($el).to.have.attr('href', './components/pomo-settings/pomo-settings-light.css');
       });
     });
   });

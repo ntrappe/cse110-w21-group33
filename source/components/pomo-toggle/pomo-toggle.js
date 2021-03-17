@@ -112,9 +112,9 @@ class ToggleSwitch extends HTMLElement {
      */
     this.setDark = (dark) => {
       if (dark) {
-        style.setAttribute('href', './components/settings-dark.css');
+        style.setAttribute('href', './components/pomo-toggle/pomo-toggle.css');
       } else {
-        style.setAttribute('href', './components/settings-light.css');
+        style.setAttribute('href', './components/pomo-toggle/pomo-toggle-light.css');
       }
     };
   }

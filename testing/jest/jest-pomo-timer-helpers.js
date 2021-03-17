@@ -1,4 +1,4 @@
-import * as pomoHelper from '../../source/components/pomo-timer-helpers';
+import * as pomoHelper from '../../source/components/pomo-timer/pomo-timer-helpers';
 
 /* Test for function display */
 describe('test display', () => {

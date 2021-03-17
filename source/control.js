@@ -1,20 +1,17 @@
 import PomoAudio from './components/pomo-audio.js';
-import PomoFinish from './components/pomo-finish.js';
-import PomoInfo from './components/pomo-info.js';
-import PomoSettings from './components/pomo-settings.js';
+import PomoFinish from './components/pomo-finish/pomo-finish.js';
+import PomoInfo from './components/pomo-info/pomo-info.js';
+import PomoSettings from './components/pomo-settings/pomo-settings.js';
 import * as PomoStorage from './storage.js';
 import * as PomoTab from './components/pomo-tab.js';
-import PomoTimer from './components/pomo-timer.js';
+import PomoTimer from './components/pomo-timer/pomo-timer.js';
 
 // Initialize page styling
 const stylesheet = document.createElement('link');
 stylesheet.rel = 'stylesheet';
 stylesheet.href = './index.css';
+stylesheet.setAttribute('href', './index.css');
 document.head.appendChild(stylesheet);
-
-const stylesheetLight = document.createElement('link');
-stylesheetLight.rel = 'stylesheet';
-stylesheetLight.href = './index-light.css';
 
 // Initialize web components
 const pomoAudio = new PomoAudio();
@@ -254,9 +251,9 @@ function darkSet(event) {
   pomoTimer.setDark(dark);
 
   if (dark) {
-    document.head.removeChild(stylesheetLight);
+    stylesheet.setAttribute('href', './index.css');
   } else {
-    document.head.appendChild(stylesheetLight);
+    stylesheet.setAttribute('href', './index-light.css');
   }
 }
 pomoSettings.addEventListener('darkSet', darkSet);
