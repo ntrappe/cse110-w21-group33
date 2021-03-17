@@ -344,9 +344,7 @@ describe('Test sidebar elements', () => {
           resolve();
         };
         $el[0].addEventListener('calmSet', onCalmSet);
-        cy.get('#calm-switch').then(($ele) => {
-          $ele[0].setOn();
-        });
+        cy.get('#calm-slider').click();
       });
     });
     cy.wrap(eventPromise);
@@ -361,9 +359,7 @@ describe('Test sidebar elements', () => {
           resolve();
         };
         $el[0].addEventListener('darkSet', onDarkSet);
-        cy.get('#dark-switch').then(($ele) => {
-          $ele[0].setOn();
-        });
+        cy.get('#dark-slider').click();
       });
     });
     cy.wrap(eventPromise);
@@ -373,14 +369,12 @@ describe('Test sidebar elements', () => {
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-settings').then(($el) => {
         const onAccessSet = (e) => {
-          expect(e.detail.accessible()).to.eq(true);
+          expect(e.detail.accessible()).to.eq(false);
           $el[0].removeEventListener('accessSet', onAccessSet);
           resolve();
         };
         $el[0].addEventListener('accessSet', onAccessSet);
-        cy.get('#access-switch').then(($ele) => {
-          $ele[0].setOn();
-        });
+        cy.get('#accessible-slider').click();
       });
     });
     cy.wrap(eventPromise);
