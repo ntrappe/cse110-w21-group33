@@ -81,14 +81,14 @@ class PomoFinish extends HTMLElement {
     shadow.appendChild(wrapper);
 
     /**
-     * Allows the control to open the info page
+     * Allows the control to open the finish page
      */
     this.enableFinish = () => {
       finishButton.disabled = false;
     };
 
     /**
-     * Prevent the control from open the info page
+     * Prevent the control from open the finish page
      */
     this.disableFinish = () => {
       finishButton.disabled = true;
