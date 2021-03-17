@@ -75,6 +75,7 @@ function disableAll() {
   pomoSettings.disableSettings();
 }
 
+// PomoTimer Events
 pomoTimer.addEventListener('timerStart', () => {
   disableAll();
 });
@@ -136,11 +137,12 @@ pomoTimer.addEventListener('timerFinish', () => {
   enableAll();
 });
 
-function onModalRequest() {
+// PomoFinish Events
+pomoFinish.addEventListener('modalRequest', () => {
   pomoFinish.showModal(workCount, shortCount, longCount, interruptCount);
-}
-pomoFinish.addEventListener('modalRequest', onModalRequest);
+});
 
+// PomoSettings Events
 function workSet(work) {
   if (currentMode === 'work') {
     pomoTimer.setTimer(work, currentMode);
