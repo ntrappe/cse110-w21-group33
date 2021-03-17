@@ -341,6 +341,7 @@ class PomoSettings extends HTMLElement {
     openButton.onclick = () => {
       sideBar.setAttribute('class', 'open');
       settingsModal.style.display = 'block';
+      shadow.dispatchEvent(this.event);
     };
 
     /**
@@ -349,6 +350,7 @@ class PomoSettings extends HTMLElement {
     closeButton.onclick = () => {
       sideBar.setAttribute('class', 'close');
       settingsModal.style.display = 'none';
+      shadow.dispatchEvent(this.event);
     };
 
     /**
@@ -630,12 +632,20 @@ class PomoSettings extends HTMLElement {
     };
 
     /**
+     * For CONTROL to determine whether we can open info, setting, stats
+     * @param {Boolean} enabled true for being able to open, false otherwise
+     */
+    this.setAccessibility = (enabled) => {
+      this.accessible = enabled;
+    };
+
+    /**
      * Functions that opens and closes the setting page with the q key
      * @param {Number} e value that the eventListener gets when a key is clicked
      */
     function keyHolder(e) {
       // Checking if the key clicked is a q
-      if (e.key === 'q' && pomoStorage.getAccessibility() === true) {
+      if (e.key === 'q' && this.accessible === true) {
         if (sideBar.getAttribute('class') === 'open') {
           closeButton.onclick();
         } else {

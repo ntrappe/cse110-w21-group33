@@ -135,12 +135,20 @@ class PomoFinish extends HTMLElement {
     };
 
     /**
+     * For CONTROL to determine whether we can open info, setting, stats
+     * @param {Boolean} enabled true for being able to open, false otherwise
+     */
+    this.setAccessibility = (enabled) => {
+      this.accessible = enabled;
+    };
+
+    /**
      * Functions that opens and closes the finish page with the f key
      * @param {Number} e value that the eventListener gets when a key is clicked
      */
     function keyHolder(e) {
       // Checking if the key clicked is a f
-      if (e.key === 'f' && pomoStorage.getAccessibility() === true) {
+      if (e.key === 'f' && this.accessible === true) {
         if (modal.style.display === 'block') {
           closeButton.onclick();
         } else {

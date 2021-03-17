@@ -2,6 +2,7 @@ class PomoInfo extends HTMLElement {
   constructor() {
     super();
 
+    this.accessible = true;
     const shadow = this.attachShadow({ mode: 'open' });
 
     // wrapper for element
@@ -23,6 +24,7 @@ class PomoInfo extends HTMLElement {
       // close lightbox when click outside of the content area
       if (event.target === modal) {
         modal.style.display = 'none';
+        shadow.dispatchEvent(this.event);
       }
     };
 
@@ -31,6 +33,7 @@ class PomoInfo extends HTMLElement {
     infoButton.setAttribute('id', 'info-button');
     infoButton.onclick = () => {
       modal.style.display = 'block';
+      shadow.dispatchEvent(this.event);
     };
     infoButton.innerHTML = 'Info';
 
@@ -59,6 +62,7 @@ class PomoInfo extends HTMLElement {
     closeButton.setAttribute('class', 'button-off');
     closeButton.onclick = () => {
       modal.style.display = 'none';
+      shadow.dispatchEvent(this.event);
     };
     closeButton.innerHTML = '&times;';
 
@@ -109,12 +113,20 @@ class PomoInfo extends HTMLElement {
     };
 
     /**
+     * For CONTROL to determine whether we can open info, setting, stats
+     * @param {Boolean} enabled true for being able to open, false otherwise
+     */
+    this.setAccessibility = (enabled) => {
+      this.accessible = enabled;
+    };
+
+    /**
      * Functions that opens and closes the info page with the i key
      * @param {Number} e value that the eventListener gets when a key is clicked
      */
     function keyHolder(e) {
       // Checking if the key clicked is a i
-      if (e.key === 'i' && pomoStorage.getAccessibility() === true) {
+      if (e.key === 'i' && this.accessible === true) {
         if (modal.style.display === 'none') {
           infoButton.onclick();
         } else if (modal.style.display === 'block') {

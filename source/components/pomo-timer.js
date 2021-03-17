@@ -187,17 +187,25 @@ class PomoTimer extends HTMLElement {
     };
 
     /**
+     * For CONTROL to determine whether we can open info, setting, stats
+     * @param {Boolean} enabled true for being able to open, false otherwise
+     */
+    this.setAccessibility = (enabled) => {
+      this.accessible = enabled;
+    };
+
+    /**
      * Functions that calls timerButton.onclick() if s or r key is pressed
      * @param {Number} e value that the eventListener gets when a key is clicked
      */
     function keyHolder(e) {
       // Checking if the key clicked is a s
-      if (e.key === 's' && pomoStorage.getAccessibility() === true) {
+      if (e.key === 's' && this.accessible === true) {
         if (timerButton.innerHTML === START) {
           timerButton.onclick(); // Forces a onclick button for timerButton
         }
         // Key clicked is a e
-      } else if (e.key === 'r' && pomoStorage.getAccessibility() === true) {
+      } else if (e.key === 'r' && this.accessible === true) {
         if (timerButton.innerHTML === RESET) {
           timerButton.onclick(); // Forces a onclick button for timerButton
         }
