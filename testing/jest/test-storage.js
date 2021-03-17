@@ -1,20 +1,27 @@
 import * as storageHelper from '../../source/storage';
 
+// Helper variable to set the local storage
+const manualStorage = JSON.stringify({ work: 10, shortBreak: 0, longBreak: 0, interrupts: 0 });
+// Helper variable to check the setDayCounts method
+const storageValue = { interrupts: 5, longBreak: 2, shortBreak: 3, work: 15 };
+const defaultStorageValue = { interrupts: 0, longBreak: 0, shortBreak: 0, work: 0 };
+
 beforeEach(() => {
   localStorage.clear();
 });
 
 test('getDayCount without setDayCount', () => {
-  expect(storageHelper.getDayCount()).toBe(0);
+  expect(storageHelper.getDayCounts()).toStrictEqual(defaultStorageValue);
 });
 
 test('getDayCount for same day/month/year', () => {
+  const currStorageValue = { interrupts: 0, longBreak: 0, shortBreak: 0, work: 10 };
   const date = new Date();
   localStorage.setItem('prevYear', date.getFullYear());
   localStorage.setItem('prevMonth', date.getMonth() + 1);
   localStorage.setItem('prevDay', date.getDate());
-  localStorage.setItem('pomodoroCount', 10);
-  expect(storageHelper.getDayCount()).toBe(10);
+  localStorage.setItem('pomodoroCount', manualStorage);
+  expect(storageHelper.getDayCounts()).toStrictEqual(currStorageValue);
 });
 
 test('getDayCount for a new day', () => {
@@ -22,8 +29,8 @@ test('getDayCount for a new day', () => {
   localStorage.setItem('prevYear', date.getFullYear());
   localStorage.setItem('prevMonth', date.getMonth() + 1);
   localStorage.setItem('prevDay', date.getDate() - 1); // Previous date before current day
-  localStorage.setItem('pomodoroCount', 10);
-  expect(storageHelper.getDayCount()).toBe(0);
+  localStorage.setItem('pomodoroCount', manualStorage);
+  expect(storageHelper.getDayCounts()).toStrictEqual(defaultStorageValue);
 });
 
 test('getDayCount for a new Month', () => {
@@ -31,8 +38,8 @@ test('getDayCount for a new Month', () => {
   localStorage.setItem('prevYear', date.getFullYear());
   localStorage.setItem('prevMonth', date.getMonth()); // Will be the month before current month
   localStorage.setItem('prevDay', date.getDate());
-  localStorage.setItem('pomodoroCount', 10);
-  expect(storageHelper.getDayCount()).toBe(0);
+  localStorage.setItem('pomodoroCount', manualStorage);
+  expect(storageHelper.getDayCounts()).toStrictEqual(defaultStorageValue);
 });
 
 test('getDayCount for a new Year', () => {
@@ -40,13 +47,13 @@ test('getDayCount for a new Year', () => {
   localStorage.setItem('prevYear', date.getFullYear() - 1); // Year before current year
   localStorage.setItem('prevMonth', date.getMonth() + 1);
   localStorage.setItem('prevDay', date.getDate());
-  localStorage.setItem('pomodoroCount', 10);
-  expect(storageHelper.getDayCount()).toBe(0);
+  localStorage.setItem('pomodoroCount', manualStorage);
+  expect(storageHelper.getDayCounts()).toStrictEqual(defaultStorageValue);
 });
 
 test('setDayCount for the first time', () => {
-  storageHelper.setDayCount(5);
-  expect(storageHelper.getDayCount()).toBe(5);
+  storageHelper.setDayCounts(15, 3, 2, 5);
+  expect(storageHelper.getDayCounts()).toStrictEqual(storageValue);
 });
 
 test('setDayCount for same day/month/year', () => {
@@ -54,9 +61,9 @@ test('setDayCount for same day/month/year', () => {
   localStorage.setItem('prevYear', date.getFullYear());
   localStorage.setItem('prevMonth', date.getMonth() + 1);
   localStorage.setItem('prevDay', date.getDate());
-  localStorage.setItem('pomodoroCount', 10);
-  storageHelper.setDayCount(5);
-  expect(storageHelper.getDayCount()).toBe(15);
+  localStorage.setItem('pomodoroCount', manualStorage);
+  storageHelper.setDayCounts(15, 3, 2, 5);
+  expect(storageHelper.getDayCounts()).toStrictEqual(storageValue);
 });
 
 test('setDayCount for a new day', () => {
@@ -64,9 +71,9 @@ test('setDayCount for a new day', () => {
   localStorage.setItem('prevYear', date.getFullYear());
   localStorage.setItem('prevMonth', date.getMonth() + 1);
   localStorage.setItem('prevDay', date.getDate() - 1); // Previous date before current day
-  localStorage.setItem('pomodoroCount', 10);
-  storageHelper.setDayCount(5);
-  expect(storageHelper.getDayCount()).toBe(5);
+  localStorage.setItem('pomodoroCount', manualStorage);
+  storageHelper.setDayCounts(15, 3, 2, 5);
+  expect(storageHelper.getDayCounts()).toStrictEqual(storageValue);
 });
 
 test('setDayCount for a new Month', () => {
@@ -74,9 +81,9 @@ test('setDayCount for a new Month', () => {
   localStorage.setItem('prevYear', date.getFullYear());
   localStorage.setItem('prevMonth', date.getMonth()); // Month before current month
   localStorage.setItem('prevDay', date.getDate());
-  localStorage.setItem('pomodoroCount', 10);
-  storageHelper.setDayCount(11);
-  expect(storageHelper.getDayCount()).toBe(11);
+  localStorage.setItem('pomodoroCount', manualStorage);
+  storageHelper.setDayCounts(15, 3, 2, 5);
+  expect(storageHelper.getDayCounts()).toStrictEqual(storageValue);
 });
 
 test('setDayCount for a new Year', () => {
@@ -84,9 +91,9 @@ test('setDayCount for a new Year', () => {
   localStorage.setItem('prevYear', date.getFullYear() - 1); // Year before current year
   localStorage.setItem('prevMonth', date.getMonth() + 1);
   localStorage.setItem('prevDay', date.getDate());
-  localStorage.setItem('pomodoroCount', 10);
-  storageHelper.setDayCount(12);
-  expect(storageHelper.getDayCount()).toBe(12);
+  localStorage.setItem('pomodoroCount', manualStorage);
+  storageHelper.setDayCounts(15, 3, 2, 5);
+  expect(storageHelper.getDayCounts()).toStrictEqual(storageValue);
 });
 
 test('getCalm without setCalm', () => {
@@ -124,7 +131,7 @@ test('setSound to be jingle', () => {
 });
 
 test('getDark without setDark', () => {
-  expect(storageHelper.getDark()).toBe(false);
+  expect(storageHelper.getDark()).toBe(true);
 });
 
 test('setDark to be true', () => {
@@ -132,7 +139,7 @@ test('setDark to be true', () => {
   expect(storageHelper.getDark()).toBe(true);
 });
 
-test('setDark to be true', () => {
+test('setDark to be false', () => {
   storageHelper.setDark(false);
   expect(storageHelper.getDark()).toBe(false);
 });
