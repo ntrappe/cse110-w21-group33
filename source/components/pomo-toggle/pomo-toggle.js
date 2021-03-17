@@ -59,8 +59,10 @@ class ToggleSwitch extends HTMLElement {
     toggleSlider.onclick = () => {
       if (this.toggle) {
         this.setOff();
+        shadow.dispatchEvent(this.toggleSwitchEvent);
       } else {
         this.setOn();
+        shadow.dispatchEvent(this.toggleSwitchEvent);
       }
       toggleSlider.style.pointerEvents = 'none';
       setTimeout(() => {
@@ -76,7 +78,6 @@ class ToggleSwitch extends HTMLElement {
       offMode.style.display = 'none';
       onMode.style.display = 'block';
       this.toggle = true;
-      shadow.dispatchEvent(this.toggleSwitchEvent);
     };
 
     /**
@@ -87,7 +88,6 @@ class ToggleSwitch extends HTMLElement {
       offMode.style.display = 'block';
       onMode.style.display = 'none';
       this.toggle = false;
-      shadow.dispatchEvent(this.toggleSwitchEvent);
     };
 
     /**
@@ -112,9 +112,9 @@ class ToggleSwitch extends HTMLElement {
      */
     this.setDark = (dark) => {
       if (dark) {
-        style.setAttribute('href', './components/settings-dark.css');
+        style.setAttribute('href', './components/pomo-toggle/pomo-toggle.css');
       } else {
-        style.setAttribute('href', './components/settings-light.css');
+        style.setAttribute('href', './components/pomo-toggle/pomo-toggle-light.css');
       }
     };
   }

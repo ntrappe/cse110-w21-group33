@@ -9,7 +9,7 @@ class PomoFinish extends HTMLElement {
     const statsStyle = document.createElement('link');
     statsStyle.setAttribute('id', 'statistics-styles');
     statsStyle.setAttribute('rel', 'stylesheet');
-    statsStyle.setAttribute('href', './components/pomo-finish.css');
+    statsStyle.setAttribute('href', './components/pomo-finish/pomo-finish.css');
     shadow.append(statsStyle);
 
     // custom event for modal display
@@ -21,7 +21,14 @@ class PomoFinish extends HTMLElement {
     // button to finish session and display statistics
     const finishButton = document.createElement('button');
     finishButton.setAttribute('id', 'finish-button');
-    finishButton.textContent = 'Statistics';
+
+    const finishIcon = document.createElement('img');
+    finishIcon.setAttribute('id', 'finish-button-icon');
+    finishIcon.setAttribute('src', './assets/bar_chart_stats.png');
+    finishIcon.textContent = 'Statistics';
+
+    finishButton.appendChild(finishIcon);
+
     finishButton.onclick = () => {
       shadow.dispatchEvent(this.event);
     };
@@ -81,15 +88,31 @@ class PomoFinish extends HTMLElement {
     shadow.appendChild(wrapper);
 
     /**
+     * Allows the control to open the finish page
+     */
+    this.enableFinish = () => {
+      finishButton.disabled = false;
+    };
+
+    /**
+     * Prevent the control from open the finish page
+     */
+    this.disableFinish = () => {
+      finishButton.disabled = true;
+    };
+
+    /**
      * Modify elements' data-mode to dark-mode or light-mode
      * @param {Boolean} dark  indicate whether or not the setting is in dark mode
      */
 
     this.setDark = (dark) => {
       if (dark) {
-        statsStyle.setAttribute('href', './components/pomo-finish.css');
+        statsStyle.setAttribute('href', './components/pomo-finish/pomo-finish.css');
+        finishIcon.setAttribute('src', './assets/bar_chart_stats.png');
       } else {
-        statsStyle.setAttribute('href', './components/pomo-finish-light.css');
+        statsStyle.setAttribute('href', './components/pomo-finish/pomo-finish-light.css');
+        finishIcon.setAttribute('src', './assets/bar_chart_stats_light.png');
       }
     };
 

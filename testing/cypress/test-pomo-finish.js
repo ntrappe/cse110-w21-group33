@@ -22,6 +22,7 @@ describe('Find Finish Elements', { includeShadowDom: true }, () => {
     cy.get('#statistics-panel');
   });
 });
+
 describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
   beforeEach(() => {
     cy.visit('./source/index.html');
@@ -36,6 +37,21 @@ describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
     cy.get('#statistics-modal')
       .should('have.css', 'background-color')
       .and('eq', 'rgba(0, 0, 0, 0.5)');
+  });
+});
+
+describe('Check The Enabling/Disabling Finish Button', { includeShadowDom: true }, () => {
+  it('Check that the button can be disabled', () => {
+    cy.window().then((win) => {
+      win.pomoFinish.disableFinish();
+      cy.get('#finish-button').should('be.disabled');
+    });
+  });
+  it('Check that the button can be enabled', () => {
+    cy.window().then((win) => {
+      win.pomoFinish.enableFinish();
+      cy.get('#finish-button').should('not.be.disabled');
+    });
   });
 });
 
@@ -121,7 +137,11 @@ describe('Check Dark/Light Settings', { includeShadowDom: true }, () => {
     cy.window().then((win) => {
       win.pomoFinish.setDark(true);
     });
-    cy.get('#statistics-styles').should('have.attr', 'href', './components/pomo-finish.css');
+    cy.get('#statistics-styles').should(
+      'have.attr',
+      'href',
+      './components/pomo-finish/pomo-finish.css'
+    );
   });
 
   it('Check that setDark(false) sets light mode', () => {
@@ -129,6 +149,10 @@ describe('Check Dark/Light Settings', { includeShadowDom: true }, () => {
     cy.window().then((win) => {
       win.pomoFinish.setDark(false);
     });
-    cy.get('#statistics-styles').should('have.attr', 'href', './components/pomo-finish-light.css');
+    cy.get('#statistics-styles').should(
+      'have.attr',
+      'href',
+      './components/pomo-finish/pomo-finish-light.css'
+    );
   });
 });
