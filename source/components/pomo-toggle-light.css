@@ -1,4 +1,4 @@
-/* dark mode css for toggle switches */
+/* light mode css for toggle switches */
 
 /* Toggle CSS */
 .switch input {
@@ -19,14 +19,14 @@
 .slider {
   border-radius: 50px;
   border: 1.5px solid;
-  border-color: #355e36;
+  border-color: #63cc63;
   position: absolute;
   cursor: pointer;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #18221d;
+  background-color: #63cc63;
   transition: 0.4s;
 }
 
@@ -39,27 +39,27 @@
   width: 20px;
   left: 3px;
   bottom: 2.8px;
-  background-color: #79d071;
+  background-color: #51a552;
   transition: 0.4s;
 }
 
 /* Toggle switch OFF: background & border color */
 input:checked + .slider {
-  background-color: #0d1117;
-  border-color: #21262d;
+  background-color: #e5e8ea;
+  border-color: #e5e8ea;
 }
 
 /* Toggle switch OFF: circle color */
 input:checked + .slider::before {
   /* movement of circle in x direction */
   transform: translateX(38px);
-  background-color: #70757a;
+  background-color: #979da4;
 }
 
 /* Toggle switch OFF: text */
 .off-mode {
   display: none;
-  color: #8b949e;
+  color: #23272c;
   position: absolute;
   top: 5px;
   left: 10px;
@@ -69,7 +69,7 @@ input:checked + .slider::before {
 /* Toggle switch ON: text */
 .on-mode {
   display: block;
-  color: #79d071;
+  color: #fff;
   position: absolute;
   top: 5px;
   right: 10px;
