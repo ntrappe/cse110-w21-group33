@@ -52,6 +52,12 @@ main.appendChild(pomoTimer);
 const footer = document.getElementById('footer');
 footer.appendChild(pomoFinish);
 
+const Mode = {
+  work: 'work',
+  short: 'short break',
+  long: 'long break',
+};
+
 let currentMode = '';
 
 let workLength = 1;
@@ -85,7 +91,7 @@ pomoTimer.addEventListener('tick', (event) => {
 });
 
 pomoTimer.addEventListener('timerReset', () => {
-  if (currentMode === 'work') {
+  if (currentMode === Mode.work) {
     interruptCount += 1;
     PomoStorage.setDayCounts(workCount, shortCount, longCount, interruptCount);
   }
@@ -96,34 +102,34 @@ pomoTimer.addEventListener('timerReset', () => {
 
 pomoTimer.addEventListener('timerFinish', () => {
   switch (currentMode) {
-    case 'work':
+    case Mode.work:
       workCount += 1;
       if (workCount !== 0 && workCount % 4 === 0) {
         pomoTimer.setProgress(4);
-        currentMode = 'long break';
-        pomoTimer.setTimer(longLength, 'long break');
-        PomoStorage.setMode('long break');
+        currentMode = Mode.long;
+        pomoTimer.setTimer(longLength, Mode.long);
+        PomoStorage.setMode(Mode.long);
       } else {
         pomoTimer.setProgress(workCount % 4);
-        currentMode = 'short break';
-        pomoTimer.setTimer(shortLength, 'short break');
-        PomoStorage.setMode('short break');
+        currentMode = Mode.short;
+        pomoTimer.setTimer(shortLength, Mode.short);
+        PomoStorage.setMode(Mode.short);
       }
       break;
 
-    case 'short break':
+    case Mode.short:
       shortCount += 1;
-      currentMode = 'work';
-      pomoTimer.setTimer(workLength, 'work');
-      PomoStorage.setMode('work');
+      currentMode = Mode.work;
+      pomoTimer.setTimer(workLength, Mode.work);
+      PomoStorage.setMode(Mode.work);
       break;
 
-    case 'long break':
+    case Mode.long:
       pomoTimer.setProgress(0);
       longCount += 1;
-      currentMode = 'work';
-      pomoTimer.setTimer(workLength, 'work');
-      PomoStorage.setMode('work');
+      currentMode = Mode.work;
+      pomoTimer.setTimer(workLength, Mode.work);
+      PomoStorage.setMode(Mode.work);
       break;
 
     default:
@@ -144,7 +150,7 @@ pomoFinish.addEventListener('modalRequest', () => {
 
 // PomoSettings Events
 function workSet(work) {
-  if (currentMode === 'work') {
+  if (currentMode === Mode.work) {
     pomoTimer.setTimer(work, currentMode);
   }
 }
@@ -157,7 +163,7 @@ pomoSettings.addEventListener('workSet', (event) => {
 });
 
 function shortBreakSet(shortBreak) {
-  if (currentMode === 'short break') {
+  if (currentMode === Mode.short) {
     pomoTimer.setTimer(shortBreak, currentMode);
   }
 }
@@ -170,7 +176,7 @@ pomoSettings.addEventListener('shortBreakSet', (event) => {
 });
 
 function longBreakSet(longBreak) {
-  if (currentMode === 'long break') {
+  if (currentMode === Mode.long) {
     pomoTimer.setTimer(longBreak, currentMode);
   }
 }
@@ -284,13 +290,13 @@ function onload() {
 
   // Configure initial component states
   switch (currentMode) {
-    case 'work':
+    case Mode.work:
       pomoTimer.setTimer(workLength, currentMode);
       break;
-    case 'short break':
+    case Mode.short:
       pomoTimer.setTimer(shortLength, currentMode);
       break;
-    case 'long break':
+    case Mode.long:
       pomoTimer.setTimer(longLength, currentMode);
       break;
     default:
