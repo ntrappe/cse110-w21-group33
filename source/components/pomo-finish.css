@@ -140,6 +140,35 @@
   border: 2px solid #d03e43;
 }
 
+.fancy {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  background-color: #171b21;
+  border: 2px solid #171b21;
+  position: absolute;
+}
+
+.fancy.work {
+  background-color: #429046;
+  border: 2px solid #55a758;
+}
+
+.fancy.short {
+  background-color: #692bb7;
+  border: 2px solid #8135e4;
+}
+
+.fancy.long {
+  background-color: #1b6fb2;
+  border: 2px solid #308dd5;
+}
+
+.fancy.interrupt {
+  background-color: #d03e43;
+  border: 2px solid #d03e43;
+}
+
 .stats-subtitle {
   color: #cbd1d8;
   text-align: center;

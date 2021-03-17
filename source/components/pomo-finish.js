@@ -171,6 +171,12 @@ class PomoFinish extends HTMLElement {
 
         container.appendChild(rowContainer);
       }
+
+      if (count > 12) {
+        const fancySquare = document.createElement('div');
+        fancySquare.setAttribute('class', 'fancy work');
+        container.appendChild(fancySquare);
+      }
     }
 
     /**
