@@ -184,3 +184,39 @@ test('setAccessbility to be false', () => {
   storageHelper.setAccessibility(false);
   expect(storageHelper.getAccessibility()).toBe(false);
 });
+
+test('getMode without setMode', () => {
+  expect(storageHelper.getMode()).toBe('work');
+});
+
+test('getMode with work saved', () => {
+  storageHelper.setMode('work');
+  expect(storageHelper.getMode()).toBe('work');
+});
+
+test('getMode with short break saved', () => {
+  const date = new Date();
+  localStorage.setItem('prevYear', date.getFullYear());
+  localStorage.setItem('prevMonth', date.getMonth() + 1);
+  localStorage.setItem('prevDay', date.getDate());
+  storageHelper.setMode('short break');
+  expect(storageHelper.getMode()).toBe('short break');
+});
+
+test('getMode with long break saved', () => {
+  const date = new Date();
+  localStorage.setItem('prevYear', date.getFullYear());
+  localStorage.setItem('prevMonth', date.getMonth() + 1);
+  localStorage.setItem('prevDay', date.getDate());
+  storageHelper.setMode('long break');
+  expect(storageHelper.getMode()).toBe('long break');
+});
+
+test('getMode with long break saved and new day', () => {
+  const date = new Date();
+  localStorage.setItem('prevYear', date.getFullYear());
+  localStorage.setItem('prevMonth', date.getMonth() + 1);
+  localStorage.setItem('prevDay', date.getDate() - 1); // Previous date before current day
+  storageHelper.setMode('long break');
+  expect(storageHelper.getMode()).toBe('work');
+});
