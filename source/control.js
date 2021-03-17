@@ -10,11 +10,8 @@ import PomoTimer from './components/pomo-timer.js';
 const stylesheet = document.createElement('link');
 stylesheet.rel = 'stylesheet';
 stylesheet.href = './index.css';
+stylesheet.setAttribute('href', './index.css');
 document.head.appendChild(stylesheet);
-
-const stylesheetLight = document.createElement('link');
-stylesheetLight.rel = 'stylesheet';
-stylesheetLight.href = './index-light.css';
 
 // Initialize web components
 const pomoAudio = new PomoAudio();
@@ -254,9 +251,9 @@ function darkSet(event) {
   pomoTimer.setDark(dark);
 
   if (dark) {
-    document.head.removeChild(stylesheetLight);
+    stylesheet.setAttribute('href', './index.css');
   } else {
-    document.head.appendChild(stylesheetLight);
+    stylesheet.setAttribute('href', './index-light.css');
   }
 }
 pomoSettings.addEventListener('darkSet', darkSet);
