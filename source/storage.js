@@ -242,4 +242,34 @@ export function setAccessibility(accessibility) {
   localStorage.setItem('isAccessible', accessibility);
 }
 
+/**
+ * Function to be called to retrieve the last mode saved
+ * @return {String} accessibility setting of accessibility
+ */
+export function getMode() {
+  const date = new Date();
+  if (
+    date.getFullYear() > localStorage.getItem('prevYear') ||
+    date.getMonth() + 1 > localStorage.getItem('prevMonth') ||
+    date.getDate() > localStorage.getItem('prevDay')
+  ) {
+    localStorage.setItem('prevYear', date.getFullYear());
+    localStorage.setItem('prevMonth', date.getMonth() + 1);
+    localStorage.setItem('prevDay', date.getDate());
+    localStorage.setItem('savedMode', 'work');
+  }
+  if (!localStorage.getItem('savedMode')) {
+    localStorage.setItem('savedMode', 'work');
+  }
+  return localStorage.getItem('savedMode');
+}
+
+/**
+ * Function to be called to set the current mode of the timer
+ * @param {String} mode setting of accessibility
+ */
+export function setMode(mode) {
+  localStorage.setItem('savedMode', mode);
+}
+
 /* End of functions for Local Storage */
