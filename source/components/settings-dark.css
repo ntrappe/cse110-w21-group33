@@ -78,7 +78,6 @@
 #open-button > img {
   width: 20%;
   padding-right: 5px;
-  content: url('../assets/gear.png');
 }
 
 /* Styling for the button label */

@@ -50,6 +50,11 @@ class PomoSettings extends HTMLElement {
 
     const iconHolder = document.createElement('img');
     iconHolder.setAttribute('id', 'open-button-icon');
+    if (this.dark) {
+      iconHolder.setAttribute('src', './assets/gear.png');
+    } else {
+      iconHolder.setAttribute('src', './assets/light_gear.png');
+    }
     openButton.appendChild(iconHolder);
 
     const textHolder = document.createElement('p');
@@ -546,8 +551,10 @@ class PomoSettings extends HTMLElement {
     this.setDark = (dark) => {
       if (dark) {
         styles.setAttribute('href', './components/settings-dark.css');
+        iconHolder.setAttribute('src', './assets/gear.png');
       } else {
         styles.setAttribute('href', './components/settings-light.css');
+        iconHolder.setAttribute('src', './assets/light_gear.png');
       }
       calmSwitch.setDark(dark);
       darkSwitch.setDark(dark);
