@@ -13,3 +13,21 @@
   background-color: #edeff3;
   border-color: #f5f2f2;
 }
+
+/* Update display of the modal */
+#info-modal-content {
+  background-color: #edeff3;
+}
+
+#info-content {
+  color: #24282c;
+  background-color: #edeff3;
+}
+
+#info-content b {
+  color: #24282c;
+}
+
+#info-content h1 {
+  color: #123354;
+}
