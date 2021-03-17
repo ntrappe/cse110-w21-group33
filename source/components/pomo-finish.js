@@ -76,6 +76,7 @@ class PomoFinish extends HTMLElement {
     const workContainer = document.createElement('div');
     workContainer.setAttribute('class', 'stats-entry');
     const workSquares = document.createElement('div');
+    workSquares.setAttribute('class', 'stats-squares');
     workContainer.appendChild(workSquares);
     const workTitle = document.createElement('h4');
     workTitle.setAttribute('class', 'stats-subtitle');
@@ -86,6 +87,7 @@ class PomoFinish extends HTMLElement {
     const shortContainer = document.createElement('div');
     shortContainer.setAttribute('class', 'stats-entry');
     const shortSquares = document.createElement('div');
+    shortSquares.setAttribute('class', 'stats-squares');
     shortContainer.appendChild(shortSquares);
     const shortTitle = document.createElement('h4');
     shortTitle.setAttribute('class', 'stats-subtitle');
@@ -96,6 +98,7 @@ class PomoFinish extends HTMLElement {
     const longContainer = document.createElement('div');
     longContainer.setAttribute('class', 'stats-entry');
     const longSquares = document.createElement('div');
+    longSquares.setAttribute('class', 'stats-squares');
     longContainer.appendChild(longSquares);
     const longTitle = document.createElement('h4');
     longTitle.setAttribute('class', 'stats-subtitle');
@@ -106,6 +109,7 @@ class PomoFinish extends HTMLElement {
     const interruptContainer = document.createElement('div');
     interruptContainer.setAttribute('class', 'stats-entry');
     const interruptSquares = document.createElement('div');
+    interruptSquares.setAttribute('class', 'stats-squares');
     interruptContainer.appendChild(interruptSquares);
     const interruptTitle = document.createElement('h4');
     interruptTitle.setAttribute('class', 'stats-subtitle');
@@ -174,7 +178,8 @@ class PomoFinish extends HTMLElement {
 
       if (count > 12) {
         const fancySquare = document.createElement('div');
-        fancySquare.setAttribute('class', 'fancy work');
+        fancySquare.setAttribute('class', `fancy ${type}`);
+        fancySquare.textContent = count;
         container.appendChild(fancySquare);
       }
     }
