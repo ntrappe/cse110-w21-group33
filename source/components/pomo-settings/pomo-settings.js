@@ -1,5 +1,13 @@
-import ToggleSwitch from './pomo-toggle.js';
+import ToggleSwitch from '../pomo-toggle/pomo-toggle.js';
 
+const DEFAULT_WORK_TIME = 25;
+const DEFAULT_SHORT_BREAK_TIME = 5;
+const DEFAULT_LONG_BREAK_TIME = 10;
+const DEFAULT_VOLUME = 50;
+const DEFAULT_SOUND = 'default';
+const DEFAULT_CALM_SETTING = false;
+const DEFAULT_DARK_SETTING = false;
+const DEFAULT_ACC_SETTING = true;
 const MIN_MINUTES = '1';
 const MAX_MINUTES = '60';
 const MIN_VOLUME = '0';
@@ -11,14 +19,14 @@ class PomoSettings extends HTMLElement {
     super();
 
     // Event variables
-    this.work = 25;
-    this.shortBreak = 5;
-    this.longBreak = 10;
-    this.volume = 50;
-    this.sound = 'default';
-    this.calm = false;
-    this.dark = false;
-    this.accessible = true;
+    this.work = DEFAULT_WORK_TIME;
+    this.shortBreak = DEFAULT_SHORT_BREAK_TIME;
+    this.longBreak = DEFAULT_LONG_BREAK_TIME;
+    this.volume = DEFAULT_VOLUME;
+    this.sound = DEFAULT_SOUND;
+    this.calm = DEFAULT_CALM_SETTING;
+    this.dark = DEFAULT_DARK_SETTING;
+    this.accessible = DEFAULT_ACC_SETTING;
 
     const shadow = this.attachShadow({ mode: 'open' });
 
@@ -30,11 +38,6 @@ class PomoSettings extends HTMLElement {
     const styles = document.createElement('link');
     styles.setAttribute('id', 'settings-style');
     styles.setAttribute('rel', 'stylesheet');
-    if (this.dark) {
-      styles.setAttribute('href', './components/settings-dark.css');
-    } else {
-      styles.setAttribute('href', './components/settings-light.css');
-    }
 
     // Settings panel
     const sideBar = document.createElement('div');
@@ -44,10 +47,25 @@ class PomoSettings extends HTMLElement {
     settingsTitle.setAttribute('id', 'settings-title');
     settingsTitle.textContent = 'Settings';
 
-    // Button to open sidebar
-    const openButton = document.createElement('button');
-    openButton.setAttribute('id', 'open-button');
-    openButton.innerHTML = '&#9881;';
+    // Button to open settings sidebar
+    const settingsButton = document.createElement('button');
+    settingsButton.setAttribute('id', 'settings-button');
+
+    const settingsIcon = document.createElement('img');
+    settingsIcon.setAttribute('id', 'settings-button-icon');
+    // settingsIcon.setAttribute('src', './assets/gear_settings_light.png');
+    settingsIcon.textContent = 'Settings';
+
+    settingsButton.appendChild(settingsIcon);
+
+    // update css for button and sidebar if dark vs not mode
+    if (this.dark) {
+      styles.setAttribute('href', './components/pomo-settings/pomo-settings.css');
+      settingsIcon.setAttribute('src', './assets/gear_settings.png');
+    } else {
+      styles.setAttribute('href', './components/pomo-settings/pomo-settings-light.css');
+      settingsIcon.setAttribute('src', './assets/gear_settings_light.png');
+    }
 
     // Button to close sidebar
     const closeButton = document.createElement('button');
@@ -168,7 +186,7 @@ class PomoSettings extends HTMLElement {
     const soundSelect = document.createElement('select');
     soundSelect.setAttribute('id', 'sound-select');
 
-    // List of names of audio files
+    // List of names of audio files (file name should be spaced with hyphens)
     const soundList = ['party-horn', 'angry-monkey', 'default', 'rooster'];
 
     // Create option in dropdown menu for each audio file
@@ -233,7 +251,7 @@ class PomoSettings extends HTMLElement {
     // Attach elements to shadow DOM
     shadow.appendChild(settingsModal);
     shadow.appendChild(styles);
-    shadow.appendChild(openButton);
+    shadow.appendChild(settingsButton);
     shadow.appendChild(sideBar);
 
     sideBar.appendChild(closeButton);
@@ -338,7 +356,7 @@ class PomoSettings extends HTMLElement {
     /**
      * Opens the sidebar when clicking open button
      */
-    openButton.onclick = () => {
+    settingsButton.onclick = () => {
       sideBar.setAttribute('class', 'open');
       settingsModal.style.display = 'block';
     };
@@ -538,9 +556,9 @@ class PomoSettings extends HTMLElement {
      */
     this.setDark = (dark) => {
       if (dark) {
-        styles.setAttribute('href', './components/settings-dark.css');
+        styles.setAttribute('href', './components/pomo-settings/pomo-settings.css');
       } else {
-        styles.setAttribute('href', './components/settings-light.css');
+        styles.setAttribute('href', './components/pomo-settings/pomo-settings-light.css');
       }
       calmSwitch.setDark(dark);
       darkSwitch.setDark(dark);
