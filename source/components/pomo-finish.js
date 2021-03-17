@@ -26,6 +26,7 @@ class PomoFinish extends HTMLElement {
 
     const iconHolder = document.createElement('img');
     iconHolder.setAttribute('id', 'closeButtonIcon');
+    iconHolder.setAttribute('src', './assets/bar-chart.png');
     finishButton.appendChild(iconHolder);
 
     const textHolder = document.createElement('p');
@@ -94,8 +95,10 @@ class PomoFinish extends HTMLElement {
     this.setDark = (dark) => {
       if (dark) {
         statsStyle.setAttribute('href', './components/pomo-finish.css');
+        iconHolder.setAttribute('src', './assets/bar-chart.png');
       } else {
         statsStyle.setAttribute('href', './components/pomo-finish-light.css');
+        iconHolder.setAttribute('src', './assets/light_bar_chart.png');
       }
     };
 
