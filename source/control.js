@@ -107,19 +107,22 @@ function onload() {
 
   currentMode = 'work';
 
-  // pomoAudio.setSound('./assets/bike_chime.mp3');
-  pomoAudio.setVolume(100);
+  pomoAudio.setSound(soundIn);
+  pomoAudio.setVolume(volumeIn);
 
   // Configure initial component state
   pomoTimer.setTimer(workLength, currentMode);
-  pomoSettings.enableSettings();
+
+  pomoFinish.enableFinish();
   pomoInfo.enableInfo();
+  pomoSettings.enableSettings();
   PomoTab.defaultTab();
 }
 
 function onStart() {
-  pomoSettings.disableSettings();
+  pomoFinish.enableFinish();
   pomoInfo.disableInfo();
+  pomoSettings.disableSettings();
 }
 pomoTimer.addEventListener('timerStart', onStart);
 
@@ -132,8 +135,9 @@ function onReset() {
   interruptCount += 1;
   PomoStorage.setDayCounts(workCount, shortBreakCount, longBreakCount, interruptCount);
 
-  pomoSettings.enableSettings();
+  pomoFinish.enableFinish();
   pomoInfo.enableInfo();
+  pomoSettings.enableSettings();
   PomoTab.defaultTab();
 }
 pomoTimer.addEventListener('timerReset', onReset);
@@ -142,9 +146,6 @@ function onFinish() {
   switch (currentMode) {
     case 'work':
       workCount += 1;
-      PomoStorage.setDayCounts(workCount, shortBreakCount, longBreakCount, interruptCount);
-
-      pomoAudio.playSound();
       if (workCount !== 0 && workCount % 4 === 0) {
         pomoTimer.setProgress(4);
         currentMode = 'long break';
@@ -158,18 +159,14 @@ function onFinish() {
 
     case 'short break':
       shortBreakCount += 1;
-      PomoStorage.setDayCounts(workCount, shortBreakCount, longBreakCount, interruptCount);
       currentMode = 'work';
-      pomoAudio.playSound();
       pomoTimer.setTimer(workLength, 'work');
       break;
 
     case 'long break':
       pomoTimer.setProgress(0);
       longBreakCount += 1;
-      PomoStorage.setDayCounts(workCount, shortBreakCount, longBreakCount, interruptCount);
       currentMode = 'work';
-      pomoAudio.playSound();
       pomoTimer.setTimer(workLength, 'work');
       break;
 
@@ -177,8 +174,13 @@ function onFinish() {
       break;
   }
 
-  pomoSettings.enableSettings();
+  PomoStorage.setDayCounts(workCount, shortBreakCount, longBreakCount, interruptCount);
+
+  pomoAudio.playSound();
+
+  pomoFinish.enableFinish();
   pomoInfo.enableInfo();
+  pomoSettings.enableSettings();
 }
 pomoTimer.addEventListener('timerFinish', onFinish);
 
@@ -190,50 +192,66 @@ pomoFinish.addEventListener('modalRequest', onModalRequest);
 function workSet(event) {
   const work = event.detail.work();
   PomoStorage.setWork(work);
-}
 
+  if (currentMode === 'work') {
+    pomoTimer.setTimer(work, currentMode);
+  }
+}
 pomoSettings.addEventListener('workSet', workSet);
 
 function shortBreakSet(event) {
   const shortBreak = event.detail.shortBreak();
   PomoStorage.setShortBreak(shortBreak);
-}
 
+  if (currentMode === 'short break') {
+    pomoTimer.setTimer(shortBreak, currentMode);
+  }
+}
 pomoSettings.addEventListener('shortBreakSet', shortBreakSet);
 
 function longBreakSet(event) {
   const longBreak = event.detail.longBreak();
   PomoStorage.setLongBreak(longBreak);
-}
 
+  if (currentMode === 'long break') {
+    pomoTimer.setTimer(longBreak, currentMode);
+  }
+}
 pomoSettings.addEventListener('longBreakSet', longBreakSet);
 
 function volumeSet(event) {
   const volume = event.detail.volume();
   PomoStorage.setVolume(volume);
-}
 
+  pomoAudio.setVolume(volume);
+}
 pomoSettings.addEventListener('volumeSet', volumeSet);
 
 function soundSet(event) {
   const sound = event.detail.sound();
   PomoStorage.setSound(sound);
-}
 
+  pomoAudio.setSound(sound);
+}
 pomoSettings.addEventListener('soundSet', soundSet);
 
 function calmSet(event) {
   const calm = event.detail.calm();
   PomoStorage.setCalm(calm);
+
   pomoTimer.setCalm(calm);
   PomoTab.setCalm(calm);
 }
-
 pomoSettings.addEventListener('calmSet', calmSet);
 
 function darkSet(event) {
   const dark = event.detail.dark();
   PomoStorage.setDark(dark);
+
+  pomoFinish.setDark(dark);
+  pomoInfo.setDark(dark);
+  pomoSettings.setDark(dark);
+  pomoTimer.setDark(dark);
 
   if (dark) {
     document.head.removeChild(stylesheetLight);
@@ -241,14 +259,12 @@ function darkSet(event) {
     document.head.appendChild(stylesheetLight);
   }
 }
-
 pomoSettings.addEventListener('darkSet', darkSet);
 
 function accessSet(event) {
   const accessible = event.detail.accessible();
   PomoStorage.setAccessibility(accessible);
 }
-
 pomoSettings.addEventListener('accessSet', accessSet);
 
 onload();
