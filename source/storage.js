@@ -2,7 +2,7 @@
 const DEFAULT_WORK = 25;
 const DEFAULT_SHORT_BREAK = 5;
 const DEFAULT_LONG_BREAK = 15;
-const EMPTY_VALUE = 0;
+const DEFAULT_COUNTS = JSON.stringify({ work: 0, shortBreak: 0, longBreak: 0, interrupts: 0 });
 const MAX_VOL = 100;
 
 /* Functions for Local Storage updates */
@@ -11,10 +11,10 @@ const MAX_VOL = 100;
  * Function to get the pomodoro completed for the day and check if it should reset local storage
  * @return {Number} total amount of Pomodoro completed for the day
  */
-export function getDayCount() {
+export function getDayCounts() {
   // If local storage for pomodro completed is does not exist then we set current count to 0
   if (!localStorage.getItem('pomodoroCount')) {
-    localStorage.setItem('pomodoroCount', EMPTY_VALUE);
+    localStorage.setItem('pomodoroCount', DEFAULT_COUNTS);
   }
   // Clears local storage for the day if its a new day
   const date = new Date();
@@ -26,23 +26,30 @@ export function getDayCount() {
     localStorage.setItem('prevYear', date.getFullYear());
     localStorage.setItem('prevMonth', date.getMonth() + 1);
     localStorage.setItem('prevDay', date.getDate());
-    localStorage.setItem('pomodoroCount', EMPTY_VALUE);
+    localStorage.setItem('pomodoroCount', DEFAULT_COUNTS);
   }
-  return parseInt(localStorage.getItem('pomodoroCount'), 10);
+  try {
+    // Try loading and returning the collection of data
+    return JSON.parse(localStorage.getItem('pomodoroCount'));
+  } catch (error) {
+    // If an error occurs, return default and reset the storage item
+    localStorage.setItem('pomodoroCount', DEFAULT_COUNTS);
+    return DEFAULT_COUNTS;
+  }
 }
 
 /**
  * Function to set the pomodoro completed for the day into local storage
  * @param {Number} count pomodoro completed
  */
-export function setDayCount(count) {
+export function setDayCounts(work, shortBreak, longBreak, interrupts) {
   const date = new Date();
   // Creating new local storage for pomodoroCount if it is the first time
   if (!localStorage.getItem('prevDay')) {
     localStorage.setItem('prevYear', date.getFullYear());
     localStorage.setItem('prevMonth', date.getMonth() + 1);
     localStorage.setItem('prevDay', date.getDate());
-    localStorage.setItem('pomodoroCount', EMPTY_VALUE);
+    localStorage.setItem('pomodoroCount', DEFAULT_COUNTS);
   }
   // Clears local storage for the day if its a new day
   if (
@@ -53,9 +60,12 @@ export function setDayCount(count) {
     localStorage.setItem('prevYear', date.getFullYear());
     localStorage.setItem('prevMonth', date.getMonth() + 1);
     localStorage.setItem('prevDay', date.getDate());
-    localStorage.setItem('pomodoroCount', EMPTY_VALUE);
+    localStorage.setItem('pomodoroCount', DEFAULT_COUNTS);
   }
-  localStorage.setItem('pomodoroCount', count + getDayCount());
+  localStorage.setItem(
+    'pomodoroCount',
+    JSON.stringify({ work, shortBreak, longBreak, interrupts })
+  );
 }
 
 /**
@@ -131,7 +141,7 @@ export function setSound(sound) {
 export function getDark() {
   // Checking if dark mode local storage was created
   if (!localStorage.getItem('isDark')) {
-    localStorage.setItem('isDark', false); // Setting default mode into light mode
+    localStorage.setItem('isDark', true); // Setting default mode into dark mode
   }
   if (localStorage.getItem('isDark') === 'true') {
     return true;
