@@ -72,6 +72,7 @@ function onload() {
   const shortBreakIn = PomoStorage.getShortBreak();
   const longBreakIn = PomoStorage.getLongBreak();
   const accessIn = PomoStorage.getAccessibility();
+  const modeIn = PomoStorage.getMode();
 
   // Update settings to reflect current values
   pomoSettings.loadSettings(
@@ -102,13 +103,36 @@ function onload() {
   longBreakCount = longBreakCountIn;
   interruptCount = interruptCountIn;
 
-  currentMode = 'work';
+  currentMode = modeIn;
 
   pomoAudio.setSound(soundIn);
   pomoAudio.setVolume(volumeIn);
 
-  // Configure initial component state
-  pomoTimer.setTimer(workLength, currentMode);
+  // Configure initial component states
+  switch (currentMode) {
+    case 'work':
+      pomoTimer.setTimer(workLength, currentMode);
+      break;
+    case 'short break':
+      pomoTimer.setTimer(shortLength, currentMode);
+      break;
+    case 'long break':
+      pomoTimer.setTimer(longLength, currentMode);
+      break;
+    default:
+      pomoTimer.setTimer(workLength, currentMode);
+      break;
+  }
+
+  pomoTimer.setProgress(workCount % 4);
+  pomoTimer.setCalm(calmIn);
+  PomoTab.setCalm(calmIn);
+
+  PomoStorage.setDark(darkIn);
+  pomoFinish.setDark(darkIn);
+  pomoInfo.setDark(darkIn);
+  pomoSettings.setDark(darkIn);
+  pomoTimer.setDark(darkIn);
 
   pomoFinish.enableFinish();
   pomoInfo.enableInfo();
@@ -147,10 +171,12 @@ function onFinish() {
         pomoTimer.setProgress(4);
         currentMode = 'long break';
         pomoTimer.setTimer(longLength, 'long break');
+        PomoStorage.setMode('long break');
       } else {
         pomoTimer.setProgress(workCount % 4);
         currentMode = 'short break';
         pomoTimer.setTimer(shortLength, 'short break');
+        PomoStorage.setMode('short break');
       }
       break;
 
@@ -158,6 +184,7 @@ function onFinish() {
       shortBreakCount += 1;
       currentMode = 'work';
       pomoTimer.setTimer(workLength, 'work');
+      PomoStorage.setMode('work');
       break;
 
     case 'long break':
@@ -165,6 +192,7 @@ function onFinish() {
       longBreakCount += 1;
       currentMode = 'work';
       pomoTimer.setTimer(workLength, 'work');
+      PomoStorage.setMode('work');
       break;
 
     default:
