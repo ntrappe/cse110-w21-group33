@@ -84,10 +84,20 @@
   color: #8b949e;
   margin: 5% 5%;
   width: 90%;
+  height: 95%;
+}
+
+#info-content div {
+  max-height: 80%;
+  margin-bottom: 40px;
+  text-align: justify;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 #info-content h1 {
   color: #afb3b8;
+  margin-bottom: 20px;
 }
 
 #info-content h2 {
