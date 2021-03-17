@@ -21,7 +21,7 @@ const resizeElements = () => {
       )
       .concat('px)');
   }
-  
+
   if (window.innerWidth < MIN_WIDTH) {
     inputText = inputText
       .concat(' scale(')
@@ -29,11 +29,11 @@ const resizeElements = () => {
       .concat(') ');
   }
 
-  pomoTimer.changeTransform(inputText);
+  window.pomoTimer.changeTransform(inputText);
 
   /* Resize reset of the elements */
   if (window.innerWidth < MIN_WIDTH) {
-    pomoFinish.changeTransform(
+    window.pomoFinish.changeTransform(
       'scale('
         .concat((window.innerWidth / MIN_WIDTH).toString())
         .concat(') translateX(')
@@ -45,7 +45,7 @@ const resizeElements = () => {
         )
         .concat('px)')
     );
-    pomoInfo.changeTransform(
+    window.pomoInfo.changeTransform(
       'scale('
         .concat((window.innerWidth / MIN_WIDTH).toString())
         .concat(') translateX(')
@@ -57,7 +57,7 @@ const resizeElements = () => {
         )
         .concat('px)')
     );
-    pomoSettings.changeTransform(
+    window.pomoSettings.changeTransform(
       'scale('
         .concat((window.innerWidth / MIN_WIDTH).toString())
         .concat(') translateX(')
@@ -81,9 +81,9 @@ const resizeElements = () => {
       (MIN_WIDTH - window.innerWidth) / 5
     );
   } else {
-    pomoFinish.changeTransform(null);
-    pomoInfo.changeTransform(null);
-    pomoSettings.changeTransform(null, null, null);
+    window.pomoFinish.changeTransform(null);
+    window.pomoInfo.changeTransform(null);
+    window.pomoSettings.changeTransform(null, null, null);
   }
 };
 
