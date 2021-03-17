@@ -88,6 +88,20 @@ class PomoFinish extends HTMLElement {
     shadow.appendChild(wrapper);
 
     /**
+     * Allows the control to open the finish page
+     */
+    this.enableFinish = () => {
+      finishButton.disabled = false;
+    };
+
+    /**
+     * Prevent the control from open the finish page
+     */
+    this.disableFinish = () => {
+      finishButton.disabled = true;
+    };
+
+    /**
      * Modify elements' data-mode to dark-mode or light-mode
      * @param {Boolean} dark  indicate whether or not the setting is in dark mode
      */
