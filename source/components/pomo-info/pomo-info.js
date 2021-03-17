@@ -11,7 +11,7 @@ class PomoInfo extends HTMLElement {
     const infoStyle = document.createElement('link');
     infoStyle.setAttribute('id', 'info-styles');
     infoStyle.setAttribute('rel', 'stylesheet');
-    infoStyle.setAttribute('href', './components/pomo-info.css');
+    infoStyle.setAttribute('href', './components/pomo-info/pomo-info.css');
     shadow.append(infoStyle);
 
     // the modal window
@@ -109,10 +109,10 @@ class PomoInfo extends HTMLElement {
      */
     this.setDark = (dark) => {
       if (dark) {
-        infoStyle.setAttribute('href', './components/pomo-info.css');
+        infoStyle.setAttribute('href', './components/pomo-info/pomo-info.css');
         infoIcon.setAttribute('src', './assets/i_info.png');
       } else {
-        infoStyle.setAttribute('href', './components/pomo-info-light.css');
+        infoStyle.setAttribute('href', './components/pomo-info/pomo-info-light.css');
         infoIcon.setAttribute('src', './assets/i_info_light.png');
       }
     };

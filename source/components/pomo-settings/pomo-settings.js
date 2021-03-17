@@ -1,4 +1,4 @@
-import ToggleSwitch from './pomo-toggle.js';
+import ToggleSwitch from '../pomo-toggle/pomo-toggle.js';
 
 const DEFAULT_WORK_TIME = 25;
 const DEFAULT_SHORT_BREAK_TIME = 5;
@@ -60,10 +60,10 @@ class PomoSettings extends HTMLElement {
 
     // update css for button and sidebar if dark vs not mode
     if (this.dark) {
-      styles.setAttribute('href', './components/pomo-settings.css');
+      styles.setAttribute('href', './components/pomo-settings/pomo-settings.css');
       settingsIcon.setAttribute('src', './assets/gear_settings.png');
     } else {
-      styles.setAttribute('href', './components/pomo-settings-light.css');
+      styles.setAttribute('href', './components/pomo-settings/pomo-settings-light.css');
       settingsIcon.setAttribute('src', './assets/gear_settings_light.png');
     }
 
@@ -556,9 +556,9 @@ class PomoSettings extends HTMLElement {
      */
     this.setDark = (dark) => {
       if (dark) {
-        styles.setAttribute('href', './components/pomo-settings.css');
+        styles.setAttribute('href', './components/pomo-settings/pomo-settings.css');
       } else {
-        styles.setAttribute('href', './components/pomo-settings-light.css');
+        styles.setAttribute('href', './components/pomo-settings/pomo-settings-light.css');
       }
       calmSwitch.setDark(dark);
       darkSwitch.setDark(dark);

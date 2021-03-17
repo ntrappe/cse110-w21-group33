@@ -9,7 +9,7 @@ class PomoFinish extends HTMLElement {
     const statsStyle = document.createElement('link');
     statsStyle.setAttribute('id', 'statistics-styles');
     statsStyle.setAttribute('rel', 'stylesheet');
-    statsStyle.setAttribute('href', './components/pomo-finish.css');
+    statsStyle.setAttribute('href', './components/pomo-finish/pomo-finish.css');
     shadow.append(statsStyle);
 
     // custom event for modal display
@@ -94,10 +94,10 @@ class PomoFinish extends HTMLElement {
 
     this.setDark = (dark) => {
       if (dark) {
-        statsStyle.setAttribute('href', './components/pomo-finish.css');
+        statsStyle.setAttribute('href', './components/pomo-finish/pomo-finish.css');
         finishIcon.setAttribute('src', './assets/bar_chart_stats.png');
       } else {
-        statsStyle.setAttribute('href', './components/pomo-finish-light.css');
+        statsStyle.setAttribute('href', './components/pomo-finish/pomo-finish-light.css');
         finishIcon.setAttribute('src', './assets/bar_chart_stats_light.png');
       }
     };
