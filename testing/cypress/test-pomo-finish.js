@@ -22,6 +22,7 @@ describe('Find Finish Elements', { includeShadowDom: true }, () => {
     cy.get('#statistics-panel');
   });
 });
+
 describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
   beforeEach(() => {
     cy.visit('./source/index.html');
@@ -36,6 +37,21 @@ describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
     cy.get('#statistics-modal')
       .should('have.css', 'background-color')
       .and('eq', 'rgba(0, 0, 0, 0.5)');
+  });
+});
+
+describe('Check The Enabling/Disabling Finish Button', { includeShadowDom: true }, () => {
+  it('Check that the button can be disabled', () => {
+    cy.window().then((win) => {
+      win.pomoFinish.disableFinish();
+      cy.get('#finish-button').should('be.disabled');
+    });
+  });
+  it('Check that the button can be enabled', () => {
+    cy.window().then((win) => {
+      win.pomoFinish.enableFinish();
+      cy.get('#finish-button').should('not.be.disabled');
+    });
   });
 });
 
