@@ -770,6 +770,10 @@ describe('Basic Button Toggles', { includeShadowDom: true }, () => {
 }); */
 
 describe('Accessibility when click then reset', { includeShadowDom: true }, () => {
+  beforeEach(() => {
+    cy.visit('./source/index.html');
+  });
+
   it('Button toggles when Start clicked', () => {
     cy.get('#timer-button').click();
     cy.get('#timer-button').then(($el) => {
@@ -909,4 +913,3 @@ describe('Accessibility when off then click', { includeShadowDom: true }, () => 
       });
   });
 });
-

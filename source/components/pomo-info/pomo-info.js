@@ -107,10 +107,14 @@ class PomoInfo extends HTMLElement {
 
     shadow.appendChild(wrapper);
 
+    // Enabled determines if this component can be opened
+    this.enabled = true;
+
     /**
      * Allows the control to open the info page
      */
     this.enableInfo = () => {
+      this.enabled = true;
       infoButton.disabled = false;
     };
 
@@ -118,6 +122,7 @@ class PomoInfo extends HTMLElement {
      * Prevent the control from open the info page
      */
     this.disableInfo = () => {
+      this.enabled = false;
       infoButton.disabled = true;
     };
 
@@ -141,25 +146,20 @@ class PomoInfo extends HTMLElement {
      */
     this.setAccessibility = (enabled) => {
       this.accessible = enabled;
-      console.log('inside setAccessibility',this.accessible)
     };
 
     /**
      * Functions that opens and closes the info page with the i key
-     * @param {Number} e value that the eventListener gets when a key is clicked
      */
-    function keyHolder(e) {
-      console.log('inside eventListener',this.accessible)
-      // Checking if the key clicked is a i
+    document.addEventListener('keydown', (e) => {
       if (e.key === 'i' && this.accessible === true) {
-        if (modal.style.display === 'none') {
-          infoButton.onclick();
-        } else if (modal.style.display === 'block') {
+        if (modal.style.display === 'block') {
           closeButton.onclick();
+        } else if (this.enabled === true) {
+          infoButton.onclick();
         }
       }
-    }
-    document.addEventListener('keydown', keyHolder);
+    });
   }
 }
 

@@ -666,22 +666,19 @@ class PomoSettings extends HTMLElement {
     this.setAccessibility = (enabled) => {
       this.accessible = enabled;
     };
-    
+
     /**
      * Functions that opens and closes the setting page with the q key
-     * @param {Number} e value that the eventListener gets when a key is clicked
      */
-    function keyHolder(e) {
-      // Checking if the key clicked is a q
+    document.addEventListener('keydown', (e) => {
       if (e.key === 'q' && this.accessible === true) {
         if (sideBar.getAttribute('class') === 'open') {
           closeButton.onclick();
         } else {
-          openButton.onclick();
+          settingsButton.onclick();
         }
       }
-    }
-    document.addEventListener('keydown', keyHolder);
+    });
   }
 }
 

@@ -57,6 +57,23 @@ class PomoTimer extends HTMLElement {
     wrapper.appendChild(timerText);
     wrapper.appendChild(timerButton);
 
+    // Enabled determines if this component can be opened
+    this.enabled = true;
+
+    /**
+     * Used for allowing keyboard shortcuts
+     */
+    this.enableTimer = () => {
+      this.enabled = true;
+    };
+
+    /**
+     * Used for preventing keyboard shortcuts
+     */
+    this.disableTimer = () => {
+      this.enabled = false;
+    };
+
     /* Events */
     const timerStartEvent = new CustomEvent('timerStart', {
       bubbles: true, // event listenable outside of container
@@ -197,22 +214,20 @@ class PomoTimer extends HTMLElement {
 
     /**
      * Functions that calls timerButton.onclick() if s or r key is pressed
-     * @param {Number} e value that the eventListener gets when a key is clicked
      */
-    function keyHolder(e) {
+    document.addEventListener('keydown', (e) => {
       // Checking if the key clicked is a s
-      if (e.key === 's' && this.accessible === true) {
+      if (e.key === 's' && this.accessible === true && this.enabled === true) {
         if (timerButton.innerHTML === START) {
           timerButton.onclick(); // Forces a onclick button for timerButton
         }
         // Key clicked is a e
-      } else if (e.key === 'r' && this.accessible === true) {
+      } else if (e.key === 'r' && this.accessible === true && this.enabled === true) {
         if (timerButton.innerHTML === RESET) {
           timerButton.onclick(); // Forces a onclick button for timerButton
         }
       }
-    }
-    document.addEventListener('keydown', keyHolder);
+    });
   }
 }
 
