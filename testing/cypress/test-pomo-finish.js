@@ -137,7 +137,11 @@ describe('Check Dark/Light Settings', { includeShadowDom: true }, () => {
     cy.window().then((win) => {
       win.pomoFinish.setDark(true);
     });
-    cy.get('#statistics-styles').should('have.attr', 'href', './components/pomo-finish.css');
+    cy.get('#statistics-styles').should(
+      'have.attr',
+      'href',
+      './components/pomo-finish/pomo-finish.css'
+    );
   });
 
   it('Check that setDark(false) sets light mode', () => {
@@ -145,6 +149,10 @@ describe('Check Dark/Light Settings', { includeShadowDom: true }, () => {
     cy.window().then((win) => {
       win.pomoFinish.setDark(false);
     });
-    cy.get('#statistics-styles').should('have.attr', 'href', './components/pomo-finish-light.css');
+    cy.get('#statistics-styles').should(
+      'have.attr',
+      'href',
+      './components/pomo-finish/pomo-finish-light.css'
+    );
   });
 });
