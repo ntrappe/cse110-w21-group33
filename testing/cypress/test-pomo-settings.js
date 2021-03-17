@@ -158,18 +158,18 @@ describe('Test sidebar elements', () => {
   it('Stylesheet is switched when calling setDark()', { includeShadowDom: true }, () => {
     // Note: maybe add css checks for toggle bc now has pomo-toggle.css and -light.css
     cy.get('#settings-style').then(($el) => {
-      expect($el).to.have.attr('href', './components/pomo-settings/pomo-settings-light.css');
-    });
-    cy.window().then((win) => {
-      win.pomoSettings.setDark(true);
-      cy.get('#settings-style').then(($el) => {
-        expect($el).to.have.attr('href', './components/pomo-settings/pomo-settings.css');
-      });
+      expect($el).to.have.attr('href', './components/pomo-settings/pomo-settings.css');
     });
     cy.window().then((win) => {
       win.pomoSettings.setDark(false);
       cy.get('#settings-style').then(($el) => {
         expect($el).to.have.attr('href', './components/pomo-settings/pomo-settings-light.css');
+      });
+    });
+    cy.window().then((win) => {
+      win.pomoSettings.setDark(true);
+      cy.get('#settings-style').then(($el) => {
+        expect($el).to.have.attr('href', './components/pomo-settings/pomo-settings.css');
       });
     });
   });
