@@ -269,7 +269,7 @@ pomoInfo.addEventListener('closeEvent', () => {
 
 pomoSettings.addEventListener('openEvent', () => {
   pomoFinish.disableFinish();
-  pomoInfo.disableSettings();
+  pomoInfo.disableInfo();
   pomoTimer.disableTimer();
 });
 
