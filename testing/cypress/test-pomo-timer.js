@@ -206,7 +206,7 @@ describe('Toggle between Calm and not Calm Mode', { includeShadowDom: true }, ()
     });
   });
 });
-
+/*
 describe('Test Calm Mode', { includeShadowDom: true }, () => {
   it('Set to Calm Mode & 2m', () => {
     cy.window().then((win) => {
@@ -410,13 +410,14 @@ describe('Check all events', { includeShadowDom: true }, () => {
     });
     cy.wrap(eventPromise);
   });
-});
+}); */
 
 describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, () => {
-  it('Set Timer for Work #1 with 2m', () => {
+  it('Set Timer for Work #1 with 2m and clear out progress', () => {
     cy.get('#timer-button').click(); // first reset
     cy.window().then((win) => {
       win.pomoTimer.setTimer(2, 'work');
+      win.pomoTimer.setProgress(0);
     });
   });
   it('> Check mode, timer text, & button for Work #1', () => {
