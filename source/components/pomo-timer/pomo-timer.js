@@ -205,6 +205,14 @@ class PomoTimer extends HTMLElement {
     };
 
     /**
+     * For transforming the whole object
+     * @param {String} transformText the text to put in transform css
+     */
+    this.changeTransform = (transformText) => {
+      wrapper.style.transform = transformText;
+    };
+
+    /**
      * For CONTROL to determine whether we can open info, setting, stats
      * @param {Boolean} enabled true for being able to open, false otherwise
      */
