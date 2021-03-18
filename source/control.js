@@ -4,6 +4,7 @@ import PomoInfo from './components/pomo-info/pomo-info.js';
 import PomoSettings from './components/pomo-settings/pomo-settings.js';
 import PomoTimer from './components/pomo-timer/pomo-timer.js';
 import * as PomoTab from './components/pomo-tab.js';
+import * as PomoStorage from './storage.js';
 
 // Initialize web components
 const pomoAudio = new PomoAudio();
@@ -28,6 +29,7 @@ window.pomoInfo = pomoInfo;
 window.pomoSettings = pomoSettings;
 window.pomoTimer = pomoTimer;
 window.pomoTab = PomoTab;
+window.pomoStorage = PomoStorage;
 
 // Add components to their proper locations on the page
 const body = document.getElementById('body');
