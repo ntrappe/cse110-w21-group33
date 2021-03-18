@@ -32,7 +32,7 @@
   left: -500px;
 }
 
-#close-button {
+#settings-close-button {
   margin-top: 25px;
   margin-right: 16px;
   background-color: #0f1115;
@@ -48,13 +48,13 @@
   height: 35px;
 }
 
-#close-button:hover {
+#settings-close-button:hover {
   background-color: #22262c;
   border-color: #8d949d;
   transition-duration: 0.1s;
 }
 
-#close-button-icon {
+#settings-close-button-icon {
   height: 10px;
   width: 10px;
 }
