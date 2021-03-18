@@ -1,19 +1,23 @@
 describe('Open Page', () => {
-    it('Opens index.html', () => {
-      cy.visit('./source/index.html');
-    });
+  it('Opens index.html', () => {
+    cy.visit('./source/index.html');
   });
-  
+});
+
 describe('Testing Settings with Finish', { includeShadowDom: true }, () => {
   beforeEach(() => {
     cy.visit('./source/index.html');
   });
 
   it('Toggling Dark Mode off & Check that css was changed', () => {
-    cy.get('#settings-button').click()
+    cy.get('#settings-button').click();
     cy.get('#dark-slider').click();
     cy.get('#close-button').click();
-    cy.get('#statistics-styles').should('have.attr', 'href', './components/pomo-finish/pomo-finish-light.css');
+    cy.get('#statistics-styles').should(
+      'have.attr',
+      'href',
+      './components/pomo-finish/pomo-finish-light.css'
+    );
   });
 
   it('Toggling Dark Mode on & Check that css was changed', () => {
@@ -21,7 +25,11 @@ describe('Testing Settings with Finish', { includeShadowDom: true }, () => {
     cy.get('#dark-slider').click();
     cy.get('#dark-slider').click();
     cy.get('#close-button').click();
-    cy.get('#statistics-styles').should('have.attr', 'href', './components/pomo-finish/pomo-finish.css');
+    cy.get('#statistics-styles').should(
+      'have.attr',
+      'href',
+      './components/pomo-finish/pomo-finish.css'
+    );
   });
 
   it('Opening Settings and Checking that finish is not opened', () => {
@@ -55,7 +63,7 @@ describe('Testing Info with Stats', { includeShadowDom: true }, () => {
   beforeEach(() => {
     cy.visit('./source/index.html');
   });
-  
+
   it('Toggling Dark Mode on & Check that css was changed', () => {
     cy.get('#info-button').click();
     cy.get('#finish-button').should('be.disabled');

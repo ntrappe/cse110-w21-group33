@@ -1,19 +1,23 @@
 describe('Open Page', () => {
-    it('Opens index.html', () => {
-      cy.visit('./source/index.html');
-    });
+  it('Opens index.html', () => {
+    cy.visit('./source/index.html');
   });
-  
+});
+
 describe('Testing Settings with Info', { includeShadowDom: true }, () => {
   beforeEach(() => {
     cy.visit('./source/index.html');
   });
 
   it('Toggling Dark Mode off & Check that css was changed', () => {
-    cy.get('#settings-button').click()
+    cy.get('#settings-button').click();
     cy.get('#dark-slider').click();
     cy.get('#close-button').click();
-    cy.get('#info-styles').should('have.attr', 'href', './components/pomo-info/pomo-info-light.css');
+    cy.get('#info-styles').should(
+      'have.attr',
+      'href',
+      './components/pomo-info/pomo-info-light.css'
+    );
   });
 
   it('Toggling Dark Mode on & Check that css was changed', () => {
@@ -53,7 +57,7 @@ describe('Testing Stats with Info', { includeShadowDom: true }, () => {
   beforeEach(() => {
     cy.visit('./source/index.html');
   });
-  
+
   it('Toggling Dark Mode on & Check that css was changed', () => {
     cy.get('#finish-button').click();
     cy.get('#info-button').should('be.disabled');

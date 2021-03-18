@@ -118,9 +118,7 @@ export function setVolume(vol) {
 export function getSound() {
   // Checking if sound local storage was created
   if (!localStorage.getItem('sound')) {
-    localStorage.setItem(
-      'sound','bike_chime.mp3'
-    );
+    localStorage.setItem('sound', 'bike_chime.mp3');
   }
   return localStorage.getItem('sound');
 }
