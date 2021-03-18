@@ -109,6 +109,7 @@ class PomoFinish extends HTMLElement {
     this.enabled = true;
 
     /**
+     * @method
      * Allows the control to open the finish page
      */
     this.enableFinish = () => {
@@ -117,6 +118,7 @@ class PomoFinish extends HTMLElement {
     };
 
     /**
+     * @method
      * Prevent the control from open the finish page
      */
     this.disableFinish = () => {
@@ -125,6 +127,7 @@ class PomoFinish extends HTMLElement {
     };
 
     /**
+     * @method
      * Modify elements' data-mode to dark-mode or light-mode
      * @param {Boolean} dark  indicate whether or not the setting is in dark mode
      */
@@ -140,6 +143,7 @@ class PomoFinish extends HTMLElement {
     };
 
     /**
+     * @method
      * Render session's statistics to the screen
      * @param {Number} workCount            the number of pomodoro sessions completed
      * @param {Number} shortBreakCount      the number of short breaks
@@ -183,6 +187,7 @@ class PomoFinish extends HTMLElement {
     };
 
     /**
+     * @method
      * For transforming the whole object
      * @param {String} transformText the text to put in transform css
      */
@@ -194,6 +199,7 @@ class PomoFinish extends HTMLElement {
     this.accessible = true;
 
     /**
+     * @method
      * For CONTROL to determine whether we can open info, setting, stats
      * @param {Boolean} enabled true for being able to open, false otherwise
      */
@@ -202,6 +208,7 @@ class PomoFinish extends HTMLElement {
     };
 
     /**
+     * @method
      * Functions that opens and closes the finish page with the f key
      */
     document.addEventListener('keydown', (e) => {

@@ -115,6 +115,7 @@ class PomoInfo extends HTMLElement {
     this.enabled = true;
 
     /**
+     * @method
      * Allows the control to open the info page
      */
     this.enableInfo = () => {
@@ -123,6 +124,7 @@ class PomoInfo extends HTMLElement {
     };
 
     /**
+     * @method
      * Prevent the control from open the info page
      */
     this.disableInfo = () => {
@@ -131,6 +133,7 @@ class PomoInfo extends HTMLElement {
     };
 
     /**
+     * @method
      * Modify elements' data-mode to dark-mode or light-mode
      * @param {Boolean} dark  indicate whether or not the setting is in dark mode
      */
@@ -145,6 +148,7 @@ class PomoInfo extends HTMLElement {
     };
 
     /**
+     * @method
      * For transforming the whole object
      * @param {String} transformText the text to put in transform css
      */
@@ -153,6 +157,7 @@ class PomoInfo extends HTMLElement {
     };
 
     /**
+     * @method
      * For CONTROL to determine whether we can open info, setting, stats
      * @param {Boolean} enabled true for being able to open, false otherwise
      */
