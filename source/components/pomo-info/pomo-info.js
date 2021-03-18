@@ -41,6 +41,25 @@ class PomoInfo extends HTMLElement {
       modal.style.display = 'block';
     };
 
+    // button to close the modal window
+    const closeButton = document.createElement('div');
+    closeButton.setAttribute('class', 'close-button');
+    closeButton.setAttribute('id', 'info-close-button');
+    closeButton.setAttribute('class', 'button-off');
+    closeButton.onclick = () => {
+      modal.style.display = 'none';
+    };
+    closeButton.innerHTML = '&times;';
+
+    /* mimic a button hover event */
+    closeButton.addEventListener('mouseover', () => {
+      closeButton.setAttribute('class', 'button-on');
+    });
+
+    closeButton.addEventListener('mouseout', () => {
+      closeButton.setAttribute('class', 'button-off');
+    });
+
     // the lightbox
     const modalContent = document.createElement('div');
     modalContent.setAttribute('class', 'modal-content');
@@ -103,25 +122,6 @@ class PomoInfo extends HTMLElement {
           <li>Amount of Work Interruption</li>
         </ul>
     `;
-
-    // button to close the modal window
-    const closeButton = document.createElement('div');
-    closeButton.setAttribute('class', 'close-button');
-    closeButton.setAttribute('id', 'info-close-button');
-    closeButton.setAttribute('class', 'button-off');
-    closeButton.onclick = () => {
-      modal.style.display = 'none';
-    };
-    closeButton.innerHTML = '&times;';
-
-    /* mimic a button hover event */
-    closeButton.addEventListener('mouseover', () => {
-      closeButton.setAttribute('class', 'button-on');
-    });
-
-    closeButton.addEventListener('mouseout', () => {
-      closeButton.setAttribute('class', 'button-off');
-    });
 
     // add element to containers
     infoContent.appendChild(content);
