@@ -69,10 +69,10 @@ class PomoSettings extends HTMLElement {
 
     // Button to close sidebar
     const closeButton = document.createElement('button');
-    closeButton.setAttribute('id', 'close-button');
+    closeButton.setAttribute('id', 'settings-close-button');
 
     const closeIcon = document.createElement('img');
-    closeIcon.setAttribute('id', 'close-button-icon');
+    closeIcon.setAttribute('id', 'settings-close-button-icon');
     closeIcon.setAttribute('src', './assets/x.svg');
 
     const pomoLengthLabel = document.createElement('label');

@@ -143,7 +143,17 @@ class PomoTimer extends HTMLElement {
       modeDuration = min;
       this.totalSeconds = setTime(min);
       display(this.totalSeconds, timerText, this.calmTimerText);
-      currentMode.setAttribute('class', mode);
+      switch (mode) {
+        case 'short break':
+          currentMode.setAttribute('class', 'short-break');
+          break;
+        case 'long break':
+          currentMode.setAttribute('class', 'long-break');
+          break;
+        default:
+          currentMode.setAttribute('class', mode);
+          break;
+      }
       currentMode.textContent = mode.toUpperCase();
       timerText.setAttribute('class', mode);
     };
