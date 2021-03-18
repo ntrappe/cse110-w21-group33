@@ -150,6 +150,8 @@ pomoFinish.addEventListener('modalRequest', () => {
 
 // PomoSettings Events
 function workSet(work) {
+  workLength = work;
+
   if (currentMode === Mode.work) {
     pomoTimer.setTimer(work, currentMode);
   }
@@ -163,6 +165,8 @@ pomoSettings.addEventListener('workSet', (event) => {
 });
 
 function shortBreakSet(shortBreak) {
+  shortLength = shortBreak;
+
   if (currentMode === Mode.short) {
     pomoTimer.setTimer(shortBreak, currentMode);
   }
@@ -176,6 +180,8 @@ pomoSettings.addEventListener('shortBreakSet', (event) => {
 });
 
 function longBreakSet(longBreak) {
+  longLength = longBreak;
+
   if (currentMode === Mode.long) {
     pomoTimer.setTimer(longBreak, currentMode);
   }
