@@ -275,7 +275,7 @@ pomoSettings.addEventListener('openEvent', () => {
 
 pomoSettings.addEventListener('closeEvent', () => {
   pomoFinish.enableFinish();
-  pomoInfo.enableSettings();
+  pomoInfo.enableInfo();
   pomoTimer.enableTimer();
 });
 
