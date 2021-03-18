@@ -4,17 +4,15 @@ describe('Open Page', () => {
   });
 });
 
-describe('Verify dark mode colors for pomoFinish', { includeShadowDom: true }, () => {
-  it('Check if pomoFinish exists', () => {
-    cy.window().then((win) => {
-      expect(win.pomoFinish).to.exist;
+function testUIFinishDark() {
+  describe('Verify dark mode colors for pomoFinish', { includeShadowDom: true }, () => {
+    it('Check if pomoFinish exists', () => {
+      cy.window().then((win) => {
+        expect(win.pomoFinish).to.exist;
+      });
     });
-  });
 
-  it('Check dark mode colors', () => {
-    cy.window().then((win) => {
-      win.pomoFinish.setDark(true);
-
+    it('Check dark mode colors', () => {
       cy.get('#finish-button').click();
 
       /* Verify colors of finish button */
@@ -30,13 +28,31 @@ describe('Verify dark mode colors for pomoFinish', { includeShadowDom: true }, (
       cy.get('#statistics-modal-content').should('have.css', 'background-color', 'rgb(15, 17, 21)');
       cy.get('#statistics-modal-content').should('have.css', 'border-color', 'rgb(49, 54, 60)');
     });
-  });
-});
 
-describe('Verify light mode colors for pomoFinish', { includeShadowDom: true }, () => {
-  it('Check light mode colors', () => {
-    cy.window().then((win) => {
-      win.pomoFinish.setDark(false);
+    it('Close stats and reset', () => {
+      cy.get('#statistics-close-button').click();
+    });
+  });
+}
+
+function testUIFinishLight(fromControl) {
+  describe('Verify light mode colors for pomoFinish', { includeShadowDom: true }, () => {
+    it('Check if pomoFinish exists', () => {
+      cy.window().then((win) => {
+        expect(win.pomoFinish).to.exist;
+      });
+    });
+
+    if (!fromControl) {
+      it('Toggle light mode', () => {
+        cy.get('#settings-button').click();
+        cy.get('#dark-slider').click();
+        cy.get('#close-button').click();
+      });
+    }
+
+    it('Check light mode colors', () => {
+      cy.get('#finish-button').click();
 
       /* Verify colors of finish button */
       cy.get('#finish-button').should('have.css', 'background-color', 'rgb(229, 231, 234)');
@@ -48,5 +64,19 @@ describe('Verify light mode colors for pomoFinish', { includeShadowDom: true }, 
       cy.get('#statistics-modal-content').should('have.css', 'background-color', 'rgb(15, 17, 21)');
       cy.get('#statistics-modal-content').should('have.css', 'border-color', 'rgb(49, 54, 60)');
     });
+
+    it('Close stats and reset', () => {
+      cy.get('#statistics-close-button').click();
+
+      if (!fromControl) {
+        cy.get('#settings-button').click();
+        cy.get('#dark-slider').click();
+        cy.get('#close-button').click();
+      }
+    });
   });
-});
+}
+
+testUIFinishDark();
+testUIFinishLight(false);
+export { testUIFinishDark, testUIFinishLight };

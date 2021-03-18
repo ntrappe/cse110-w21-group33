@@ -4,25 +4,22 @@ describe('Open Page', () => {
   });
 });
 
-describe('Verify dark mode colors for pomoSettings', { includeShadowDom: true }, () => {
-  it('Check if pomoSettings exists', () => {
-    cy.window().then((win) => {
-      expect(win.pomoSettings).to.exist;
+function testUISettingsDark() {
+  describe('Verify dark mode colors for pomoSettings', { includeShadowDom: true }, () => {
+    it('Check if pomoSettings exists', () => {
+      cy.window().then((win) => {
+        expect(win.pomoSettings).to.exist;
+      });
     });
-  });
 
-  it('Check settings title', () => {
-    cy.get('#settings-button').click();
-
-    cy.get('#settings-title').then(($title) => {
-      expect($title[0].textContent).to.eq('Settings');
+    it('Check settings title', () => {
+      cy.get('#settings-button').click();
+      cy.get('#settings-title').then(($title) => {
+        expect($title[0].textContent).to.eq('Settings');
+      });
     });
-  });
 
-  it('Check dark mode colors', () => {
-    cy.window().then((win) => {
-      win.pomoSettings.setDark(true);
-
+    it('Check dark mode colors', () => {
       /* Verify colors of settings buttons */
       cy.get('#settings-button').should('have.css', 'background-color', 'rgb(34, 38, 44)');
       cy.get('#settings-button').should('have.css', 'color', 'rgba(0, 0, 0, 0)');
@@ -73,34 +70,46 @@ describe('Verify dark mode colors for pomoSettings', { includeShadowDom: true },
       cy.get('#inaccessible-mode.off-mode').should('have.css', 'color', 'rgb(139, 148, 158)');
       cy.get('#inaccessible-mode.off-mode').should('have.css', 'display', 'none');
     });
-  });
 
-  it('Verify toggle switch UI change', () => {
-    cy.get('#calm-slider').click();
-    cy.get('#dark-slider').click();
-    cy.get('#accessible-slider').click();
+    it('Verify toggle switch UI change', () => {
+      cy.get('#calm-slider').click();
+      cy.get('#dark-slider').click();
+      cy.get('#accessible-slider').click();
 
-    cy.get('#calm-mode.on-mode').should('have.css', 'display', 'block');
-    cy.get('#light-mode.off-mode').should('have.css', 'display', 'block');
-    cy.get('#inaccessible-mode.off-mode').should('have.css', 'display', 'block');
+      cy.get('#calm-mode.on-mode').should('have.css', 'display', 'block');
+      cy.get('#light-mode.off-mode').should('have.css', 'display', 'block');
+      cy.get('#inaccessible-mode.off-mode').should('have.css', 'display', 'block');
 
-    cy.get('#busy-mode.off-mode').should('have.css', 'display', 'none');
-    cy.get('#dark-mode.on-mode').should('have.css', 'display', 'none');
-    cy.get('#accessible-mode.on-mode').should('have.css', 'display', 'none');
-  });
-});
+      cy.get('#busy-mode.off-mode').should('have.css', 'display', 'none');
+      cy.get('#dark-mode.on-mode').should('have.css', 'display', 'none');
+      cy.get('#accessible-mode.on-mode').should('have.css', 'display', 'none');
+    });
 
-describe('Verify light mode colors for pomoSettings', { includeShadowDom: true }, () => {
-  it('Check settings title', () => {
-    cy.get('#settings-title').then(($title) => {
-      expect($title[0].textContent).to.eq('Settings');
+    it('Close settings and reset', () => {
+      cy.get('#calm-slider').click();
+      cy.get('#dark-slider').click();
+      cy.get('#accessible-slider').click();
+      cy.get('#close-button').click();
     });
   });
+}
 
-  it('Check light mode colors', () => {
-    cy.window().then((win) => {
-      win.pomoSettings.setDark(false);
+function testUISettingsLight(fromControl) {
+  describe('Verify light mode colors for pomoSettings', { includeShadowDom: true }, () => {
+    it('Check settings title', () => {
+      cy.get('#settings-button').click();
+      cy.get('#settings-title').then(($title) => {
+        expect($title[0].textContent).to.eq('Settings');
+      });
+    });
 
+    if (!fromControl) {
+      it('Toggle light mode', () => {
+        cy.get('#dark-slider').click();
+      });
+    }
+
+    it('Check light mode colors', () => {
       /* Verify colors of settings buttons */
       cy.get('#settings-button').should('have.css', 'background-color', 'rgb(229, 231, 234)');
       cy.get('#settings-button').should('have.css', 'color', 'rgba(0, 0, 0, 0)');
@@ -129,38 +138,63 @@ describe('Verify light mode colors for pomoSettings', { includeShadowDom: true }
       cy.get('#sound-select').should('have.css', 'color', 'rgb(35, 39, 44)');
       cy.get('#volume-slide').should('have.css', 'background-color', 'rgb(255, 255, 255)');
 
+      cy.get('#busy-mode.off-mode').should('have.css', 'display', 'block');
+      cy.get('#light-mode.off-mode').should('have.css', 'display', 'block');
+      cy.get('#accessible-mode.on-mode').should('have.css', 'display', 'block');
+
+      cy.get('#calm-mode.on-mode').should('have.css', 'display', 'none');
+      cy.get('#dark-mode.on-mode').should('have.css', 'display', 'none');
+      cy.get('#inaccessible-mode.off-mode').should('have.css', 'display', 'none');
+
       /* Verify colors of toggle switches */
       cy.get('#busy-mode.off-mode').should('have.css', 'color', 'rgb(35, 39, 44)');
-      cy.get('#busy-mode.off-mode').should('have.css', 'display', 'none');
-
       cy.get('#calm-mode.on-mode').should('have.css', 'color', 'rgb(255, 255, 255)');
-      cy.get('#calm-mode.on-mode').should('have.css', 'display', 'block');
 
       cy.get('#light-mode.off-mode').should('have.css', 'color', 'rgb(35, 39, 44)');
-      cy.get('#light-mode.off-mode').should('have.css', 'display', 'block');
-
       cy.get('#dark-mode.on-mode').should('have.css', 'color', 'rgb(255, 255, 255)');
-      cy.get('#dark-mode.on-mode').should('have.css', 'display', 'none');
 
       cy.get('#accessible-mode.on-mode').should('have.css', 'color', 'rgb(255, 255, 255)');
+      cy.get('#inaccessible-mode.off-mode').should('have.css', 'color', 'rgb(35, 39, 44)');
+
+      cy.get('#calm-slider').click();
+      cy.get('#accessible-slider').click();
+      cy.get('#dark-slider').click();
+    });
+
+    it('Verify toggle switch UI change', () => {
+      cy.get('#calm-mode.on-mode').should('have.css', 'display', 'block');
+      cy.get('#dark-mode.on-mode').should('have.css', 'display', 'block');
+      cy.get('#inaccessible-mode.off-mode').should('have.css', 'display', 'block');
+
+      cy.get('#busy-mode.off-mode').should('have.css', 'display', 'none');
+      cy.get('#light-mode.off-mode').should('have.css', 'display', 'none');
       cy.get('#accessible-mode.on-mode').should('have.css', 'display', 'none');
 
-      cy.get('#inaccessible-mode.off-mode').should('have.css', 'color', 'rgb(35, 39, 44)');
-      cy.get('#inaccessible-mode.off-mode').should('have.css', 'display', 'block');
+      /* Verify colors of toggle switches */
+      cy.get('#busy-mode.off-mode').should('have.css', 'color', 'rgb(139, 148, 158)');
+      cy.get('#calm-mode.on-mode').should('have.css', 'color', 'rgb(121, 208, 113)');
+
+      cy.get('#light-mode.off-mode').should('have.css', 'color', 'rgb(139, 148, 158)');
+      cy.get('#dark-mode.on-mode').should('have.css', 'color', 'rgb(121, 208, 113)');
+
+      cy.get('#accessible-mode.on-mode').should('have.css', 'color', 'rgb(121, 208, 113)');
+      cy.get('#inaccessible-mode.off-mode').should('have.css', 'color', 'rgb(139, 148, 158)');
+
+      cy.get('#calm-slider').click();
+      cy.get('#accessible-slider').click();
+      cy.get('#dark-slider').click();
+    });
+
+    it('Close settings and reset', () => {
+      if (!fromControl) {
+        cy.get('#dark-slider').click();
+      }
+
+      cy.get('#close-button').click();
     });
   });
+}
 
-  it('Verify toggle switch UI change', () => {
-    cy.get('#calm-slider').click();
-    cy.get('#dark-slider').click();
-    cy.get('#accessible-slider').click();
-
-    cy.get('#calm-mode.on-mode').should('have.css', 'display', 'none');
-    cy.get('#light-mode.off-mode').should('have.css', 'display', 'none');
-    cy.get('#inaccessible-mode.off-mode').should('have.css', 'display', 'none');
-
-    cy.get('#busy-mode.off-mode').should('have.css', 'display', 'block');
-    cy.get('#dark-mode.on-mode').should('have.css', 'display', 'block');
-    cy.get('#accessible-mode.on-mode').should('have.css', 'display', 'block');
-  });
-});
+testUISettingsDark();
+testUISettingsLight(false);
+export { testUISettingsDark, testUISettingsLight };
