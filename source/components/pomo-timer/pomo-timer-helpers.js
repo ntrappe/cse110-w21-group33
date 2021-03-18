@@ -1,3 +1,7 @@
+/**
+ * @module PomoTimerHelpers
+ */
+
 /* Helper Functions for Timer (imported by pomo-timer.js) */
 
 const MAX_SEC = 60;

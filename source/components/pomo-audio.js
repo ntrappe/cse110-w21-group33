@@ -1,3 +1,7 @@
+/**
+ * @module PomoAudio
+ */
+
 class PomoAudio extends HTMLElement {
   constructor() {
     super();

@@ -1,3 +1,7 @@
+/**
+ * @module PomoInfo
+ */
+
 class PomoInfo extends HTMLElement {
   constructor() {
     super();
@@ -138,6 +142,14 @@ class PomoInfo extends HTMLElement {
         infoStyle.setAttribute('href', './components/pomo-info/pomo-info-light.css');
         infoIcon.setAttribute('src', './assets/i_info_light.png');
       }
+    };
+
+    /**
+     * For transforming the whole object
+     * @param {String} transformText the text to put in transform css
+     */
+    this.changeTransform = (transformText) => {
+      infoButton.style.transform = transformText;
     };
 
     /**

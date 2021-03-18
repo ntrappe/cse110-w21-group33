@@ -29,7 +29,7 @@ describe('Test sidebar elements', () => {
   });
 
   it('Sidebar opens when gear is pressed', { includeShadowDom: true }, () => {
-    cy.get('#close-button').click();
+    cy.get('#settings-close-button').click();
     cy.get('#settings-button').click();
     cy.get('#settings').then(($el) => {
       expect($el).to.have.attr('class', 'open');
@@ -37,7 +37,7 @@ describe('Test sidebar elements', () => {
   });
 
   it('Sidebar closes when x is pressed', { includeShadowDom: true }, () => {
-    cy.get('#close-button').click();
+    cy.get('#settings-close-button').click();
     cy.get('#settings').then(($el) => {
       expect($el).to.have.attr('class', 'close');
     });
