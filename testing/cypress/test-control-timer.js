@@ -3,6 +3,12 @@ describe('Open Page', () => {
   it('Opens index.html', () => {
     cy.visit('./source/index.html');
   });
+
+  it('Speed up timer for testing', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.timerSpeed = 250; // 1/4 s
+    });
+  });
 });
 
 /* find timer on window */

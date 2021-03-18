@@ -91,6 +91,12 @@ describe('Testing a complete cycle for stats page', { includeShadowDom: true }, 
     cy.visit('./source/index.html');
   });
 
+  it('Speed up timer for testing', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.timerSpeed = 250; // 1/4 s
+    });
+  });
+
   it('Setting an interruption and checking if stats shows 1', () => {
     cy.get('#timer-button').click();
     cy.get('#timer-button').click();
