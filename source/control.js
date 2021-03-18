@@ -242,10 +242,10 @@ pomoSettings.addEventListener('darkSet', (event) => {
 });
 
 function accessibleSet(accessible) {
-  pomoFinish.setAccessible(accessible);
-  pomoInfo.setAccessible(accessible);
-  pomoSettings.setAccessible(accessible);
-  pomoTimer.setAccessible(accessible);
+  pomoFinish.setAccessibility(accessible);
+  pomoInfo.setAccessibility(accessible);
+  pomoSettings.setAccessibility(accessible);
+  pomoTimer.setAccessibility(accessible);
 }
 
 pomoSettings.addEventListener('accessSet', (event) => {
