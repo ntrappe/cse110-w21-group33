@@ -24,6 +24,9 @@ describe('Verify dark mode colors for pomoInfo', { includeShadowDom: true }, () 
       cy.get('#info-close-button').should('have.css', 'background-color', 'rgb(14, 17, 22)');
       cy.get('#info-close-button').should('have.css', 'border-color', 'rgb(49, 54, 60)');
       cy.get('#info-close-button').should('have.css', 'color', 'rgb(203, 209, 216)');
+      cy.get('#info-button-icon').then(($img) => {
+        expect($img[0].naturalWidth).to.be.greaterThan(0);
+      });
 
       /* Verify background colors of info modal */
       cy.get('#info-modal').should('have.css', 'background-color', 'rgba(0, 0, 0, 0.5)');

@@ -21,6 +21,9 @@ describe('Verify dark mode colors for pomoFinish', { includeShadowDom: true }, (
       cy.get('#finish-button').should('have.css', 'background-color', 'rgb(34, 38, 44)');
       cy.get('#finish-button').should('have.css', 'border-color', 'rgb(49, 54, 60)');
       cy.get('#finish-button').should('have.css', 'color', 'rgba(0, 0, 0, 0)');
+      cy.get('#finish-button-icon').then(($img) => {
+        expect($img[0].naturalWidth).to.be.greaterThan(0);
+      });
 
       /* Verify background colors of stats modal */
       cy.get('#statistics-modal').should('have.css', 'background-color', 'rgba(0, 0, 0, 0.5)');

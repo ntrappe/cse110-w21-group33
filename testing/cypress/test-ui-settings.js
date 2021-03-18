@@ -28,6 +28,9 @@ describe('Verify dark mode colors for pomoSettings', { includeShadowDom: true },
       cy.get('#settings-button').should('have.css', 'color', 'rgba(0, 0, 0, 0)');
       cy.get('#close-button').should('have.css', 'background-color', 'rgb(15, 17, 21)');
       cy.get('#close-button').should('have.css', 'border-color', 'rgb(49, 54, 60)');
+      cy.get('#settings-button-icon').then(($img) => {
+        expect($img[0].naturalWidth).to.be.greaterThan(0);
+      });
 
       /* Verify background colors of settings sidebar */
       cy.get('#settings-modal').should('have.css', 'background-color', 'rgba(0, 0, 0, 0.5)');
@@ -59,10 +62,10 @@ describe('Verify dark mode colors for pomoSettings', { includeShadowDom: true },
       cy.get('#calm-mode.on-mode').should('have.css', 'display', 'none');
 
       cy.get('#light-mode.off-mode').should('have.css', 'color', 'rgb(139, 148, 158)');
-      cy.get('#light-mode.off-mode').should('have.css', 'display', 'block');
+      cy.get('#light-mode.off-mode').should('have.css', 'display', 'none');
 
       cy.get('#dark-mode.on-mode').should('have.css', 'color', 'rgb(121, 208, 113)');
-      cy.get('#dark-mode.on-mode').should('have.css', 'display', 'none');
+      cy.get('#dark-mode.on-mode').should('have.css', 'display', 'block');
 
       cy.get('#accessible-mode.on-mode').should('have.css', 'color', 'rgb(121, 208, 113)');
       cy.get('#accessible-mode.on-mode').should('have.css', 'display', 'block');
@@ -78,11 +81,11 @@ describe('Verify dark mode colors for pomoSettings', { includeShadowDom: true },
     cy.get('#accessible-slider').click();
 
     cy.get('#calm-mode.on-mode').should('have.css', 'display', 'block');
-    cy.get('#dark-mode.on-mode').should('have.css', 'display', 'block');
+    cy.get('#light-mode.off-mode').should('have.css', 'display', 'block');
     cy.get('#inaccessible-mode.off-mode').should('have.css', 'display', 'block');
 
     cy.get('#busy-mode.off-mode').should('have.css', 'display', 'none');
-    cy.get('#light-mode.off-mode').should('have.css', 'display', 'none');
+    cy.get('#dark-mode.on-mode').should('have.css', 'display', 'none');
     cy.get('#accessible-mode.on-mode').should('have.css', 'display', 'none');
   });
 });
@@ -134,10 +137,10 @@ describe('Verify light mode colors for pomoSettings', { includeShadowDom: true }
       cy.get('#calm-mode.on-mode').should('have.css', 'display', 'block');
 
       cy.get('#light-mode.off-mode').should('have.css', 'color', 'rgb(35, 39, 44)');
-      cy.get('#light-mode.off-mode').should('have.css', 'display', 'none');
+      cy.get('#light-mode.off-mode').should('have.css', 'display', 'block');
 
       cy.get('#dark-mode.on-mode').should('have.css', 'color', 'rgb(255, 255, 255)');
-      cy.get('#dark-mode.on-mode').should('have.css', 'display', 'block');
+      cy.get('#dark-mode.on-mode').should('have.css', 'display', 'none');
 
       cy.get('#accessible-mode.on-mode').should('have.css', 'color', 'rgb(255, 255, 255)');
       cy.get('#accessible-mode.on-mode').should('have.css', 'display', 'none');
@@ -153,11 +156,11 @@ describe('Verify light mode colors for pomoSettings', { includeShadowDom: true }
     cy.get('#accessible-slider').click();
 
     cy.get('#calm-mode.on-mode').should('have.css', 'display', 'none');
-    cy.get('#dark-mode.on-mode').should('have.css', 'display', 'none');
+    cy.get('#light-mode.off-mode').should('have.css', 'display', 'none');
     cy.get('#inaccessible-mode.off-mode').should('have.css', 'display', 'none');
 
     cy.get('#busy-mode.off-mode').should('have.css', 'display', 'block');
-    cy.get('#light-mode.off-mode').should('have.css', 'display', 'block');
+    cy.get('#dark-mode.on-mode').should('have.css', 'display', 'block');
     cy.get('#accessible-mode.on-mode').should('have.css', 'display', 'block');
   });
 });
