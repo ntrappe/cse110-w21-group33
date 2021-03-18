@@ -658,7 +658,7 @@ class PomoSettings extends HTMLElement {
      * @param {Number} leftOffset left offset of settingPanel
      */
     this.changeTransform = (buttonText, panelText, leftOffset) => {
-      openButton.style.transform = buttonText;
+      settingsButton.style.transform = buttonText;
       sideBar.style.transform = panelText;
 
       /* Change style of left offset if panel is open,
