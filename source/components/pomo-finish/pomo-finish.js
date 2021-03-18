@@ -1,3 +1,7 @@
+/**
+ @module PomoFinish
+*/
+
 class PomoFinish extends HTMLElement {
   constructor() {
     super();

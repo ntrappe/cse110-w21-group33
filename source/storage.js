@@ -1,3 +1,7 @@
+/**
+ @module Storage
+*/
+
 /* Variables for Local Storage */
 const DEFAULT_WORK = 25;
 const DEFAULT_SHORT_BREAK = 5;

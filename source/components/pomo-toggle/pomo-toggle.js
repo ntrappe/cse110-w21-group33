@@ -1,3 +1,7 @@
+/**
+ @module PomoToggle
+*/
+
 /* Links Used
 https://stackoverflow.com/questions/44061473/move-text-on-toggle-switch-on-off
 https://www.w3schools.com/howto/howto_css_switch.asp

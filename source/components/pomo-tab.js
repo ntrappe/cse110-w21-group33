@@ -1,3 +1,7 @@
+/**
+ @module PomoTab
+*/
+
 // Mode and default titles
 const DEFAULT = 'Pomodoro Timer';
 const WORK = 'Work';

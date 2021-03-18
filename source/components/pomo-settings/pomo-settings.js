@@ -1,3 +1,7 @@
+/**
+ @module PomoSettings
+*/
+
 import ToggleSwitch from '../pomo-toggle/pomo-toggle.js';
 
 const DEFAULT_WORK_TIME = 25;

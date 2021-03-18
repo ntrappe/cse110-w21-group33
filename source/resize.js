@@ -1,3 +1,7 @@
+/**
+ @module Resize
+*/
+
 const MIN_WIDTH = 450;
 const MIN_HEIGHT = 700;
 const MIN_HEIGHT_STOP_CHANGE = 500;
