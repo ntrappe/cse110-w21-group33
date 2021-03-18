@@ -1,6 +1,6 @@
 /**
- @module Storage
-*/
+ * @module Storage
+ */
 
 /* Variables for Local Storage */
 const DEFAULT_WORK = 25;

@@ -1,6 +1,6 @@
 /**
- @module PomoTimer
-*/
+ * @module PomoTimer
+ */
 
 import {
   setStartButton,

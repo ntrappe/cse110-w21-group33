@@ -1,6 +1,6 @@
 /**
- @module PomoToggle
-*/
+ * @module PomoToggle
+ */
 
 /* Links Used
 https://stackoverflow.com/questions/44061473/move-text-on-toggle-switch-on-off

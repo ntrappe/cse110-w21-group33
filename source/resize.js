@@ -1,6 +1,6 @@
 /**
- @module Resize
-*/
+ * @module Resize
+ */
 
 const MIN_WIDTH = 450;
 const MIN_HEIGHT = 700;

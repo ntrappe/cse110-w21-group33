@@ -1,6 +1,6 @@
 /**
- @module PomoAudio
-*/
+ * @module PomoAudio
+ */
 
 class PomoAudio extends HTMLElement {
   constructor() {

@@ -1,6 +1,6 @@
 /**
- @module PomoTimerHelpers
-*/
+ * @module PomoTimerHelpers
+ */
 
 /* Helper Functions for Timer (imported by pomo-timer.js) */
 

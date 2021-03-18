@@ -1,6 +1,6 @@
 /**
- @module PomoSettings
-*/
+ * @module PomoSettings
+ */
 
 import ToggleSwitch from '../pomo-toggle/pomo-toggle.js';
 

@@ -1,6 +1,6 @@
 /**
- @module Control
-*/
+ * @module Control
+ */
 
 import PomoAudio from './components/pomo-audio.js';
 import PomoFinish from './components/pomo-finish/pomo-finish.js';

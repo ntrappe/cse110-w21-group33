@@ -1,6 +1,6 @@
 /**
- @module PomoInfo
-*/
+ * @module PomoInfo
+ */
 
 class PomoInfo extends HTMLElement {
   constructor() {
