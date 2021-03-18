@@ -165,8 +165,8 @@ describe('Check a 225 * 400 screen', { includeShadowDom: true }, () => {
   });
 
   it('Check setting changeTransform called', () => {
-    cy.get('#open-button').should('have.css', 'transform', 'matrix(0.5, 0, 0, 0.5, -37.5, 0)');
-    cy.get('#open-button').click();
+    cy.get('#settings-button').should('have.css', 'transform', 'matrix(0.5, 0, 0, 0.5, -37.5, 0)');
+    cy.get('#settings-button').click();
     cy.get('#settings.open').should('have.css', 'left', '-45px');
     cy.get('#settings.open').should('have.css', 'transform', 'matrix(0.5, 0, 0, 0.5, -37.5, 0)');
   });
