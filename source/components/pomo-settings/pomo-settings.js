@@ -392,7 +392,9 @@ class PomoSettings extends HTMLElement {
      */
     settingsModal.onclick = () => {
       sideBar.setAttribute('class', 'close');
+      sideBar.style.left = null;
       settingsModal.style.display = 'none';
+      shadow.dispatchEvent(this.closeEvent);
     };
 
     /**
