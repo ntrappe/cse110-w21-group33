@@ -4,6 +4,18 @@ class PomoFinish extends HTMLElement {
 
     const shadow = this.attachShadow({ mode: 'open' });
 
+    // event listener for opening finish page
+    this.openEvent = new CustomEvent('openEvent', {
+      bubbles: true,
+      composed: true,
+    });
+
+    // event listener for closing finish page
+    this.closeEvent = new CustomEvent('closeEvent', {
+      bubbles: true,
+      composed: true,
+    });
+
     // the component wrapper
     const wrapper = document.createElement('div');
     const statsStyle = document.createElement('link');
@@ -11,12 +23,6 @@ class PomoFinish extends HTMLElement {
     statsStyle.setAttribute('rel', 'stylesheet');
     statsStyle.setAttribute('href', './components/pomo-finish/pomo-finish.css');
     shadow.append(statsStyle);
-
-    // custom event for modal display
-    this.event = new CustomEvent('modalRequest', {
-      bubbles: true,
-      composed: true,
-    });
 
     // button to finish session and display statistics
     const finishButton = document.createElement('button');
@@ -40,6 +46,7 @@ class PomoFinish extends HTMLElement {
     modal.onclick = (event) => {
       // close lightbox when click outside of the content area
       if (event.target === modal) {
+        shadow.dispatchEvent(this.closeEvent);
         modal.style.display = 'none';
       }
     };
@@ -65,6 +72,7 @@ class PomoFinish extends HTMLElement {
     closeButton.setAttribute('class', 'button-off');
     closeButton.innerHTML = '&times;';
     closeButton.onclick = () => {
+      shadow.dispatchEvent(this.closeEvent);
       modal.style.display = 'none';
     };
 
@@ -87,10 +95,20 @@ class PomoFinish extends HTMLElement {
 
     shadow.appendChild(wrapper);
 
+    // custom event for modal display
+    this.event = new CustomEvent('modalRequest', {
+      bubbles: true,
+      composed: true,
+    });
+
+    // Enabled determines if this component can be opened
+    this.enabled = true;
+
     /**
      * Allows the control to open the finish page
      */
     this.enableFinish = () => {
+      this.enabled = true;
       finishButton.disabled = false;
     };
 
@@ -98,6 +116,7 @@ class PomoFinish extends HTMLElement {
      * Prevent the control from open the finish page
      */
     this.disableFinish = () => {
+      this.enabled = false;
       finishButton.disabled = true;
     };
 
@@ -125,6 +144,8 @@ class PomoFinish extends HTMLElement {
      * @return {void}
      */
     this.showModal = (workCount, shortBreakCount, longBreakCount, interruptedCount) => {
+      shadow.dispatchEvent(this.openEvent);
+
       // clear the list before appending elements
       sessionStatistics.innerHTML = '';
 
@@ -156,6 +177,38 @@ class PomoFinish extends HTMLElement {
       // show the statistics panel
       modal.style.display = 'block';
     };
+
+    /**
+     * For transforming the whole object
+     * @param {String} transformText the text to put in transform css
+     */
+    this.changeTransform = (transformText) => {
+      finishButton.style.transform = transformText;
+    };
+
+    // Assessible determines if the keyboard shortcuts should run
+    this.accessible = true;
+
+    /**
+     * For CONTROL to determine whether we can open info, setting, stats
+     * @param {Boolean} enabled true for being able to open, false otherwise
+     */
+    this.setAccessibility = (accessible) => {
+      this.accessible = accessible;
+    };
+
+    /**
+     * Functions that opens and closes the finish page with the f key
+     */
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'f' && this.accessible === true) {
+        if (modal.style.display === 'block') {
+          closeButton.onclick();
+        } else if (this.enabled === true) {
+          finishButton.onclick();
+        }
+      }
+    });
   }
 }
 

@@ -4,6 +4,21 @@ class PomoInfo extends HTMLElement {
 
     const shadow = this.attachShadow({ mode: 'open' });
 
+    // event listener for opening info page
+    this.openEvent = new CustomEvent('openEvent', {
+      bubbles: true,
+      composed: true,
+    });
+
+    // event listener for closing info page
+    this.closeEvent = new CustomEvent('closeEvent', {
+      bubbles: true,
+      composed: true,
+    });
+
+    // value of accessibility
+    this.accessible = true;
+
     // wrapper for element
     const wrapper = document.createElement('div');
 
@@ -23,6 +38,7 @@ class PomoInfo extends HTMLElement {
       // close lightbox when click outside of the content area
       if (event.target === modal) {
         modal.style.display = 'none';
+        shadow.dispatchEvent(this.closeEvent);
       }
     };
 
@@ -39,6 +55,7 @@ class PomoInfo extends HTMLElement {
 
     infoButton.onclick = () => {
       modal.style.display = 'block';
+      shadow.dispatchEvent(this.openEvent);
     };
 
     // the lightbox
@@ -66,6 +83,7 @@ class PomoInfo extends HTMLElement {
     closeButton.setAttribute('class', 'button-off');
     closeButton.onclick = () => {
       modal.style.display = 'none';
+      shadow.dispatchEvent(this.closeEvent);
     };
     closeButton.innerHTML = '&times;';
 
@@ -89,10 +107,14 @@ class PomoInfo extends HTMLElement {
 
     shadow.appendChild(wrapper);
 
+    // Enabled determines if this component can be opened
+    this.enabled = true;
+
     /**
      * Allows the control to open the info page
      */
     this.enableInfo = () => {
+      this.enabled = true;
       infoButton.disabled = false;
     };
 
@@ -100,6 +122,7 @@ class PomoInfo extends HTMLElement {
      * Prevent the control from open the info page
      */
     this.disableInfo = () => {
+      this.enabled = false;
       infoButton.disabled = true;
     };
 
@@ -116,6 +139,35 @@ class PomoInfo extends HTMLElement {
         infoIcon.setAttribute('src', './assets/i_info_light.png');
       }
     };
+
+    /**
+     * For transforming the whole object
+     * @param {String} transformText the text to put in transform css
+     */
+    this.changeTransform = (transformText) => {
+      infoButton.style.transform = transformText;
+    };
+
+    /**
+     * For CONTROL to determine whether we can open info, setting, stats
+     * @param {Boolean} enabled true for being able to open, false otherwise
+     */
+    this.setAccessibility = (enabled) => {
+      this.accessible = enabled;
+    };
+
+    /**
+     * Functions that opens and closes the info page with the i key
+     */
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'i' && this.accessible === true) {
+        if (modal.style.display === 'block') {
+          closeButton.onclick();
+        } else if (this.enabled === true) {
+          infoButton.onclick();
+        }
+      }
+    });
   }
 }
 

@@ -150,6 +150,8 @@ pomoFinish.addEventListener('modalRequest', () => {
 
 // PomoSettings Events
 function workSet(work) {
+  workLength = work;
+
   if (currentMode === Mode.work) {
     pomoTimer.setTimer(work, currentMode);
   }
@@ -163,6 +165,8 @@ pomoSettings.addEventListener('workSet', (event) => {
 });
 
 function shortBreakSet(shortBreak) {
+  shortLength = shortBreak;
+
   if (currentMode === Mode.short) {
     pomoTimer.setTimer(shortBreak, currentMode);
   }
@@ -176,6 +180,8 @@ pomoSettings.addEventListener('shortBreakSet', (event) => {
 });
 
 function longBreakSet(longBreak) {
+  longLength = longBreak;
+
   if (currentMode === Mode.long) {
     pomoTimer.setTimer(longBreak, currentMode);
   }
@@ -242,16 +248,53 @@ pomoSettings.addEventListener('darkSet', (event) => {
 });
 
 function accessibleSet(accessible) {
-  pomoFinish.setAccessible(accessible);
-  pomoInfo.setAccessible(accessible);
-  pomoSettings.setAccessible(accessible);
-  pomoTimer.setAccessible(accessible);
+  pomoFinish.setAccessibility(accessible);
+  pomoInfo.setAccessibility(accessible);
+  pomoSettings.setAccessibility(accessible);
+  pomoTimer.setAccessibility(accessible);
 }
 
 pomoSettings.addEventListener('accessSet', (event) => {
   const accessible = event.detail.accessible();
   PomoStorage.setAccessibility(accessible);
   accessibleSet(accessible);
+});
+
+// Accessibility events
+pomoFinish.addEventListener('openEvent', () => {
+  pomoInfo.disableInfo();
+  pomoSettings.setAccessibility(false);
+  pomoTimer.disableTimer();
+});
+
+pomoFinish.addEventListener('closeEvent', () => {
+  pomoInfo.enableInfo();
+  pomoSettings.setAccessibility(true);
+  pomoTimer.enableTimer();
+});
+
+pomoInfo.addEventListener('openEvent', () => {
+  pomoFinish.disableFinish();
+  pomoSettings.setAccessibility(false);
+  pomoTimer.disableTimer();
+});
+
+pomoInfo.addEventListener('closeEvent', () => {
+  pomoFinish.enableFinish();
+  pomoSettings.setAccessibility(true);
+  pomoTimer.enableTimer();
+});
+
+pomoSettings.addEventListener('openEvent', () => {
+  pomoFinish.disableFinish();
+  pomoInfo.disableInfo();
+  pomoTimer.disableTimer();
+});
+
+pomoSettings.addEventListener('closeEvent', () => {
+  pomoFinish.enableFinish();
+  pomoInfo.enableInfo();
+  pomoTimer.enableTimer();
 });
 
 function onload() {

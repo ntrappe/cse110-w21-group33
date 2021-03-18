@@ -494,3 +494,59 @@ describe('Test sidebar elements', () => {
     cy.wrap(eventPromise);
   });
 });
+
+describe('Sidebar Testing with Accessibility', { includeShadowDom: true }, () => {
+  beforeEach(() => {
+    cy.visit('./source/index.html');
+  });
+
+  it('Sidebar opens when q is pressed & Accesibility is on', () => {
+    cy.window().then((win) => {
+      win.pomoSettings.setAccessibility(true);
+    });
+    cy.get('body').type('q');
+    cy.get('#settings').then(($el) => {
+      expect($el).to.have.attr('class', 'open');
+    });
+  });
+
+  it('Sidebar closes when q is pressed & Accesibility is on', () => {
+    cy.window().then((win) => {
+      win.pomoSettings.setAccessibility(true);
+    });
+    cy.get('body').type('q');
+    cy.get('body').type('q');
+    cy.get('#settings').then(($el) => {
+      expect($el).to.have.attr('class', 'close');
+    });
+  });
+
+  it('Sidebar opens when q is pressed & Accesibility is off', () => {
+    cy.window().then((win) => {
+      win.pomoSettings.setAccessibility(true);
+    });
+    cy.get('body').type('q');
+    cy.get('body').type('q');
+    cy.window().then((win) => {
+      win.pomoSettings.setAccessibility(false);
+    });
+    cy.get('body').type('q');
+    cy.get('#settings').then(($el) => {
+      expect($el).to.have.attr('class', 'close');
+    });
+  });
+
+  it('Sidebar closes when q is pressed & Accesibility is off', () => {
+    cy.window().then((win) => {
+      win.pomoSettings.setAccessibility(true);
+    });
+    cy.get('body').type('q');
+    cy.window().then((win) => {
+      win.pomoSettings.setAccessibility(false);
+    });
+    cy.get('body').type('q');
+    cy.get('#settings').then(($el) => {
+      expect($el).to.have.attr('class', 'open');
+    });
+  });
+});

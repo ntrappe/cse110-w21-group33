@@ -8,6 +8,7 @@ import {
 } from './pomo-timer-helpers.js';
 
 const START = 'Start';
+const RESET = 'Reset';
 const SEC_SPEED = 250;
 class PomoTimer extends HTMLElement {
   constructor() {
@@ -48,12 +49,30 @@ class PomoTimer extends HTMLElement {
     this.totalSeconds = 0; // total seconds in timer
     let modeDuration = 0; // time to put on clock
     this.calmTimerText = false; // display w or w/o sec
+    this.accessible = true;
 
     shadow.appendChild(wrapper);
     wrapper.appendChild(currentMode);
     wrapper.appendChild(progressContainer);
     wrapper.appendChild(timerText);
     wrapper.appendChild(timerButton);
+
+    // Enabled determines if this component can be opened
+    this.enabled = true;
+
+    /**
+     * Used for allowing keyboard shortcuts
+     */
+    this.enableTimer = () => {
+      this.enabled = true;
+    };
+
+    /**
+     * Used for preventing keyboard shortcuts
+     */
+    this.disableTimer = () => {
+      this.enabled = false;
+    };
 
     /* Events */
     const timerStartEvent = new CustomEvent('timerStart', {
@@ -194,6 +213,39 @@ class PomoTimer extends HTMLElement {
         timerStyle.setAttribute('href', './components/pomo-timer/pomo-timer-light.css');
       }
     };
+
+    /**
+     * For transforming the whole object
+     * @param {String} transformText the text to put in transform css
+     */
+    this.changeTransform = (transformText) => {
+      wrapper.style.transform = transformText;
+    };
+
+    /**
+     * For CONTROL to determine whether we can open info, setting, stats
+     * @param {Boolean} enabled true for being able to open, false otherwise
+     */
+    this.setAccessibility = (enabled) => {
+      this.accessible = enabled;
+    };
+
+    /**
+     * Functions that calls timerButton.onclick() if s or r key is pressed
+     */
+    document.addEventListener('keydown', (e) => {
+      // Checking if the key clicked is a s
+      if (e.key === 's' && this.accessible === true && this.enabled === true) {
+        if (timerButton.innerHTML === START) {
+          timerButton.onclick(); // Forces a onclick button for timerButton
+        }
+        // Key clicked is a e
+      } else if (e.key === 'r' && this.accessible === true && this.enabled === true) {
+        if (timerButton.innerHTML === RESET) {
+          timerButton.onclick(); // Forces a onclick button for timerButton
+        }
+      }
+    });
   }
 }
 
