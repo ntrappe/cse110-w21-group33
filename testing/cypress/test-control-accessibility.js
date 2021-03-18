@@ -58,7 +58,6 @@ describe('Test when accessibility is off', { includeShadowDom: true }, () => {
     cy.get('body').type('r', { force: true });
     cy.get('#timer-button').should('have.prop', 'innerHTML', 'Reset');
     cy.get('#timer-button').should('have.prop', 'textContent', 'Reset');
-
   });
 
   it('cannot open info with keyboard', () => {
@@ -148,7 +147,6 @@ describe('Test when accessibility is on', { includeShadowDom: true }, () => {
     cy.get('body').type('r', { force: true });
     cy.get('#timer-button').should('have.prop', 'innerHTML', 'Start');
     cy.get('#timer-button').should('have.prop', 'textContent', 'Start');
-
   });
 
   it('can open info with keyboard', () => {
