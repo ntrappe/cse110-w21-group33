@@ -1,3 +1,7 @@
+/**
+ * @module PomoInfo
+ */
+
 class PomoInfo extends HTMLElement {
   constructor() {
     super();
