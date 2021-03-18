@@ -1,22 +1,45 @@
-button {
-  color: #cbd1d8;
+/* dark css for finish/statistics */
+
+#finish-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   background-color: #22262c;
   font-weight: 600;
   font-size: 16px;
   border: 1.5px solid;
-  padding: 7px 12px;
   border-radius: 6px;
   border-color: #31363c;
-  width: 100px;
   cursor: pointer;
-  margin-right: 15px;
+  width: 100px;
+  height: 36px;
+  color: transparent;
 }
 
-button:hover {
+#finish-button-icon {
+  height: 14px;
+  vertical-align: middle;
+  padding-bottom: 2px;
+}
+
+#finish-button:hover {
   color: #f1f6fb;
   background-color: #31363c;
   border-color: #8d949d;
   transition-duration: 0.1s;
+}
+
+/* disabled styling */
+#finish-button:disabled {
+  background-color: #22262c;
+  opacity: 30%;
+  cursor: not-allowed;
+}
+
+#finish-button:disabled:hover {
+  border-color: #31363c;
+  opacity: 30%;
+  cursor: not-allowed;
 }
 
 #statistics-close-button[class="button-off"] {

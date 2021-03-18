@@ -25,12 +25,12 @@ describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
 describe('Test sidebar elements', () => {
   beforeEach(() => {
     cy.visit('./source');
-    cy.get('#open-button').click();
+    cy.get('#settings-button').click();
   });
 
   it('Sidebar opens when gear is pressed', { includeShadowDom: true }, () => {
     cy.get('#close-button').click();
-    cy.get('#open-button').click();
+    cy.get('#settings-button').click();
     cy.get('#settings').then(($el) => {
       expect($el).to.have.attr('class', 'open');
     });
@@ -156,19 +156,20 @@ describe('Test sidebar elements', () => {
   });
 
   it('Stylesheet is switched when calling setDark()', { includeShadowDom: true }, () => {
+    // Note: maybe add css checks for toggle bc now has pomo-toggle.css and -light.css
     cy.get('#settings-style').then(($el) => {
-      expect($el).to.have.attr('href', './components/settings-light.css');
-    });
-    cy.window().then((win) => {
-      win.pomoSettings.setDark(true);
-      cy.get('#settings-style').then(($el) => {
-        expect($el).to.have.attr('href', './components/settings-dark.css');
-      });
+      expect($el).to.have.attr('href', './components/pomo-settings/pomo-settings.css');
     });
     cy.window().then((win) => {
       win.pomoSettings.setDark(false);
       cy.get('#settings-style').then(($el) => {
-        expect($el).to.have.attr('href', './components/settings-light.css');
+        expect($el).to.have.attr('href', './components/pomo-settings/pomo-settings-light.css');
+      });
+    });
+    cy.window().then((win) => {
+      win.pomoSettings.setDark(true);
+      cy.get('#settings-style').then(($el) => {
+        expect($el).to.have.attr('href', './components/pomo-settings/pomo-settings.css');
       });
     });
   });
@@ -344,9 +345,7 @@ describe('Test sidebar elements', () => {
           resolve();
         };
         $el[0].addEventListener('calmSet', onCalmSet);
-        cy.get('#calm-switch').then(($ele) => {
-          $ele[0].setOn();
-        });
+        cy.get('#calm-slider').click();
       });
     });
     cy.wrap(eventPromise);
@@ -361,9 +360,7 @@ describe('Test sidebar elements', () => {
           resolve();
         };
         $el[0].addEventListener('darkSet', onDarkSet);
-        cy.get('#dark-switch').then(($ele) => {
-          $ele[0].setOn();
-        });
+        cy.get('#dark-slider').click();
       });
     });
     cy.wrap(eventPromise);
@@ -373,14 +370,12 @@ describe('Test sidebar elements', () => {
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-settings').then(($el) => {
         const onAccessSet = (e) => {
-          expect(e.detail.accessible()).to.eq(true);
+          expect(e.detail.accessible()).to.eq(false);
           $el[0].removeEventListener('accessSet', onAccessSet);
           resolve();
         };
         $el[0].addEventListener('accessSet', onAccessSet);
-        cy.get('#access-switch').then(($ele) => {
-          $ele[0].setOn();
-        });
+        cy.get('#accessible-slider').click();
       });
     });
     cy.wrap(eventPromise);
@@ -497,5 +492,61 @@ describe('Test sidebar elements', () => {
       });
     });
     cy.wrap(eventPromise);
+  });
+});
+
+describe('Sidebar Testing with Accessibility', { includeShadowDom: true }, () => {
+  beforeEach(() => {
+    cy.visit('./source/index.html');
+  });
+
+  it('Sidebar opens when q is pressed & Accesibility is on', () => {
+    cy.window().then((win) => {
+      win.pomoSettings.setAccessibility(true);
+    });
+    cy.get('body').type('q');
+    cy.get('#settings').then(($el) => {
+      expect($el).to.have.attr('class', 'open');
+    });
+  });
+
+  it('Sidebar closes when q is pressed & Accesibility is on', () => {
+    cy.window().then((win) => {
+      win.pomoSettings.setAccessibility(true);
+    });
+    cy.get('body').type('q');
+    cy.get('body').type('q');
+    cy.get('#settings').then(($el) => {
+      expect($el).to.have.attr('class', 'close');
+    });
+  });
+
+  it('Sidebar opens when q is pressed & Accesibility is off', () => {
+    cy.window().then((win) => {
+      win.pomoSettings.setAccessibility(true);
+    });
+    cy.get('body').type('q');
+    cy.get('body').type('q');
+    cy.window().then((win) => {
+      win.pomoSettings.setAccessibility(false);
+    });
+    cy.get('body').type('q');
+    cy.get('#settings').then(($el) => {
+      expect($el).to.have.attr('class', 'close');
+    });
+  });
+
+  it('Sidebar closes when q is pressed & Accesibility is off', () => {
+    cy.window().then((win) => {
+      win.pomoSettings.setAccessibility(true);
+    });
+    cy.get('body').type('q');
+    cy.window().then((win) => {
+      win.pomoSettings.setAccessibility(false);
+    });
+    cy.get('body').type('q');
+    cy.get('#settings').then(($el) => {
+      expect($el).to.have.attr('class', 'open');
+    });
   });
 });

@@ -1,17 +1,25 @@
 /* dark css for info */
 
 #info-button {
-  color: #cbd1d8;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   background-color: #22262c;
   font-weight: 600;
   font-size: 16px;
   border: 1.5px solid;
-  padding: 7px 25px;
   border-radius: 6px;
   border-color: #31363c;
-  width: 100px;
   cursor: pointer;
-  margin-right: 15px;
+  width: 90px;
+  height: 36px;
+  color: transparent;
+}
+
+#info-button-icon {
+  height: 16px;
+  vertical-align: middle;
+  padding-bottom: 2px;
 }
 
 #info-button:hover {
@@ -19,6 +27,19 @@
   background-color: #31363c;
   border-color: #8d949d;
   transition-duration: 0.1s;
+}
+
+/* disabled styling */
+#info-button:disabled {
+  background-color: #22262c;
+  opacity: 30%;
+  cursor: not-allowed;
+}
+
+#info-button:disabled:hover {
+  border-color: #31363c;
+  opacity: 30%;
+  cursor: not-allowed;
 }
 
 #info-close-button[class="button-off"] {

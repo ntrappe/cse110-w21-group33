@@ -159,6 +159,7 @@ describe('Check setting Dark and Light Mode', { includeShadowDom: true }, () => 
   });
 
   it('Check that timer text is in light mode', () => {
+    cy.wait(1000);
     cy.get('#timer-text').then(($el) => {
       expect($el).to.have.css('color', 'rgb(33, 38, 44)');
     });
@@ -767,3 +768,148 @@ describe('Basic Button Toggles', { includeShadowDom: true }, () => {
     });
   });
 }); */
+
+describe('Accessibility when click then reset', { includeShadowDom: true }, () => {
+  beforeEach(() => {
+    cy.visit('./source/index.html');
+  });
+
+  it('Button toggles when Start clicked', () => {
+    cy.get('#timer-button').click();
+    cy.get('#timer-button').then(($el) => {
+      expect($el).to.contain('Reset');
+    });
+  });
+  it('Button toggles when r is pressed (Reset) & True', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setAccessibility(true);
+    });
+    cy.get('body')
+      .type('r')
+      .then(() => {
+        cy.get('#timer-button').then(($el) => {
+          expect($el).to.contain('Start');
+        });
+      });
+  });
+});
+
+describe('Basic Button Toggles for Accessibility when on', { includeShadowDom: true }, () => {
+  it('Button toggles when s is pressed (Start) & True', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setAccessibility(true);
+    });
+    cy.get('body')
+      .type('s')
+      .then(() => {
+        cy.get('#timer-button').then(($el) => {
+          expect($el).to.contain('Reset');
+        });
+      });
+  });
+  it('Button toggles when r is pressed (Reset) & True', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setAccessibility(true);
+    });
+    cy.get('body')
+      .type('r')
+      .then(() => {
+        cy.get('#timer-button').then(($el) => {
+          expect($el).to.contain('Start');
+        });
+      });
+  });
+});
+
+describe('Basic Button Toggles for Accessibility when off', { includeShadowDom: true }, () => {
+  it('Button toggles when s is pressed (Start) & False', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setAccessibility(false);
+    });
+    cy.get('body')
+      .type('s')
+      .then(() => {
+        cy.get('#timer-button').then(($el) => {
+          expect($el).to.contain('Start');
+        });
+      });
+  });
+  it('Button toggles when r is pressed (Reset) & False', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setAccessibility(false);
+    });
+    cy.get('body')
+      .type('r')
+      .then(() => {
+        cy.get('#timer-button').then(($el) => {
+          expect($el).to.contain('Start');
+        });
+      });
+  });
+});
+
+describe('Accessibility when on then off then on', { includeShadowDom: true }, () => {
+  it('Button toggles when s is pressed (Start) & True', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setAccessibility(true);
+    });
+    cy.get('body')
+      .type('s')
+      .then(() => {
+        cy.get('#timer-button').then(($el) => {
+          expect($el).to.contain('Reset');
+        });
+      });
+  });
+  it('Button toggles when r is pressed (Reset) & False', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setAccessibility(false);
+    });
+    cy.get('body')
+      .type('r')
+      .then(() => {
+        cy.get('#timer-button').then(($el) => {
+          expect($el).to.contain('Reset');
+        });
+      });
+  });
+  it('Button toggles when r is pressed (Reset) & True', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setAccessibility(true);
+    });
+    cy.get('body')
+      .type('r')
+      .then(() => {
+        cy.get('#timer-button').then(($el) => {
+          expect($el).to.contain('Start');
+        });
+      });
+  });
+});
+
+describe('Accessibility when off then click', { includeShadowDom: true }, () => {
+  it('Button toggles when s is pressed (Start) & False', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setAccessibility(false);
+    });
+    cy.get('body')
+      .type('s')
+      .then(() => {
+        cy.get('#timer-button').then(($el) => {
+          expect($el).to.contain('Start');
+        });
+      });
+  });
+  it('Button toggles when r is pressed (Reset) & True', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.setAccessibility(true);
+    });
+    cy.get('body')
+      .type('r')
+      .then(() => {
+        cy.get('#timer-button').then(($el) => {
+          expect($el).to.contain('Start');
+        });
+      });
+  });
+});

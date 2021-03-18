@@ -114,7 +114,7 @@ describe('Check Dark/Light Settings', { includeShadowDom: true }, () => {
     cy.window().then((win) => {
       win.pomoInfo.setDark(true);
     });
-    cy.get('#info-styles').should('have.attr', 'href', './components/pomo-info.css');
+    cy.get('#info-styles').should('have.attr', 'href', './components/pomo-info/pomo-info.css');
   });
 
   it('Check that setDark(false) sets light mode', () => {
@@ -122,6 +122,52 @@ describe('Check Dark/Light Settings', { includeShadowDom: true }, () => {
     cy.window().then((win) => {
       win.pomoInfo.setDark(false);
     });
-    cy.get('#info-styles').should('have.attr', 'href', './components/pomo-info-light.css');
+    cy.get('#info-styles').should(
+      'have.attr',
+      'href',
+      './components/pomo-info/pomo-info-light.css'
+    );
+  });
+});
+
+describe('Accessibility Testing for Info', { includeShadowDom: true }, () => {
+  beforeEach(() => {
+    cy.visit('./source/index.html');
+  });
+
+  it('Check that i button opens lightbox', () => {
+    cy.window().then((win) => {
+      win.pomoInfo.setAccessibility(true);
+    });
+    cy.get('body').type('i');
+    cy.get('#info-modal').should('have.css', 'display', 'block');
+    cy.get('#info-modal').should('have.css', 'background-color').and('eq', 'rgba(0, 0, 0, 0.5)');
+  });
+
+  it('Check that i button closes lightbox', () => {
+    cy.window().then((win) => {
+      win.pomoInfo.setAccessibility(true);
+    });
+    cy.get('body').type('i');
+    cy.get('body').type('i');
+    cy.get('#info-modal').should('have.css', 'display', 'none');
+  });
+
+  it('Check that i button doesnt open lightbox when accessibility is off', () => {
+    cy.window().then((win) => {
+      win.pomoInfo.setAccessibility(false);
+    });
+    cy.get('body').type('i');
+    cy.get('#info-modal').should('have.css', 'display', 'none');
+  });
+
+  it('Check that i button doesnt close lightbox when accessibility is off', () => {
+    cy.get('body').type('i');
+    cy.window().then((win) => {
+      win.pomoInfo.setAccessibility(false);
+    });
+    cy.get('body').type('i');
+    cy.get('#info-modal').should('have.css', 'display', 'block');
+    cy.get('#info-modal').should('have.css', 'background-color').and('eq', 'rgba(0, 0, 0, 0.5)');
   });
 });
