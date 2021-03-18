@@ -339,8 +339,7 @@ describe('Test sidebar elements', () => {
   it('changing calmSwitch fires appropriate events', { includeShadowDom: true }, () => {
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-settings').then(($el) => {
-        const onCalmSet = (e) => {
-          expect(e.detail.calm()).to.eq(true);
+        const onCalmSet = () => {
           $el[0].removeEventListener('calmSet', onCalmSet);
           resolve();
         };
@@ -354,8 +353,7 @@ describe('Test sidebar elements', () => {
   it('changing darkSwitch fires appropriate events', { includeShadowDom: true }, () => {
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-settings').then(($el) => {
-        const onDarkSet = (e) => {
-          expect(e.detail.dark()).to.eq(true);
+        const onDarkSet = () => {
           $el[0].removeEventListener('darkSet', onDarkSet);
           resolve();
         };
@@ -369,8 +367,7 @@ describe('Test sidebar elements', () => {
   it('changing accessSwitch fires appropriate events', { includeShadowDom: true }, () => {
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-settings').then(($el) => {
-        const onAccessSet = (e) => {
-          expect(e.detail.accessible()).to.eq(false);
+        const onAccessSet = () => {
           $el[0].removeEventListener('accessSet', onAccessSet);
           resolve();
         };
