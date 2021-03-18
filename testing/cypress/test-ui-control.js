@@ -10,6 +10,10 @@ describe('Open Page', () => {
 });
 
 describe('Check control setDark', { includeShadowDom: true }, () => {
+  it('Check page background color', () => {
+    cy.get('#body').should('have.css', 'background-color', 'rgb(14, 17, 22)');
+  });
+
   testUISettingsDark();
   testUIInfoDark();
   testUIFinishDark();
@@ -21,6 +25,10 @@ describe('Check control set light mode', { includeShadowDom: true }, () => {
     cy.get('#settings-button').click();
     cy.get('#dark-slider').click();
     cy.get('#close-button').click();
+  });
+
+  it('Check page background color', () => {
+    cy.get('#body').should('have.css', 'background-color', 'rgb(255, 255, 255)');
   });
 
   testUISettingsLight(true);
