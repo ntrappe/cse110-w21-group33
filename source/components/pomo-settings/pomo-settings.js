@@ -597,6 +597,7 @@ class PomoSettings extends HTMLElement {
      * Enable settings
      */
     this.enableSettings = () => {
+      this.enabled = true;
       workSection.classList.remove('disabled');
       shortSection.classList.remove('disabled');
       longSection.classList.remove('disabled');
@@ -617,6 +618,7 @@ class PomoSettings extends HTMLElement {
      * Disable settings besides volume
      */
     this.disableSettings = () => {
+      this.enabled = false;
       workSection.classList.add('disabled');
       shortSection.classList.add('disabled');
       longSection.classList.add('disabled');

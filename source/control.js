@@ -292,15 +292,19 @@ pomoInfo.addEventListener('closeEvent', () => {
 });
 
 pomoSettings.addEventListener('openEvent', () => {
-  pomoFinish.disableFinish();
-  pomoInfo.disableInfo();
-  pomoTimer.disableTimer();
+  if (pomoSettings.enabled) {
+    pomoFinish.disableFinish();
+    pomoInfo.disableInfo();
+    pomoTimer.disableTimer();
+  }
 });
 
 pomoSettings.addEventListener('closeEvent', () => {
-  pomoFinish.enableFinish();
-  pomoInfo.enableInfo();
-  pomoTimer.enableTimer();
+  if (pomoSettings.enabled) {
+    pomoFinish.enableFinish();
+    pomoInfo.enableInfo();
+    pomoTimer.enableTimer();
+  }
 });
 
 function onload() {
