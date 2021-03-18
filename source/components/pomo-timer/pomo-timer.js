@@ -9,7 +9,7 @@ import {
 
 const START = 'Start';
 const RESET = 'Reset';
-const SEC_SPEED = 250;
+const DEFAULT_SPEED = 1000; // normal second in ms
 class PomoTimer extends HTMLElement {
   constructor() {
     super();
@@ -49,7 +49,8 @@ class PomoTimer extends HTMLElement {
     this.totalSeconds = 0; // total seconds in timer
     let modeDuration = 0; // time to put on clock
     this.calmTimerText = false; // display w or w/o sec
-    this.accessible = true;
+    this.accessible = true; // whether can use keystroke
+    this.timerSpeed = DEFAULT_SPEED; // how fast a second is (tests overwrite)
 
     shadow.appendChild(wrapper);
     wrapper.appendChild(currentMode);
@@ -126,7 +127,7 @@ class PomoTimer extends HTMLElement {
       shadow.dispatchEvent(timerStartEvent);
       this.totalSeconds = setTime(modeDuration);
       display(this.totalSeconds, timerText, this.calmTimerText);
-      ticker = setInterval(this.timerTick, SEC_SPEED);
+      ticker = setInterval(this.timerTick, this.timerSpeed);
     };
 
     /**

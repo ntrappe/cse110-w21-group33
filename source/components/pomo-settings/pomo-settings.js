@@ -200,7 +200,7 @@ class PomoSettings extends HTMLElement {
     soundSelect.setAttribute('id', 'sound-select');
 
     // List of names of audio files (file name should be spaced with hyphens)
-    const soundList = ['party-horn', 'angry-monkey', 'default', 'rooster'];
+    const soundList = ['default', 'party-horn', 'angry-monkey', 'rooster'];
 
     // Create option in dropdown menu for each audio file
     for (let i = 0; i < soundList.length; i += 1) {
