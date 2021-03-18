@@ -83,7 +83,9 @@ function disableAll() {
 
 // PomoTimer Events
 pomoTimer.addEventListener('timerStart', () => {
-  disableAll();
+  if (currentMode === Mode.work) {
+    disableAll();
+  }
 });
 
 pomoTimer.addEventListener('tick', (event) => {
