@@ -12,12 +12,6 @@ class PomoFinish extends HTMLElement {
     statsStyle.setAttribute('href', './components/pomo-finish/pomo-finish.css');
     shadow.append(statsStyle);
 
-    // custom event for modal display
-    this.event = new CustomEvent('modalRequest', {
-      bubbles: true,
-      composed: true,
-    });
-
     // button to finish session and display statistics
     const finishButton = document.createElement('button');
     finishButton.setAttribute('id', 'finish-button');
@@ -87,10 +81,20 @@ class PomoFinish extends HTMLElement {
 
     shadow.appendChild(wrapper);
 
+    // custom event for modal display
+    this.event = new CustomEvent('modalRequest', {
+      bubbles: true,
+      composed: true,
+    });
+
+    // Enabled determines if this component can be opened
+    this.enabled = true;
+
     /**
      * Allows the control to open the finish page
      */
     this.enableFinish = () => {
+      this.enabled = true;
       finishButton.disabled = false;
     };
 
@@ -98,6 +102,7 @@ class PomoFinish extends HTMLElement {
      * Prevent the control from open the finish page
      */
     this.disableFinish = () => {
+      this.enabled = false;
       finishButton.disabled = true;
     };
 
@@ -164,6 +169,30 @@ class PomoFinish extends HTMLElement {
     this.changeTransform = (transformText) => {
       finishButton.style.transform = transformText;
     };
+
+    // Assessible determines if the keyboard shortcuts should run
+    this.accessible = true;
+
+    /**
+     * For CONTROL to determine whether we can open info, setting, stats
+     * @param {Boolean} enabled true for being able to open, false otherwise
+     */
+    this.setAccessibility = (accessible) => {
+      this.accessible = accessible;
+    };
+
+    /**
+     * Functions that opens and closes the finish page with the f key
+     */
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'f' && this.accessible === true) {
+        if (modal.style.display === 'block') {
+          closeButton.onclick();
+        } else if (this.enabled === true) {
+          finishButton.onclick();
+        }
+      }
+    });
   }
 }
 
