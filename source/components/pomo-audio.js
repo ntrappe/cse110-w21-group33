@@ -21,6 +21,7 @@ class PomoAudio extends HTMLElement {
     this.enabled = true;
 
     /**
+     * @method
      * Allows the sound to be played
      */
     this.enableSound = () => {
@@ -28,6 +29,7 @@ class PomoAudio extends HTMLElement {
     };
 
     /**
+     * @method
      * Prevents the sound from being played
      */
     this.disableSound = () => {
@@ -35,6 +37,7 @@ class PomoAudio extends HTMLElement {
     };
 
     /**
+     * @method
      * Play the current sound at the current volume
      */
     this.playSound = () => {
@@ -44,6 +47,7 @@ class PomoAudio extends HTMLElement {
     };
 
     /**
+     * @method
      * Set the volume of the audio component
      * @param {Number} volume - Volume level from 0 to 100
      */
@@ -57,6 +61,7 @@ class PomoAudio extends HTMLElement {
     };
 
     /**
+     * @method
      * Set location of the sound to be played
      * @param {String} sound - Absolute path of sound
      */
