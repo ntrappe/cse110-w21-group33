@@ -574,6 +574,7 @@ class PomoSettings extends HTMLElement {
     });
 
     /**
+     * @method
      * Toggles light/dark color scheme for sidebar
      * @param {Boolean} dark turn dark color scheme if dark mode is on
      */
@@ -594,6 +595,7 @@ class PomoSettings extends HTMLElement {
     this.enabled = true;
 
     /**
+     * @method
      * Enable settings
      */
     this.enableSettings = () => {
@@ -614,6 +616,7 @@ class PomoSettings extends HTMLElement {
     };
 
     /**
+     * @method
      * Disable settings besides volume
      */
     this.disableSettings = () => {
@@ -634,6 +637,7 @@ class PomoSettings extends HTMLElement {
     };
 
     /**
+     * @method
      * Called by control, updates the default settings with values previously had from local storage
      * @param {Boolean} calm whether or not calm mode is turned on
      * @param {Number} volume value of audio volume
@@ -676,6 +680,7 @@ class PomoSettings extends HTMLElement {
     };
 
     /**
+     * @method
      * For transforming the whole object
      * @param {String} buttonText the text to put in transform css
      * @param {Number} leftOffset left offset of settingPanel
@@ -695,6 +700,7 @@ class PomoSettings extends HTMLElement {
     };
 
     /**
+     * @method
      * For CONTROL to determine whether we can open info, setting, stats
      * @param {Boolean} enabled true for being able to open, false otherwise
      */
