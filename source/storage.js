@@ -119,8 +119,7 @@ export function getSound() {
   // Checking if sound local storage was created
   if (!localStorage.getItem('sound')) {
     localStorage.setItem(
-      'sound',
-      'zapsplat_household_alarm_clock_old_fashioned_ring_very_short_44062.mp3'
+      'sound','bike_chime.mp3'
     );
   }
   return localStorage.getItem('sound');

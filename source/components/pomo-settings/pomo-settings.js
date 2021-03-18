@@ -702,7 +702,7 @@ class PomoSettings extends HTMLElement {
       if (e.key === 'q' && this.accessible === true) {
         if (sideBar.getAttribute('class') === 'open') {
           closeButton.onclick();
-        } else {
+        } else if (this.enabled === true) {
           settingsButton.onclick();
         }
       }
