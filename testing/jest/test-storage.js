@@ -120,9 +120,7 @@ test('setVolume to be 80', () => {
 });
 
 test('getSound without setSound', () => {
-  expect(storageHelper.getSound()).toBe(
-    'zapsplat_household_alarm_clock_old_fashioned_ring_very_short_44062.mp3'
-  );
+  expect(storageHelper.getSound()).toBe('./assets/audio/bike_chime.mp3');
 });
 
 test('setSound to be jingle', () => {

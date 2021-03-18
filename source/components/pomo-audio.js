@@ -1,6 +1,4 @@
-/**
- * @module PomoAudio
- */
+const DEFAULT_SOURCE = './assets/audio/bike_chime.mp3';
 
 class PomoAudio extends HTMLElement {
   constructor() {
@@ -10,7 +8,7 @@ class PomoAudio extends HTMLElement {
 
     const audio = document.createElement('audio');
     audio.setAttribute('id', 'alarm-sound');
-    audio.setAttribute('src', '/media/audio/bike_chime.mp3');
+    audio.setAttribute('src', DEFAULT_SOURCE);
 
     shadow.appendChild(audio);
 
