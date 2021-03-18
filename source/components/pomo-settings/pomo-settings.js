@@ -86,10 +86,10 @@ class PomoSettings extends HTMLElement {
 
     // Button to close sidebar
     const closeButton = document.createElement('button');
-    closeButton.setAttribute('id', 'close-button');
+    closeButton.setAttribute('id', 'settings-close-button');
 
     const closeIcon = document.createElement('img');
-    closeIcon.setAttribute('id', 'close-button-icon');
+    closeIcon.setAttribute('id', 'settings-close-button-icon');
     closeIcon.setAttribute('src', './assets/x.svg');
 
     const pomoLengthLabel = document.createElement('label');
@@ -396,7 +396,9 @@ class PomoSettings extends HTMLElement {
      */
     settingsModal.onclick = () => {
       sideBar.setAttribute('class', 'close');
+      sideBar.style.left = null;
       settingsModal.style.display = 'none';
+      shadow.dispatchEvent(this.closeEvent);
     };
 
     /**
@@ -588,6 +590,9 @@ class PomoSettings extends HTMLElement {
       accessSwitch.setDark(dark);
     };
 
+    // Enabled determines if this component can be opened
+    this.enabled = true;
+
     /**
      * Enable settings
      */
@@ -704,7 +709,7 @@ class PomoSettings extends HTMLElement {
       if (e.key === 'q' && this.accessible === true) {
         if (sideBar.getAttribute('class') === 'open') {
           closeButton.onclick();
-        } else {
+        } else if (this.enabled === true) {
           settingsButton.onclick();
         }
       }
