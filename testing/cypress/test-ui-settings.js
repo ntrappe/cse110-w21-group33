@@ -12,7 +12,7 @@ describe('Verify dark mode colors for pomoSettings', { includeShadowDom: true },
   });
 
   it('Check settings title', () => {
-    cy.get('#open-button').click();
+    cy.get('#settings-button').click();
 
     cy.get('#settings-title').then(($title) => {
       expect($title[0].textContent).to.eq('Settings');
@@ -24,8 +24,8 @@ describe('Verify dark mode colors for pomoSettings', { includeShadowDom: true },
       win.pomoSettings.setDark(true);
 
       /* Verify colors of settings buttons */
-      cy.get('#open-button').should('have.css', 'background-color', 'rgb(15, 17, 21)');
-      cy.get('#open-button').should('have.css', 'color', 'rgb(49, 54, 60)');
+      cy.get('#settings-button').should('have.css', 'background-color', 'rgb(34, 38, 44)');
+      cy.get('#settings-button').should('have.css', 'color', 'rgba(0, 0, 0, 0)');
       cy.get('#close-button').should('have.css', 'background-color', 'rgb(15, 17, 21)');
       cy.get('#close-button').should('have.css', 'border-color', 'rgb(49, 54, 60)');
 
@@ -99,8 +99,8 @@ describe('Verify light mode colors for pomoSettings', { includeShadowDom: true }
       win.pomoSettings.setDark(false);
 
       /* Verify colors of settings buttons */
-      cy.get('#open-button').should('have.css', 'background-color', 'rgb(99, 204, 99)');
-      cy.get('#open-button').should('have.css', 'color', 'rgb(255, 255, 255)');
+      cy.get('#settings-button').should('have.css', 'background-color', 'rgb(229, 231, 234)');
+      cy.get('#settings-button').should('have.css', 'color', 'rgba(0, 0, 0, 0)');
       cy.get('#close-button').should('have.css', 'background-color', 'rgb(255, 255, 255)');
       cy.get('#close-button').should('have.css', 'border-color', 'rgb(218, 219, 220)');
 

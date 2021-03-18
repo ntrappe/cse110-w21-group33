@@ -38,15 +38,6 @@ class PomoFinish extends HTMLElement {
       }
     };
 
-    // button to finish session and display statistics
-    const finishButton = document.createElement('button');
-    finishButton.setAttribute('id', 'finish-button');
-    finishButton.textContent = 'Statistics';
-    finishButton.onclick = () => {
-      // shadow.dispatchEvent(this.event);
-      modal.style.display = 'block';
-    };
-
     // wrapper for the content inside the lightbox
     const modalContent = document.createElement('div');
     modalContent.setAttribute('class', 'modal-content');

@@ -20,7 +20,7 @@ describe('Verify dark mode colors for pomoInfo', { includeShadowDom: true }, () 
       /* Verify colors of info buttons */
       cy.get('#info-button').should('have.css', 'background-color', 'rgb(34, 38, 44)');
       cy.get('#info-button').should('have.css', 'border-color', 'rgb(49, 54, 60)');
-      cy.get('#info-button').should('have.css', 'color', 'rgb(203, 209, 216)');
+      cy.get('#info-button').should('have.css', 'color', 'rgba(0, 0, 0, 0)');
       cy.get('#info-close-button').should('have.css', 'background-color', 'rgb(14, 17, 22)');
       cy.get('#info-close-button').should('have.css', 'border-color', 'rgb(49, 54, 60)');
       cy.get('#info-close-button').should('have.css', 'color', 'rgb(203, 209, 216)');
