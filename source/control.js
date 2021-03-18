@@ -255,15 +255,27 @@ pomoSettings.addEventListener('accessSet', (event) => {
 });
 
 // Accessibility events
+pomoFinish.addEventListener('openEvent', () => {
+  pomoInfo.disableInfo();
+  pomoSettings.setAccessibility(false);
+  pomoTimer.disableTimer();
+});
+
+pomoFinish.addEventListener('closeEvent', () => {
+  pomoInfo.enableInfo();
+  pomoSettings.setAccessibility(true);
+  pomoTimer.enableTimer();
+});
+
 pomoInfo.addEventListener('openEvent', () => {
   pomoFinish.disableFinish();
-  pomoSettings.disableSettings();
+  pomoSettings.setAccessibility(false);
   pomoTimer.disableTimer();
 });
 
 pomoInfo.addEventListener('closeEvent', () => {
   pomoFinish.enableFinish();
-  pomoSettings.enableSettings();
+  pomoSettings.setAccessibility(true);
   pomoTimer.enableTimer();
 });
 

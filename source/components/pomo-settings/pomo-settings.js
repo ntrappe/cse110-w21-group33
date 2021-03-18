@@ -586,6 +586,9 @@ class PomoSettings extends HTMLElement {
       accessSwitch.setDark(dark);
     };
 
+    // Enabled determines if this component can be opened
+    this.enabled = true;
+
     /**
      * Enable settings
      */

@@ -4,6 +4,18 @@ class PomoFinish extends HTMLElement {
 
     const shadow = this.attachShadow({ mode: 'open' });
 
+    // event listener for opening finish page
+    this.openEvent = new CustomEvent('openEvent', {
+      bubbles: true,
+      composed: true,
+    });
+
+    // event listener for closing finish page
+    this.closeEvent = new CustomEvent('closeEvent', {
+      bubbles: true,
+      composed: true,
+    });
+
     // the component wrapper
     const wrapper = document.createElement('div');
     const statsStyle = document.createElement('link');
@@ -34,6 +46,7 @@ class PomoFinish extends HTMLElement {
     modal.onclick = (event) => {
       // close lightbox when click outside of the content area
       if (event.target === modal) {
+        shadow.dispatchEvent(this.closeEvent);
         modal.style.display = 'none';
       }
     };
@@ -59,6 +72,7 @@ class PomoFinish extends HTMLElement {
     closeButton.setAttribute('class', 'button-off');
     closeButton.innerHTML = '&times;';
     closeButton.onclick = () => {
+      shadow.dispatchEvent(this.closeEvent);
       modal.style.display = 'none';
     };
 
@@ -130,6 +144,8 @@ class PomoFinish extends HTMLElement {
      * @return {void}
      */
     this.showModal = (workCount, shortBreakCount, longBreakCount, interruptedCount) => {
+      shadow.dispatchEvent(this.openEvent);
+
       // clear the list before appending elements
       sessionStatistics.innerHTML = '';
 
