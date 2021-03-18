@@ -37,7 +37,6 @@ class PomoFinish extends HTMLElement {
 
     finishButton.onclick = () => {
       shadow.dispatchEvent(this.event);
-      console.log(pomoStorage.getDayCounts());
     };
 
     // the lightbox

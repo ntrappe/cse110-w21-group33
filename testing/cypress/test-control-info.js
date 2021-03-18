@@ -12,7 +12,7 @@ describe('Testing Settings with Info', { includeShadowDom: true }, () => {
   it('Toggling Dark Mode off & Check that css was changed', () => {
     cy.get('#settings-button').click();
     cy.get('#dark-slider').click();
-    cy.get('#close-button').click();
+    cy.get('#settings-close-button').click();
     cy.get('#info-styles').should(
       'have.attr',
       'href',
@@ -24,7 +24,7 @@ describe('Testing Settings with Info', { includeShadowDom: true }, () => {
     cy.get('#settings-button').click();
     cy.get('#dark-slider').click();
     cy.get('#dark-slider').click();
-    cy.get('#close-button').click();
+    cy.get('#statistics-close-button').click();
     cy.get('#info-styles').should('have.attr', 'href', './components/pomo-info/pomo-info.css');
   });
 
