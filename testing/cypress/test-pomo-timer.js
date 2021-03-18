@@ -413,8 +413,10 @@ describe('Check all events', { includeShadowDom: true }, () => {
 });
 
 describe('Normal Behavior: Go Through 1 Pomo Set', { includeShadowDom: true }, () => {
+  it('Refresh Page', () => {
+    cy.visit('./source/index.html');
+  });
   it('Set Timer for Work #1 with 2m', () => {
-    cy.get('#timer-button').click(); // first reset
     cy.window().then((win) => {
       win.pomoTimer.setTimer(2, 'work');
     });
