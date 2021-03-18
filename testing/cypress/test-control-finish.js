@@ -78,3 +78,31 @@ describe('Testing Info with Stats', { includeShadowDom: true }, () => {
     cy.get('#statistics-modal').should('have.css', 'display', 'block');
   });
 });
+
+describe('Testing Storage with Stats', { includeShadowDom: true }, () => {
+  beforeEach(() => {
+    cy.visit('./source/index.html');
+  });
+
+  it('Testing a complete cycle', () => {
+    cy.get('#timer-button').click();
+    cy.get('#timer-button').click();
+    cy.get('#settings-button').click();
+    cy.get('#work-number').type('{selectall}{backspace}1', { force: true }).trigger('change');
+    cy.get('#short-section').type('{selectall}{backspace}1', { force: true }).trigger('change');
+    cy.get('#long-section').type('{selectall}{backspace}1', { force: true }).trigger('change');
+    cy.get('#close-button').click();
+    cy.get('#timer-button').click();
+    cy.wait(15500);
+    cy.get('#finish-button').click();
+    cy.get('#statistics-panel').then(($el) => {
+      expect($el).to.contain('Pomodoro Completed: 1');
+      expect($el).to.contain('Short Breaks: 0');
+      expect($el).to.contain('Long Breaks: 0');
+      expect($el).to.contain('Interrupted Session: 1');
+    });
+    cy.get('#statistics-close-button').click();
+    
+  });
+
+});
