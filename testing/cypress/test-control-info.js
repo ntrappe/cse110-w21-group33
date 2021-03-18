@@ -24,7 +24,7 @@ describe('Testing Settings with Info', { includeShadowDom: true }, () => {
     cy.get('#settings-button').click();
     cy.get('#dark-slider').click();
     cy.get('#dark-slider').click();
-    cy.get('#statistics-close-button').click();
+    cy.get('#settings-close-button').click();
     cy.get('#info-styles').should('have.attr', 'href', './components/pomo-info/pomo-info.css');
   });
 
@@ -63,7 +63,7 @@ describe('Testing Stats with Info', { includeShadowDom: true }, () => {
     cy.get('#info-button').should('be.disabled');
   });
 
-  it('Opening Settings and Checking that info is not opened', () => {
+  it('Open and close stats page and then open info page', () => {
     cy.get('#finish-button').click();
     cy.get('#statistics-close-button').click();
     cy.get('#info-button').should('not.be.disabled');
