@@ -162,6 +162,14 @@ class PomoFinish extends HTMLElement {
       modal.style.display = 'block';
     };
 
+    /**
+     * For transforming the whole object
+     * @param {String} transformText the text to put in transform css
+     */
+    this.changeTransform = (transformText) => {
+      finishButton.style.transform = transformText;
+    };
+
     // Assessible determines if the keyboard shortcuts should run
     this.accessible = true;
 
