@@ -254,6 +254,31 @@ pomoSettings.addEventListener('accessSet', (event) => {
   accessibleSet(accessible);
 });
 
+// Accessibility events
+pomoInfo.addEventListener('openEvent', () => {
+  pomoFinish.disableFinish();
+  pomoSettings.disableSettings();
+  pomoTimer.disableTimer();
+});
+
+pomoInfo.addEventListener('closeEvent', () => {
+  pomoFinish.enableFinish();
+  pomoSettings.enableSettings();
+  pomoTimer.enableTimer();
+});
+
+pomoSettings.addEventListener('openEvent', () => {
+  pomoFinish.disableFinish();
+  pomoInfo.disableSettings();
+  pomoTimer.disableTimer();
+});
+
+pomoSettings.addEventListener('closeEvent', () => {
+  pomoFinish.enableFinish();
+  pomoInfo.enableSettings();
+  pomoTimer.enableTimer();
+});
+
 function onload() {
   // Load user preferences from storage
   const calmIn = PomoStorage.getCalm();
