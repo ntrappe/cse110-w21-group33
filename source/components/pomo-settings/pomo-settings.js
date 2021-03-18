@@ -569,8 +569,10 @@ class PomoSettings extends HTMLElement {
     this.setDark = (dark) => {
       if (dark) {
         styles.setAttribute('href', './components/pomo-settings/pomo-settings.css');
+        settingsIcon.setAttribute('src', './assets/gear_settings.png');
       } else {
         styles.setAttribute('href', './components/pomo-settings/pomo-settings-light.css');
+        settingsIcon.setAttribute('src', './assets/gear_settings_light.png');
       }
       calmSwitch.setDark(dark);
       darkSwitch.setDark(dark);
