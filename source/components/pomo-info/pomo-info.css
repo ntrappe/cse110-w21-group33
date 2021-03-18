@@ -101,7 +101,12 @@
 }
 
 #info-content h2 {
-  color: #123354;
+  color: #37ce18;
+  width: fit-content;
+  border-radius: 75px 75px;
+  border-color: #37ce18;
+  border-style: solid;
+  padding: 5px 10px 5px 10px;
 }
 
 #info-content h3 {
@@ -110,4 +115,14 @@
 
 #info-content b {
   color: #fff;
+}
+
+#info-content kbd {
+  background-color: #3d3f42;
+  border-color: #fff;
+  border: 1px solid white;
+  border-radius: 3px;
+  padding: 1px 2px 0;
+  color: rgb(173, 173, 173);
+  font-size: 16px;
 }
