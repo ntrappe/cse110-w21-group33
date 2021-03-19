@@ -1,8 +1,13 @@
 const DEFAULT_SOURCE = './assets/audio/bike_chime.mp3';
+const VOLUME_SCALER = 0.01;
+const MIN_VOLUME = 0;
+const MAX_VOLUME = 100;
 
 class PomoAudio extends HTMLElement {
   constructor() {
     super();
+
+    this.enabled = true;
 
     const shadow = this.attachShadow({ mode: 'open' });
 
@@ -11,12 +16,6 @@ class PomoAudio extends HTMLElement {
     audio.setAttribute('src', DEFAULT_SOURCE);
 
     shadow.appendChild(audio);
-
-    const VOLUME_SCALER = 0.01;
-    const MIN_VOLUME = 0;
-    const MAX_VOLUME = 100;
-
-    this.enabled = true;
 
     /**
      * Allows the sound to be played
