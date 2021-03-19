@@ -3,12 +3,13 @@
 ### Table of Contents
 1. [Meeting Notes](#meeting-notes) <br/>
 2. [Group Contract](#group-contract) <br/>
-3. [Team Page](#team-page) <br/>
-4. [Project Overview](#project-overview) <br/>
-5. [Coding Standards](#coding-standards) <br/>
-6. [GitHub Standards](#github-standards) <br/>
-7. [Code Documentation](#code-documentation) <br/>
-8. [Resources](#resources)
+3. [Project Overview](#project-overview) <br/>
+4. [Coding Standards](#coding-standards) <br/>
+5. [GitHub Standards](#github-standards) <br/>
+6. [Code Documentation](#code-documentation) <br/>
+7. [Navigation](#navigation) <br/>
+8. [Onboarding](#onboarding) <br/>
+9. [Resources](#resources) 
 
 ---
 
@@ -49,15 +50,6 @@
 
 ---
 
-#### Team Page [REDACTED?]
-- The Team Page can be found under this repo's [Wiki](https://github.com/ntrappe/cse110-w21-group33/wiki/Team-Page).
-- Please add your email if it isn't there already so that it's easy for all the members to find.
-- The Page should be done in ***Markdown*** or ***HTML*** format.
-- It includes a roster of all the members with an overview of each and a link to their personal GitHub
-- It will also include a group video (2.5m) introducing the teammates (the video will be stored at [admin/videos](https://github.com/ntrappe/cse110-w21-group33/tree/main/admin/videos).
-
----
-
 #### GitHub Standards
 - To get started on the command line: 
 ```python
@@ -89,6 +81,23 @@ git fetch
 // check what branches you have
 git branch -av
 ```
+
+- For information on using events and testing, read the Wiki's Guides section
+
+---
+
+#### Navigation
+- Documentation about Timer structure can be found in the wiki under Timer Architecture.
+- The main control center code is in index.html, index.css, control.js, resize.js, and storage.js and can be found in source/
+- Specific components and their JS and CSS can be found in source/components
+- Images and Audio for the Timer can be found in source/assets/images and source/assets/audio
+- Cypress and Jest testing can be found in testing/cypress and testing/jest
+
+---
+
+### Onboarding
+- New members can check out our onboarding document [here](https://github.com/ntrappe/cse110-w21-group33/wiki/Onboarding) to get an understanding of the pipeline and basic git commands
+- The Wiki contains various ADR's relating to design decisions 
 
 ---
 
