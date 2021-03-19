@@ -87,7 +87,9 @@ function disableAll() {
 
 // PomoTimer Events
 pomoTimer.addEventListener('timerStart', () => {
-  disableAll();
+  if (currentMode === Mode.work) {
+    disableAll();
+  }
 });
 
 pomoTimer.addEventListener('tick', (event) => {
@@ -290,15 +292,19 @@ pomoInfo.addEventListener('closeEvent', () => {
 });
 
 pomoSettings.addEventListener('openEvent', () => {
-  pomoFinish.disableFinish();
-  pomoInfo.disableInfo();
-  pomoTimer.disableTimer();
+  if (pomoSettings.enabled) {
+    pomoFinish.disableFinish();
+    pomoInfo.disableInfo();
+    pomoTimer.disableTimer();
+  }
 });
 
 pomoSettings.addEventListener('closeEvent', () => {
-  pomoFinish.enableFinish();
-  pomoInfo.enableInfo();
-  pomoTimer.enableTimer();
+  if (pomoSettings.enabled) {
+    pomoFinish.enableFinish();
+    pomoInfo.enableInfo();
+    pomoTimer.enableTimer();
+  }
 });
 
 function onload() {

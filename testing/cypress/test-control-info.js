@@ -44,6 +44,13 @@ describe('Testing Timer with Info', { includeShadowDom: true }, () => {
     cy.get('#info-button').should('be.disabled');
   });
 
+  it('Starting Timer, Opening and closing settings, and checking that info is disabled', () => {
+    cy.get('#timer-button').click();
+    cy.get('#settings-button').click();
+    cy.get('#settings-close-button').click();
+    cy.get('#info-button').should('be.disabled');
+  });
+
   it('Starting Timer and stopping timer and Checking that info is opened', () => {
     cy.get('#timer-button').click();
     cy.get('#timer-button').click();
