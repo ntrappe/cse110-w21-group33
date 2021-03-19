@@ -270,5 +270,3 @@ function accessSet(event) {
 pomoSettings.addEventListener('accessSet', accessSet);
 
 onload();
-
-pomoFinish.showModal(5, 10, 15, 20);

@@ -236,6 +236,8 @@ class PomoFinish extends HTMLElement {
 
       // show the statistics panel
       modal.style.display = 'block';
+
+      shadow.dispatchEvent(this.openEvent);
     };
 
     /**
