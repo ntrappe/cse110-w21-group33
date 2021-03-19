@@ -1,101 +1,94 @@
 /**
- * @module Control
+ * @module Main
  */
 
-import PomoAudio from './components/pomo-audio.js';
-import PomoFinish from './components/pomo-finish/pomo-finish.js';
-import PomoInfo from './components/pomo-info/pomo-info.js';
-import PomoSettings from './components/pomo-settings/pomo-settings.js';
-import * as PomoStorage from './storage.js';
-import * as PomoTab from './components/pomo-tab.js';
-import PomoTimer from './components/pomo-timer/pomo-timer.js';
+import './resize.js';
 
-// Initialize page styling
-const stylesheet = document.createElement('link');
-stylesheet.rel = 'stylesheet';
-stylesheet.href = './index.css';
-stylesheet.setAttribute('href', './index.css');
-document.head.appendChild(stylesheet);
+/**
+ * After init.js has been run by the page, retrieve components from window
+ */
+const { pomoAudio, pomoFinish, pomoInfo, pomoSettings, pomoTimer } = window;
+const PomoStorage = window.pomoStorage;
+const PomoTab = window.pomoTab;
 
-// Initialize web components
-const pomoAudio = new PomoAudio();
-pomoAudio.setAttribute('id', 'pomo-audio');
-
-const pomoFinish = new PomoFinish();
-pomoFinish.setAttribute('id', 'pomo-finish');
-
-const pomoInfo = new PomoInfo();
-pomoInfo.setAttribute('id', 'pomo-info');
-
-const pomoSettings = new PomoSettings();
-pomoSettings.setAttribute('id', 'pomo-settings');
-
-const pomoTimer = new PomoTimer();
-pomoTimer.setAttribute('id', 'pomo-timer');
-
-// Attach components to the window for access and Cypress testing
-window.pomoAudio = pomoAudio;
-window.pomoFinish = pomoFinish;
-window.pomoInfo = pomoInfo;
-window.pomoSettings = pomoSettings;
-window.pomoStorage = PomoStorage;
-window.pomoTab = PomoTab;
-window.pomoTimer = pomoTimer;
-
-// Add components to their proper locations on the page
-const body = document.getElementById('body');
-body.appendChild(pomoAudio);
-
-const header = document.getElementById('header');
-header.appendChild(pomoSettings);
-header.appendChild(pomoInfo);
-
-const main = document.getElementById('main');
-main.appendChild(pomoTimer);
-
-const footer = document.getElementById('footer');
-footer.appendChild(pomoFinish);
-
+/**
+ * Use Mode as an enum to prevent reuse of strings
+ */
+let currentMode = '';
 const Mode = {
   work: 'work',
   short: 'short break',
   long: 'long break',
 };
 
-let currentMode = '';
-
+/**
+ * Track the length of each mode
+ * Variables are initialized in the onLoad method
+ */
 let workLength = 1;
 let shortLength = 1;
 let longLength = 1;
 
+/**
+ * Track the counts of each mode, including interrupted work
+ * Variables are initialized in the onLoad method
+ */
 let workCount = 0;
 let shortCount = 0;
 let longCount = 0;
 let interruptCount = 0;
 
+/**
+ * Track if accessibility is currently enabled
+ * Used to re-activate components after a modal has been closed
+ */
+let accessibility = true;
+
+/**
+ * @function
+ * Enable all components to be accessed
+ * Used when timer finishes running
+ */
 function enableAll() {
   pomoFinish.enableFinish();
   pomoInfo.enableInfo();
   pomoSettings.enableSettings();
 }
 
+/**
+ * @function
+ * Disable all components to be accessed
+ * Used when timer starts running
+ */
 function disableAll() {
   pomoFinish.disableFinish();
   pomoInfo.disableInfo();
   pomoSettings.disableSettings();
 }
 
-// PomoTimer Events
+/* ---------------------------------------------------------------------------------------------- */
+/* PomoTimer Event Functions */
+
+/**
+ * When a work session is started, disable other components
+ */
 pomoTimer.addEventListener('timerStart', () => {
   if (currentMode === Mode.work) {
     disableAll();
   }
 });
 
+/**
+ * When the timer value changes, update the tab as well
+ */
 pomoTimer.addEventListener('tick', (event) => {
   PomoTab.setTab(event.detail.timeRemaining(), currentMode);
 });
 
+/**
+ * If a work session is reset, add to the interrupt count and store it
+ * Enable other components and reset the tab for all modes being reset
+ */
 pomoTimer.addEventListener('timerReset', () => {
   if (currentMode === Mode.work) {
     interruptCount += 1;
@@ -106,10 +99,15 @@ pomoTimer.addEventListener('timerReset', () => {
   PomoTab.defaultTab();
 });
 
+/**
+ * When the timer finishes, update counts based on the current mode completed
+ * Determine the next mode based on workCount and previously completed mode
+ */
 pomoTimer.addEventListener('timerFinish', () => {
   switch (currentMode) {
     case Mode.work:
       workCount += 1;
+      // Start a long break every 4 work sessions completed, but not when 0 sessions are complete
       if (workCount !== 0 && workCount % 4 === 0) {
         pomoTimer.setProgress(4);
         currentMode = Mode.long;
@@ -149,12 +147,24 @@ pomoTimer.addEventListener('timerFinish', () => {
   enableAll();
 });
 
-// PomoFinish Events
+/* ---------------------------------------------------------------------------------------------- */
+/* PomoFinish Event Functions */
+
+/**
+ * When the finish modal is requested, provide the current counts and display the modal
+ */
 pomoFinish.addEventListener('modalRequest', () => {
   pomoFinish.showModal(workCount, shortCount, longCount, interruptCount);
 });
 
-// PomoSettings Events
+/* ---------------------------------------------------------------------------------------------- */
+/* PomoFinish Settings Functions */
+
+/**
+ * @function
+ * When the work length is changed, update the control variable
+ * Update timer if it is currently starting a work session
+ */
 function workSet(work) {
   workLength = work;
 
@@ -163,6 +173,9 @@ function workSet(work) {
   }
 }
 
+/**
+ * Wire up previous method to the settings value being changed
+ */
 pomoSettings.addEventListener('workSet', (event) => {
   const work = event.detail.work();
   PomoStorage.setWork(work);
@@ -170,6 +183,11 @@ pomoSettings.addEventListener('workSet', (event) => {
   workSet(work);
 });
 
+/**
+ * @function
+ * When the short break length is changed, update the control variable
+ * Update timer if it is currently starting a short break
+ */
 function shortBreakSet(shortBreak) {
   shortLength = shortBreak;
 
@@ -178,6 +196,9 @@ function shortBreakSet(shortBreak) {
   }
 }
 
+/**
+ * Wire up previous method to the settings value being changed
+ */
 pomoSettings.addEventListener('shortBreakSet', (event) => {
   const shortBreak = event.detail.shortBreak();
   PomoStorage.setShortBreak(shortBreak);
@@ -185,6 +206,11 @@ pomoSettings.addEventListener('shortBreakSet', (event) => {
   shortBreakSet(shortBreak);
 });
 
+/**
+ * @function
+ * When the long break length is changed, update the control variable
+ * Update timer if it is currently starting a long break
+ */
 function longBreakSet(longBreak) {
   longLength = longBreak;
 
@@ -193,6 +219,9 @@ function longBreakSet(longBreak) {
   }
 }
 
+/**
+ * Wire up previous method to the settings value being changed
+ */
 pomoSettings.addEventListener('longBreakSet', (event) => {
   const longBreak = event.detail.longBreak();
   PomoStorage.setLongBreak(longBreak);
@@ -200,10 +229,17 @@ pomoSettings.addEventListener('longBreakSet', (event) => {
   longBreakSet(longBreak);
 });
 
+/**
+ * @function
+ * Update the audio component when the volume is changed
+ */
 function volumeSet(volume) {
   pomoAudio.setVolume(volume);
 }
 
+/**
+ * Wire up previous method to the settings value being changed
+ */
 pomoSettings.addEventListener('volumeSet', (event) => {
   const volume = event.detail.volume();
   PomoStorage.setVolume(volume);
@@ -211,10 +247,17 @@ pomoSettings.addEventListener('volumeSet', (event) => {
   volumeSet(volume);
 });
 
+/**
+ * @function
+ * Update the audio component when the sound source is changed
+ */
 function soundSet(sound) {
   pomoAudio.setSound(sound);
 }
 
+/**
+ * Wire up previous method to the settings value being changed
+ */
 pomoSettings.addEventListener('soundSet', (event) => {
   const sound = event.detail.sound();
   PomoStorage.setSound(sound);
@@ -222,11 +265,18 @@ pomoSettings.addEventListener('soundSet', (event) => {
   soundSet(sound);
 });
 
+/**
+ * @function
+ * Update the necessary components when the calm mode changes
+ */
 function calmSet(calm) {
   pomoTimer.setCalm(calm);
   PomoTab.setCalm(calm);
 }
 
+/**
+ * Wire up previous method to the settings value being changed
+ */
 pomoSettings.addEventListener('calmSet', (event) => {
   const calm = event.detail.calm();
   PomoStorage.setCalm(calm);
@@ -234,6 +284,10 @@ pomoSettings.addEventListener('calmSet', (event) => {
   calmSet(calm);
 });
 
+/**
+ * @function
+ * Update the necessary components when the dark mode changes
+ */
 function darkSet(dark) {
   pomoFinish.setDark(dark);
   pomoInfo.setDark(dark);
@@ -247,50 +301,79 @@ function darkSet(dark) {
   }
 }
 
+/**
+ * Wire up previous method to the settings value being changed
+ */
 pomoSettings.addEventListener('darkSet', (event) => {
   const dark = event.detail.dark();
   PomoStorage.setDark(dark);
   darkSet(dark);
 });
 
+/**
+ * @function
+ * Update the necessary components when the accessibility mode changes
+ */
 function accessibleSet(accessible) {
   pomoFinish.setAccessibility(accessible);
   pomoInfo.setAccessibility(accessible);
   pomoSettings.setAccessibility(accessible);
   pomoTimer.setAccessibility(accessible);
+
+  accessibility = accessible;
 }
 
+/**
+ * Wire up previous method to the settings value being changed
+ */
 pomoSettings.addEventListener('accessSet', (event) => {
   const accessible = event.detail.accessible();
   PomoStorage.setAccessibility(accessible);
   accessibleSet(accessible);
 });
 
-// Accessibility events
+/* ---------------------------------------------------------------------------------------------- */
+/* Accessibility Functions */
+
+/**
+ * Disable info, settings, and timer accessibility when finish is opened
+ */
 pomoFinish.addEventListener('openEvent', () => {
   pomoInfo.disableInfo();
   pomoSettings.setAccessibility(false);
   pomoTimer.disableTimer();
 });
 
+/**
+ * Enable info, settings, and timer accessibility when finish is closed
+ */
 pomoFinish.addEventListener('closeEvent', () => {
   pomoInfo.enableInfo();
-  pomoSettings.setAccessibility(true);
+  pomoSettings.setAccessibility(accessibility);
   pomoTimer.enableTimer();
 });
 
+/**
+ * Disable finish, settings, and timer accessibility when info is opened
+ */
 pomoInfo.addEventListener('openEvent', () => {
   pomoFinish.disableFinish();
   pomoSettings.setAccessibility(false);
   pomoTimer.disableTimer();
 });
 
+/**
+ * Enable finish, settings, and timer accessibility when info is closed
+ */
 pomoInfo.addEventListener('closeEvent', () => {
   pomoFinish.enableFinish();
-  pomoSettings.setAccessibility(true);
+  pomoSettings.setAccessibility(accessibility);
   pomoTimer.enableTimer();
 });
 
+/**
+ * Disable finish, info, and timer accessibility when settings is opened
+ */
 pomoSettings.addEventListener('openEvent', () => {
   if (pomoSettings.enabled) {
     pomoFinish.disableFinish();
@@ -299,6 +382,9 @@ pomoSettings.addEventListener('openEvent', () => {
   }
 });
 
+/**
+ * Enable finish, info, and timer accessibility when settings is closed
+ */
 pomoSettings.addEventListener('closeEvent', () => {
   if (pomoSettings.enabled) {
     pomoFinish.enableFinish();
@@ -307,8 +393,11 @@ pomoSettings.addEventListener('closeEvent', () => {
   }
 });
 
+/**
+ * @function
+ * Load preferences from storage and update the control and settings to reflect those values
+ */
 function onload() {
-  // Load user preferences from storage
   const calmIn = PomoStorage.getCalm();
   const volumeIn = PomoStorage.getVolume();
   const soundIn = PomoStorage.getSound();
@@ -319,9 +408,6 @@ function onload() {
   const accessIn = PomoStorage.getAccessibility();
   const modeIn = PomoStorage.getMode();
 
-  // Update settings to reflect current values
-  pomoSettings.loadSettings(calmIn, volumeIn, soundIn, darkIn, workIn, shortIn, longIn, accessIn);
-
   const {
     work: workCountIn,
     shortBreak: shortBreakCountIn,
@@ -329,19 +415,21 @@ function onload() {
     interrupts: interruptCountIn,
   } = PomoStorage.getDayCounts();
 
-  // Update control variables
-  currentMode = modeIn;
+  // Update settings
+  pomoSettings.loadSettings(calmIn, volumeIn, soundIn, darkIn, workIn, shortIn, longIn, accessIn);
 
+  // Update control
+  currentMode = modeIn;
   workLength = workIn;
   shortLength = shortIn;
   longLength = longIn;
-
   workCount = workCountIn;
   shortCount = shortBreakCountIn;
   longCount = longBreakCountIn;
   interruptCount = interruptCountIn;
+  accessibility = accessIn;
 
-  // Configure initial component states
+  // Configure initial ctimer state
   switch (currentMode) {
     case Mode.work:
       pomoTimer.setTimer(workLength, currentMode);
@@ -353,16 +441,22 @@ function onload() {
       pomoTimer.setTimer(longLength, currentMode);
       break;
     default:
+      // Default to work if invalid saved mode
       pomoTimer.setTimer(workLength, currentMode);
       break;
   }
 
+  // Update timer progress as well
   pomoTimer.setProgress(workCount % 4);
 
+  // Run updater methods for the other variables
   volumeSet(volumeIn);
   soundSet(soundIn);
   calmSet(calmIn);
   darkSet(darkIn);
 }
 
+/**
+ * Run onload method once when page loads
+ */
 onload();
