@@ -61,8 +61,12 @@ function testUIFinishLight(fromControl) {
 
       /* Verify background colors of stats modal */
       cy.get('#statistics-modal').should('have.css', 'background-color', 'rgba(0, 0, 0, 0.5)');
-      cy.get('#statistics-modal-content').should('have.css', 'background-color', 'rgb(15, 17, 21)');
-      cy.get('#statistics-modal-content').should('have.css', 'border-color', 'rgb(49, 54, 60)');
+      cy.get('#statistics-modal-content').should(
+        'have.css',
+        'background-color',
+        'rgb(255, 255, 255)'
+      );
+      cy.get('#statistics-modal-content').should('have.css', 'border-color', 'rgb(225, 228, 232)');
     });
 
     it('Close stats and reset', () => {

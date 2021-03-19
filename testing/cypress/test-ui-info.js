@@ -19,7 +19,7 @@ function testUIInfoDark() {
       cy.get('#info-button').should('have.css', 'background-color', 'rgb(34, 38, 44)');
       cy.get('#info-button').should('have.css', 'border-color', 'rgb(49, 54, 60)');
       cy.get('#info-button').should('have.css', 'color', 'rgba(0, 0, 0, 0)');
-      cy.get('#info-close-button').should('have.css', 'background-color', 'rgb(14, 17, 22)');
+      cy.get('#info-close-button').should('have.css', 'background-color', 'rgb(15, 17, 21)');
       cy.get('#info-close-button').should('have.css', 'border-color', 'rgb(49, 54, 60)');
       cy.get('#info-close-button').should('have.css', 'color', 'rgb(203, 209, 216)');
       cy.get('#info-button-icon').then(($img) => {
@@ -29,9 +29,9 @@ function testUIInfoDark() {
       /* Verify background colors of info modal */
       cy.get('#info-modal').should('have.css', 'background-color', 'rgba(0, 0, 0, 0.5)');
       cy.get('#info-content').should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
-      cy.get('#info-content').should('have.css', 'border-bottom', '0px none rgb(203, 209, 216)');
-      cy.get('#info-modal-content').should('have.css', 'background-color', 'rgb(23, 27, 33)');
-      cy.get('#info-modal-content').should('have.css', 'border-color', 'rgb(49, 54, 60)');
+      cy.get('#info-content').should('have.css', 'border-bottom', '0px none rgb(139, 148, 158)');
+      cy.get('#info-modal-content').should('have.css', 'background-color', 'rgb(13, 17, 23)');
+      cy.get('#info-modal-content').should('have.css', 'border-color', 'rgb(48, 54, 61)');
     });
 
     it('Close info and reset', () => {
@@ -64,16 +64,16 @@ function testUIInfoLight(fromControl) {
       cy.get('#info-button').should('have.css', 'border-color', 'rgb(216, 219, 220)');
       cy.get('#info-button').should('have.css', 'color', 'rgb(36, 40, 44)');
 
-      cy.get('#info-close-button').should('have.css', 'background-color', 'rgb(34, 38, 44)');
-      cy.get('#info-close-button').should('have.css', 'border-color', 'rgb(141, 148, 157)');
-      cy.get('#info-close-button').should('have.css', 'color', 'rgb(241, 246, 251)');
+      cy.get('#info-close-button').should('have.css', 'background-color', 'rgb(246, 248, 250)');
+      cy.get('#info-close-button').should('have.css', 'border-color', 'rgb(200, 205, 211)');
+      cy.get('#info-close-button').should('have.css', 'color', 'rgb(36, 41, 46)');
 
       /* Verify background colors of info modal */
       cy.get('#info-modal').should('have.css', 'background-color', 'rgba(0, 0, 0, 0.5)');
-      cy.get('#info-content').should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
-      cy.get('#info-content').should('have.css', 'border-bottom', '0px none rgb(203, 209, 216)');
-      cy.get('#info-modal-content').should('have.css', 'background-color', 'rgb(23, 27, 33)');
-      cy.get('#info-modal-content').should('have.css', 'border-color', 'rgb(49, 54, 60)');
+      cy.get('#info-content').should('have.css', 'background-color', 'rgb(255, 255, 255)');
+      cy.get('#info-content').should('have.css', 'border-bottom', '0px none rgb(36, 41, 46)');
+      cy.get('#info-modal-content').should('have.css', 'background-color', 'rgb(255, 255, 255)');
+      cy.get('#info-modal-content').should('have.css', 'border-color', 'rgb(48, 54, 61)');
     });
 
     it('Close info and reset', () => {
