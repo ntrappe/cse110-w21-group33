@@ -24,3 +24,51 @@
   border-color: #d8dbdc;
   opacity: 30%;
 }
+
+/* circle close button w on hover */
+#info-close-button[class="button-off"] {
+  background-color: #e2e5e7;
+  color: #24292e;
+  border-color: #979da4;
+}
+
+#info-close-button[class="button-on"] {
+  background-color: #f6f8fa;
+  color: #24292e;
+  border-color: #c8cdd3;
+}
+
+/* Update display of the modal */
+#info-modal-content {
+  background-color: #fff;
+}
+
+#info-content {
+  color: #24292e;
+  background-color: #fff;
+}
+
+.info-table {
+  background-color: #fff;
+  border-color: #e1e4e8;
+}
+
+.info-table-label {
+  background-color: #f6f8fa;
+  border-color: #e1e4e8;
+  color: #24292e;
+}
+
+.info-table-content {
+  color: #6a737d;
+}
+
+#info-content b {
+  color: #0e58c5;
+}
+
+#info-content kbd {
+  background-color: #f6f8fa;
+  border-color: #e1e4e8;
+  color: #464e57;
+}

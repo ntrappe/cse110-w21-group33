@@ -60,16 +60,6 @@ class PomoFinish extends HTMLElement {
     modalContent.setAttribute('class', 'modal-content');
     modalContent.setAttribute('id', 'statistics-modal-content');
 
-    // the main content to be display in the lightbox
-    // title
-    const modalTitle = document.createElement('h3');
-    modalTitle.setAttribute('class', 'modal-title');
-    modalTitle.setAttribute('id', 'statistics-modal-title');
-    modalTitle.innerHTML = 'SESSION SUMMARY';
-    // list of stat
-    const sessionStatistics = document.createElement('ul');
-    sessionStatistics.setAttribute('id', 'statistics-panel');
-
     // button to close the lightbox
     const closeButton = document.createElement('div');
     closeButton.setAttribute('id', 'statistics-close-button');
@@ -89,10 +79,64 @@ class PomoFinish extends HTMLElement {
       closeButton.setAttribute('class', 'button-off');
     });
 
-    // append elements to containers
     modalContent.appendChild(closeButton);
+
+    // the main content to be display in the lightbox
+
+    const modalTitle = document.createElement('h3');
+    modalTitle.setAttribute('class', 'modal-title');
+    modalTitle.setAttribute('id', 'statistics-modal-title');
+    modalTitle.textContent = 'Session Statistics';
     modalContent.appendChild(modalTitle);
-    modalContent.appendChild(sessionStatistics);
+
+    const statsContent = document.createElement('div');
+    statsContent.setAttribute('class', 'stats-content');
+
+    const workContainer = document.createElement('div');
+    workContainer.setAttribute('class', 'stats-entry');
+    const workSquares = document.createElement('div');
+    workSquares.setAttribute('class', 'stats-squares');
+    workContainer.appendChild(workSquares);
+    const workTitle = document.createElement('h4');
+    workTitle.setAttribute('class', 'stats-subtitle');
+    workTitle.textContent = 'Work';
+    workContainer.appendChild(workTitle);
+    statsContent.appendChild(workContainer);
+
+    const shortContainer = document.createElement('div');
+    shortContainer.setAttribute('class', 'stats-entry');
+    const shortSquares = document.createElement('div');
+    shortSquares.setAttribute('class', 'stats-squares');
+    shortContainer.appendChild(shortSquares);
+    const shortTitle = document.createElement('h4');
+    shortTitle.setAttribute('class', 'stats-subtitle');
+    shortTitle.textContent = 'Short Breaks';
+    shortContainer.appendChild(shortTitle);
+    statsContent.appendChild(shortContainer);
+
+    const longContainer = document.createElement('div');
+    longContainer.setAttribute('class', 'stats-entry');
+    const longSquares = document.createElement('div');
+    longSquares.setAttribute('class', 'stats-squares');
+    longContainer.appendChild(longSquares);
+    const longTitle = document.createElement('h4');
+    longTitle.setAttribute('class', 'stats-subtitle');
+    longTitle.textContent = 'Long Breaks';
+    longContainer.appendChild(longTitle);
+    statsContent.appendChild(longContainer);
+
+    const interruptContainer = document.createElement('div');
+    interruptContainer.setAttribute('class', 'stats-entry');
+    const interruptSquares = document.createElement('div');
+    interruptSquares.setAttribute('class', 'stats-squares');
+    interruptContainer.appendChild(interruptSquares);
+    const interruptTitle = document.createElement('h4');
+    interruptTitle.setAttribute('class', 'stats-subtitle');
+    interruptTitle.textContent = 'Interruptions';
+    interruptContainer.appendChild(interruptTitle);
+    statsContent.appendChild(interruptContainer);
+
+    modalContent.appendChild(statsContent);
     modal.appendChild(modalContent);
     wrapper.appendChild(modal);
     wrapper.append(finishButton);
@@ -142,6 +186,39 @@ class PomoFinish extends HTMLElement {
       }
     };
 
+    function generateGrid(container, count, type) {
+      // clear old content
+      while (container.firstChild) {
+        container.removeChild(container.firstChild);
+      }
+
+      for (let row = 3; row >= 0; row -= 1) {
+        const rowContainer = document.createElement('div');
+        rowContainer.setAttribute('class', 'stats-row');
+
+        for (let col = 0; col < 3; col += 1) {
+          if (row * 3 + col + 1 <= count) {
+            const fillSquare = document.createElement('div');
+            fillSquare.setAttribute('class', `square ${type}`);
+            rowContainer.appendChild(fillSquare);
+          } else {
+            const emptySquare = document.createElement('div');
+            emptySquare.setAttribute('class', 'square');
+            rowContainer.appendChild(emptySquare);
+          }
+        }
+
+        container.appendChild(rowContainer);
+      }
+
+      if (count > 12) {
+        const fancySquare = document.createElement('div');
+        fancySquare.setAttribute('class', `fancy ${type}`);
+        fancySquare.textContent = count;
+        container.appendChild(fancySquare);
+      }
+    }
+
     /**
      * @method
      * Render session's statistics to the screen
@@ -152,38 +229,15 @@ class PomoFinish extends HTMLElement {
      * @return {void}
      */
     this.showModal = (workCount, shortBreakCount, longBreakCount, interruptedCount) => {
-      shadow.dispatchEvent(this.openEvent);
-
-      // clear the list before appending elements
-      sessionStatistics.innerHTML = '';
-
-      // render infomation
-      ['Pomodoro Completed', 'Short Breaks', 'Long Breaks', 'Interrupted Session'].forEach(
-        (info) => {
-          const li = document.createElement('li');
-          li.setAttribute('class', 'session-statistics');
-          switch (info) {
-            case 'Pomodoro Completed':
-              li.innerHTML = `${info}: ${workCount}`;
-              break;
-            case 'Short Breaks':
-              li.innerHTML = `${info}: ${shortBreakCount}`;
-              break;
-            case 'Long Breaks':
-              li.innerHTML = `${info}: ${longBreakCount}`;
-              break;
-            case 'Interrupted Session':
-              li.innerHTML = `${info}: ${interruptedCount}`;
-              break;
-            default:
-              li.innerHTML = 'Buggy!';
-          }
-          sessionStatistics.appendChild(li);
-        }
-      );
+      generateGrid(workSquares, workCount, 'work');
+      generateGrid(shortSquares, shortBreakCount, 'short');
+      generateGrid(longSquares, longBreakCount, 'long');
+      generateGrid(interruptSquares, interruptedCount, 'interrupt');
 
       // show the statistics panel
       modal.style.display = 'block';
+
+      shadow.dispatchEvent(this.openEvent);
     };
 
     /**
