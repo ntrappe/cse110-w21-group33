@@ -22,7 +22,7 @@ describe('test setTime', () => {
   /* Test for abover or below max and min */
   test('set 0 and 60', () => {
     expect(pomoHelper.setTime(0)).toBe(120);
-    expect(pomoHelper.setTime(60)).toBe(120);
+    expect(pomoHelper.setTime(61)).toBe(120);
   });
 
   /* Test for acceptable value */
