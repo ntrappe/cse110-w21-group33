@@ -38,6 +38,13 @@ import PomoTimer from './components/pomo-timer/pomo-timer.js';
 import * as PomoTab from './components/pomo-tab.js';
 import * as PomoStorage from './storage.js';
 
+// Initialize page styling
+const stylesheet = document.createElement('link');
+stylesheet.rel = 'stylesheet';
+stylesheet.href = './index.css';
+stylesheet.setAttribute('href', './index.css');
+document.head.appendChild(stylesheet);
+
 // Initialize web components
 const pomoAudio = new PomoAudio();
 pomoAudio.setAttribute('id', 'pomo-audio');
@@ -76,6 +83,221 @@ main.appendChild(pomoTimer);
 
 const footer = document.getElementById('footer');
 footer.appendChild(pomoFinish);
+
+let currentMode = '';
+
+let workLength = 1;
+let shortLength = 1;
+let longLength = 1;
+
+let workCount = 0;
+let shortBreakCount = 0;
+let longBreakCount = 0;
+let interruptCount = 0;
+
+function onload() {
+  // Load user preferences from storage
+  const calmIn = PomoStorage.getCalm();
+  const volumeIn = PomoStorage.getVolume();
+  const soundIn = PomoStorage.getSound();
+  const darkIn = PomoStorage.getDark();
+  const workIn = PomoStorage.getWork();
+  const shortBreakIn = PomoStorage.getShortBreak();
+  const longBreakIn = PomoStorage.getLongBreak();
+  const accessIn = PomoStorage.getAccessibility();
+
+  // Update settings to reflect current values
+  pomoSettings.loadSettings(
+    calmIn,
+    volumeIn,
+    soundIn,
+    darkIn,
+    workIn,
+    shortBreakIn,
+    longBreakIn,
+    accessIn
+  );
+
+  const {
+    work: workCountIn,
+    shortBreak: shortBreakCountIn,
+    longBreak: longBreakCountIn,
+    interrupts: interruptCountIn,
+  } = PomoStorage.getDayCounts();
+
+  // Update control variables
+  workLength = workIn;
+  shortLength = shortBreakIn;
+  longLength = longBreakIn;
+
+  workCount = workCountIn;
+  shortBreakCount = shortBreakCountIn;
+  longBreakCount = longBreakCountIn;
+  interruptCount = interruptCountIn;
+
+  currentMode = 'work';
+
+  pomoAudio.setSound(soundIn);
+  pomoAudio.setVolume(volumeIn);
+
+  // Configure initial component state
+  pomoTimer.setTimer(workLength, currentMode);
+
+  pomoFinish.enableFinish();
+  pomoInfo.enableInfo();
+  pomoSettings.enableSettings();
+  PomoTab.defaultTab();
+}
+
+function onStart() {
+  pomoFinish.enableFinish();
+  pomoInfo.disableInfo();
+  pomoSettings.disableSettings();
+}
+pomoTimer.addEventListener('timerStart', onStart);
+
+function onTick(e) {
+  PomoTab.setTab(e.detail.timeRemaining(), currentMode);
+}
+pomoTimer.addEventListener('tick', onTick);
+
+function onReset() {
+  interruptCount += 1;
+  PomoStorage.setDayCounts(workCount, shortBreakCount, longBreakCount, interruptCount);
+
+  pomoFinish.enableFinish();
+  pomoInfo.enableInfo();
+  pomoSettings.enableSettings();
+  PomoTab.defaultTab();
+}
+pomoTimer.addEventListener('timerReset', onReset);
+
+function onFinish() {
+  switch (currentMode) {
+    case 'work':
+      workCount += 1;
+      if (workCount !== 0 &amp;&amp; workCount % 4 === 0) {
+        pomoTimer.setProgress(4);
+        currentMode = 'long break';
+        pomoTimer.setTimer(longLength, 'long break');
+      } else {
+        pomoTimer.setProgress(workCount % 4);
+        currentMode = 'short break';
+        pomoTimer.setTimer(shortLength, 'short break');
+      }
+      break;
+
+    case 'short break':
+      shortBreakCount += 1;
+      currentMode = 'work';
+      pomoTimer.setTimer(workLength, 'work');
+      break;
+
+    case 'long break':
+      pomoTimer.setProgress(0);
+      longBreakCount += 1;
+      currentMode = 'work';
+      pomoTimer.setTimer(workLength, 'work');
+      break;
+
+    default:
+      break;
+  }
+
+  PomoStorage.setDayCounts(workCount, shortBreakCount, longBreakCount, interruptCount);
+
+  pomoAudio.playSound();
+
+  pomoFinish.enableFinish();
+  pomoInfo.enableInfo();
+  pomoSettings.enableSettings();
+}
+pomoTimer.addEventListener('timerFinish', onFinish);
+
+function onModalRequest() {
+  pomoFinish.showModal(workCount, shortBreakCount, longBreakCount, interruptCount);
+}
+pomoFinish.addEventListener('modalRequest', onModalRequest);
+
+function workSet(event) {
+  const work = event.detail.work();
+  PomoStorage.setWork(work);
+
+  if (currentMode === 'work') {
+    pomoTimer.setTimer(work, currentMode);
+  }
+}
+pomoSettings.addEventListener('workSet', workSet);
+
+function shortBreakSet(event) {
+  const shortBreak = event.detail.shortBreak();
+  PomoStorage.setShortBreak(shortBreak);
+
+  if (currentMode === 'short break') {
+    pomoTimer.setTimer(shortBreak, currentMode);
+  }
+}
+pomoSettings.addEventListener('shortBreakSet', shortBreakSet);
+
+function longBreakSet(event) {
+  const longBreak = event.detail.longBreak();
+  PomoStorage.setLongBreak(longBreak);
+
+  if (currentMode === 'long break') {
+    pomoTimer.setTimer(longBreak, currentMode);
+  }
+}
+pomoSettings.addEventListener('longBreakSet', longBreakSet);
+
+function volumeSet(event) {
+  const volume = event.detail.volume();
+  PomoStorage.setVolume(volume);
+
+  pomoAudio.setVolume(volume);
+}
+pomoSettings.addEventListener('volumeSet', volumeSet);
+
+function soundSet(event) {
+  const sound = event.detail.sound();
+  PomoStorage.setSound(sound);
+
+  pomoAudio.setSound(sound);
+}
+pomoSettings.addEventListener('soundSet', soundSet);
+
+function calmSet(event) {
+  const calm = event.detail.calm();
+  PomoStorage.setCalm(calm);
+
+  pomoTimer.setCalm(calm);
+  PomoTab.setCalm(calm);
+}
+pomoSettings.addEventListener('calmSet', calmSet);
+
+function darkSet(event) {
+  const dark = event.detail.dark();
+  PomoStorage.setDark(dark);
+
+  pomoFinish.setDark(dark);
+  pomoInfo.setDark(dark);
+  pomoSettings.setDark(dark);
+  pomoTimer.setDark(dark);
+
+  if (dark) {
+    stylesheet.setAttribute('href', './index.css');
+  } else {
+    stylesheet.setAttribute('href', './index-light.css');
+  }
+}
+pomoSettings.addEventListener('darkSet', darkSet);
+
+function accessSet(event) {
+  const accessible = event.detail.accessible();
+  PomoStorage.setAccessibility(accessible);
+}
+pomoSettings.addEventListener('accessSet', accessSet);
+
+onload();
 </code></pre>
         </article>
     </section>
@@ -94,7 +316,7 @@ or use light to override some colors of dark</a></li><li><a href="global.html#Fo
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Fri Mar 19 2021 03:24:48 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Fri Mar 19 2021 03:31:14 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
