@@ -8,7 +8,8 @@ import {
 } from './pomo-timer-helpers.js';
 
 const START = 'Start';
-const SEC_SPEED = 250;
+const RESET = 'Reset';
+const DEFAULT_SPEED = 1000; // normal second in ms
 class PomoTimer extends HTMLElement {
   constructor() {
     super();
@@ -18,7 +19,7 @@ class PomoTimer extends HTMLElement {
     const timerStyle = document.createElement('link');
     timerStyle.setAttribute('id', 'timer-style-dark');
     timerStyle.setAttribute('rel', 'stylesheet');
-    timerStyle.setAttribute('href', './components/pomo-timer.css');
+    timerStyle.setAttribute('href', './components/pomo-timer/pomo-timer.css');
     shadow.append(timerStyle);
 
     const wrapper = document.createElement('span');
@@ -48,12 +49,33 @@ class PomoTimer extends HTMLElement {
     this.totalSeconds = 0; // total seconds in timer
     let modeDuration = 0; // time to put on clock
     this.calmTimerText = false; // display w or w/o sec
+    this.accessible = true; // whether can use keystroke
+    this.timerSpeed = DEFAULT_SPEED; // how fast a second is (tests overwrite)
 
     shadow.appendChild(wrapper);
     wrapper.appendChild(currentMode);
     wrapper.appendChild(progressContainer);
     wrapper.appendChild(timerText);
     wrapper.appendChild(timerButton);
+
+    // Enabled determines if this component can be opened
+    this.enabled = true;
+
+    /**
+     * @method
+     * Used for allowing keyboard shortcuts
+     */
+    this.enableTimer = () => {
+      this.enabled = true;
+    };
+
+    /**
+     * @method
+     * Used for preventing keyboard shortcuts
+     */
+    this.disableTimer = () => {
+      this.enabled = false;
+    };
 
     /* Events */
     const timerStartEvent = new CustomEvent('timerStart', {
@@ -107,7 +129,7 @@ class PomoTimer extends HTMLElement {
       shadow.dispatchEvent(timerStartEvent);
       this.totalSeconds = setTime(modeDuration);
       display(this.totalSeconds, timerText, this.calmTimerText);
-      ticker = setInterval(this.timerTick, SEC_SPEED);
+      ticker = setInterval(this.timerTick, this.timerSpeed);
     };
 
     /**
@@ -136,6 +158,7 @@ class PomoTimer extends HTMLElement {
     };
 
     /**
+     * @method
      * For CONTROL to set time on clock for current mode
      * @param {Number} min number of minutes to set the clock to
      */
@@ -143,12 +166,23 @@ class PomoTimer extends HTMLElement {
       modeDuration = min;
       this.totalSeconds = setTime(min);
       display(this.totalSeconds, timerText, this.calmTimerText);
-      currentMode.setAttribute('class', mode);
+      switch (mode) {
+        case 'short break':
+          currentMode.setAttribute('class', 'short-break');
+          break;
+        case 'long break':
+          currentMode.setAttribute('class', 'long-break');
+          break;
+        default:
+          currentMode.setAttribute('class', mode);
+          break;
+      }
       currentMode.textContent = mode.toUpperCase();
       timerText.setAttribute('class', mode);
     };
 
     /**
+     * @method
      * For CONTROL to update squares on screen to match number of breaks taken
      * @param {Number} progress - number of breaks taken
      */
@@ -163,6 +197,7 @@ class PomoTimer extends HTMLElement {
     };
 
     /**
+     * @method
      * For CONTROL to determine if timer text display will show normal
      * minutes & seconds or just minutes
      * @param {Boolean} calm true for min; false for min and sec
@@ -173,17 +208,53 @@ class PomoTimer extends HTMLElement {
     };
 
     /**
+     * @method
      * For CONTROL to determine whether to use default dark styling
      * or use light to override some colors of dark
      * @param {Boolean} dark true for dark css; false for light css
      */
     this.setDark = (dark) => {
       if (dark) {
-        timerStyle.setAttribute('href', './components/pomo-timer.css');
+        timerStyle.setAttribute('href', './components/pomo-timer/pomo-timer.css');
       } else {
-        timerStyle.setAttribute('href', './components/pomo-timer-light.css');
+        timerStyle.setAttribute('href', './components/pomo-timer/pomo-timer-light.css');
       }
     };
+
+    /**
+     * @method
+     * For transforming the whole object
+     * @param {String} transformText the text to put in transform css
+     */
+    this.changeTransform = (transformText) => {
+      wrapper.style.transform = transformText;
+    };
+
+    /**
+     * @method
+     * For CONTROL to determine whether we can open info, setting, stats
+     * @param {Boolean} enabled true for being able to open, false otherwise
+     */
+    this.setAccessibility = (enabled) => {
+      this.accessible = enabled;
+    };
+
+    /**
+     * Functions that calls timerButton.onclick() if s or r key is pressed
+     */
+    document.addEventListener('keydown', (e) => {
+      // Checking if the key clicked is a s
+      if (e.key === 's' && this.accessible === true && this.enabled === true) {
+        if (timerButton.innerHTML === START) {
+          timerButton.onclick(); // Forces a onclick button for timerButton
+        }
+        // Key clicked is a e
+      } else if (e.key === 'r' && this.accessible === true && this.enabled === true) {
+        if (timerButton.innerHTML === RESET) {
+          timerButton.onclick(); // Forces a onclick button for timerButton
+        }
+      }
+    });
   }
 }
 

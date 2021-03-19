@@ -14,6 +14,17 @@
   border-color: #f5f2f2;
 }
 
+/* disabled styling */
+#finish-button:disabled {
+  background-color: #e5e7ea;
+  opacity: 30%;
+}
+
+#finish-button:disabled:hover {
+  border-color: #d8dbdc;
+  opacity: 30%;
+}
+
 #statistics-close-button[class="button-off"] {
   background-color: #fff;
   border-color: #dadbdc;

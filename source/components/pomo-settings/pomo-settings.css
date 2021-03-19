@@ -1,3 +1,5 @@
+/* dark mode css for settings */
+
 #settings-modal {
   display: none;
   position: fixed;
@@ -17,7 +19,7 @@
   z-index: 2;
   top: 0;
   left: -310px;
-  background-color: #fafbfc;
+  background-color: #13151b;
   overflow-x: hidden;
   transition: 0.5s;
 }
@@ -30,13 +32,13 @@
   left: -500px;
 }
 
-#close-button {
+#settings-close-button {
   margin-top: 25px;
   margin-right: 16px;
-  background-color: #fff;
+  background-color: #0f1115;
   float: right;
   border: 1.5px solid;
-  border-color: #dadbdc;
+  border-color: #31363c;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -46,31 +48,50 @@
   height: 35px;
 }
 
-#close-button:hover {
-  background-color: #e5e8ea;
+#settings-close-button:hover {
+  background-color: #22262c;
   border-color: #8d949d;
   transition-duration: 0.1s;
 }
 
-#close-button-icon {
+#settings-close-button-icon {
   height: 10px;
   width: 10px;
 }
 
-/* Margins match finish button */
-#open-button {
+/* button to open settings */
+#settings-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   z-index: 2;
   margin-left: 15px;
-  background-color: #63cc63;
-  color: #fff;
-  font-size: 65px;
-  border: none;
+  background-color: #22262c;
+  font-weight: 600;
+  font-size: 16px;
+  border: 1.5px solid;
+  border-radius: 6px;
+  border-color: #31363c;
   cursor: pointer;
+  width: 115px;
+  height: 36px;
+  color: transparent;
+}
+
+#settings-button-icon {
+  height: 17px;
+  vertical-align: middle;
+}
+
+#settings-button:hover {
+  background-color: #31363c;
+  border-color: #8d949d;
+  transition-duration: 0.1s;
 }
 
 /* Holds title of sidebar */
 #settings-title {
-  color: #23272c;
+  color: #c9d1d9;
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   margin-left: 25px;
@@ -83,7 +104,7 @@
 #audio-label,
 #display-label,
 #accessibility-label {
-  color: #23272c;
+  color: #8b949e;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -98,7 +119,7 @@
 #audio-section,
 #display-section,
 #accessibility-section {
-  color: #dadbdc;
+  color: #30363d;
   font-family: 'Source Sans Pro', sans-serif;
   margin-left: 25px;
   margin-right: 25px;
@@ -106,7 +127,7 @@
   margin-bottom: 20px;
   border-radius: 6px;
   border: 1.5px solid;
-  background-color: #fff;
+  background-color: #161b22;
 }
 
 /* Sizing for work, short, long, sound, volume sections */
@@ -115,7 +136,7 @@
 #long-section,
 #sound-section,
 #volume-section {
-  color: #23272c;
+  color: #c9d1d9;
   font-size: 12px;
   font-weight: 600;
   padding-left: 15px;
@@ -128,7 +149,8 @@
 #dark-section,
 #calm-section,
 #access-section {
-  color: #23272c;
+  color: #c9d1d9;
+  height: 30px;
   font-size: 12px;
   font-weight: 600;
   padding-left: 15px;
@@ -142,7 +164,7 @@
 #short-section,
 #calm-section,
 #sound-section {
-  border-bottom: 1.5px solid #dadbdc;
+  border-bottom: 1.5px solid #21262d;
 }
 
 /* Says "Work" / "Short Break" / "Long Break" / "Calm Mode" / etc */
@@ -154,6 +176,7 @@
 #sound-label,
 #volume-label,
 #access-label {
+  vertical-align: top;
   margin-right: 10px;
   justify-content: left;
   align-items: center;
@@ -164,7 +187,7 @@
 #dark-label,
 #access-label {
   position: relative;
-  top: 5px;
+  top: 7px;
 }
 
 /* Input fields for work/break lengths / volume */
@@ -172,11 +195,11 @@
 #short-break-number,
 #long-break-number,
 #sound-select {
-  background-color: #e5e8ea;
-  color: #23272c;
+  background-color: #0d1117;
+  color: #8b949e;
   float: right;
   border: 1.5px solid;
-  border-color: #dadbdc;
+  border-color: #30363d;
   border-radius: 6px;
   cursor: auto;
   outline: none;
@@ -194,7 +217,7 @@
   /* -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none; */
-  height: 28px;
+  height: 29px;
   width: 125px;
 }
 
@@ -204,7 +227,7 @@
   appearance: none;
   height: 2px;
   width: 100px;
-  background-color: #fff;
+  background-color: #161b22;
 }
 
 #sound-select:focus,
@@ -215,13 +238,13 @@
 /* safari/chrome volume slider track */
 #volume-slide::-webkit-slider-runnable-track {
   height: 2px;
-  background: #e5e8ea;
+  background: #30363d;
   margin-top: -6px;
 }
 
 /* firefox volume slider track */
 #volume-slide::-moz-range-track {
-  background: #e5e8ea;
+  background: #30363d;
   margin-top: 2px;
 }
 
@@ -249,11 +272,11 @@
 
 /* make volume numbr input field small */
 #volume-number {
-  background-color: #e5e8ea;
-  color: #23272c;
+  background-color: #0d1117;
+  color: #8b949e;
   float: right;
   border: 1.5px solid;
-  border-color: #e5e8ea;
+  border-color: #30363d;
   border-radius: 6px;
   cursor: auto;
   outline: none;
@@ -268,18 +291,21 @@
 #calm-switch {
   position: relative;
   left: 90px;
+  top: 1px;
 }
 
 /* Align switches to float right */
 #dark-switch {
   position: relative;
   left: 92px;
+  top: 1px;
 }
 
 /* Align switches to float right */
 #access-switch {
   position: relative;
   left: 45px;
+  top: 1px;
 }
 
 /* Add red border on invalid input */
@@ -298,82 +324,6 @@
   border-color: #8d949d;
 }
 
-/* Toggle CSS */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* Size of toggle switch */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 66px;
-  height: 28px;
-}
-
-/* Create main toggle body + switch ON: background & border color */
-.slider {
-  border-radius: 50px;
-  border: 1.5px solid;
-  border-color: #63cc63;
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #63cc63;
-  transition: 0.4s;
-}
-
-/* Create circle + toggle switch ON: circle color */
-.slider::before {
-  border-radius: 50px;
-  position: absolute;
-  content: "";
-  height: 20px;
-  width: 20px;
-  left: 3px;
-  bottom: 2.8px;
-  background-color: #51a552;
-  transition: 0.4s;
-}
-
-/* Toggle switch OFF: background & border color */
-input:checked + .slider {
-  background-color: #e5e8ea;
-  border-color: #e5e8ea;
-}
-
-/* Toggle switch OFF: circle color */
-input:checked + .slider::before {
-  /* movement of circle in x direction */
-  transform: translateX(38px);
-  background-color: #979da4;
-}
-
-/* Toggle switch OFF: text */
-.off-mode {
-  display: none;
-  color: #23272c;
-  position: absolute;
-  top: 5px;
-  left: 10px;
-  font-size: 12px;
-}
-
-/* Toggle switch ON: text */
-.on-mode {
-  display: block;
-  color: #fff;
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  font-size: 12px;
-}
-
 /* Prevent highlight of toggle switch or label */
 span,
 label {
@@ -387,6 +337,6 @@ label {
 }
 
 div.disabled > * {
-  opacity: 0.6;
+  opacity: 0.4;
   pointer-events: none;
 }

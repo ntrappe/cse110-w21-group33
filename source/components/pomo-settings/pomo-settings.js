@@ -1,5 +1,17 @@
-import ToggleSwitch from './pomo-toggle.js';
+/**
+ * @module PomoSettings
+ */
 
+import ToggleSwitch from '../pomo-toggle/pomo-toggle.js';
+
+const DEFAULT_WORK_TIME = 25;
+const DEFAULT_SHORT_BREAK_TIME = 5;
+const DEFAULT_LONG_BREAK_TIME = 10;
+const DEFAULT_VOLUME = 50;
+const DEFAULT_SOUND = './assets/audio/bike_chime.mp3';
+const DEFAULT_CALM_SETTING = false;
+const DEFAULT_DARK_SETTING = true;
+const DEFAULT_ACC_SETTING = true;
 const MIN_MINUTES = '1';
 const MAX_MINUTES = '60';
 const MIN_VOLUME = '0';
@@ -10,15 +22,28 @@ class PomoSettings extends HTMLElement {
   constructor() {
     super();
 
+    this.openEvent = new CustomEvent('openEvent', {
+      bubbles: true,
+      composed: true,
+    });
+
+    this.closeEvent = new CustomEvent('closeEvent', {
+      bubbles: true,
+      composed: true,
+    });
+
+    /* Temp store left offset to prepare for openning */
+    let leftOffsetTemp = null;
+
     // Event variables
-    this.work = 25;
-    this.shortBreak = 5;
-    this.longBreak = 10;
-    this.volume = 50;
-    this.sound = 'default';
-    this.calm = false;
-    this.dark = false;
-    this.accessible = true;
+    this.work = DEFAULT_WORK_TIME;
+    this.shortBreak = DEFAULT_SHORT_BREAK_TIME;
+    this.longBreak = DEFAULT_LONG_BREAK_TIME;
+    this.volume = DEFAULT_VOLUME;
+    this.sound = DEFAULT_SOUND;
+    this.calm = DEFAULT_CALM_SETTING;
+    this.dark = DEFAULT_DARK_SETTING;
+    this.accessible = DEFAULT_ACC_SETTING;
 
     const shadow = this.attachShadow({ mode: 'open' });
 
@@ -30,11 +55,6 @@ class PomoSettings extends HTMLElement {
     const styles = document.createElement('link');
     styles.setAttribute('id', 'settings-style');
     styles.setAttribute('rel', 'stylesheet');
-    if (this.dark) {
-      styles.setAttribute('href', './components/settings-dark.css');
-    } else {
-      styles.setAttribute('href', './components/settings-light.css');
-    }
 
     // Settings panel
     const sideBar = document.createElement('div');
@@ -44,18 +64,32 @@ class PomoSettings extends HTMLElement {
     settingsTitle.setAttribute('id', 'settings-title');
     settingsTitle.textContent = 'Settings';
 
-    // Button to open sidebar
-    const openButton = document.createElement('button');
-    openButton.setAttribute('id', 'open-button');
-    openButton.innerHTML = '&#9881;';
+    // Button to open settings sidebar
+    const settingsButton = document.createElement('button');
+    settingsButton.setAttribute('id', 'settings-button');
+
+    const settingsIcon = document.createElement('img');
+    settingsIcon.setAttribute('id', 'settings-button-icon');
+    settingsIcon.textContent = 'Settings';
+
+    settingsButton.appendChild(settingsIcon);
+
+    // update css for button and sidebar if dark vs not mode
+    if (this.dark) {
+      styles.setAttribute('href', './components/pomo-settings/pomo-settings.css');
+      settingsIcon.setAttribute('src', './assets/images/gear_settings.png');
+    } else {
+      styles.setAttribute('href', './components/pomo-settings/pomo-settings-light.css');
+      settingsIcon.setAttribute('src', './assets/images/gear_settings_light.png');
+    }
 
     // Button to close sidebar
     const closeButton = document.createElement('button');
-    closeButton.setAttribute('id', 'close-button');
+    closeButton.setAttribute('id', 'settings-close-button');
 
     const closeIcon = document.createElement('img');
-    closeIcon.setAttribute('id', 'close-button-icon');
-    closeIcon.setAttribute('src', './assets/x.svg');
+    closeIcon.setAttribute('id', 'settings-close-button-icon');
+    closeIcon.setAttribute('src', './assets/images/x.svg');
 
     const pomoLengthLabel = document.createElement('label');
     pomoLengthLabel.textContent = 'Time (minutes)';
@@ -168,22 +202,29 @@ class PomoSettings extends HTMLElement {
     const soundSelect = document.createElement('select');
     soundSelect.setAttribute('id', 'sound-select');
 
-    // List of names of audio files
-    const soundList = ['party-horn', 'angry-monkey', 'default', 'rooster'];
+    // List of names of audio files (file name should be spaced with underscores)
+    const soundList = [
+      {
+        name: 'Bike Chime',
+        file: './assets/audio/bike_chime.mp3',
+      },
+      {
+        name: 'Pleasant Ding',
+        file: './assets/audio/pleasant_ding.mp3',
+      },
+      {
+        name: 'Small Bell',
+        file: './assets/audio/small_bell.mp3',
+      },
+    ];
 
     // Create option in dropdown menu for each audio file
     for (let i = 0; i < soundList.length; i += 1) {
       const sound = soundList[i];
 
       const option = soundSelect.appendChild(document.createElement('option'));
-      option.value = sound;
-
-      // Converts name of audio file to capitalized word with spaces
-      const name = sound
-        .split('-')
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
-      option.text = name;
+      option.value = sound.file;
+      option.text = sound.name;
     }
     soundSelect.value = this.sound;
 
@@ -233,7 +274,7 @@ class PomoSettings extends HTMLElement {
     // Attach elements to shadow DOM
     shadow.appendChild(settingsModal);
     shadow.appendChild(styles);
-    shadow.appendChild(openButton);
+    shadow.appendChild(settingsButton);
     shadow.appendChild(sideBar);
 
     sideBar.appendChild(closeButton);
@@ -338,9 +379,11 @@ class PomoSettings extends HTMLElement {
     /**
      * Opens the sidebar when clicking open button
      */
-    openButton.onclick = () => {
+    settingsButton.onclick = () => {
       sideBar.setAttribute('class', 'open');
+      sideBar.style.left = leftOffsetTemp;
       settingsModal.style.display = 'block';
+      shadow.dispatchEvent(this.openEvent);
     };
 
     /**
@@ -348,7 +391,9 @@ class PomoSettings extends HTMLElement {
      */
     closeButton.onclick = () => {
       sideBar.setAttribute('class', 'close');
+      sideBar.style.left = null;
       settingsModal.style.display = 'none';
+      shadow.dispatchEvent(this.closeEvent);
     };
 
     /**
@@ -357,7 +402,9 @@ class PomoSettings extends HTMLElement {
      */
     settingsModal.onclick = () => {
       sideBar.setAttribute('class', 'close');
+      sideBar.style.left = null;
       settingsModal.style.display = 'none';
+      shadow.dispatchEvent(this.closeEvent);
     };
 
     /**
@@ -533,24 +580,32 @@ class PomoSettings extends HTMLElement {
     });
 
     /**
+     * @method
      * Toggles light/dark color scheme for sidebar
      * @param {Boolean} dark turn dark color scheme if dark mode is on
      */
     this.setDark = (dark) => {
       if (dark) {
-        styles.setAttribute('href', './components/settings-dark.css');
+        styles.setAttribute('href', './components/pomo-settings/pomo-settings.css');
+        settingsIcon.setAttribute('src', './assets/images/gear_settings.png');
       } else {
-        styles.setAttribute('href', './components/settings-light.css');
+        styles.setAttribute('href', './components/pomo-settings/pomo-settings-light.css');
+        settingsIcon.setAttribute('src', './assets/images/gear_settings_light.png');
       }
       calmSwitch.setDark(dark);
       darkSwitch.setDark(dark);
       accessSwitch.setDark(dark);
     };
 
+    // Enabled determines if this component can be opened
+    this.enabled = true;
+
     /**
+     * @method
      * Enable settings
      */
     this.enableSettings = () => {
+      this.enabled = true;
       workSection.classList.remove('disabled');
       shortSection.classList.remove('disabled');
       longSection.classList.remove('disabled');
@@ -568,9 +623,11 @@ class PomoSettings extends HTMLElement {
     };
 
     /**
+     * @method
      * Disable settings besides volume
      */
     this.disableSettings = () => {
+      this.enabled = false;
       workSection.classList.add('disabled');
       shortSection.classList.add('disabled');
       longSection.classList.add('disabled');
@@ -588,6 +645,7 @@ class PomoSettings extends HTMLElement {
     };
 
     /**
+     * @method
      * Called by control, updates the default settings with values previously had from local storage
      * @param {Boolean} calm whether or not calm mode is turned on
      * @param {Number} volume value of audio volume
@@ -628,6 +686,48 @@ class PomoSettings extends HTMLElement {
         accessSwitch.setOff();
       }
     };
+
+    /**
+     * @method
+     * For transforming the whole object
+     * @param {String} buttonText the text to put in transform css
+     * @param {Number} leftOffset left offset of settingPanel
+     */
+    this.changeTransform = (buttonText, panelText, leftOffset) => {
+      settingsButton.style.transform = buttonText;
+      sideBar.style.transform = panelText;
+
+      /* Change style of left offset if panel is open,
+       * Or store it if it is closed.
+       */
+      if (sideBar.getAttribute('class') === 'open') {
+        sideBar.style.left = (0 - leftOffset).toString().concat('px');
+      } else {
+        leftOffsetTemp = (0 - leftOffset).toString().concat('px');
+      }
+    };
+
+    /**
+     * @method
+     * For CONTROL to determine whether we can open info, setting, stats
+     * @param {Boolean} enabled true for being able to open, false otherwise
+     */
+    this.setAccessibility = (enabled) => {
+      this.accessible = enabled;
+    };
+
+    /**
+     * Functions that opens and closes the setting page with the q key
+     */
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'q' && this.accessible === true) {
+        if (sideBar.getAttribute('class') === 'open') {
+          closeButton.onclick();
+        } else if (this.enabled === true) {
+          settingsButton.onclick();
+        }
+      }
+    });
   }
 }
 

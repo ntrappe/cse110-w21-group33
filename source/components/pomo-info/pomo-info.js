@@ -1,8 +1,27 @@
+/**
+ * @module PomoInfo
+ */
+
 class PomoInfo extends HTMLElement {
   constructor() {
     super();
 
     const shadow = this.attachShadow({ mode: 'open' });
+
+    // event listener for opening info page
+    this.openEvent = new CustomEvent('openEvent', {
+      bubbles: true,
+      composed: true,
+    });
+
+    // event listener for closing info page
+    this.closeEvent = new CustomEvent('closeEvent', {
+      bubbles: true,
+      composed: true,
+    });
+
+    // value of accessibility
+    this.accessible = true;
 
     // wrapper for element
     const wrapper = document.createElement('div');
@@ -11,7 +30,7 @@ class PomoInfo extends HTMLElement {
     const infoStyle = document.createElement('link');
     infoStyle.setAttribute('id', 'info-styles');
     infoStyle.setAttribute('rel', 'stylesheet');
-    infoStyle.setAttribute('href', './components/pomo-info.css');
+    infoStyle.setAttribute('href', './components/pomo-info/pomo-info.css');
     shadow.append(infoStyle);
 
     // the modal window
@@ -23,16 +42,25 @@ class PomoInfo extends HTMLElement {
       // close lightbox when click outside of the content area
       if (event.target === modal) {
         modal.style.display = 'none';
+        shadow.dispatchEvent(this.closeEvent);
       }
     };
 
     // info button
     const infoButton = document.createElement('button');
     infoButton.setAttribute('id', 'info-button');
+
+    const infoIcon = document.createElement('img');
+    infoIcon.setAttribute('id', 'info-button-icon');
+    infoIcon.setAttribute('src', './assets/images/i_info.png');
+    infoIcon.textContent = 'Info';
+
+    infoButton.appendChild(infoIcon);
+
     infoButton.onclick = () => {
       modal.style.display = 'block';
+      shadow.dispatchEvent(this.openEvent);
     };
-    infoButton.innerHTML = 'Info';
 
     // the lightbox
     const modalContent = document.createElement('div');
@@ -59,6 +87,7 @@ class PomoInfo extends HTMLElement {
     closeButton.setAttribute('class', 'button-off');
     closeButton.onclick = () => {
       modal.style.display = 'none';
+      shadow.dispatchEvent(this.closeEvent);
     };
     closeButton.innerHTML = '&times;';
 
@@ -82,31 +111,72 @@ class PomoInfo extends HTMLElement {
 
     shadow.appendChild(wrapper);
 
+    // Enabled determines if this component can be opened
+    this.enabled = true;
+
     /**
+     * @method
      * Allows the control to open the info page
      */
     this.enableInfo = () => {
+      this.enabled = true;
       infoButton.disabled = false;
     };
 
     /**
+     * @method
      * Prevent the control from open the info page
      */
     this.disableInfo = () => {
+      this.enabled = false;
       infoButton.disabled = true;
     };
 
     /**
+     * @method
      * Modify elements' data-mode to dark-mode or light-mode
      * @param {Boolean} dark  indicate whether or not the setting is in dark mode
      */
     this.setDark = (dark) => {
       if (dark) {
-        infoStyle.setAttribute('href', './components/pomo-info.css');
+        infoStyle.setAttribute('href', './components/pomo-info/pomo-info.css');
+        infoIcon.setAttribute('src', './assets/images/i_info.png');
       } else {
-        infoStyle.setAttribute('href', './components/pomo-info-light.css');
+        infoStyle.setAttribute('href', './components/pomo-info/pomo-info-light.css');
+        infoIcon.setAttribute('src', './assets/images/i_info_light.png');
       }
     };
+
+    /**
+     * @method
+     * For transforming the whole object
+     * @param {String} transformText the text to put in transform css
+     */
+    this.changeTransform = (transformText) => {
+      infoButton.style.transform = transformText;
+    };
+
+    /**
+     * @method
+     * For CONTROL to determine whether we can open info, setting, stats
+     * @param {Boolean} enabled true for being able to open, false otherwise
+     */
+    this.setAccessibility = (enabled) => {
+      this.accessible = enabled;
+    };
+
+    /**
+     * Functions that opens and closes the info page with the i key
+     */
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'i' && this.accessible === true) {
+        if (modal.style.display === 'block') {
+          closeButton.onclick();
+        } else if (this.enabled === true) {
+          infoButton.onclick();
+        }
+      }
+    });
   }
 }
 
