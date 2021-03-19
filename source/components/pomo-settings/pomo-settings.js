@@ -1,10 +1,14 @@
+/**
+ * @module PomoSettings
+ */
+
 import ToggleSwitch from '../pomo-toggle/pomo-toggle.js';
 
 const DEFAULT_WORK_TIME = 25;
 const DEFAULT_SHORT_BREAK_TIME = 5;
 const DEFAULT_LONG_BREAK_TIME = 10;
 const DEFAULT_VOLUME = 50;
-const DEFAULT_SOUND = 'default';
+const DEFAULT_SOUND = './assets/audio/bike_chime.mp3';
 const DEFAULT_CALM_SETTING = false;
 const DEFAULT_DARK_SETTING = true;
 const DEFAULT_ACC_SETTING = true;
@@ -66,7 +70,6 @@ class PomoSettings extends HTMLElement {
 
     const settingsIcon = document.createElement('img');
     settingsIcon.setAttribute('id', 'settings-button-icon');
-    // settingsIcon.setAttribute('src', './assets/gear_settings_light.png');
     settingsIcon.textContent = 'Settings';
 
     settingsButton.appendChild(settingsIcon);
@@ -74,19 +77,19 @@ class PomoSettings extends HTMLElement {
     // update css for button and sidebar if dark vs not mode
     if (this.dark) {
       styles.setAttribute('href', './components/pomo-settings/pomo-settings.css');
-      settingsIcon.setAttribute('src', './assets/gear_settings.png');
+      settingsIcon.setAttribute('src', './assets/images/gear_settings.png');
     } else {
       styles.setAttribute('href', './components/pomo-settings/pomo-settings-light.css');
-      settingsIcon.setAttribute('src', './assets/gear_settings_light.png');
+      settingsIcon.setAttribute('src', './assets/images/gear_settings_light.png');
     }
 
     // Button to close sidebar
     const closeButton = document.createElement('button');
-    closeButton.setAttribute('id', 'close-button');
+    closeButton.setAttribute('id', 'settings-close-button');
 
     const closeIcon = document.createElement('img');
-    closeIcon.setAttribute('id', 'close-button-icon');
-    closeIcon.setAttribute('src', './assets/x.svg');
+    closeIcon.setAttribute('id', 'settings-close-button-icon');
+    closeIcon.setAttribute('src', './assets/images/x.svg');
 
     const pomoLengthLabel = document.createElement('label');
     pomoLengthLabel.textContent = 'Time (minutes)';
@@ -199,22 +202,29 @@ class PomoSettings extends HTMLElement {
     const soundSelect = document.createElement('select');
     soundSelect.setAttribute('id', 'sound-select');
 
-    // List of names of audio files (file name should be spaced with hyphens)
-    const soundList = ['party-horn', 'angry-monkey', 'default', 'rooster'];
+    // List of names of audio files (file name should be spaced with underscores)
+    const soundList = [
+      {
+        name: 'Bike Chime',
+        file: './assets/audio/bike_chime.mp3',
+      },
+      {
+        name: 'Pleasant Ding',
+        file: './assets/audio/pleasant_ding.mp3',
+      },
+      {
+        name: 'Small Bell',
+        file: './assets/audio/small_bell.mp3',
+      },
+    ];
 
     // Create option in dropdown menu for each audio file
     for (let i = 0; i < soundList.length; i += 1) {
       const sound = soundList[i];
 
       const option = soundSelect.appendChild(document.createElement('option'));
-      option.value = sound;
-
-      // Converts name of audio file to capitalized word with spaces
-      const name = sound
-        .split('-')
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
-      option.text = name;
+      option.value = sound.file;
+      option.text = sound.name;
     }
     soundSelect.value = this.sound;
 
@@ -570,26 +580,32 @@ class PomoSettings extends HTMLElement {
     });
 
     /**
+     * @method
      * Toggles light/dark color scheme for sidebar
      * @param {Boolean} dark turn dark color scheme if dark mode is on
      */
     this.setDark = (dark) => {
       if (dark) {
         styles.setAttribute('href', './components/pomo-settings/pomo-settings.css');
-        settingsIcon.setAttribute('src', './assets/gear_settings.png');
+        settingsIcon.setAttribute('src', './assets/images/gear_settings.png');
       } else {
         styles.setAttribute('href', './components/pomo-settings/pomo-settings-light.css');
-        settingsIcon.setAttribute('src', './assets/gear_settings_light.png');
+        settingsIcon.setAttribute('src', './assets/images/gear_settings_light.png');
       }
       calmSwitch.setDark(dark);
       darkSwitch.setDark(dark);
       accessSwitch.setDark(dark);
     };
 
+    // Enabled determines if this component can be opened
+    this.enabled = true;
+
     /**
+     * @method
      * Enable settings
      */
     this.enableSettings = () => {
+      this.enabled = true;
       workSection.classList.remove('disabled');
       shortSection.classList.remove('disabled');
       longSection.classList.remove('disabled');
@@ -607,9 +623,11 @@ class PomoSettings extends HTMLElement {
     };
 
     /**
+     * @method
      * Disable settings besides volume
      */
     this.disableSettings = () => {
+      this.enabled = false;
       workSection.classList.add('disabled');
       shortSection.classList.add('disabled');
       longSection.classList.add('disabled');
@@ -627,6 +645,7 @@ class PomoSettings extends HTMLElement {
     };
 
     /**
+     * @method
      * Called by control, updates the default settings with values previously had from local storage
      * @param {Boolean} calm whether or not calm mode is turned on
      * @param {Number} volume value of audio volume
@@ -669,6 +688,7 @@ class PomoSettings extends HTMLElement {
     };
 
     /**
+     * @method
      * For transforming the whole object
      * @param {String} buttonText the text to put in transform css
      * @param {Number} leftOffset left offset of settingPanel
@@ -688,6 +708,7 @@ class PomoSettings extends HTMLElement {
     };
 
     /**
+     * @method
      * For CONTROL to determine whether we can open info, setting, stats
      * @param {Boolean} enabled true for being able to open, false otherwise
      */
@@ -702,7 +723,7 @@ class PomoSettings extends HTMLElement {
       if (e.key === 'q' && this.accessible === true) {
         if (sideBar.getAttribute('class') === 'open') {
           closeButton.onclick();
-        } else {
+        } else if (this.enabled === true) {
           settingsButton.onclick();
         }
       }

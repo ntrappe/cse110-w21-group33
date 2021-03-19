@@ -73,6 +73,40 @@ describe('Check Custom Event Dispatchment', { includeShadowDom: true }, () => {
   });
 });
 
+describe('Check open/close fires appropriate events', { includeShadowDom: true }, () => {
+  it('Opening stats fires appropriate events', () => {
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('pomo-finish').then(($el) => {
+        const eventFunction = () => {
+          $el[0].removeEventListener('openEvent', eventFunction);
+          resolve();
+        };
+        $el[0].addEventListener('openEvent', eventFunction);
+
+        cy.window().then((win) => {
+          win.pomoFinish.showModal(0, 0, 0, 0);
+        });
+      });
+    });
+    cy.wrap(eventPromise);
+  });
+
+  it('Closing stats fires appropriate events', () => {
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('pomo-finish').then(($el) => {
+        const eventFunction = () => {
+          $el[0].removeEventListener('closeEvent', eventFunction);
+          resolve();
+        };
+        $el[0].addEventListener('closeEvent', eventFunction);
+
+        cy.get('#statistics-close-button').click();
+      });
+    });
+    cy.wrap(eventPromise);
+  });
+});
+
 describe('Check Lightbox Closing Options', { includeShadowDom: true }, () => {
   beforeEach(() => {
     cy.visit('./source/index.html');

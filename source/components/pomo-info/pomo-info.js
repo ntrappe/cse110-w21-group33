@@ -1,3 +1,7 @@
+/**
+ * @module PomoInfo
+ */
+
 class PomoInfo extends HTMLElement {
   constructor() {
     super();
@@ -48,7 +52,7 @@ class PomoInfo extends HTMLElement {
 
     const infoIcon = document.createElement('img');
     infoIcon.setAttribute('id', 'info-button-icon');
-    infoIcon.setAttribute('src', './assets/i_info.png');
+    infoIcon.setAttribute('src', './assets/images/i_info.png');
     infoIcon.textContent = 'Info';
 
     infoButton.appendChild(infoIcon);
@@ -111,6 +115,7 @@ class PomoInfo extends HTMLElement {
     this.enabled = true;
 
     /**
+     * @method
      * Allows the control to open the info page
      */
     this.enableInfo = () => {
@@ -119,6 +124,7 @@ class PomoInfo extends HTMLElement {
     };
 
     /**
+     * @method
      * Prevent the control from open the info page
      */
     this.disableInfo = () => {
@@ -127,20 +133,22 @@ class PomoInfo extends HTMLElement {
     };
 
     /**
+     * @method
      * Modify elements' data-mode to dark-mode or light-mode
      * @param {Boolean} dark  indicate whether or not the setting is in dark mode
      */
     this.setDark = (dark) => {
       if (dark) {
         infoStyle.setAttribute('href', './components/pomo-info/pomo-info.css');
-        infoIcon.setAttribute('src', './assets/i_info.png');
+        infoIcon.setAttribute('src', './assets/images/i_info.png');
       } else {
         infoStyle.setAttribute('href', './components/pomo-info/pomo-info-light.css');
-        infoIcon.setAttribute('src', './assets/i_info_light.png');
+        infoIcon.setAttribute('src', './assets/images/i_info_light.png');
       }
     };
 
     /**
+     * @method
      * For transforming the whole object
      * @param {String} transformText the text to put in transform css
      */
@@ -149,6 +157,7 @@ class PomoInfo extends HTMLElement {
     };
 
     /**
+     * @method
      * For CONTROL to determine whether we can open info, setting, stats
      * @param {Boolean} enabled true for being able to open, false otherwise
      */
