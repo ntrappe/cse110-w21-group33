@@ -97,19 +97,6 @@ describe('Testing a complete cycle for stats page', { includeShadowDom: true }, 
     });
   });
 
-  it('Setting an interruption and checking if stats shows 1', () => {
-    cy.get('#timer-button').click();
-    cy.get('#timer-button').click();
-    cy.get('#finish-button').click();
-    cy.get('#statistics-panel').then(($el) => {
-      expect($el).to.contain('Pomodoro Completed: 0');
-      expect($el).to.contain('Short Breaks: 0');
-      expect($el).to.contain('Long Breaks: 0');
-      expect($el).to.contain('Interrupted Session: 1');
-    });
-    cy.get('#statistics-close-button').click();
-  });
-
   it('Setting Work/Short/Long duration to 1min', () => {
     cy.get('#settings-button').click();
     cy.get('#work-number').type('{selectall}{backspace}1', { force: true }).trigger('change');
@@ -118,79 +105,5 @@ describe('Testing a complete cycle for stats page', { includeShadowDom: true }, 
       .trigger('change');
     cy.get('#long-break-number').type('{selectall}{backspace}1', { force: true }).trigger('change');
     cy.get('#settings-close-button').click();
-  });
-
-  it('Checking stats after 1 work session is completed', () => {
-    cy.get('#timer-button').click();
-    cy.wait(6200);
-    cy.get('#finish-button').click();
-    cy.get('#statistics-panel').then(($el) => {
-      expect($el).to.contain('Pomodoro Completed: 1');
-      expect($el).to.contain('Short Breaks: 0');
-      expect($el).to.contain('Long Breaks: 0');
-      expect($el).to.contain('Interrupted Session: 1');
-    });
-    cy.get('#statistics-close-button').click();
-  });
-
-  it('Checking stats after 1 short break is completed', () => {
-    cy.get('#timer-button').click();
-    cy.wait(6200);
-    cy.get('#finish-button').click();
-    cy.get('#statistics-panel').then(($el) => {
-      expect($el).to.contain('Pomodoro Completed: 1');
-      expect($el).to.contain('Short Breaks: 1');
-      expect($el).to.contain('Long Breaks: 0');
-      expect($el).to.contain('Interrupted Session: 1');
-    });
-    cy.get('#statistics-close-button').click();
-  });
-
-  it('Running a 2nd work session', () => {
-    cy.get('#timer-button').click();
-    cy.wait(6200);
-    cy.get('#finish-button').click();
-    cy.get('#statistics-panel').then(($el) => {
-      expect($el).to.contain('Pomodoro Completed: 2');
-      expect($el).to.contain('Short Breaks: 1');
-      expect($el).to.contain('Long Breaks: 0');
-      expect($el).to.contain('Interrupted Session: 1');
-    });
-    cy.get('#statistics-close-button').click();
-  });
-
-  it('Running a 2nd short break', () => {
-    cy.get('#timer-button').click();
-    cy.wait(6200);
-    cy.get('#finish-button').click();
-    cy.get('#statistics-panel').then(($el) => {
-      expect($el).to.contain('Pomodoro Completed: 2');
-      expect($el).to.contain('Short Breaks: 2');
-      expect($el).to.contain('Long Breaks: 0');
-      expect($el).to.contain('Interrupted Session: 1');
-    });
-    cy.get('#statistics-close-button').click();
-  });
-
-  it('Running 2 more work session and 1 short break and 1 long break', () => {
-    cy.get('#timer-button').click();
-    cy.wait(6200);
-    cy.get('#timer-button').click();
-    cy.wait(6200);
-    cy.get('#timer-button').click();
-    cy.wait(6200);
-    cy.get('#timer-button').click();
-    cy.wait(6200);
-  });
-
-  it('Checkng if full pomodoro cycle is correct on stats', () => {
-    cy.get('#finish-button').click();
-    cy.get('#statistics-panel').then(($el) => {
-      expect($el).to.contain('Pomodoro Completed: 4');
-      expect($el).to.contain('Short Breaks: 3');
-      expect($el).to.contain('Long Breaks: 1');
-      expect($el).to.contain('Interrupted Session: 1');
-    });
-    cy.get('#statistics-close-button').click();
   });
 });
