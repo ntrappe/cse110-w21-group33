@@ -42,31 +42,29 @@
   cursor: not-allowed;
 }
 
-#info-close-button[class="button-off"] {
-  background-color: #0e1116;
-  color: #cbd1d8;
-  float: right;
+#info-close-button {
+  position: absolute;
   font-size: 30px;
   padding: 2px 14px;
   border: 1.5px solid;
-  border-color: #31363c;
-  border-radius: 90%;
+  border-radius: 50%;
   display: block;
   cursor: pointer;
+  top: 16px;
+  right: 16px;
+  transition-duration: 0.1s;
+}
+
+#info-close-button[class="button-off"] {
+  background-color: #0f1115;
+  color: #cbd1d8;
+  border-color: #31363c;
 }
 
 #info-close-button[class="button-on"] {
   background-color: #22262c;
   color: #f1f6fb;
-  float: right;
-  font-size: 30px;
-  padding: 2px 14px;
-  border: 1.5px solid;
   border-color: #8d949d;
-  border-radius: 90%;
-  display: block;
-  cursor: pointer;
-  transition-duration: 0.1s;
 }
 
 #info-modal {
@@ -82,24 +80,75 @@
 }
 
 #info-modal-content {
-  background-color: #171b21;
+  position: relative;
+  background-color: #0d1117;
   margin: 5% auto;
   padding: 15px;
   border: 1.5px solid;
   border-radius: 6px;
-  border-color: #31363c;
+  border-color: #30363d;
   height: 70%;
+  min-height: 500px;
   width: 70%;
+  min-width: 900px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 #info-content {
   display: block;
-  color: #cbd1d8;
+  color: #8b949e;
   margin: 5% 5%;
   width: 90%;
+  height: 95%;
+  max-height: 80%;
+  text-align: justify;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-#info-content h3 {
-  padding-bottom: 2px;
-  border-bottom: #cbd1d8 solid;
+.info-table {
+  border: 1.5px solid;
+  border-color: #30363d;
+  border-radius: 6px;
+  margin-bottom: 30px;
+  background-color: #0d1117;
+}
+
+.info-table-label {
+  border-bottom: 1.5px solid;
+  border-color: #30363d;
+  border-radius: 6px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #c9d1d9;
+  background-color: #161a21;
+  margin-top: 0;
+}
+
+.info-table-content {
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 12px;
+  color: #8b949e;
+}
+
+#info-content b {
+  color: #4e8edf;
+}
+
+#info-content kbd {
+  background-color: #161b22;
+  border-color: #30363d;
+  border: 1px solid;
+  border-radius: 4px;
+  padding: 1px 1.5px 0;
+  color: #9ba1a9;
 }

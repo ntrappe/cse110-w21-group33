@@ -187,7 +187,7 @@
 #dark-label,
 #access-label {
   position: relative;
-  top: 5px;
+  top: 7px;
 }
 
 /* Input fields for work/break lengths / volume */
@@ -217,7 +217,7 @@
   /* -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none; */
-  height: 28px;
+  height: 29px;
   width: 125px;
 }
 
@@ -291,18 +291,21 @@
 #calm-switch {
   position: relative;
   left: 90px;
+  top: 1px;
 }
 
 /* Align switches to float right */
 #dark-switch {
   position: relative;
   left: 92px;
+  top: 1px;
 }
 
 /* Align switches to float right */
 #access-switch {
   position: relative;
   left: 45px;
+  top: 1px;
 }
 
 /* Add red border on invalid input */
