@@ -136,9 +136,10 @@ class PomoInfo extends HTMLElement {
     howToContent.setAttribute('class', 'info-table-content');
     howToContent.innerHTML = `To start using our app, press the <b>Start</b> button or the 
     <kbd>s</kbd> key on your keyboard in order to start the timer. If you need to forfeit 
-    and restart the work session for any reason click the <br>Reset</b> button or the 
-    <kbd>r</kbd> key on your keyboard. You can even open up settings by clicking on 
-    <b>'Settings'</b> or using the <kbd>q</kbd> on your keyboard.`;
+    and restart the work session for any reason click the <b>Reset</b> button or the 
+    <kbd>r</kbd> key on your keyboard. To open up settings, click on <b>'Settings'</b> or 
+    use the <kbd>q</kbd> on your keyboard. To open up stats, clikc on<b>'Stats'</b> or 
+    use the <kbd>f</kbd> on your keyboard.`;
     howToHolder.appendChild(howToLabel);
     howToHolder.appendChild(howToContent);
 
