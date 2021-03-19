@@ -13,3 +13,60 @@
   background-color: #edeff3;
   border-color: #f5f2f2;
 }
+
+#statistics-close-button[class="button-off"] {
+  background-color: #fff;
+  border-color: #dadbdc;
+  color: #cbd1d8;
+}
+
+#statistics-close-button[class="button-on"] {
+  background-color: #e5e8ea;
+  border-color: #8d949d;
+  transition-duration: 0.1s;
+  color: #cbd1d8;
+}
+
+#statistics-modal-content {
+  background-color: #fff;
+  border-color: #e1e4e8;
+}
+
+#statistics-modal-title {
+  color: #2c3136;
+}
+
+.square {
+  background-color: #e4e6e9;
+  border-color: #e4e6e9;
+}
+
+.square.work {
+  background-color: #24cf53;
+  border-color: #21bf4d;
+}
+
+.square.short {
+  background-color: #2ec9ad;
+  border-color: #2cbaa0;
+}
+
+.square.long {
+  background-color: #0bb4ff;
+  border-color: #0fa7e9;
+}
+
+.square.interrupt {
+  background-color: #d74c4e;
+  border-color: #c74749;
+}
+
+.fancy {
+  background-color: #f6f8fa;
+  border-color: #e1e4e8;
+  color: #181c1f;
+}
+
+.stats-subtitle {
+  color: #586069;
+}

@@ -78,7 +78,7 @@
 #statistics-modal-title {
   padding-bottom: 16px;
   margin: 10px 5%;
-  color: #cbd1d8;
+  color: #c9d1d9;
   text-align: center;
 }
 
@@ -111,7 +111,8 @@
   height: 24px;
   border-radius: 4px;
   background-color: #171b21;
-  border: 2px solid #171b21;
+  border: 1.5px solid;
+  border-color: #171b21;
   margin-right: 4px;
 }
 
@@ -120,31 +121,37 @@
 }
 
 .square.work {
-  background-color: #429046;
-  border: 2px solid #55a758;
+  background-color: #429146;
+  border: 1.5px solid;
+  border-color: #55a858;
 }
 
 .square.short {
-  background-color: #692bb7;
-  border: 2px solid #8135e4;
+  background-color: #6839b7;
+  border: 1.5px solid;
+  border-color: #7f4ed3;
 }
 
 .square.long {
-  background-color: #1b6fb2;
-  border: 2px solid #308dd5;
+  background-color: #145d99;
+  border: 1.5px solid;
+  border-color: #2475b3;
 }
 
 .square.interrupt {
-  background-color: #d03e43;
-  border: 2px solid #d03e43;
+  background-color: #86161b;
+  border: 1.5px solid;
+  border-color: #a41a22;
 }
 
 .fancy {
   width: 40px;
   height: 40px;
   border-radius: 8px;
+  border: 1.5px solid;
   background-color: #171b21;
-  border: 2px solid #171b21;
+  border-color: #30363d;
+  color: #d9dde1;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -155,30 +162,10 @@
   font-weight: bold;
 }
 
-.fancy.work {
-  background-color: #429046;
-  border: 2px solid #55a758;
-}
-
-.fancy.short {
-  background-color: #692bb7;
-  border: 2px solid #8135e4;
-}
-
-.fancy.long {
-  background-color: #1b6fb2;
-  border: 2px solid #308dd5;
-}
-
-.fancy.interrupt {
-  background-color: #d03e43;
-  border: 2px solid #d03e43;
-}
-
 .stats-subtitle {
-  color: #cbd1d8;
+  color: #8b949e;
   text-align: center;
-  font-weight: 400;
-  font-size: 14px;
+  font-weight: 600;
+  font-size: 12px;
   text-overflow: wrap;
 }
