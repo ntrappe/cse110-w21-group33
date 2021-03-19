@@ -5,7 +5,7 @@
 /* Helper Functions for Timer (imported by pomo-timer.js) */
 
 const MAX_SEC = 60;
-const MAX_POMO_MIN = 59;
+const MAX_POMO_MIN = 60;
 const DEFAULT_POMO_MIN = 2;
 const TWO_DIGIT = 10;
 const START = 'Start';
@@ -59,7 +59,7 @@ export function display(totalSeconds, timerText, calmTimerText) {
  * @return {Number} totalSeconds
  */
 export function setTime(m) {
-  // Error catching: make sure minimum 1m and maximum 59m
+  // Error catching: make sure minimum 1m and maximum 60m
   if (m < 1 || m > MAX_POMO_MIN) {
     return DEFAULT_POMO_MIN * MAX_SEC;
   }
