@@ -177,12 +177,21 @@ describe('Test sidebar elements', () => {
   it('Values are set when calling loadSettings()', { includeShadowDom: true }, () => {
     // loadSettings()
     cy.window().then((win) => {
-      win.pomoSettings.loadSettings(true, 10, 'rooster', true, 20, 10, 20, true);
+      win.pomoSettings.loadSettings(
+        true,
+        10,
+        './assets/audio/bike_chime.mp3',
+        true,
+        20,
+        10,
+        20,
+        true
+      );
       expect(win.pomoSettings.work).to.eq(20);
       expect(win.pomoSettings.shortBreak).to.eq(10);
       expect(win.pomoSettings.longBreak).to.eq(20);
       expect(win.pomoSettings.volume).to.eq(10);
-      expect(win.pomoSettings.sound).to.eq('rooster');
+      expect(win.pomoSettings.sound).to.eq('./assets/audio/bike_chime.mp3');
       expect(win.pomoSettings.calm).to.eq(true);
       expect(win.pomoSettings.dark).to.eq(true);
       expect(win.pomoSettings.accessible).to.eq(true);
@@ -207,7 +216,7 @@ describe('Test sidebar elements', () => {
       });
       // sound
       cy.get('#sound-select').then(($el) => {
-        expect($el).to.have.value('rooster');
+        expect($el).to.have.value('./assets/audio/bike_chime.mp3');
       });
       // calm
       cy.get('#calm-mode').then(($el) => {
@@ -325,12 +334,12 @@ describe('Test sidebar elements', () => {
     const eventPromise = new Cypress.Promise((resolve) => {
       cy.get('#pomo-settings').then(($el) => {
         const onSoundSet = (e) => {
-          expect(e.detail.sound()).to.eq('rooster');
+          expect(e.detail.sound()).to.eq('./assets/audio/bike_chime.mp3');
           $el[0].removeEventListener('soundSet', onSoundSet);
           resolve();
         };
         $el[0].addEventListener('soundSet', onSoundSet);
-        cy.get('#sound-select').select('rooster');
+        cy.get('#sound-select').select('./assets/audio/bike_chime.mp3');
       });
     });
     cy.wrap(eventPromise);
