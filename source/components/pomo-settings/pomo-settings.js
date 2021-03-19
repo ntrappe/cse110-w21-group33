@@ -8,7 +8,7 @@ const DEFAULT_WORK_TIME = 25;
 const DEFAULT_SHORT_BREAK_TIME = 5;
 const DEFAULT_LONG_BREAK_TIME = 10;
 const DEFAULT_VOLUME = 50;
-const DEFAULT_SOUND = 'default';
+const DEFAULT_SOUND = './assets/audio/bike_chime.mp3';
 const DEFAULT_CALM_SETTING = false;
 const DEFAULT_DARK_SETTING = true;
 const DEFAULT_ACC_SETTING = true;
@@ -214,8 +214,8 @@ class PomoSettings extends HTMLElement {
       },
       {
         name: 'Small Bell',
-        file: './assets/audio/small_bell.mp3'
-      }
+        file: './assets/audio/small_bell.mp3',
+      },
     ];
 
     // Create option in dropdown menu for each audio file
