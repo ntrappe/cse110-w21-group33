@@ -8,7 +8,7 @@ const DEFAULT_WORK_TIME = 25;
 const DEFAULT_SHORT_BREAK_TIME = 5;
 const DEFAULT_LONG_BREAK_TIME = 10;
 const DEFAULT_VOLUME = 50;
-const DEFAULT_SOUND = 'default';
+const DEFAULT_SOUND = './assets/audio/bike_chime.mp3';
 const DEFAULT_CALM_SETTING = false;
 const DEFAULT_DARK_SETTING = true;
 const DEFAULT_ACC_SETTING = true;
@@ -203,22 +203,29 @@ class PomoSettings extends HTMLElement {
     const soundSelect = document.createElement('select');
     soundSelect.setAttribute('id', 'sound-select');
 
-    // List of names of audio files (file name should be spaced with hyphens)
-    const soundList = ['default', 'party-horn', 'angry-monkey', 'rooster'];
+    // List of names of audio files (file name should be spaced with underscores)
+    const soundList = [
+      {
+        name: 'Bike Chime',
+        file: './assets/audio/bike_chime.mp3',
+      },
+      {
+        name: 'Pleasant Ding',
+        file: './assets/audio/pleasant_ding.mp3',
+      },
+      {
+        name: 'Small Bell',
+        file: './assets/audio/small_bell.mp3',
+      },
+    ];
 
     // Create option in dropdown menu for each audio file
     for (let i = 0; i < soundList.length; i += 1) {
       const sound = soundList[i];
 
       const option = soundSelect.appendChild(document.createElement('option'));
-      option.value = sound;
-
-      // Converts name of audio file to capitalized word with spaces
-      const name = sound
-        .split('-')
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
-      option.text = name;
+      option.value = sound.file;
+      option.text = sound.name;
     }
     soundSelect.value = this.sound;
 

@@ -119,7 +119,7 @@ describe('Test Setting Volume', { includeShadowDom: true }, () => {
 describe('Test Setting Sound', { includeShadowDom: true }, () => {
   it('Test default value', () => {
     cy.get('#alarm-sound').then(($el) => {
-      expect($el).to.have.attr('src', '/media/audio/bike_chime.mp3'); // SUBJECT TO CHANGE
+      expect($el).to.have.attr('src', './assets/audio/bike_chime.mp3');
     });
   });
 
