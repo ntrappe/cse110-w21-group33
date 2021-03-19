@@ -52,7 +52,7 @@ class PomoInfo extends HTMLElement {
 
     const infoIcon = document.createElement('img');
     infoIcon.setAttribute('id', 'info-button-icon');
-    infoIcon.setAttribute('src', './assets/i_info.png');
+    infoIcon.setAttribute('src', './assets/images/i_info.png');
     infoIcon.textContent = 'Info';
 
     infoButton.appendChild(infoIcon);
@@ -140,10 +140,10 @@ class PomoInfo extends HTMLElement {
     this.setDark = (dark) => {
       if (dark) {
         infoStyle.setAttribute('href', './components/pomo-info/pomo-info.css');
-        infoIcon.setAttribute('src', './assets/i_info.png');
+        infoIcon.setAttribute('src', './assets/images/i_info.png');
       } else {
         infoStyle.setAttribute('href', './components/pomo-info/pomo-info-light.css');
-        infoIcon.setAttribute('src', './assets/i_info_light.png');
+        infoIcon.setAttribute('src', './assets/images/i_info_light.png');
       }
     };
 

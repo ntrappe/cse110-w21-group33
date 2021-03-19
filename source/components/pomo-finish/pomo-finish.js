@@ -34,7 +34,7 @@ class PomoFinish extends HTMLElement {
 
     const finishIcon = document.createElement('img');
     finishIcon.setAttribute('id', 'finish-button-icon');
-    finishIcon.setAttribute('src', './assets/bar_chart_stats.png');
+    finishIcon.setAttribute('src', './assets/images/bar_chart_stats.png');
     finishIcon.textContent = 'Statistics';
 
     finishButton.appendChild(finishIcon);
@@ -135,10 +135,10 @@ class PomoFinish extends HTMLElement {
     this.setDark = (dark) => {
       if (dark) {
         statsStyle.setAttribute('href', './components/pomo-finish/pomo-finish.css');
-        finishIcon.setAttribute('src', './assets/bar_chart_stats.png');
+        finishIcon.setAttribute('src', './assets/images/bar_chart_stats.png');
       } else {
         statsStyle.setAttribute('href', './components/pomo-finish/pomo-finish-light.css');
-        finishIcon.setAttribute('src', './assets/bar_chart_stats_light.png');
+        finishIcon.setAttribute('src', './assets/images/bar_chart_stats_light.png');
       }
     };
 
