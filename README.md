@@ -7,8 +7,9 @@
 4. [Coding Standards](#coding-standards) <br/>
 5. [GitHub Standards](#github-standards) <br/>
 6. [Code Documentation](#code-documentation) <br/>
-7. [Navigation](#navigation) <br />
-8. [Resources](#resources)
+7. [Navigation](#navigation) <br/>
+8. [Onboarding](#onboarding) <br/>
+9. [Resources](#resources) 
 
 ---
 
@@ -91,6 +92,12 @@ git branch -av
 - Specific components and their JS and CSS can be found in source/components
 - Images and Audio for the Timer can be found in source/assets/images and source/assets/audio
 - Cypress and Jest testing can be found in testing/cypress and testing/jest
+
+---
+
+### Onboarding
+- New members can check out our onboarding document [here](https://github.com/ntrappe/cse110-w21-group33/wiki/Onboarding) to get an understanding of the pipeline and basic git commands
+- The Wiki contains various ADR's relating to design decisions 
 
 ---
 
