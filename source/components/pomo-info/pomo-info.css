@@ -56,11 +56,6 @@
 }
 
 #info-close-button[class="button-off"] {
-  background-color: #0e1116;
-  color: #cbd1d8;
-}
-
-#info-close-button[class="button-off"] {
   background-color: #0f1115;
   color: #cbd1d8;
   border-color: #31363c;
