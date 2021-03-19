@@ -1,5 +1,10 @@
 <img src="/group33_header.png" alt="owl" width="800"/>
 
+### Run the App!
+https://cse110team33.netlify.app/
+
+---
+
 ### Table of Contents
 1. [Meeting Notes](#meeting-notes) <br/>
 2. [Group Contract](#group-contract) <br/>
