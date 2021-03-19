@@ -70,7 +70,6 @@ class PomoSettings extends HTMLElement {
 
     const settingsIcon = document.createElement('img');
     settingsIcon.setAttribute('id', 'settings-button-icon');
-    // settingsIcon.setAttribute('src', './assets/gear_settings_light.png');
     settingsIcon.textContent = 'Settings';
 
     settingsButton.appendChild(settingsIcon);
@@ -78,10 +77,10 @@ class PomoSettings extends HTMLElement {
     // update css for button and sidebar if dark vs not mode
     if (this.dark) {
       styles.setAttribute('href', './components/pomo-settings/pomo-settings.css');
-      settingsIcon.setAttribute('src', './assets/gear_settings.png');
+      settingsIcon.setAttribute('src', './assets/images/gear_settings.png');
     } else {
       styles.setAttribute('href', './components/pomo-settings/pomo-settings-light.css');
-      settingsIcon.setAttribute('src', './assets/gear_settings_light.png');
+      settingsIcon.setAttribute('src', './assets/images/gear_settings_light.png');
     }
 
     // Button to close sidebar
@@ -90,7 +89,7 @@ class PomoSettings extends HTMLElement {
 
     const closeIcon = document.createElement('img');
     closeIcon.setAttribute('id', 'settings-close-button-icon');
-    closeIcon.setAttribute('src', './assets/x.svg');
+    closeIcon.setAttribute('src', './assets/images/x.svg');
 
     const pomoLengthLabel = document.createElement('label');
     pomoLengthLabel.textContent = 'Time (minutes)';
@@ -588,10 +587,10 @@ class PomoSettings extends HTMLElement {
     this.setDark = (dark) => {
       if (dark) {
         styles.setAttribute('href', './components/pomo-settings/pomo-settings.css');
-        settingsIcon.setAttribute('src', './assets/gear_settings.png');
+        settingsIcon.setAttribute('src', './assets/images/gear_settings.png');
       } else {
         styles.setAttribute('href', './components/pomo-settings/pomo-settings-light.css');
-        settingsIcon.setAttribute('src', './assets/gear_settings_light.png');
+        settingsIcon.setAttribute('src', './assets/images/gear_settings_light.png');
       }
       calmSwitch.setDark(dark);
       darkSwitch.setDark(dark);
