@@ -204,7 +204,7 @@ class PomoSettings extends HTMLElement {
     soundSelect.setAttribute('id', 'sound-select');
 
     // List of names of audio files (file name should be spaced with hyphens)
-    const soundList = ['party-horn', 'angry-monkey', 'default', 'rooster'];
+    const soundList = ['default', 'party-horn', 'angry-monkey', 'rooster'];
 
     // Create option in dropdown menu for each audio file
     for (let i = 0; i < soundList.length; i += 1) {
@@ -599,6 +599,7 @@ class PomoSettings extends HTMLElement {
      * Enable settings
      */
     this.enableSettings = () => {
+      this.enabled = true;
       workSection.classList.remove('disabled');
       shortSection.classList.remove('disabled');
       longSection.classList.remove('disabled');
@@ -620,6 +621,7 @@ class PomoSettings extends HTMLElement {
      * Disable settings besides volume
      */
     this.disableSettings = () => {
+      this.enabled = false;
       workSection.classList.add('disabled');
       shortSection.classList.add('disabled');
       longSection.classList.add('disabled');
