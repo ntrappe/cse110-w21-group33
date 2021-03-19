@@ -120,7 +120,7 @@ test('setVolume to be 80', () => {
 });
 
 test('getSound without setSound', () => {
-  expect(storageHelper.getSound()).toBe('bike_chime.mp3');
+  expect(storageHelper.getSound()).toBe('./assets/audio/bike_chime.mp3');
 });
 
 test('setSound to be jingle', () => {

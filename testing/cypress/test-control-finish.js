@@ -39,18 +39,25 @@ describe('Testing Settings with Finish', { includeShadowDom: true }, () => {
   });
 });
 
-describe('Testing Timer with Info', { includeShadowDom: true }, () => {
+describe('Testing Timer with Stat', { includeShadowDom: true }, () => {
   beforeEach(() => {
     cy.visit('./source/index.html');
   });
 
-  it('Starting Timer and Stats that info is not opened', () => {
+  it('Starting Timer and Stats that stat is not opened', () => {
     cy.get('#timer-button').click();
     cy.get('#finish-button').should('be.disabled');
     cy.get('#statistics-modal').should('have.css', 'display', 'none');
   });
 
-  it('Starting Timer and stopping timer and Checking that info is opened', () => {
+  it('Starting Timer, Opening and closing settings, and checking that stat is disabled', () => {
+    cy.get('#timer-button').click();
+    cy.get('#settings-button').click();
+    cy.get('#settings-close-button').click();
+    cy.get('#info-button').should('be.disabled');
+  });
+
+  it('Starting Timer and stopping timer and Checking that stat is opened', () => {
     cy.get('#timer-button').click();
     cy.get('#timer-button').click();
     cy.get('#finish-button').should('not.be.disabled');
@@ -84,6 +91,12 @@ describe('Testing a complete cycle for stats page', { includeShadowDom: true }, 
     cy.visit('./source/index.html');
   });
 
+  it('Speed up timer for testing', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.timerSpeed = 100; // 1/10 s
+    });
+  });
+
   it('Setting an interruption and checking if stats shows 1', () => {
     cy.get('#timer-button').click();
     cy.get('#timer-button').click();
@@ -109,7 +122,7 @@ describe('Testing a complete cycle for stats page', { includeShadowDom: true }, 
 
   it('Checking stats after 1 work session is completed', () => {
     cy.get('#timer-button').click();
-    cy.wait(15500);
+    cy.wait(6200);
     cy.get('#finish-button').click();
     cy.get('#statistics-panel').then(($el) => {
       expect($el).to.contain('Pomodoro Completed: 1');
@@ -122,7 +135,7 @@ describe('Testing a complete cycle for stats page', { includeShadowDom: true }, 
 
   it('Checking stats after 1 short break is completed', () => {
     cy.get('#timer-button').click();
-    cy.wait(15500);
+    cy.wait(6200);
     cy.get('#finish-button').click();
     cy.get('#statistics-panel').then(($el) => {
       expect($el).to.contain('Pomodoro Completed: 1');
@@ -135,7 +148,7 @@ describe('Testing a complete cycle for stats page', { includeShadowDom: true }, 
 
   it('Running a 2nd work session', () => {
     cy.get('#timer-button').click();
-    cy.wait(15500);
+    cy.wait(6200);
     cy.get('#finish-button').click();
     cy.get('#statistics-panel').then(($el) => {
       expect($el).to.contain('Pomodoro Completed: 2');
@@ -148,7 +161,7 @@ describe('Testing a complete cycle for stats page', { includeShadowDom: true }, 
 
   it('Running a 2nd short break', () => {
     cy.get('#timer-button').click();
-    cy.wait(15500);
+    cy.wait(6200);
     cy.get('#finish-button').click();
     cy.get('#statistics-panel').then(($el) => {
       expect($el).to.contain('Pomodoro Completed: 2');
@@ -161,13 +174,13 @@ describe('Testing a complete cycle for stats page', { includeShadowDom: true }, 
 
   it('Running 2 more work session and 1 short break and 1 long break', () => {
     cy.get('#timer-button').click();
-    cy.wait(15500);
+    cy.wait(6200);
     cy.get('#timer-button').click();
-    cy.wait(15500);
+    cy.wait(6200);
     cy.get('#timer-button').click();
-    cy.wait(15500);
+    cy.wait(6200);
     cy.get('#timer-button').click();
-    cy.wait(15500);
+    cy.wait(6200);
   });
 
   it('Checkng if full pomodoro cycle is correct on stats', () => {

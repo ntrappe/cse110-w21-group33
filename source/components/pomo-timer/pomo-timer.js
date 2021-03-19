@@ -62,6 +62,7 @@ class PomoTimer extends HTMLElement {
     this.enabled = true;
 
     /**
+     * @method
      * Used for allowing keyboard shortcuts
      */
     this.enableTimer = () => {
@@ -69,6 +70,7 @@ class PomoTimer extends HTMLElement {
     };
 
     /**
+     * @method
      * Used for preventing keyboard shortcuts
      */
     this.disableTimer = () => {
@@ -156,6 +158,7 @@ class PomoTimer extends HTMLElement {
     };
 
     /**
+     * @method
      * For CONTROL to set time on clock for current mode
      * @param {Number} min number of minutes to set the clock to
      */
@@ -179,6 +182,7 @@ class PomoTimer extends HTMLElement {
     };
 
     /**
+     * @method
      * For CONTROL to update squares on screen to match number of breaks taken
      * @param {Number} progress - number of breaks taken
      */
@@ -193,6 +197,7 @@ class PomoTimer extends HTMLElement {
     };
 
     /**
+     * @method
      * For CONTROL to determine if timer text display will show normal
      * minutes & seconds or just minutes
      * @param {Boolean} calm true for min; false for min and sec
@@ -203,6 +208,7 @@ class PomoTimer extends HTMLElement {
     };
 
     /**
+     * @method
      * For CONTROL to determine whether to use default dark styling
      * or use light to override some colors of dark
      * @param {Boolean} dark true for dark css; false for light css
@@ -216,6 +222,7 @@ class PomoTimer extends HTMLElement {
     };
 
     /**
+     * @method
      * For transforming the whole object
      * @param {String} transformText the text to put in transform css
      */
@@ -224,6 +231,7 @@ class PomoTimer extends HTMLElement {
     };
 
     /**
+     * @method
      * For CONTROL to determine whether we can open info, setting, stats
      * @param {Boolean} enabled true for being able to open, false otherwise
      */

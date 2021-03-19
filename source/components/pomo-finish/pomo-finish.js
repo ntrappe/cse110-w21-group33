@@ -1,3 +1,7 @@
+/**
+ * @module PomoFinish
+ */
+
 class PomoFinish extends HTMLElement {
   constructor() {
     super();
@@ -30,7 +34,7 @@ class PomoFinish extends HTMLElement {
 
     const finishIcon = document.createElement('img');
     finishIcon.setAttribute('id', 'finish-button-icon');
-    finishIcon.setAttribute('src', './assets/bar_chart_stats.png');
+    finishIcon.setAttribute('src', './assets/images/bar_chart_stats.png');
     finishIcon.textContent = 'Statistics';
 
     finishButton.appendChild(finishIcon);
@@ -105,6 +109,7 @@ class PomoFinish extends HTMLElement {
     this.enabled = true;
 
     /**
+     * @method
      * Allows the control to open the finish page
      */
     this.enableFinish = () => {
@@ -113,6 +118,7 @@ class PomoFinish extends HTMLElement {
     };
 
     /**
+     * @method
      * Prevent the control from open the finish page
      */
     this.disableFinish = () => {
@@ -121,6 +127,7 @@ class PomoFinish extends HTMLElement {
     };
 
     /**
+     * @method
      * Modify elements' data-mode to dark-mode or light-mode
      * @param {Boolean} dark  indicate whether or not the setting is in dark mode
      */
@@ -128,14 +135,15 @@ class PomoFinish extends HTMLElement {
     this.setDark = (dark) => {
       if (dark) {
         statsStyle.setAttribute('href', './components/pomo-finish/pomo-finish.css');
-        finishIcon.setAttribute('src', './assets/bar_chart_stats.png');
+        finishIcon.setAttribute('src', './assets/images/bar_chart_stats.png');
       } else {
         statsStyle.setAttribute('href', './components/pomo-finish/pomo-finish-light.css');
-        finishIcon.setAttribute('src', './assets/bar_chart_stats_light.png');
+        finishIcon.setAttribute('src', './assets/images/bar_chart_stats_light.png');
       }
     };
 
     /**
+     * @method
      * Render session's statistics to the screen
      * @param {Number} workCount            the number of pomodoro sessions completed
      * @param {Number} shortBreakCount      the number of short breaks
@@ -179,6 +187,7 @@ class PomoFinish extends HTMLElement {
     };
 
     /**
+     * @method
      * For transforming the whole object
      * @param {String} transformText the text to put in transform css
      */
@@ -190,6 +199,7 @@ class PomoFinish extends HTMLElement {
     this.accessible = true;
 
     /**
+     * @method
      * For CONTROL to determine whether we can open info, setting, stats
      * @param {Boolean} enabled true for being able to open, false otherwise
      */
@@ -198,6 +208,7 @@ class PomoFinish extends HTMLElement {
     };
 
     /**
+     * @method
      * Functions that opens and closes the finish page with the f key
      */
     document.addEventListener('keydown', (e) => {

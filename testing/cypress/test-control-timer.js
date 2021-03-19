@@ -3,6 +3,12 @@ describe('Open Page', () => {
   it('Opens index.html', () => {
     cy.visit('./source/index.html');
   });
+
+  it('Speed up timer for testing', () => {
+    cy.window().then((win) => {
+      win.pomoTimer.timerSpeed = 100; // 1/10 s
+    });
+  });
 });
 
 /* find timer on window */
@@ -116,7 +122,7 @@ describe('Do Short Break #1 ==> Set Work #2', { includeShadowDom: true }, () => 
   });
   it('Run through 1m', () => {
     cy.get('#timer-button').click();
-    cy.wait(15500);
+    cy.wait(6200);
   });
 });
 
@@ -133,7 +139,7 @@ describe('Do Work #2 ==> Set Short Break #2', { includeShadowDom: true }, () => 
   });
   it('Run through 1m', () => {
     cy.get('#timer-button').click();
-    cy.wait(15500);
+    cy.wait(6200);
   });
   it('Progress should be 2', () => {
     cy.get('#square1').then(($el) => {
@@ -176,6 +182,6 @@ describe('Do Short Break #2 ==> Set Work #3', { includeShadowDom: true }, () => 
   });
   it('Run through 1m', () => {
     cy.get('#timer-button').click();
-    cy.wait(15500);
+    cy.wait(6200);
   });
 });
