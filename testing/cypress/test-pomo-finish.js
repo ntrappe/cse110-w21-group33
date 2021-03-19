@@ -57,12 +57,53 @@ describe('Check The Enabling/Disabling Finish Button', { includeShadowDom: true 
 
 describe('Check Custom Event Dispatchment', { includeShadowDom: true }, () => {
   it('Check that statistics button dispatch a custom event', () => {
-    cy.window().then((win) => {
-      // listen for events in the windown
-      win.addEventListener('modalRequest', ($e) => {
-        expect($e).to.be.instanceOf(CustomEvent);
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('pomo-finish').then(($el) => {
+        const eventFunction = () => {
+          $el[0].removeEventListener('modalRequest', eventFunction);
+          resolve();
+        };
+        $el[0].addEventListener('modalRequest', eventFunction);
+
+        cy.get('#finish-button').click();
       });
     });
+
+    cy.wrap(eventPromise);
+  });
+});
+
+describe('Check open/close fires appropriate events', { includeShadowDom: true }, () => {
+  it('Opening stats fires appropriate events', () => {
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('pomo-finish').then(($el) => {
+        const eventFunction = () => {
+          $el[0].removeEventListener('openEvent', eventFunction);
+          resolve();
+        };
+        $el[0].addEventListener('openEvent', eventFunction);
+
+        cy.window().then((win) => {
+          win.pomoFinish.showModal(0, 0, 0, 0);
+        });
+      });
+    });
+    cy.wrap(eventPromise);
+  });
+
+  it('Closing stats fires appropriate events', () => {
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('pomo-finish').then(($el) => {
+        const eventFunction = () => {
+          $el[0].removeEventListener('closeEvent', eventFunction);
+          resolve();
+        };
+        $el[0].addEventListener('closeEvent', eventFunction);
+
+        cy.get('#statistics-close-button').click();
+      });
+    });
+    cy.wrap(eventPromise);
   });
 });
 
@@ -154,5 +195,63 @@ describe('Check Dark/Light Settings', { includeShadowDom: true }, () => {
       'href',
       './components/pomo-finish/pomo-finish-light.css'
     );
+  });
+});
+
+describe('Lightbox Closing for Accessibility', { includeShadowDom: true }, () => {
+  beforeEach(() => {
+    cy.visit('./source/index.html');
+    cy.window().then((win) => {
+      win.pomoFinish.showModal(3, 2, 0, 0);
+    });
+  });
+
+  it('Check that f button closes lightbox', () => {
+    cy.window().then((win) => {
+      win.pomoFinish.setAccessibility(true);
+    });
+    cy.get('body').type('f');
+    cy.get('#statistics-modal').should('have.css', 'display', 'none');
+  });
+
+  it('Checks that f button doesnt close lightbox when Accessibility is off', () => {
+    cy.window().then((win) => {
+      win.pomoFinish.setAccessibility(false);
+    });
+    cy.get('body').type('f');
+    cy.get('#statistics-modal').should('have.css', 'display', 'block');
+  });
+});
+
+describe('Opening Stats Page', { includeShadowDom: true }, () => {
+  beforeEach(() => {
+    cy.visit('./source/index.html');
+  });
+
+  it('Opening stats page with f and Accessibility on', () => {
+    const eventPromise = new Cypress.Promise((resolve) => {
+      cy.get('pomo-finish').then(($el) => {
+        const eventFunction = () => {
+          $el[0].removeEventListener('modalRequest', eventFunction);
+          resolve();
+        };
+        $el[0].addEventListener('modalRequest', eventFunction);
+
+        cy.window().then((win) => {
+          win.pomoFinish.setAccessibility(true);
+        });
+        cy.get('body').type('f');
+      });
+    });
+
+    cy.wrap(eventPromise);
+  });
+
+  it('Opening stats page with f and Accessibility off', () => {
+    cy.window().then((win) => {
+      win.pomoFinish.setAccessibility(false);
+    });
+    cy.get('body').type('f');
+    cy.get('#statistics-modal').should('have.css', 'display', 'none');
   });
 });

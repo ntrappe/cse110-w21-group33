@@ -14,6 +14,18 @@
   border-color: #f5f2f2;
 }
 
+/* disabled styling */
+#info-button:disabled {
+  background-color: #e5e7ea;
+  opacity: 30%;
+}
+
+#info-button:disabled:hover {
+  border-color: #d8dbdc;
+  opacity: 30%;
+}
+
+/* circle close button w on hover */
 #info-close-button[class="button-off"] {
   background-color: #e2e5e7;
   color: #24292e;
@@ -59,4 +71,3 @@
   background-color: #f6f8fa;
   border-color: #e1e4e8;
   color: #464e57;
-}

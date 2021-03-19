@@ -29,6 +29,19 @@
   transition-duration: 0.1s;
 }
 
+/* disabled styling */
+#finish-button:disabled {
+  background-color: #22262c;
+  opacity: 30%;
+  cursor: not-allowed;
+}
+
+#finish-button:disabled:hover {
+  border-color: #31363c;
+  opacity: 30%;
+  cursor: not-allowed;
+}
+
 #statistics-close-button[class="button-off"] {
   background-color: #0f1115;
   color: #cbd1d8;

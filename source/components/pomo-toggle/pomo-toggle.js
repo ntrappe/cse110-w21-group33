@@ -1,3 +1,7 @@
+/**
+ * @module PomoToggle
+ */
+
 /* Links Used
 https://stackoverflow.com/questions/44061473/move-text-on-toggle-switch-on-off
 https://www.w3schools.com/howto/howto_css_switch.asp
@@ -71,6 +75,7 @@ class ToggleSwitch extends HTMLElement {
     };
 
     /**
+     * @method
      * Helper function to toggle slider on
      */
     this.setOn = () => {
@@ -81,6 +86,7 @@ class ToggleSwitch extends HTMLElement {
     };
 
     /**
+     * @method
      * Helper function to toggle slider off
      */
     this.setOff = () => {
@@ -91,6 +97,7 @@ class ToggleSwitch extends HTMLElement {
     };
 
     /**
+     * @method
      * Helper function to enable toggle switch
      */
     this.enable = () => {
@@ -99,6 +106,7 @@ class ToggleSwitch extends HTMLElement {
     };
 
     /**
+     * @method
      * Helper function to disable toggle switch
      */
     this.disable = () => {
@@ -107,6 +115,7 @@ class ToggleSwitch extends HTMLElement {
     };
 
     /**
+     * @method
      * Toggles light/dark color scheme for toggle switch
      * @param {Boolean} dark turn dark color scheme if dark mode is on
      */
