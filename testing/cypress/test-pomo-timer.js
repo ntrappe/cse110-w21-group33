@@ -92,7 +92,6 @@ describe('Initialize timer with public functions', { includeShadowDom: true }, (
   });
 });
 
-/*
 describe('Check if we can reset at 01:59', { includeShadowDom: true }, () => {
   it('Clear out previous test settings to 02:00', () => {
     cy.window().then((win) => {
@@ -156,9 +155,8 @@ describe('Check if we can reset at 01:01', { includeShadowDom: true }, () => {
       win.pomoTimer.timerSpeed = 250; // 1/4 s
     });
   });
-}); */
+});
 
-/*
 describe('Check setting Dark and Light Mode', { includeShadowDom: true }, () => {
   it('Set to Dark Mode', () => {
     cy.window().then((win) => {
@@ -359,7 +357,7 @@ describe('Test Calm Mode', { includeShadowDom: true }, () => {
       });
     });
   });
-}); */
+});
 
 describe('Init check all events test', { includeShadowDom: true }, () => {
   it('Refresh page', () => {
