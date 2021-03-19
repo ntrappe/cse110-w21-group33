@@ -8,5 +8,8 @@ desktop.ini
 .Trashes
 ._*
 
+#VSCode
+.vscode
+
 node_modules
 coverage

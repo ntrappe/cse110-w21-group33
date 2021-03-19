@@ -18,9 +18,6 @@ describe('Find Finish Elements', { includeShadowDom: true }, () => {
   it('Get lightbox title', () => {
     cy.get('#statistics-modal-title');
   });
-  it('Get element statistics panel', () => {
-    cy.get('#statistics-panel');
-  });
 });
 
 describe('Check Initial State of Elements', { includeShadowDom: true }, () => {
@@ -152,22 +149,6 @@ describe('Check Lightbox Closing Options', { includeShadowDom: true }, () => {
   it('Check clicking right left of the modal closes lightbox', () => {
     cy.get('#statistics-modal').click('right');
     cy.get('#statistics-modal').should('have.css', 'display', 'none');
-  });
-});
-
-describe('Check Statistics Panel Elements With showModal()', { includeShadowDom: true }, () => {
-  it('Check statistics panel has all elements', () => {
-    cy.visit('./source/index.html');
-    cy.window().then((win) => {
-      win.pomoFinish.showModal(3, 2, 0, 0);
-    });
-    cy.get('#statistics-panel').then(($el) => {
-      expect($el).to.contain('Pomodoro Completed: 3');
-      expect($el).to.contain('Short Breaks: 2');
-      expect($el).to.contain('Long Breaks: 0');
-      expect($el).to.contain('Interrupted Session: 0');
-    });
-    cy.get('#statistics-modal').should('have.css', 'display', 'block');
   });
 });
 
