@@ -24,7 +24,7 @@ describe('Check control set light mode', { includeShadowDom: true }, () => {
   it('Toggle light mode', () => {
     cy.get('#settings-button').click();
     cy.get('#dark-slider').click();
-    cy.get('#close-button').click();
+    cy.get('#settings-close-button').click();
   });
 
   it('Check page background color', () => {

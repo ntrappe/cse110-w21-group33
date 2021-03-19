@@ -23,8 +23,8 @@ function testUISettingsDark() {
       /* Verify colors of settings buttons */
       cy.get('#settings-button').should('have.css', 'background-color', 'rgb(34, 38, 44)');
       cy.get('#settings-button').should('have.css', 'color', 'rgba(0, 0, 0, 0)');
-      cy.get('#close-button').should('have.css', 'background-color', 'rgb(15, 17, 21)');
-      cy.get('#close-button').should('have.css', 'border-color', 'rgb(49, 54, 60)');
+      cy.get('#settings-close-button').should('have.css', 'background-color', 'rgb(15, 17, 21)');
+      cy.get('#settings-close-button').should('have.css', 'border-color', 'rgb(49, 54, 60)');
       cy.get('#settings-button-icon').then(($img) => {
         expect($img[0].naturalWidth).to.be.greaterThan(0);
       });
@@ -89,7 +89,7 @@ function testUISettingsDark() {
       cy.get('#calm-slider').click();
       cy.get('#dark-slider').click();
       cy.get('#accessible-slider').click();
-      cy.get('#close-button').click();
+      cy.get('#settings-close-button').click();
     });
   });
 }
@@ -113,8 +113,8 @@ function testUISettingsLight(fromControl) {
       /* Verify colors of settings buttons */
       cy.get('#settings-button').should('have.css', 'background-color', 'rgb(229, 231, 234)');
       cy.get('#settings-button').should('have.css', 'color', 'rgba(0, 0, 0, 0)');
-      cy.get('#close-button').should('have.css', 'background-color', 'rgb(255, 255, 255)');
-      cy.get('#close-button').should('have.css', 'border-color', 'rgb(218, 219, 220)');
+      cy.get('#settings-close-button').should('have.css', 'background-color', 'rgb(255, 255, 255)');
+      cy.get('#settings-close-button').should('have.css', 'border-color', 'rgb(218, 219, 220)');
 
       /* Verify background colors of settings sidebar */
       cy.get('#settings-modal').should('have.css', 'background-color', 'rgba(0, 0, 0, 0.5)');
@@ -190,7 +190,7 @@ function testUISettingsLight(fromControl) {
         cy.get('#dark-slider').click();
       }
 
-      cy.get('#close-button').click();
+      cy.get('#settings-close-button').click();
     });
   });
 }

@@ -52,7 +52,7 @@ function testUIInfoLight(fromControl) {
       it('Toggle light mode', () => {
         cy.get('#settings-button').click();
         cy.get('#dark-slider').click();
-        cy.get('#close-button').click();
+        cy.get('#settings-close-button').click();
       });
     }
 
@@ -82,7 +82,7 @@ function testUIInfoLight(fromControl) {
       if (!fromControl) {
         cy.get('#settings-button').click();
         cy.get('#dark-slider').click();
-        cy.get('#close-button').click();
+        cy.get('#settings-close-button').click();
       }
     });
   });

@@ -56,10 +56,8 @@ describe('Verify element layout', { includeShadowDom: true }, () => {
       const LEFT_SIDE = WIDTH / PARTITION;
       const RIGHT_SIDE = WIDTH - WIDTH / PARTITION;
 
-      // NOTE: temporary value for BOTTOM_POSITION because finish button isn't in right place
-      // const BOTTOM_POS = HEIGHT - (HEIGHT / PARTITION);
-      const BOTTOM_POS = 150;
       const TOP_POS = HEIGHT / PARTITION;
+      const BOTTOM_POS = HEIGHT - HEIGHT / PARTITION;
 
       /* Criteria for timer being centered is relative to other elements */
       const CENTER_LEFT = settingCoords.x + settingCoords.width;

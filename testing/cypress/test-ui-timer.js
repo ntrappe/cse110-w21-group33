@@ -81,7 +81,7 @@ function testUITimerLight(fromControl) {
       it('Toggle light mode', () => {
         cy.get('#settings-button').click();
         cy.get('#dark-slider').click();
-        cy.get('#close-button').click();
+        cy.get('#settings-close-button').click();
       });
     }
 
@@ -144,7 +144,7 @@ function testUITimerLight(fromControl) {
       it('Toggle dark mode', () => {
         cy.get('#settings-button').click();
         cy.get('#dark-slider').click();
-        cy.get('#close-button').click();
+        cy.get('#settings-close-button').click();
       });
     }
   });
@@ -161,7 +161,7 @@ function testUITimerCalm() {
     it('Toggle calm mode', () => {
       cy.get('#settings-button').click();
       cy.get('#calm-slider').click();
-      cy.get('#close-button').click();
+      cy.get('#settings-close-button').click();
     });
 
     it('Check timer text in calm mode', () => {
@@ -175,7 +175,7 @@ function testUITimerCalm() {
     it('Toggle busy mode', () => {
       cy.get('#settings-button').click();
       cy.get('#calm-slider').click();
-      cy.get('#close-button').click();
+      cy.get('#settings-close-button').click();
     });
   });
 }
