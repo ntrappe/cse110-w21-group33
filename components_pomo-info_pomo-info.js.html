@@ -90,24 +90,6 @@ class PomoInfo extends HTMLElement {
       shadow.dispatchEvent(this.openEvent);
     };
 
-    // the lightbox
-    const modalContent = document.createElement('div');
-    modalContent.setAttribute('class', 'modal-content');
-    modalContent.setAttribute('id', 'info-modal-content');
-
-    // the main info Content
-    const infoContent = document.createElement('div');
-    infoContent.setAttribute('id', 'info-content');
-    const title = document.createElement('h3');
-    const content = document.createElement('div');
-    title.innerHTML = 'HOW IT WORKS';
-    content.innerHTML = `The Pomodoro Technique is a time 
-    management method developed by Francesco Cirillo in the 
-    late 1980s. The technique uses a timer to break down work
-    into intervals, traditionally 25 minutes in length, 
-    separated by short breaks, traditionally 5 minutes. After 
-    4 working intervals, the break is 15 minutes`;
-
     // button to close the modal window
     const closeButton = document.createElement('div');
     closeButton.setAttribute('class', 'close-button');
@@ -128,9 +110,134 @@ class PomoInfo extends HTMLElement {
       closeButton.setAttribute('class', 'button-off');
     });
 
+    // the lightbox
+    const modalContent = document.createElement('div');
+    modalContent.setAttribute('class', 'modal-content');
+    modalContent.setAttribute('id', 'info-modal-content');
+
+    // the main info Content
+    const infoContent = document.createElement('div');
+    infoContent.setAttribute('id', 'info-content');
+    const infoTitle = document.createElement('h3');
+    infoTitle.textContent = 'Information';
+
+    // info on pomodoro technique
+    const pomoTechHolder = document.createElement('div');
+    pomoTechHolder.setAttribute('class', 'info-table');
+    const pomoTechLabel = document.createElement('p');
+    pomoTechLabel.setAttribute('class', 'info-table-label');
+    pomoTechLabel.textContent = 'Pomodoro Technique';
+    const pomoTechContent = document.createElement('p');
+    pomoTechContent.setAttribute('class', 'info-table-content');
+    pomoTechContent.innerHTML = `The Pomodoro Technique was created by 
+    &lt;b>Francesco Cirillo&lt;/b> in order to better manage time and improve productivity. The 
+    traditional &lt;b>Pomodoro Technique&lt;/b> consisted of sets. Each set was divided into &lt;b>4&lt;/b> 
+    work sessions-called pomodoros-with the first 3 followed by a short break and the final 
+    work session followed by a long break. Cirillo used &lt;b>25&lt;/b> minute pomodoros, &lt;b>5&lt;/b> 
+    minute short breaks, and &lt;b>15&lt;/b> minute long breaks. If a work session is interrupted, that 
+    Pomodoro is considered “forfeited” and the user must restart it.`;
+    pomoTechHolder.appendChild(pomoTechLabel);
+    pomoTechHolder.appendChild(pomoTechContent);
+
+    // info on our web app
+    const appHolder = document.createElement('div');
+    appHolder.setAttribute('class', 'info-table');
+    const appLabel = document.createElement('div');
+    appLabel.setAttribute('class', 'info-table-label');
+    appLabel.textContent = 'Our Pomodoro App';
+    const appContent = document.createElement('p');
+    appContent.setAttribute('class', 'info-table-content');
+    appContent.innerHTML = `Our app is heavily inspired by the &lt;b>Pomodoro Technique&lt;/b>. We use 
+    the concept of a set and only allow users to start and reset work sessions and breaks. However, 
+    we wanted to allow our users flexibility in modifying the lengths of these intervals to match 
+    their work styles.`;
+    appHolder.appendChild(appLabel);
+    appHolder.appendChild(appContent);
+
+    // info on how to use this web app
+    const howToHolder = document.createElement('div');
+    howToHolder.setAttribute('class', 'info-table');
+    const howToLabel = document.createElement('p');
+    howToLabel.setAttribute('class', 'info-table-label');
+    howToLabel.textContent = 'How to Use';
+    const howToContent = document.createElement('p');
+    howToContent.setAttribute('class', 'info-table-content');
+    howToContent.innerHTML = `To start using our app, press the &lt;b>Start&lt;/b> button or the 
+    &lt;kbd>s&lt;/kbd> key on your keyboard in order to start the timer. If you need to forfeit 
+    and restart the work session for any reason click the &lt;br>Reset&lt;/b> button or the 
+    &lt;kbd>r&lt;/kbd> key on your keyboard. You can even open up settings by clicking on 
+    &lt;b>'Settings'&lt;/b> or using the &lt;kbd>q&lt;/kbd> on your keyboard.`;
+    howToHolder.appendChild(howToLabel);
+    howToHolder.appendChild(howToContent);
+
+    // info on how to change settings
+    const settingsHolder = document.createElement('div');
+    settingsHolder.setAttribute('class', 'info-table');
+    const settingsLabel = document.createElement('p');
+    settingsLabel.setAttribute('class', 'info-table-label');
+    settingsLabel.textContent = 'How to Use Settings';
+    const settingsContent = document.createElement('p');
+    settingsContent.setAttribute('class', 'info-table-content');
+    settingsContent.innerHTML = `For our settings option, you can customize your timer for:
+    &lt;ul>
+      &lt;li>&lt;b>Work and Break Durations&lt;/b>&lt;/li>
+        &lt;ul>
+          &lt;li>For Work duration, you can change the duration to be between 
+          &lt;b>1 - 60m&lt;/b>&lt;/li>
+          &lt;li>For Short Break duration, you can change the duration to be between 
+          &lt;b>1 - 60m&lt;/b>&lt;/li>
+          &lt;li>For Long Break duration, you can change the duration to be between 
+          &lt;b>1 - 60m&lt;/b>&lt;/li>
+        &lt;/ul>
+      &lt;li>&lt;b>Calm Mode&lt;/b>&lt;/li>
+        &lt;ul>
+          &lt;li>If seeing the seconds tick down every second is distracting, you can enable calm 
+          mode which will only display the minutes&lt;/li>
+        &lt;/ul>
+      &lt;li>&lt;b>Dark Mode&lt;/b>&lt;/li>
+        &lt;ul>
+          &lt;li>Working at night and your screen is too bright? You can enable dark mode&lt;/li>
+        &lt;/ul>
+      &lt;li>&lt;b>Audio &amp; Volume&lt;/b>&lt;/li>
+        &lt;ul>
+          &lt;li>If you find yourself tired of hearing the same alarm you can select from various 
+          audio selections, as well as changing the volume&lt;/li>
+        &lt;/ul>
+      &lt;li>&lt;b>Accessibility&lt;/b>&lt;/li>
+        &lt;ul>
+          &lt;li>If you dislike keyboard shortcuts you can disable them here&lt;/li>
+        &lt;/ul>
+    &lt;/ul>`;
+    settingsHolder.appendChild(settingsLabel);
+    settingsHolder.appendChild(settingsContent);
+
+    // info on how to use stats
+    const statsHolder = document.createElement('div');
+    statsHolder.setAttribute('class', 'info-table');
+    const statsLabel = document.createElement('p');
+    statsLabel.setAttribute('class', 'info-table-label');
+    statsLabel.textContent = 'How to Use Stats';
+    const statsContent = document.createElement('p');
+    statsContent.setAttribute('class', 'info-table-content');
+    statsContent.innerHTML = `For our statistics page, you can see the:
+    &lt;ul>
+      &lt;li>Amount of Work completed for the day&lt;/li>
+      &lt;li>Amount of Short Breaks taken&lt;/li>
+      &lt;li>Amount of Long Breaks taken&lt;/li>
+      &lt;li>Amount of Work Interruption&lt;/li>
+    &lt;/ul>
+    `;
+    statsHolder.appendChild(statsLabel);
+    statsHolder.appendChild(statsContent);
+
     // add element to containers
-    infoContent.appendChild(title);
-    infoContent.appendChild(content);
+    infoContent.appendChild(infoTitle);
+    infoContent.appendChild(pomoTechHolder);
+    infoContent.appendChild(appHolder);
+    infoContent.appendChild(howToHolder);
+    infoContent.appendChild(settingsHolder);
+    infoContent.appendChild(statsHolder);
+
     modalContent.appendChild(closeButton);
     modalContent.appendChild(infoContent);
     modal.appendChild(modalContent);
@@ -229,7 +336,7 @@ or use light to override some colors of dark</a></li><li><a href="global.html#Fo
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Fri Mar 19 2021 02:54:21 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Fri Mar 19 2021 03:18:23 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
