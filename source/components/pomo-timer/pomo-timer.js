@@ -7,7 +7,7 @@ import {
   setProgressHelper,
 } from './pomo-timer-helpers.js';
 
-const START = 'Start';
+const START = 'Start WITH POMODOROMAN!!';
 const RESET = 'Reset';
 const DEFAULT_SPEED = 1000; // normal second in ms
 class PomoTimer extends HTMLElement {
